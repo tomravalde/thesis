@@ -58,7 +58,6 @@ thesis:		update clean $(MDS) $(TEXS) combo
 
 ## Build thesis
 combo:
-	makeindex
 	latexmk -xelatex "-interaction=nonstopmode" main.tex
 
 ## Whenever running on Tom's machine, update to latest dependencies for paper and toolchain

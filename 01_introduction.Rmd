@@ -18,6 +18,10 @@ Just another little change.
 
 ## Urban resource management: challenges
 
+\nomenclature{$\delta_{rq}$}{Binary variable attributing a quality to a resource}
+\nomenclature{$k_{prq$}}{Coefficient of resource production}
+\nomenclature{$g$}{Acceleration due to gravity}
+
 
 ### Environmental strain
 
