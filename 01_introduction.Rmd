@@ -10,7 +10,7 @@ Sort out wraparound text.
 
 Try with preview.tex.
 
-Trying the `make pdf` command to see what it does.
+Trying to cut the build time with tex dependencies.
 
 ## Urban metabolism
 

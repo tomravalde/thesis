@@ -29,6 +29,8 @@
 \numberwithin{equation}{chapter}
 \pagestyle{headings}
 
+\input{vc}
+
 \usepackage{fancyhdr}
 \setlength{\headheight}{15.2pt}
 \headsep = 20pt
@@ -36,6 +38,7 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \lhead{\fancyplain{}{\textit{\nouppercase\leftmark}}}
 \rhead{}
+\fancyfoot[LE,LO]{\footnotesize{\texttt{Revision \VCRevision \\on \VCDateISO~at~\VCTime}}}
 \renewcommand{\headrulewidth}{0.4pt}
 
 \lstset{breaklines=true}

@@ -57,17 +57,17 @@ thesis:		update clean $(MDS) $(TEXS) combo
 ###--------------------------------------------------
 
 ## Build thesis
-combo:
+combo: *.tex
 	latexmk -xelatex "-interaction=nonstopmode" main.tex
 
 ## Whenever running on Tom's machine, update to latest dependencies for paper and toolchain
 update:
 	if [ `hostname` = "cv-tr608-01" ] ; \
 	then \
-	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
 	cp /home/tr608/ImpCol/PhD/my-refs.bib . ; \
 	fi
 #	inkscape -D -z --file=metab.svg --export-pdf=metab.pdf --export-latex ; \
+#	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
 
 ## Knit Rmarkdown to markdown
 %.md: %.Rmd
@@ -76,7 +76,7 @@ update:
 ## Convert to tex using pandoc and build a standalone preview version of edited chapter
 %.tex:	%.md
 	./vc
-	pandoc --chapters --natbib -o $@ $< ## may add in --template=chapter.xelatex later
+	pandoc --chapters --natbib -o $@ $<
 	cat chapter.prepend $@ chapter.append > preview.tex
 
 ## Complile the preview chapter
