@@ -1,0 +1,29 @@
+# Introduction
+
+\pagenumbering{arabic}
+
+Punchy introductory paragraph about the function of cities, and the general resource challenges they consume.
+
+Note, I need to sort out the running of the version control information.
+
+Sort out wraparound text.
+
+Try with preview.tex.
+
+Trying the `make pdf` command to see what it does.
+
+## Urban metabolism
+
+Just another little change.
+
+## Urban resource management: challenges
+
+### Environmental strain
+
+### Economic stability
+
+## Urban resource management: opportunities
+
+## Research questions
+
+## Methods and thesis structure

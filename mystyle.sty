@@ -1,0 +1,41 @@
+\ProvidesPackage{mystyle}
+
+\usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{parskip}
+%\usepackage[pdftex]{graphicx}
+\usepackage[]{graphicx}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{amssymb, amsmath}
+\usepackage{fullpage}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{fixltx2e}
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\usepackage{booktabs}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{url}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%%\usepackage{helvetica}
+\usepackage{listings}
+\usepackage{gensymb}
+%\usepackage{nomencl}
+\usepackage{rotating}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks=true}
+\numberwithin{equation}{chapter}
+\pagestyle{headings}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\headsep = 20pt
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\lhead{\fancyplain{}{\textit{\nouppercase\leftmark}}}
+\rhead{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\lstset{breaklines=true}

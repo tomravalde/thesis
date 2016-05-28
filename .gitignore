@@ -1,0 +1,16 @@
+*.count
+*.md
+*.pdf
+*.tex
+!main.tex
+!title.tex
+*.jpg
+*.aux
+*.fdb_latexmk
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.fls
+
