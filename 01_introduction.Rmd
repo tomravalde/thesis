@@ -12,6 +12,8 @@ Try with preview.tex.
 
 Trying to cut the build time with tex dependencies.
 
+Get Makefile to run the version control script. Will it work?!
+
 ## Urban metabolism
 
 Just another little change.
