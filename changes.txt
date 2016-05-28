@@ -1,6 +1,6 @@
 PhD Thesis
 
-ShannGu-0.1.0 (28 May 2016)
+thesis-0.1.0 (28 May 2016)
 ================================
 
 * Initial version of the repository.
