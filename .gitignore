@@ -1,5 +1,6 @@
 *.count
 *.md
+!REAMDE.md
 *.pdf
 *.tex
 !main.tex
