@@ -1,7 +1,7 @@
 \documentclass[a4paper, 11pt]{report}
 \usepackage{mystyle} % Load packages, user-defined commands, and other settings
 
-%\makenomenclature
+\makenomenclature
 %linespread{1.3}
 %newcommand{\COtwo}{CO\textsubscript{2} }
 %\DeclareMathOperator{\cov}{cov}
@@ -19,7 +19,7 @@
 \tableofcontents
 \listoffigures
 \listoftables
-%\printnomenclature[0.8in]
+\printnomenclature[0.8in]
 
 \input{01_introduction.tex}
 \input{02_lit-review.tex}
@@ -28,6 +28,9 @@
 \input{05_model-development.tex}
 \input{06_case-study.tex}
 \input{07_conclusions.tex}
+
+\nomenclature{$k_{prq$}}{Coefficient of resource production}
+
 
 \clearpage
 \appendix
