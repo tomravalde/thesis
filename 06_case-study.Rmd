@@ -1,5 +1,10 @@
 # Case study: a Chinese urban development
 
-Adapt from paper.
+[TODO: Adapt from paper]
 
 Add text to check whole-thesis build.
+
+TODO IDEAS:
+
+- Shannon Index
+- Degree of capacity (e.g. depth of colour of node in network plot) to show redundancy which can fill in for unexpected rises in demand (or drops in resource availability)

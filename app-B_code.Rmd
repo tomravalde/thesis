@@ -1,1 +1,3 @@
 # Code
+
+[TODO: include code for linear and nonlinear versions of the model]

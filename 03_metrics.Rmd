@@ -1,5 +1,11 @@
 # Metrics
 
-Adapt from paper.
+[TODO: include a box to note the replication of paper]
 
-Adding a bit of text, to test the whole-thesis build.
+[TODO: copy paper source, and adapt]
+
+One of the first challenges which presents itself as we consider an urban area's metabolic requirements and wastes, is that of how to actually quantify them, given that they are composed of multiple resource types. Some resources can be quantified by both mass *or* energy (e.g. fuels), some can be quantified by mass *or* energy (e.g. water with a give quantity, at a given velocity, elevation and hydrostatic pressure), and others can only be quantified in energy terms (e.g. electricity and heat). To add them up would be to "compare apples and oranges".
+
+## Summary
+
+In summary, we have seen that [TODO: complete summary...]

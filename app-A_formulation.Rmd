@@ -1,1 +1,3 @@
 # Model formulation
+
+[TODO: Include code for linear and nonlinear versions of the model]

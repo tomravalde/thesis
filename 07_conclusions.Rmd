@@ -2,6 +2,34 @@
 
 Introductory text.
 
-Applying a modification to this chapter to see if Makefile updates this alone. And another modification.
+## Have we met the challenges?
 
-## Adding text to check the single-chapter preview build.
+Linear formulations are appropriate to the superstructure representation as a first approximation
+
+In summary, we have made a novel contribution to the UM field. The field currently adopts various modelling techniques to help inform the ways to improve urban sustainability, but to date, optimisation modelling is an unexplored option. This is perhaps in part, UM is still to incorporate a fully-developed 'process-oriented' perspective, which looks at the processes occuring within the black box of a city. Work has started in this, though it is still somewhat limited to an economic representation of a city [TODO: Zhang reference], rather than an engineered perspective
+
+Optimisation modelling in general, and synergy-exploiting optimisation modelling is not far away from UM, and has been successfully applied in Industrial Ecology, especially as a means to integrate the operations of multiple facilities within Eco-Industrial Parks. This thesis has brought optimisation into the broader field
+
+However, this is only the beginning of the work, and one component of this thesis is to encourage it to continue, in particular through open-science [TODO: cite Davis etc.], and to that end, as far as possible, we have made our formulation available, along with a 'benchmark problem', which researchers can use to develop and test extension to our work, some of which are discussed in the following section.
+
+## Further work
+
+- Extended focus, i.e. range of demands (e.g. iron and steel manufacture, which can be significant components of an urban metabolism). This would have a corresponding extended range of 
+- Sophisticated formulation
+  	- 
+	- Distinction between domestic and nondomestic processes
+	- Heirarchical time discretisation
+- Further case studies
+  	- long-term time horizon planning (can be performed with the current formulation)
+  	- apply to modify systems with currently fixed components
+	- short-term operation (using heirarchical time discretisation, above)
+- Data
+  	- contributions to our process database
+  	- urban metabolic demands for global cities
+  	- existing infrastructure systems for existing cities
+	- The above two points can then be combined, along with the notion of 'fixed components', to suggest how a particular city might move to optimising its resource system.
+- Socioeconomics: Perhaps one reason for the lack of multi-resource synergy optimisation problems (as shown by our literature review) are the economic/market limitations. For example, typically, energy, water and waste are managed separately [TODO: cite specifics from around the world].
+	- Perhaps this work can inform the debate surround market/planned economies
+	- Perhaps it can help different (private/public) non-competative companies to work together (as in EIPs),
+	- Alternatviely, ABM can be used
+- Upscaling and downscaling the principles to within-building, area, city, region, national, international levels (and associated data requirements, both for demands, and processes)

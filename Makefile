@@ -1,20 +1,23 @@
 ## Makefile to build PhD thesis
 
 ###--------------------------------------------------
-### T. Ravalde
-### Last edited: 2016/05/18
+### T. Ravalde (thomas.ravalde08@imperial.ac.uk)
+### Last edited: 2016/05/31
 ### Adapted from Keiran Healy (https://github.com/kjhealy/workflow-paper/blob/master/Makefile)
 ###--------------------------------------------------
 
 ## Put this Makefile in your project directory
-## -	Change the paths at the top of the file as needed
-## -	Using `make` without arguments will generate tex, and pdf 
+## -	Change the paths to at the top of the file as needed
 ## 	output files from all of the files with the designated markdown
-##	extension. The default is `.md` but you can change this. 
-## -	You can specify an output format with `make tex` or `make pdf`
-## -	Doing `make clean` will remove all the .pdf files and other filetypes
+## -	`make thesis` will build the entire thesis (based on the contents of main.	tex)
+## -	`make chapter` will build a preview version of the most recently edited 	chapter
+## -	`make clean` will remove all the .pdf files and other filetypes
 ## 	in your working directory. Make sure you do not have files in these
 ##	formats that you want to keep!
+
+## TODO
+## - 	Haven't yet tested the wordcount feature
+## - 	Haven't fully tested the make chapter (e.g. with nomenclature dependenci	es etc.)
 
 ###--------------------------------------------------
 ### Setup
@@ -81,7 +84,7 @@ update:
 
 ## Complile the preview chapter
 chapter-xelatex:
-	xelatex preview.tex
+	latexmk -xelatex "-interaction=nonstopmode" preview.tex
 
 ## Run texcount on tex files
 %.count: %.tex

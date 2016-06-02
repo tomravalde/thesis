@@ -4,19 +4,7 @@
 
 Punchy introductory paragraph about the function of cities, and the general resource challenges they consume.
 
-Note, I need to sort out the running of the version control information.
-
-Sort out wraparound text.
-
-Try with preview.tex.
-
-Trying to cut the build time with tex dependencies.
-
-Get Makefile to run the version control script. Testing a modification. And another test.
-
 ## Urban metabolism
-
-Just another little change.
 
 ## Urban resource management: challenges
 
@@ -41,6 +29,26 @@ Te eum quem amet feugait, te indoctum sadipscing vix, cu exerci labore hendrerit
 
 ## Urban resource management: opportunities
 
-## Research questions
+## Challenges/Research questions
+
+### Challenges dealt with here
+
+- Define optimal metabolism, among different resource types
+- Introduce optimisation modelling to UM
+- Formulate a tractable problem which can represent an urban system
+- Data needs
+- Transparency: on the basis that modelling is about "insight" rather than numbers (Hamming).
+- Transparency/Open source: to assist with both the introduction of UM optimisation, and the data needs
+
+### Challenges not dealt with here
+
+- socioeconomic/political/agent-based (transfer to the real-world)
+- system operation
 
 ## Methods and thesis structure
+
+Note the methodological challenge of the literature review(s), and how we meet that challenge through online search tools combined with bash and R programming.
+	- to gather data
+	- to locate our work within its related fields
+
+By the end of the literature review, we will be suitably placed to precisely define each term in our title, but for now, it roughly approximates to "some computational means to exploit synergies to meet demand for goods and services in cities".

@@ -1,5 +1,9 @@
 # Model development
 
-Tat Hamlet case study.
+- Tat Hamlet case study.
+- Benchmarking study
+- Consider constructability, fidelity, and solution time
 
-Adding some text to test the whole thesis build.
+## Summary
+
+Given the early/pioneering nature of our modelling work, We hope that this chapter has given guidance to the UM community regarding the most promising/usable/tractable methodologies, and that this is supported by our benchmark model, which can be used to help further the development of such models.

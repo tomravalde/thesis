@@ -16,3 +16,5 @@
 *.fls
 *.nls
 *.ilg
+*.bbl
+*.blg
