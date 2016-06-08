@@ -42,7 +42,6 @@ $keywords$
 $body$
 
 $if(natbib)$
-\section*{References}
 \bibliography{$biblio-files$}{}
 \bibliographystyle{elsarticle-harv}
 $endif$

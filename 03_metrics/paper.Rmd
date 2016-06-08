@@ -587,16 +587,6 @@ plot.metric.2011 <- ggplot(data.metrics.2011, aes(City, value)) +
 plot.metric.2011
 
 ```
-```{r PowerPoint-normalisedCityScore}
-## Make PowerPoint version
-library('ReporteRs')
-doc <- pptx()
-doc <- addSlide(doc, "Two Content")
-doc <- addPlot(doc, function() print(plot.metric.2011), vector.graphic = TRUE )
-doc <- addPlot(doc, function() print(plot.metric.2011), vector.graphic = FALSE )
-writeDoc(doc, file = "editable-normalisedCityScore.pptx")
-
-```
 
 ```{r correlate-year-calcs, results="asis"}
 
@@ -734,19 +724,6 @@ plot.corr.2011 <- ggplot(corr.all.lower.2011, aes(x, y, fill=correlation)) +
         axis.ticks = element_blank(),
         axis.title = element_blank())
 
-## Make PowerPoint version
-doc <- pptx()
-doc <- addSlide(doc, "Two Content")
-doc <- addPlot(doc, function() print(plot.corr.2011), vector.graphic = TRUE )
-doc <- addPlot(doc, function() print(plot.corr.2011), vector.graphic = FALSE )
-writeDoc(doc, file = "editable-heatmap.pptx")
-
-## Make PowerPoint version of plot.corr.all
-doc <- pptx()
-doc <- addSlide(doc, "Two Content")
-doc <- addPlot(doc, function() print(plot.corr.all), vector.graphic = TRUE )
-doc <- addPlot(doc, function() print(plot.corr.all), vector.graphic = FALSE )
-writeDoc(doc, file = "editable-heatmap-all.pptx")
 ```
 
 ```{r correlate-hist-combined, fig.cap="Boxplots summarising the distribution of $\\rho$ values for each year. (The dashed line indicates $\\rho=0$.)\\label{fig:correlation-hist-combo}"}
@@ -762,13 +739,6 @@ correlation.box <- ggplot(corr.all.lower, aes(year, correlation)) +
   theme(axis.title.x = element_blank())
 correlation.box
 
-```
-```{r PowerPoint-boxplots}
-doc <- pptx()
-doc <- addSlide(doc, "Two Content")
-doc <- addPlot(doc, function() print(correlation.box), vector.graphic = TRUE )
-doc <- addPlot(doc, function() print(correlation.box), vector.graphic = FALSE )
-writeDoc(doc, file = "editable-boxplot.pptx")
 ```
 
 ```{r correlate-combined, fig.cap="Spearman's $\\rho$ rank correlation of efficiency metrics from urban metabolism data.\\label{fig:correlation-combined}"}
@@ -1450,12 +1420,6 @@ exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
   facet_wrap( ~ variable, ncol=3, scales="free") +
   theme_bw()
 
-## Make PowerPoint version of exergy.plot
-doc <- pptx()
-doc <- addSlide(doc, "Two Content")
-doc <- addPlot(doc, function() print(exergy.plot), vector.graphic = TRUE )
-doc <- addPlot(doc, function() print(exergy.plot), vector.graphic = FALSE )
-writeDoc(doc, file = "editable-exergyPlot.pptx")
 ```
 
 \begin{figure}
