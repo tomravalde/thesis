@@ -15,7 +15,10 @@ From our review of the literature, we are in a position to define the meaning of
 - *Integrated*: multiple resources/systems/infrastructure types  considered in the system, but only one being optimised for
 - *Highly* integrated: multiple resources being optimised for in the synergistic system [TODO: note my triange/circle/square diagrams].
 - *Urban*: geographic-plus, which allows for 'co-location' to refer to the proximity of infrastructure to *each other* (rather than the consumers/producers), which is what first and foremost facilitates synergies. It would be a shame to ignore a possibility, because the process was outside of the city.
-- *Energy*, *Water*, *Waste*: i.e. we do not include the manufacturing sector (e.g. demands for iron and steel, process industries etc.), but rather consider the resource demands common to the 'bottom level' (domestic, industrial, processing) for all city types -- resources which are often managed by public or private utility companies. Such an approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of our problem, and makes a manageable piece of work for this thesis.
+- *Energy*, *Water*, *Waste*:
+  
+	- i.e. we do not include the manufacturing sector (e.g. demands for iron and steel, process industries etc.), but rather consider the resource demands common to the 'bottom level' (domestic, industrial, processing) for all city types -- resources which are often managed by public or private utility companies. Such an approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of our problem, and makes a manageable piece of work for this thesis.
+	- Also, these are three of the "lifeline infrastructures" (http://ro.uow.edu.au/cgi/viewcontent.cgi?article=1053&context=isngi2013), and in particular the three which involve resource conversions
 - *Resources*: [TODO: should this be changed to "systems"?]
 
 Thus in other words [TODO: complete wordy explanation of the title], how can 
