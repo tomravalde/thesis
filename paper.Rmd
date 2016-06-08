@@ -1,24 +1,6 @@
----
-title: "Comparing performance metrics for multi-resource systems: the case of urban metabolism"
-journal: "Journal of Cleaner Production"
-author:
-- name: 'Tom Ravalde\corref{cor1}'
-  email: thomas.ravalde08@imperial.ac.uk
-  group:
-  address:
-- name: James Keirstead
-  email: j.keirstead@imperial.ac.uk
-  group:
-  address:
-address-general: "Department of Civil and Environmental Engineering, Skempton Building, Imperial College London, London, UK, SW7 2AZ"
-biblio-files: my-refs
-topline: (Draft.)
-options: "review, authoryear"
-date: \VCDateISO
-abstract:
-  "We investigate different approaches to assess the performance of multi-resource systems, i.e. networks of processes used to convert resource inputs to useful goods and services.  For a given set of system outputs, alternative resource inputs are often possible so performance measures are needed to determine the best system configuration for a given goal.  We define such performance measures according to a novel framework which categorises them into two types: those that can be calculated from a system's aggregate inputs and outputs ('black-box' metrics, e.g. carbon footprint); and those that require knowledge of resource conversion processes within the system ('grey-box' metrics).  Urban areas are an important example application and metrics can be calculated from urban metabolism data. We calculate eight black-box metrics for fifteen global cities and find that performance is poorly correlated between the measures. This suggests that performance assessments should adopt grey-box approaches and consider flows at the level of individual processes within a city, using methods such as exergy analysis and ecological network analysis. We are led to suggest how to: (1) improve urban metabolism accounting to assist grey-box metric calculation, by including greater detail on conversion process and resource quality; and (2) promote these metrics amongst relevant decision makers."  
-keywords: "urban metabolism, exergy, ecological network analysis, sustainability"
----
+# Metrics
+
+TODO: update all the paths to figures, and R-code dependencies.
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)
@@ -30,14 +12,7 @@ font_import(pattern="LinBiolinum")
 library(ggplot2)
 ```
 
-Word count:
-
-- Words in text: 7099
-- Words in headers: 70
-- Words in captions: 391
-- Total word count: 7560
-
-# Introduction
+## Introduction
 
 Socioeconomic development owes much to the human appropriation of the Earth's natural resources. Typically, to obtain useful products and services, a mix of resources must pass through a chain of processes, which we hereafter refer to as a *multi-resource* (MR) system. Examples of MR systems include: agriculture, which converts nutrients, water, and solar energy into various forms of plant and animal matter; a factory producing products from inputs of capital, labour, and raw materials; or indeed entire economies which generate wealth and well-being from diverse inputs.
 
@@ -49,7 +24,7 @@ An important subset of MR systems are towns and cities, which enable a growing g
 
 Our aim here is to evaluate how energy and material flow accounts from urban metabolism studies can be used to support performance measures of urban resource use in view of the MRTP, for example, to guide policy or investment decisions. After reviewing the contribution of the urban metabolism concept to improved urban sustainability (Section 2),  we provide a general framework for assessing the resource performance of an MR system, thus unifying previously published metrics (Section 3).  Recognizing that the MRTP can be shaped by a number of subjective criteria, we focus primarily on physical measures of performance (but the framework is general and could be used for other objectives as well). We then apply these metrics to a global set of urban metabolism data (Section 4) and discuss what the results might mean for decision makers seeking to measure and improve urban resource performance, the limitations of these measures, and how the urban metabolism field might develop to overcome these obstacles (Section 5).
 
-# Urban metabolism and sustainability
+## Urban metabolism and sustainability
 
 The 'urban metabolism' (UM) concept seeks to find the "sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" [@Kennedy2007, p.44]. Since Wolman first described the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.179], his theoretical ideas have been applied to the real world, with around 20 comprehensive UM studies of cities as of 2011 [@Kennedy2011]. Typically, the methodology to conduct a UM study starts by defining a boundary around an urban area, and then consulting data sources in order to quantify material, energy, water and other resource flows into and out of a city on a yearly basis [@Kennedy2014]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
 
@@ -62,11 +37,11 @@ A survey of the literature shows at least four ways the UM concept contributes t
 
 In summary, the urban metabolism concept (and in particular the associated resource inventory data) has proved itself as a useful 'enabling' tool, providing a framework to examine resource consumption alongside notions of urban sustainability.
 
-# Measuring the resource performance of MR systems
+## Measuring the resource performance of MR systems
 
 Having shown the ways urban metabolism accounts can be used to measure the resource performance of towns and cities, we now consider MR systems more generally, providing a formal definition of resource performance measures and identifying how they have been applied in the literature to date. To do this, we introduce a general framework which distinguishes between 'black-box' and 'grey-box' representations of an MR system (illustrated in Figure \ref{fig:MR-represent}).
 
-\input{figure.tex}
+\input{03_metrics/figure.tex}
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.5\textwidth}
@@ -85,11 +60,11 @@ Having shown the ways urban metabolism accounts can be used to measure the resou
   \label{fig:MR-represent}
 \end{figure}
 
-## 'Black-box' metrics
+### 'Black-box' metrics
 
 In this representation, we have no knowledge of the processes within the MR system; one only observes the resource flows in and out, as is the case with typical urban metabolism accounts. This is also the standard representation of a system within systems engineering and it allows one to define two broad categories of performance metric: absolute measures ($\alpha$) and efficiency ratios ($\eta$). We outline these below, and summarise their properties in Table \ref{tab:metrics-closed}.
 
-### Absolute measures
+#### Absolute measures
 
 Absolute measures are simply a linear weighted sum of inputs and outputs \eqref{eq:metrics-general-abs}:
 \begin{align}
@@ -106,7 +81,7 @@ Other weighted sums can be found within the sustainability literature. The susta
 
 However many sustainability problems are highly subjective. Multi-criteria decision analysis (MCDA) weights resource flows according to a stakeholder's priorities, which are then summed to give an overall score which can be used to assess system performance. For example the food production model of @Mehdizadeh2011 combines energy consumption and cost in this way, weighting these terms using coefficients which reflect the relative importance of energy and monetary expense to the system operator (rather than the physical units as above). MCDA can provide methods to carry out life-cycle assessment (LCA), which associates a system with various impacts (each of which might be the result of weighted sums). Impacts could include greenhouse gas emissions, ozone depletion and eutrophication amongst others. These impacts are then combined using subjectively defined weights, resulting in a weighted sum of weighted sums. LCA methods are applied at all scales: from sewage sludge-to-energy conversion [@Mills2014], to waste management more generally [@Eriksson2002], and to urban areas as a whole [@Chester2012].
 
-### Efficiency ratios
+#### Efficiency ratios
 
 Often it is the efficiency, rather than absolute performance of an MR system that is of interest. This is commonly understood to be the ratio of outputs to inputs and therefore a general linear representation of efficiency can be defined as in  \eqref{eq:metrics-general-eff}.
 
@@ -137,11 +112,11 @@ print(tab.metrics.tex,
       comment = FALSE)
 ```
 
-## Grey-box metrics
+### Grey-box metrics
 
 Black-box metrics are widely used and understood but they provide very little information about the processes at work within the urban boundaries. In the grey-box representation (Figure \ref{fig:MR-open}), analysts have information about the conversion processes occurring within the city, which would allow them to identify industrial symbioses that could not be discovered simply by examining overall system inputs and outputs. For example, @Eckelman2013 show how savings in greenhouse gas emissions are achieved by using waste steam outputs from a cogeneration plant in a nearby oil refining process. This section considers two methods that can be used to derive metrics from such information: exergy analysis and ecological network analysis.
 
-### Exergy analysis
+#### Exergy analysis
 
 Exergy is the "maximum useful energy we can extract from some source of energy" [@Allwood2012, p. 119]. To obtain 'maximum' energy requires that the resource is brought into equilibrium with its surroundings, which means that exergy is defined relative to a reference environment. For example heat energy is more 'valuable' (or is said to be of better 'quality') at higher temperatures, since it is more readily transformed into other energy types (such as movement). When taking all energy types into consideration, the exergy of a system is a sum of the temperature, pressure and chemical potential of material and energy flows relative to the reference environment [@Rosen2001]. 
 
@@ -184,28 +159,28 @@ In energy conversion processes, $Ex^{in}$ typically comes from a fuel source (su
 
 In summary, exergy analysis provides appropriate metrics for urban grey-box analysis because it performed at the process level, providing information about resource flows inside a region. Further to this, it does not disqualify any resource type from study (unlike energy or mass flow analysis), being able to unite energy, water and waste resources into a common measure of value. 
 
-### Ecological network analysis
+#### Ecological network analysis
 
 Thus far system performance metrics have been quantifying the resource flows, but an alternative approach is to calculate the degree to which system processes are dependent on each other. This will reveal if there is scope to increase the symbiotic links between processes (using a waste from one process as an input to another); or conversely, if process dependencies should be minimised to reduce the risk of overall system failure in the event that one component fails. Such a method is provided by 'ecological network analysis' (ENA). ENA finds its origins in evaluating how species interact in ecological networks [@Finn1976] by quantifying their interdependencies, to see how species persistence or extinction might develop through mutually beneficial or exploitative relationships. ENA is based on work by @Hannon1973 who adapted economic input-output analysis [@Leontief1951] to quantify the interdependence of species within an ecosystem, and can be derived from the representation of interactions within the environment formalised by @Patten1978. Figure \ref{fig:ena-example} presents an example where a bee and a plant both mutually benefit from their interactions, but the plant is exploited (i.e. eaten) by a butterfly (this example is adapted from @Bascompte2010). This case shows only 'direct' dependencies (which are usaully empirically measured, and must be valued with some common unit of 'currency', such as mass or energy). In order to appreciate fully the system interdependencies, then 'indirect' relationships must be incorporated; for example, the butterfly is indirectly dependent on the bee, by virtue of the plant's direct dependence on the bee. To quantify interdependencies in a system that take indirect relationships into account, direct flows between species (more generally referred to as 'compartments') undergo matrix-based mathematical operations (for these see @Zhang2009b). These results are then interpreted to reveal whether pairs of compartments possess mutually beneficial or exploitative relationships.
 
 \begin{figure}
 \centering
-\input{img/figure-ena-natural.tex}
+\input{03_metrics/img/figure-ena-natural.tex}
 \caption{Direct dependencies in the bee-plant-butterfly ecological network. Arrows going in both directions between nodes indicate a mutual relationship, whereas an arrow in one direction indicates an exploitative relationship.}
 \label{fig:ena-example}
 \end{figure}
 
 These methods have been applied to urban systems [@Bodini2002], since they are analogous to natural eco-systems, in the way that compartments interrelate. For example, energy conversion requires cooling water, and water supply requires energy (for treatment and transportation); thus these sectors are in a mutual relationship. In the ENA of urban areas, the system compartments are determined by the analyst; for example @Zhang2009b studies the relationships between five compartments (the domestic sector, agriculture, industry, the internal environment and the external environment) using emergy as the common unit of flow. @Liu2011a apply the same methods to Beijing (but with compartments of extraction, agriculture, industry, energy conversion, transportation, and domestic and tertiary services); and use exergy to value the intercompartmental flows (which include fuels, ores and agricultural products). @Liu2011a show how decision-making support can emanate from ENA, by revealing that relationships between most of Beijing's inter-sectoral pairings are exploitative, and thus arguing that there is greater scope to encourage symbiotic relationships between compartments, and thereby reduce the overall dependence of Beijing on its surrounding environment.
 
-# Applying the methods
+## Applying the methods
 
 Having described the variety of ways in which the performance of an MR system might be assessed, with examples from the urban metabolism literature, we now apply these methods in order to illustrate the utility of the black-box and grey-box approaches. We use the dataset from @Kennedy2014 which includes urban metabolic flows and other data (such as GDP, population, land area etc.) for 27 megacities for 2001, 2006 and 2011.[^data-points] Our interest here is not to identify the best performing city, as measured by one or more metrics. Rather, we will assess the relative merits of the two approaches calculated from UM data in aiding decision makers faced with the MRTP. 
 
 [^data-points]: Thus, in theory, the metrics could be calculated for 81 city-year observations.  As discussed below however, incomplete data meant that only 29 observations were used in our calculations.
 
-## Black-box metrics
+### Black-box metrics
 
-### Selecting metrics and cities
+#### Selecting metrics and cities
 
 In selecting the metrics to be calculated, we applied three criteria: firstly, the metrics must feature in the literature review and be based on physical units (thus ruling out monetary measures and MCDA, which contain subjective elements); secondly the dataset must have the required fields to make their calculation possible; and thirdly, the fields must not have any missing entries. This third criteria is applied because in the next step we are going to correlate how well cities perform according to each pair of metrics. It would be unfair to do this when some observations had missing metric values. This filtering achieves a balance between having sufficient observations to make their comparison meaningful, and having a range of metrics that reflect the different categories in our review (Table \ref{tab:metrics-closed}). This process results in us evaluating eight metrics for 29 observations (five cities for 2001, nine cities for 2006, and fifteen cities for 2011). The metrics are summarised in Table \ref{tab:metrics-calculated}, and the performance of each city in 2011 according to each metric is displayed in Figure \ref{fig:metric-example}. Each city is scored relative to the best performing city for the metric. (This score reflects whether superior performance is indicated by a high or low value (for example, for carbon footprint, superior performance is considered a low value, but for GDP/waste, it would be a high value).)
 
@@ -221,7 +196,7 @@ print(tab.metrics.calc.tex,
       comment = FALSE)
 ```
 
-### Correlating the metrics
+#### Correlating the metrics
 \label{sec:metric-corr}
 
 ```{r metrics-setup, results="asis"}
@@ -799,11 +774,11 @@ p.plot <- ggplot(corr.all, aes(correlation, p)) +
 ggsave("p.plot.pdf", p.plot)
 ```
 
-## Grey-box metrics
+### Grey-box metrics
 
 As additional data are required to calculate the grey-box metrics, we have chosen to apply them to only three cities: Beijing, London and Sao Paulo (for 2006). In addition to the energy, water and waste related flows common to most cities, the dataset records steel and cement manufacturing flows for Beijing and Sao Paulo, but not for London. Thus when we come to discuss how grey-box analysis relates to the MRTP (Section 5), we can do so in the context of both comparable and contrasting cities. Apart from seeking areas with similarities and differences, the selection of these cities was otherwise arbitrary for the sake of convenience. 
 
-### Exergy analysis
+#### Exergy analysis
 \label{sec:apply-grey-exergy}
 
 The exergy analysis follows the procedure of @Sciubba2005. Firstly, a grey box (the 'control volume') is defined around the $M$ processes, using a 'geographic-plus' definition of 'urban', which extends beyond administrative boundaries to incorporate readily traceable upstream flows, such as electricity consumption (@Ramaswami2011). Secondly, from a city's metabolic flow data we distribute the flows of materials and energy between processes inside the control volume and across its boundaries. For instance, coal may be imported from outside of the system, for use as an input to a power plant inside the urban boundary. The power plant would produce electricity, which then might be used in other processes. When flows have been distributed for all processes, the analyst should be able to draw a directed graph (where nodes represent processes, and vertices represent resource flows) in which the control volume's inputs and outputs (energy and mass) are conserved, and all the resources can be traced through it, with nothing unaccounted for. Thirdly, each of the flows into and out of each process $p$ are assigned identities as exergetic inputs, products, or wastes  (Equation \ref{eq:ex-balance}). For example, for a coal-fuelled power plant, we define $Ex^{in}$, $Ex^{prod}$ and $Ex^{waste}$ from quantities of coal, electricity and heat, respectively. (Irreversibilities $Ex^{irrev}$ arise through heat transfer and chemical reactions during combustion.) Finally, using values from the literature (such as chemical exergies of materials, and process exergy efficiencies), we assign values to $Ex^{*}_p$ for $p=1,2,3,\ldots,M$. The flux assignments and information sources for exergy values are given for each process in Table \ref{tab:exergy-methods}, along with any assumptions we make.
@@ -1441,7 +1416,7 @@ exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
   \label{fig:sankey-results}
 \end{figure}
 
-### Ecological network analysis
+#### Ecological network analysis
 
 ENA requires a 'common currency' to unify resource flows, and here we use exergy given (i) the precedent provided by @Liu2011a, and (ii) the fact we know the exergy flows from the analysis above. We follow a simplified version of the methodology in @Liu2011a, which starts by defining the same control volume around the resource flows and processes as for the exergy analysis. We then decide on appropriate organisational compartments into and out of which, all exergy fluxes will transfer, defining six sectors, broadly based on those used by @Zhang2009b:
 
@@ -1619,16 +1594,16 @@ plot.network <- ggplot(filter(mutualism, City=="Beijing"), aes(Input, Output)) +
 \end{figure}
 
 
-## Summary
+### Summary
 \label{sec:apply-summary}
 
 This section has applied black-box and grey-box analysis to UM data, so that we can appreciate the relative benefits of their associated metrics for the benefit of decision makers who are faced with multiple options to meet demands for products and services in urban areas.  We suggested that since any one black-box metric cannot be indicative of the resource consumption performance of a city more generally (owing to the weak rank correlations), the inconsistent rankings may be due to features that are invisible to them. Specifically, we identify these differences as the characteristics of the processes used in cities, and the way they are organised. These variations in process and organisation detail might arise from a need for cities to meet different resource demand patterns, from different local environmental conditions, political and market structures, or other factors.  Variations in process and organisation detail, and their associated resource flows, mean that the overall system-level performance metrics will also vary. Therefore, to understand how an MR system such as a city affects resource flows requires analyses which are sensitive to such variations; an advantage which belongs to grey-box methods, which consider the resource flows at the individual process level (exergy analysis) and the organisational level (ENA).
 
-# Discussion
+## Discussion
 
 The aim of this paper is to show how measures calculated from urban metabolism accounts enable one to evaluate the resource performance of an urban area, specifically with regard to decision makers who are faced with a number of pathways (chains of resource management processes) to convert resource inputs $r_i$ into products and services $r_j$. For this purpose, we have suggested that grey-box metrics are preferable to black-box metrics, because of the need to understand the effect of variations in process organisation and detail on resource flows. In this section we discuss some of the ways in which grey-box analysis could provide useful information to stakeholders, before highlighting its limitations, and how these might be overcome.
 
-## Applications for grey-box metrics
+### Applications for grey-box metrics
 
 We have shown that by looking 'inside' an urban resource management system, additional analyses such as exergy analysis and ENA make it possible to observe the interactions of resource conversion processes and their associated management sectors. These can be used by stakeholders to bring about real-world benefits.   For example, from the exergy analysis, in particular recognising the process-based 'engineering' perspective it provides on the MRTP, we can:
 
@@ -1640,7 +1615,7 @@ In contrast to the engineering perspective of exergy analysis, ENA offers an org
 
 [^mutual-exploit]: The terms 'mutual' and 'exploit' should not necessarily be ladened with the respective positive and negative sentiments that the words may suggest. For example, it might be considered that an exergetic contribution from the internal environment to the external environment is undesirable (if this is due to wastes, for example), despite the 'mutual' relationship signified in each case of Figure \ref{fig:ena}.
 
-## The limitations of grey-box metrics
+### The limitations of grey-box metrics
 
 The above discussion has laid a strong theoretical foundation for decision makers to adopt grey-box metrics, but if they are to use these methods to assist investment or policy decisions, they must be aware of their limitations. Here we outline two types of limitation, and suggest how they might be overcome.
 
@@ -1650,12 +1625,8 @@ The second limitation applies even if the above assumptions are unnecessary, nam
 
 Both of these shortcomings have the potential to be overcome. To reduce the need for assumptions regarding processes and resource flow quality, we recommend that urban metabolism datasets should be made more comprehensive through the inclusion of an additional three layers of information. Firstly, to address the lack of process information in UM data, accounting should include the processes contained within the urban boundary, such that anyone reading the data could intuitively draw the directed graph described in the exergy analysis method (Section \ref{sec:apply-grey-exergy}). In practice, it would clearly be difficult to include all resource conversion process; however our analysis suggests that thermal processes (e.g. electricity generation from fossil fuels) dominate exergy flows for an urban area and these should therefore be the focus of early work. Secondly, to correctly value $Ex^*_p$ terms, resource quality values (thermal, chemical and physical properties, as described above) should be recorded. Thirdly, to support ENA, information about resource governance (authorities and companies managing the various resources) should be collected. To address the comprehension, calculation, and communication difficulties of grey-box metrics, efforts should focus on how exergy analysis and ENA principles are best taught and communicated to the relevant decision makers, perhaps through user-friendly computational tools and informative visualisation techniques.
 
-# Conclusions
+## Conclusions
 
 This paper set out to evaluate how energy and material flow accounts from urban metabolism studies can be used to analyse the performance and efficiency of urban resource consumption.  More generally, our goal was to understand how such metrics might assist decision makers in multi-resource systems who are faced with a number of options about how to meet demand for products and services $r_j$ (due to the existence of different combinations of processes in an urban area which can convert resource inputs). We set out a theoretical framework which describes the various ways resource performance metrics can be formulated for MR systems in general, and then applied these measures to urban metabolic flow data. The results suggested that black-box metrics were only of limited use, since they failed to account for variations in process and organisational detail, which can be better understood through so-called grey-box analysis methods.  We therefore argued that urban metabolism accounts should be extended to include the necessary data on major urban resource conversion processes (in order to minimise the need for assumptions in exergy and ENA calculations), and that efforts should be made to support decision makers who want to use these methods.
 
 In addition to the recommendations we have already made, further work can develop our findings in four ways. Firstly, our conclusions are based on the new empirical result that black-box metrics of urban resource performance show no significant rank correlation with each other; this finding should be confirmed using other datasets. Secondly, higher resolution grey-box analysis (using more internal processes and compartments) should be conducted to quantify the trade-off between insights obtained and data required. Thirdly, additional metrics might be explored which provide further insights to decision makers (for example, decomposition analysis [@Zucaro2014]). Fourthly, work should demonstrate how these methods apply to other types of MR systems (from the production of a single resource, to the management of entire economies).  The urban systems studied in this paper are just one example of this larger category of production systems, whose improved performance are vital for wider sustainability goals.
-
-# Acknowledgements {.unnumbered}
-
-The urban metabolism flow dataset was kindly provided by Professor Chris Kennedy (University of Toronto). Tom Ravalde is supported by the EPSRC Doctoral Training Partnership at Imperial College London.

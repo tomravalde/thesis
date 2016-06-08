@@ -90,5 +90,14 @@ chapter-xelatex:
 %.count: %.tex
 	texcount -sub=section $< > $@
 
+###########################################################
+
+## Custom build of Chapter 3
+ch3:
+	./knit.R 03_metrics/paper.Rmd
+	pandoc --chapters --natbib -o paper.tex paper.md
+
+###########################################################
+
 clean:
 	rm -f *.aux *.log *.out *.spl *.bbl *.blg *.fls *fdb_latexmk
