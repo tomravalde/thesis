@@ -1,0 +1,4 @@
+## Data quality check
+
+- We might be able to delete city-exergy-results.csv (and corresponding line of R-code) since it it a file we write, but never seem to use.
+	- Move references column in city-exergy-flows-tidy.csv to a lookup table?

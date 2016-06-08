@@ -1,0 +1,36 @@
+,,1,2,3,4,5,
+,,internal,external,energy,water,waste,
+1,internal,f11,f12,f13,f14,f15,
+2,external,f21,f22,f23,f24,f25,
+3,energy,f31,f32,f33,f34,f35,
+4,water,f41,f42,f43,f44,f45,
+5,waste,f51,f52,f53,f54,f55,
+,,,,,,,
+,,1,2,3,4,5,
+,,internal,external,energy,water,waste,materials
+1,internal,0,steel/concrete emissions,,x,waste (e.e. domestic),x
+2,external,x,0,Coal + nat gas + oil,water.raw,x,raw materials
+3,energy,energy.consumption,emissions,0,energy,energy.wasteproducts,energy
+4,water,water.consumed,x,cooling,0,wastewater,x
+5,waste,x,landfill,x,x,0,x
+6,materials,cement,emissions,x,x,waste materials,0
+,or could materials be 'internal'?,,,,,,
+,,,,,,,
+,,1,2,3,4,5,6
+,,internal,external,energy,water,waste,materials
+1,internal,0,steel/concrete emissions,,x,waste (e.e. domestic),x
+2,external,x,0,Coal + nat gas + oil,water.raw,x,raw materials
+3,energy,energy.consumption,emissions,0,energy,energy.wasteproducts,energy
+4,water,water.consumed,x,cooling,0,wastewater,x
+5,waste,x,landfill,x,x,0,x
+6,materials,cement,emissions,x,x,waste materials,0
+,or could materials be 'internal'?,,,,,,
+,,,,,,,
+,,1,2,3,4,5,6
+,,internal,external,energy,water,waste,materials
+1,internal,0,871128000,202011820876.8,47949.5138668325,0,84643079911.6667
+2,external,0,0,331447277165.203,62344926000,0,253881313059.6
+3,energy,0,490014621573.162,0,324722.417758553,0,0
+4,water,2274430.00021916,0,1732553699.28401,0,0,0
+5,waste,0,0,0,0,0,126945022452.97
+6,materials,0,666467826490,0,0,0,0

@@ -1,0 +1,17 @@
+Category,Metric,Units (absolute),Units (relative),Scope,Value,Calculation,Sub-systems,Results
+Monetary,Unadjusted,USD,USD/USD,U,WTP,D,N,Figure \ref{fig:cost}
+,Natural capital adjusted,USD,USD/USD,U,WTP,D,N,Not calculated
+Specific,Energy (E),TJ,TJ/USD,S,COP,D,N,Figure \ref{fig:energy}
+,Water (Wat),ML,ML/USD,S,COP,D,N,Figure \ref{fig:water}
+,Waste (Wst),kT,kT/USD,S,COP,D,N,Figure \ref{fig:waste}
+,Waste inefficiency,\%,\%/USD,S,COP,D,N,Figure \ref{fig:plot-waste-ineff}
+,Eco-efficiency,\%,N/A,S,COP,D,N,Figure \ref{fig:plot-ecoEff}
+Footprint,Carbon footprint (CF),kg CO2\textsubscript{e},kg CO2\textsubscript{e}/USD,U,COP,D,N,Figure \ref{fig:CF}
+,Ecological footprint (EF),gha,gha/USD,U,COP,D,N,Insufficient data
+,Water footprint (WF),m$^3$,m$^3$/USD,U,COP,D,N,Figure \ref{fig:WF}
+Technical,Exergy depletion,MJ,MJ/USD,U,COP,I,N,"Table \ref{tab:exergy-results}, Figure \ref{fig:sankey-beijing}"
+,Exergy efficiency,\%,N/A,U,COP,I,N,"Table \ref{tab:exergy-results}, Figure \ref{fig:sankey-beijing}"
+Network,Mutualism,-,N/A,U,COP,I,Y,Table \ref{tab:results-ena}
+,Exploitation,-,N/A,U,COP,I,Y,Figure \ref{fig:network}
+,Control,-,N/A,U,COP,I,Y,Figure \ref{fig:network}
+,Competition,-,N/A,U,COP,I,Y,Figure \ref{fig:network}
