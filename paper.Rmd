@@ -1,7 +1,5 @@
 # Metrics
 
-TODO: update all the paths to figures, and R-code dependencies.
-
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
@@ -99,7 +97,7 @@ The final type of efficiency metric ($\eta_3$) is where resource consumption is 
 ```{r table-metrics, results="asis"}
 library(xtable)
 
-tab.metrics.csv <- read.csv("efficiency-metrics.csv", check.names=FALSE)
+tab.metrics.csv <- read.csv("03_metrics/efficiency-metrics.csv", check.names=FALSE)
 tab.metrics.tex <- xtable(tab.metrics.csv,
 			  caption="Black-box resource performance metric classes.\\label{tab:metrics-closed}",
 			  align="lllllll")
@@ -131,7 +129,7 @@ where each term (reading left to right) corresponds to the exergetic value of in
 
 \begin{figure}
 \centering
-\input{img/figure-exergy.tex}
+\input{03_metrics/img/figure-exergy.tex}
 \caption{Exergy flows $Ex^*$ for a process $p$. \label{fig:ex-process}}
 \end{figure}
 
@@ -185,7 +183,7 @@ Having described the variety of ways in which the performance of an MR system mi
 In selecting the metrics to be calculated, we applied three criteria: firstly, the metrics must feature in the literature review and be based on physical units (thus ruling out monetary measures and MCDA, which contain subjective elements); secondly the dataset must have the required fields to make their calculation possible; and thirdly, the fields must not have any missing entries. This third criteria is applied because in the next step we are going to correlate how well cities perform according to each pair of metrics. It would be unfair to do this when some observations had missing metric values. This filtering achieves a balance between having sufficient observations to make their comparison meaningful, and having a range of metrics that reflect the different categories in our review (Table \ref{tab:metrics-closed}). This process results in us evaluating eight metrics for 29 observations (five cities for 2001, nine cities for 2006, and fifteen cities for 2011). The metrics are summarised in Table \ref{tab:metrics-calculated}, and the performance of each city in 2011 according to each metric is displayed in Figure \ref{fig:metric-example}. Each city is scored relative to the best performing city for the metric. (This score reflects whether superior performance is indicated by a high or low value (for example, for carbon footprint, superior performance is considered a low value, but for GDP/waste, it would be a high value).)
 
 ```{r table-metrics-calculated, results="asis"}
-tab.metrics.calc.csv <- read.csv("metrics-calculated.csv", check.names=FALSE)
+tab.metrics.calc.csv <- read.csv("03_metrics/metrics-calculated.csv", check.names=FALSE)
 tab.metrics.calc.tex <- xtable(tab.metrics.calc.csv, caption="Summary of the black-box metrics applied to urban metabolism data.\\label{tab:metrics-calculated}", align="llllp{4cm}")
 
 print(tab.metrics.calc.tex,
@@ -202,7 +200,7 @@ print(tab.metrics.calc.tex,
 ```{r metrics-setup, results="asis"}
 
 ## Load metabolic flow data
-cities.flows <- read.csv("megacities-database-analysis.csv")
+cities.flows <- read.csv("03_metrics/megacities-database-analysis.csv")
 
 ### Initialise dataframe for results of metrics calculations
 library(dplyr)
@@ -213,7 +211,7 @@ library(reshape2)
 cities.flows <- melt(cities.flows, id.vars=c("City", "Year"))
 
 ## Load look-up table for metric calculations
-metric.calcs <- read.csv("megacities-categories.csv")
+metric.calcs <- read.csv("03_metrics/megacities-categories.csv")
 
 ## Combine flows and calculation coefficients
 flows.calcs <- inner_join(cities.flows, metric.calcs, by=c("variable"="Indicator.short"))
@@ -444,7 +442,7 @@ bl.en.rad <- merge(en.out.area, bl.rad, by=c("City", "Year")) %>%
 metric.results <- merge(metric.results, bl.en.rad, by=c("City", "Year"))
 
 ## Save metric results
-write.csv(metric.results, "metric.results.csv")
+write.csv(metric.results, "03_metrics/metric.results.csv")
 ```
 
 ```{r remove-anomalies, results="asis"}
@@ -545,7 +543,7 @@ data.metrics.2011 <- transform(data.metrics.2011, WF=min(WF)/WF)
 
 data.metrics.2011 <- melt(data.metrics.2011, c("City", "Year"), variable.name="metric")
 
-heat.map.labels <- read.csv("heat-map-labels.csv")
+heat.map.labels <- read.csv("03_metrics/heat-map-labels.csv")
 data.metrics.2011 <- inner_join(data.metrics.2011, heat.map.labels)
 
 ## Plot
@@ -655,7 +653,7 @@ Having calculated the eight metrics for each city, and ranked city performance a
 ```{r correlate-year, fig.height=5, fig.cap="The correlation of urban resource performance according to Spearman's $\\rho$ rank.\\label{fig:correlation}"}
 
 ## Make nicer labels for the heat map plot
-heat.map.labels <- read.csv("heat-map-labels.csv")
+heat.map.labels <- read.csv("03_metrics/heat-map-labels.csv")
 corr.all.ids <- inner_join(corr.all.ids, heat.map.labels, by=c("y"="metric"))
 
 ## Show correlation on a heat map
@@ -724,7 +722,7 @@ corr.matrix <- cor(select(metric.results, -c(City, Year)),
 corr <- melt(corr.matrix, varnames=c("x", "y"), value.name="correlation")
 
 ## Match metrics to their categories
-metric.cats <- read.csv("corr-cat.csv")
+metric.cats <- read.csv("03_metrics/corr-cat.csv")
 corr <- inner_join(corr, metric.cats, by=c("x" = "metric"))
 corr <- inner_join(corr, metric.cats, by=c("y" = "metric"))
 corr <- corr[c("x", "y", "correlation", "category.x", "category.y")]
@@ -786,7 +784,7 @@ The exergy analysis follows the procedure of @Sciubba2005. Firstly, a grey box (
 From here we calculate exergy depletion and efficiency for the urban system as a whole using Equations \eqref{eq:ex-eff} to \eqref{eq:ex-eff-prod}. These results are summarised in Table \ref{tab:exergy-results}, revealing that Sao Paulo has a much higher exergy efficiency than the other cities. This can be explained with reference to the visualisation of the flows as Sankey diagrams in Figure \ref{fig:sankey-beijing}. These display $Ex^*$ for each process, and the system as a whole, illustrating the unification of energy and material flows under one measure, and therefore highlighting the relative exergetic impacts of a city's internal processes. The results show the dominance of exergy flows in power generation and steel production; with Sao Paulo using a much higher proportion of hydropower in the energy mix, which is a more exergetically efficient process than fossil fuel based generation.
 
 ```{r table-exergy-methods, results="asis"}
-tab.exergy.csv <- read.csv("exergy-methods.csv", check.names=FALSE)
+tab.exergy.csv <- read.csv("03_metrics/exergy-methods.csv", check.names=FALSE)
 tab.exergy.tex <- xtable(tab.exergy.csv, caption="Summary of $Ex^*_p$ flows, information sources and assumptions for exergy analysis calculations.\\label{tab:exergy-methods}", align="llp{2cm}lp{2cm}p{4cm}")
 
 print(tab.exergy.tex,
@@ -798,7 +796,7 @@ print(tab.exergy.tex,
 ```
 
 ```{r analysis-setup, results="asis"}
-flows <- read.csv("city-exergy-flows.csv", stringsAsFactors=FALSE)
+flows <- read.csv("03_metrics/city-exergy-flows.csv", stringsAsFactors=FALSE)
 
 ## Create placeholder value names
 flows$value.BJ <- apply(cbind(flows[c('flow', 'subsystem')]), 1, paste, collapse=".")
@@ -1295,7 +1293,7 @@ flows$value.GRU[flows$value.GRU=="irrev.treatmentWastewater"] <- GRU.irrev.treat
 
 ```{r table-solid-waste, results="asis"}
 
-tab.solidWaste.csv <- read.csv("global-solid-waste.csv", check.names=FALSE)
+tab.solidWaste.csv <- read.csv("03_metrics/global-solid-waste.csv", check.names=FALSE)
 
 waste.exergy.av <- sum(tab.solidWaste.csv$"$c_i$" *
 		       tab.solidWaste.csv$"exergy (MJ/kg)") / 100
@@ -1358,7 +1356,7 @@ BJ.efficiency <- sum(output$value.BJ, na.rm=TRUE) / sum(input$value.BJ, na.rm=TR
 LDN.efficiency <- sum(output$value.LDN, na.rm=TRUE) / sum(input$value.LDN, na.rm=TRUE) * 100 # %
 GRU.efficiency <- sum(output$value.GRU, na.rm=TRUE) / sum(input$value.GRU, na.rm=TRUE) * 100 # %
 
-write.csv(flows, "city-exergy-results.csv")
+write.csv(flows, "03_metrics/city-exergy-results.csv")
 
 ex.results.BJ <- c("Beijing",
 		   signif(c(BJ.depletion/1e12, BJ.efficiency, BJ.depletion.gdp), 3))
@@ -1401,13 +1399,13 @@ exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
 \centering
   \begin{subfigure}[b]{\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{img/figure-sankey-beijing.pdf}
+  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-beijing.pdf}
   \caption{Beijing.}
   \label{fig:sankey-beijing}
   \end{subfigure}
 
   \begin{subfigure}[b]{\textwidth}
-  \includegraphics[width=\textwidth]{img/figure-sankey-saopaulo.pdf}
+  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-saopaulo.pdf}
   \caption{Sao Paolo.}
   \label{fig:sankey-saopaulo}
   \end{subfigure}
@@ -1431,7 +1429,7 @@ Using the exergy analysis results, we assign exergy flows between compartments. 
 groundwater pumping requirements).
 
 ```{r network-analysis, results="asis"}
-exergy.network <- read.csv("city-exergy-network.csv")
+exergy.network <- read.csv("03_metrics/city-exergy-network.csv")
 exergy.network$flow <- apply(cbind('f', exergy.network[c('comp.out', 'comp.in')]), 1, paste, collapse="", sep="")
 BJ.exergy.network <- select(exergy.network, -c(LDN.value, GRU.value))
 LDN.exergy.network <- select(exergy.network, -c(BJ.value, GRU.value))
@@ -1572,19 +1570,19 @@ plot.network <- ggplot(filter(mutualism, City=="Beijing"), aes(Input, Output)) +
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
-  \input{img/figure-ena-beijing.tex}
+  \input{03_metrics/img/figure-ena-beijing.tex}
   \caption{Beijing.}
   \label{fig:ena-beijing}
   \end{subfigure}
 
   \begin{subfigure}[b]{0.4\textwidth}
-  \input{img/figure-ena-london.tex}
+  \input{03_metrics/img/figure-ena-london.tex}
   \caption{London.}
   \label{fig:ena-london}
   \end{subfigure}
 
   \begin{subfigure}[b]{0.4\textwidth}
-  \input{img/figure-ena-saopaulo.tex}
+  \input{03_metrics/img/figure-ena-saopaulo.tex}
   \caption{Sao Paulo.}
   \label{fig:ena-saopaulo}
   \end{subfigure}
