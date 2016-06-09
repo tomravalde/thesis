@@ -68,8 +68,8 @@ update:
 	if [ `hostname` = "cv-tr608-01" ] ; \
 	then \
 	cp /home/tr608/ImpCol/PhD/my-refs.bib . ; \
+	inkscape -D -z --file=04_database/metab-hierarchy.svg --export-pdf=04_database/metab-hierarchy.pdf --export-latex ; \
 	fi
-#	inkscape -D -z --file=metab.svg --export-pdf=metab.pdf --export-latex ; \
 #	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
 
 ## Knit Rmarkdown to markdown
