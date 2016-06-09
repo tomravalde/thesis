@@ -18,3 +18,5 @@
 *.ilg
 *.bbl
 *.blg
+.RData
+.Rhistory

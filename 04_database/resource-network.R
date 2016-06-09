@@ -16,7 +16,7 @@ flowMod <- function(resource, direction, process_name){
 }
 
 # Merge the tidied (and combined) process names with the process database
-resources_lookup <- read.csv("resources-tidy-lookup.csv")
+resources_lookup <- read.csv("04_database/resources-tidy-lookup.csv")
 processes <- merge(processes, resources_lookup, by.x="resource", by.y="database_name")
 
 processes <- filter(processes, plot_name!="REMOVE")

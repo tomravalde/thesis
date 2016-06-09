@@ -23,7 +23,7 @@ In this paper we will extend published arguments that advocate giving greater at
 	\centering
 	\begin{spacing}{1.0}
 	\sffamily
-	\resizebox{\columnwidth}{!}{\input{metab.pdf_tex}}
+	\resizebox{\columnwidth}{!}{\input{04_database/metab.pdf_tex}}
 	\end{spacing}
 	\caption{Three components to an urban metabolism system with example resource flows adapted from the hypothetical city in \cite{Wolman1965}.}
 	\label{fig:metab}
@@ -142,7 +142,7 @@ We used the YAML[^YAML] format to record the information for each process. YAML 
 The database is available as a GitHub repository at \url{https://github.com/tomravalde/metabolism-database}. An example database record is given in Figure \ref{fig:yaml}.
 
 \begin{figure}
-\lstinputlisting[language=yaml]{powerplant-paper-edit.yaml}
+\lstinputlisting[language=yaml]{04_database/powerplant-paper-edit.yaml}
 \caption{An example YAML record for a coal-fuelled powerplant.}
 \label{fig:yaml}
 \end{figure}

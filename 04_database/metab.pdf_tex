@@ -49,16 +49,16 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,1.07785295)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{metab.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{04_database/metab.pdf}}%
     \put(-0.05916187,0.57896152){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0.67297254,1.01581845){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32327181\unitlength}\raggedright \textbf{(A) Top}\\ The top represents the flow of resources into and out of a city.\end{minipage}}}%
     \put(0.67207225,0.27816646){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32327181\unitlength}\raggedright \textbf{(C) Bottom}\\ The bottom represents user demands for electricity, heating and water, and the generation of solid waste and wastewater. \end{minipage}}}%
     \put(0.66643741,0.7301297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.3383077\unitlength}\raggedright \textbf{(B) Middle}\\ The middle represents the network of resource management processes (boxes) through which resources (circles) flow, in order to meet demand for goods and services at the bottom.\end{minipage}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{metab.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{04_database/metab.pdf}}%
     \put(0.12403522,1.05638272){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.20029002\unitlength}\raggedright refuse\\ sewage\end{minipage}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{metab.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{04_database/metab.pdf}}%
     \put(0.21692713,0.35149302){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright water\end{minipage}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{metab.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{04_database/metab.pdf}}%
     \put(0.45084835,1.0249049){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32026466\unitlength}\raggedright water\end{minipage}}}%
     \put(0.69413658,1.91802058){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.55181735\unitlength}\raggedright \end{minipage}}}%
     \put(0.05359203,0.38121546){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright refuse\\ sewage\end{minipage}}}%
@@ -67,6 +67,6 @@
     \put(0.75728734,0.41657385){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0.33057382,0.35187075){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright heat\end{minipage}}}%
     \put(0.43551027,0.35114306){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright electricity\end{minipage}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{metab.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{04_database/metab.pdf}}%
   \end{picture}%
 \endgroup%
