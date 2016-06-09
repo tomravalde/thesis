@@ -1,0 +1,17 @@
+Figure 1
+Three components to an urban metabolism system using example resource flows adapted from the hypothetical city in Wolman (1965).
+
+Figure 2
+The growing research interest in open data since its first occurrence in 1995 until 2014. Data from the Scopus analysis tool, by searching titles, abstracts and keywords for ‘open data’ or ‘open-data’.
+
+Figure 3
+An example YAML record for a coal-fuelled power plant.
+
+Figure 4
+Resource consumption (negative values) and production (positive values) for different processes producing 1 kg of methane. Key: AWR = alkaline with regeneration, BABIU = bottom ash upgrading, HPWS = high pressure water scrubbing; text labels indicate the TRL for each process.
+
+Figure 5
+The interactions of resources in the database. The proximity of any pair of connected resources is proportional to the number of processes for which one resource of the pair is an input, and the other is an output. Graph is plotted using the R package from Butts (2005). A color version of this figure is available in the electronic version of this paper.
+
+Figure 6
+Flows at the top of Wolman’s hypothetical city before and after optimization modelling suggests an optimal network for the middle. Negative values represent inputs while positive values represent outputs.
