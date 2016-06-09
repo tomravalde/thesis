@@ -1,0 +1,10 @@
+metric, label
+en.out.in, Final energy / energy sources
+en.out.gdp, Final energy / GDP
+en.out.pop, Final energy / capita
+water.out.in, Water out / water in
+envEff.gdp.waste, GDP / waste
+CF, CF
+CF.noCement, CF (no cement)
+WF, WF
+bl.en.rad, Final energy / solar rad.

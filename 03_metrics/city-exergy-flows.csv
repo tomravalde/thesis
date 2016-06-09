@@ -1,0 +1,63 @@
+"flow","subsystem","type","value.BJ","value.LDN","value.GRU","references","comments"
+"coal","coalPlant","in",,,,"\citet{Szargut1988, p.140}",
+"elec","coalPlant","out",,,,,
+"heat","coalPlant","waste",,,,,
+"effluents","coalPlant","waste",,,,,
+"irrev","coalPlant","waste",,,,,
+"oil","oilPlant","in",,,,"\citet{Koroneos2010}","Take values from Table 4 (Part I)."
+"elec","oilPlant","out",,,,,
+"heat","oilPlant","waste",,,,,
+"effluents","oilPlant","waste",,,,,
+"irrev","oilPlant","waste",,,,,
+"fuel","district","in",,,,"\citet{Comakl2004}","Take 46\% efficiency, from Fig. 3 of \citet{Ozgener2005}."
+"elec","district","in",,,,"\url{http://www.eneff-stadt.info/en/heatingcooling-networks/project/details/exergetic-optimisation-of-the-district-heating-supply-in-ulm/}",
+"heat","district","out",,,,"\citet{Rosen2005}",
+"wasteHeat","district","waste",,,,,
+"irrev","district","waste",,,,,
+"fuel","transport","in",,,,"\citet{Koroneos2008} (contains fuel exergies).",
+"heat","transport","waste",,,,,
+"irrev","transport","waste",,,,,
+"fuel","cement","in",,,,"\citet{Madlool2012}, Figure 12 for \% exergy input-outputs. Table 2 to say fuel exergy input is 3.23 e3 kJ/kg clinker.",1
+"cement","cement","out",,,,,0.5
+"wasteHeat","cement","waste",,,,,0.04
+"effluents","cement","waste",,,,,0.153
+"irrev","cement","waste",,,,,0.306
+"fuel","steel","in",,,,"\citet{Michaelis1998}, \citet{Allwood2012, Figure 8.9, p.120}.","Correctly sums!"
+"steel","steel","out",,,,"Is there anything in \citet{Szargut1988}?",
+"scrap","steel","waste",,,,,
+"exhaust","steel","waste",,,,,
+"elec","steel","in",,,,,
+"irrev","steel","waste",,,,,
+"elec","abstraction","in",,,,"\citet{Martinez2010}","Take average pumping efficincy of 50.28\% from Table 1 of \citet{Mora2013}."
+"water","abstraction","out",,,,,"Ignoring chemical exergy (potential only). (Taking ground level as reference.)"
+"irrev","abstraction","waste",,,,,
+"dirty","treatmentWater","in",,,,"\citet{Martinez2010}",
+"clean","treatmentWater","out",,,,,
+"irrev","treatmentWater","waste",,,,,
+"wastewater","treatmentWastewater","in",,,,"\url{http://www.jstor.org/discover/10.2307/25044841?uid=26089&uid=3738032&uid=2&uid=3&uid=5910784&uid=26085&uid=67&uid=62&sid=21104930725857}",
+"effluent","treatmentWastewater","out",,,,"\citet{Martinez2010}",
+"elec","treatmentWastewater","in",,,,"\url{http://inderscience.metapress.com/content/0476076p61081220/fulltext.pdf, Table 2.}",
+"chlorine","treatmentWastewater","in",,,,,
+"irrev","treatmentWastewater","waste",,,,,
+"organic","landfill","waste",,,,,
+"paper","landfill","waste",,,,,
+"plastic","landfill","waste",,,,,
+"glass","landfill","waste",,,,,
+"metal","landfill","waste",,,,,
+"other","landfill","waste",,,,,
+"irrev","landfill","waste",,,,,
+"organic","composting","in",,,,,
+"paper","composting","in",,,,"\url{http://www.exergy.se/mei/2005.pdf}",
+"plastic","composting","in",,,,"\url{http://publik.tuwien.ac.at/files/PubDat_229164.pdf}",
+"glass","composting","in",,,,,
+"metal","composting","in",,,,"\url{http://web.mit.edu/2.813/www/readings/MasiniAyres.pdf}",
+"other","composting","in",,,,,
+"compost","composting","out",,,,"\url{http://link.springer.com/article/10.1007%2FBF02214559#page-1}",
+"irrev","composting","waste",,,,,
+"elecLosses","transferElec","waste",,,,,"Take value from MC database."
+"water","hydro","in",,,,"\citet{Rosen2009}","Exergy efficiency is the same as energy efficiency. Take a value (arbitrarily) from \citet{Wang2014}."
+"elec","hydro","out",,,,,"Same logic as above?"
+"irrev","hydro","waste",,,,,
+"wind","wind","in",,,,"\citet{Koroneos2003}",
+"elec","wind","out",,,,,
+"irrev","wind","waste",,,,,
