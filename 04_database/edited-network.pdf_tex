@@ -1,0 +1,102 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'edited-network.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{334.75240527bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.06435382)%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{edited-network.pdf}}%
+    \put(0.64161616,0.62941792){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{algae}}}%
+    \put(0.44042821,0.21636887){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ash}}}%
+    \put(0.74405557,0.41034376){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{biodiesel}}}%
+    \put(0.59077814,0.68832963){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{biogas}}}%
+    \put(0.52144842,0.38341218){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{biomass}}}%
+    \put(0.54032294,0.03318871){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{biooil}}}%
+    \put(0.88568267,0.24316479){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{butanol}}}%
+    \put(0.48894832,0.51){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{CO$_\textsf{2}$}}}%
+    \put(0.33239391,0.35669876){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{coal}}}%
+    \put(0.81903939,0.52443465){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{cooling}}}%
+    \put(0.48959888,0.72402766){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{diesel}}}%
+    \put(0.75669181,0.46376952){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{digestate}}}%
+    \put(0.01202203,-0){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{DME}}}%
+    \put(0.12843338,0.55610488){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{effluent}}}%
+    \put(0.30071301,0.45327756){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{electricity}}}%
+%    \put(0.58767137,0.19701128){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ethanol}}}%
+    \put(0.68,0.24){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ethanol}}}%
+    \put(0.70256225,0.1631355){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{fertilizer}}}%
+    \put(0.81282285,0.63614181){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{food waste}}}%
+    \put(0.35890276,0.63482791){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{fuel}}}%
+    \put(0.38518657,0.30131561){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{gas}}}%
+    \put(0.4599053,0.62036896){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{gasoline}}}%
+    \put(0.53264052,0.42410958){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{heat}}}%
+    \put(0.18941194,0.39971711){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{hydrogen}}}%
+    \put(0.24747964,0.67139174){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{leachate}}}%
+    \put(0.83740818,1.0029801){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{manure}}}%
+    \put(0.26205758,0.0064824){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{metal}}}%
+    \put(0.58127858,0.54013055){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{methane}}}%
+    \put(0.50262344,0.19070811){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{methanol}}}%
+    \put(0.30277424,0.221507){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{MSW}}}%
+    \put(0.78268117,0.32316422){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{oil}}}%
+    \put(0.3527216,0.76797058){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{propane}}}%
+    \put(0.44225046,0.10043244){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{slag}}}%
+    \put(0.59849748,0.46894967){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{sludge}}}%
+    \put(0.18361154,0.4322299){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{solar}}}%
+    \put(0.0770253,0.21711569){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{spent fuel}}}%
+    \put(-0.00233008,0.41633656){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{uranium}}}%
+    \put(0.6784959,0.33525005){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{waste}}}%
+    \put(0.24988668,0.51777248){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{wastewater}}}%
+    \put(0.47971499,0.32601885){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{water}}}%
+    \put(0.02582328,0.64937547){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{wind}}}%
+    \put(0.20022083,0.26365755){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{wood}}}%
+%    \put(0,0){\includegraphics[width=\unitlength,page=2]{edited-network.pdf}}%
+    \put(0.09961223,0.93164781){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{energy}}}%
+    \put(0.09796781,0.89084462){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{water}}}%
+    \put(0.09710375,0.84501124){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{waste}}}%
+    \put(0.09954208,0.80359925){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{other}}}%
+    \put(0.03581208,0.98329366){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Management sectors}}}}%
+  \end{picture}%
+\endgroup%

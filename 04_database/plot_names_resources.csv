@@ -1,0 +1,11 @@
+resource,plot_name
+ash,"Ash (kg)"
+biogas,"Biogas (kg)"
+biomass,"Biomass (kg)"
+CO2,"CO2 (kg)"
+digestate,"Digestate (kg)"
+elec,"Elec (MJ)"
+heat,"Heat (MJ)"
+methane,"Methane (kg)"
+vegWaste,"Vegetable waste (kg)"
+water,"Water - nonpotable (kg)"
