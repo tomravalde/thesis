@@ -25,7 +25,7 @@ In this paper we will extend published arguments that advocate giving greater at
 	\centering
 	\begin{spacing}{1.0}
 	\sffamily
-	\resizebox{\columnwidth}{!}{\input{04_database/metab.pdf_tex}}
+	\resizebox{\columnwidth}{!}{\input{04_database/metab-hierarchy.pdf_tex}}
 	\end{spacing}
 	\caption{Three components to an urban metabolism system with example resource flows adapted from the hypothetical city in \cite{Wolman1965}.}
 	\label{fig:metab}
