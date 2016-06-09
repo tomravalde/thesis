@@ -1,11 +1,1637 @@
 # Metrics
 
-[TODO: include a box to note the replication of paper]
 
-[TODO: copy paper source, and adapt]
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+library(knitr)
+opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
+
+library(extrafont)
+font_import(pattern="LinBiolinum")
+
+library(ggplot2)
+```
+
+[TODO: include a box to note the replication of paper]
 
 One of the first challenges which presents itself as we consider an urban area's metabolic requirements and wastes, is that of how to actually quantify them, given that they are composed of multiple resource types. Some resources can be quantified by both mass *or* energy (e.g. fuels), some can be quantified by mass *or* energy (e.g. water with a give quantity, at a given velocity, elevation and hydrostatic pressure), and others can only be quantified in energy terms (e.g. electricity and heat). To add them up would be to "compare apples and oranges".
 
-## Summary
+## Introduction
 
-In summary, we have seen that [TODO: complete summary...]
+[TODO: Adapt this introduction, based on what has already been]
+
+Socioeconomic development owes much to the human appropriation of the Earth's natural resources. Typically, to obtain useful products and services, a mix of resources must pass through a chain of processes, which we hereafter refer to as a *multi-resource* (MR) system. Examples of MR systems include: agriculture, which converts nutrients, water, and solar energy into various forms of plant and animal matter; a factory producing products from inputs of capital, labour, and raw materials; or indeed entire economies which generate wealth and well-being from diverse inputs.
+
+Although the definition of a resource can thus be very broad,[^whatsaresource] a common feature of these resource-process networks is that the system operators normally face a choices about how best to allocate resources and processes for a desired set of outputs. Consider a manufacturer who requires a certain metal for a production process. This metal could be acquired from virgin sources or it could be reclaimed through recycling.  However the latter option would require additional energy and chemical inputs to achieve the desired quality [@Amini2007; @Ignatenko2007], and so the final choice of virgin or recycled metal will depend on the manufacture's priorities, for example, minimising cost, maximising supply chain reliability or improving environmental performance.  This decision-making process whereby system operators evaluate a range of alternative options to produce required products and services, each with different impacts, can be described as the *multi-resource trade-off problem* (MRTP).
+
+[^whatsaresource]: In this work, we consider GDP, population and land as resources, since these are examples of the socioeconomic services provided by urban areas.
+
+An important subset of MR systems are towns and cities, which enable a growing global population to experience a higher quality of life [@WorldBank2009], but at the cost of vast energy use, water consumption and waste generation [@Agudelo-Vera2011].  These energy and material flows are referred to as an area's 'urban metabolism' and it has been suggested that in order to maintain the socioeconomic benefits of urbanisation while reducing environmental impacts, cities should shift from linear to circular metabolic patterns, i.e. using the outputs of one process as inputs to another in order to reduce overall resource throughput. In theory, urban areas provide  an ideal opportunity to realise such synergies due to their diverse resource demands coupled with the co-location of infrastructure.  In practice however, one needs effective measures of system performance to assess whether one conversion pathway is more benign than another; in this way, the MRTP manifests itself in urban areas.
+
+Our aim here is to evaluate how energy and material flow accounts from urban metabolism studies can be used to support performance measures of urban resource use in view of the MRTP, for example, to guide policy or investment decisions. After reviewing the contribution of the urban metabolism concept to improved urban sustainability (Section 2),  we provide a general framework for assessing the resource performance of an MR system, thus unifying previously published metrics (Section 3).  Recognizing that the MRTP can be shaped by a number of subjective criteria, we focus primarily on physical measures of performance (but the framework is general and could be used for other objectives as well). We then apply these metrics to a global set of urban metabolism data (Section 4) and discuss what the results might mean for decision makers seeking to measure and improve urban resource performance, the limitations of these measures, and how the urban metabolism field might develop to overcome these obstacles (Section 5).
+
+## Urban metabolism and sustainability
+
+The 'urban metabolism' (UM) concept seeks to find the "sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" [@Kennedy2007, p.44]. Since Wolman first described the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.179], his theoretical ideas have been applied to the real world, with around 20 comprehensive UM studies of cities as of 2011 [@Kennedy2011]. Typically, the methodology to conduct a UM study starts by defining a boundary around an urban area, and then consulting data sources in order to quantify material, energy, water and other resource flows into and out of a city on a yearly basis [@Kennedy2014]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
+
+A survey of the literature shows at least four ways the UM concept contributes to understanding urban sustainability.
+
+- *To compare resource consumption.* For example, @Krausmann2008 compare the metabolism of agrarian, developing and industrialised societies. @Kennedy2007 narrows in on eight metropolitan regions around the world, examining their metabolisms since 1965 to show general trends of increasing per capita consumption of energy, water and waste (with some exceptions, such as Toronto's energy and water use). Comparisons might also take place between sectors within a single city (such as construction or commercial services), for example to determine which sectors produce the most waste [@Browne2009].
+- *To provide inputs to other types of analysis.* UM studies compile annual inventories of resource flows, which can then be coupled to other data for further analysis.  For example, by combining urban metabolic data with carbon intensity factors, a city's greenhouse gas emissions can be calculated, as in @Kennedy2009 and @Kennedy2010. The 'ecological footprint' (EF) is another quantity that has been calculated from UM data [@BFF2002]. @Zucaro2014 use UM data to calculate 'urban sustainability indicators' for Rome, including carbon emissions, acidification and emergy flows.
+- *To understand or model relationships in the urban environment.* A more novel use of UM is to "develop mathematical models of processes within the urban metabolism" [@Kennedy2011, p.1970] in order to examine how policies or technological interventions might change stocks and flows. For example, from knowing the quantities of some of the material and energy flows into and out of processes within the urban environment, the STAN model of @Cencic2008 can be used to calculate the values of unknown process inputs and outputs. Another use is to explore relationships between different resources, with @Kenway2013 examining the links between urban energy and water consumption. Geographical dependencies can also be studied, for example @Barles2009 reveals Paris' reliance on surrounding regions for material provisions and waste management. @Bristow2013 assesses resilience and vulnerability of a city's resources, ascertaining whether or not Toronto has sufficient energy stocks in the event of supply failure or other shocks. Finally @Liu2011a have used UM inventory data to study the interdependence of economic sectors within a city.
+- *To relate consumption to other dependent variables.* This includes identifying particular environmental problems with urban resource consumption such as waste generation impacts [@Browne2009]; water stress and contamination [@Kennedy2007]; and the degree to which economic growth is dependent on material consumption [@Schulz2007].
+
+In summary, the urban metabolism concept (and in particular the associated resource inventory data) has proved itself as a useful 'enabling' tool, providing a framework to examine resource consumption alongside notions of urban sustainability.
+
+## Measuring the resource performance of MR systems
+
+Having shown the ways urban metabolism accounts can be used to measure the resource performance of towns and cities, we now consider MR systems more generally, providing a formal definition of resource performance measures and identifying how they have been applied in the literature to date. To do this, we introduce a general framework which distinguishes between 'black-box' and 'grey-box' representations of an MR system (illustrated in Figure \ref{fig:MR-represent}).
+
+\input{03_metrics/figure.tex}
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.5\textwidth}
+    \systemBlack[\bfseries]{solid}{black}{white}
+    \caption{`Black-box' representation, with no knowledge of internal system processes.}
+    \label{fig:MR-closed}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.5\textwidth}
+    \systemGrey{solid}{black!21}{black}
+    \caption{`Grey-box' representation, with internal processes $p \in P$, for $|P|=M$.
+    These could include energy conversion, water supply and waste managment.}
+    \label{fig:MR-open}
+  \end{subfigure}
+  \caption{Representations MR systems with resources $r_{i,j}$ for $i,j=1,2,3,\ldots,N$.}
+  \label{fig:MR-represent}
+\end{figure}
+
+### 'Black-box' metrics
+
+In this representation, we have no knowledge of the processes within the MR system; one only observes the resource flows in and out, as is the case with typical urban metabolism accounts. This is also the standard representation of a system within systems engineering and it allows one to define two broad categories of performance metric: absolute measures ($\alpha$) and efficiency ratios ($\eta$). We outline these below, and summarise their properties in Table \ref{tab:metrics-closed}.
+
+#### Absolute measures
+
+Absolute measures are simply a linear weighted sum of inputs and outputs \eqref{eq:metrics-general-abs}:
+\begin{align}
+\label{eq:metrics-general-abs}
+\alpha = \sum_{i=1}^N w_i r_i + \sum_{j=1}^N w_j r_j + k
+\end{align}
+where $N$ is the superset of both input and output resources (these subsets are denoted $R^i$ and $R^j$ respectively), $i$ are input indices, $j$ are output indices, $r$ is the resource flow, and $w$ applies weights to resource quantities. For completeness, a constant $k$ may also be added, although in the discussion below we will assume that $k=0$.
+
+The simplest theoretical case is where $N=w=1$, such that just one resource is considered in a performance metric. However by applying weights, multiple resources can be resolved into a common measure of value, often corresponding to some environmental or other impact. We now consider three such approaches: 'footprints', other sustainability measures and more subjectively weighted sums.  The categories are not definitive but have been selected here for convenience.
+
+Footprint measures are usually associated with specific environmental impacts, and common examples are carbon footprints (CF),  water footprints (WF), and ecological footprints (EF). Carbon footprints are often used to measure the contribution of a system to global warming and are calculated using weights that correspond to the carbon emissions produced in the production of system input resources $r_i$, thus quantifying the total emissions associated with a system as it meets demand for goods and services. The CF is widely used, with examples found in MR systems of all scales, from cement production [@Amato2013] and biodiesel production [@Batan2010], to urban energy systems [@Bhatt2010a], to cities as a whole [@Ramaswami2011]. Alternatively, the WF of a system represents the total freshwater required to produce and supply goods and services to consumers [@WFN2015]. Examples include fuel production processes [@Okadera2014], or entire cities such as Vienna [@Vanham2014] and Macao [@Chen2015]. CF and WF evaluations differ in formulation, since the CF is calculated from resource inputs (such as fuels and materials) only, such that $w_i \neq 0$ for at least one $i$, but $w_j=0$ for all $j$; but the WF sums water embodied in non-water resource inputs together with the system's water outputs (e.g. domestic drinking water), so $w_i \neq 0$ and $w_j\neq 0$ for some cases of both $r_i$ and $r_j$.  A more complicated footprint measure is the 'ecological footprint' (EF) which converts resource consumption and waste outputs into the equivalent land area required to sustain a system (for example, by meeting food and fossil fuel demands and absorbing emissions [@Rees1992]), with example city EF evaluations including London [@BFF2002], Shenyang and Kawasaki [@Geng2014]. 
+
+Other weighted sums can be found within the sustainability literature. The sustainable development concept seeks to meet the "needs of the present without compromising the ability of future generations to meet their own needs" [@Brutland1987, Chapter 2], and much effort has been devoted to measuring the sustainability performance of an industry, business or economy. This concept has environmental, economic and social aspects and thus the literature covers biophysical measures (which quantify environmental impacts, by explaining "the relationships within complex systems through a natural science perspective" [@Gasparatos2008, p.299]), and monetary measures (which quantify the economic dimension). These can then be combined into integrated sustainability assessments [@Gasparatos2008]. One biophysical measure is emergy, which is a "thermodynamical measure of the energy used to produce a resource" [@siche2008a, p.630]. The single measure under which system performance is quantified is the solar energy required to sustain it, with weights corresponding to the solar energy required to produce input energy and material resources [@Odum1983]. Emergy analysis generally finds application in larger systems, such as cities [@Zhang2009a; @Zhang2009] or countries [@Gasparatos2009]. For an economic evaluation, financial cost offers another possible weighted sum. This need not to be limited to the purchase price of individual inputs; environmental effects can be incorporated by costing wastes and emissions as taxes or purchase credits [@Sirikitputtisak2009a]. Another environmentally informed financial costing method is the 'genuine savings' index (which is typically applied at the national level); this adjusts the GDP of an economy by employing a formula which assesses natural resource depletion and pollution damage in economic terms [@Nourry2008].
+
+However many sustainability problems are highly subjective. Multi-criteria decision analysis (MCDA) weights resource flows according to a stakeholder's priorities, which are then summed to give an overall score which can be used to assess system performance. For example the food production model of @Mehdizadeh2011 combines energy consumption and cost in this way, weighting these terms using coefficients which reflect the relative importance of energy and monetary expense to the system operator (rather than the physical units as above). MCDA can provide methods to carry out life-cycle assessment (LCA), which associates a system with various impacts (each of which might be the result of weighted sums). Impacts could include greenhouse gas emissions, ozone depletion and eutrophication amongst others. These impacts are then combined using subjectively defined weights, resulting in a weighted sum of weighted sums. LCA methods are applied at all scales: from sewage sludge-to-energy conversion [@Mills2014], to waste management more generally [@Eriksson2002], and to urban areas as a whole [@Chester2012].
+
+#### Efficiency ratios
+
+Often it is the efficiency, rather than absolute performance of an MR system that is of interest. This is commonly understood to be the ratio of outputs to inputs and therefore a general linear representation of efficiency can be defined as in  \eqref{eq:metrics-general-eff}.
+
+\begin{align}
+\label{eq:metrics-general-eff}
+\eta = \frac{\sum_{j=1}^{N} w_j r_j + k_j}{\sum_{i=1}^{N} w_i r_i + k_i}
+\end{align}
+
+Here we introduce three specific configurations of system efficiency from the literature.  We define $\eta_1$ as the class of efficiency metrics where only one resource type is considered as both an input and an output. (A 'resource' and a 'resource type' are distinct: electricity and coal are different resources, but they are both 'types' of energy resource). For example, first law energy efficiency is given as $\eta_{1_{\mbox{energy}}}=\mbox{final energy}/\mbox{energy source inputs}$, and is used to evaluate the performance of electrical power systems [@Rosen2009], or urban energy systems as a whole [@Rosen2005]. Water efficiency can also be considered in this way, where the final demand for water from a system is measured with respect to the water entering the system; examples can be found in @Makropoulos2008 (who use this ratio for an urban water usage indicator), and @Lim2010 (whose urban water model has the objective of meeting demand whilst minimising freshwater consumption). The equivalent $\eta_1$ metric within the urban waste sector is the waste diversion rate: the ratio (by mass) of recycled waste to total waste [@Zaman2013].
+
+$\eta_2$ metrics on the other hand take the ratio of two different resources types: @Keirstead2013 calculates alternative urban energy efficiencies as the ratio of total final energy consumption relative to the area's economic output, population or geographical area. Similarly, @Zhang2007 interprets the ratio of an area's GDP or population to its material consumption as its 'resource efficiency'. @Browne2009 evaluate urban performance of an area from the ratio of waste disposal to product consumption. @Sanders2012 apply an efficiency metric of this type at the national level, quantifying the energy consumption that can be attributed to water use in the United States.
+
+The final type of efficiency metric ($\eta_3$) is where resource consumption is measured relative to a baseline, perhaps representing some environmental condition or constraint, such as urban energy consumption per unit of solar radiation [@Santamouris2001]. (Efficiency ratios can take other forms, but these are the main examples found in the literature.)
+
+```{r table-metrics, results="asis"}
+library(xtable)
+
+tab.metrics.csv <- read.csv("03_metrics/efficiency-metrics.csv", check.names=FALSE)
+tab.metrics.tex <- xtable(tab.metrics.csv,
+			  caption="Black-box resource performance metric classes.\\label{tab:metrics-closed}",
+			  align="lllllll")
+
+print(tab.metrics.tex,
+##      size='\\small',
+      table.placement='htbp!',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
+
+### Grey-box metrics
+
+Black-box metrics are widely used and understood but they provide very little information about the processes at work within the urban boundaries. In the grey-box representation (Figure \ref{fig:MR-open}), analysts have information about the conversion processes occurring within the city, which would allow them to identify industrial symbioses that could not be discovered simply by examining overall system inputs and outputs. For example, @Eckelman2013 show how savings in greenhouse gas emissions are achieved by using waste steam outputs from a cogeneration plant in a nearby oil refining process. This section considers two methods that can be used to derive metrics from such information: exergy analysis and ecological network analysis.
+
+#### Exergy analysis
+
+Exergy is the "maximum useful energy we can extract from some source of energy" [@Allwood2012, p. 119]. To obtain 'maximum' energy requires that the resource is brought into equilibrium with its surroundings, which means that exergy is defined relative to a reference environment. For example heat energy is more 'valuable' (or is said to be of better 'quality') at higher temperatures, since it is more readily transformed into other energy types (such as movement). When taking all energy types into consideration, the exergy of a system is a sum of the temperature, pressure and chemical potential of material and energy flows relative to the reference environment [@Rosen2001]. 
+
+As a resource is brought into equilibrium with its surrounding environment chemical reactions, as well as mass and energy transfers, occur which reduce the useful energy that can be extracted. For example during combustion heat is transfered from hotter oxidised molecules to cooler unoxidised molecules [@Som2008]. Energy has not been lost, but it has been devalued into a form that cannot be recovered. Thus while a system conserves mass and energy, it destroys exergy in proportion to the system's increase in entropy (or disorder) [@Rosen2001]. This dissipation of mass and energy throughout a system is impossible to reverse without an input of energy, and thus exergy destruction is said to arise from 'irreversibilities'. Therefore any process $p$ which produces outputs from a set of inputs, exergy flows ($Ex^*$) can be related as in \eqref{eq:ex-balance}.
+
+\begin{align}
+\label{eq:ex-balance}
+Ex^{in}_p = Ex^{prod}_p + Ex^{waste}_p + Ex^{irrev}_p
+\end{align}
+
+where each term (reading left to right) corresponds to the exergetic value of inputs, desired products, wastes and irreversibilities. This exergy balance is visualised for a generic process in Figure \ref{fig:ex-process}.
+
+\begin{figure}
+\centering
+\input{03_metrics/img/figure-exergy.tex}
+\caption{Exergy flows $Ex^*$ for a process $p$. \label{fig:ex-process}}
+\end{figure}
+
+These terms can be used to define absolute and efficiency metrics for each process $p$ and for the system as a whole. A process's exergy depletion $\alpha_{ex}$ is equivalent to $Ex^{in}$, whilst its efficiency is given as $\eta_{ex}=Ex^{prod}/Ex^{in}$. The exergy efficiency of an area as a whole can be found by combining each process to evaluate the sum of the parts \eqref{eq:ex-eff}.
+
+\begin{align}
+\label{eq:ex-eff}
+\eta_{ex}=\frac{\alpha^{prod}_{ex}}{\alpha^{in}_{ex}}
+\end{align}
+
+where,
+
+\begin{subequations}
+\begin{align}
+\alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \label{eq:ex-eff-in} \\
+\alpha^{prod}_{ex}&=\sum_{p \in P}  \sum_{j \in R^j}  Ex^{prod}_{p,j} \label{eq:ex-eff-prod}
+\end{align}
+\end{subequations}
+
+Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod} ensure that we consider only the exergy flows for those resources that cross the grey-box boundary.  Other process inputs and outputs which remain inside the boundary are ignored, since efficiency is assessed at the whole-system level, not the process level.
+
+Exergy analyses are commonly applied to energy conversion processes, such as district heating [@Comakl2004; @Rosen2005; @Ozgener2005], space heating [@Rosen2008] and power plants [@Kaushik2011]. Because exergy efficiency analysis takes into consideration the "different nature and quality" of energy forms (such as electricity and heat), it "pinpoints the locations and causes of inefficiencies more accurately" than energy efficiency analysis [@Rosen2005, p.158], and thus will inform a system operator where optimal efficiency improvements can be made. 
+
+In energy conversion processes, $Ex^{in}$ typically comes from a fuel source (such as coal), whose exergy is quantified from its chemical composition relative to a reference environment. This principle allows the exergy concept to extend beyond energy resources, and provide a common measure of resource quantity and thereby enable the comparison of "apples with oranges" [@Ayres1998, p.361]. Thus the exergetic value of water is not just dependent on its temperature, but also on the chemical composition of pollutants it contains [@Huang2007]. Therefore, by using reference environments based on water treatment standards (for drinking or other uses), exergy analysis has found application in measuring the performance of water resource systems [@Chen2009; @Chen2009a; @Huang2007]. This includes quantifying the benefits of water reclamation in urban water management [@Wang2011]; assessing the environmental performance of wastewater treatment plants [@Mora2006; @Khosravi2013], and comparing water supply and treatment technologies [@Martinez2010]. More generally, exergy analysis is applied at many different scales, from lower level processes such as cement production [@Koroneos2005; @Madlool2012; @Reno2013], biofuel production [@Sciubba2005], chlorine production [@Ayres1998] and car recycling [@Amini2007; @Ignatenko2007]; up to the highest level, with studies quantifying exergy flows for the whole of the United Kingdom [@Hammond2001; @Gasparatos2009a] and China [@Zhang2010].
+
+In summary, exergy analysis provides appropriate metrics for urban grey-box analysis because it performed at the process level, providing information about resource flows inside a region. Further to this, it does not disqualify any resource type from study (unlike energy or mass flow analysis), being able to unite energy, water and waste resources into a common measure of value. 
+
+#### Ecological network analysis
+
+Thus far system performance metrics have been quantifying the resource flows, but an alternative approach is to calculate the degree to which system processes are dependent on each other. This will reveal if there is scope to increase the symbiotic links between processes (using a waste from one process as an input to another); or conversely, if process dependencies should be minimised to reduce the risk of overall system failure in the event that one component fails. Such a method is provided by 'ecological network analysis' (ENA). ENA finds its origins in evaluating how species interact in ecological networks [@Finn1976] by quantifying their interdependencies, to see how species persistence or extinction might develop through mutually beneficial or exploitative relationships. ENA is based on work by @Hannon1973 who adapted economic input-output analysis [@Leontief1951] to quantify the interdependence of species within an ecosystem, and can be derived from the representation of interactions within the environment formalised by @Patten1978. Figure \ref{fig:ena-example} presents an example where a bee and a plant both mutually benefit from their interactions, but the plant is exploited (i.e. eaten) by a butterfly (this example is adapted from @Bascompte2010). This case shows only 'direct' dependencies (which are usaully empirically measured, and must be valued with some common unit of 'currency', such as mass or energy). In order to appreciate fully the system interdependencies, then 'indirect' relationships must be incorporated; for example, the butterfly is indirectly dependent on the bee, by virtue of the plant's direct dependence on the bee. To quantify interdependencies in a system that take indirect relationships into account, direct flows between species (more generally referred to as 'compartments') undergo matrix-based mathematical operations (for these see @Zhang2009b). These results are then interpreted to reveal whether pairs of compartments possess mutually beneficial or exploitative relationships.
+
+\begin{figure}
+\centering
+\input{03_metrics/img/figure-ena-natural.tex}
+\caption{Direct dependencies in the bee-plant-butterfly ecological network. Arrows going in both directions between nodes indicate a mutual relationship, whereas an arrow in one direction indicates an exploitative relationship.}
+\label{fig:ena-example}
+\end{figure}
+
+These methods have been applied to urban systems [@Bodini2002], since they are analogous to natural eco-systems, in the way that compartments interrelate. For example, energy conversion requires cooling water, and water supply requires energy (for treatment and transportation); thus these sectors are in a mutual relationship. In the ENA of urban areas, the system compartments are determined by the analyst; for example @Zhang2009b studies the relationships between five compartments (the domestic sector, agriculture, industry, the internal environment and the external environment) using emergy as the common unit of flow. @Liu2011a apply the same methods to Beijing (but with compartments of extraction, agriculture, industry, energy conversion, transportation, and domestic and tertiary services); and use exergy to value the intercompartmental flows (which include fuels, ores and agricultural products). @Liu2011a show how decision-making support can emanate from ENA, by revealing that relationships between most of Beijing's inter-sectoral pairings are exploitative, and thus arguing that there is greater scope to encourage symbiotic relationships between compartments, and thereby reduce the overall dependence of Beijing on its surrounding environment.
+
+## Applying the methods
+
+Having described the variety of ways in which the performance of an MR system might be assessed, with examples from the urban metabolism literature, we now apply these methods in order to illustrate the utility of the black-box and grey-box approaches. We use the dataset from @Kennedy2014 which includes urban metabolic flows and other data (such as GDP, population, land area etc.) for 27 megacities for 2001, 2006 and 2011.[^data-points] Our interest here is not to identify the best performing city, as measured by one or more metrics. Rather, we will assess the relative merits of the two approaches calculated from UM data in aiding decision makers faced with the MRTP. 
+
+[^data-points]: Thus, in theory, the metrics could be calculated for 81 city-year observations.  As discussed below however, incomplete data meant that only 29 observations were used in our calculations.
+
+### Black-box metrics
+
+#### Selecting metrics and cities
+
+In selecting the metrics to be calculated, we applied three criteria: firstly, the metrics must feature in the literature review and be based on physical units (thus ruling out monetary measures and MCDA, which contain subjective elements); secondly the dataset must have the required fields to make their calculation possible; and thirdly, the fields must not have any missing entries. This third criteria is applied because in the next step we are going to correlate how well cities perform according to each pair of metrics. It would be unfair to do this when some observations had missing metric values. This filtering achieves a balance between having sufficient observations to make their comparison meaningful, and having a range of metrics that reflect the different categories in our review (Table \ref{tab:metrics-closed}). This process results in us evaluating eight metrics for 29 observations (five cities for 2001, nine cities for 2006, and fifteen cities for 2011). The metrics are summarised in Table \ref{tab:metrics-calculated}, and the performance of each city in 2011 according to each metric is displayed in Figure \ref{fig:metric-example}. Each city is scored relative to the best performing city for the metric. (This score reflects whether superior performance is indicated by a high or low value (for example, for carbon footprint, superior performance is considered a low value, but for GDP/waste, it would be a high value).)
+
+```{r table-metrics-calculated, results="asis"}
+tab.metrics.calc.csv <- read.csv("03_metrics/metrics-calculated.csv", check.names=FALSE)
+tab.metrics.calc.tex <- xtable(tab.metrics.calc.csv, caption="Summary of the black-box metrics applied to urban metabolism data.\\label{tab:metrics-calculated}", align="llllp{4cm}")
+
+print(tab.metrics.calc.tex,
+##      size='\\small',
+      table.placement='htbp!',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
+
+#### Correlating the metrics
+\label{sec:metric-corr}
+
+```{r metrics-setup, results="asis"}
+
+## Load metabolic flow data
+cities.flows <- read.csv("03_metrics/megacities-database-analysis.csv")
+
+### Initialise dataframe for results of metrics calculations
+library(dplyr)
+metric.results <- cities.flows %>% select(City, Year)
+
+## Metabolic flows for each City-Year pair
+library(reshape2)
+cities.flows <- melt(cities.flows, id.vars=c("City", "Year"))
+
+## Load look-up table for metric calculations
+metric.calcs <- read.csv("03_metrics/megacities-categories.csv")
+
+## Combine flows and calculation coefficients
+flows.calcs <- inner_join(cities.flows, metric.calcs, by=c("variable"="Indicator.short"))
+
+## Ensure numbers are of 'numeric' classs
+flows.calcs$value <- as.numeric(flows.calcs$value)
+flows.calcs$carbon.factor <- as.numeric(as.character(flows.calcs$carbon.factor))
+flows.calcs$carbon.factor.noCement <- as.numeric(as.character(flows.calcs$carbon.factor.noCement))
+flows.calcs$carbon.conversion <- as.numeric(as.character(flows.calcs$carbon.conversion)) ## This column converts units (e.g. TJ to kWh), for use in the carbon footprint conversion
+flows.calcs$virtual.water <- as.numeric(as.character(flows.calcs$virtual.water))
+flows.calcs$virtual.water.conversion <- as.numeric(as.character(flows.calcs$virtual.water.conversion)) ## This column converts units, for use in the water footprint conversion
+```
+
+```{r metric-calcs, results="asis"}
+
+## Energy efficiency (out.in)
+
+en.out <- flows.calcs %>%
+  filter(energy.eff=="out") %>%
+  group_by(City, Year) %>%
+  summarize(en.out = sum(value, na.rm=TRUE))
+
+en.in <- flows.calcs %>%
+  filter(energy.eff=="in") %>%
+  group_by(City, Year) %>%
+  summarize(en.in = sum(value, na.rm=TRUE))
+
+en.out.in <- merge(en.out, en.in, by=c("City", "Year")) %>%
+  transform(en.out.in = en.out / en.in) %>%
+  select(City, Year, en.out.in)
+
+metric.results <- merge(metric.results, en.out.in, by=c("City", "Year"))
+
+## Energy efficiency (Energy consumption / GDP)
+
+en.out <- flows.calcs %>%
+  filter(energy.gdp=="out") %>%
+  group_by(City, Year) %>%
+  summarize(en.out = sum(value, na.rm=TRUE))
+
+en.gdp <- flows.calcs %>%
+  filter(energy.gdp=="in") %>%
+  group_by(City, Year) %>%
+  summarize(en.gdp = sum(value, na.rm=TRUE))
+
+en.out.gdp <- merge(en.out, en.gdp, by=c("City", "Year")) %>%
+  transform(en.out.gdp = en.out / en.gdp) %>%
+  select(City, Year, en.out.gdp)
+
+metric.results <- merge(metric.results, en.out.gdp, by=c("City", "Year"))
+
+## Energy efficiency (Energy consumption / population)
+
+en.out <- flows.calcs %>%
+  filter(energy.pop=="out") %>%
+  group_by(City, Year) %>%
+  summarize(en.out = sum(value, na.rm=TRUE))
+
+en.pop <- flows.calcs %>%
+  filter(energy.pop=="in") %>%
+  group_by(City, Year) %>%
+  summarize(en.pop = sum(value, na.rm=TRUE))
+
+en.out.pop <- merge(en.out, en.pop, by=c("City", "Year")) %>%
+  transform(en.out.pop = en.out / en.pop) %>%
+  select(City, Year, en.out.pop)
+
+metric.results <- merge(metric.results, en.out.pop, by=c("City", "Year"))
+
+## Water efficiency
+
+water.out <- flows.calcs %>%
+  filter(water.eff=="out") %>%
+  group_by(City, Year) %>%
+  summarize(water.out=sum(value, na.rm=TRUE))
+
+water.in <- flows.calcs %>%
+  filter(water.eff=="in") %>%
+  group_by(City, Year) %>%
+  summarize(water.in=sum(value, na.rm=TRUE))
+
+water.out.in <- merge(water.out, water.in, by=c("City", "Year")) %>%
+  transform(water.out.in = water.out / water.in) %>%
+  select(City, Year, water.out.in)
+
+metric.results <- merge(metric.results, water.out.in, by=c("City", "Year"))
+
+## Browne et al 2009 disposal / consumption
+
+### No unit conversions necessary as everything is recorded in kT
+
+waste.out <- flows.calcs %>%
+  filter(waste.eff=="out") %>%
+  group_by(City, Year) %>%
+  summarize(waste.out=sum(value, na.rm=TRUE))
+
+waste.in <- flows.calcs %>%
+  filter(waste.eff=="in") %>%
+  group_by(City, Year) %>%
+  summarize(waste.in=sum(value, na.rm=TRUE))
+
+waste.out.in <- merge(waste.out, waste.in, by=c("City", "Year")) %>%
+  transform(waste.out.in = waste.out / waste.in) %>%
+  select(City, Year, waste.out.in)
+
+metric.results <- merge(metric.results, waste.out.in, by=c("City", "Year"))
+
+## Resource efficiency (GDP / resource consumption)
+
+resEff.gdp <- flows.calcs %>%
+  filter(resEff=="out") %>%
+  group_by(City, Year) %>%
+  summarize(resEff.gdp=sum(value, na.rm=TRUE))
+
+resEff.in <- flows.calcs %>%
+  filter(resEff=="in") %>%
+  group_by(City, Year) %>%
+  summarize(resEff.in=sum(value, na.rm=TRUE))
+
+resEff.gdp.res <- merge(resEff.gdp, resEff.in, by=c("City", "Year")) %>%
+  transform(resEff.gdp.res = resEff.gdp / resEff.in) %>%
+  select(City, Year, resEff.gdp.res)
+
+metric.results <- merge(metric.results, resEff.gdp.res, by=c("City", "Year"))
+
+## Environmental efficiency (GDP / waste disposal)
+
+envEff.gdp <- flows.calcs %>%
+  filter(envEff=="out") %>%
+  group_by(City, Year) %>%
+  summarize(envEff.gdp=sum(value, na.rm=TRUE))
+
+envEff.waste <- flows.calcs %>%
+  filter(envEff=="in") %>%
+  group_by(City, Year) %>%
+  summarize(envEff.waste=sum(value, na.rm=TRUE))
+
+envEff.gdp.waste <- merge(envEff.gdp, envEff.waste, by=c("City", "Year")) %>%
+  transform(envEff.gdp.waste = envEff.gdp / envEff.waste) %>%
+  select(City, Year, envEff.gdp.waste)
+
+metric.results <- merge(metric.results, envEff.gdp.waste, by=c("City", "Year"))
+
+## Carbon footprint for each flow
+
+flows.calcs <- mutate(flows.calcs, CF.flow = value * carbon.factor)
+
+## Total CF: sum flow footprints over each city-year pair
+CF.results <- flows.calcs %>%
+  filter(Type=="urban.metabolism") %>%
+  group_by(City, Year) %>%
+  summarize(CF=sum(CF.flow, na.rm=TRUE))
+
+metric.results <- merge(metric.results, CF.results, by=c("City", "Year"))
+
+## Carbon footprint for each flow (ignore cement)
+
+flows.calcs <- mutate(flows.calcs, CF.noCement.flow = value * carbon.factor.noCement)
+
+## Total CF: sum flow footprints over each city-year pair
+CF.noCement.results <- flows.calcs %>%
+  filter(Type=="urban.metabolism") %>%
+  group_by(City, Year) %>%
+  summarize(CF.noCement=sum(CF.noCement.flow, na.rm=TRUE))
+
+metric.results <- merge(metric.results, CF.noCement.results, by=c("City", "Year"))
+
+## Water footprint for each flow
+flows.calcs <- mutate(flows.calcs, WF.flow = value * virtual.water * virtual.water.conversion)
+
+## Total WF: sum flow footprints over each city-year pair
+WF.results <- flows.calcs %>%
+  filter(Type=="urban.metabolism") %>%
+  group_by(City, Year) %>%
+  summarize(WF=sum(WF.flow, na.rm=TRUE))
+
+metric.results <- merge(metric.results, WF.results, by=c("City", "Year"))
+
+## Baseline efficiency: residential and commercial heating / solar radiation
+
+### Use 2011 solar radiation values for other years
+flows.calcs[c(flows.calcs$variable=="solarRad.annual" &
+	      flows.calcs$Year=="2001"), "value"] <-
+		      flows.calcs[c(flows.calcs$variable=="solarRad.annual" &
+				    flows.calcs$Year=="2011"), "value"]
+
+flows.calcs[c(flows.calcs$variable=="solarRad.annual" &
+	      flows.calcs$Year=="2006"), "value"] <-
+		      flows.calcs[c(flows.calcs$variable=="solarRad.annual" &
+				    flows.calcs$Year=="2011"), "value"]
+
+### Use 2011 land area values for other years
+flows.calcs[c(flows.calcs$variable=="area.land" &
+	      flows.calcs$Year=="2001"), "value"] <-
+		      flows.calcs[c(flows.calcs$variable=="area.land" &
+				    flows.calcs$Year=="2011"), "value"]
+
+flows.calcs[c(flows.calcs$variable=="area.land" &
+	      flows.calcs$Year=="2006"), "value"] <-
+		      flows.calcs[c(flows.calcs$variable=="area.land" &
+				    flows.calcs$Year=="2011"), "value"]
+
+### Use energy / area for energy vs solar radiation calculation
+
+en.out <- flows.calcs %>%
+  filter(energy.area=="out") %>%
+  group_by(City, Year) %>%
+  summarize(en.out = sum(value, na.rm=TRUE))
+
+en.area <- flows.calcs %>%
+  filter(energy.area=="in") %>%
+  group_by(City, Year) %>%
+  summarize(en.area = sum(value, na.rm=TRUE))
+
+en.out.area <- merge(en.out, en.area, by=c("City", "Year")) %>%
+  transform(en.out.area = en.out / en.area) %>%
+  select(City, Year, en.out.area)
+
+bl.rad <- flows.calcs %>%
+  filter(en.rad=="in") %>%
+  group_by(City, Year) %>%
+  summarize(bl.rad=sum(value, na.rm=TRUE))
+
+bl.en.rad <- merge(en.out.area, bl.rad, by=c("City", "Year")) %>%
+  transform(bl.en.rad = en.out.area / bl.rad) %>%
+  select(City, Year, bl.en.rad)
+
+metric.results <- merge(metric.results, bl.en.rad, by=c("City", "Year"))
+
+## Save metric results
+write.csv(metric.results, "03_metrics/metric.results.csv")
+```
+
+```{r remove-anomalies, results="asis"}
+
+## Only keep metrics that don't have too many anomalies
+### This also allows us to reorder the data, so when we come to plot the heat map, the labels fit
+metric.results <- metric.results %>% select(City,
+					    Year,
+					    CF,
+					    CF.noCement,
+					    WF,
+					    en.out.in,
+					    water.out.in,
+					    en.out.gdp,
+					    en.out.pop,
+					    envEff.gdp.waste,
+					    bl.en.rad)
+
+## Remove City-Year pairs with anomalies
+metric.results <- metric.results %>% filter(City!="Beijing" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Beijing" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Beijing" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Buenos Aires" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Buenos Aires" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Cairo" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Cairo" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Guangzhou" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Jakarta" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Jakarta" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Jakarta" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Karachi" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Karachi" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Kolkata" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Kolkata" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Kolkata" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Lagos" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Lagos" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Lagos" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Los Angeles" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Los Angeles" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Manila" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Manila" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Mexico City" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Mexico City" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Mexico City" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Moscow" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Moscow" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Moscow" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Mumbai" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Mumbai" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Mumbai" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="New York City" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="New York City" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="New York City" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Osaka" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Osaka" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Osaka" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Paris" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Paris" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Rio de Janeiro" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Sao Paulo" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Seoul" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Shanghai" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Shanghai" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Shenzhen" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Tehran" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Tehran" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Tehran" | Year!="2011")
+metric.results <- metric.results %>% filter(City!="Tokyo" | Year!="2001")
+metric.results <- metric.results %>% filter(City!="Tokyo" | Year!="2006")
+metric.results <- metric.results %>% filter(City!="Tokyo" | Year!="2011")
+```
+
+```{r histogram, results="asis"}
+
+## Convert NaN in Inf values to NA
+metric.results[metric.results==Inf] <- NA
+metric.results[metric.results=="NaN"] <- NA
+metric.results[metric.results==0] <- NA
+
+```
+
+
+```{r metric-example, fig.height=5, fig.cap="City performance score in 2011 for each metric normalised with respect to the best performing city. Best performing cities have a score of 1. \\textsf{CF} $=$ carbon footprint, \\textsf{WF} $=$ water footprint.\\label{fig:metric-example}"}
+
+## Reshape data: City, Year, metric, value
+data.metrics.2011 <- filter(metric.results, Year=="2011")
+
+data.metrics.2011 <- transform(data.metrics.2011, CF=min(CF)/CF)
+data.metrics.2011 <- transform(data.metrics.2011, CF.noCement=min(CF.noCement)/CF.noCement)
+data.metrics.2011 <- transform(data.metrics.2011, en.out.pop=min(en.out.pop)/en.out.pop)
+data.metrics.2011 <- transform(data.metrics.2011, en.out.in=en.out.in/max(en.out.in))
+data.metrics.2011 <- transform(data.metrics.2011, en.out.gdp=min(en.out.gdp)/en.out.gdp)
+data.metrics.2011 <- transform(data.metrics.2011, bl.en.rad=min(bl.en.rad)/bl.en.rad)
+data.metrics.2011 <- transform(data.metrics.2011, envEff.gdp.waste=envEff.gdp.waste/max(envEff.gdp.waste))
+data.metrics.2011 <- transform(data.metrics.2011, water.out.in=min(water.out.in)/water.out.in)
+data.metrics.2011 <- transform(data.metrics.2011, WF=min(WF)/WF)
+
+data.metrics.2011 <- melt(data.metrics.2011, c("City", "Year"), variable.name="metric")
+
+heat.map.labels <- read.csv("03_metrics/heat-map-labels.csv")
+data.metrics.2011 <- inner_join(data.metrics.2011, heat.map.labels)
+
+## Plot
+plot.metric.2011 <- ggplot(data.metrics.2011, aes(City, value)) +
+  geom_bar(stat="identity") +
+  facet_wrap(~label) +
+  ylab("Normalised city score") +
+  scale_y_continuous(breaks=c(0, 0.5, 1)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle=60, hjust=1, size=6),
+  	axis.text.y = element_text(size=6),
+	axis.title.x=element_blank(),
+	strip.text.x = element_text(size=7))
+plot.metric.2011
+
+```
+
+```{r correlate-year-calcs, results="asis"}
+
+## Rank results, with 1 for 'good' (hence reversing the rank for some metrics)
+metric.results$CF <- rank(metric.results$CF)
+metric.results$CF.noCement <- rank(metric.results$CF.noCement)
+metric.results$WF <- rank(metric.results$WF)
+metric.results$en.out.in <- rank(-metric.results$en.out.in)
+metric.results$water.out.in <- rank(-metric.results$water.out.in)
+metric.results$en.out.gdp <- rank(metric.results$en.out.gdp)
+metric.results$en.out.pop <- rank(metric.results$en.out.pop)
+metric.results$envEff.gdp.waste <- rank(-metric.results$envEff.gdp.waste)
+metric.results$bl.en.rad <- rank(metric.results$bl.en.rad)
+
+## Correlate (group according to year)
+corr.matrix.2001 <- cor(select(filter(metric.results, Year=="2001"), -c(City, Year)),
+		   use="pairwise",
+		   method="spearman")
+corr.matrix.2006 <- cor(select(filter(metric.results, Year=="2006"), -c(City, Year)),
+		   use="pairwise",
+		   method="spearman")
+corr.matrix.2011 <- cor(select(filter(metric.results, Year=="2011"), -c(City, Year)),
+		   use="pairwise",
+		   method="spearman")
+
+corr.2001 <- melt(corr.matrix.2001, varnames=c("x", "y"), value.name="correlation")
+corr.2006 <- melt(corr.matrix.2006, varnames=c("x", "y"), value.name="correlation")
+corr.2011 <- melt(corr.matrix.2011, varnames=c("x", "y"), value.name="correlation")
+corr.2001$year <- "2001"
+corr.2006$year <- "2006"
+corr.2011$year <- "2011"
+
+corr.all <- rbind(corr.2001, corr.2006, corr.2011)
+
+## Correlation test
+p.2011.CF.WF <- cor.test(as.matrix(select(filter(metric.results, Year=="2011"), CF)),
+		as.matrix(select(filter(metric.results, Year=="2011"), WF)),
+		method="spearman")
+
+## Define function to calculate p for all metrics (pairwise)
+### Source: http://stackoverflow.com/a/13112337/2215287
+cor.test.p <- function(x){
+  FUN <- function(x, y) cor.test(x, y, method="spearman")[["p.value"]]
+  z <- outer(
+    colnames(x), 
+    colnames(x), 
+    Vectorize(function(i,j) FUN(x[,i], x[,j]))
+  )
+  dimnames(z) <- list(colnames(x), colnames(x))
+  z
+}
+### The function matches the result of the correlation test, so it's safe to use.
+
+
+## Apply function
+p.2001 <- cor.test.p(select(filter(metric.results, Year=="2001"), -c(City, Year)))
+p.2006 <- cor.test.p(select(filter(metric.results, Year=="2006"), -c(City, Year)))
+p.2011 <- cor.test.p(select(filter(metric.results, Year=="2011"), -c(City, Year)))
+
+## 
+p.2001 <- melt(p.2001, varnames=c("x", "y"), value.name="p")
+p.2006 <- melt(p.2006, varnames=c("x", "y"), value.name="p")
+p.2011 <- melt(p.2011, varnames=c("x", "y"), value.name="p")
+
+p.2001$year <- "2001"
+p.2006$year <- "2006"
+p.2011$year <- "2011"
+
+p.all <- rbind(p.2001, p.2006, p.2011)
+
+## Redefine corr.all to include p.all
+corr.all <- inner_join(p.all, corr.all)
+```
+
+```{r correlate-year-setup, results="asis"}
+### Remove duplicated diagonal of data
+corr.all.ids <- subset(corr.all, x==y)
+corr.all.lower <- subset(corr.all[lower.tri(corr.matrix.2001), ], x!=y)
+corr.all.upper <- subset(corr.all[upper.tri(corr.matrix.2001), ], x!=y)
+meas.all <- as.character(unique(corr.all$y))
+```
+
+```{r correlation-means, results="asis"}
+corr.stats <- corr.all.lower %>%
+  group_by(year) %>%
+ summarise(u=signif(mean(correlation), 2), var=signif(var(correlation), 2))
+```
+
+Having calculated the eight metrics for each city, and ranked city performance as described above, we correlate the performance of each city according to one metric with its performance according to another, for all pairs of metrics, using Spearman's $\rho$ rank method. The correlations between pairs of metrics are presented as a heat map in Figure \ref{fig:correlation}, each tile indicating the $\rho$ value between a pair of metrics. We summarise the distribution of correlations with boxplots (Figure \ref{fig:correlation-hist-combo}). Note that larger samples are more likely to reflect the statistical properties of a population (since extreme values will have a greater impact on a smaller sample). This is reflected in the 'confidence interval' whose width is proportional to $(n-3)^{-1/2}$, where $n$ is the number of sample observations [@Bonett2000]. Thus our confidence in a $\rho$ value is proportional to $(n-3)^{1/2}$. Therefore, we have less confidence in the increased presence of stronger correlations in the 2001 data due to its smaller sample size. With this qualification considered, the results show that in general, the correlation of metric values is weak. In other words, there are no cities that are consistently ranked top or bottom (or any other position) across the metrics (which can be seen intuitively in Figure \ref{fig:metric-example}). This suggests that a city's resource performance depends on features that are invisible to black-box metrics.
+
+```{r correlate-year, fig.height=5, fig.cap="The correlation of urban resource performance according to Spearman's $\\rho$ rank.\\label{fig:correlation}"}
+
+## Make nicer labels for the heat map plot
+heat.map.labels <- read.csv("03_metrics/heat-map-labels.csv")
+corr.all.ids <- inner_join(corr.all.ids, heat.map.labels, by=c("y"="metric"))
+
+## Show correlation on a heat map
+plot.corr.all <- ggplot(corr.all.lower, aes(x, y, fill=correlation)) +
+  geom_tile() +
+  facet_wrap( ~ year, ncol=1) +
+  geom_text(data=corr.all.ids, aes(label=label), size=2, hjust=0.1) +
+  scale_fill_gradient2(low = "red",
+		      high = "steelblue",
+		      limits=c(-1,1),
+		      name = expression(paste(rho))) +
+  scale_x_discrete(limits=meas.all[length(meas.all):1]) +
+  scale_y_discrete(limits=meas.all) +
+  theme_bw() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
+plot.corr.all
+```
+
+```{r PowerPoint-heatmap}
+
+## Create PowerPoint editable version of heatmap for 2011
+
+### Just 2011 data
+corr.all.lower.2011 <- subset(corr.all.lower, year=="2011")
+corr.all.ids.2011 <- subset(corr.all.ids, year=="2011")
+
+plot.corr.2011 <- ggplot(corr.all.lower.2011, aes(x, y, fill=correlation)) +
+  geom_tile() +
+#  facet_wrap( ~ year, ncol=1) +
+  geom_text(data=corr.all.ids.2011, aes(label=label), size=2, hjust=0.1) +
+  scale_fill_gradient2(low = "red",
+		      high = "steelblue",
+		      limits=c(-1,1),
+		      name = expression(paste(rho))) +
+  scale_x_discrete(limits=meas.all[length(meas.all):1]) +
+  scale_y_discrete(limits=meas.all) +
+  theme_bw() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
+
+```
+
+```{r correlate-hist-combined, fig.cap="Boxplots summarising the distribution of $\\rho$ values for each year. (The dashed line indicates $\\rho=0$.)\\label{fig:correlation-hist-combo}"}
+
+## Boxplot
+correlation.box <- ggplot(corr.all.lower, aes(year, correlation)) +
+  geom_boxplot() +
+#  geom_violin() +
+  geom_hline(yintercept=0, linetype="dashed", color="red") +
+  scale_y_continuous(limits = c(-1, 1)) +
+  ylab(expression(paste(rho))) +
+  theme_bw() +
+  theme(axis.title.x = element_blank())
+correlation.box
+
+```
+
+```{r correlate-combined, fig.cap="Spearman's $\\rho$ rank correlation of efficiency metrics from urban metabolism data.\\label{fig:correlation-combined}"}
+## Correlate (combined years)
+corr.matrix <- cor(select(metric.results, -c(City, Year)),
+		   use="pairwise",
+		   method="spearman")
+corr <- melt(corr.matrix, varnames=c("x", "y"), value.name="correlation")
+
+## Match metrics to their categories
+metric.cats <- read.csv("03_metrics/corr-cat.csv")
+corr <- inner_join(corr, metric.cats, by=c("x" = "metric"))
+corr <- inner_join(corr, metric.cats, by=c("y" = "metric"))
+corr <- corr[c("x", "y", "correlation", "category.x", "category.y")]
+corr <- mutate(corr, cat = paste(category.x, ",", category.y))
+
+## Make category order interchangable
+corr$cat[corr$cat=="\\eta_2 , \\eta_1"] <-
+	"\\eta_1 , \\eta_2"
+corr$cat[corr$cat=="\\eta_3 , \\eta_1"] <-
+	"\\eta_1 , \\eta_3"
+corr$cat[corr$cat=="\\eta_5 , \\eta_1"] <-
+	"\\eta_1 , \\eta_5"
+corr$cat[corr$cat=="\\eta_3 , \\eta_2"] <-
+	"\\eta_2 , \\eta_3"
+corr$cat[corr$cat=="\\eta_5 , \\eta_2"] <-
+	"\\eta_2 , \\eta_5"
+corr$cat[corr$cat=="\\eta_5 , \\eta_3"] <-
+	"\\eta_3 , \\eta_5"
+
+### Remove duplicated diagonal of data
+corr.ids <- subset(corr, x==y)
+corr.lower <- subset(corr[lower.tri(corr.matrix), ], x!=y)
+corr.upper <- subset(corr[upper.tri(corr.matrix), ], x!=y)
+meas <- as.character(unique(corr$y))
+
+## Show correlation on a heat map
+plot.corr <- ggplot(corr.lower, aes(x, y, fill=correlation)) +
+  geom_tile() +
+  geom_text(data=corr.ids, aes(label=y), size=2, hjust=0) +
+#  geom_text(data=corr.lower, aes(label=cat), size=2) +
+  scale_fill_gradient2(low = "red",
+		      high = "steelblue",
+		      limits=c(-1,1),
+		      name = expression(paste(rho))) +
+  scale_x_discrete(limits=meas[length(meas):1]) +
+  scale_y_discrete(limits=meas) +
+  theme_bw() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
+#plot.corr
+```
+
+```{r p-values}
+p.plot <- ggplot(corr.all, aes(correlation, p)) +
+  geom_point(aes(color=year))
+ggsave("p.plot.pdf", p.plot)
+```
+
+### Grey-box metrics
+
+As additional data are required to calculate the grey-box metrics, we have chosen to apply them to only three cities: Beijing, London and Sao Paulo (for 2006). In addition to the energy, water and waste related flows common to most cities, the dataset records steel and cement manufacturing flows for Beijing and Sao Paulo, but not for London. Thus when we come to discuss how grey-box analysis relates to the MRTP (Section 5), we can do so in the context of both comparable and contrasting cities. Apart from seeking areas with similarities and differences, the selection of these cities was otherwise arbitrary for the sake of convenience. 
+
+#### Exergy analysis
+\label{sec:apply-grey-exergy}
+
+The exergy analysis follows the procedure of @Sciubba2005. Firstly, a grey box (the 'control volume') is defined around the $M$ processes, using a 'geographic-plus' definition of 'urban', which extends beyond administrative boundaries to incorporate readily traceable upstream flows, such as electricity consumption (@Ramaswami2011). Secondly, from a city's metabolic flow data we distribute the flows of materials and energy between processes inside the control volume and across its boundaries. For instance, coal may be imported from outside of the system, for use as an input to a power plant inside the urban boundary. The power plant would produce electricity, which then might be used in other processes. When flows have been distributed for all processes, the analyst should be able to draw a directed graph (where nodes represent processes, and vertices represent resource flows) in which the control volume's inputs and outputs (energy and mass) are conserved, and all the resources can be traced through it, with nothing unaccounted for. Thirdly, each of the flows into and out of each process $p$ are assigned identities as exergetic inputs, products, or wastes  (Equation \ref{eq:ex-balance}). For example, for a coal-fuelled power plant, we define $Ex^{in}$, $Ex^{prod}$ and $Ex^{waste}$ from quantities of coal, electricity and heat, respectively. (Irreversibilities $Ex^{irrev}$ arise through heat transfer and chemical reactions during combustion.) Finally, using values from the literature (such as chemical exergies of materials, and process exergy efficiencies), we assign values to $Ex^{*}_p$ for $p=1,2,3,\ldots,M$. The flux assignments and information sources for exergy values are given for each process in Table \ref{tab:exergy-methods}, along with any assumptions we make.
+
+From here we calculate exergy depletion and efficiency for the urban system as a whole using Equations \eqref{eq:ex-eff} to \eqref{eq:ex-eff-prod}. These results are summarised in Table \ref{tab:exergy-results}, revealing that Sao Paulo has a much higher exergy efficiency than the other cities. This can be explained with reference to the visualisation of the flows as Sankey diagrams in Figure \ref{fig:sankey-beijing}. These display $Ex^*$ for each process, and the system as a whole, illustrating the unification of energy and material flows under one measure, and therefore highlighting the relative exergetic impacts of a city's internal processes. The results show the dominance of exergy flows in power generation and steel production; with Sao Paulo using a much higher proportion of hydropower in the energy mix, which is a more exergetically efficient process than fossil fuel based generation.
+
+```{r table-exergy-methods, results="asis"}
+tab.exergy.csv <- read.csv("03_metrics/exergy-methods.csv", check.names=FALSE)
+tab.exergy.tex <- xtable(tab.exergy.csv, caption="Summary of $Ex^*_p$ flows, information sources and assumptions for exergy analysis calculations.\\label{tab:exergy-methods}", align="llp{2cm}lp{2cm}p{4cm}")
+
+print(tab.exergy.tex,
+      size='\\footnotesize',
+      table.placement='!htbp',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
+
+```{r analysis-setup, results="asis"}
+flows <- read.csv("03_metrics/city-exergy-flows.csv", stringsAsFactors=FALSE)
+
+## Create placeholder value names
+flows$value.BJ <- apply(cbind(flows[c('flow', 'subsystem')]), 1, paste, collapse=".")
+flows$value.LDN <- apply(cbind(flows[c('flow', 'subsystem')]), 1, paste, collapse=".")
+flows$value.GRU <- apply(cbind(flows[c('flow', 'subsystem')]), 1, paste, collapse=".")
+
+## These placeholders can be replaced during the analysis
+
+## Load values from database which will be used 
+BJ.elec.grid <- 57535 # GWh/year # database value
+LDN.elec.grid <- 42843.37 # GWh/year # database value
+GRU.elec.grid <- 53830 # GWh/year # database value
+
+```
+
+```{r exergy-coalPlant, results="asis"}
+
+## Analysis
+BJ.coal.fraction <- 62.29 # % # database value
+
+BJ.elec.coalPlant.GWh <- BJ.elec.grid * BJ.coal.fraction / 100 # GWh/year
+BJ.elec.coalPlant <- BJ.elec.coalPlant.GWh * 3.6e6 # MJ/year
+BJ.exEff.coalPlant <- 20.2 # %
+BJ.coal.coalPlant <- BJ.elec.coalPlant * 100 / BJ.exEff.coalPlant # MJ/year
+BJ.heat.coalPlant <- (3.8 / 100) * BJ.coal.coalPlant
+BJ.irrev.coalPlant <- BJ.coal.coalPlant - (BJ.elec.coalPlant +
+					   BJ.heat.coalPlant) # MJ/year
+
+LDN.coal.fraction <- 44.8 # % # database value
+
+LDN.elec.coalPlant.GWh <- LDN.elec.grid * LDN.coal.fraction / 100 # GWh/year
+LDN.elec.coalPlant <- LDN.elec.coalPlant.GWh * 3.6e6 # MJ/year
+LDN.exEff.coalPlant <- 20.2 # %
+LDN.coal.coalPlant <- LDN.elec.coalPlant * 100 / LDN.exEff.coalPlant # MJ/year
+LDN.heat.coalPlant <- (3.8 / 100) * LDN.coal.coalPlant
+LDN.irrev.coalPlant <- LDN.coal.coalPlant - (LDN.elec.coalPlant +
+					   LDN.heat.coalPlant) # MJ/year
+
+GRU.coal.fraction <- 1.4 # % # database value
+
+GRU.elec.coalPlant.GWh <- GRU.elec.grid * GRU.coal.fraction / 100 # GWh/year
+GRU.elec.coalPlant <- GRU.elec.coalPlant.GWh * 3.6e6 # MJ/year
+GRU.exEff.coalPlant <- 20.2 # %
+GRU.coal.coalPlant <- GRU.elec.coalPlant * 100 / GRU.exEff.coalPlant # MJ/year
+GRU.heat.coalPlant <- (3.8 / 100) * GRU.coal.coalPlant
+GRU.irrev.coalPlant <- GRU.coal.coalPlant - (GRU.elec.coalPlant +
+					   GRU.heat.coalPlant) # MJ/year
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="elec.coalPlant"] <- BJ.elec.coalPlant
+flows$value.BJ[flows$value.BJ=="coal.coalPlant"] <- BJ.coal.coalPlant
+flows$value.BJ[flows$value.BJ=="heat.coalPlant"] <- BJ.heat.coalPlant
+flows$value.BJ[flows$value.BJ=="irrev.coalPlant"] <- BJ.irrev.coalPlant
+
+flows$value.LDN[flows$value.LDN=="elec.coalPlant"] <- LDN.elec.coalPlant
+flows$value.LDN[flows$value.LDN=="coal.coalPlant"] <- LDN.coal.coalPlant
+flows$value.LDN[flows$value.LDN=="heat.coalPlant"] <- LDN.heat.coalPlant
+flows$value.LDN[flows$value.LDN=="irrev.coalPlant"] <- LDN.irrev.coalPlant
+
+flows$value.GRU[flows$value.GRU=="elec.coalPlant"] <- GRU.elec.coalPlant
+flows$value.GRU[flows$value.GRU=="coal.coalPlant"] <- GRU.coal.coalPlant
+flows$value.GRU[flows$value.GRU=="heat.coalPlant"] <- GRU.heat.coalPlant
+flows$value.GRU[flows$value.GRU=="irrev.coalPlant"] <- GRU.irrev.coalPlant
+
+```
+
+```{r exergy-oilPlant, results="asis"}
+
+## Analysis
+BJ.oil.fraction <- 14.09 # % # database value
+
+BJ.elec.oilPlant.GWh <- BJ.elec.grid * BJ.oil.fraction / 100 # GWh/year
+BJ.elec.oilPlant <- BJ.elec.oilPlant.GWh * 3.6e6 # MJ/year
+BJ.exEff.oilPlant <- 34 # %
+BJ.oil.oilPlant <- BJ.elec.oilPlant * 100 / BJ.exEff.oilPlant # MJ/year
+BJ.heat.oilPlant <- (9.93 / 100) * BJ.oil.oilPlant
+BJ.irrev.oilPlant <- BJ.oil.oilPlant - (BJ.elec.oilPlant +
+					   BJ.heat.oilPlant) # MJ/year
+
+LDN.oil.fraction <- 1.02 # % # database value
+
+LDN.elec.oilPlant.GWh <- LDN.elec.grid * LDN.oil.fraction / 100 # GWh/year
+LDN.elec.oilPlant <- LDN.elec.oilPlant.GWh * 3.6e6 # MJ/year
+LDN.exEff.oilPlant <- 34 # %
+LDN.oil.oilPlant <- LDN.elec.oilPlant * 100 / LDN.exEff.oilPlant # MJ/year
+LDN.heat.oilPlant <- (9.93 / 100) * LDN.oil.oilPlant
+LDN.irrev.oilPlant <- LDN.oil.oilPlant - (LDN.elec.oilPlant +
+					   LDN.heat.oilPlant) # MJ/year
+
+GRU.oil.fraction <- 3.6 # % # database value
+
+GRU.elec.oilPlant.GWh <- GRU.elec.grid * GRU.oil.fraction / 100 # GWh/year
+GRU.elec.oilPlant <- GRU.elec.oilPlant.GWh * 3.6e6 # MJ/year
+GRU.exEff.oilPlant <- 34 # %
+GRU.oil.oilPlant <- GRU.elec.oilPlant * 100 / GRU.exEff.oilPlant # MJ/year
+GRU.heat.oilPlant <- (9.93 / 100) * GRU.oil.oilPlant
+GRU.irrev.oilPlant <- GRU.oil.oilPlant - (GRU.elec.oilPlant +
+					   GRU.heat.oilPlant) # MJ/year
+
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="elec.oilPlant"] <- BJ.elec.oilPlant
+flows$value.BJ[flows$value.BJ=="oil.oilPlant"] <- BJ.oil.oilPlant
+flows$value.BJ[flows$value.BJ=="heat.oilPlant"] <- BJ.heat.oilPlant
+flows$value.BJ[flows$value.BJ=="irrev.oilPlant"] <- BJ.irrev.oilPlant
+
+flows$value.LDN[flows$value.LDN=="elec.oilPlant"] <- LDN.elec.oilPlant
+flows$value.LDN[flows$value.LDN=="oil.oilPlant"] <- LDN.oil.oilPlant
+flows$value.LDN[flows$value.LDN=="heat.oilPlant"] <- LDN.heat.oilPlant
+flows$value.LDN[flows$value.LDN=="irrev.oilPlant"] <- LDN.irrev.oilPlant
+
+flows$value.GRU[flows$value.GRU=="elec.oilPlant"] <- GRU.elec.oilPlant
+flows$value.GRU[flows$value.GRU=="oil.oilPlant"] <- GRU.oil.oilPlant
+flows$value.GRU[flows$value.GRU=="heat.oilPlant"] <- GRU.heat.oilPlant
+flows$value.GRU[flows$value.GRU=="irrev.oilPlant"] <- GRU.irrev.oilPlant
+```
+
+```{r exergy-hydropower, results="asis"}
+
+## Analysis
+BJ.hydro.fraction <- 21.07 # %
+
+BJ.elec.hydro.GWh <- BJ.elec.grid * BJ.hydro.fraction / 100 # GWh/year
+BJ.elec.hydro <- BJ.elec.hydro.GWh * 3.6e6 # MJ/year
+BJ.exEff.hydro <- 70 # %
+BJ.water.hydro <- BJ.elec.hydro * 100 / BJ.exEff.hydro # MJ/year
+BJ.irrev.hydro <- BJ.water.hydro - BJ.elec.hydro # MJ/year
+
+LDN.hydro.fraction <- 31.1 # %
+
+LDN.elec.hydro.GWh <- LDN.elec.grid * LDN.hydro.fraction / 100 # GWh/year
+LDN.elec.hydro <- LDN.elec.hydro.GWh * 3.6e6 # MJ/year
+LDN.exEff.hydro <- 70 # %
+LDN.water.hydro <- LDN.elec.hydro * 100 / LDN.exEff.hydro # MJ/year
+LDN.irrev.hydro <- LDN.water.hydro - LDN.elec.hydro # MJ/year
+
+GRU.hydro.fraction <- 80.5 # %
+
+GRU.elec.hydro.GWh <- GRU.elec.grid * GRU.hydro.fraction / 100 # GWh/year
+GRU.elec.hydro <- GRU.elec.hydro.GWh * 3.6e6 # MJ/year
+GRU.exEff.hydro <- 70 # %
+GRU.water.hydro <- GRU.elec.hydro * 100 / GRU.exEff.hydro # MJ/year
+GRU.irrev.hydro <- GRU.water.hydro - GRU.elec.hydro # MJ/year
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="elec.hydro"] <- BJ.elec.hydro
+flows$value.BJ[flows$value.BJ=="water.hydro"] <- BJ.water.hydro
+flows$value.BJ[flows$value.BJ=="irrev.hydro"] <- BJ.irrev.hydro
+
+flows$value.LDN[flows$value.LDN=="elec.hydro"] <- LDN.elec.hydro
+flows$value.LDN[flows$value.LDN=="water.hydro"] <- LDN.water.hydro
+flows$value.LDN[flows$value.LDN=="irrev.hydro"] <- LDN.irrev.hydro
+
+flows$value.GRU[flows$value.GRU=="elec.hydro"] <- GRU.elec.hydro
+flows$value.GRU[flows$value.GRU=="water.hydro"] <- GRU.water.hydro
+flows$value.GRU[flows$value.GRU=="irrev.hydro"] <- GRU.irrev.hydro
+```
+
+```{r exergy-solarPower, results="asis"}
+
+### Analysis
+BJ.wind.fraction <- 2.55 # %
+
+BJ.elec.wind.GWh <- BJ.elec.grid * BJ.wind.fraction / 100 # GWh/year
+BJ.elec.wind <- BJ.elec.wind.GWh * 3.6e6 # MJ/year
+BJ.exEff.wind <- 40 # %
+BJ.wind.wind <- BJ.elec.wind * 100 / BJ.exEff.wind # MJ/year
+BJ.irrev.wind <- BJ.wind.wind - BJ.elec.wind # MJ/year
+
+LDN.wind.fraction <- 0 # %
+
+LDN.elec.wind.GWh <- LDN.elec.grid * LDN.wind.fraction / 100 # GWh/year
+LDN.elec.wind <- LDN.elec.wind.GWh * 3.6e6 # MJ/year
+LDN.exEff.wind <- 40 # %
+LDN.wind.wind <- LDN.elec.wind * 100 / LDN.exEff.wind # MJ/year
+LDN.irrev.wind <- LDN.wind.wind - LDN.elec.wind # MJ/year
+
+GRU.wind.fraction <- 0.4 # %
+
+GRU.elec.wind.GWh <- GRU.elec.grid * GRU.wind.fraction / 100 # GWh/year
+GRU.elec.wind <- GRU.elec.wind.GWh * 3.6e6 # MJ/year
+GRU.exEff.wind <- 40 # %
+GRU.wind.wind <- GRU.elec.wind * 100 / GRU.exEff.wind # MJ/year
+GRU.irrev.wind <- GRU.wind.wind - GRU.elec.wind # MJ/year
+
+### Add results to dataframe
+flows$value.BJ[flows$value.BJ=="elec.wind"] <- BJ.elec.wind
+flows$value.BJ[flows$value.BJ=="wind.wind"] <- BJ.wind.wind
+flows$value.BJ[flows$value.BJ=="irrev.wind"] <- BJ.irrev.wind
+
+flows$value.LDN[flows$value.LDN=="elec.wind"] <- LDN.elec.wind
+flows$value.LDN[flows$value.LDN=="wind.wind"] <- LDN.wind.wind
+flows$value.LDN[flows$value.LDN=="irrev.wind"] <- LDN.irrev.wind
+
+flows$value.GRU[flows$value.GRU=="elec.wind"] <- GRU.elec.wind
+flows$value.GRU[flows$value.GRU=="wind.wind"] <- GRU.wind.wind
+flows$value.GRU[flows$value.GRU=="irrev.wind"] <- GRU.irrev.wind
+```
+
+```{r exergy-districtHeat, results="asis"}
+
+## Analysis
+BJ.fuel.other <- 728408.16 # TJ/year # Used in heating and industrial applications, value taken from database
+BJ.fuel.district.TJ <- 0.5 * BJ.fuel.other # TJ/year # Assume 50% used as fuel input.
+BJ.fuel.district <- BJ.fuel.district.TJ * 1e3 # MJ/year
+
+BJ.exEff.district <- 46 # %
+BJ.heat.district <- BJ.fuel.district * BJ.exEff.district / 100 # MJ/year
+BJ.irrev.district <- BJ.fuel.district - BJ.heat.district
+
+LDN.fuel.other <- 405786.6 # TJ/year # Used in heating and industrial applications, value taken from database
+LDN.fuel.district.TJ <- 0.5 * LDN.fuel.other # TJ/year # Assume 50% used as fuel input.
+LDN.fuel.district <- LDN.fuel.district.TJ * 1e3 # MJ/year
+
+LDN.exEff.district <- 46 # %
+LDN.heat.district <- LDN.fuel.district * LDN.exEff.district / 100 # MJ/year
+LDN.irrev.district <- LDN.fuel.district - LDN.heat.district
+
+GRU.fuel.other <- 67615 # TJ/year # Used in heating and industrial applications, value taken from database
+GRU.fuel.district.TJ <- 0.5 * GRU.fuel.other # TJ/year # Assume 50% used as fuel input.
+GRU.fuel.district <- GRU.fuel.district.TJ * 1e3 # MJ/year
+
+GRU.exEff.district <- 46 # %
+GRU.heat.district <- GRU.fuel.district * GRU.exEff.district / 100 # MJ/year
+GRU.irrev.district <- GRU.fuel.district - GRU.heat.district
+
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="fuel.district"] <- BJ.fuel.district
+flows$value.BJ[flows$value.BJ=="heat.district"] <- BJ.heat.district
+flows$value.BJ[flows$value.BJ=="irrev.district"] <- BJ.irrev.district
+
+flows$value.LDN[flows$value.LDN=="fuel.district"] <- LDN.fuel.district
+flows$value.LDN[flows$value.LDN=="heat.district"] <- LDN.heat.district
+flows$value.LDN[flows$value.LDN=="irrev.district"] <- LDN.irrev.district
+
+flows$value.GRU[flows$value.GRU=="fuel.district"] <- GRU.fuel.district
+flows$value.GRU[flows$value.GRU=="heat.district"] <- GRU.heat.district
+flows$value.GRU[flows$value.GRU=="irrev.district"] <- GRU.irrev.district
+```
+
+```{r exergy-cement, results="asis"}
+
+## Analysis
+BJ.fuel.cement.kJkg <- 3230 # kJ/kg/year # from Madlool (2012)
+BJ.fuel.cement.MJkg <- BJ.fuel.cement.kJkg * 1e-3 # MJ/kg/year # from Madlool (2012)
+
+BJ.cement.cement.kg <- 10163000 # kg/year # value from database
+
+BJ.fuel.cement <- BJ.fuel.cement.MJkg * BJ.cement.cement.kg # MJ/year
+
+BJ.exEff.cement <- 50 # % # from Figure 12 of Madlool et al. (2012)
+BJ.cement.cement <- BJ.exEff.cement / 100 * BJ.fuel.cement # MJ/year
+BJ.irrev.cement <- 30.6 / 100 * BJ.fuel.cement # MJ/year
+BJ.wasteHeat.cement <- 4 / 100 * BJ.fuel.cement # MJ/year
+BJ.effluents.cement <- 15.3 / 100 * BJ.fuel.cement # MJ/year
+
+### No cement flows for London
+
+## Analysis
+GRU.fuel.cement.kJkg <- 3230 # kJ/kg/year # from Madlool (2012)
+GRU.fuel.cement.MJkg <- GRU.fuel.cement.kJkg * 1e-3 # MJ/kg/year # from Madlool (2012)
+
+GRU.cement.cement.kg <- 5069e6 # kg/year # value from database
+
+GRU.fuel.cement <- GRU.fuel.cement.MJkg * GRU.cement.cement.kg # MJ/year
+
+GRU.exEff.cement <- 50 # % # from Figure 12 of Madlool et al. (2012)
+GRU.cement.cement <- GRU.exEff.cement / 100 * GRU.fuel.cement # MJ/year
+GRU.irrev.cement <- 30.6 / 100 * GRU.fuel.cement # MJ/year
+GRU.wasteHeat.cement <- 4 / 100 * GRU.fuel.cement # MJ/year
+GRU.effluents.cement <- 15.3 / 100 * GRU.fuel.cement # MJ/year
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="fuel.cement"] <- BJ.fuel.cement
+flows$value.BJ[flows$value.BJ=="cement.cement"] <- BJ.cement.cement
+flows$value.BJ[flows$value.BJ=="wasteHeat.cement"] <- BJ.wasteHeat.cement
+flows$value.BJ[flows$value.BJ=="irrev.cement"] <- BJ.irrev.cement
+flows$value.BJ[flows$value.BJ=="effluents.cement"] <- BJ.effluents.cement
+
+### No cement flows for London
+
+flows$value.GRU[flows$value.GRU=="fuel.cement"] <- GRU.fuel.cement
+flows$value.GRU[flows$value.GRU=="cement.cement"] <- GRU.cement.cement
+flows$value.GRU[flows$value.GRU=="wasteHeat.cement"] <- GRU.wasteHeat.cement
+flows$value.GRU[flows$value.GRU=="irrev.cement"] <- GRU.irrev.cement
+flows$value.GRU[flows$value.GRU=="effluents.cement"] <- GRU.effluents.cement
+
+```
+
+```{r exergy-steel, results="asis"}
+
+## Analysis
+BJ.allwood.steel.kg <- 12 # kg
+
+BJ.steel.steel.kg <- 12694e6 # kg/year # from database
+BJ.allwoodFactor <- BJ.steel.steel.kg / BJ.allwood.steel.kg
+
+### values from Fig 8.9, p.120 for Allwood2012
+BJ.fuel.steel <- 630 * BJ.allwoodFactor
+BJ.steel.steel <- 80 * BJ.allwoodFactor
+BJ.scrap.steel <- 120 * BJ.allwoodFactor
+BJ.exhaust.steel <- 240 * BJ.allwoodFactor
+BJ.irrev.steel <- 190 * BJ.allwoodFactor
+
+### No steel flows for London
+
+## Analysis
+GRU.allwood.steel.kg <- 12 # kg
+
+GRU.steel.steel.kg <- 3243e6 # kg/year # from database
+GRU.allwoodFactor <- GRU.steel.steel.kg / GRU.allwood.steel.kg
+
+### values from Fig 8.9, p.120 for Allwood2012
+GRU.fuel.steel <- 630 * GRU.allwoodFactor
+GRU.steel.steel <- 80 * GRU.allwoodFactor
+GRU.scrap.steel <- 120 * GRU.allwoodFactor
+GRU.exhaust.steel <- 240 * GRU.allwoodFactor
+GRU.irrev.steel <- 190 * GRU.allwoodFactor
+
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="fuel.steel"] <- BJ.fuel.steel
+flows$value.BJ[flows$value.BJ=="steel.steel"] <- BJ.steel.steel
+flows$value.BJ[flows$value.BJ=="scrap.steel"] <- BJ.scrap.steel
+flows$value.BJ[flows$value.BJ=="exhaust.steel"] <- BJ.exhaust.steel
+flows$value.BJ[flows$value.BJ=="irrev.steel"] <- BJ.irrev.steel
+
+flows$value.GRU[flows$value.GRU=="fuel.steel"] <- GRU.fuel.steel
+flows$value.GRU[flows$value.GRU=="steel.steel"] <- GRU.steel.steel
+flows$value.GRU[flows$value.GRU=="scrap.steel"] <- GRU.scrap.steel
+flows$value.GRU[flows$value.GRU=="exhaust.steel"] <- GRU.exhaust.steel
+flows$value.GRU[flows$value.GRU=="irrev.steel"] <- GRU.irrev.steel
+
+### No steel flows for London
+```
+
+```{r exergy-groundWater, results="asis"}
+
+## Analysis
+BJ.exEff.abstraction <- 50.28 # %
+ 
+BJ.h <- 40 # m
+BJ.gWater.kg <- 2220000e6 # kg/year
+
+### Apply Mgh/efficiency:
+BJ.elec.abstraction.J <- BJ.gWater.kg * 9.81 * BJ.h / (BJ.exEff.abstraction / 100) # J/year
+BJ.elec.abstraction <- BJ.elec.abstraction.J * 1e-6 # MJ/year
+
+BJ.water.abstraction <- BJ.gWater.kg * 9.81 * BJ.h * 1e-6 # MJ/year
+BJ.irrev.abstraction <- BJ.elec.abstraction - BJ.water.abstraction
+
+## Analysis
+GRU.exEff.abstraction <- 50.28 # %
+ 
+GRU.h <- 40 # m
+GRU.gWater.kg <- 0 # kg/year
+
+### Apply Mgh/efficiency:
+GRU.elec.abstraction.J <- GRU.gWater.kg * 9.81 * GRU.h / (GRU.exEff.abstraction / 100) # J/year
+GRU.elec.abstraction <- GRU.elec.abstraction.J * 1e-6 # MJ/year
+
+GRU.water.abstraction <- GRU.gWater.kg * 9.81 * GRU.h * 1e-6 # MJ/year
+GRU.irrev.abstraction <- GRU.elec.abstraction - GRU.water.abstraction
+
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="elec.abstraction"] <- BJ.elec.abstraction
+flows$value.BJ[flows$value.BJ=="water.abstraction"] <- BJ.water.abstraction
+flows$value.BJ[flows$value.BJ=="irrev.abstraction"] <- BJ.irrev.abstraction
+
+### No groundwater consumption values given for LDN.
+
+### No groundwater consumption values given for GRU.
+```
+
+```{r exergy-waterTreatment, results="asis"}
+
+# Analysis
+BJ.c1 <- 6e-6 # influent BOD mg/L
+BJ.c0 <- 1e-6 # drinking standard BOD mg/L (LOOK UP VALUE FOR THIS.)
+
+BJ.sWater.kg <- 570000e6	# kg/year
+
+BJ.vol <- BJ.gWater.kg + BJ.sWater.kg # kg/year
+
+BJ.dirty.treatmentWater <- BJ.vol * (BJ.c1 - BJ.c0) * (18.25 + 0.077 * log(BJ.c1 / BJ.c0)) * 1e3 * (1e-6)
+BJ.clean.treatmentWater <- BJ.vol * (BJ.c0 - 0) * (18.25 + 0.077 * log(BJ.c0)) * 1e3 * (1e-6)
+BJ.irrev.treatmentWater <- BJ.dirty.treatmentWater - BJ.clean.treatmentWater
+
+LDN.c1 <- 6e-6 # influent BOD mg/L
+LDN.c0 <- 1e-6 # drinking standard BOD mg/L (LOOK UP VALUE FOR THIS.)
+
+LDN.vol <- 711760e6	# kg/year
+
+LDN.dirty.treatmentWater <- LDN.vol * (LDN.c1 - LDN.c0) * (18.25 + 0.077 * log(LDN.c1 / LDN.c0)) * 1e3 * (1e-6)
+LDN.clean.treatmentWater <- LDN.vol * (LDN.c0 - 0) * (18.25 + 0.077 * log(LDN.c0)) * 1e3 * (1e-6)
+LDN.irrev.treatmentWater <- LDN.dirty.treatmentWater - LDN.clean.treatmentWater
+
+# Analysis
+GRU.c1 <- 6e-6 # influent BOD mg/L
+GRU.c0 <- 1e-6 # drinking standard BOD mg/L (LOOK UP VALUE FOR THIS.)
+
+GRU.sWater.kg <- 570000e6	# kg/year
+
+GRU.vol <- GRU.gWater.kg + GRU.sWater.kg # kg/year
+
+GRU.dirty.treatmentWater <- GRU.vol * (GRU.c1 - GRU.c0) * (18.25 + 0.077 * log(GRU.c1 / BJ.c0)) * 1e3 * (1e-6)
+GRU.clean.treatmentWater <- GRU.vol * (GRU.c0 - 0) * (18.25 + 0.077 * log(GRU.c0)) * 1e3 * (1e-6)
+GRU.irrev.treatmentWater <- GRU.dirty.treatmentWater - GRU.clean.treatmentWater
+
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="dirty.treatmentWater"] <- BJ.dirty.treatmentWater
+flows$value.BJ[flows$value.BJ=="clean.treatmentWater"] <- BJ.clean.treatmentWater
+flows$value.BJ[flows$value.BJ=="irrev.treatmentWater"] <- BJ.irrev.treatmentWater
+
+flows$value.LDN[flows$value.LDN=="dirty.treatmentWater"] <- LDN.dirty.treatmentWater
+flows$value.LDN[flows$value.LDN=="clean.treatmentWater"] <- LDN.clean.treatmentWater
+flows$value.LDN[flows$value.LDN=="irrev.treatmentWater"] <- LDN.irrev.treatmentWater
+
+flows$value.GRU[flows$value.GRU=="dirty.treatmentWater"] <- GRU.dirty.treatmentWater
+flows$value.GRU[flows$value.GRU=="clean.treatmentWater"] <- GRU.clean.treatmentWater
+flows$value.GRU[flows$value.GRU=="irrev.treatmentWater"] <- GRU.irrev.treatmentWater
+```
+
+```{r exergy-wastewaterTreatment, results="asis"}
+
+## Analysis
+BJ.c1 <- 0.085e-3 # wastewater COD mg/L
+BJ.c0 <- 1e-6 # reference BOD mg/L (LOOK UP VALUE FOR THIS.)
+
+BJ.vol.wastewater <- 1292100e6	# kg
+
+BJ.wastewater.treatmentWastewater <- BJ.vol.wastewater * (BJ.c1 - BJ.c0) * (18.25 + 0.077 * log(BJ.c1 / BJ.c0)) * 1e3 * (1e-6) # MJ/year
+
+### From knowing ex.wastewater is 87% of the input exergy, we can define the other exergies:
+
+BJ.chlorine.treatmentWastewater <- (BJ.wastewater.treatmentWastewater / 87) * 1 # MJ/year
+BJ.elec.treatmentWastewater <- (BJ.wastewater.treatmentWastewater / 87) * 12 # MJ/year
+BJ.effluent.treatmentWastewater <- (BJ.wastewater.treatmentWastewater / 87) * 14 # MJ/year
+BJ.irrev.treatmentWastewater <- (BJ.wastewater.treatmentWastewater / 87) * 86 # MJ/year
+
+### LDN wastewater value not provided
+LDN.c1 <- 0.085e-3 # wastewater COD mg/L
+LDN.c0 <- 1e-6 # reference BOD mg/L (LOOK UP VALUE FOR THIS.)
+
+LDN.vol.wastewater <- 4e10	# kg This value not from CK's database, but from calculating value from https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/69592/pb13811-waste-water-2012.pdf
+
+LDN.wastewater.treatmentWastewater <- LDN.vol.wastewater * (LDN.c1 - LDN.c0) * (18.25 + 0.077 * log(LDN.c1 / LDN.c0)) * 1e3 * (1e-6) # MJ/year
+
+### From knowing ex.wastewater is 87% of the input exergy, we can define the other exergies:
+
+LDN.chlorine.treatmentWastewater <- (LDN.wastewater.treatmentWastewater / 87) * 1 # MJ/year
+LDN.elec.treatmentWastewater <- (LDN.wastewater.treatmentWastewater / 87) * 12 # MJ/year
+LDN.effluent.treatmentWastewater <- (LDN.wastewater.treatmentWastewater / 87) * 14 # MJ/year
+LDN.irrev.treatmentWastewater <- (LDN.wastewater.treatmentWastewater / 87) * 86 # MJ/year
+
+## Analysis
+GRU.c1 <- 0.085e-3 # wastewater COD mg/L
+GRU.c0 <- 1e-6 # reference BOD mg/L (LOOK UP VALUE FOR THIS.)
+
+GRU.vol.wastewater <- 935732e6	# kg
+
+GRU.wastewater.treatmentWastewater <- GRU.vol.wastewater * (GRU.c1 - GRU.c0) * (18.25 + 0.077 * log(GRU.c1 / GRU.c0)) * 1e3 * (1e-6) # MJ/year
+
+### From knowing ex.wastewater is 87% of the input exergy, we can define the other exergies:
+
+GRU.chlorine.treatmentWastewater <- (GRU.wastewater.treatmentWastewater / 87) * 1 # MJ/year
+GRU.elec.treatmentWastewater <- (GRU.wastewater.treatmentWastewater / 87) * 12 # MJ/year
+GRU.effluent.treatmentWastewater <- (GRU.wastewater.treatmentWastewater / 87) * 14 # MJ/year
+GRU.irrev.treatmentWastewater <- (GRU.wastewater.treatmentWastewater / 87) * 86 # MJ/year
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="wastewater.treatmentWastewater"] <- BJ.wastewater.treatmentWastewater
+flows$value.BJ[flows$value.BJ=="effluent.treatmentWastewater"] <- BJ.effluent.treatmentWastewater
+flows$value.BJ[flows$value.BJ=="chlorine.treatmentWastewater"] <- BJ.chlorine.treatmentWastewater
+flows$value.BJ[flows$value.BJ=="elec.treatmentWastewater"] <- BJ.elec.treatmentWastewater
+flows$value.BJ[flows$value.BJ=="irrev.treatmentWastewater"] <- BJ.irrev.treatmentWastewater
+
+flows$value.LDN[flows$value.LDN=="wastewater.treatmentWastewater"] <- LDN.wastewater.treatmentWastewater
+flows$value.LDN[flows$value.LDN=="effluent.treatmentWastewater"] <- LDN.effluent.treatmentWastewater
+flows$value.LDN[flows$value.LDN=="chlorine.treatmentWastewater"] <- LDN.chlorine.treatmentWastewater
+flows$value.LDN[flows$value.LDN=="elec.treatmentWastewater"] <- LDN.elec.treatmentWastewater
+flows$value.LDN[flows$value.LDN=="irrev.treatmentWastewater"] <- LDN.irrev.treatmentWastewater
+
+flows$value.GRU[flows$value.GRU=="wastewater.treatmentWastewater"] <- GRU.wastewater.treatmentWastewater
+flows$value.GRU[flows$value.GRU=="effluent.treatmentWastewater"] <- GRU.effluent.treatmentWastewater
+flows$value.GRU[flows$value.GRU=="chlorine.treatmentWastewater"] <- GRU.chlorine.treatmentWastewater
+flows$value.GRU[flows$value.GRU=="elec.treatmentWastewater"] <- GRU.elec.treatmentWastewater
+flows$value.GRU[flows$value.GRU=="irrev.treatmentWastewater"] <- GRU.irrev.treatmentWastewater
+
+```
+
+```{r table-solid-waste, results="asis"}
+
+tab.solidWaste.csv <- read.csv("03_metrics/global-solid-waste.csv", check.names=FALSE)
+
+waste.exergy.av <- sum(tab.solidWaste.csv$"$c_i$" *
+		       tab.solidWaste.csv$"exergy (MJ/kg)") / 100
+
+#tab.solidWaste.tex <- xtable(tab.solidWaste.csv, caption="Global solid waste composition, taken from \\citet{Hoornweg2012}, Figure 7.\\label{tab:natGas}", align="llllll")
+#
+#print(tab.solidWaste.tex,
+#      size='\\small',
+#      include.rownames=FALSE,
+#      sanitize.text.function=identity)
+#
+waste.exergy.av <- sum(tab.solidWaste.csv$"$c_i$" *
+		       tab.solidWaste.csv$"exergy (MJ/kg)") / 100
+
+BJ.waste <- waste.exergy.av * 4781 * 1e6 # MJ/kg * kT * 1e6 kg
+LDN.waste <- waste.exergy.av * 3459 * 1e6 # MJ/kg * kT * 1e6 kg
+GRU.waste <- waste.exergy.av * 5836 * 1e6 # MJ/kg * kT * 1e6 kg
+
+## Add results to dataframe
+flows$value.BJ[flows$value.BJ=="other.landfill"] <- BJ.waste
+flows$value.LDN[flows$value.LDN=="other.landfill"] <- LDN.waste
+flows$value.GRU[flows$value.GRU=="other.landfill"] <- GRU.waste
+```
+
+```{r overall-analysis, results="asis"}
+
+library(dplyr)
+
+## calculate Beijing and London exergy efficiency
+flows$value.BJ <- as.numeric(flows$value.BJ) # Convert results from characters
+flows$value.LDN <- as.numeric(flows$value.LDN) # Convert results from characters
+flows$value.GRU <- as.numeric(flows$value.GRU) # Convert results from characters
+#write.csv(flows, "working.csv")
+
+output <- flows %>% filter(type=="out")
+input <- flows %>% filter(type=="in")
+
+### Get GDP values from database
+BJ.gdp <- cities.flows %>%
+  filter(City=="Beijing" & Year=="2006" & variable=="gdp.ppp") %>%
+  select(value)
+LDN.gdp <- cities.flows %>%
+  filter(City=="London" & Year=="2006" & variable=="gdp.ppp") %>%
+  select(value)
+GRU.gdp <- cities.flows %>%
+  filter(City=="Sao Paulo" & Year=="2006" & variable=="gdp.ppp") %>%
+  select(value)
+BJ.gdp <- as.numeric(BJ.gdp)
+LDN.gdp <- as.numeric(LDN.gdp)
+GRU.gdp <- as.numeric(GRU.gdp)
+
+BJ.depletion <- sum(input$value.BJ, na.rm=TRUE)
+LDN.depletion <- sum(input$value.LDN, na.rm=TRUE)
+GRU.depletion <- sum(input$value.GRU, na.rm=TRUE)
+BJ.depletion.gdp <- BJ.depletion / BJ.gdp
+LDN.depletion.gdp <- LDN.depletion / LDN.gdp
+GRU.depletion.gdp <- GRU.depletion / GRU.gdp
+
+BJ.efficiency <- sum(output$value.BJ, na.rm=TRUE) / sum(input$value.BJ, na.rm=TRUE) * 100 # %
+LDN.efficiency <- sum(output$value.LDN, na.rm=TRUE) / sum(input$value.LDN, na.rm=TRUE) * 100 # %
+GRU.efficiency <- sum(output$value.GRU, na.rm=TRUE) / sum(input$value.GRU, na.rm=TRUE) * 100 # %
+
+write.csv(flows, "03_metrics/city-exergy-results.csv")
+
+ex.results.BJ <- c("Beijing",
+		   signif(c(BJ.depletion/1e12, BJ.efficiency, BJ.depletion.gdp), 3))
+ex.results.LDN <- c("London",
+		    signif(c(LDN.depletion/1e12, LDN.efficiency, LDN.depletion.gdp), 3))
+ex.results.GRU <- c("Sao Paulo",
+		    signif(c(GRU.depletion/1e12, GRU.efficiency, GRU.depletion.gdp), 3))
+```
+
+```{r exergy-table, results="asis"}
+## Tabulate summary
+exergy.summary <- rbind(ex.results.BJ, ex.results.LDN, ex.results.GRU)
+
+exergy.summary.plotData <- as.data.frame(exergy.summary) # For use in generating a plot of the exergy results for each city (for PowerPoint)
+colnames(exergy.summary.plotData) <- c("City", "Depletion", "Efficiency", "Depletion.GDP")
+
+colnames(exergy.summary) <- c("City", 
+			      "Depletion $\\alpha^{in}_{ex}$ [$\\times 10^{12}$ MJ]",
+			      "Efficiency $\\eta_{ex}$ [\\%]",
+			      "$\\alpha^{in}_{ex}/\\mbox{GDP}$ [MJ/USD]")
+exergy.summary.tex <- xtable(exergy.summary, caption="Results for exergy analysis for Beijing, London and Sao Paulo.\\label{tab:exergy-results}", align="lllll")
+
+print(exergy.summary.tex,
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
+
+```{r exergy-summary-PowerPoint, results="asis"}
+exergy.summary.plotData <- melt(exergy.summary.plotData, c("City"))
+
+exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
+  geom_bar(stat="identity") +
+  facet_wrap( ~ variable, ncol=3, scales="free") +
+  theme_bw()
+
+```
+
+\begin{figure}
+\centering
+  \begin{subfigure}[b]{\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-beijing.pdf}
+  \caption{Beijing.}
+  \label{fig:sankey-beijing}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{\textwidth}
+  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-saopaulo.pdf}
+  \caption{Sao Paolo.}
+  \label{fig:sankey-saopaulo}
+  \end{subfigure}
+
+  \caption{Exergy flows represented as a Sankey diagram, drawn using the tool built by \citet{Counsell2014}. \textbf{Key:} `\textsf{Elec.}' = electricity used in other processes, `\textsf{D/C/I}' = Domestic, commercial and industrial water use, `\textsf{WH}' = waste heat, `\textsf{Irrev.}' = irreversibilities. Note: `\textsf{Fuel (other)}' includes natural gas, and other fuels accounted for but not identified by name in the urban metabolism dataset of \citet{Kennedy2014}.}
+  \label{fig:sankey-results}
+\end{figure}
+
+#### Ecological network analysis
+
+ENA requires a 'common currency' to unify resource flows, and here we use exergy given (i) the precedent provided by @Liu2011a, and (ii) the fact we know the exergy flows from the analysis above. We follow a simplified version of the methodology in @Liu2011a, which starts by defining the same control volume around the resource flows and processes as for the exergy analysis. We then decide on appropriate organisational compartments into and out of which, all exergy fluxes will transfer, defining six sectors, broadly based on those used by @Zhang2009b:
+
+a. External environment (everything outside the grey box)
+a. Internal environment (everything inside the grey box, which contains the remaining four compartments)
+a. Energy management (the conversion of renewables and fossil fuels into final energy)
+a. Water management (the treatment and supply of water for industrial, commercial and domestic use)
+a. Waste management (landfill and incineration)
+a. Materials management (cement and steel production)
+
+Using the exergy analysis results, we assign exergy flows between compartments. For example, electricity from a coal-fuelled power plant comes from the energy compartment (c) some of which is used for final consumption in the internal environment (b), and so would be recorded as flow $f_{cb}$. All the flows are combined into a matrix, on which operations are performed which allow us to identify the mutualism and exploitation between each pair of compartments (specifically Equations (12) and (13) in @Liu2011a). These operations return an 'integral utility matrix' whose elements give a non-dimensional quantification of the combined direct and indirect exergy contributions to each compartment. We have displayed these results as directed graphs in Figure \ref{fig:ena}, which show similarities and differences between the three cities. For example, each city exhibits mutualistic exergy transfers between the internal and external environments, but when comparing the water-energy relationships, London and Sao Paulo exhibit mutuality, while in Beijing the water sector exploits the energy sector (due to
+groundwater pumping requirements).
+
+```{r network-analysis, results="asis"}
+exergy.network <- read.csv("03_metrics/city-exergy-network.csv")
+exergy.network$flow <- apply(cbind('f', exergy.network[c('comp.out', 'comp.in')]), 1, paste, collapse="", sep="")
+BJ.exergy.network <- select(exergy.network, -c(LDN.value, GRU.value))
+LDN.exergy.network <- select(exergy.network, -c(BJ.value, GRU.value))
+GRU.exergy.network <- select(exergy.network, -c(BJ.value, LDN.value))
+
+BJ.flows.total <- BJ.exergy.network %>% group_by(comp.out, comp.in) %>% summarize(total=sum(BJ.value, na.rm=TRUE))
+LDN.flows.total <- LDN.exergy.network %>% group_by(comp.out, comp.in) %>% summarize(total=sum(LDN.value, na.rm=TRUE))
+GRU.flows.total <- GRU.exergy.network %>% group_by(comp.out, comp.in) %>% summarize(total=sum(GRU.value, na.rm=TRUE))
+
+flows.total <- merge(BJ.flows.total, LDN.flows.total, by=c("comp.out", "comp.in"))
+flows.total <- merge(flows.total, GRU.flows.total, by=c("comp.out", "comp.in"))
+#flows.total <- filter(flows.total, flow!="fNANA")
+flows.total <- na.omit(flows.total)
+names(flows.total) <- c("comp.out", "comp.in", "BJ", "LDN", "GRU")
+#flows.total[15, ] <- c(5, 5, NA, NA, NA) ## Otherwise 5th column is ignored
+
+### Transform into matrix
+F.BJ <- acast(flows.total, comp.out~comp.in, value.var="BJ")
+F.LDN <- acast(flows.total, comp.out~comp.in, value.var="LDN")
+F.GRU <- acast(flows.total, comp.out~comp.in, value.var="GRU")
+
+F.BJ[is.na(F.BJ)] <- 0
+F.LDN[is.na(F.LDN)] <- 0
+F.GRU[is.na(F.GRU)] <- 0
+##F[3,5] <- 1000000000 # To simulate an EfW flow
+
+ena.direct <- function(F){
+
+  D <- matrix(nrow=6, ncol=6)
+  z <- matrix(nrow=6, ncol=0)
+
+
+  for (i in 1:6){
+    z[i] <- sum(F[i, ])
+    for (j in 1:6){
+      D[i, j] <- (F[i, j] - F[j, i]) / z[i]
+    }
+  }
+  D[!is.finite(D)] <- 0
+
+  return(D)
+}
+
+## Calculate dimensionless integral utility matrix
+ena.utility <- function(D){
+  I <- diag(6)
+  U = solve(I - D)
+  return(U)
+}
+
+## Calculate mutualism index M
+ena.mutualism <- function(U,D){
+
+  M <- data.frame(D=c(0), U=c(0))
+
+  signs <- sign(U)
+  s.plus <- sum(signs>0)
+  s.minus <- sum(signs<0)
+  M$U <- s.plus / s.minus ## See Figure 6 of @Zhang2009b
+  M$D <- sum(sign(D>0)) / sum(sign(D<0))  ## See Figure 6 of @Zhang2009b
+  return(M)
+}
+
+## Perform ecological network analysis for Beijing
+D.BJ <- ena.direct(F.BJ)
+U.BJ <- ena.utility(D.BJ)
+M.BJ<- ena.mutualism(U.BJ, D.BJ)
+
+## Perform ecological network analysis for London
+D.LDN <- ena.direct(F.LDN)
+U.LDN <- ena.utility(D.LDN)
+M.LDN<- ena.mutualism(U.LDN, D.LDN)
+
+## Perform ecological network analysis for Sao Paulo
+D.GRU <- ena.direct(F.GRU)
+U.GRU <- ena.utility(D.GRU)
+M.GRU<- ena.mutualism(U.GRU, D.GRU)
+
+```
+
+```{r network-analysis-results-table, results="asis"}
+## Tabulate results
+ena.results.BJ <- c("Beijing", M.BJ)
+ena.results.LDN <- c("London", M.LDN)
+ena.results <- rbind(ena.results.BJ, ena.results.LDN)
+colnames(ena.results) <- c("City", "$\\mathbf{D}$", "$\\mathbf{U}$")
+ena.results.tex <- xtable(ena.results, caption="Mutualism values from ecological network analysis.\\label{tab:results-ena}", align="llll")
+
+#print(ena.results.tex,
+#      include.rownames=FALSE,
+#      sanitize.text.function=identity,
+#      comment = FALSE)
+```
+
+```{r plot-network-matrix, fig.height=3, fig.cap="Compartmental relationships for Beijing (2006)."}
+
+## Combine Beijing and London mutualism
+D.BJ <- melt(sign(D.BJ))
+D.BJ$City <- "Beijing"
+D.BJ$Type <- "D"
+U.BJ <- melt(sign(U.BJ))
+U.BJ$City <- "Beijing"
+U.BJ$Type <- "U"
+D.LDN <- melt(sign(D.LDN))
+D.LDN$City <- "London"
+D.LDN$Type <- "D"
+U.LDN <- melt(sign(U.LDN))
+U.LDN$City <- "London"
+U.LDN$Type <- "U"
+
+mutualism <- rbind(D.BJ, U.BJ, D.LDN, U.LDN)
+colnames(mutualism) <- c("Input", "Output", "value", "City", "Type")
+
+## Refactor compartment names for more descriptive labels
+mutualism <- transform(mutualism,
+		  Input=factor(Input, levels=c(1,2,3,4,5,6),
+				    labels=c("Internal (1)", "External (2)", "Energy (3)", "Water (4)", "Waste (5)", "Materials (6)")),
+		  Output=factor(Output, levels=c(1,2,3,4,5,6),
+				    labels=c("Internal (1)", "External (2)", "Energy (3)", "Water (4)", "Waste (5)", "Materials (6)"))
+		  )
+
+## Refaactor compartments values to +,-,0
+mutualism <- transform(mutualism,
+		       value=factor(value, levels=c(-1,0,1),
+				    labels=c("-","0","+")))
+
+plot.network <- ggplot(filter(mutualism, City=="Beijing"), aes(Input, Output)) +
+  geom_tile(fill=NA, color="black", na.value=NA) +
+  geom_text(aes(label=value)) +
+#  facet_grid(City~Type) +
+  facet_wrap(~Type) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle=30, hjust=1),
+	strip.text = element_text(face="bold.italic"))
+#plot.network
+```
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+  \input{03_metrics/img/figure-ena-beijing.tex}
+  \caption{Beijing.}
+  \label{fig:ena-beijing}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.4\textwidth}
+  \input{03_metrics/img/figure-ena-london.tex}
+  \caption{London.}
+  \label{fig:ena-london}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.4\textwidth}
+  \input{03_metrics/img/figure-ena-saopaulo.tex}
+  \caption{Sao Paulo.}
+  \label{fig:ena-saopaulo}
+  \end{subfigure}
+
+\caption{Exergetic dependencies for the three cities. The sum total of direct and indirect exergy flows are quantified between four resource management sectors as well as the city's internal and exeternal environments (note that the \citet{Kennedy2014} dataset does not record material flows for London). Arrow directions indicate mutualism and exploitation as per Figure \ref{fig:ena-example}; arrow thickness is proportional to the element value in the integral utility matrix.}
+\label{fig:ena}
+\end{figure}
+
+
+### Summary
+\label{sec:apply-summary}
+
+This section has applied black-box and grey-box analysis to UM data, so that we can appreciate the relative benefits of their associated metrics for the benefit of decision makers who are faced with multiple options to meet demands for products and services in urban areas.  We suggested that since any one black-box metric cannot be indicative of the resource consumption performance of a city more generally (owing to the weak rank correlations), the inconsistent rankings may be due to features that are invisible to them. Specifically, we identify these differences as the characteristics of the processes used in cities, and the way they are organised. These variations in process and organisation detail might arise from a need for cities to meet different resource demand patterns, from different local environmental conditions, political and market structures, or other factors.  Variations in process and organisation detail, and their associated resource flows, mean that the overall system-level performance metrics will also vary. Therefore, to understand how an MR system such as a city affects resource flows requires analyses which are sensitive to such variations; an advantage which belongs to grey-box methods, which consider the resource flows at the individual process level (exergy analysis) and the organisational level (ENA).
+
+## Discussion
+
+The aim of this paper is to show how measures calculated from urban metabolism accounts enable one to evaluate the resource performance of an urban area, specifically with regard to decision makers who are faced with a number of pathways (chains of resource management processes) to convert resource inputs $r_i$ into products and services $r_j$. For this purpose, we have suggested that grey-box metrics are preferable to black-box metrics, because of the need to understand the effect of variations in process organisation and detail on resource flows. In this section we discuss some of the ways in which grey-box analysis could provide useful information to stakeholders, before highlighting its limitations, and how these might be overcome.
+
+### Applications for grey-box metrics
+
+We have shown that by looking 'inside' an urban resource management system, additional analyses such as exergy analysis and ENA make it possible to observe the interactions of resource conversion processes and their associated management sectors. These can be used by stakeholders to bring about real-world benefits.   For example, from the exergy analysis, in particular recognising the process-based 'engineering' perspective it provides on the MRTP, we can:
+
+- *Understand resource efficiency at the process level.* Exergy analysis highlights the presence of inefficient processes (those with large irreversibilities) in an urban system (such as the coal plant in Beijing), and hence where investment could be used to upgrade or replace technologies in order to reduce $Ex^{irrev}_p$; thus increasing $Ex^{prod}_p + Ex^{waste}_p$. This will reduce the $Ex^{in}_p$ requirements and/or increase availability of wastes for use in other processes (see the next item); both of these interventions will increase an area's overall exergy efficiency.
+- *Understand the deployment of resources amongst the process.* By unifying energy and material flows under a common measure, a decision maker can see the 'value' of different resources in relation to each other, which can inform decisions on how resources might be redeployed so that a system can meet demand, and simultaneously increase exergy efficiency. For example, Figure \ref{fig:sankey-beijing} shows that if Beijing's waste heat exergy from power generation was recovered, it would be sufficient to meet heating demand and provide the energy required for wastewater treatment. Similarly, urban waste has a high exergetic worth, which might provide an energy source for other processes.
+- *Understand the need for contextual allowances.* Our analysis showed that the exergy depletion $\alpha^{in}_{ex}$ caused by Beijing is an order of magnitude larger than that caused by London; but we know that Beijing is meeting a demand for steel and cement, and London is not. This additional knowledge shows where higher $\alpha^{in}_{ex}$ or $\alpha^{in}_{ex}/\mbox{GDP}$ might be justified when comparing city performance.
+
+In contrast to the engineering perspective of exergy analysis, ENA offers an organisational or management view of an MR system, providing an objective measure of compartmental interdependencies from the point of view of a system's 'organisational actors' (such as government authorities, utility service companies, and industrial and commercial services). The interventions will vary according to the value judgements made by the system operator. One benefit is to identify where actors from different management sectors might work together to promote symbiotic relationships in order to reduce exergy depletion and increase exergy efficiency. For example, in both Beijing and Sao Paolo, the waste sector 'exploits' the materials sector, by failing to contribute any exergetic value to it (Figures \ref{fig:ena-beijing} and \ref{fig:ena-saopaulo}). This relationship could be made mutual via indirect flows, for example through manufacturing refuse derived fuel (RDF) from solid waste, and using energy obtained from its incineration for material production processes.[^mutual-exploit] A change in the system like this would require the operators of the waste and energy sectors to collaborate. An alternative application would identify where compartmental interdependencies might put the system at risk of failure. For example, rather than a benefit, it might be considered problematic to rely on energy from waste for the materials industry, if increased recycling rates were to reduce waste output. Another application arises from the city's contrasting dependencies between the water and energy sectors: in London and Sao Paulo, there is a mutual relationship, but in Beijing the water sector exploits the energy sector. This is because Beijing's water supply energy requirements are higher due to energy consumption by groundwater abstraction. Decision makers should therefore be aware that Beijing's water supply is particularly sensitive to energy production, and therefore ensure that energy stocks are sufficient to guarantee the long-term stability of water supply.
+
+[^mutual-exploit]: The terms 'mutual' and 'exploit' should not necessarily be ladened with the respective positive and negative sentiments that the words may suggest. For example, it might be considered that an exergetic contribution from the internal environment to the external environment is undesirable (if this is due to wastes, for example), despite the 'mutual' relationship signified in each case of Figure \ref{fig:ena}.
+
+### The limitations of grey-box metrics
+
+The above discussion has laid a strong theoretical foundation for decision makers to adopt grey-box metrics, but if they are to use these methods to assist investment or policy decisions, they must be aware of their limitations. Here we outline two types of limitation, and suggest how they might be overcome.
+
+The first limitation is the sensitivity of the exergy analysis (and hence the ENA analysis which is based on the exergy analysis) to the quality of metabolism data. The UM dataset we use identifies only the flows into and out of the urban system, and therefore the exergy analysis procedure we follow in Section \ref{sec:apply-grey-exergy} relies on two key assumptions. Firstly, since the UM dataset contains very little information about the types of processes in the conversion chain between $r_i$ and $r_j$, we must assume these for ourselves. Identifying the larger-scale processes is less questionable -- knowing total electricity demand and the proportion derived from certain fuels (from information provided in the dataset) allows us to ascertain which power conversion processes exist -- but smaller, intermediate processes (such as pre-processing of fuels) are harder to determine, which could leave some $Ex^*_p$ terms unaccounted for, affecting the results of exergy efficiency calculations. Secondly, correctly assigning values to the $Ex^*_p$ terms is problematic, due to unknowns about the 'quality' of resources and reference environments. These include the temperatures of final energy forms and the areas with heating demands; the chemical composition of fuels; the contaminant content of an area's water resources, and water treatment standards; and the depths and elevations of groundwater and surface water. Similarly, assumptions pose problems for ENA. Here we have assumed how processes are distributed amongst management compartments (for example, we have said that different actors are responsible for water and energy); in reality our assumptions may be incorrect.
+
+The second limitation applies even if the above assumptions are unnecessary, namely that grey-box metrics are arguably harder to comprehend, calculate and communicate than the black-box metrics. The latter can each be defined with a single formula and are easily evaluated from urban metabolism data. The former however require multiple-step procedures to calculate, and rely upon potentially unfamiliar concepts like exergy, mutualism, and exploitation. Therefore, the significantly increased knowledge required to use and apply grey-box metrics might inhibit their uptake, especially where non-specialists are involved in policy and investment decisions.
+
+Both of these shortcomings have the potential to be overcome. To reduce the need for assumptions regarding processes and resource flow quality, we recommend that urban metabolism datasets should be made more comprehensive through the inclusion of an additional three layers of information. Firstly, to address the lack of process information in UM data, accounting should include the processes contained within the urban boundary, such that anyone reading the data could intuitively draw the directed graph described in the exergy analysis method (Section \ref{sec:apply-grey-exergy}). In practice, it would clearly be difficult to include all resource conversion process; however our analysis suggests that thermal processes (e.g. electricity generation from fossil fuels) dominate exergy flows for an urban area and these should therefore be the focus of early work. Secondly, to correctly value $Ex^*_p$ terms, resource quality values (thermal, chemical and physical properties, as described above) should be recorded. Thirdly, to support ENA, information about resource governance (authorities and companies managing the various resources) should be collected. To address the comprehension, calculation, and communication difficulties of grey-box metrics, efforts should focus on how exergy analysis and ENA principles are best taught and communicated to the relevant decision makers, perhaps through user-friendly computational tools and informative visualisation techniques.
+
+## Conclusions
+
+This paper set out to evaluate how energy and material flow accounts from urban metabolism studies can be used to analyse the performance and efficiency of urban resource consumption.  More generally, our goal was to understand how such metrics might assist decision makers in multi-resource systems who are faced with a number of options about how to meet demand for products and services $r_j$ (due to the existence of different combinations of processes in an urban area which can convert resource inputs). We set out a theoretical framework which describes the various ways resource performance metrics can be formulated for MR systems in general, and then applied these measures to urban metabolic flow data. The results suggested that black-box metrics were only of limited use, since they failed to account for variations in process and organisational detail, which can be better understood through so-called grey-box analysis methods.  We therefore argued that urban metabolism accounts should be extended to include the necessary data on major urban resource conversion processes (in order to minimise the need for assumptions in exergy and ENA calculations), and that efforts should be made to support decision makers who want to use these methods.
+
+In addition to the recommendations we have already made, further work can develop our findings in four ways. Firstly, our conclusions are based on the new empirical result that black-box metrics of urban resource performance show no significant rank correlation with each other; this finding should be confirmed using other datasets. Secondly, higher resolution grey-box analysis (using more internal processes and compartments) should be conducted to quantify the trade-off between insights obtained and data required. Thirdly, additional metrics might be explored which provide further insights to decision makers (for example, decomposition analysis [@Zucaro2014]). Fourthly, work should demonstrate how these methods apply to other types of MR systems (from the production of a single resource, to the management of entire economies).  The urban systems studied in this paper are just one example of this larger category of production systems, whose improved performance are vital for wider sustainability goals.
