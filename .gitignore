@@ -22,3 +22,6 @@
 .Rhistory
 !metab-hierarchy.pdf
 *.svg
+cache/
+*/cache/
+*.png

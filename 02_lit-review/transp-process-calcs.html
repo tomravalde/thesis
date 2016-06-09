@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Calculation details for resource quantities for the different types of transport processes</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="/home/tr608/.pandoc/marked/kultiad-serif.css">
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<header>
+<h3 class="date">May 2016</h3>
+
+<h1 class="title">Calculation details for resource quantities for the different types of transport processes</h1>
+
+
+<h2 class="author">Tom Ravalde</h2>
+<p class="affilation"><em>Imperial College London</em></p>
+<h2 class="author">James Keirstead</h2>
+<p class="affilation"><em>Principle data scientist at Cambridge Assessments (formally of Imperial College London)</em></p>
+
+</header>
+
+
+
+<h2 id="electricity">Electricity</h2>
+<p>We will assume no losses along the length of the cable, given that the lengths are negligable (10 km), and losses are between about 3-7% over 1,000 km (according to <a href="http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&amp;d_KV_Apr2014_GSOK%201.pdf">ETSAP</a>). Thus, in <a href="../modelling/data/transport-yaml/cable.yaml">cable.yaml</a> we only define parameters of +1 and -1 for the quantity coefficient (leaving the distance coefficient as 0).</p>
+<h2 id="pipe-flow-water">Pipe flow (water)</h2>
+<p>The value of parameters for pipe flow</p>
+<ul>
+<li><a href="../modelling/data/transport-yaml/pipe_cold_primary_feed.yaml">pipe_cold_primary_feed.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_cold_primary_return.yaml">pipe_cold_primary_return.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_cold_secondary_feed.yaml">pipe_cold_secondary_feed.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_cold_secondary_return.yaml">pipe_cold_secondary_return.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_hot_primary_feed.yaml">pipe_hot_primary_feed.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_hot_primary_return.yaml">pipe_hot_primary_return.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_hot_secondary_feed.yaml">pipe_hot_secondary_feed.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_hot_secondary_return.yaml">pipe_hot_secondary_return.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/wastewater.yaml">pipe_wastewater.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_waterPotable.yaml">pipe_waterPotable.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_water_pure.yaml">pipe_water_pure.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_water_reclaimed.yaml">pipe_water_reclaimed.yaml</a></li>
+<li><a href="../modelling/data/transport-yaml/pipe_water_reclaimed_cold.yaml">pipe_water_reclaimed_cold.yaml</a></li>
+</ul>
+<p>Assuming a horizontal pipe, energy will be required for the inter-zonal transport of water, in order for it to overcome the head loss <span class="math">\(h_f\)</span> due to friction, quantified according to the so called hydraulic slope <span class="math">\(S\)</span> of a pipe of length <span class="math">\(L\)</span>:</p>
+<p><span class="math">\[
+\begin{align}
+h_f = SL
+\end{align}
+\]</span></p>
+<p>For turbulent flow, <span class="math">\(S\)</span> is given by the Darcy-Weisbach equation:</p>
+<p><span class="math">\[
+\begin{align}
+S = f_D \frac{1}{2g} \frac{V^2}{D}
+\end{align}
+\]</span></p>
+<p>where <span class="math">\(f_D\)</span> is the Darcy Friction factor, <span class="math">\(V\)</span> is the flow velocity, and <span class="math">\(D\)</span> is the pipe diameter.</p>
+<p>For our input-output black-box representation of a pipe, we need to express <span class="math">\(h_f=f(Q, L)\)</span>, where <span class="math">\(Q\)</span> is the mass flow rate (<span class="math">\(m^3/s\)</span>), calculated from the product of the pipe area (<span class="math">\(A\)</span>) and flow velocity:</p>
+<p><span class="math">\[
+\begin{align}
+Q = AV
+\end{align}
+\]</span></p>
+<p>Re-arranging, we calculate:</p>
+<p><span class="math">\[
+\begin{align}
+V^2 &amp;= Q^2/A^2 \\
+&amp;= \frac{16Q^2}{\pi^4 D^4}
+\end{align}
+\]</span></p>
+<p>Inputting this into our equation for <span class="math">\(h_f\)</span>:</p>
+<p><span class="math">\[
+\begin{align}
+h_f=\frac{8 f_D}{g \pi^4 D^3} Q^2 L \\
+&amp;= \frac{16Q^2}{\pi^4 D^4}
+\end{align}
+\]</span></p>
+<p>For our black-box representation, by definition, the volume flow rate is <span class="math">\(1 m^3/s\)</span>, such that <span class="math">\(Q^2=Q\)</span>. We also assume that <span class="math">\(D = 0.5 m^3\)</span>, and <span class="math">\(f_D = 0.04\)</span>, thus the energy required for pumping is given as:</p>
+<p><span class="math">\[
+\begin{align}
+\mbox{Electrical energy} &amp;= h_f \\
+&amp;= 0.0054 L
+\end{align}
+\]</span></p>
+<p>which we will attribute entirely to the zone of origin, see for example <a href="../modelling/data/transport-yaml/pipe_water.yaml">pipe_water.yaml</a>.</p>
+<p>TODO: Maximum transport rate (1m3/s)?</p>
+<h2 id="pipe-flow-gas">Pipe flow (gas)</h2>
+<p>Assume no electrical energy required.</p>
+<h2 id="vehicle-transport">Vehicle transport</h2>
+<p>Here we show how to calculate the parameters which define:</p>
+<ul>
+<li>gasoline consumption</li>
+<li>carbon emissions [TODO: we may apply this as a multiplier on imports. Test to see if it works with other processes]</li>
+</ul>
+<p>Vehicle transport is defined for the following:</p>
+<ul>
+<li>waste_organic (<a href="../modelling/data/transport-yaml/road_waste_organic.yaml">road_waste_organic.yaml</a>)</li>
+</ul>
+<h3 id="petrol">Petrol</h3>
+<p>The petrol mass required to transport goods a given distance. We assume that the load is negligable when compared to the mass of the transport vehicle.</p>
+<p>Using <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjkjpH2_pDLAhVHQhQKHU6HB8YQFggjMAE&amp;url=https%3A%2F%2Fwww.gov.uk%2Fgovernment%2Fuploads%2Fsystem%2Fuploads%2Fattachment_data%2Ffile%2F482687%2Fenv0104.xls&amp;usg=AFQjCNFai70_xX0QHHQ4t-Cz4Rv3spEGyw&amp;sig2=lmbjqJAbEvGICzxidEHX-Q">UK Government statistics</a>, taking the most conservative value, we assume that a heavy goods vehicle has a fuel efficiency of <span class="math">\(11.3~miles/gallon\)</span>, which converts to <span class="math">\(0.25~l/km\)</span>. Assuming petrol's density is <span class="math">\(0.737~kg/l\)</span> (as given by <a href="http://www.simetric.co.uk/si_liquids.htm">SI metric</a>), then petrol consumption is:</p>
+<p><span class="math">\[
+\begin{align}
+0.737 \times 0.25 = 0.18~kg/km
+\end{align}
+\]</span></p>
+<h3 id="co_2-emissions"><span class="math">\(CO_2\)</span> emissions</h3>
+<p>From <a href="http://www.engineeringtoolbox.com/co2-emission-fuels-d_1085.html">Engineering ToolBox</a>, the specific <span class="math">\(CO_2\)</span> emissions for petrol (gasoline) is <span class="math">\(3.3 kg_{CO_2}/kg_{fuel}\)</span>. Therefore, per <span class="math">\(km\)</span> travelled by a vehicle, the emissions are given as:</p>
+<p><span class="math">\[
+\begin{align}
+0.18 \times 3.3 = 0.6~kg/km
+\end{align}
+\]</span></p>
+<p>We assume that the emissions are equally shared between the source and destination zone, such that the parameter value will be specified for both the source and the destination as:</p>
+<p><span class="math">\[
+\begin{align}
+0.5 \times 0.594 = 0.3~kg/km/zone
+\end{align}
+\]</span></p>
+<div class="references">
+
+</div>
+</body>
+</html>
