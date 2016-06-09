@@ -1,5 +1,7 @@
 # Technology database chapter
 
+[TODO: add note on which paper this comes from.]
+
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
