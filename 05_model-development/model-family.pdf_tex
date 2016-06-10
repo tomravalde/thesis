@@ -1,0 +1,70 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'model-family.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{494.92865638bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.58886758)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{model-family.pdf}}%
+    \put(0.30985563,0.58837021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright SynCity\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{model-family.pdf}}%
+    \put(-0.19780777,0.19767275){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright Null\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{model-family.pdf}}%
+    \put(-0.834888,0.51884348){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright PRaQ\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{model-family.pdf}}%
+    \put(-0.66495584,1.26801135){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright NL\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{model-family.pdf}}%
+    \put(0.46346269,0.41143198){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(-0.11579987,0.50048171){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(-0.09332385,0.26937793){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.37391237\unitlength}\raggedright \end{minipage}}}%
+    \put(-0.00025396,0.23182342){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.36248272\unitlength}\raggedright Add coefficients to handle resource quality, and equations to handle them.\end{minipage}}}%
+    \put(0.62995237,0.21912829){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.3804436\unitlength}\raggedright Replace linear resource conversion equations with nonlinear equations.\end{minipage}}}%
+    \put(-1.14075394,0.287333){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.38901825\unitlength}\raggedright \end{minipage}}}%
+    \put(-0.99929277,0.23232033){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.4814318,0.47733017){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.34186449\unitlength}\raggedright Add water and energy resources and make different qualities of the same resource different resources.\end{minipage}}}%
+  \end{picture}%
+\endgroup%

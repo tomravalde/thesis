@@ -1,0 +1,21 @@
+	\begin{sidewaystable}[htbp]
+		\centering
+		\caption{Summary of the results of null, PRaQ and NL models, for the baseline case, the minimum emissions case and the constrained metabolism case.}
+		\label{tab:results}
+			\begin{tabular}{llllll}
+			\toprule
+			\multirow{2}{*}{Imports [\kilogram\per year]} & \multicolumn{3}{c}{Baseline} & Constrained metabolism & Minimum emissions \\
+			\cline{2-6}
+			& Null & PRaQ & NL & PRaQ & PRaQ \\
+			\midrule
+			Meat (raw) & 120171 & 120171 & 120000 & & \\
+			Water & 1296520850 & 1296520850 & 1453399563 & 5089138876 & \\
+			Manure & 140000 & 140000 & 144261 & 500515 & \\
+			\midrule
+			Cost [{dollars\per year}] & 30060 & 30060 & 30016 & 60124 & \\
+			\midrule
+			Runtime [{\second}] & 0.14 & 0.39 & 803 & 0.38 & \\
+			\bottomrule
+			\end{tabular}
+	\end{sidewaystable}
+
