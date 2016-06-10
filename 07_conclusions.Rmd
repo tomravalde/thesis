@@ -33,3 +33,40 @@ However, this is only the beginning of the work, and one component of this thesi
 	- Perhaps it can help different (private/public) non-competative companies to work together (as in EIPs),
 	- Alternatviely, ABM can be used
 - Upscaling and downscaling the principles to within-building, area, city, region, national, international levels (and associated data requirements, both for demands, and processes)
+
+In addition to contributing a model for use in research, planning and policy, our results have showed that for the Shann Gu site, an objective (e.g. minimising cost, emissions, or some other quantity) is more readily met by taking advantage of more process types (particularly of a smaller capacity), in a decentralised network, rather than the more traditional centralised systems. This fits with findings from individual sectors (e.g. energy supply and water supply) where decentralised are increasingly encourages, with waste- and by-products cascading down through a system [TODO: provide reference].
+
+[TODO: summarise and explain other key findings]
+
+Having contributed this new tool, we recognise that given the early nature of this work, there is further work which can help make this tool more usable in the real world. Firstly, more data can be contributed to the @Ravalde2016 database (e.g. process costs, appropriate to specific locations and currencies). Secondly, the model formulation can be made more sophisticated, perhaps introducing separate categories of technologies which distinguish between domestic and non-domestic technologies, and introducing storage technologies [@Keirstead2013, equations 9.3--9.10, pp166--170]. It could also incorporate 'hierarchical non-uniform time discretization' which is a sophisticated way to consider the variation in resource demand over hourly, daily¸ weekly, and seasonal periods, at lower computational cost than considering continuous profile over a long period [@Keirstead2013, p161]. Another addition to the formulation could be a device's spatial footprint. [TODO -- Note to James: domestic techs, and spatial footprint are considered in the unpublished paper, but not the book chapter.]
+
+Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
+
+In conclusion, in an increasingly resource-constrained world which faces the combined challenges of population growth, global warming, water scarcity, and shrinking landfill capacity, cities are being hailed as the most efficient means to provide goods and services. However, to take full advantage of this, cities should exploit their co-location of processes to benefit from synergies between energy, water and waste management systems. Our model is one step further along the journey to that end.
+
+# Acknowledgements {.unnumbered}
+
+Tom Ravalde is supported by the EPSRC Doctoral Training Partnership at Imperial College London. The [TODO: details] data was provided by [TODO: Yingru/Xiamen/Shann Gu].
+
+# Appendix {.unnumbered}
+
+- Full mathematical formulation. I.e., in the main body, we only need to include the essential balance and process equations. Other constraints (e.g. limits on imports/exports can go in the Appendix).
+- Demands
+- Tabulate resource data (exergy, emissions, CF, WF Cost Revenue)
+- Example black box process models
+- Identify dummy processes (waste splitter, and waste generaliser, water splitter (recognising that higher quality waters can be used in lower quality applications)
+- Example network configuration results
+- Links to data, code and results on GitHub
+- Summarised version of the demand data
+- Link to GitHub/website of supplementary information
+  	- CSV master table
+	- R-script to produce data summaries, based on the master table's 'tidy' form.
+	- Details on model formulation (comparison of performance, etc.)
+	- Details on Shann Gu specific parameters (e.g. groundwater pumping, surface water availability, rainfall)
+
+# Appendix -- data [TODO: move to the appendix, and retitle]
+
+- Assume documentation gives peak values
+	- Assume peak values at all times?
+	- Calculate daily averages based on peaks?
+	- Compartmentalise into peaks and averages?
