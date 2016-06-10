@@ -107,6 +107,83 @@ Finally, the model will minimise some objective, for example, the cost of resour
 
 Equations \eqref{eq:bal_qty}--\eqref{eq:ob} form the programme's main constraints. For a full description, see Appendix [TODO: cross-ref to appropriate appendix] which lists other constraints (such as upper limits imposed on resource imports). The formulation includes continuous variables (such as resource quantities and process rates), integer variables (the number of conversion processes in a zone), and binary variables (for the existence of a transport process between two zones). All equations are linear, resulting in a mixed-integer linear programme (MILP).
 
+The maximum rate at which a conversion process can operate is given as:
+
+\begin{align}
+F_{pz} \le N_{pz} F^{max}_p,
+\end{align}
+
+where the variable $N_{pz}$ is the number of process type $p$ in zone $z$, and the parameter $F^{max}_p$ is process $p$'s maximum operating rate.
+
+The maximum rate between zones $z$ and $z'$ at which a transport process can operate is given as:
+
+\begin{align}
+F^{transp}_{\tau zz'} \le \delta^{transp}_{\tau zz'} F^{transp, max}_\tau,
+\end{align}
+
+where the integer variable $\delta_{\tau zz'}=1$ when transport process $\tau$ exists between zones $z$ and $z'$, and the parameter $F^{transp,max}_p$ is process $\tau$'s maximum operating rate (e.g. the maximum water flow rate of a pipe). Having defined the existence of a transport link between two zones, we assume that a link in one direction ($z \rightarrow z'$) necessarily defines a link in the opposite direction, thus:
+
+\begin{align}
+\delta^{transp}_{\tau zz'} = \delta^{transp}_{\tau z'z}
+\end{align}
+
+Further, we define a set $nb$ which specifies whether any two zones are neighbours. Only connections within this set can be linked by transport infrastructure. This not only models reality, but also reduces the model size:
+
+\begin{align}
+\delta^{transp}_{\tau zz'} = 0 \qquad \forall (z,z') \notin nb
+\end{align}
+
+The imports and export quantities must lie between $I^{min}$ and $I^{max}$ parameters, and thus can be expressed with the following constraint:
+
+\begin{align}
+\delta^{I}_{rz'} I^{min}_{rt} \leq I_{rzt} \leq \delta^{I}_{rz'} I^{max}_{rt}
+\end{align}
+
+where $\delta^I_{rz}$ is a binary variable which equals 1 if conversion process $r$ exists in zone $z$. This variable is itself subject to the constraint that only a $N^I_r$ zones can be used to import any given resource $r$:
+
+\begin{align}
+\sum_z \delta^{I}_{rz'} \leq N^I_r
+\end{align}
+
+Analogous constrains apply to exports:
+
+\begin{align}
+\delta^{E}_{rz'} E^{min}_{rt} &\leq E_{rzt} \leq \delta^{E}_{rz'} E^{max}_{rt} \\
+\sum_z \delta^{E}_{rz'} &\leq N^E_r
+\end{align}
+
+Finally we consider possible objective functions, which could be a combination of costs ($C^*$) and environmental impacts. Resource costs could be defined, thus:
+
+\begin{align}
+C^R &= \sum_{rzt} c_r I_{rzt} \\
+C^P &= \sum_{pz} c_p N_{pz} \\
+C^{\tau} &= \sum_{\tau zz'} c_\tau \delta^{transp}_{\tau zz'} l_{zz'}
+\end{align}
+
+where the parameter $l_{zz'}$ defines the distance (length) between two zones. The costs above can be combined into a single objective function.
+
+\begin{align}
+C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}
+\end{align}
+
+where coefficients $\gamma^*$ could weight the component costs according to time span (e.g. a 20 year investment period), or their relative importance to a particular stakeholder.
+
+Other types of objective function could include the carbon footprint $(CF)$ of an area, using the emissions factor of a resource $(ef)_r$:
+
+\begin{align}
+CF &= \sum_{rzt} (ef)_r I_{rzt}
+\end{align}
+
+More simple objective function might simply be to minimise the imports of a particular resource (e.g. water imports).
+
+Objectives can be traded-off against each other, using so-called 'Pareto optimisation'. One equation is used as the objective function (for example cost), while another is defined as an inequality constraint (for example emissons):
+
+\begin{align}
+\sum_{rzt} (ef)_r I_{rzt} \leq lim
+\end{align}
+
+The user runs the model multiple times, changing the value of $lim$, such that one can plot a curve of emissions against cost.
+
 As for implementation, our model requires both its equations to be encoded in a programming language which can be solved using MILP solvers (such as CPLEX or Gurobi), and the parameter data which defines the demands, process-behaviour and other constraints. These two elements are kept separate, making it convenient to generate different models for convenience. The data are stored in CSV and YAML text files, both of which are chosen for their human-readability and their ease of editing:
 
 - CSV files specify any data with a spatial element, including the layout, the demands, import/export limits, etc. These have the advantage of being editable using spreadsheet software.
@@ -124,15 +201,6 @@ Despite a gallimaufry of urban metabolism models and resource optimisation model
 
 In this paper, we have adapted the urban energy systems model of [TODO: cite Keirstead et al.] to formulate a new model which simultaneously optimises the management of energy, water and waste, to improve the metabolism of an area, and applied it to a new urban development in China, using data collected for @Ravalde2015b.
 -->
-In addition to contributing a model for use in research, planning and policy, our results have showed that for the Shann Gu site, an objective (e.g. minimising cost, emissions, or some other quantity) is more readily met by taking advantage of more process types (particularly of a smaller capacity), in a decentralised network, rather than the more traditional centralised systems. This fits with findings from individual sectors (e.g. energy supply and water supply) where decentralised are increasingly encourages, with waste- and by-products cascading down through a system [TODO: provide reference].
-
-[TODO: summarise and explain other key findings]
-
-Having contributed this new tool, we recognise that given the early nature of this work, there is further work which can help make this tool more usable in the real world. Firstly, more data can be contributed to the @Ravalde2016 database (e.g. process costs, appropriate to specific locations and currencies). Secondly, the model formulation can be made more sophisticated, perhaps introducing separate categories of technologies which distinguish between domestic and non-domestic technologies, and introducing storage technologies [@Keirstead2013, equations 9.3--9.10, pp166--170]. It could also incorporate 'hierarchical non-uniform time discretization' which is a sophisticated way to consider the variation in resource demand over hourly, daily¸ weekly, and seasonal periods, at lower computational cost than considering continuous profile over a long period [@Keirstead2013, p161]. Another addition to the formulation could be a device's spatial footprint. [TODO -- Note to James: domestic techs, and spatial footprint are considered in the unpublished paper, but not the book chapter.]
-
-Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
-
-In conclusion, in an increasingly resource-constrained world which faces the combined challenges of population growth, global warming, water scarcity, and shrinking landfill capacity, cities are being hailed as the most efficient means to provide goods and services. However, to take full advantage of this, cities should exploit their co-location of processes to benefit from synergies between energy, water and waste management systems. Our model is one step further along the journey to that end.
 
 - Assume documentation gives peak values
 	- Assume peak values at all times?
@@ -156,3 +224,4 @@ For the Appendix?
 	- Details on model formulation (comparison of performance, etc.)
 	- Details on Shann Gu specific parameters (e.g. groundwater pumping, surface water availability, rainfall)
 -->
+
