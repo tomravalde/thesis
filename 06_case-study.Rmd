@@ -1,6 +1,213 @@
 # Case study: a Chinese urban development
+<!--
+Sections in JK's MILP paper
 
-[TODO: Adapt from paper]
+# Case study
+
+- proposed eco-town development (ambitions)
+- site characteristics
+- zonal demands
+- timings
+- figrues with data
+
+## Resources and technologies
+## Objective function
+## Results
+-->
+
+To demonstrate the model we have formulated above, we will use a new Chinese urban development as a case study. The development is led by the Shann GU company[^confidential], and concerns a 13 km$^2$ site accommodating 133,000 people, with residential, commercial, industrial and recreational functions. For the case study take the predicted resource demands for the site, and run the model for several scenarios (outlined below) to optimise the development's metabolism. Note that a strict definition of 'optimise' is not considered here (though this question has been explored elsewhere, e.g. @Ravalde2015a); our primary purpose is to introduce our new model. As such we will apply various environmental and economic objectives which may interest stakeholders.
+
+[^confidential]:More detailed information regarding its location is confidential.]
+
+[TODO: idealised representation figure]
+
+
+## Input data
+<!--
+- Data
+  	- resources
+  		- generic
+  		- specific, due to the site, e.g. exergy of heat
+  	- processes
+  		- generic, from the database
+	  	- specfic, due to the site, e.g. rain, leachate = f(rain, evaporation, landfill area)
+		- real processes, heat exchangers (and associated water flows)
+		- dummy processes (e.g. MSW splitting, waste generalising)
+-->
+
+This section introduces the data used as parameters in the model. Further details regarding sources and assumptions are given in the Appendix. The actual data is available from the supplementary information at [TODO-link-to-supplementary-information](../shann-gu-documentation/data.html).
+
+
+[^process-data]: \\url{https://github.com/tomravalde/urban-metabolism-process-database}
+
+### Site layout
+
+This data defines the set of zones $Z$, and the distances between any pair of zones ($l_{zz'}$), and whether any pair of zones are neighbouring (and hence if they can be connected by transport processes from set $T$). We have estimated this information from the Shann Gu documentation, with 13 zones defined within the 13 km^2^ construction region.
+
+### Site layout -- Appendix
+
+According to the Shann Gu documentation, the site's construction region is 13 km^2^, with industry in the north, residential and commercial use in the centre, and recreational functions in the south.
+
+Neighbouring zones belong to set $nb(z,z')$.
+[Complete]
+
+### Times
+
+The times set $T$ defines the times considered, with their lengths given by $span(T)$ [TODO: re-notate]. In our case we've defined seasons for `winter`, `summer` and `shoulder`, with spans of 90 days, 90 days, and 180 days, respectively. 
+
+### Resource demands
+
+The Shann Gu documentation specifies demands ($D^{(qty)}_{rzt}$) for electricity, heating, water consumption. We also derive quantities for wastewater and waste generation, which can be defined using negative values. Demand is defined on a per-second basis (MW for energy demands, kg/s for the others).
+
+
+### Resource demands -- Appendix
+
+- The code is set up, such that only $D^{(qty)}_{rzt}$ need be defined, with $D^{(qual)}_{rqzt}$ defined automatically.
+- Summary table?
+
+### Resource options
+
+As well as the resource demands, our case studies consider another [TODO: number] resources in set $R$ which can be used as part of the conversion chain to meet demand. These include [TODO: list examples]. For each resource why can apply a conta
+
+Each resource has at least one associated quality $q$, which are defined in the $Q$ set. For our purposes we use `mass` and `energy` qualities, which are attributed to each resource with the $X_{rq}$ parameter.
+
+For each resource, we need to define the minimum and maximum allowable imports and exports (again, on a per-second basis), and the number of zones allowed to import or export any particular resource. We also define a cost to import each resource [TODO: source information].
+
+### Process options
+
+Our modelling considers up to [TODO: number] processes $p$ which convert resources (depending on the scenario). [TODO: add details on scenarios here, or elsewhere?] These processes are taken from the open-source database of urban metabolism processes outlined in @Ravalde2015b[^process-data], or the Shann Gu documentation. Each process definition also includes its capacity (i.e. the maximum MJ/s or kg/s which can be converted).
+
+For each process, we also provide an estimated cost (in USD). Apart from the shear number of processes in our database (over 300), several factors make this tricky: first and foremost, our process database considers future processes which have not yet penetrated into the market. In addition, exchange rates and purchasing power parities around the world make it difficult to cost a process with any degree of certainty. For this reason, our costing is approximate. Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
+). 
+
+Similarly, up to [TODO: number] transport processes are also defined (using the $k$ coefficients), and maximum transport rates (MW or kg/s).
+
+- pipes (costed)
+- roads (free)
+
+## Model scenarios
+
+We study [TODO: number] scenarios using different subsets of the processes, to suggest how different networks of processes can satisfy demand under varying circumstances (following the methodology of @Keirstead2012). For some scenarios, we model sub-scenarios, where we use different objective functions, or introduce an additional constraint to illustrate Pareto optimality. The scenarios are:
+
+1. *Base case.* This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results.
+2. *Design case.* The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. We consider how the process choice changes, with different objecitves:
+	a. Minimise cost
+	b. Minimise emissions
+	c. Minimise waste
+	d. Minimise freshwater consumption
+3. *Wildcard case.* This scenario allows any process from the database compiled by @Ravalde2016 to be incorporated into the site's resource management network. This database includes both existing and still-to-be-implemented management processes, so we consider the following sub-scenarios, at minimum cost:
+   	a. Currently available processes
+   	b. Medium-term available technologies
+   	c. Long-term available technologies
+
+Scenario 3a [TODO: update if necessary] is the largest, and thus indicates the computational effort required to solve the problems, having [TODO: number] single variables, [TODO: number] discrete variables, [TODO: number] binary variables, [TODO: number] equations [TODO: etc.].
+
+These scenarios are fairly simple, and illustrate the sensitivity of a network to fairly broad considerations (technology availability, and simple objective functions). Detailed design problems should be more narrowly focussed, by applying sensitivity analysis to understand how a system design responds to changes in efficiency (reducing demand), market value of imported and exported goods, and other factors. [TODO: reproduce Saltelli et al. citation from @Keirstead2012??].
+<!--
+OTHER SCENARIO VARIATIONS
+- DSM
+- min-cost
+- min emissions
+- cost/emissions pareto
+- export revenue (e.g. hydrogen economy)
+- Exergy verses other objectives (cost, carbon footprint, water footprint, waste output)
+- min cost -- DSM
+- min cost -- phased planning
+- min water
+- min landfill
+- min cost/targets of individual sectors (energy, water, waste), or differently weight them?
+-->
+
+## Results (and discussion)
+
+We present the results of each scenario in a number of ways (summarised in Table [TODO: cross-ref]. First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]). Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]). Third, we consider the metabolic inputs and outputs to each system (Figure [TODO: cross-ref]). Fourth, we consider the network of conversion processes which makeup each system (Figure [TODO: cross-ref]).
+
+[TODO: SNA (or triangular grid) figures for each scenario]
+
+
+```{r network-plot}
+
+## Inter-sectoral plot for whole network stored separately, so it's easy to suppress from paper compilation (to save time)
+#base::source("resource-network.R")
+#
+#resource_sectors <- read.csv("resources-sector.csv")
+#sectors_lookup <- rbind(c("energy", "blue"),
+#			c("water", "red"),
+#			c("waste", "black"),
+#			c("other", "green"))
+#sectors_lookup <- data.frame(sectors_lookup)
+#colnames(sectors_lookup) <- c("sector", "node_vector")
+#resources_sectors_node <- inner_join(resource_sectors, sectors_lookup)
+#node_vector <- c(resources_sectors_node$node_vector)
+#
+### Network plot (using SNA package)
+#layout <-  c("fruchtermanreingold", "kamadakawai", "spring", "circle", "eigen", "hall", "mds", "princoord", "target")
+#
+##library(sna) # Code to plot figure for saving (and subsequent manual editing)
+##gplot(link_matrix,
+##      mode=layout[1],
+##      gmode="graph",
+##      label = resources,
+##      label.pos = 1,
+##      jitter=FALSE,
+###      arrowhead = FALSE,
+##      thresh=0,
+###      vertex.sides = 0,
+##      vertex.col = node_vector,
+##      edge.col = rgb(220, 217, 217, maxColorValue=255),
+##      displaylabels = TRUE)
+```
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+%	\includegraphics[width=\columnwidth]{final-network.pdf}
+	\end{spacing}
+	\caption{The process network used in the design case. Processes are colourd according to the main resource they process. Graph is plotted using the R package from \citet{SNA2005}. A colour version of this plot is available in the electronic version of this paper.}
+	\label{fig:sna_interactions}
+\end{figure}
+
+
+[TODO: Dot plot of scenario costs (import, transport, conversion, etc.)].
+
+[TODO: Dot plot of imports and exports. All scenarios on same figure, faceted by resource and scenario].
+
+With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
+
+The number of technologies used by a scenario increases as more are available, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible. When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
+
+[TODO: comment on the mix of technology sizes in various scenarios.]
+[TODO: comment on which technogies are most relied upon in each system.]
+[TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
+[TODO: comment on coversion/transportation mix effect on (capital) costs?]
+
+There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
+
+### Costs
+
+Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. capital costs and imports).
+
+### Emissions
+
+Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
+
+### Metabolic inputs and outputs
+
+Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
+
+# (Discussion and) Conclusions
+<!--
+Paragraph ideas from JK's MILP paper
+# Conclusions
+
+- "There have been many models developed...however..."
+- "In this paper we..."
+- "Another feature of the model..."
+- "The model was illustrated using..."
+- "There are a number of future directions for the model..."
+-->
+
+[TODO: Other ideas]
 
 Add text to check whole-thesis build.
 
