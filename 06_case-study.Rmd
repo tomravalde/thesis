@@ -1,4 +1,14 @@
 # Case study: a Chinese urban development
+
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+library(knitr)
+opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
+
+library(extrafont)
+font_import(pattern="LinBiolinum")
+
+library(ggplot2)
+```
 <!--
 Sections in JK's MILP paper
 
@@ -125,7 +135,7 @@ We present the results of each scenario in a number of ways (summarised in Table
 [TODO: SNA (or triangular grid) figures for each scenario]
 
 
-```{r network-plot}
+```{r network-plot, results="asis"}
 
 ## Inter-sectoral plot for whole network stored separately, so it's easy to suppress from paper compilation (to save time)
 #base::source("resource-network.R")
@@ -195,7 +205,7 @@ Comment on (percentage) differences between scenarios, and suggest reasons for d
 
 Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
 
-# (Discussion and) Conclusions
+## (Discussion and) Conclusions
 <!--
 Paragraph ideas from JK's MILP paper
 # Conclusions
