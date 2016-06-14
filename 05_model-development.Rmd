@@ -7,57 +7,7 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-## Why modelling? [NOTE: This section is for the literature review, but we will draw on it in this chapter] {-}
-
-The purpose of this section is to justify why we think that modelling will make a useful contribution to improving the urban metabolism of urban areas. Given the urban metabolism field has a strong heritage in accounting, trends, sustainability assessments, what would the modelling discipline bring to the table? It is important to justify a model whenever they are used, but it is also important here specifically, as we introduce a new type of modelling to the urban metabolism field, i.e. optimisation.
-
-A model can be defines as "A simplified representation used to explain the workings of a real world system or even" [TODO: reference Wiktionary]. This can take a number of forms, summarised in Figure \ref{fig:models}, based on the @Williams1999's brief introduction to models. Either concrete (such as a scaled-down construction of an aeroplane), or abstract, which constitutes concepts [TODO: Wikipedia]. An abstract model could be purely descriptive, such that it might graphically/visually/diagramatically represent some system, but in our case, we will consider mathematical models, which use mathematical relationships to encode the behaviour of some real-world phenomenon. These relationships include equations, inequalities and logical dependencies. In our case, we will mathematically represent the processes which transport, store and transport goods and services to, from and within an urban area, and other features of the area. @Williams1999 highlights three benefits of building such models:
-
-1. The act of model building itself will reveal relationhips that were previously unapparent.
-2. The results my reveal courses of action which were otherwise unapparent.
-3. One can experiment on a model in a way that may be impractical or unethical for a real system.
-
-There are different types of mathematical models, including 'simulation models' which can be used to predict the performance of the real world system, and mathematical programming (also called optimization) models (our focus) which calculate the conditions under which a system will perform best [TODO: reference].
-
-\begin{figure}
-	\centering
-	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{05_model-development/models.pdf_tex}}
-	\end{spacing}
-	\caption{A summary of different types of models, based on \citet[Chapter 1]{Williams1999}.}
-	\label{fig:models}
-\end{figure}
-
-However, modelling is not without its critics, and we must address their objections to justify our use of mathematical programming to support measures to improve urban sustainability. Some only see crude reductionism in the way that mathematical programming seeks to quantify something, resting decisions on the numerical value of an equation. @Williams1999 points out that in fact all decisions will make quantitative evaluations implicitly, if not explicitly, and suggests modelling is at least honest and scientific. Others are sceptical of modelling, suggesting that innaccuracies in coefficient values will lead to inaccurate results. Williams responds by showing how models can be tested for a range of parameter values (to reflect uncertainty), for example establishing the ranges for which parameters can change with predictable effects on the values of variables and the objectives (for more detail on this, see lecture notes by Keirstead [TODO: Add reference]).
-
-Having said that, we must not put blind, unquestioning faith in models, rather they "should be used as one of a number of tools for decision making" [@Williams1999, p5] to test different options, and identify what is possible. Thus, we propose mathematical programming (/optimisation modelling) as one tool alongside others within urban metabolism.
-
-[TODO: In reality, this 'Why modelling' introduction will be longer, e.g. with examples, more references supporting the points. Especially, we'll record how models have been actually used within urban planning.]
-
-In the remainder of this literature review, we will search the literature for examples of models used within resource management, within the energy, water and waste sectors. This will help us define the ambitions, expectations and capabilities of the model (the problems we want to solve), which in turn will help us define the mathematical formulation required to encode these problems. But first, we need to introduce some concepts, and definitions related to mathematical programming.
-
-### Introduce modelling jargon (so we can refer to it in the review of other models) {-}
-
-- Sets
-- Parameters
-- Constraints
-- Objective (Cons and Obj are the mathematical relationships: equations, inequalities, logical relationships)
-- Variables
-
-### Optimisation techniques {-}
-
-- Linear, nonlinear, heuristics (e.g. GAs) etc.
-- Map out linear/non-linear problems, and the solution approaches
-- There should be a brief outline of this (even if it's just a list of definitions) so the when they are referred to in the literature review, the reader knows what we are talking about.
-
-### Review of energy, water and waste management models {-}
-
-[NOTE: Here would then be the review of energy, water and waste management models, based on the content of the early stage assessment.]
-
-## Introduction 
-
-In the Introduction we argued that cities should take advantage of their capabilities to supply goods and services more efficiently, by taking advantage of the synergies possible between energy, water and waste management processes. We noted that within the energy, water and waste management sectors, optimisation modelling has been successfully used to determine system designs and operational strategies which meet some resource management objective. Thus we proposed that optimisation modelling could be used to manage these sectors in combination, to find ways to minimise the impact of resource consumption, according to some measure. Therefore, in Chapter 2, we defended the use of models in urban decision making, and then reviewed models used in energy, water and waste management, to understand firstly, the capabilities required of our model, and secondly, the mathematical formulation which serves those capabilities.
+In the Literature review we argued that cities should take advantage of their capabilities to supply goods and services more efficiently, by taking advantage of the synergies possible between energy, water and waste management processes. We noted that within the energy, water and waste management sectors, optimisation modelling has been successfully used to determine system designs and operational strategies which meet some resource management objective. Thus we proposed that optimisation modelling could be used to manage these sectors in combination, to find ways to minimise the impact of resource consumption, according to some measure. Therefore, in Chapter 2, we defended the use of models in urban decision making, and then reviewed models used in energy, water and waste management, to understand firstly, the capabilities required of our model, and secondly, the mathematical formulation which serves those capabilities.
 
 In this chapter, we want to derive an appropriate formulation to improve an area's metabolism. To get there, we first consider the theory of mathematical modelling to identify the trade-offs inherent in mathematical programming. We also introduce the notion of a 'benchmarking problem' as a problem that can be used to test different models. We introduce the case study which will become our benchmarking problem, and then derive three model formulations to test on the case study. We will then apply the formulations to our case study and present the results, and discuss which formulation will be best for our work.
 
