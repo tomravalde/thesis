@@ -69,6 +69,9 @@ update:
 	then \
 	cp /home/tr608/ImpCol/PhD/my-refs.bib . ; \
 	inkscape -D -z --file=04_database/metab-hierarchy.svg --export-pdf=04_database/metab-hierarchy.pdf --export-latex ; \
+	inkscape -D -z --file=05_model-development/model-family.svg --export-pdf=05_model-development/model-family.pdf --export-latex ; \
+	inkscape -D -z --file=05_model-development/pipe-dam-example.svg --export-pdf=05_model-development/pipe-dam-example.pdf --export-latex ; \
+	inkscape -D -z --file=05_model-development/network-1.svg --export-pdf=05_model-development/network-1.pdf --export-latex ; \
 	fi
 #	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
 
