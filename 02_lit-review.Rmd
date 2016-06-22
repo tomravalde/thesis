@@ -497,7 +497,7 @@ Lit review structure from JK's MILP paper.
 - "The model presented in this paper has been developed to..." continue to understand the inside of the blackbox
 -->
 
-# Definitions
+## Definitions
 
 From our review of the literature, we are in a position to define the meaning of this thesis's title, as follows.
 
@@ -517,4 +517,4 @@ Other (non-title) definitions include:
 - Low-, medium- and high-level
 - Superstructure
 
-# Gaps and contributions
+## Gaps and contributions

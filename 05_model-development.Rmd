@@ -1,6 +1,6 @@
 # Model development
 
-TODO: finalise which content shifts to the lit review.
+[TODO: finalise which content shifts to the lit review.]
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
@@ -9,13 +9,13 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-In the Literature review we argued that cities should take advantage of their capabilities to supply goods and services more efficiently, by taking advantage of the synergies possible between energy, water and waste management processes. We noted that within the energy, water and waste management sectors, optimisation modelling has been successfully used to determine system designs and operational strategies which meet some resource management objective. Thus we proposed that optimisation modelling could be used to manage these sectors in combination, to find ways to minimise the impact of resource consumption, according to some measure. Therefore, in Chapter 2, we defended the use of models in urban decision making, and then reviewed models used in energy, water and waste management, to understand firstly, the capabilities required of our model, and secondly, the mathematical formulation which serves those capabilities.
+In the Literature review we argued that cities should take advantage of their capabilities to supply goods and services more efficiently, by taking advantage of the synergies possible between energy, water and waste management processes. We noted that within the energy, water and waste management sectors, optimisation modelling has been successfully used to determine system designs and operational strategies which meet some resource management objective. Thus we proposed that optimisation modelling could be used to manage these sectors in combination, to find ways to minimise the impact of resource consumption, according to some measure. Therefore, in Chapter 2, we defended the use of models in urban decision making, and then reviewed models used in energy, water and waste management, to understand  the capabilities required of our model. In this chapter, we propose and defend a formulation for our highly integrated urban energy, water, and waste systems optimisation model.
 
-In this chapter, we want to derive an appropriate formulation to improve an area's metabolism. To get there, we first consider the theory of mathematical modelling to identify the trade-offs inherent in mathematical programming. We also introduce the notion of a 'benchmarking problem' as a problem that can be used to test different models. We introduce the case study which will become our benchmarking problem, and then derive three model formulations to test on the case study. We will then apply the formulations to our case study and present the results, and discuss which formulation will be best for our work.
+In the literature review, we saw that model formulations could vary in their generality. This chapter explores this notion more closely, in particular relating generality to other aspects of modelling, such as fidelity, tractability and usability. We do this by writing three different formulations of the model (two linear, and one nonlinear), in order to compare them for various aspects, by applying them to a small case study. This case study is Tat Hamlet, for which the metabolism has previously been studied. We hope that our formulation will mark just the beginning of researchers using optimisation modelling for urban metabolism studies, and to that end, we hope that our Tat Hamlet case study will become a 'benchmarking problem' that will be used by others to further 
 
-## Background
+This chapter begins by taking a theoretical look at the issues of generality, fidelity, tractability, and usability, before introducing the case study, and then finally deriving, applying, and comparing formulations for our benchmarking problem.
 
-### Tradeoffs in mathematical programming
+## Tradeoffs in mathematical programming
 
 When we introduced modelling in the literature review, we were careful to not overstate the capabilities of a model. Rather, we noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising this helps us set right expectations for the ambitions of our model, and where we can afford to sacrifice fidelity ("how well [models] describe reality, and the quality of the results obtained") which will
 for other important attributes such as tractability ("how amenable the model is to optimization technques") which are necessary trade-offs in modelling [@McIntosh2011, p2]. @McIntosh2011 also notes that increased fidelity means not only does optimization modelling become more difficult, but so does formalizing the model itself. Thus we can say that all models will fit somewhere on a curve of fidelity measured against usability and tractability (FUT), as in Figure \ref{fig:FUT}.
@@ -41,7 +41,7 @@ Another trade-off arises from a model's 'generality', which refers to the number
 
 [TODO: we will show that the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.]
 
-### Benchmark problems
+## Benchmark problems
 
 - Describe benchmarking in general, then narrow in on benchmarking within optimistation, and within resource management modelling.
 
@@ -138,7 +138,28 @@ Note difference between algorithm and formulation
 	- Already referenced?
 -->
 
-### Case study: Tat Hamlet
+## Introducing the Tat Hamlet case study
+
+The case study which we choose to develop as our benchmarking problem is that of Tat Hamlet, a village in Vietnam, in which fieldwork was carried out in 2001, resulting in reports on its material flows [TODO: reference] and energy flows [@Heezen2004]. Since this fieldwork, various other studies have been carried out which enable 
+
+The relatively small size makes it possible to develop a user-friendly benchmarking problem, and 
+
+From the EFA and MFA literature for Tat Hamlet, we are going to define a benchmark problem. This will involve using the values in the literature to define resources and processes, and their demands availability and their demands.
+
+the MFA identifies in Tat, domestic, commercial, agricultural and aquacultural sectors. There is overlap (for example, most houses have their own paddy field, livestock and pond). To simplify the problem, we will ignore the commercial sector (which tends to sell imported final goods, and is hence less interesting for our metabolism problem), and we will assume that the remaining sectors are separate entities. We will take the values of material flows between the sectors to derive:
+
+1. Demands
+2. Black box models of processes
+
+Assumptions and simplifications:
+
+- Livestock: many different types, including chickens, dogs, buffalo, and cows. But we will just consider one generic 'livestock' type, and aggregate their inputs and outputs (e.g. water, food, meat and manure, ignoring eggs etc. which in any case are negligible). 
+- Agriculture: different types of fields and crops. We will just consider this generically, and aggregate inputs and outputs (e.g. water, manure, green manure, fish feed, firewood and vegetables)
+- Aquaculture: fish and water vegetable outputs, from fish feed, manure and fertiliser inputs.
+- Domestic inputs include: fire wood, water, vegetables, fish, meat. We also add to this, electricity [TODO: find EFA reference]. Output includes waste.
+- Energy assumptions:
+  	- Total energy imports = 31.7 GJ/year. We will assume this is split between domestic, agriculture and pumping water (and generated by a dam)
+	- Total heat from firewood = 5375.6 GJ/year. Assume this is split between domestic heating, cooking, and domestic hot water
 
 - literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
 - 105 households
@@ -260,24 +281,6 @@ Note difference between algorithm and formulation
 	- Goat: -
 	- Dog: 22
 
-### Tat Hamlet: problem derivation and definition
-
-From the EFA and MFA literature for Tat Hamlet, we are going to define a benchmark problem. This will involve using the values in the literature to define resources and processes, and their demands availability and their demands.
-
-the MFA identifies in Tat, domestic, commercial, agricultural and aquacultural sectors. There is overlap (for example, most houses have their own paddy field, livestock and pond). To simplify the problem, we will ignore the commercial sector (which tends to sell imported final goods, and is hence less interesting for our metabolism problem), and we will assume that the remaining sectors are separate entities. We will take the values of material flows between the sectors to derive:
-
-1. Demands
-2. Black box models of processes
-
-Assumptions and simplifications:
-
-- Livestock: many different types, including chickens, dogs, buffalo, and cows. But we will just consider one generic 'livestock' type, and aggregate their inputs and outputs (e.g. water, food, meat and manure, ignoring eggs etc. which in any case are negligible). 
-- Agriculture: different types of fields and crops. We will just consider this generically, and aggregate inputs and outputs (e.g. water, manure, green manure, fish feed, firewood and vegetables)
-- Aquaculture: fish and water vegetable outputs, from fish feed, manure and fertiliser inputs.
-- Domestic inputs include: fire wood, water, vegetables, fish, meat. We also add to this, electricity [TODO: find EFA reference]. Output includes waste.
-- Energy assumptions:
-  	- Total energy imports = 31.7 GJ/year. We will assume this is split between domestic, agriculture and pumping water (and generated by a dam)
-	- Total heat from firewood = 5375.6 GJ/year. Assume this is split between domestic heating, cooking, and domestic hot water
 
 ### Define demands
 
