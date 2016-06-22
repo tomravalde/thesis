@@ -140,27 +140,34 @@ Note difference between algorithm and formulation
 
 ## Introducing the Tat Hamlet case study
 
-The case study which we choose to develop as our benchmarking problem is that of Tat Hamlet, a village in Vietnam, in which fieldwork was carried out in 2001, resulting in reports on its material flows [TODO: reference] and energy flows [@Heezen2004]. Since this fieldwork, various other studies have been carried out which enable 
+The case study which we choose to develop as our benchmarking problem is that of Tat Hamlet, a village in Vietnam, in which fieldwork was carried out in 2001, resulting in reports on its material flows [TODO: reference] and energy flows [@Heezen2004]. Since this fieldwork, various other studies have been carried out to draw insights including [TODO:...]. The village has been used for other studies include a study of its livestock development strategies (opportunities and constraints) [TODO: http://www.vnua.edu.vn:85/tc_khktnn/Upload%5C2532010-Bai%203%20_ban%20in%2025%20-%2033_%5B1%5D.pdf], and the social organisation of the natural resources by the village [TODO: file:///home/tr608/Downloads/390301.pdf]
 
-The relatively small size makes it possible to develop a user-friendly benchmarking problem, and 
+Thus, the Tat Hamlet is a known case study within [TODO: urban?] metabolism literature, with various insights drawn. The insight drawn in this chapter however, is of a different nature. Rather than drawing conclusions on the village's resource management, we will show how the MFA and EFA studies can be used to formulate an integrated resource management model. More specifically, we derive three different formulations of the model, of varying genericity, fidelity, tracatability and usability, which can be compared. In this way, it can become a benchmark problem, like the water network of Anytown [TODO: and others], which can provide the problem definition for which the research community can attempt to improve on our model formulation.
 
-From the EFA and MFA literature for Tat Hamlet, we are going to define a benchmark problem. This will involve using the values in the literature to define resources and processes, and their demands availability and their demands.
+Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. Tat mainly consists of agricultural activities and includes wet rice paddy fields (irrigated by a small river), swidden cultivation, and a forest from which biomass can be collected (timber, bamboo shoots, cassava roots) -- some of these products are sold to external traders. About 80 of the households have their own livestock which include chicken, dogs, buffalo, and cows. Most households have their own ponds for aquaculture. Tat's other services include shops and education. The relatively small size of Tat (relative to other cases this model will be applied to) makes it possible to develop a user-friendly benchmarking problem, as there will be only a small number of processes, resources and zones. Thus, the problem can be more easily understood at a glance (e.g. represented by a diagram), and developed by researchers. Specifically, we can identify the following activities and resources from the MFA and EFA studies:
 
-the MFA identifies in Tat, domestic, commercial, agricultural and aquacultural sectors. There is overlap (for example, most houses have their own paddy field, livestock and pond). To simplify the problem, we will ignore the commercial sector (which tends to sell imported final goods, and is hence less interesting for our metabolism problem), and we will assume that the remaining sectors are separate entities. We will take the values of material flows between the sectors to derive:
+- The village generates the majority of its own meat (and other livestock products such as eggs), palm leaves and broom grass (as fishfeed), both animal manure (from livestock) and green manure (e.g. cassava stems) vegetable and fish from the agriculture and aquaculture. Water can be piped to homes for drinking, household use, and for washing livestock.
+- The main flows into the village include annual rainfall, electricity (from Vietnam's electrcity grid), construction materials, fossil fuels (e.g. gasoline) for motorbikes, and petroleum lighting, some vegetable and meat imports.
+- The village wastes include household and agricultural wastes, incineration products, fossil-ful emissions. Other outputs include wood
 
-1. Demands
-2. Black box models of processes
+Before deriving mathematical representations of technology behaviour and resource flows, we next specifically define the problem: namely the processes, resources and demands which will define the benchmark problem's parameters.
 
-Assumptions and simplifications:
+### Problem definition
 
-- Livestock: many different types, including chickens, dogs, buffalo, and cows. But we will just consider one generic 'livestock' type, and aggregate their inputs and outputs (e.g. water, food, meat and manure, ignoring eggs etc. which in any case are negligible). 
-- Agriculture: different types of fields and crops. We will just consider this generically, and aggregate inputs and outputs (e.g. water, manure, green manure, fish feed, firewood and vegetables)
-- Aquaculture: fish and water vegetable outputs, from fish feed, manure and fertiliser inputs.
-- Domestic inputs include: fire wood, water, vegetables, fish, meat. We also add to this, electricity [TODO: find EFA reference]. Output includes waste.
-- Energy assumptions:
-  	- Total energy imports = 31.7 GJ/year. We will assume this is split between domestic, agriculture and pumping water (and generated by a dam)
-	- Total heat from firewood = 5375.6 GJ/year. Assume this is split between domestic heating, cooking, and domestic hot water
+This represents the first step of any modelling. We will use the data from the EFA and MFA studies to define the benchmark problem. More specifically, we will use values from the literature to define the resource demands which must be met by a model, along with the resources and processes which can be used to that end. To simplify the problem and make up for the lack of complete information, we will make the following assumptions:
 
+- Ignore the commercial sector (i.e. the shops, which sells 'final goods' which have been imported, and is hence less interesting for our metabolism problem)
+- Consider the agriculture, aquacultural, livestock, and domestic activities as separate entities (rather than considering a household as having each of these functions).
+- Consider all the different livestock types (chickens, dogs, buffalo, and cows) under one category as simply 'livestock'. This means when we derive the quantities of livestock requirements and products, we sum the requirements and products over all the livestock types. We also ignore some of the more negligable livestock outputs (e.g. eggs).
+- Agricultural activities are also considered generically, with the requirements and outputs of each type summed over paddy, swidden, forest and other types.  We also adopt generalised versions of the agricultural products, limiting them to just biomass, manure, green manure, fish feed, firewood and vegetables, rather than specifics (such as fruit, bamboo shoots, cassava leaves, and rice etc.)
+- Added a dam
+- Household activities include cooking, space heating, and hot water heating.
+- Assume the total electricity imports (31.7 GJ/year) [TODO: check this value is electricity specifically, rather than energy generally]. We will assume this is split between domestic, agriculture and pumping water (and generated by a dam)
+- Total heat from firewood = 5375.6 GJ/year. Assume this is split between domestic heating, cooking, and domestic hot water
+
+We justify these assumptions on the basis that this chapter's focus is on how best of formulate a  model, rather than searching for insights to help improve Tat's metabolism. The simplifications ensure the model is not overly complicated for others using the benchmarking problem. An alternative approach would have been to make up a case study, but this approach shows how one can go about formulating a problem from real life data, and its current place in the literature will hopefully help it gain traction.
+
+<!--
 - literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
 - 105 households
 - Average size = 4.4 people
@@ -280,6 +287,7 @@ Assumptions and simplifications:
 	- Pig: 265
 	- Goat: -
 	- Dog: 22
+-->
 
 
 ### Define demands
