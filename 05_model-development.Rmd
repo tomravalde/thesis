@@ -662,6 +662,67 @@ print(networkSummary_tex,
       comment = FALSE)
 ```
 
+\begin{table}[]
+\centering
+\caption{How the Tat network is built up process-by-process. (The specific resources and transport processes added at each stage are tabulated in Appendix TODO: cross ref.)}
+\label{my-label}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\multicolumn{3}{l}{Conversion processes}                      & \multirow{2}{*}{No. of resources} & \multirow{2}{*}{No. of transport processes} \\ \cmidrule(r){1-3}
+No. & Added                                    & Abbrev.      &                                   &                                             \\ \cmidrule(l){4-5} 
+1   & Dam                                      & Dam          & 3                                 & 1                                           \\
+2   & Water treatment (for livestock)          & WT (l/stock) & 5                                 & 2                                           \\
+3   & Water treatment (for domestic use)       & WT (dom.)    & 7                                 & 2                                           \\
+4   & Irrigation                               & Irrig.       & 8                                 & 3                                           \\
+5   & Pump                                     & Pump         & 9                                 & 4                                           \\
+6   & Agriculture                              & Agric.       & 17                                & 8                                           \\
+7   & Livestock                                & L/stock      & 18                                & 9                                           \\
+8   & Stove                                    & Stove        & 20                                & 10                                          \\
+9   & Biomass drying (medium moisture content) & BMD (med.)   & 20                                & 10                                          \\
+10  & Biomass drying (high moisture content)   & BMD (wet)    & 20                                & 10                                          \\
+11  & aquaculture                              & Aqua         & 21                                & 12                                          \\
+12  & Cooking                                  & Cook.        & 24                                & 12                                          \\
+13  & Agricultural machinary                   & Agric. Mach. & 24                                & 12                                          \\
+14  & Domestic appliances                      & App.         & 25                                & 12                                          \\
+15  & Heating                                  & Heat.        & 26                                & 12                                          \\
+16  & Hot water                                & HW           & 27                                & 12                                          \\ \bottomrule
+\end{tabular}
+\end{table}
+
+<!--
+[TODO: Move to the appendix]
+
+\begin{sidewaystable}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{@{}lllllllll@{}}
+\toprule
+\multicolumn{3}{l}{Conversion processes}                             & \multicolumn{3}{l}{Resources}                                                                     & \multicolumn{3}{l}{Transport processes}                                                                                           \\ \midrule
+No.        & Added                                    & Abbrev.      & No. & Added                                                                             & Abbrev. & No. & Added                                                                            & Abbrev.                                  \\
+1          & Dam                                      & Dam          & 3   & water\_source, water\_generated, elec                                             & TODO    & 1   & Cable                                                                            & Cab.                                     \\
+2          & Water treatment (for livestock)          & WT (l/stock) & 5   & water\_qualLivestock, water\_waste\_treatmentLivestock                            & TODO    & 2   & Pipe (livestock water)                                                           & P (l/stock)                              \\
+3          & Water treatment (for domestic use)       & WT (dom.)    & 7   & water\_qualDomestic, water\_waste\_treatmentDomestic                              & TODO    & 2   &                                                                                  &                                          \\
+4          & Irrigation                               & Irrig.       & 8   & water\_irrigation                                                                 & TODO    & 3   & Pipe (irrigation water)                                                          & P (irrig.)                               \\
+\textit{5} & Pump                                     & Pump         & 9   & water\_pumped                                                                     & TODO    & 4   & Pipe (domestic water)                                                            & P (dom.)                                 \\
+\textit{6} & Agriculture                              & Agric.       & 17  & veg\_raw, manure, manure\_green, fishFeed, petrol, biomassMedium, biomassWet, CO2 & TODO    & 8   & Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables) & V (man.), V (g/man.), V (pet.), V (veg.) \\
+7          & Livestock                                & L/stock      & 18  & meat\_raw                                                                         & TODO    & 9   & Vehicle (meat)                                                                   & V (meat)                                 \\
+8          & Stove                                    & Stove        & 20  & heat\_stove, firewood                                                             & TODO    & 10  & Vehicle (firewood)                                                               & V (f/wood)                               \\
+9          & Biomass drying (medium moisture content) & BMD (med.)   & 20  &                                                                                   & TODO    & 10  &                                                                                  &                                          \\
+10         & Biomass drying (high moisture content)   & BMD (wet)    & 20  &                                                                                   & TODO    & 10  &                                                                                  &                                          \\
+11         & aquaculture                              & Aqua         & 21  & fish\_raw                                                                         & TODO    & 12  & Vehicle (fish), Vehicle (fish feed)                                              & V (fish), V (f/feed)                     \\
+12         & Cooking                                  & Cook.        & 24  & meat\_cooked, fish\_cooked, veg\_cooked                                           & TODO    & 12  &                                                                                  &                                          \\
+13         & Agricultural machinary                   & Agric. Mach. & 24  &                                                                                   & TODO    & 12  &                                                                                  &                                          \\
+14         & Domestic appliances                      & App.         & 25  & appUse                                                                            & TODO    & 12  &                                                                                  &                                          \\
+15         & Heating                                  & Heat.        & 26  & heat\_domestic                                                                    & TODO    & 12  &                                                                                  &                                          \\
+16         & Hot water                                & HW           & 27  & hotWater\_domestic                                                                & TODO    & 12  &                                                                                  &                                          \\
+           &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\
+           &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\
+           &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\ \bottomrule
+\end{tabular}
+\end{sidewaystable}
+-->
+
 ## Deriving three mathematical formulations
 
 Our model will consider a city as divided into a number of zones, for which can be specified demands for resource management, and which can contain the processes which convert resources. These zones also possess connections to other zones for resource transportation, and to outside the city for importing and exporting. To this end, our models will be based on the model by @Keirstead2013a which we introduced earlier as a high-level MILP model to plan urban energy resource systems.
