@@ -1,18 +1,18 @@
 "Conversion processes",,,"Resources",,,"Transport processes",,
 "No.","Added","Abbrev.","No.","Added","Abbrev.","No.","Added","Abbrev."
-"1","Dam",,3,,,1,"cable",
-"2","treatment_livestock",,5,,,2,"pipe_livestock",
-"3","treatment_domestic",,7,,,2,,
-"4","irrigation_from_source",,8,,,3,"pipe_irrig",
-"5","pump",,9,,,4,"pipe",
-"6","agriculture",,17,,,8,"manure_wagon, manure_green_wagon, petrol_tanker, veg_cart",
-"7","livestock",,18,,,9,"meat_cart",
-"8","heating_stove",,20,,,10,"biomass_wagon",
-"9","biomass_drying_medium",,20,,,10,,
-"10","biomass_drying_wet",,20,,,10,,
-"11","aquaculture",,21,,,12,"fish_cart, fishFeed_cart",
-"12","cooking",,24,,,12,,
-"13","agriMachine",,24,,,12,,
-"14","domesticApps",,25,,,12,,
-"15","heating_domestic",,26,,,12,,
-"16","heating_domesticHotWater",,27,,,12,,
+"1","Dam","Dam",3,"water_source, water_generated, elec","TODO",1,"Cable","Cab."
+"2","Water treatment (for livestock)","WT (l/stock)",5,"water_qualLivestock, water_waste_treatmentLivestock","TODO",2,"Pipe (livestock water)","P (l/stock)"
+"3","Water treatment (for domestic use)","WT (dom.)",7,"water_qualDomestic, water_waste_treatmentDomestic","TODO",2,,
+"4","Irrigation","Irrig.",8,"water_irrigation","TODO",3,"Pipe (irrigation water)","P (irrig.)"
+"5","Pump","Pump",9,"water_pumped","TODO",4,"Pipe (domestic water)","P (dom.)"
+"6","Agriculture","Agric.",17,"veg_raw, manure, manure_green, fishFeed, petrol, biomassMedium, biomassWet, CO2","TODO",8,"Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables)","V (man.), V (g/man.), V (pet.), V (veg.)"
+"7","Livestock","L/stock",18,"meat_raw","TODO",9,"Vehicle (meat)","V (meat)"
+"8","Stove","Stove",20,"heat_stove, firewood","TODO",10,"Vehicle (firewood)","V (f/wood)"
+"9","Biomass drying (medium moisture content)","BMD (med.)",20,,"TODO",10,,
+"10","Biomass drying (high moisture content)","BMD (wet)",20,,"TODO",10,,
+"11","aquaculture","Aqua",21,"fish_raw","TODO",12,"Vehicle (fish), Vehicle (fish feed)","V (fish), V (f/feed)"
+"12","Cooking","Cook.",24,"meat_cooked, fish_cooked, veg_cooked","TODO",12,,
+"13","Agricultural machinary","Agric. Mach.",24,,"TODO",12,,
+"14","Domestic appliances","App.",25,"appUse","TODO",12,,
+"15","Heating","Heat.",26,"heat_domestic","TODO",12,,
+"16","Hot water","HW",27,"hotWater_domestic","TODO",12,,
