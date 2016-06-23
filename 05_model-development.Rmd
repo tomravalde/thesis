@@ -1019,6 +1019,15 @@ Having formulated three alternative mathematical programming models which optimi
 
 ### Results and discussion
 
+```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations (outliers included). \\label{fig:comparison-outliers}"}
+
+setwd("05_model-development")
+source("process-results.R")
+
+plot_conversion
+
+```
+
 - Apply to case study, one process at a time
 - Plots of how variables, parameters
   	- Discuss how these relate to generality, fidelity, usability, tractability etc.
