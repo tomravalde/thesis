@@ -1,0 +1,112 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'tat-16.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{715.77355463bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.71700355)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{tat-16.pdf}}%
+    \put(0.25954268,0.64789518){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{WT\\ (l/stock)}}}%
+    \put(0.13349826,0.43780249){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Dam}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{tat-16.pdf}}%
+    \put(0.23985896,0.22619767){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{WT\\ (dom.)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{tat-16.pdf}}%
+    \put(0.51669451,0.34528178){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Agric.}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{tat-16.pdf}}%
+    \put(0.38629517,0.43976411){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Irrig.}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{tat-16.pdf}}%
+    \put(0.93764061,0.36350367){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Stove}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{tat-16.pdf}}%
+    \put(0.51286376,0.63949678){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{L/stock}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{tat-16.pdf}}%
+    \put(0.63443766,0.56069517){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Aqua.}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{tat-16.pdf}}%
+    \put(0.38622052,0.2177635){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Pump}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{tat-16.pdf}}%
+    \put(0.69127732,0.36032311){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{BMD\\ (med.)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{tat-16.pdf}}%
+    \put(0.68982867,0.30384906){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{BMD\\ (wet)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{tat-16.pdf}}%
+    \put(0.83579675,0.57605208){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Cook.}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{tat-16.pdf}}%
+    \put(0.94177454,0.28899683){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Heat}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{tat-16.pdf}}%
+    \put(0.07719482,0.35402823){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Agric.\\ mach.}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{tat-16.pdf}}%
+    \put(0.1276335,0.08915109){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{App.}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{tat-16.pdf}}%
+    \put(0.83903931,0.15057662){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{WH}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{tat-16.pdf}}%
+    \put(0.04133952,0.43736367){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{W}}}%
+    \put(0.26666173,0.4511847){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{W\\ (dam)}}}%
+    \put(0.14470557,0.34862805){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{El.}}}%
+    \put(0.34281365,0.6390118){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{W\\ (l/stock)}}}%
+    \put(0.32373229,0.22297009){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{W\\ (dom.)}}}%
+    \put(0.23599122,0.16557807){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{WW\\ (dom.)}}}%
+    \put(0.4734068,0.45168742){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{W\\ (irrig.)}}}%
+    \put(0.85053235,0.24942386){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{W\\ (pump.)}}}%
+    \put(0.50270572,0.56859496){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Veg.}}}%
+    \put(0.9564195,0.62237136){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Veg.\\ (c)}}}%
+    \put(0.83025784,0.65034791){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Meat}}}%
+    \put(0.95865484,0.53877418){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Meat\\ (c)}}}%
+    \put(0.83099892,0.5033022){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Fish}}}%
+    \put(0.95714798,0.57957385){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Fish\\ (c)}}}%
+    \put(0.53557348,0.52604822){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Man.}}}%
+    \put(0.51104606,0.14315014){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{G/man.}}}%
+    \put(0.61975773,0.43949201){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{F/feed}}}%
+    \put(0.05074333,0.28300121){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Pet.}}}%
+    \put(0.60879801,0.36442299){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{BM\\ (med)}}}%
+    \put(0.60549616,0.31030479){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{BM\\ (wet)}}}%
+    \put(-0.00086295,0.00021761){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{CO2}}}%
+    \put(0.14195834,0.04009374){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{App.\\ use}}}%
+    \put(0.95501264,0.45460896){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{H\\ (stove)}}}%
+    \put(0.96592407,0.23013372){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{H\\ (dom.)}}}%
+    \put(0.95952265,0.15524246){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{HW}}}%
+    \put(0.75535315,0.32307745){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{F/wood}}}%
+    \put(0.26290331,0.7078372){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{WW\\ (l/stock)}}}%
+  \end{picture}%
+\endgroup%

@@ -1,18 +1,18 @@
 "Conversion processes",,,"Resources",,,"Transport processes",,
 "No.","Added","Abbrev.","No.","Added","Abbrev.","No.","Added","Abbrev."
-"1","Dam","Dam",3,"water_source, water_generated, elec","TODO",1,"Cable","Cab."
-"2","Water treatment (for livestock)","WT (l/stock)",5,"water_qualLivestock, water_waste_treatmentLivestock","TODO",2,"Pipe (livestock water)","P (l/stock)"
-"3","Water treatment (for domestic use)","WT (dom.)",7,"water_qualDomestic, water_waste_treatmentDomestic","TODO",2,,
-"4","Irrigation","Irrig.",8,"water_irrigation","TODO",3,"Pipe (irrigation water)","P (irrig.)"
-"5","Pump","Pump",9,"water_pumped","TODO",4,"Pipe (domestic water)","P (dom.)"
-"6","Agriculture","Agric.",17,"veg_raw, manure, manure_green, fishFeed, petrol, biomassMedium, biomassWet, CO2","TODO",8,"Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables)","V (man.), V (g/man.), V (pet.), V (veg.)"
-"7","Livestock","L/stock",18,"meat_raw","TODO",9,"Vehicle (meat)","V (meat)"
-"8","Stove","Stove",20,"heat_stove, firewood","TODO",10,"Vehicle (firewood)","V (f/wood)"
-"9","Biomass drying (medium moisture content)","BMD (med.)",20,,"TODO",10,,
-"10","Biomass drying (high moisture content)","BMD (wet)",20,,"TODO",10,,
-"11","aquaculture","Aqua",21,"fish_raw","TODO",12,"Vehicle (fish), Vehicle (fish feed)","V (fish), V (f/feed)"
-"12","Cooking","Cook.",24,"meat_cooked, fish_cooked, veg_cooked","TODO",12,,
-"13","Agricultural machinary","Agric. Mach.",24,,"TODO",12,,
-"14","Domestic appliances","App.",25,"appUse","TODO",12,,
-"15","Heating","Heat.",26,"heat_domestic","TODO",12,,
-"16","Hot water","HW",27,"hotWater_domestic","TODO",12,,
+"1","Dam","Dam",3,"Water, Water (dam), Electricity","W, W (dam), El.",1,"Cable","Cab."
+"2","Water treatment (for livestock)","WT (l/stock)",5,"Water (livestock), Wastewater (livestock)","W (l/stock), WW (l/stock)",2,"Pipe (livestock water)","P (l/stock)"
+"3","Water treatment (for domestic use)","WT (dom.)",7,"Water (domestic), Wastewater (domestic)","W (dom.), WW (dom.)",2,,
+"4","Irrigation","Irrig.",8,"Water (irrigation)","W (irrig.)",3,"Pipe (irrigation water)","P (irrig.)"
+"5","Pump","Pump",9,"Water (pumped)","W (pump.)",4,"Pipe (domestic water)","P (dom.)"
+"6","Agriculture","Agric.",17,"Vegetables, Manure, Green manure, Fish feed, Petrol, Biomass (medium moisture content), Biomass (high moisture content), CO2","Veg., Man., G/man., F/feed, Pet., BM (med.), BM (wet), CO2",8,"Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables)","V (man.), V (g/man.), V (pet.), V (veg.)"
+"7","Livestock","L/stock",18,"Meat","Meat",9,"Vehicle (meat)","V (meat)"
+"8","Stove","Stove",20,"Heat (stove), Firewood","H (stove), F/wood",10,"Vehicle (firewood)","V (f/wood)"
+"9","Biomass drying (medium moisture content)","BMD (med.)",20,,,10,,
+"10","Biomass drying (high moisture content)","BMD (wet)",20,,,10,,
+"11","aquaculture","Aqua",21,"Fish","Fish",12,"Vehicle (fish), Vehicle (fish feed)","V (fish), V (f/feed)"
+"12","Cooking","Cook.",24,"Meat (cooked), Vegetables (cooked), Fish (cooked)","Meat (c), Veg. (c), Fish (c)",12,,
+"13","Agricultural machinary","Agric. Mach.",24,,,12,,
+"14","Domestic appliances","App.",25,"Appliance use","App. Use",12,,
+"15","Heating","Heat.",26,"Heat (domestic)","H (dom.)",12,,
+"16","Water heating","WH",27,"Hot water","HW",12,,

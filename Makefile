@@ -72,6 +72,7 @@ update:
 	inkscape -D -z --file=05_model-development/model-family.svg --export-pdf=05_model-development/model-family.pdf --export-latex ; \
 	inkscape -D -z --file=05_model-development/pipe-dam-example.svg --export-pdf=05_model-development/pipe-dam-example.pdf --export-latex ; \
 	inkscape -D -z --file=05_model-development/network-1.svg --export-pdf=05_model-development/network-1.pdf --export-latex ; \
+	inkscape -D -z --file=05_model-development/tat-16.svg --export-pdf=05_model-development/tat-16.pdf --export-latex ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/benchmark-results.csv 05_model-development ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/network-summary.csv 05_model-development ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/process-results.R 05_model-development ; \
