@@ -25,12 +25,23 @@ Sections in JK's MILP paper
 ## Results
 -->
 
-To demonstrate the model we have formulated above, we will use a new Chinese urban development as a case study. The development is led by the Shann GU company[^confidential], and concerns a 13 km$^2$ site accommodating 133,000 people, with residential, commercial, industrial and recreational functions. For the case study take the predicted resource demands for the site, and run the model for several scenarios (outlined below) to optimise the development's metabolism. Note that a strict definition of 'optimise' is not considered here (though this question has been explored elsewhere, e.g. @Ravalde2015a); our primary purpose is to introduce our new model. As such we will apply various environmental and economic objectives which may interest stakeholders.
+This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
+
+The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC)[^confidential], who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The site is 13 km$^2$ and accommodates 133,000 people, with residential, commercial, industrial and recreational functions, roughly represented by Figure ~\ref{fig:site} below:
 
 [^confidential]:More detailed information regarding its location is confidential.]
 
-[TODO: idealised representation figure]
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site.pdf_tex}}
+	\end{spacing}
+	\caption{A stylized representation of the SCP redevelopment site, adapted from a figure in the SCP documentation. The outer dashed rectangle encloses the full 13 km$^2$ site; the solid rectangles and their bold text labels represent broad regions within the site (e.g. region nine is \textbf{residential}; the unbolded text labels denote zones more specifically (e.g. a hospital within the residential region).}
+	\label{fig:site}
+\end{figure}
 
+For the case study, each zone has a set of demands for energy, water and waste management which must be met. The transport connections between each zone are also also defined, as well as constraints on the number of zones that can import and export resources. This case study will design networks for various scenarios, which will use different objective functions, and use different subsets of the process library assembled in Chapter 4. Before presenting and discussing results of the model, this chapter proceeds by outlining the data (sources, assumptions, and calculations).
 
 ## Input data
 <!--
