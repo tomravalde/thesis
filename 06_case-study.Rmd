@@ -133,7 +133,7 @@ school,reserved
 
 ### Times
 
-The SPC [demand] provides values of zonal energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $T=3$, representing the winter, summer, and shoulder seasons. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
+The SPC [demand] provides values of energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $T=3$, representing the winter, summer, and shoulder seasons. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
 
 Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $T=3 \times 2 = 6$), which could further be divided into hourly demands (thus $T=3 \times 2 \times 24 = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns. However, the choice of seasonal timesteps has at least three reasons. The pragmatic reason, is that this is how the SPC documentation defines the energy demands. The philosophical [TODO: better word? modelling judgement] reason is that seasonal time slices are appropriate to the exploratory early-stage planning purposes of this model [TODO: cite examples of similar models, e.g. MARKAL etc.] . Finer resolution would be appropriate the further along the design process the modelling is. However, modelling judgement is also the reason why it is inappropriate to aggregate the demand up to a coarser scale (i.e. a year). In such a case, a yearly averaged value of head (to take one example) would overdesign the summer system operation, while undersizing the winter system operation, potentially resulting in a suboptimal system design [TODO: clarify this]. Finally, there is a computational reason. As shown in Chapter 4, if $T$ doubles, the number of variables increases by [TODO:], leading to an estimated [TODO: X-fold] increase in computation time. [TODO: note on heirarchical time discretisation, for a more tractable approach, to be explored in future.] These latter two points interact, as the further along the planning process (from explanation to detailed design), it is justifiable to expend more effort (including computational resources), thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (the location of a particular conversion process, whilst its size remains unknown, for example), thus reducing the number of variables in the model, and thereby making some efficiency savings to the computations.
 
@@ -141,7 +141,22 @@ With this set of times chosen, the length of each timestep is defined as paramet
 
 ### Resource demands
 
+Having determined the seasons and the time steps in the model, it is now possible to define the resource demand parameter $D^{(qty)}_{rzt}$ for each resource $r$. (As mentioned in Chapter 4, the code which constructs a model is designed such that $D^{(qual)}_{rqzt}$ can be defined automatically once $D^{(qty)}_{rzt}$ is known.) The SPC documentation will provides values which can be used in the modelling. However, these values do not necessarily cover all resources $r$, and may not be tailored to each zone $z$ and season $t$. Thus, sometimes, assumptions and calculations need to be applied in order to translate a documented value into a set of values which can be used in the modelling. What follows is an explanations of these.
+
+As mentioned above, SPC [demand] gives the site's energy demands, specifically it gives demands for electricty (year round), heating (winter) and cooling (summer). With this data, it will need to be converted to 
+
 The Shann Gu documentation specifies demands ($D^{(qty)}_{rzt}$) for electricity, heating, water consumption. We also derive quantities for wastewater and waste generation, which can be defined using negative values. Demand is defined on a per-second basis (MW for energy demands, kg/s for the others).
+
+[TODO:]
+
+- energy
+	- generate shoulder heating
+	- distribute energy demands among zones (regions --> functions)
+	- attribute energy demands to cities
+- other
+	- Calculate water (potable), water (reclaimed), wastewater, waste (nonorganic), waste (organic) etc.
+	- distribute among zones
+	- attribute other demands to cities
 
 These are visualised in Figure \ref{fig:site-demands}, with site-wide values tabulated in Table [TODO:]. Appendix [TODO:] includes separate tables for each zone.
 
@@ -149,8 +164,7 @@ This necessarily requires [TODO:] quality attributes.
 
 ### Resource demands -- Appendix
 
-- The code is set up, such that only $D^{(qty)}_{rzt}$ need be defined, with $D^{(qual)}_{rqzt}$ defined automatically.
-- Summary table?
+- Summary tables?
 
 ### Resource options
 
