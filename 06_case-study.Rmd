@@ -78,7 +78,7 @@ When applying the model to a case study, the first step is to specify the zones 
 
 With the sets specified, their related parameters can be defined. First the distance between between two any two neighbouring zones defines the $l_{zz'}$ parameter (km), while the $span_t$ parameter defines the length of time (days) of each time step lasts. The resource demands can then be specified for each time and location with the $D^{(qty}_{rzt})$ parameter. (As mentioned in Chapter 5, the model code is built so that it will automatically define the $D^{(qual)}_{qzt}$ parameter.) Other parameters will include the limits on imports and exporting resources to particular zones, and the costs of resources and processes [TODO: TBC].
 
-This section gives the key particulars on how the sets and parameters above are defined from the SPC documentation, with the data summarised in Table [TODO: cross-ref]. To tabulate all the resource demands for 
+This section gives the key particulars on how the sets and parameters above are defined from the SPC documentation, with further details provided in Appendix [TODO: cross-ref]. The explanations are deliberately comprehensive, reflecting on why certain decisions and assumptions regarding data are made, with the intention of justifying modelling decisions taken here, as well as walking the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions.
 
 ```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SCP site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
 demands <- read.csv("06_case-study/resource-demands.csv")
@@ -98,13 +98,11 @@ plot_demand
 
 ```
 
-Further details are provided in Appendix [TODO: cross-ref].
-
 [TODO: adapt Appendix from supplementary information (shann-gu-case-study/paper/supInf.Rmd)]
 
 ### Site layout
 
-Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $Z=12$[^zone-code]. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
+Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $Z=12$. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
 
 [TODO: insert a figure which is a zonal representation of the site, marked with interzonal distances.]
 
@@ -112,7 +110,7 @@ Thus to define the site layout, we first assume which pairings belong to set $nb
 
 [^road-cost]: As discussed in Section [TODO:], this means that roads have no financial cost in the model, whereas pipes and cables will.
 
-We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO:] km.
+We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $NB=12$. With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO:] km.
 
 [TODO: insert a photo of me with a ruler, doing the measurements!]
 
@@ -135,13 +133,19 @@ school,reserved
 
 ### Times
 
-The times set $T$ defines the times considered, with their lengths given by $span(T)$ [TODO: re-notate]. In our case we've defined seasons for `winter`, `summer` and `shoulder`, with spans of 90 days, 90 days, and 180 days, respectively. 
+The SPC [demand] provides values of zonal energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $T=3$, representing the winter, summer, and shoulder seasons. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
+
+Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $T=3 \times 2 = 6$), which could further be divided into hourly demands (thus $T=3 \times 2 \times 24 = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns. However, the choice of seasonal timesteps has at least three reasons. The pragmatic reason, is that this is how the SPC documentation defines the energy demands. The philosophical [TODO: better word? modelling judgement] reason is that seasonal time slices are appropriate to the exploratory early-stage planning purposes of this model [TODO: cite examples of similar models, e.g. MARKAL etc.] . Finer resolution would be appropriate the further along the design process the modelling is. However, modelling judgement is also the reason why it is inappropriate to aggregate the demand up to a coarser scale (i.e. a year). In such a case, a yearly averaged value of head (to take one example) would overdesign the summer system operation, while undersizing the winter system operation, potentially resulting in a suboptimal system design [TODO: clarify this]. Finally, there is a computational reason. As shown in Chapter 4, if $T$ doubles, the number of variables increases by [TODO:], leading to an estimated [TODO: X-fold] increase in computation time. [TODO: note on heirarchical time discretisation, for a more tractable approach, to be explored in future.] These latter two points interact, as the further along the planning process (from explanation to detailed design), it is justifiable to expend more effort (including computational resources), thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (the location of a particular conversion process, whilst its size remains unknown, for example), thus reducing the number of variables in the model, and thereby making some efficiency savings to the computations.
+
+With this set of times chosen, the length of each timestep is defined as parameter $span(T)$ with the winter, summer, and shoulder seasons having spans of 90 days, 90 days, and 180 days respectively.
 
 ### Resource demands
 
 The Shann Gu documentation specifies demands ($D^{(qty)}_{rzt}$) for electricity, heating, water consumption. We also derive quantities for wastewater and waste generation, which can be defined using negative values. Demand is defined on a per-second basis (MW for energy demands, kg/s for the others).
 
 These are visualised in Figure \ref{fig:site-demands}, with site-wide values tabulated in Table [TODO:]. Appendix [TODO:] includes separate tables for each zone.
+
+This necessarily requires [TODO:] quality attributes.
 
 ### Resource demands -- Appendix
 
