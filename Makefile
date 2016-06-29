@@ -77,6 +77,7 @@ update:
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/benchmark-results.csv 05_model-development ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/network-summary.csv 05_model-development ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/process-results.R 05_model-development ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/paper/resource-demands.csv 06_case-study ; \
 	fi
 #	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
 

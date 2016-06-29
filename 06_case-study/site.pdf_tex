@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{191.62423868bp}%
+    \setlength{\unitlength}{198.03942222bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,21 +48,21 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.47823239)%
+  \begin{picture}(1,1.43034732)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{site.pdf}}%
-    \put(0.34037618,1.23675327){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Residential}}}}%
-    \put(0.09659922,1.15866275){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Hospital}}}%
-    \put(0.21358601,0.57820749){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{North district}}}}%
-    \put(0.10670213,0.94060713){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Energy island}}}%
-    \put(0.29988709,0.19432466){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Factory (south)}}}%
-    \put(0.60588184,0.09961033){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Assembly}}}%
-    \put(-0.74863376,0.72467002){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
-    \put(0.06558849,0.69260399){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Multifunction district}}}%
-    \put(0.67726062,0.59788966){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Turbines}}}%
-    \put(0.07680601,0.46174433){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quality control}}}%
-    \put(0.66821302,1.33205424){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{School}}}%
-    \put(0.59149108,0.69233797){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Dormitories}}}%
-    \put(0.4095237,0.49476196){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Technology building}}}%
+    \put(0.32935022,1.19669055){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Residential}}}}%
+    \put(0.09347004,1.12112964){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Hospital}}}%
+    \put(0.32785521,0.55947734){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Factory (north)}}}}%
+    \put(0.10324568,0.9101376){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Energy island}}}%
+    \put(0.3305687,0.18802981){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Factory (south)}}}}%
+    \put(0.58625522,0.09638361){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Assembly}}}%
+    \put(-0.72438292,0.70119545){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.07154305,0.68632654){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Multifunction district}}}%
+    \put(0.6553218,0.57852194){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Turbines}}}%
+    \put(0.074318,0.43062843){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quality control}}}%
+    \put(0.64656728,1.28890438){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{School}}}%
+    \put(0.57233064,0.62951474){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Dormitories}}}%
+    \put(0.39625781,0.4948933){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Technology building}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{site.pdf}}%
   \end{picture}%
 \endgroup%
