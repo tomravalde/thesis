@@ -27,9 +27,9 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
-The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC)[^confidential], who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure ~\ref{fig:site} below:
+The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure ~\ref{fig:site} [^confidential].
 
-[^confidential]:More detailed information regarding its location is confidential.]
+[^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SCP [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
 
 \begin{figure}
 	\centering
@@ -41,9 +41,27 @@ The case study is an ongoing Chinese urban development. The development is led b
 	\label{fig:site}
 \end{figure}
 
-For the case study, each zone has a set of demands for energy, water and waste management which must be met. The transport connections between each zone are also also defined, as well as constraints on the number of zones that can import and export resources. This case study will design networks for various scenarios, which will use different objective functions, and use different subsets of the process library assembled in Chapter 4. Before presenting and discussing results of the model, this chapter proceeds by outlining the data (sources, assumptions, and calculations).
+One stated ambition of the SCP site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Current plans to that end include using heat held within wastewater within a water source sewage pump, and generating biogas from wastewater fermentation. These, and other intersectoral integration possibilities [TODO: better word?] are summarised in Figure [TODO:], which shows part of the resource management infrastructure proposed for the SPC site, indicating the type of intersectoral integration considered by the planners and decision makers involved with the SPC site redevelopment project.
 
-## Input data
+[TODO: include Figure adapted, showing the interconnections between systems, discuss energy island.]
+
+Some proposed system design have been simulated (for example using the TRNSYS[^trnsys] to simulate the energy, system), however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
+
+[^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. This program allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
+
+This chapter proceeds by adapting the information from SCP documentation, to construct the model (for example identifying zones, interzonal links, and resource demands). Following this, Section [TODO: subsection number] introduces several scenarios which the model can test. These scenarios will all use the same demand patterns specified in the SPC documentation, but use different objectives, and have different sets of processes available. This will allow investigation of both currently proposed system designs, as well as others. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further.
+
+<!--
+- [SCP-4, slide 17: water, waste and energy jigsawed together]
+- [SCP-4, slide 19: Energy island with CHP, CCHP and sewage source heatpump 
+- [SCP-4, slide 21: Energy island]
+- [SCP-4, slide 22: Energy provision via CHP, CCHP and sewage source heatpump, (as well as traditional and renewable approaches)]
+- [SCP-4, slide 25: "Increase energy supply efficiency", "decrease discharge cost" and influence "by cycle reuse", in order to save energy, give social benefits, and economic efficiency]
+- [SCP-4, slide 26: Energy island logic diagram, incorporating sewage treatment, water reuse, solid waste treatment, cooling/heating, and solar-PV power]
+- [SCP-4, slide 27: Within that, the "Combined water supply and treatment system" has WSHP, rainwater collection, fermentation to produce biogas, sewage plant, water treatment, and water reclamation]
+-->
+
+## Model data
 <!--
 - Data
   	- resources
@@ -86,7 +104,7 @@ Further details are provided in Appendix [TODO: cross-ref].
 
 ### Site layout
 
-Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
+Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $Z=12$[^zone-code]. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
 
 [TODO: insert a figure which is a zonal representation of the site, marked with interzonal distances.]
 
@@ -97,6 +115,8 @@ Thus to define the site layout, we first assume which pairings belong to set $nb
 We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO:] km.
 
 [TODO: insert a photo of me with a ruler, doing the measurements!]
+
+The GAMS code for this data is listed in Appendix [TODO:]. 
 
 <!--
 Assembly,Factory (south)
