@@ -27,7 +27,7 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
-The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure ~\ref{fig:site} [^confidential].
+The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure ~\ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
 
 [^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SCP [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
 
@@ -78,7 +78,7 @@ When applying the model to a case study, the first step is to specify the zones 
 
 With the sets specified, their related parameters can be defined. First the distance between between two any two neighbouring zones defines the $l_{zz'}$ parameter (km), while the $span_t$ parameter defines the length of time (days) of each time step lasts. The resource demands can then be specified for each time and location with the $D^{(qty}_{rzt})$ parameter. (As mentioned in Chapter 5, the model code is built so that it will automatically define the $D^{(qual)}_{qzt}$ parameter.) Other parameters will include the limits on imports and exporting resources to particular zones, and the costs of resources and processes [TODO: TBC].
 
-This section gives the key particulars on how the sets and parameters above are defined from the SPC documentation, with further details provided in Appendix [TODO: cross-ref]. The explanations are deliberately comprehensive, reflecting on why certain decisions and assumptions regarding data are made, with the intention of justifying modelling decisions taken here, as well as walking the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions.
+This section gives the key particulars on how the sets and parameters above are defined from the SPC documentation, with further details provided in Appendix [TODO: cross-ref]. The explanations are deliberately comprehensive, reflecting on why certain decisions and assumptions regarding data are made, with the intention of justifying modelling decisions taken here, as well as walking the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions. The details are given in the recommended order of how a user might construct a particular case study model, and thus each subsection describes how different components of the formulation (e.g. sets and parameters) relate to each other [TODO: tidy this last part of explanation].
 
 ```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SCP site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
 demands <- read.csv("06_case-study/resource-demands.csv")
@@ -141,50 +141,45 @@ With this set of times chosen, the length of each timestep is defined as paramet
 
 ### Resource demands
 
-Having determined the seasons and the time steps in the model, it is now possible to define the resource demand parameter $D^{(qty)}_{rzt}$ for each resource $r$. (As mentioned in Chapter 4, the code which constructs a model is designed such that $D^{(qual)}_{rqzt}$ can be defined automatically once $D^{(qty)}_{rzt}$ is known.) The SPC documentation will provides values which can be used in the modelling. However, these values do not necessarily cover all resources $r$, and may not be tailored to each zone $z$ and season $t$. Thus, sometimes, assumptions and calculations need to be applied in order to translate a documented value into a set of values which can be used in the modelling. What follows is an explanations of these.
+Having determined the seasons and the time steps in the model, it is now possible to define the resource demand parameter $D^{(qty)}_{rzt}$ for each resource $r$. (As mentioned in Chapter 4, the code which constructs a model is designed such that $D^{(qual)}_{rqzt}$ can be defined automatically once $D^{(qty)}_{rzt}$ is known.) The SPC documentation will provides values which can be used in the modelling. However, these values do not necessarily cover all resources $r$, and may not be disaggregated to each zone $z$ and season $t$. Thus, sometimes, assumptions and calculations need to be applied in order to translate a documented value into a set of values which can be used in the modelling. The details of these adjustments are provided in Appendix [TODO:].
 
-As mentioned above, SPC [demand] gives the site's energy demands, specifically it gives demands for electricty (year round), heating (winter) and cooling (summer). With this data, it will need to be converted to 
+The resource demands used in the SPC model are summarised in Figure \ref{fig:site-demands}, showing the seasonal demand for energy (electricity, heating, and cooling), water (potable, and reclaimed), and waste management (wastewater, nonorganic solid waste, and organic solid waste). The precise numeric values used in the model are provided in Appendix [TODO:]. 
 
-The Shann Gu documentation specifies demands ($D^{(qty)}_{rzt}$) for electricity, heating, water consumption. We also derive quantities for wastewater and waste generation, which can be defined using negative values. Demand is defined on a per-second basis (MW for energy demands, kg/s for the others).
+Resource demands are defined as rates, i.e. on a per-second basis (kg/s or MW). This is a common way to express energy quantities, which makes sense given that energy is most commonly demanded on such a basis[^energy-rate]. This makes resource quantities in the model consistent with how the model defines process behaviour, where the process rate is defined on a per-second basis, and thus no adjustment multipliers need to be added into the equations. Thus by using rates, whatever the temporal resolution of a model (see the options discussed in Section [TODO:], above), the formulation need not substantially change[^rates-objective].
 
-[TODO:]
+[^energy-rate]: This is in contrast to waste management services (to give one example) in which waste may be collected at regular intervals (e.g. weekly), and set to a particular processing unit once a certain threshold (e.g. tons) has been met. Nevertheless, for usability, there should be consistency between the definition of energy and mass quantities. One way to capture the non-rate properties of many material-based processes (and indeed, some energy-based processes, such as [TODO:]) would be to introduce storage processes into the model. This may be the subject of future developments, as discussed in Section [TODO:]. 
 
-- energy
-	- generate shoulder heating
-	- distribute energy demands among zones (regions --> functions)
-	- attribute energy demands to cities
-- other
-	- Calculate water (potable), water (reclaimed), wastewater, waste (nonorganic), waste (organic) etc.
-	- distribute among zones
-	- attribute other demands to cities
+[^rates-objective]: The objective function formulation may need to consider the temporal resolution of the model. For example, if the objective function calculates system costs over a year, then an appropriate multiplication factor will need to be applied to each time period. This can by achieved with the appropriate definitions of the $span(t)$ parameter.
 
-These are visualised in Figure \ref{fig:site-demands}, with site-wide values tabulated in Table [TODO:]. Appendix [TODO:] includes separate tables for each zone.
+### Other resources
 
-This necessarily requires [TODO:] quality attributes.
+The resource demands discussed above will define some of the $r$ items in set $R$, but to complete this set requires the resources which used in the network of conversion processes to meet demand. In total, there are [TODO: 63?] resources, including everything from algae to wood.
 
-### Resource demands -- Appendix
+Each resources has at least one associated quality $q$ (belonging to set $Q$), and attributed to the resource using the $X_{rq}$ and $\delta^R_{rq}$ parameters. The qualities used in this case study are *mass* and *energy*. Most resources are only attributed with one of these (e.g. algae possesses mass, and heat possesses energy), though some resources are attributed with both mass and energy (e.g. ground water). The full list of resources and their associated qualities can be found in Appendix [TODO:].
 
-- Summary tables?
+With the resources, zones and times determined (indixed by $r$, $z$, $t$, respectively), the parameters which impose limits on how many zones can import and export particular resources ($N^I_r$, $N^E_r$), and the maximum allowable imports of a resource in a season ($I^{max}_{rt}$, $E^{max}_{rt}$) can be specified. These values are shown in Table [TODO:], below. 
 
-### Resource options
+[TODO: insert table of resource/zone import constraints. Many are the same, so only need to include the exceptions.]
 
-As well as the resource demands, our case studies consider another [TODO: number] resources in set $R$ which can be used as part of the conversion chain to meet demand. These include [TODO: list examples]. For each resource why can apply a conta
+### Conversion processes
 
-Each resource has at least one associated quality $q$, which are defined in the $Q$ set. For our purposes we use `mass` and `energy` qualities, which are attributed to each resource with the $X_{rq}$ parameter.
+The resource conversion processes used in the model will be taken from the open-source database of urban metabolism processes outlined in @Ravalde2015b[^process-data], or the Shann Gu documentation. Each process definition also includes its capacity (i.e. the maximum MJ/s or kg/s which can be converted). This database provides the values to define process behaviour data (namely the coefficients which define the input and output resource quantities with $k_{pr}$, and maximum process rates $F^{max}_p$). The size of the process set $P$ will vary for each scenario (with are detailed in Section [TODO:] below).
 
-For each resource, we need to define the minimum and maximum allowable imports and exports (again, on a per-second basis), and the number of zones allowed to import or export any particular resource. We also define a cost to import each resource [TODO: source information].
-
-### Process options
-
-Our modelling considers up to [TODO: number] processes $p$ which convert resources (depending on the scenario). [TODO: add details on scenarios here, or elsewhere?] These processes are taken from the open-source database of urban metabolism processes outlined in @Ravalde2015b[^process-data], or the Shann Gu documentation. Each process definition also includes its capacity (i.e. the maximum MJ/s or kg/s which can be converted).
-
-For each process, we also provide an estimated cost (in USD). Apart from the shear number of processes in our database (over 300), several factors make this tricky: first and foremost, our process database considers future processes which have not yet penetrated into the market. In addition, exchange rates and purchasing power parities around the world make it difficult to cost a process with any degree of certainty. For this reason, our costing is approximate. Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
+In addition to these parameters, each process needs to have a cost for use in the objective function [TODO:]. Aside from the shear number of processes in the database ([TODO: N] in total), several factors make this tricky. First and foremost, the process database includes future processes which have not yet penetrated into the market, thus there is no values to be used. Secondly, exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, our costing is approximate. Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
 ). 
+
+### Transport processes
 
 Similarly, up to [TODO: number] transport processes are also defined (using the $k$ coefficients), and maximum transport rates (MW or kg/s).
 
 - pipes (costed)
 - roads (free)
+
+### Summary
+
+This section has provided the data used to define the model's parameters while showing how various parts of the model relate to each other, and in doing-so has provided a guide on how one might construct the PRaQ model for a particular case study. 
+
+Now, this chapter turns to outline the [TODO: N] scenarios that our model will test. 
 
 ## Model scenarios
 
@@ -370,6 +365,19 @@ Our case study's time steps (along with their lengths in seconds) are defined in
 We have assumed a 360 day year, with the winter, summer and shoulder seasons taking lengths of 90 days, 90 days, and 180 days, respectively. So for example, the length of the `shoulder` season is calculated as $180~\mbox{days} \times 24~\mbox{hours} \times 3,600~\mbox{seconds} = 1.5552 \times 10^7~\mbox{seconds}$.
 
 ### Resource demands
+
+Summary of adjustments:
+
+- energy
+	- generate shoulder heating
+	- distribute energy demands among zones (regions --> functions)
+	- attribute energy demands to cities
+- other
+	- Calculate water (potable), water (reclaimed), wastewater, waste (nonorganic), waste (organic) etc.
+	- distribute among zones
+	- attribute other demands to cities
+
+SPC [demand] gives the site's energy demands, specifically it gives demands for electricty (year round), heating (winter) and cooling (summer). These demands are defined for each zone, so no adjustments need be applied in this regard. However, we do assume that heating is required in the shoulder season, and assume it to be half the value
 
 The following demands zones are given in the Shann Gu documentation:
 
