@@ -157,6 +157,8 @@ The resource demands discussed above will define some of the $r$ items in set $R
 
 Each resources has at least one associated quality $q$ (belonging to set $Q$), and attributed to the resource using the $X_{rq}$ and $\delta^R_{rq}$ parameters. The qualities used in this case study are *mass* and *energy*. Most resources are only attributed with one of these (e.g. algae possesses mass, and heat possesses energy), though some resources are attributed with both mass and energy (e.g. ground water). The full list of resources and their associated qualities can be found in Appendix [TODO:].
 
+Costs are also associated with resources for use in the objective function. These are based on [TODO:], and are given in Table [TODO:]. 
+
 With the resources, zones and times determined (indixed by $r$, $z$, $t$, respectively), the parameters which impose limits on how many zones can import and export particular resources ($N^I_r$, $N^E_r$), and the maximum allowable imports of a resource in a season ($I^{max}_{rt}$, $E^{max}_{rt}$) can be specified. These values are shown in Table [TODO:], below. 
 
 [TODO: insert table of resource/zone import constraints. Many are the same, so only need to include the exceptions.]
@@ -165,7 +167,25 @@ With the resources, zones and times determined (indixed by $r$, $z$, $t$, respec
 
 The resource conversion processes used in the model will be taken from the open-source database of urban metabolism processes outlined in @Ravalde2015b[^process-data], or the Shann Gu documentation. Each process definition also includes its capacity (i.e. the maximum MJ/s or kg/s which can be converted). This database provides the values to define process behaviour data (namely the coefficients which define the input and output resource quantities with $k_{pr}$, and maximum process rates $F^{max}_p$). The size of the process set $P$ will vary for each scenario (with are detailed in Section [TODO:] below).
 
-In addition to these parameters, each process needs to have a cost for use in the objective function [TODO:]. Aside from the shear number of processes in the database ([TODO: N] in total), several factors make this tricky. First and foremost, the process database includes future processes which have not yet penetrated into the market, thus there is no values to be used. Secondly, exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, our costing is approximate. Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
+In addition to these parameters, each process needs to have a cost for use in the objective function [TODO:]. We attempt to estimate process costs here, but note the difficulties in doing this. Aside from the shear number of processes in the database ([TODO: N] in total), several factors make this tricky. First and foremost, the process database includes future processes which have not yet penetrated into the market, thus there is no values to be used. Secondly, currency exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, our costing is approximate.
+
+The broad approach to estimating process costs is to assign each database process ($DP$) to a 'general process' ($GP$) (e.g. [TODO:]). For each $GP$, a unit cost (USD/MW or USD/kg/s) is obtained from the literature (this may require some assumptions and adjustments to numbers from the literature).
+
+$$
+\begin{align}
+\mbox{MP Total Cost} = \mbox{GP Unit Cost} \times \mbox{MP Flow Rate}
+\end{align}
+$$
+
+general processes ($GP$) for which we can have a unit cost (USD/MW or USD/kg/s) for each process. We can then assign each model process ($MP$) with a $GP$ (indicated by the [TODO: relevant column] column in process-costs.csv). For processes which do not yet exist [TODO: e.g. <example>], we use a GP which produces/consumes a similar main resource. Once each MP has an associated GP Unit Cost, we can estimate the an MP Total Cost (USD) by calculating:
+
+One guiding principle of the process cost estimation are that economies of scale should be applied[^scale-economy]. 
+
+[^scale-economy]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW plants than 10 1 MW plants, of the same type.
+
+In this way, the as yet 
+
+Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
 ). 
 
 ### Transport processes
