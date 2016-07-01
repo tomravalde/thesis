@@ -169,24 +169,24 @@ The resource conversion processes used in the model will be taken from the open-
 
 In addition to these parameters, each process needs to have a cost for use in the objective function [TODO:]. We attempt to estimate process costs here, but note the difficulties in doing this. Aside from the shear number of processes in the database ([TODO: N] in total), several factors make this tricky. First and foremost, the process database includes future processes which have not yet penetrated into the market, thus there is no values to be used. Secondly, currency exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, our costing is approximate.
 
-The broad approach to estimating process costs is to assign each database process ($DP$) to a 'general process' ($GP$) (e.g. [TODO:]). For each $GP$, a unit cost (USD/MW or USD/kg/s) is obtained from the literature (this may require some assumptions and adjustments to numbers from the literature).
-
-$$
-\begin{align}
-\mbox{MP Total Cost} = \mbox{GP Unit Cost} \times \mbox{MP Flow Rate}
-\end{align}
-$$
-
-general processes ($GP$) for which we can have a unit cost (USD/MW or USD/kg/s) for each process. We can then assign each model process ($MP$) with a $GP$ (indicated by the [TODO: relevant column] column in process-costs.csv). For processes which do not yet exist [TODO: e.g. <example>], we use a GP which produces/consumes a similar main resource. Once each MP has an associated GP Unit Cost, we can estimate the an MP Total Cost (USD) by calculating:
-
-One guiding principle of the process cost estimation are that economies of scale should be applied[^scale-economy]. 
+The broad approach to estimating process costs is to assemble a database of 'process types' ($PT$), with each $PT$ forming [TODO: better word] a category to which processes from the database -- 'database processes' ($DP$) -- are assigned. As an example, *'biogas-fuelled CHP'* is defined as a $PT$, which includes [TODO: find data, and list examples]. For each $PT$, unit costs (USD/MW or USD/kg/s) is obtained from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given in Appendix [TODO:]). One guiding principle of the process cost estimation are that economies of scale should be applied[^scale-economy]. For this to be captured in the model, each $PT$ has both lowerbound and upperbound unit costs, obtained from the literature (and adjusted according to necessary assumptions). Thus, the total cost (USD) of any particular $DP$ with a given capacity (MW or kgs/s) can be calculated from:
 
 [^scale-economy]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW plants than 10 1 MW plants, of the same type.
 
-In this way, the as yet 
+$$
+\begin{align}
+\mbox{DP Total Cost} = \mbox{PT Unit Cost}^* \times \mbox{DP capacity},
+\end{align}
+$$
+where $^*$ is wildcard notion to indicate either a lowerbound or an upperbound cost ($Cost^{LB}$ and $Cost^{UB}$, respectively). In this way, lowerbound costs are applied to larger instances of a process, and the latter applied to a smaller instance.
 
-Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
-). 
+This method estimates costs for conversion processes which do not yet exist in the market by For processes which do not yet exist by assigning these $DP$s [TODO: e.g. <example>], to a $PC$ which has a similar main resource in its conversion (either as a main input output)[^main]. This method is broadly conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lowercost than a more traditional means of conversion[^cost-estimation].
+
+[^main]: Recall from Chapter [TODO: chapter and section reference] the idea of a 'main' resource being the (e.g. electricity output for a powerplant, or wastewater input to a treatment facility), and always has a value of $k_{pr}=\pm 1$.
+
+[^cost-estimation]: Though this may be countered by the fact that a novel process may be more expensive than older methods due to other benefits (e.g environmental benefits). However, this thesis can only hope to be approximate with the cost of conversion processes, and indeed, such estimations warrant their own separate research focus [TODO: https://www.rand.org/content/dam/rand/pubs/reports/2006/R2481.pdf, https://core.ac.uk/download/files/23/140606.pdf].
+
+In summary, the database assembled in Chapter [TODO:] will provide the conversion processes which can be considered in the SPC case study (using various subsets according to different modelling scenarios, as outlined in Section [TODO:] below, defining model parameters $k_{prq}$ and $F^{max}_p$. Added to these processes have been estimated costs (defining model parameters $c^P_p$), which enable to model to take account of economies of scale, and the cost of processes which do not yet exist. The result is that the SPC modelling has up to [TODO:] conversion processes from which to design an integrated resource management system, for which a rough cost can be obtained. 
 
 ### Transport processes
 
@@ -322,6 +322,12 @@ Paragraph ideas from JK's MILP paper
 - "The model was illustrated using..."
 - "There are a number of future directions for the model..."
 -->
+
+In this chapter we have 
+demonstrating how one might go from a site about which some information is known, to develop 
+in doing so, we have also provided a rule-of-thumb method to estimate the costs of processes which do not yet exist, and to consider economies of scale in system design.
+
+The overall contribution to this thesis is to [TODO:]. To the field as a whole [TODO:] 
 
 [TODO: Other ideas]
 
