@@ -178,9 +178,10 @@ $$
 \mbox{DP Total Cost} = \mbox{PT Unit Cost}^* \times \mbox{DP capacity},
 \end{align}
 $$
+
 where $^*$ is wildcard notion to indicate either a lowerbound or an upperbound cost ($Cost^{LB}$ and $Cost^{UB}$, respectively). In this way, lowerbound costs are applied to larger instances of a process, and the latter applied to a smaller instance.
 
-This method estimates costs for conversion processes which do not yet exist in the market by For processes which do not yet exist by assigning these $DP$s [TODO: e.g. <example>], to a $PC$ which has a similar main resource in its conversion (either as a main input output)[^main]. This method is broadly conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lowercost than a more traditional means of conversion[^cost-estimation].
+This method estimates costs for conversion processes which do not yet exist in the market by For processes which do not yet exist by assigning these $DP$s [TODO: e.g. <example>], to a $PC$ which has a similar main resource in its conversion (either as a main input output)[^main]. This method is broadly conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lower cost than a more traditional means of conversion[^cost-estimation].
 
 [^main]: Recall from Chapter [TODO: chapter and section reference] the idea of a 'main' resource being the (e.g. electricity output for a powerplant, or wastewater input to a treatment facility), and always has a value of $k_{pr}=\pm 1$.
 
@@ -190,10 +191,28 @@ In summary, the database assembled in Chapter [TODO:] will provide the conversio
 
 ### Transport processes
 
-Similarly, up to [TODO: number] transport processes are also defined (using the $k$ coefficients), and maximum transport rates (MW or kg/s).
+The selection of transport processes to define set [TODO: design a symbol which isn't T for this]  for the SPC case study are based on the resources being considered, many of which can be transported between zones via various infrastructure (with some exceptions such as heat[^heat-transport]). To transport these resources, there are three types of transport infrastucuture: roads, alongwhich vehicles can transport everything from municipal solid waste, to gases and liquids carried by tankers; pipes, which transport water and gases; and cables, to carry electricity. As explained in the Section [TODO:], the roads are assumed to already exist to connect neighbouring zones ($nb(z,z')$), whilst underground pipes and overhead cables can be optionally added by the optimisation model, if and where necessary.
 
-- pipes (costed)
-- roads (free)
+[^heat-transport]: Though whilst heat itself cannot be transported, it can be carried by water, e.g. in a district heating network.
+
+Regarding the behaviour of transport processes, the origin-to-destination input and output coefficients, $k^*_{\tau rq}$ should obviously include the resource carried (e.g. water through a pipe). In addition to this, transport processes may need 'auxilliary' resources, namely the source of the energy used to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. While it is taken for granted that the carried resource entirely leaves to origin zone, and arrives in the destination zone (perhaps less some losses, such as electrical losses along a cable), it needs to be determined how wastes, by-products and emissions are shared between zones. All these considerations are now described:
+
+\begin{description}
+
+\item[Cable] This is the simplest transport process type since the resource carried, and the resource which provides the carrying energy are one and the same, namely electricity, thus only a single $r$ value is necessary here. Electrical cables do incurr losses of between 3--7\% over 1,000 km distances [TODO: cite \url{http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf}], however, given the interzonal distances for the SPC site are all under [TODO: N] km, losses are considered negligable. Thus cables can be defined simply with $k^{\alpha}_{\tau rq}=1$, $k^{\alpha'}_{\tau rq}=-1$, and $k^{\beta}_{\tau rq}=0$, when $\tau=\mbox{cable}$ and $r=\mbox{elec.}$ [TODO: tidy].
+
+\item[pipes] These carry a resource (e.g. $r=\mbox{water}$) as well as pumping energy. As hydraulic calculations given in Appendix [TODO:] show, for water in a pipe of no slope, this can be roughly calculated as approximately $0.0054l_{zz'}$ to overcome friction between the water and the pipe, on the assumption that the volume flowrate is around $1 m^3/s$\footnote{At this value, the nonlinearities in the relationship between transport mass and volume can be ignored [TODO: better phrasing?]}. It is assumed that all this electricity is provided in the zone of the water's origin, thus [TODO: summarise $k$ values] . For gases it is assumed that friction is lower enough so as to make the energy requirements negligable for the distances in the SPC site.
+
+\item[vehicles] Other resources are carried by vehicles along the road network. As well as the carried resource (e.g. $r=\mbox{biomass}$. The source of carrier energy is $r=\mbox{gasoline}$, which is provided entirely by the source zone. As well as this, \CO2 emissions are emitted, with these being shared equally between the origin and destination zones. Calculations in Appendix [TODO:] derive $k$ values as [TODO: complete].
+
+\end{description}
+
+
+For process rates, $F^{transp}_{\tau zzt}$, [TODO: complete] 
+
+As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in our model, as they would have the same cost, whatever the system designed by the model. The cost for the pipes and roads are defined per kilometer, and the values and sources for these calculations are provided in Appendix [TODO:] .
+
+[TODO: clarify if it's possible for the model to charge per vehicle, for the road transport infrastructure]
 
 ### Summary
 
