@@ -1,8 +1,10 @@
 # Literature review
 
-This chapter takes a closer look at the fields of urban metabolism and optimisation modelling, in order to identify how the UM optimisation model developed in develops previous work in these fields, and meets gaps in the existing research. Section [TODO:] gives an overview of how the UM field has been used to better understand how cities use resources, and in particular notes developments in UM research most relevant to this thesis. Section [TODO:] provides an introduction to the idea of 'modelling' and starts to make a case for how modelling can inform UM research. Finally, section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed.
-
 [TODO: note the published components of this literature review]
+
+The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area. It is first necessary to examine the research areas to which this thesis addresses and thus identify the ideas, concepts, prinicples and methods upon which this work can be based, as well as highlighting the gaps in the literature, and thereby demonstrate the novelty of the work presented in subsequent chapters.
+
+To that end, this chapter begins in Section [TODO:] by taking a closer look at the UM concept, showing how it has been used to provide to better understand how cities use resources, and in particular notes developments in UM research most relevant to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that modelling can play an useful role in UM research. Finally, section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed.
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=TRUE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
