@@ -1,5 +1,7 @@
 # Literature review
 
+This chapter takes a closer look at the fields of urban metabolism and optimisation modelling, in order to identify how the UM optimisation model developed in develops previous work in these fields, and meets gaps in the existing research. Section [TODO:] gives an overview of how the UM field has been used to better understand how cities use resources, and in particular notes developments in UM research most relevant to this thesis. Section [TODO:] provides an introduction to the idea of 'modelling' and starts to make a case for how modelling can inform UM research. Finally, section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed.
+
 [TODO: note the published components of this literature review]
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
@@ -122,6 +124,8 @@ Having said that, we must not put blind, unquestioning faith in models, rather t
 [TODO: In reality, this 'Why modelling' introduction will be longer, e.g. with examples, more references supporting the points. Especially, we'll record how models have been actually used within urban planning.]
 
 In the remainder of this literature review, we will search the literature for examples of models used within resource management, within the energy, water and waste sectors. This will help us define the ambitions, expectations and capabilities of the model (the problems we want to solve), which in turn will help us define the mathematical formulation required to encode these problems. But first, we need to introduce some concepts, and definitions related to mathematical programming.
+
+[TODO: note that the specifics of modelling are dealt with in detail in Chapter 5 as we demonstrate the development of the model]
 
 ## Optimisation modelling review
 
