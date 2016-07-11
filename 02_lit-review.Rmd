@@ -2,6 +2,10 @@
 
 [TODO: note the published components of this literature review]
 
+The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area. It is first necessary to examine the research areas to which this thesis addresses and thus identify the ideas, concepts, prinicples and methods upon which this work can be based, as well as highlighting the gaps in the literature, and thereby demonstrate the novelty of the work presented in subsequent chapters.
+
+To that end, this chapter begins in Section [TODO:] by taking a closer look at the UM concept, showing how it has been used to provide to better understand how cities use resources, and in particular notes developments in UM research most relevant to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that modelling can play an useful role in UM research. Finally, section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed.
+
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=TRUE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
@@ -122,6 +126,8 @@ Having said that, we must not put blind, unquestioning faith in models, rather t
 [TODO: In reality, this 'Why modelling' introduction will be longer, e.g. with examples, more references supporting the points. Especially, we'll record how models have been actually used within urban planning.]
 
 In the remainder of this literature review, we will search the literature for examples of models used within resource management, within the energy, water and waste sectors. This will help us define the ambitions, expectations and capabilities of the model (the problems we want to solve), which in turn will help us define the mathematical formulation required to encode these problems. But first, we need to introduce some concepts, and definitions related to mathematical programming.
+
+[TODO: note that the specifics of modelling are dealt with in detail in Chapter 5 as we demonstrate the development of the model]
 
 ## Optimisation modelling review
 
