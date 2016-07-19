@@ -2,9 +2,12 @@
 
 [TODO: note the published components of this literature review]
 
-The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area. It is first necessary to examine the research areas to which this thesis addresses and thus identify the ideas, concepts, prinicples and methods upon which this work can be based, as well as highlighting the gaps in the literature, and thereby demonstrate the novelty of the work presented in subsequent chapters.
+The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to sustain a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review has two main purposes: first, to identify the gaps in current research, and so to more precisely define the scope of this thesis; and second, to begin identifying methods which should be adopted in the modelling work.
 
-To that end, this chapter begins in Section [TODO:] by taking a closer look at the UM concept, showing how it has been used to provide to better understand how cities use resources, and in particular notes developments in UM research most relevant to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that modelling can play an useful role in UM research. Finally, section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed.
+The two main areas research fields addressed by this theses are urban metabolism (UM), and resource optimisation modelling (ROM). This chapter identifies the key ideas, concepts, principles and methods of these subject areas, beginning in Section [TODO:] showing how UM research has been used to better understand how cities use resources, and notes developments in UM research most relevant to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that optimisation modelling can play a useful role in UM research, before Section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed. Once this survey of the background literature has been completed, it is then possible to precisely define the scope of this thesis, which is done by providing definitions of the words which make up the title, in Section [TODO:]. Finally, Section [TODO:] outlines the gaps and contributions met by this thesis.
+
+This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisatino modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=TRUE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
@@ -14,19 +17,11 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 ```
 
-Cities have proved key to humanity's success, by making a high quality of life possible for billions of people through the efficient provision of goods and services [@WorldBank2009]. However, to sustain their populations, cities consume large quantities of energy and water, and generate significant waste. This leads to environmental challenges such as water stress, global warming and land-use constraints [TODO: references]. As such, efforts are being devoted to reducing a city's resource consumption and waste output, in order to improve urban sustainability.
-
-The management of urban resources requires networks of infrastructure to convert and transport resources to and thus efforts to improve sustainability often involve improving the design and operation of these infrastructure networks. One approach taken to such improvements is that of optimisation modelling, in which a resource allocation problem is represented by sets of equations which are then solved to select an optimal mix, layout, and operation schedule for resource management infrastructure [TODO: reference], such as water pipes [TODO: reference], waste transportation [TODO: reference], and power plants [TODO: reference].
-
-However, as our literature review will show, urban resource optimisation modelling usually considers only one resource sector in isolation (e.g. an urban energy system). This approach fails to take advantage of the co-location of various resource management infrastructure, which makes possible synergies between different systems [TODO: reference], where the wastes and by-products of one process become the inputs to another (as seen in an energy-from-waste plant, for example). Thus current approaches to designing urban resource management systems impose a ceiling on potential material and energy savings.
-
-Considering sustainable urban resource management from another angle, we turn to the urban metabolism (UM) framework, which was introduced by @Wolman1965 as "all the material and commodities needed to sustain a city's inhabitants at home, at work and at play" (p156). This concept has given rise to numerous studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics. Consequently, the UM concept has provided tools which help planners and policy makers improve urban sustainability (see for example the report for the UK Government by @Clift2015).
-
-In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
+## The past, present and future of urban metabolism research
 
 The first part of our literature review attempts to locate our intersectoral optimisation model within the existing set or UM modelling and thus demonstrate its contribution advancing the field. In the second part of our review, we research resource optimisation models to identify a method for our own model.
 
-## UM review
+Considering sustainable urban resource management from another angle, we turn to the urban metabolism (UM) framework, which was introduced by @Wolman1965 as "all the material and commodities needed to sustain a city's inhabitants at home, at work and at play" (p156). This concept has given rise to numerous studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics. Consequently, the UM concept has provided tools which help planners and policy makers improve urban sustainability (see for example the report for the UK Government by @Clift2015).
 
 [TODO: Introductory paragraph (e.g. Kennedy definition?)]
 Urban metaboilsm is a broad area of study, and includes 
@@ -81,7 +76,7 @@ Our introduction to UM thus far has been focussed on the resource flows into, ou
 
 In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they relate), within the study of flows, the arguments of @Ravalde2016 (developing those of @Zhang2013) highlight a need to study how the processes within a city relate to each other, as an engineered system. Furthermore, @Zhang2013 points out the need for optimisation studies. Thus our work in this paper (to formulate an optimisation model to take advantage of synergies between different resource management infrastructure) helps to meet this gap. In this way our work meets calls for IE perspectives on UM [@Clift2015] which (for example) identify future sustainable urban technologies.
 
-## Transition section to modelling
+## Modelling in the modern world
 
 <!--
 Jargon:
@@ -129,7 +124,15 @@ In the remainder of this literature review, we will search the literature for ex
 
 [TODO: note that the specifics of modelling are dealt with in detail in Chapter 5 as we demonstrate the development of the model]
 
-## Optimisation modelling review
+## Review of resource managagement optimisation modelling
+
+[TODO: locate this note somewhere]
+
+Note that 'resource management optimisation modelling' is not a well-defined subject area (unlike say, 'urban energy systems modelling' [TODO: cite @Keirstead review paper definition], rather it is used here to refer generally to optimisation models which are used to assist system managers improve the management of an energy or material resource for which they are responsible. These include many of the models returned when using the search term [TODO: Scopus search term] in the Scopus database [TODO: more detail about Scopus]. Thus, this can incorporate everything from the efficient production of a single resource in some component of a plant [TODO: cite example], up to global strategies to manage [TODO: cite example, e.g. biomass] 
+
+The management of urban resources requires networks of infrastructure to convert and transport resources to and thus efforts to improve sustainability often involve improving the design and operation of these infrastructure networks. One approach taken to such improvements is that of optimisation modelling, in which a resource allocation problem is represented by sets of equations which are then solved to select an optimal mix, layout, and operation schedule for resource management infrastructure [TODO: reference], such as water pipes [TODO: reference], waste transportation [TODO: reference], and power plants [TODO: reference].
+
+However, as our literature review will show, urban resource optimisation modelling usually considers only one resource sector in isolation (e.g. an urban energy system). This approach fails to take advantage of the co-location of various resource management infrastructure, which makes possible synergies between different systems [TODO: reference], where the wastes and by-products of one process become the inputs to another (as seen in an energy-from-waste plant, for example). Thus current approaches to designing urban resource management systems impose a ceiling on potential material and energy savings.
 
 As we have just argued, the field of UM modelling has space for a resource management process-based optimisation model. However if we narrow down our focus from a whole-metabolism perspective, to a single type of resource, there do exist optimisation models which plan the management of resources, usually in the form of a 'minimum cost flow problem', which is a type of network problem [@Williams1999, p81]. This type of model aims to minimise or maximise some quantity (e.g. profit from product manufacture), and is modelled by a set of linear and/or nonlinear equations whose variables represent choices (e.g. the presence and/or location of some process, or the quantity of a given product to be produced by a particular process, etc.), which can themselves by bounded by other equations representing real-world constraints (e.g. maximum daily machine output). Mathematical routines operate on the equations to choose the variable values which maximise a quantity of interest.
 
@@ -524,3 +527,16 @@ Other (non-title) definitions include:
 - Superstructure
 
 ## Gaps and contributions
+
+Thus cities are an example of a multi-resource system [TODO: complete introductory sentances] 
+
+- General challenges
+	- A process-oriented approach to UM
+	- An integrated optimisation model
+
+- Specific challenges
+  	- A metric for UM
+  	- A database of processes
+  	- A method for the model
+
+In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
