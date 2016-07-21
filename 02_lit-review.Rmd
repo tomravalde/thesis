@@ -1,3 +1,11 @@
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
+
+#library(extrafont)
+#font_import(pattern="LinBiolinum")
+
+```
+
 # Literature review
 
 [TODO: note the published components of this literature review]
@@ -8,14 +16,6 @@ The two main areas research fields addressed by this theses are urban metabolism
 
 This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
 
-
-```{r Setup, include=FALSE, results="hide", warning=FALSE}
-opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=TRUE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
-
-#library(extrafont)
-#font_import(pattern="LinBiolinum")
-
-```
 
 ## The past, present and future of urban metabolism research
 
@@ -155,17 +155,79 @@ Techniques:
 - There should be a brief outline of this (even if it's just a list of definitions) so the when they are referred to in the literature review, the reader knows what we are talking about.
 -->
 
-Given the need for greater understanding of the 'inside' of a UM system generally, and the engineered system specifically, what role can 'modelling' play to assist this cause (over and above the accounting and simulation tools typically used in UM). Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new type of modelling to the urban metabolism field, i.e. optimisation.
+Given the need for greater understanding of the 'inside' of a UM system generally, and the engineered system specifically, what role can 'modelling' play to assist this cause (over and above the accounting and simulation tools typically used in UM)? Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new model to the urban metabolism field.
 
-A model can be defines as "A simplified representation used to explain the workings of a real world system or even" [TODO: reference Wiktionary]. This can take a number of forms, summarised in Figure \ref{fig:models}, based on the @Williams1999's brief introduction to models. Either concrete (such as a scaled-down construction of an aeroplane [TODO: or lab-simulation of resource management process]), or abstract, which constitutes concepts. An abstract model could be purely descriptive (sometimes called 'conceptual'), such that it might graphically/visually/diagramatically represent some system, but in our case, we will consider mathematical models, which use mathematical relationships to encode the behaviour of some real-world phenomenon. These relationships include equations, inequalities and logical dependencies.
+A model can be defines as "A simplified representation used to explain the workings of a real world system or even" [TODO: reference Wiktionary]. @Williams1999 highlights three benefits of building models:
 
-Within UM research, modelling has been used in a variety of ways (as briefly outlined in Section [TODO:], above), which can be seen by using the Scopus tool to search for relevant articles, using the search term `urban metabolism AND model OR modelling`[^search]. 
+1. The act of model building itself will reveal relationships that were previously unapparent.
+2. The results my reveal courses of action which were otherwise unapparent.
+3. One can experiment on a model in a way that may be impractical or unethical for a real system.
+
+However, modelling is not without its critics, and these objections must be addressed before this thesis can propose, formulate and apply a new model to support measures to improve urban metabolism. Some only see crude reductionism in the way that mathematical programming seeks to quantify something, resting decisions on the numerical value of an equation. @Williams1999 points out that in fact all decisions will make quantitative evaluations implicitly, if not explicitly, and suggests modelling is at least honest and scientific. Others are sceptical of modelling, suggesting that innaccuracies in coefficient values will lead to inaccurate results. Williams responds by showing how models can be tested for a range of parameter values (to reflect uncertainty), for example establishing the ranges for which parameters can change with predictable effects on the values of variables and the objectives (for more detail on this, see lecture notes by Keirstead [TODO: Add reference]).
+
+Having said that, blind, unquestioning faith should not be placed in models, rather they "should be used as one of a number of tools for decision making" [@Williams1999, p5] to test different options, and identify what is possible.
+
+### Types of models
+
+There are a number of types of model, which are summarised in Figure \ref{fig:models} (which is based on the @Williams1999's brief introduction to models). Models can be either *concrete* (such as a scaled-down construction of an aeroplane [TODO: or lab-simulation of resource management process]), or *abstract* (a conceptualised representation of a system). An abstract model could be purely *descriptive* (sometimes called 'conceptual'), such that it might graphically/visually/diagramatically represent some system, and is generally used to help people understand the real system. A classic example is the nitrogen cycle diagram, that many learn in school. It does not include any mathematical content, but it does visualise how plants, bacteria, the atmosphere, and other components convert nitrogen [TODO: http://www.bbc.co.uk/schools/gcsebitesize/science/add_gateway_pre_2011/greenworld/recyclingrev2.shtml]. 
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{05_model-development/models.pdf_tex}}
+	\end{spacing}
+	\caption{A summary of different types of models, based on \citet[Chapter 1]{Williams1999}.}
+	\label{fig:models}
+\end{figure}
+
+Abstract models can also be mathematical. These models use mathematical relationships to encode the behaviour of some real-world phenomenon. One particular type of mathematical models are statistical models, which try to find a statistical relationships between two or more components, for example relating a persons age to height, so one can be predicted from the other. Other types of mathematical models include simulation models, and optimisation models (also known as mathematical programming). Both of these use equations, inequalities and logical dependencies to represent the dynamics of a system. A simulation model attempts to predict the performance of a real world system, for example could be the length of a traffic queue given a particular system of traffic signals [TODO: http://ac.els-cdn.com/S1877050912004619/1-s2.0-S1877050912004619-main.pdf?_tid=81fcafc0-4f2a-11e6-b3a2-00000aacb35f&acdnat=1469095647_391a940124c0a56d0dfcae6fd9b4f24a]. In these models, one can test scenarios, such as seeing how queue lengths changes when commuters alter their departure times. Optimization models compute the conditions under which a system will perform best, by minimising some quantity, such as traffic congestion [TODO: cite file:///home/tr608/Downloads/network-performance-optimization-using-a-queueing-network-model.pdf]). This model uses a set of linear and/or nonlinear equations consisting of parameters (known data, such as road lengths), and variables (unknowns which represent choices, e.g. the length of time for a signal to display a green light, etc.). These equations represent the physics of a system, as well as real-world constraints (e.g. minimum allowable time for a green signal). Mathematical routines operate on the equations to choose the variable values which minimise the of interest.
+
+### Modelling within UM
+
+The UM literature contains examples of all the model types mentioned above, which can be seen by using the Scopus tool to search for relevant articles, using the search term `urban metabolism AND model OR modelling`[^search]. 
 
 [^search]: The full search term is available at \\url{http://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=urban+metabolism+AND+model+OR+modelling&sid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&sot=b&sdt=cl&cluster=scosubjabbr%2c%22MEDI%22%2cf%2c%22BIOC%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22CHEM%22%2cf%2c%22NEUR%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22BUSI%22%2cf%2c%22ARTS%22%2cf%2c%22PSYC%22%2cf%2c%22HEAL%22%2cf%2c%22MULT%22%2cf%2c%22VETE%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&origin=savedSearchNewOnly&txGid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a15}]. This search excludes irrelevant subject areas (such as medicine).
 
-This returned 239 results which was manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not use the definition of 'model' as we have understood it. Looking further at the remaining results, we classified each paper according to three three categories: model focus, modelling techniques, and model use. Figure \ref{fig:UM-model-lit} plots each paper as a point which is located according to its whereabouts within the two dimensions. We outline the model focus and technique categories below, with reference to models in our literature review (which are marked on the plot using text labels), before summarizing the UM modelling landscape, noting features and gaps.
+This returned 239 results which was manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not come under the definition of 'model' as described above. Looking further at the remaining results, each paper was classified according to three three categories:
 
-Edit.
+\begin{description}
+\item[Type] This refers to the model types mentioned above. An example of a conceptual model is that of \citet{Newman1999a}, who proposes the `Extended Metabolism Model of the City' (p.220) which suggests that when trying to understand an area's metabolism, this should include 'livability' (e.g. income, housing, community etc.) in addition to the resource inputs and outputs represented by \citet{Wolman1965}'s conceptual model. An example of a statitical model is that of \citet{Liang2014} who identify a statistical relationship between the level of a city's nighttime lighting (as seen by satellites) and the city's steel stock, such that the latter can be predicted from the former. \citet{Kellet2013} provides an example of a simulation model, in which a city's emissions are quantified from equations which calculate the contributions from building, transport, human, and vegetations sources. Finally, an optimisation model is put forward by \citet{Pederson2013} who use heuristics to 'evolve' optimised city designs, through new building envelopes, road networks, public spaces etc. according to the metabolic capabilities and limitations.
+
+[TODO: Add note on how some simulation models adopt statistical models?]
+
+\item[Focus] UM models have different foci. Here, there are two main subcategoreis to consider: those with a \emphj{resource} focus, and those with a {non-resource} focus. The resource-focussed subcategory is further divided:
+
+\begin{itemize}
+\item \emph{single-resource focus}, such as \citet{Zeng2014}, who simulate urban water flows among various facilities and end uses);
+\item \emph{multiple-resource focus}, such as \citet{Liang2011}, who model how various energy and material flows including coal, water, biomass and pollutants, change under proposed policies.
+\item \emph{integrated-resource focus} models which unite multiple resource types under a single value system, such as \citet{Huang2005} who use emergy\footnote{\emph{Emergy} is further explained in Section [TODO:]} to encapsulate various flows including solar energy, rain, and fossil fuels.
+\end{itemize}
+
+Non-resource foci include the following divisions:
+
+\begin{itemize}
+\item \emph{urban form}, such as \citet{Liang2014} (mentioned above) which quantifies a city's steel stock.
+\item \emph{socioeconomics}, such as \citet{Newman1999}, (mentioned above) who suggest UM studies should consider livability along with metabolic flows
+\item \emph{environment}, such as \citet{Ye2011} who  models which unite multiple resource types under a single value system, such as \citet{Huang2005} who considers the greenhouse gas emissions of an area as predicted by household construction characteristics.
+\end{itemize}
+
+\item[Level] The third way UM models are classified here is according to the level at which they represent components of an urban system (either conceptually or mathematically), which can be as follows:
+
+\begin{itemize}
+\item \emph{Low}-level models capture the most detail, considering those models which quantify resource flows occuring among an urban area's resource management processes and/or its points of demand. One example is the model of \cite{Zeng2014} who quantify the water flows between different sectors (domestic, industrial etc.) and systems (supply, treatment etc.). Alternatively, this could denote models where equations for bottom-up mathematical descriptions of system components (e.g. \citet{Kellet2013}, described earlier).
+
+\item \emph{Medium} At the next level of detail, this level includes models in which conceptual or mathematical relationships are defined for a UM system's organisational sectors and/or socioeconomic functions. For example, \citet{Zhang2010a} use ecological network analysis\footnote{Ecological network analysis (ENA) is described in detail in Section [TODO:]} to model the resource-interdependence of 17 economic sectors to each other. In other medium-level models, \citet{Fung2005} relates an area's institutional activities to its sustainability, and \citet{Huang2005} relates energy flows to urban development.
+\item \emph{High} Models belonging to this level capture system dynamics in their broadest sense, using ratios. For example, relating society size and transport volumes as in \citet{Fischer-Kowalski2004}'s model, or calculating a long-term time series for sectoral energy demand based on the upstream energy consumption data as in \citet{Baynes2012a}.
+\end{itemize}
+
+\end{description}
+
+Each of the 108 papers captured in the search and filtering of the UM modelling literature are plotted as a point on Figure \ref{fig:UM-model-lit}. The point is coloured according to the model **type**, while its **focus** and **level** is represented by its position on the x-y plane. The models cited above are labelled on the plot.
+
+Examining the plot, it is possible note features and gaps in the UM modelling landscape, such as the dominance of simulation models and models which focus on how an area uses resources. However, when it comes to optimisation models, there is only one (which considers urban form). This suggests that this thesis can contribute a model whose purpose is to consider the **optimisation** of energy, water and waste flows (i.e. **multiple resources**) between resource management processes (i.e. **low level**).
+
+[TODO: remove the NA points on the plot]
 
 ```{r metab-lit-review, results="asis"}
 ###--------------------------------------------------
@@ -185,14 +247,15 @@ setwd(getwd())
 library(dplyr)
 
 ### Load in literature titles and attributes, removing the remaining papers marked 'CUT'
-lit_draft_cut <- read.csv("02_lit-review/lit-final-cut-alt.csv")
+#lit_draft_cut <- read.csv("02_lit-review/lit-final-cut-alt.csv")
+lit_draft_cut <- read.csv("02_lit-review/lit-final-cut-thesis.csv")
 lit_final_cut <- filter(lit_draft_cut, type!="CUT")
 
 ## TODO: merge some of the model use groups together for clarity (e.g. include 'other' grouping)
 
 ## Only keep variables relevant for our cluster analysis
 lit_final_cut <- select(lit_final_cut,
-			c(Title, type, techniques.broad, techniques, techniques.IO, techniques.other, focus.broad.cat, focus.broad, focus, focus.multiple, focus.other, use, use.other, text.label))
+			c(Title, type, method, techniques.broad, techniques, techniques.IO, techniques.other, focus.broad.cat, focus.broad, focus, focus.multiple, focus.other, use, use.other, text.label))
 
 ```
 
@@ -205,7 +268,7 @@ lit_final_cut <- select(lit_final_cut,
 ###--------------------------------------------------
 
 ## Select attributes to be plotted in the analysis
-lit_main_cats <- select(lit_final_cut, c(type, techniques.broad, techniques, focus.broad.cat, focus.broad, use, text.label))
+lit_main_cats <- select(lit_final_cut, c(type, method, techniques.broad, techniques, focus.broad.cat, focus.broad, use, text.label))
 
 ## Order attributes for ordinal data (e.g. for plotting, it is helpful for "Low-level", "Medium-level", and "High-level" to appear in this order)
 lit_main_cats <- transform(lit_main_cats,
@@ -213,7 +276,7 @@ lit_main_cats <- transform(lit_main_cats,
 			     levels=c("conceptual", "mathematical", "various"),
 			     ordered=TRUE),
 			   techniques.broad=factor(techniques.broad,
-			     levels=c("Low-level", "Medium-level", "High-level", "statistical", "misc."),
+			     levels=c("low", "medium", "high"),
 			     ordered=TRUE),
 			   techniques=factor(techniques,
 			     levels=c("Bottom-up mathematical description", "ENA", "integrated", "LCA", "mass and/or energy balance", "mathematical representation of subsystems", "other", "ratios", "regression", "relate actors", "relate various", "various")),
@@ -230,71 +293,24 @@ lit_main_cats <- transform(lit_main_cats,
 ### Plot results to identify clusters
 ###--------------------------------------------------
 
-plot_cluster <- ggplot(lit_main_cats, aes(y=focus.broad, x=techniques.broad)) +
-  geom_jitter(aes(colour=factor(use)), width=0.1, height=0.1) +
-  geom_text(aes(label=text.label, colour=factor(use)), size = 2) +
+plot_cluster <- ggplot(lit_main_cats, aes(y=techniques.broad, x=focus.broad)) +
+  geom_jitter(aes(colour=factor(method)), width=0.1, height=0.1) +
+  geom_text(aes(label=text.label, colour=factor(method)), size = 2) +
   theme_bw() +
   theme(axis.text.x = element_text(hjust=1, angle=30),
 	legend.position="bottom",
 	legend.direction="vertical") +
   guides(col=guide_legend(ncol=2)) +
-  xlab("Modelling techniques") +
-  ylab("Model focus") +
-  scale_colour_discrete(name="Model use")
+  xlab("Focus") +
+  ylab("Level") +
+  scale_colour_discrete(name="Type")
 #  facet_wrap(~focus.broad.cat, scales="free_y", ncol=1)
 plot_cluster
 ```
 
-### Focus (horizontal axis)
-
-Models have different foci. Some consider a **single resource** (such as @Zeng2014, who simulate urban water flows among various facilities and end uses), while others consider **multiple resources** such as @Liang2011 who model how various energy and material flows including coal, water, biomass and pollutants, change under proposed policies. Thirdly **integrated** models unite multiple resource types under a single value system, such as @Huang2005 who use *emergy* to encapsulate various flows including solar energy, rain, and fossil fuels.
-
-Non-resource foci include models which examine a city's **form**, for example  @Liang2014 describes how a city's quantity of steel stock can be related to the level of nighttime lighting. Next are the models with a **socioeconomic** focus, such as @Newman1999a, who makes a conceptual addition to the UM idea, by including 'livability' as something that is affected by resource flows and urban form. Finally, other models focus on the **environment**, for example @Ye2011 relate household construction and characteristics to greenhouse gas emissions.
-
-### Techniques (vertical axis)
-
-In our classification of models according to approach they take, we have used four [TODO: word]. The **statistical** category use regression models to relate different UM variables. For example @Liang2014 relates a city's building steel stock to long-term nighttime lights. The remaining categories refer to UM models in which some part of a UM system's dynamics are represented (either conceptually or mathematically). Such a system can be broken into component parts at different levels. At the most detailed level, the **low** categorisation captures models which quantify energy and mass balances among the processes and sectors within an urban system, such as @Zeng2014 who calculate water flows between different sectors (domestic, industrial etc.) and systems (supply, treatment etc.). Alternatively, this could denote models where equations for bottom-up mathematical descriptions of system components (e.g. emissions sources) @Kellet2013, which builds up emissions from building, transport, human, and vegetation sources.
-
-At the next level of detail, the **medium** level categorisation denotes models in which conceptual or mathematical relationships are defined for a UM system's organisational sectors and socioeconomic elements. For example, @Zhang2010a uses ecological network analysis to relate the resource flows of 17 economic sectors to each other, while @Fung2005 relates an area's institutional activities to its sustainability, and @Huang2005 relates energy flows to urban development.
-
-Finally, the **high** level categorisation captures system dynamics in their broadest sense, using ratios. For example, relating society size and transport volumes as in @Fischer-Kowalski2004's model, or calculating a long-term time series for sectoral energy demand based on the upstream energy consumption data as in @Baynes2012a.
-
-- **misc.**: these models include input-output analysis, decomposition analysis,and scaling laws, amongst other methods. [TODO: lots of these could be reassigned to a level?]
 
 
 
-
-
-
-In our case, we will mathematically represent the processes which transport, store and transport goods and services to, from and within an urban area, and other features of the area.
-
-@Williams1999 highlights three benefits of building such models:
-
-1. The act of model building itself will reveal relationhips that were previously unapparent.
-2. The results my reveal courses of action which were otherwise unapparent.
-3. One can experiment on a model in a way that may be impractical or unethical for a real system.
-
-There are different types of mathematical models, including 'simulation models' which can be used to predict the performance of the real world system, and mathematical programming (also called optimization) models (our focus) which calculate the conditions under which a system will perform best [TODO: reference].
-
-\begin{figure}
-	\centering
-	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{05_model-development/models.pdf_tex}}
-	\end{spacing}
-	\caption{A summary of different types of models, based on \citet[Chapter 1]{Williams1999}.}
-	\label{fig:models}
-\end{figure}
-
-However, modelling is not without its critics, and we must address their objections to justify our use of mathematical programming to support measures to improve urban sustainability. Some only see crude reductionism in the way that mathematical programming seeks to quantify something, resting decisions on the numerical value of an equation. @Williams1999 points out that in fact all decisions will make quantitative evaluations implicitly, if not explicitly, and suggests modelling is at least honest and scientific. Others are sceptical of modelling, suggesting that innaccuracies in coefficient values will lead to inaccurate results. Williams responds by showing how models can be tested for a range of parameter values (to reflect uncertainty), for example establishing the ranges for which parameters can change with predictable effects on the values of variables and the objectives (for more detail on this, see lecture notes by Keirstead [TODO: Add reference]).
-
-Having said that, we must not put blind, unquestioning faith in models, rather they "should be used as one of a number of tools for decision making" [@Williams1999, p5] to test different options, and identify what is possible. Thus, we propose mathematical programming (/optimisation modelling) as one tool alongside others within urban metabolism.
-
-[TODO: In reality, this 'Why modelling' introduction will be longer, e.g. with examples, more references supporting the points. Especially, we'll record how models have been actually used within urban planning.]
-
-In the remainder of this literature review, we will search the literature for examples of models used within resource management, within the energy, water and waste sectors. This will help us define the ambitions, expectations and capabilities of the model (the problems we want to solve), which in turn will help us define the mathematical formulation required to encode these problems. But first, we need to introduce some concepts, and definitions related to mathematical programming.
-
-[TODO: note that the specifics of modelling are dealt with in detail in Chapter 5 as we demonstrate the development of the model]
 
 ## Review of resource managagement optimisation modelling
 
