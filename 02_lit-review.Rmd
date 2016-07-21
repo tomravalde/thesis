@@ -2,11 +2,11 @@
 
 [TODO: note the published components of this literature review]
 
-The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review has two main purposes: first, to identify the gaps in current research, and so to more precisely define the scope of this thesis; and second, to begin identifying methods which should be adopted in the modelling work.
+The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review has two main purposes: first, to identify the gaps in current research, and so to more precisely define the scope of this thesis; and second, to begin identifying methods which could be adopted in the modelling work.
 
-The two main areas research fields addressed by this theses are urban metabolism (UM), and resource optimisation modelling (ROM). This chapter identifies the key ideas, concepts, principles and methods of these subject areas, beginning in Section [TODO:] showing how UM research has been used to better understand how cities use resources, and notes developments in UM research most relevant to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that optimisation modelling can play a useful role in UM research, before Section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed. Once this survey of the background literature has been completed, it is then possible to precisely define the scope [TODO: better word?] of this thesis, which is done by providing definitions of the words which comprise the thesis title, in Section [TODO:]. Finally, Section [TODO:] outlines [TODO: summarises?] the gaps and contributions met by this thesis.
+The two main areas research fields addressed by this theses are urban metabolism (UM), and resource optimisation modelling (ROM). This chapter identifies the key ideas, concepts, principles and methods of these subject areas, beginning in Section [TODO:] showing how UM research has been used to better understand how cities use resources, and notes developments in UM research pertinent to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that optimisation modelling can play a useful role in UM research, before Section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed. Once this survey of the literature has been completed, it is then possible to precisely define the scope [TODO: better word?] of this thesis, which is done by providing definitions of the words which comprise the thesis title, in Section [TODO:]. Finally, Section [TODO:] outlines [TODO: summarises?] the gaps and contributions met by this thesis.
 
-This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisatino modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
 
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
@@ -19,14 +19,26 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 ## The past, present and future of urban metabolism research
 
-In this section, we introduce UM generally, before more specifically tracking the extent to which the role of resource management processes have been considered UM research.
+In this section, we introduce UM generally, before more specifically tracking the extent to which the role of resource management processes -- which will be shown to be an important consideration in this thesis -- have been considered in UM research.
 
-The concept was introduced by @Wolman1965 as "all the material and commodities needed to sustain a city's inhabitants at home, at work and at play" (p156). This concept has given rise to numerous studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics. Consequently, the UM concept has provided tools which help planners and policy makers improve urban sustainability (see for example the report for the UK Government by @Clift2015).
+In 1965, the American engineer Abel Wolman introduced 'urban metabolism'. Writing in *Scientific American* he defined the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.156]. He recognised that resource consumption was necessary to sustain urban living, but was motivated to study urban metabolism because of his concerns that as cities grow, their rising material and energy inputs and outputs were causing problems with water supply, sewage disposal and air pollution. At its most basic, an urban metabolism study will quantify the material and/or energy inputs and outputs of any given area -- Wolman did this for a hypothetical city of one million inhabitants [TODO: using government data?].
 
-[TODO: Introductory paragraph (e.g. Kennedy definition?)]
-Urban metaboilsm is a broad area of study, and includes 
+Since Wolman the UM concept has given rise to more sophisticated studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics, and so more recently @Kennedy2007 has defined UM as "the sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" (p.44). UM research has become closely associated with the notion of 'sustainability' [@Brutland1987], which includes three components as part of its so-called "triple bottom line", namely to maintain economic, social and environmental performance). Consequently, the UM concept has provided tools which help planners and policy makers improve urban sustainability, and is even employed by governments to help [TODO: finish and tidy sentence] (for example, in the United Kingdom, by @Clift2015).
 
+<!--
 its basic function is to highlight how cities can sustain their developing forms and socioeconomic functions, but with less harmful resource (forms, functions and flows). @Zhang2013's review mainly focuses on the flows ("research on urban metabolism therefore focuses on the sources and consumption of resources, and on their cycling within the system plus the emission, treatment, and recycling of wastes"). 
+-->
+
+
+As of 2011, there have been around 20 comprehensive UM studies of cities [@Kennedy2011] [TODO: update this figure in view of Kennedy et al. PNAS paper? More recently, a number of researchers from all over the globe have ]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
+
+Typically, the methodology to conduct a UM study begins by defining a boundary around an urban area, and then consulting data sources in order to quantify material, energy, water and other resource flows into and out of a city on a yearly basis [@Kennedy2014] (more details on methodology are presented in Section [TODO:]). In practice therefore, a suitable definition of 'urban' is required. Definitions can range from defining an urban area in administrative terms¸ or in terms of population density [TODO: is there a World Bank reference for this?]. However, urban metabolism studies care about resource flows, and from this perspective there are at least three ways to define an urban boundary, suggested by @Ramaswami2011 (from the point of view of quantifying a city's greenhouse gas emissions), and adapted by @Keirstead2012b:
+
+- *Pure geographic* defines a boundary as the city's administrative boundaries;
+- *Geographic-plus* extends the pure geographic definition to include readily traceable upstream flows, such as electricity consumption;
+- *Pure consumption* attributes resource flows to the urban economy which generates a demand for a good or service. For example, a service-based city will require products manufactured in an industrial-based city. On the pure consumption definition, these flows would be attributed to the service-based city. This definition therefore attempts to 'even out' disparities between cities which arise from their different functions.
+
+This thesis will adopt the 'geographic-plus' definition, for reasons outlined in Section [TODO:].
 
 <!--
 Studies of an area's metabolism can take a number of forms, focussing on the different elements of an urban system summarized by @Ravalde2016's hierarchical representation illustrated in Figure \ref{fig:metab}. Resource demand and waste generation at the bottom drives aggregate resource exchanges between a city and the environment at the top. In the middle, are the processes which convert and transport resources. We can use this representation, along with the 'top', 'middle' and 'bottom' terminology to outline the types of UM modelling that exist.
@@ -52,26 +64,21 @@ Studies of an area's metabolism can take a number of forms, focussing on the dif
 In coming to an understanding of **-middle** systems, some models choose to unite all resource flows under a single measures, such as @HUang2005 who use emergy. Others 
 -->
 
-The 'urban metabolism' (UM) concept seeks to find the "sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" [@Kennedy2007, p.44]. Since Wolman first described the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.179], his theoretical ideas have been applied to the real world, with around 20 comprehensive UM studies of cities as of 2011 [@Kennedy2011]. Typically, the methodology to conduct a UM study starts by defining a boundary around an urban area, and then consulting data sources in order to quantify material, energy, water and other resource flows into and out of a city on a yearly basis [@Kennedy2014] (more details on methodology are presented in Section [TODO:]). The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
 
 A survey of the literature shows at least four ways the UM concept contributes to understanding urban sustainability.
 
-- *To compare resource consumption.* For example, @Krausmann2008 compare the metabolism of agrarian, developing and industrialised societies. @Kennedy2007 narrows in on eight metropolitan regions around the world, examining their metabolisms since 1965 to show general trends of increasing per capita consumption of energy, water and waste (with some exceptions, such as Toronto's energy and water use). Comparisons might also take place between sectors within a single city (such as construction or commercial services), for example to determine which sectors produce the most waste [@Browne2009].
+- *To make comparisons of resource consumption.* For example, @Krausmann2008 compare the metabolism of agrarian, developing and industrialised societies. @Kennedy2007 narrows in on eight metropolitan regions around the world, examining their metabolisms since 1965 to show general trends of increasing per capita consumption of energy, water and waste (with some exceptions, such as Toronto's energy and water use). Comparisons might also take place between sectors within a single city (such as construction or commercial services), for example to determine which sectors produce the most waste [@Browne2009].
 - *To provide inputs to other types of analysis.* UM studies compile annual inventories of resource flows, which can then be coupled to other data for further analysis.  For example, by combining urban metabolic data with carbon intensity factors, a city's greenhouse gas emissions can be calculated, as in @Kennedy2009 and @Kennedy2010. The 'ecological footprint' (EF) is another quantity that has been calculated from UM data [@BFF2002]. @Zucaro2014 use UM data to calculate 'urban sustainability indicators' for Rome, including carbon emissions, acidification and emergy flows.
-- *To relate consumption to other dependent variables.* This includes identifying particular environmental problems with urban resource consumption such as waste generation impacts [@Browne2009]; water stress and contamination [@Kennedy2007]; and the degree to which economic growth is dependent on material consumption [@Schulz2007].
-- *To understand or model relationships in the urban environment.* A more novel use of UM is to "develop mathematical models of processes within the urban metabolism" [@Kennedy2011, p.1970] in order to examine how policies or technological interventions might change stocks and flows. For example, from knowing the quantities of some of the material and energy flows into and out of processes within the urban environment, the STAN model of @Cencic2008 can be used to calculate the values of unknown process inputs and outputs. Another use is to explore relationships between different resources, with @Kenway2013 examining the links between urban energy and water consumption. Geographical dependencies can also be studied, for example @Barles2009 reveals Paris' reliance on surrounding regions for material provisions and waste management. @Bristow2013 assesses resilience and vulnerability of a city's resources, ascertaining whether or not Toronto has sufficient energy stocks in the event of supply failure or other shocks. Finally @Liu2011a have used UM inventory data to study the interdependence of economic sectors within a city.
+- *To relate consumption/output to other dependent variables.* This includes identifying particular environmental problems with urban resource consumption such as waste generation impacts [@Browne2009]; water stress and contamination [@Kennedy2007]; and the degree to which economic growth is dependent on material consumption [@Schulz2007].
+- *To understand or model relationships in the urban environment.* A more novel use of UM is to "develop mathematical models of processes within the urban metabolism" [@Kennedy2011, p.1970][^process-defn] in order to examine how policies or technological interventions might change stocks and flows. For example, from knowing the quantities of some of the material and energy flows into and out of processes within the urban environment, the STAN model of @Cencic2008 can be used to calculate the values of unknown process inputs and outputs. Another use is to explore relationships between different resources, with @Kenway2013 examining the links between urban energy and water consumption. Geographical dependencies can also be studied, for example @Barles2009 reveals Paris' reliance on surrounding regions for material provisions and waste management. @Bristow2013 assesses resilience and vulnerability of a city's resources, ascertaining whether or not Toronto has sufficient energy stocks in the event of supply failure or other shocks. Finally @Liu2011a have used UM inventory data to study the interdependence of economic sectors within a city.
 
-In summary, the urban metabolism concept (and in particular the associated resource inventory data) has proved itself as a useful 'enabling' tool, providing a framework to examine resource consumption alongside notions of urban sustainability.
+[^process-defn]: Note that 'process' here refers generally to operations within an urban environment, rather than resource management technologies specifically.
 
-As the environmental problems associated with urbanisation have increased, so urban metabolism has become an important tool for developing sustainable cities [@NextCity2014]. Specifically, urban metabolism studies could provide insight on how to maintain the socioeconomic benefits of urbanisation (highlighted by the @WorldBank2009 and others) while limiting environmental harm. Studying it enables planners and policy makers to take stock of an area's resource consumption and output, ascertaining its long-term trends and comparing its own metabolism with other areas. The outcomes of studies can then inform policy analysis and urban design [@Kennedy2011].
+In summary, as the environmental problems associated with urbanisation have increased, so urban metabolism has become an important tool, providing a frameword to examine resource consumption alongside notions of urban sustainability [@NextCity2014]. Specifically, urban metabolism studies can provide insight on how to maintain the socioeconomic benefits of urbanisation while limiting environmental harm. Studying it enables planners and policy makers to take stock of an area's resource consumption and output, ascertaining its long-term trends and comparing its own metabolism with other areas. The outcomes of studies can then inform policy analysis and urban design [@Kennedy2011].
 
-Considering this final contribution in a little more detail [TODO: complete] 
+Turning now to consider the components of UM in a little more detail, analysis of a city can focus on the different parts of an urban metabolic system, each of which work together in a hierarchical framework as shown in Figure \ref{fig:metab}. At the bottom lie end consumers, namely the homes, business, industry and transport that exert demands for final energy and water consumption, as well as generating wastes. At the top are the aggregate exchanges between a city and the surrounding environment: both the import of natural resources required to meet consumer demand, and the export of a city's wastes and effluents. In the middle is a network of processes that link the top and the bottom, converting natural resources to demands, as well as treating and managing locally generated wastes. Typically, urban metabolism studies seek to quantify the overall metabolic flows at the top, and to locate the origins of these flows at their point of demand at the bottom.
 
-Turning now to consider the methodology of UM studies [TODO: complete] 
-
-Analysis can focus on the different parts of an urban metabolic system, each of which work together in a hierarchical framework as shown in Figure \ref{fig:metab}. At the bottom lie end consumers, namely the homes, business, industry and transport that exert demands for final energy and water consumption, as well as generating wastes. At the top are the aggregate exchanges between a city and the surrounding environment: both the import of natural resources required to meet consumer demand, and the export of a city's wastes and effluents. In the middle is a network of processes that link the top and the bottom, converting natural resources to demands, as well as treating and managing locally generated wastes. Typically, urban metabolism studies seek to quantify the overall metabolic flows at the top, and to locate the origins of these flows at their point of demand at the bottom.
-
-In this paper we will extend published arguments that advocate giving greater attention to the middle of the system, in order to show how the mix of processes used to meet demand at the bottom will affect overall metabolic inputs and outputs at the top. To support such approaches, we identify the resource conversion processes that can shape urban metabolism both now and in the future, and quantify the resource consumption and production of each individual process, assembling this information into a database. We then discuss possible applications of the database, before summarising our work and suggesting areas of further work.
+This section extends published arguments that advocate giving greater attention to the middle of the system, in order to show how the mix of processes used to meet demand at the bottom will affect overall metabolic inputs and outputs at the top.
 
 \begin{figure}
 	\centering
@@ -99,19 +106,23 @@ Bottom-up methods often depend on high-tech tools including: sensor technology t
 
 Top-down approaches are methodologically simple, but they do not nurture an appreciation of the ultimate causes of emissions or other environmental impacts [@Kellett2013], and are thus unable to predict how metabolic flows might change under different scenarios, hence the power of bottom-up methods which can be used to test scenarios and policies. Kellett et al. exemplify this in their neighbourhood emissions model by altering land-use, building efficiency, transport fuels, and consumer behaviour to observe how overall emissions change.
 
-@Zhang2013 notes that both bottom-up and top-down approaches fail to consider the mechanisms within the urban system which determine its behaviour -- or as we have denoted it -- the *middle* of the system. The top-down approaches are well suited to identify the scale of metabolic problems, and the bottom-up approaches contribute understanding on the ultimate causes of problematic flows, but appreciation of the middle will add to the insights of bottom-up studies by revealing the role of a the internal mechanisms between the top and the bottom of an urban system. Thus Zhang argues research should prioritise quantitative analysis of an urban system's components, which models urban systems as a network of nodes and flows. This representation of a system provides a framework to understand how fluxes circulate between nodes, thus enabling researchers to test how management interventions and other scenarios will change the distribution of fluxes between nodes.
-
-If these recommendations are to be realised, the urban metabolism field should seek a comprehensive understanding of what constitutes the middle to enable modelling to take place; i.e. identifying and describing the nodes and the links within metabolic networks. From an engineered-system perspective (as opposed to say an economic one), these nodes and links correspond to processes and resource flows, respectively (as per part (B) of Figure \ref{fig:metab}). Studying nodes and links could suggest how a city's mix of processes could meet resource demand in cheaper and greener ways, beyond demand-side management. As a case in point, consider how a city meets domestic heating demand: bottom-up studies could explore how measures such as thermal insulation and lower thermostat settings reduce fuel requirements at the top. But studying the middle would explore how investment in processes could reduce fuel usage, for example showing how how heat demand could be met by waste heat from power generation rather than gas boilers. We brand this type of analysis 'process-oriented'.
-
-The evolution of UM research has been summarised by @Zhang2013. Starting with Wolman's seminal study, a city was understood as a system into and out of which resources flowed in a linear fashion. On this view, sustainability efforts are focussed on minimising the inputs and outputs. This representation was refined by @Giradet1990, who suggested that in addition to minimising resource inputs (e.g. by using solar energy and more efficient energy processes such as CHP), cities should be adopting circular metabolisms, whereby outputs could be reused as inputs through waste recycling. Both of these are black-box representations, where there is no consideration of mechanisms at play within the city. Thus @Zhang2009 proposed a network-process model in which research considers how resources move within a system. Specifically that work (and its offspring, such as @Li2011) considers the economic sectors (nodes) within a system, and the degree to which they are dependent upon one another by resource flows (links). Such information is useful to help identify potential problems for an urban system (e.g. due to sectors competing for a limited resource).
+@Zhang2013 traces the evolution of the UM concept to arrive at the conclusion that more attention should be paid to the *middle* of a system. Starting with Wolman's seminal study, UM understood a city to be a linear system into and out of which resources flowed. On this view, sustainability efforts are focussed on minimising the inputs and outputs. This understanding was refined by @Giradet1990, who suggested that in addition to minimising resource inputs (e.g. by using solar energy and more efficient energy processes such as CHP), cities should be adopting circular metabolisms, whereby outputs could be reused as inputs through waste recycling. Both of these are black-box representations, where there is no consideration of mechanisms at play within the city. Thus @Zhang2009 proposed a network-process model in which research considers how resources move within a system. Specifically that work (and its offspring, such as @Li2011) considers the economic sectors (nodes) within a system, and the degree to which they are dependent upon one another by resource flows (links). Such information is useful to help identify potential problems for an urban system (e.g. due to sectors competing for a limited resource).
 
 [TODO: reproduce @Zhang2013's figure]
 
-The idea of looking at the mechanisms within a city has been extended by @Ravalde2016, who note that as well as understanding a city as a mix of economic sectors, it can also be understood as an engineered system. On this view, the system's nodes are resource management processes (e.g. powerplants and water treatment units), while the links are the flows between them. @Ravalde2016 argues that this enables the study of how a city's process mix, layout and scheduling can be optimised to maximise synergies, and thereby minimise a city's overall resource consumption and waste generation.
-- Note @Procter2015
+In this way, @Zhang2013 notes that both bottom-up and top-down approaches fail to consider the mechanisms within the urban system which determine its behaviour -- or as we have denoted it -- the *middle* of the system. The top-down approaches are well suited to identify the scale of metabolic problems, and the bottom-up approaches contribute understanding on the ultimate causes of problematic flows, but appreciation of the middle will add to the insights of bottom-up studies by revealing the role of internal mechanisms between the top and the bottom of an urban system. Thus Zhang argues research should prioritise quantitative analysis of an urban system's components, which models urban systems as a network of nodes and flows. This representation of a system provides a framework to understand how fluxes circulate between nodes, thus enabling researchers to test how management interventions and other scenarios will change the distribution of fluxes between nodes.
 
-Another dimension to @Zhang's summary of UM research is to identify the purpose of UM studies under four methodologies: process analysis, which provides the theoretical basis (linear, circular and network, as discussed above); accounting and assessment, to quantify stocks and flows (perhaps using them to calculate performance indicators); simulation models, used to study dynamics, perhaps to see how a metabolism might change under various scenarios; and optimization and regulation, which seeks to improve a metabolism in relation to some objective through management interventions in the nodes and paths of a metabolic network. It is this last area which @Zhang identifies as a need for future research. 
+If these recommendations are to be realised, the urban metabolism field should seek a comprehensive understanding of what constitutes the middle to enable modelling to take place; i.e. identifying and describing the nodes and the links within metabolic networks. In Zhang's paper, the middle of the system is understood to be a set of economic sectors (represented by nodes), which consume and produce resources that transfer to between sectors (along links), as well as importing and exporting them. Such an approach means that Zhang and other authors have conducted UM studies which investigate the effect of the 'middle' of the system, using ecological network analysis (ENA) to investigate the extent to which different economic sectors are dependent on each other, and the implications for a city's overall metabolic flows [TODO: cite Zhang, Li, etc.]. This is discussed in more detail in Section [TODO: cross-ref to section in chapter 3].
 
+However, to Zhang's economic sector perspective of a UM system's middle, we could propose an engineered-system perspective (as opposed to say an economic one). On this view, the nodes and links correspond to resource management processes (e.g. powerplants, water treatment units, and pipe networks) and resource flows, respectively (as per part (B) of Figure \ref{fig:metab}). Other authors have noted that there is a "poor mechanistic underlying urban metabolism" theory, thus providing a roadblock to finding ways for resource to be used more efficiently [TODO: cite Fernandex-Mena et al.]. Studying nodes and links could suggest how a city's mix of processes could meet resource demand in cheaper and greener ways, beyond demand-side management. As a case in point, consider how a city meets domestic heating demand: bottom-up studies could explore how measures such as thermal insulation and lower thermostat settings reduce fuel requirements at the top. But studying the middle would explore how investment in processes could reduce fuel usage, for example showing how how heat demand could be met by waste heat from power generation rather than gas boilers. This could enable the study of how a city's process mix, layout and scheduling can be optimised to maximise synergies, and thereby minimise a city's overall resource consumption and waste generation. Indeed, information optimisation strategies to improve UM is highlighted by @Zhang as a great need for future UM research (e.g. in comparison to accounting- and simulation-based studies).
+
+In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they relate), within the study of flows, the arguments of @Zhang2013 can be extended to highlight a need to study how the processes within a city relate to each other, as an engineered system. Furthermore, @Zhang2013 points out the need for optimisation studies. This is the basis for the work of this thesis, namely to formulate an optimisation model which can take advantage of synergies between different resource management infrastructure) helps to meet this gap. In this way our work meets calls for IE perspectives on UM [@Clift2015] which (for example) identify future sustainable urban technologies.
+
+<!--
+In addition to summarising the evolution of UM research, @Zhang's also points out that 
+identifies four ways the UM concept can be used, each building on the previous. First, there is UM theory (which has been discussed above in terms of linear, circular, and network representations of UM). Second, UM can be used for accounting and assessment, to quantify stocks and flows (perhaps using them to calculate performance indicators). Third, ideas of UM can be used to generate simulation models, used to study dynamics, perhaps to see how a metabolism might change under various scenarios. Finally, UM ideas can be used to inform optimization and regulation strategies, which seeks to improve a metabolism in relation to some objective through management interventions in the nodes and paths of a metabolic network. It is this last area which @Zhang identifies as having the greatest need for future research. 
+
+[TODO: can this content be inserted earlier in the lit review?]
 
 Our introduction to UM thus far has been focussed on the resource flows into, out of and within urban areas. However, other studies attempt to integrate such studies of *flows* with the studies of cities spatial and material *forms* and/or their socioeconomic *functions*. 
 - (urban political ecology, the central focus of https://www.bartlett.ucl.ac.uk/dpu/latest/publications/dpu-working-papers/WP168.pdf), 
@@ -120,13 +131,11 @@ Our introduction to UM thus far has been focussed on the resource flows into, ou
   	- @Barles2010a
 - socioeconomic functions: @Newmann1999
 
-@Ravalde2016 has argued for one step further, pointing out that
 - or they only focus on one resource, they are not intersectoral. Indeed, as @Fernandez-Mena2016 states the issue, UM models [TODO: note this was originally written in relation to nutrient recycling loops]
+- Another author who has independently come to a similar conclusion is [TODO: citation].
 
 > "... may seldom consider a whole mass balance since some flows are sometimes not quantified and do not always follow elements  along their whole cycle... The poor mechanistic basis underlying urban metabolism may prevent their use for exploring and simulating options for more efficient recycling loops within social ecological systems."
-
-In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they relate), within the study of flows, the arguments of @Ravalde2016 (developing those of @Zhang2013) highlight a need to study how the processes within a city relate to each other, as an engineered system. Furthermore, @Zhang2013 points out the need for optimisation studies. Thus our work in this paper (to formulate an optimisation model to take advantage of synergies between different resource management infrastructure) helps to meet this gap. In this way our work meets calls for IE perspectives on UM [@Clift2015] which (for example) identify future sustainable urban technologies.
-
+-->
 
 ## Modelling in the modern world
 
@@ -146,9 +155,120 @@ Techniques:
 - There should be a brief outline of this (even if it's just a list of definitions) so the when they are referred to in the literature review, the reader knows what we are talking about.
 -->
 
-The purpose of this section is to justify why we think that modelling will make a useful contribution to improving the urban metabolism of urban areas. Given the urban metabolism field has a strong heritage in accounting, trends, sustainability assessments, what would the modelling discipline bring to the table? It is important to justify a model whenever they are used, but it is also important here specifically, as we introduce a new type of modelling to the urban metabolism field, i.e. optimisation.
+Given the need for greater understanding of the 'inside' of a UM system generally, and the engineered system specifically, what role can 'modelling' play to assist this cause (over and above the accounting and simulation tools typically used in UM). Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new type of modelling to the urban metabolism field, i.e. optimisation.
 
-A model can be defines as "A simplified representation used to explain the workings of a real world system or even" [TODO: reference Wiktionary]. This can take a number of forms, summarised in Figure \ref{fig:models}, based on the @Williams1999's brief introduction to models. Either concrete (such as a scaled-down construction of an aeroplane [TODO: or lab-simulation of resource management process]), or abstract, which constitutes concepts [TODO: Wikipedia]. An abstract model could be purely descriptive, such that it might graphically/visually/diagramatically represent some system, but in our case, we will consider mathematical models, which use mathematical relationships to encode the behaviour of some real-world phenomenon. These relationships include equations, inequalities and logical dependencies. In our case, we will mathematically represent the processes which transport, store and transport goods and services to, from and within an urban area, and other features of the area. @Williams1999 highlights three benefits of building such models:
+A model can be defines as "A simplified representation used to explain the workings of a real world system or even" [TODO: reference Wiktionary]. This can take a number of forms, summarised in Figure \ref{fig:models}, based on the @Williams1999's brief introduction to models. Either concrete (such as a scaled-down construction of an aeroplane [TODO: or lab-simulation of resource management process]), or abstract, which constitutes concepts. An abstract model could be purely descriptive (sometimes called 'conceptual'), such that it might graphically/visually/diagramatically represent some system, but in our case, we will consider mathematical models, which use mathematical relationships to encode the behaviour of some real-world phenomenon. These relationships include equations, inequalities and logical dependencies.
+
+Within UM research, modelling has been used in a variety of ways (as briefly outlined in Section [TODO:], above), which can be seen by using the Scopus tool to search for relevant articles, using the search term `urban metabolism AND model OR modelling`[^search]. 
+
+[^search]: The full search term is available at \\url{http://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=urban+metabolism+AND+model+OR+modelling&sid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&sot=b&sdt=cl&cluster=scosubjabbr%2c%22MEDI%22%2cf%2c%22BIOC%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22CHEM%22%2cf%2c%22NEUR%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22BUSI%22%2cf%2c%22ARTS%22%2cf%2c%22PSYC%22%2cf%2c%22HEAL%22%2cf%2c%22MULT%22%2cf%2c%22VETE%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&origin=savedSearchNewOnly&txGid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a15}]. This search excludes irrelevant subject areas (such as medicine).
+
+This returned 239 results which was manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not use the definition of 'model' as we have understood it. Looking further at the remaining results, we classified each paper according to three three categories: model focus, modelling techniques, and model use. Figure \ref{fig:UM-model-lit} plots each paper as a point which is located according to its whereabouts within the two dimensions. We outline the model focus and technique categories below, with reference to models in our literature review (which are marked on the plot using text labels), before summarizing the UM modelling landscape, noting features and gaps.
+
+Edit.
+
+```{r metab-lit-review, results="asis"}
+###--------------------------------------------------
+## PREPROCESSING
+### From lit-metab-modelling.csv, we used R to remove rows with states!="cut")
+### From lit-keep-maybe.csv, we summarised the attributes for each paper, and identified more papers to cut
+### We are left with lit-final-cut.csv, which is used below
+###--------------------------------------------------
+
+###--------------------------------------------------
+### Set up the database for cluster analysis
+###--------------------------------------------------
+
+
+#setwd("02_lit-review")
+setwd(getwd())
+library(dplyr)
+
+### Load in literature titles and attributes, removing the remaining papers marked 'CUT'
+lit_draft_cut <- read.csv("02_lit-review/lit-final-cut-alt.csv")
+lit_final_cut <- filter(lit_draft_cut, type!="CUT")
+
+## TODO: merge some of the model use groups together for clarity (e.g. include 'other' grouping)
+
+## Only keep variables relevant for our cluster analysis
+lit_final_cut <- select(lit_final_cut,
+			c(Title, type, techniques.broad, techniques, techniques.IO, techniques.other, focus.broad.cat, focus.broad, focus, focus.multiple, focus.other, use, use.other, text.label))
+
+```
+
+
+```{r metab-lit-review-plot, fig.height=5, fig.width=8, fig.cap="An overview of the UM modelling literature.\\label{fig:UM-model-lit}"} 
+
+###--------------------------------------------------
+### Select and order attributes for ordinal data
+### E.g. for plotting, it is helpful for "Low-level", "Medium-level", and "High-level" to appear in this order
+###--------------------------------------------------
+
+## Select attributes to be plotted in the analysis
+lit_main_cats <- select(lit_final_cut, c(type, techniques.broad, techniques, focus.broad.cat, focus.broad, use, text.label))
+
+## Order attributes for ordinal data (e.g. for plotting, it is helpful for "Low-level", "Medium-level", and "High-level" to appear in this order)
+lit_main_cats <- transform(lit_main_cats,
+			   type=factor(type,
+			     levels=c("conceptual", "mathematical", "various"),
+			     ordered=TRUE),
+			   techniques.broad=factor(techniques.broad,
+			     levels=c("Low-level", "Medium-level", "High-level", "statistical", "misc."),
+			     ordered=TRUE),
+			   techniques=factor(techniques,
+			     levels=c("Bottom-up mathematical description", "ENA", "integrated", "LCA", "mass and/or energy balance", "mathematical representation of subsystems", "other", "ratios", "regression", "relate actors", "relate various", "various")),
+			   focus.broad.cat=factor(focus.broad.cat,
+			     levels=c("resource", "other", "methodology"),
+			     ordered=TRUE),
+			   focus.broad=factor(focus.broad,
+			     levels=c("single resource", "multiple resources", "integrated", "form", "socioeconomic", "environment", "methodology"),
+			     ordered=TRUE),
+			   use=factor(use,
+			     levels=c("accounting", "forecasting", "other", "scenario analysis", "strategic planning", "system understanding/improvements", "theory")))
+
+###--------------------------------------------------
+### Plot results to identify clusters
+###--------------------------------------------------
+
+plot_cluster <- ggplot(lit_main_cats, aes(y=focus.broad, x=techniques.broad)) +
+  geom_jitter(aes(colour=factor(use)), width=0.1, height=0.1) +
+  geom_text(aes(label=text.label, colour=factor(use)), size = 2) +
+  theme_bw() +
+  theme(axis.text.x = element_text(hjust=1, angle=30),
+	legend.position="bottom",
+	legend.direction="vertical") +
+  guides(col=guide_legend(ncol=2)) +
+  xlab("Modelling techniques") +
+  ylab("Model focus") +
+  scale_colour_discrete(name="Model use")
+#  facet_wrap(~focus.broad.cat, scales="free_y", ncol=1)
+plot_cluster
+```
+
+### Focus (horizontal axis)
+
+Models have different foci. Some consider a **single resource** (such as @Zeng2014, who simulate urban water flows among various facilities and end uses), while others consider **multiple resources** such as @Liang2011 who model how various energy and material flows including coal, water, biomass and pollutants, change under proposed policies. Thirdly **integrated** models unite multiple resource types under a single value system, such as @Huang2005 who use *emergy* to encapsulate various flows including solar energy, rain, and fossil fuels.
+
+Non-resource foci include models which examine a city's **form**, for example  @Liang2014 describes how a city's quantity of steel stock can be related to the level of nighttime lighting. Next are the models with a **socioeconomic** focus, such as @Newman1999a, who makes a conceptual addition to the UM idea, by including 'livability' as something that is affected by resource flows and urban form. Finally, other models focus on the **environment**, for example @Ye2011 relate household construction and characteristics to greenhouse gas emissions.
+
+### Techniques (vertical axis)
+
+In our classification of models according to approach they take, we have used four [TODO: word]. The **statistical** category use regression models to relate different UM variables. For example @Liang2014 relates a city's building steel stock to long-term nighttime lights. The remaining categories refer to UM models in which some part of a UM system's dynamics are represented (either conceptually or mathematically). Such a system can be broken into component parts at different levels. At the most detailed level, the **low** categorisation captures models which quantify energy and mass balances among the processes and sectors within an urban system, such as @Zeng2014 who calculate water flows between different sectors (domestic, industrial etc.) and systems (supply, treatment etc.). Alternatively, this could denote models where equations for bottom-up mathematical descriptions of system components (e.g. emissions sources) @Kellet2013, which builds up emissions from building, transport, human, and vegetation sources.
+
+At the next level of detail, the **medium** level categorisation denotes models in which conceptual or mathematical relationships are defined for a UM system's organisational sectors and socioeconomic elements. For example, @Zhang2010a uses ecological network analysis to relate the resource flows of 17 economic sectors to each other, while @Fung2005 relates an area's institutional activities to its sustainability, and @Huang2005 relates energy flows to urban development.
+
+Finally, the **high** level categorisation captures system dynamics in their broadest sense, using ratios. For example, relating society size and transport volumes as in @Fischer-Kowalski2004's model, or calculating a long-term time series for sectoral energy demand based on the upstream energy consumption data as in @Baynes2012a.
+
+- **misc.**: these models include input-output analysis, decomposition analysis,and scaling laws, amongst other methods. [TODO: lots of these could be reassigned to a level?]
+
+
+
+
+
+
+In our case, we will mathematically represent the processes which transport, store and transport goods and services to, from and within an urban area, and other features of the area.
+
+@Williams1999 highlights three benefits of building such models:
 
 1. The act of model building itself will reveal relationhips that were previously unapparent.
 2. The results my reveal courses of action which were otherwise unapparent.
