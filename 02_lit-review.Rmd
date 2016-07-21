@@ -308,17 +308,17 @@ plot_cluster <- ggplot(lit_main_cats, aes(y=techniques.broad, x=focus.broad)) +
 plot_cluster
 ```
 
-
-
-
-
 ## Review of resource managagement optimisation modelling
 
-[TODO: locate this note somewhere]
+So far, this chapter has introduced UM as research area that can support urban sustainability measures, and has shown that modelling is one means by which this can happen. The work of this thesis is to add to UM modelling capabilities a model which can optimise the simultaneous design of urban energy, water, and waste systems, so as to take advantage of intersectoral synergies, and thus improve an area's metabolism. To assist that cause, this section reviews a number of 'resource management optimisation models'[^ROM]. This has two purposes: first, to confirm the need for a model which can simultaneously optimise multiple resource management systems at the urban scale (thus complementing the findings above that the UM modelling literature includes no such models); and second, to suggest possible methodologies which can be adapted in this thesis.
 
-Note that 'resource management optimisation modelling' is not a well-defined subject area (unlike say, 'urban energy systems modelling' [TODO: cite @Keirstead review paper definition], rather it is used here to refer generally to optimisation models which are used to assist system managers improve the management of an energy or material resource for which they are responsible. These include many of the models returned when using the search term [TODO: Scopus search term] in the Scopus database [TODO: more detail about Scopus]. Thus, this can incorporate everything from the efficient production of a single resource in some component of a plant [TODO: cite example], up to global strategies to manage [TODO: cite example, e.g. biomass] 
+### An introduction to the resource optimisation modelling literature
+
+[^ROM]: Note that 'resource management optimisation modelling' is not a subject area which has a formal definition (unlike say, 'urban energy systems modelling' [TODO: cite @Keirstead review paper definition], rather it is used here to refer generally to optimisation models which are used to assist system managers improve the management of an energy or material resource for which they are responsible, and can incorporate everything from the efficient production of a single resource in some component of a plant [TODO: cite example], up to global strategies to manage [TODO: cite example, e.g. biomass].
 
 The management of urban resources requires networks of infrastructure to convert and transport resources to and thus efforts to improve sustainability often involve improving the design and operation of these infrastructure networks. One approach taken to such improvements is that of optimisation modelling, in which a resource allocation problem is represented by sets of equations which are then solved to select an optimal mix, layout, and operation schedule for resource management infrastructure [TODO: reference], such as water pipes [TODO: reference], waste transportation [TODO: reference], and power plants [TODO: reference].
+
+These include many of the models returned when using the search term [TODO: Scopus search term] in the Scopus database [TODO: more detail about Scopus]. Thus, 
 
 However, as our literature review will show, urban resource optimisation modelling usually considers only one resource sector in isolation (e.g. an urban energy system). This approach fails to take advantage of the co-location of various resource management infrastructure, which makes possible synergies between different systems [TODO: reference], where the wastes and by-products of one process become the inputs to another (as seen in an energy-from-waste plant, for example). Thus current approaches to designing urban resource management systems impose a ceiling on potential material and energy savings.
 
@@ -337,6 +337,8 @@ Of most interest to use however, are the models formulated for the urban scale. 
 Optimisation models also are used for water supply networks. For example @Zanganeh2010's model optimises the performance of an area's existing water network, choosing reservoir heights, pump sizes. @Lejano2006 applies optimisation modelling to a network design, starting with the spatial distribution of customer demands, it selects appropriate locations for the pipes. Some water optimisation models have ambitions greater than merely meeting demand, but also seek to minimise freshwater consumption through employing water reclamation processes, water saving technologies. Examples of these can be found in @Lim2010 and @Makropoulos2008.
 
 The idea that optimisation models can go beyond merely designing a minimum cost system, but also consider resource saving measures (as with some of the water models discussed above) is the idea behind our own model. Such considerations are also made in waste management planning optimisation models. For example, @Guo2009 optimises the allocation of waste flows from their point of generation to management facilities, to inform longterm investment decisions. (e.g. @Li2006).
+
+### An overview of the resource optimisation modelling literature
 
 The models above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation modelling more generally, we now conduct a quasi-systematic literature review to identify some of these characteristics in order to highlight both precedents and gaps for our model. We start by using Scopus to search for relevant literature, using the search term **energy AND water AND waste AND optimization model**, and excluding irrelevant subject areas (such as psychology) from the search [^search-res-models]. 
 
@@ -556,17 +558,16 @@ This step returned `r uncut_list_size` results, which we filtered using R code t
 
 Across the different models, with their varying purposes, we could identify their various traits in order to highlight the need for our intersectoral synergy urban model, as well identify a suitable methodology to use. (Such excercises have been used elsewhere to identify modelling challenges and opportunities -- see for example the review of urban energy systems models in @Keirstead2012b.) There are many aspects we could consider (e.g. spatial and temporal resolution, time horizon, incorporation of endogenous resource demands, integration capabilities with other models, etc.), but here, we focus on three characteristics most relevant to our model, namely: the **detail** to which models make infrastructure design decisions; the **methods** used to solve the models; and the degree to which they integrate different resource management systems in order investigate synergies (**integration level**).
 
-The most detailed models make 'low-level' decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], biomass moisture content in gasification [TODO: cite Synthesis and thermo-economic design optimization of wood-gasifier-SOFC systems for small scale applications]. At the high-level, the design is focussed on a system's superstructure, representing a system as a network of resource sinks and sources, and their connections between them. Often, their job is to identify optimal resource transfers between sinks and sources, to meet some goal. They may optimise a spatial layout (the location of, and distance between sinks and sources), but they do not go into the precision of detailed design. Examples include @Keirstead2012's urban energy system, the urban water system models of @Lim2010 and @Makropoulos2008, whose models maximise opportunities for wastewater reuse, by identifying urban sinks and sources of waters of various different contamination levels, and optimising how they might be connected. These high-level models are more likely to be used in research, or the early exploratory stages of a system design, whereas the low-level models are more likely to be used to generate precision needed to design and operate a system in the real world. Other characteristics which split across these 'design purposes', are the temporal horizon (not considered further in this paper), and the spatial scale (discussed below).
+\begin{description}
+\item[Detail] The most detailed models make 'low-level' decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], biomass moisture content in gasification [TODO: cite Synthesis and thermo-economic design optimization of wood-gasifier-SOFC systems for small scale applications]. At the high-level, the design is focussed on a system's superstructure, representing a system as a network of resource sinks and sources, and their connections between them. Often, their job is to identify optimal resource transfers between sinks and sources, to meet some goal. They may optimise a spatial layout (the location of, and distance between sinks and sources), but they do not go into the precision of detailed design. Examples include @Keirstead2012's urban energy system, the urban water system models of @Lim2010 and @Makropoulos2008, whose models maximise opportunities for wastewater reuse, by identifying urban sinks and sources of waters of various different contamination levels, and optimising how they might be connected. These high-level models are more likely to be used in research, or the early exploratory stages of a system design, whereas the low-level models are more likely to be used to generate precision needed to design and operate a system in the real world. Other characteristics which split across these 'design purposes', are the temporal horizon (not considered further in this paper), and the spatial scale (discussed below).
 
 [TODO: note the biomass superstructure models for high-level.]
 [TODO: note 'in-between' (medium-level) models?]
 [TODO: note a difference between detail, and scale]
 
-On solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), whic are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet]. Nonlinear formulations are likely to be found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables[^hydraulic-vars], especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet]. Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
+\item[Methods] On solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), whic are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet]. Nonlinear formulations are likely to be found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{For example, the potential energy of a mass of water due to its elevation is given by $Energy head=mass \times gravity \times elevation$, and both mass and elevation can might be variables in a problem.}, especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet]. Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
 
-[^hydraulic-vars]: For example, the potential energy of a mass of water due to its elevation is given by $Energy head=mass \times gravity \times elevation$, and both mass and elevation can might be variables in a problem.
-
-Thirdly, we consider the extent to which models integrate different resource management systems, defining three levels. Each level indicates to what extent a model optimises intersectoral synergies, and are diagramatically represented in Figures [TODO: figure cross-refs].
+\item[Integration] Thirdly, we consider the extent to which models integrate different resource management systems, defining three levels. Each level indicates to what extent a model optimises intersectoral synergies, and are diagramatically represented in Figures [TODO: figure cross-refs].
 
 \begin{description}
 \item[None] These models consider just one resource system, such as the urban energy systems model of \citet{Keirstead2012}, or the urban water network model of \citet{@Keedwell2006}.
@@ -575,6 +576,8 @@ Thirdly, we consider the extent to which models integrate different resource man
 \end{description}
 
 Figure \ref{fig:model-integration}, shows which level of systems integration applies to each of the models in our review, for models at various scales.
+
+\end{description}
 
 ```{r model-lit-review-categMatchPlot, fig.height=5, fig.cap="Model integration levels.\\label{fig:model-integration}"}
 
@@ -675,6 +678,21 @@ As the UM framework is used to study urban sustainability, in relation to its re
 
 [TODO: given our aims are mainly focussed on UM, rather than detailed infrastructure design, then a highly integrated model is appropriate.]
 
+### Gaps and contributions
+
+Thus cities are an example of a multi-resource system [TODO: complete introductory sentances] 
+
+- General challenges
+	- A process-oriented approach to UM
+	- An integrated optimisation model
+
+- Specific challenges
+  	- A metric for UM
+  	- A database of processes
+  	- A method for the model
+
+In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
+
 <!--
 In summary, optimisation modelling is used for many purposes to help plan resource management. However, our exhaustive search of the literature how shown that no models are appropriate to consider urban energy, water and waste management simultaneously, to realise synergistic benefits. Nevertheless, they do model multiple resource optimisation at suitable scales, to make the idea of such a model plausible (at least from an engineering point of view, if not one of free-market economics.
 
@@ -694,37 +712,17 @@ Lit review structure from JK's MILP paper.
 - "The model presented in this paper has been developed to..." continue to understand the inside of the blackbox
 -->
 
-## Definitions
+### Definitions
 
 From our review of the literature, we are in a position to define the meaning of this thesis's title, as follows.
 
-- *Integrated*: multiple resources/systems/infrastructure types  considered in the system, but only one being optimised for
-- *Highly* integrated: multiple resources being optimised for in the synergistic system [TODO: note my triange/circle/square diagrams].
-- *Urban*: geographic-plus, which allows for 'co-location' to refer to the proximity of infrastructure to *each other* (rather than the consumers/producers), which is what first and foremost facilitates synergies. It would be a shame to ignore a possibility, because the process was outside of the city.
-- *Energy*, *Water*, *Waste*:
-  
-	- i.e. we do not include the manufacturing sector (e.g. demands for iron and steel, process industries etc.), but rather consider the resource demands common to the 'bottom level' (domestic, industrial, processing) for all city types -- resources which are often managed by public or private utility companies. Such an approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of our problem, and makes a manageable piece of work for this thesis.
-	- Also, these are three of the "lifeline infrastructures" (http://ro.uow.edu.au/cgi/viewcontent.cgi?article=1053&context=isngi2013), and in particular the three which involve resource conversions
-- *Resources*: [TODO: should this be changed to "systems"?]
+\begin{description}
 
-Thus in other words [TODO: complete wordy explanation of the title], how can 
+\item[Integrated] multiple resources/systems/infrastructure types  considered in the system, but only one being optimised for
+\item[Highly] integrated: multiple resources being optimised for in the synergistic system [TODO: note my triange/circle/square diagrams].
+\item[Urban]: geographic-plus, which allows for 'co-location' to refer to the proximity of infrastructure to *each other* (rather than the consumers/producers), which is what first and foremost facilitates synergies. It would be a shame to ignore a possibility, because the process was outside of the city.
+\item[Energy, water, waste] i.e. we do not include the manufacturing sector (e.g. demands for iron and steel, process industries etc.), but rather consider the resource demands common to the 'bottom level' (domestic, industrial, processing) for all city types -- resources which are often managed by public or private utility companies. Such an approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of our problem, and makes a manageable piece of work for this thesis. Also, these are three of the "lifeline infrastructures" (http://ro.uow.edu.au/cgi/viewcontent.cgi?article=1053&context=isngi2013), and in particular the three which involve resource conversions
+\item[Resources] [TODO: should this be changed to "systems"?]
+\end{description}
 
-Other (non-title) definitions include:
-
-- Low-, medium- and high-level
-- Superstructure
-
-## Gaps and contributions
-
-Thus cities are an example of a multi-resource system [TODO: complete introductory sentances] 
-
-- General challenges
-	- A process-oriented approach to UM
-	- An integrated optimisation model
-
-- Specific challenges
-  	- A metric for UM
-  	- A database of processes
-  	- A method for the model
-
-In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
+Thus in other words, how can [TODO: complete wordy explanation of the title]
