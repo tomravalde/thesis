@@ -1,5 +1,7 @@
 # Case study: a Chinese urban development
 
+[TODO: Add note on published aspects of this work (e.g. conference paper)?]
+
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
@@ -27,7 +29,7 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
-The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure ~\ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
+The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
 
 [^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SCP [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
 
@@ -195,7 +197,7 @@ The selection of transport processes to define set [TODO: design a symbol which 
 
 [^heat-transport]: Though whilst heat itself cannot be transported, it can be carried by water, e.g. in a district heating network.
 
-Regarding the behaviour of transport processes, the origin-to-destination input and output coefficients, $k^*_{\tau rq}$ should obviously include the resource carried (e.g. water through a pipe). In addition to this, transport processes may need 'auxilliary' resources, namely the source of the energy used to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. While it is taken for granted that the carried resource entirely leaves to origin zone, and arrives in the destination zone (perhaps less some losses, such as electrical losses along a cable), it needs to be determined how wastes, by-products and emissions are shared between zones. All these considerations are now described:
+Regarding the behaviour of transport processes, the origin-to-destination input and output coefficients, $k^*_{\tau rq}$ should obviously include the resource carried (e.g. water through a pipe). In addition to this, transport processes may need 'auxilliary' resources, namely the source of the energy used to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. While it is taken for granted that the carried resource entirely leaves to origin zone, and arrives in the destination zone (perhaps less some losses, such as electrical losses along a cable), it needs to be determined how wastes, by-products and emissions are shared between zones. The details on transport process behaviour for the three main types of technologies considerations are now described, with specific values of $k^*_{\tau rq}$ given in Table \ref{tab:transp-coeffs}. 
 
 \begin{description}
 
@@ -207,6 +209,7 @@ Regarding the behaviour of transport processes, the origin-to-destination input 
 
 \end{description}
 
+\input{06_case-study/tab-transp-coeffs.tex}
 
 For process rates, $F^{transp}_{\tau zzt}$, [TODO: complete] 
 
