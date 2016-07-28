@@ -45,7 +45,17 @@ The case study is an ongoing Chinese urban development. The development is led b
 
 One stated ambition of the SCP site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Current plans to that end include using heat held within wastewater within a water source sewage pump, and generating biogas from wastewater fermentation. These, and other intersectoral integration possibilities [TODO: better word?] are summarised in Figure [TODO:], which shows part of the resource management infrastructure proposed for the SPC site, indicating the type of intersectoral integration considered by the planners and decision makers involved with the SPC site redevelopment project.
 
-[TODO: include Figure adapted, showing the interconnections between systems, discuss energy island.]
+[TODO: adapt Figure below, to show all connections.]
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site-dimensions.pdf_tex}}
+	\end{spacing}
+	\caption{A re-representation of the SCP redevelopment site, indicating connections defined for set $nb(z,z')$. All distances are in kilometers. Each region centre connects to the other zones in the region (e.g. \textbf{Factory (south)} $\leftrightarrow$ Assembly) with a connection assumed to be 0.5 km in length.}
+	\label{fig:site-connectionss}
+\end{figure}
 
 Some proposed system design have been simulated (for example using the TRNSYS[^trnsys] to simulate the energy, system), however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
 
