@@ -45,7 +45,17 @@ The case study is an ongoing Chinese urban development. The development is led b
 
 One stated ambition of the SCP site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Current plans to that end include using heat held within wastewater within a water source sewage pump, and generating biogas from wastewater fermentation. These, and other intersectoral integration possibilities [TODO: better word?] are summarised in Figure [TODO:], which shows part of the resource management infrastructure proposed for the SPC site, indicating the type of intersectoral integration considered by the planners and decision makers involved with the SPC site redevelopment project.
 
-[TODO: include Figure adapted, showing the interconnections between systems, discuss energy island.]
+[TODO: adapt Figure below, to show all connections.]
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site-dimensions.pdf_tex}}
+	\end{spacing}
+	\caption{A re-representation of the SCP redevelopment site, indicating connections defined for set $nb(z,z')$. All distances are in kilometers. Each region centre connects to the other zones in the region (e.g. \textbf{Factory (south)} $\leftrightarrow$ Assembly) with a connection assumed to be 0.5 km in length.}
+	\label{fig:site-connectionss}
+\end{figure}
 
 Some proposed system design have been simulated (for example using the TRNSYS[^trnsys] to simulate the energy, system), however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
 
@@ -112,9 +122,32 @@ Thus to define the site layout, we first assume which pairings belong to set $nb
 
 [^road-cost]: As discussed in Section [TODO:], this means that roads have no financial cost in the model, whereas pipes and cables will.
 
-We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $NB=12$. With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO:] km.
+We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $NB=12$. With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO: 0.5] km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}.
 
 [TODO: insert a photo of me with a ruler, doing the measurements!]
+
+\begin{table}[]
+\centering
+\caption{The zonal connections defined for set $nb(z,z')$, and their corresponding lengths $l(z,z')$ used in the SPC case study.}
+\label{tab:zonal-connections}
+
+\begin{tabular}{@{}llll@{}}
+\toprule
+$z$                      & $z'$                     & Dimension on plan {[}cm{]} & Site dimension {[}km{]} \\ \midrule
+\textbf{Factory (south)} & \textbf{Factory (north)} & 3.4                        & 0.9                     \\
+\textbf{Factory (south)} & Assembly                 & NA                         & 0.5                     \\
+\textbf{Factory (south)} & Multifunction district   & NA                         & 0.5                     \\
+\textbf{Factory (south)} & Dormitories              & NA                         & 0.5                     \\
+\textbf{Factory (south)} & Turbines                 & NA                         & 0.5                     \\
+\textbf{Factory (north)} & Technology building      & NA                         & 0.5                     \\
+\textbf{Factory (north)} & Quality control          & NA                         & 0.5                     \\
+\textbf{Factory (north)} & Energy island            & $4.8+1.3=6.1$              & $1.3+0.4=1.7$           \\
+\textbf{Factory (north)} & \textbf{Residential}     & $4.8+3.4=8.2$              & 2.2                     \\
+\textbf{Residential}     & School                   & NA                         & 0.5                     \\
+\textbf{Residential}     & Hospital                 & NA                         & 0.5                     \\
+\textbf{Residential}     & Reserved                 & Assume                     & 1                       \\ \bottomrule
+\end{tabular}
+\end{table}
 
 The GAMS code for this data is listed in Appendix [TODO:]. 
 

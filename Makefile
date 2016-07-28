@@ -74,6 +74,7 @@ update:
 	inkscape -D -z --file=05_model-development/network-1.svg --export-pdf=05_model-development/network-1.pdf --export-latex ; \
 	inkscape -D -z --file=05_model-development/tat-16.svg --export-pdf=05_model-development/tat-16.pdf --export-latex ; \
 	inkscape -D -z --file=06_case-study/site.svg --export-pdf=06_case-study/site.pdf --export-latex ; \
+	inkscape -D -z --file=06_case-study/site-dimensions.svg --export-pdf=06_case-study/site-dimensions.pdf --export-latex ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/benchmark-results.csv 05_model-development ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/network-summary.csv 05_model-development ; \
 	cp /home/tr608/ImpCol/PhD/model-development-code/model/results/process-results.R 05_model-development ; \
