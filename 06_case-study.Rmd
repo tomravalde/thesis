@@ -291,7 +291,9 @@ OTHER SCENARIO VARIATIONS
 
 ## Results (and discussion)
 
-We present the results of each scenario in a number of ways (summarised in Table [TODO: cross-ref]. First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]). Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]). Third, we consider the metabolic inputs and outputs to each system (Figure [TODO: cross-ref]). Fourth, we consider the network of conversion processes which makeup each system (Figure [TODO: cross-ref]).
+The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims.
+
+First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]). Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]). Third, we consider the metabolic inputs and outputs to each system (Figure [TODO: cross-ref]). Fourth, we consider the network of conversion processes which makeup each system (Figure [TODO: cross-ref]).
 
 [TODO: SNA (or triangular grid) figures for each scenario]
 
