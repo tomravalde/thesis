@@ -291,12 +291,22 @@ OTHER SCENARIO VARIATIONS
 
 ## Results (and discussion)
 
-The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims.
+The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims. This section will first present each scenario's 'headline results' (costs, emissions, waste output and water consumption), before giving more detailed views of each scenario (the network of processes, and the schedule of resource imports and exports).
 
-First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]). Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]). Third, we consider the metabolic inputs and outputs to each system (Figure [TODO: cross-ref]). Fourth, we consider the network of conversion processes which makeup each system (Figure [TODO: cross-ref]).
+The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
 
-[TODO: SNA (or triangular grid) figures for each scenario]
+- First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
+- Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
 
+Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
+
+Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
+
+Having explained the SNA plots, we can note the following: [TODO: note the difference] 
+
+[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
+
+Finally, we consider the transport network in each scenario. [TODO: decide which type of plot to include, notate what they show, and highlight points of note.] 
 
 ```{r network-plot, results="asis"}
 
