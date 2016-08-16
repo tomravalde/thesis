@@ -27,6 +27,7 @@ Sections in JK's MILP paper
 ## Results
 -->
 
+
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
 The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
@@ -295,8 +296,10 @@ The results for each scenario (namely the variable values) are ouputted by GAMS 
 
 The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
 
-```{r headline-metrics, results="asis"}
+```{r test, fig.height=5, results="asis"}
+
 headlines <- read.csv("06_case-study/headlines.csv")
+
 
 plot_headlines <- ggplot(headlines, aes(scenario, values)) +
   geom_point(aes(colour=metrics)) +
