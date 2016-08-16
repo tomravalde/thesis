@@ -27,6 +27,7 @@ Sections in JK's MILP paper
 ## Results
 -->
 
+
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
 The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
@@ -291,12 +292,35 @@ OTHER SCENARIO VARIATIONS
 
 ## Results (and discussion)
 
-The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims.
+The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims. This section will first present each scenario's 'headline results' (costs, emissions, waste output and water consumption), before giving more detailed views of each scenario (the network of processes, and the schedule of resource imports and exports).
 
-First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]). Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]). Third, we consider the metabolic inputs and outputs to each system (Figure [TODO: cross-ref]). Fourth, we consider the network of conversion processes which makeup each system (Figure [TODO: cross-ref]).
+The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
 
-[TODO: SNA (or triangular grid) figures for each scenario]
+```{r test, fig.height=5, results="asis"}
 
+headlines <- read.csv("06_case-study/headlines.csv")
+
+
+plot_headlines <- ggplot(headlines, aes(scenario, values)) +
+  geom_point(aes(colour=metrics)) +
+  facet_wrap(~metrics, ncol=1, scales="free_y") +
+  theme_bw() +
+  theme(axis.text.x = element_text(hjust=1, angle=30))
+plot_headlines
+```
+
+- First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
+- Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
+
+Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
+
+Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
+
+Having explained the SNA plots, we can note the following: [TODO: note the difference] 
+
+[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
+
+Finally, we consider the transport network in each scenario. [TODO: decide which type of plot to include, notate what they show, and highlight points of note.] 
 
 ```{r network-plot, results="asis"}
 
