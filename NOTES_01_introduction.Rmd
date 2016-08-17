@@ -1,49 +1,12 @@
-\pagenumbering{arabic}
-
 # Introduction
 
-\begin{chapquote}{Lewis Carroll, \textit{Alice in Wonderland}}
-``Begin at the beginning,'' the King said, gravely, ``and go on till you
-come to an end; then stop.''
-\end{chapquote}
+\pagenumbering{arabic}
 
 Punchy introductory paragraph about the function of cities, and the general resource challenges they consume.
 
-Cities have been the means to a higher quality of life ... 
-
-As such, the globe has seen rapid urbanisation... 
-
-One particular advantage of cities is that they can deliver resources to their point of need more efficiently than smaller types of settlement. [POSSIBLY: The same mechanisms by which firms can organise enable ... ]
-
-- But presents challenges for resource consumption and generation
-- But also opportunities
-- The research field which studies the ins and outs of urban resource management is UM, which is [brief summary]
-
-but there is one opportunity specific to cities which merits further study, namely the 
-
-Closing paragraph to the Introduction introduction from JK's thesis:
-"Microgeneration has recently been the focus of both UK central and local government interest, driven largely by policy concerns such as climate change and security of supply. This potentially radical change in the delivery of domestic energy therefore raises important and timely questions about how households conceptualize and manage their energy consumption and how, in turn, the introduction of microgeneration technologies might alter this demand. This thesis investigates one such technology, solar photovoltaics, and its influence on household energy consumption behaviour."
-
-The rapid urbanisation of the globe is presenting both challenges and opportunities in the way that the Earth's finite resources are used in view of the problems presented by resource depletion and climate change. This project seeks firstly to take a broad look at global urbanisation trends and the environmental and economic challenges presented with respect to resource management; before looking at opportunities in the urban environment for more efficient use of resources through resource integration. Urban metabolism is introduced as the underlying theoretical concept which can be used to assess how efficiently an area uses resources. Having considered this big picture, the project focuses specifically on the development of mathematical models which optimise the integrated provision and management of energy, water and waste resources in an urban area. Existing models in these fields are reviewed, before the first steps in developing an integrated resource model are described. It is anticipated that the final outcome of the study will be a suite of tools that work at various scales, with different degrees of temporal and spatial resolution. This will be useful to urban planners, policy makers and utility service companies. First, global trends in urbanisation are considered.
-
-TODO: complete Introduction, e.g. with how our development of UM theory fits in.
+TODO: complete Introduction.
 
 ## Urban metabolism
-
-Closely related to the field of urban sustainability is the concept of an urban area's 'metabolism'.
-
-The field under which urban resource consumption has been studied is urban metabolism. [TODO: brief definition]. By analogy with the body and eco-systems. Thus the challenges tackled in this thesis can be framed in these terms. How can a city improve its metabolism? The lit-review will introduce UM in some detail, but for now: [TODO: necessary developments to the field] 
-
-Studying urban resource management is potentially a fragmented collection of study areas (where different resources are siloed into separate fields, where consumption is seen in isolation to urban form and functions, where [TODO: etc.]). So it is helpful that a field has grown up which to some extent merges these considerations. Thus UM studies can answer questions like:
-
-- How have patterns of resource use changed for city A?
-- How does the function of the city affect its metabolism?
-- How does the maturity of the city affect its metabolism?
-- What problems are caused by this city's particular resource use patterns?
-- To what extent does a city have linear or circular resource management patterns?
-
-But 
-
 
 ## Urban resource management: challenges
 
@@ -75,6 +38,9 @@ But
 - system operation
 
 
+## Introduction 
+
+The rapid urbanisation of the globe is presenting both challenges and opportunities in the way that the Earth's finite resources are used in view of the problems presented by resource depletion and climate change. This project seeks firstly to take a broad look at global urbanisation trends and the environmental and economic challenges presented with respect to resource management; before looking at opportunities in the urban environment for more efficient use of resources through resource integration. Urban metabolism is introduced as the underlying theoretical concept which can be used to assess how efficiently an area uses resources. Having considered this big picture, the project focuses specifically on the development of mathematical models which optimise the integrated provision and management of energy, water and waste resources in an urban area. Existing models in these fields are reviewed, before the first steps in developing an integrated resource model are described. It is anticipated that the final outcome of the study will be a suite of tools that work at various scales, with different degrees of temporal and spatial resolution. This will be useful to urban planners, policy makers and utility service companies. First, global trends in urbanisation are considered.
 
 <!--
 Firstly, the big picture is considered as global urban trends are outlined and their implications as challenges and opportunities. The urban metabolism concept is introduced as an underlying theoretical concept which can be used to describe the links between trends, challenges and opportunities. This background information then motivates a research question. Secondly, the report moves on to describe various optimisation models in existence in the fields of energy, water and waste which can be used as a starting point in the development of an integrated resource management model, before going on to show the first steps already taken in developing a model.

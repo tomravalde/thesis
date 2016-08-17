@@ -44,3 +44,13 @@
 \lstset{breaklines=true}
 
 \graphicspath{{03_metrics/}{04_database/}{05_model-development/}{06_case-study/}}
+
+% User-defined environment to define quotes at the start of a chapter (http://tex.stackexchange.com/a/53380)
+\makeatletter
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
