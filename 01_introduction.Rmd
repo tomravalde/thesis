@@ -2,19 +2,15 @@
 
 # Introduction
 
-\begin{chapquote}{Oxford English Dictionary [TODO: cite] }
-``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''
-\end{chapquote}
-
-Add three words.
+\epigraph{``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''}{Oxford English Dictionary [TODO: cite]}
 
 Cities have proved key to humanity's success, by making a high quality of life possible for billions for people through the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing with cities being a means to increased wealth, improved healthcare, and other benefits. [TODO: cite World Bank, 2009]. However, to sustain their populations, cities consume large quantities of energy and water, and generate significant waste, which presents sustainability challenges[^challenges]. As such, efforts are being devoted to reducing urban resource consumption and waste output.
 
 [^challenges]: These will be defined in environmental and economic terms, below.
 
-There are various ways to approach the challenge. Consider a city's electricity supply, where a power plant burns a fossil-fuel and uses the resulting heat energy to generate steam which turns a turbine, which moves a magnetic field to generate electrical energy, which can then be transported along power lines to its point of need. Resources could be saved by encouraging changes in consumer behaviour (e.g. turning lights off). In addition, the power plant could be made more efficient, so as to minimise energy losses when its transformed from one form to another. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. Another way to approach the challenge is to better design and operate the whole network which manages the resources.
+There are various ways to approach the challenge. Consider a city's electricity supply, where a power plant burns a fossil-fuel and uses the resulting heat energy to generate steam which turns a turbine, which moves a magnetic field to generate electrical energy, which can then be transported along power lines to its point of need. Resources could be saved by encouraging changes in consumer behaviour (e.g. turning lights off). In addition, the power plant could be made more efficient, so as to minimise energy losses when it is converted from one form to another. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. Another way to approach the challenge is to better design and operate the whole network which manages the resources.
 
-The coal, power plant, electricity, and power lines are but one part of the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together as a system?
+The coal, power plant, electricity, and power lines are but one part of the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. Furthermore, the electricity system is but one part of the system which manages a city's energy, and this system is in turn just one of several systems at work in a city, others being water management, waste management, and transport. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together?
 
 <!--
 seen for example in campaigns to encourage behavioural change in consumers (e.g. turn their thermostats down), and policy measures to introducing new technologies (e.g. renewable energy). Another approach is to better design and operate the 'systems' which manage the resources. The management of urban resources requires networks of infrastructure to convert and transport resources. 
@@ -41,24 +37,49 @@ The rapid urbanisation of the globe is presenting both challenges and opportunit
 TODO: complete Introduction, e.g. with how our development of UM theory fits in.
 -->
 
-## Urban metabolism
+## The challenge of urban resource management
 
-Closely related to the field of urban sustainability is the concept of an urban area's 'metabolism'.
+Whatever mix of approaches is adopted to better manage the world's resources -- whether they be behavioural, efficiency, technological, or system wide -- the need to better manage urban resources is clear by the following argument:
 
-The field under which urban resource consumption has been studied is urban metabolism. [TODO: brief definition]. By analogy with the body and eco-systems. Thus the challenges tackled in this thesis can be framed in these terms. How can a city improve its metabolism? The lit-review will introduce UM in some detail, but for now: [TODO: necessary developments to the field] 
+1. The world is urbanising
+2. Urbanisation ...
+	a. ... is on the whole a desirable phenomenon,
+	b. ... leads to environmentally and economically unsustainable resource consumption and output
+3. Therefore, urbanisation should not be opposed, but we should nevertheless act to reduce urban resource consumption and waste.
 
-Studying urban resource management is potentially a fragmented collection of study areas (where different resources are siloed into separate fields, where consumption is seen in isolation to urban form and functions, where [TODO: etc.]). So it is helpful that a field has grown up which to some extent merges these considerations. Thus UM studies can answer questions like:
+### Urbanisation (premise 1)
 
-- How have patterns of resource use changed for city A?
-- How does the function of the city affect its metabolism?
-- How does the maturity of the city affect its metabolism?
-- What problems are caused by this city's particular resource use patterns?
-- To what extent does a city have linear or circular resource management patterns?
+Currently, urban areas are home to about half of the global population [@AREAS2012]. [TODO: update for submission]. By 2030, it is expected that the urban population will rise to 61 per cent of the total, and to 70 per cent by 2050 (Figure \ref{fig:urban_trends})\footnote{A breakdown of UN population statistics is available from \url{http://esa.un.org/wup2009/unup/index.asp?panel=1}.}. This growth has three components: cities absorb population growth; migration from rural areas; rural areas become reclassified as urban [@Cohen2006]. Growth predictions are not just the view of a small number, but widely accepted opinion. Thus even [@Cohen2004] who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent; and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
 
-But 
+> *''...despite all the problems of error and inaccuracy and the long-standing definitional problems that have never been overcome, it is clear that the world is still in the midst of a sweeping and profound urban transformation that is literally changing the face of the planet.''*
 
 
-## Urban resource management: challenges
+[^urban-def]: See for example @DepartmentforCommunitiesandLocalGovernment2006. This point is considered in [TODO: cross-ref].
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{01_introduction/world_total_urban.pdf} 
+	\caption{Global urbanisation trends according to \citet{AREAS2012}.}
+	\label{fig:urban_trends}
+\end{figure}
+
+Urbanisation happens because over time, people tend to act in their socioeconomic self interest. Thus, people migrate from the countryside in search of employment, and better access to education, healthcare, and other services. Thus a city grows. As it does so, firms take advantage of economies of scale, and the city begins to specialise. Cities then become 'agglomeration economies'; different types of firms and industries are close to each other, facilitating knowledge spillovers, and specialisation such that firms benefit from each others' proximity. With scale and agglomeration, a city can trade its goods and services, which increases the city's prosperity. And prosperity attracts migrants. @WorldBank2008a. Thus their is a virtuous circle of urbanisation (represented in Figure \ref{fig:urbanCycle}) in which city size and economic growth feed one another.
+
+\begin{figure}[h]
+	\centering
+	\input{01_introduction/urbanCycle}
+	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
+\end{figure}
+
+Given that the mechanism which drives urbanisation is the search for prosperity, it is not surprising that their is little appetite to oppose this phenomenon. That is not to say that there are no problems, such as the widespread presence of slums. The World Bank describes these as 'growing pains', [TODO: citation, inc. page number] and notes their historical precidense in cities like London, where they are now no longer to be found. The majority of growth takes place in the developing world. (Africa and Asia will together account for 86 per cent of the increase in urban dwellers by 2050 [@York2011]). . [TODO: shift the first point here to the 'mechanism' section. Remove the second point?] It is encouraging that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world [@WorldBank2008a] (and conversely, troubling to learn that *'' ... 72\% of developing countries have adopted policies designed to stem the tide of migration to their cities.''* [@Donald2012]. In summary, urbanisation is a clear long term route to economic prosperity, confirmed by the headline statistic that 80 per cent of global GDP is generated in urban areas [@AREAS2012].
+<!--
+This growth is also Secondly, despite much excitement about megacities, urban growth is mainly in smaller cities (below 500,000 people) in the foreseeable future). Cities of more than 10 million residents will accommodate less than 10\% of the urban population [@Cohen2006]
+-->
+
+## Urbanisation poses challenges
+\label{sec:urban_challenges}
+
+The socioeconomic benefits of urbanisation are clear. But as researchers, policy makers and planners seek to encourage sustainable urbanisation, there are two problems to be addressed, environmental and economic in nature. 
 
 \nomenclature{$\delta_{rq}$}{Binary variable attributing a quality to a resource}
 \nomenclature{$k_{prq$}}{Coefficient of resource production}
@@ -97,43 +118,6 @@ The subject of this thesis is an interesting topic of study. It requires both a 
 The final outcome of this study will be a suite of tools which can be used to optimise the provision of water, waste and energy resources within an urban area, at a minimal financial and environmental cost, subject to various constraints. Before the methodology and models are described, the context of the project is outliend in this introduction, to motivate their development. Firstly, global urban trends are summarised before outlining the challenges and opportunities that come with urban areas. The concept of `urban metabolism' is introduced, which will provide the underlying theoretical framework for the study. Features of urban resource flows are then discussed in order to highlight opportunities for `resource integration'. Having established the context of the study, a precise `research question' is formulated to guide the rest of the research.
 -->
 
-## The world is urbanising
-
-Three things can be said about urbanisation globally: (1) it is on the *increase*; (2) urban centres are economically *important*; and (3) it follows from (1) and (2) that the continued trend of urbanisation is *inevitable*. 
-
-1. Firstly, the *increase* in the world's urban population is considered. Currently, urban areas are home to about half of the global population [@AREAS2012]\footnote{Note: statistics in this report will generally be from 2011 or earlier. More recent figures will not be recorded because they will need to be updated for the final submission anyway.}. By 2030, it is expected that the urban population will rise to 61\% of the total, and to 70\% by 2050 (Figure~\ref{fig:urban_trends})\footnote{A breakdown of UN population statistics is available from \url{http://esa.un.org/wup2009/unup/index.asp?panel=1}.}. There are three explanations for this [@Cohen2006]:
-
-	i. Cities absorb population growth; 
-	ii. migration from rural areas;
-	iii. rural areas become reclassified as urban. 
-
- Urbanisation trends exhibit two notable features. Firstly, the majority of growth is concentrated in the developing world, with Africa and Asia together accounting for 86\% of the increase in urban dwellers by 2050 [@York2011]. Secondly, despite much excitement about megacities, urban growth is mainly in smaller cities (below 500,000 people) in the foreseeable future). Cities of more than 10 million residents will accommodate less than 10\% of the urban population [@Cohen2006].
-
- These predictions aren't just the view of a small number, but widely accepted opinion. Thus even [@Cohen2004] who takes a skeptical view of urbanisation projections (pointing out that historical forecasts can be overestimates by more than 75\%; and that there is no universally consistent definition of ;urban'\footnote{See for example \citet{DepartmentforCommunitiesandLocalGovernment2006}.}) concludes: *''Nevertheless, despite all the problems of error and inaccuracy and the long-standing definitional problems that have never been overcome, it is clear that the world is still in the midst of a sweeping and profound urban transformation that is literally changing the face of the planet.''*
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{01_introduction/world_total_urban.pdf} 
-	\caption{Global urbanisation trends according to \citet{AREAS2012}.}
-	\label{fig:urban_trends}
-\end{figure}
-
-2. The mechanism of urbanisation outlined by @WorldBank2008a shows how and why urbanisation occurs, relating the process to the economic *importance* of urban areas. Urban centres arise as people migrate from the countryside in search of employment and better access to services (such as education and healthcare). As cities grow, they begin to specialise with firms taking advantages of economies of scale. Cities become 'agglomeration economies' when multiple types of firms and industries occupy the same urban space, facilitating knowledge spillovers, and specialisation such that firms benefit from each other's presence. At the same time, transport (and hence trade) costs reduce. Therefore scale economies and agglomeration economies act to increase trade, and hence the prosperity of an area, attracting more migrants to the area. Thus a virtuous circle arises whereby city size and economic growth feed each other (see Figure~\ref{fig:urbanCycle}). This mechanism explains why it is estimated that 80\% of global GDP is generated in urban areas [@AREAS2012].
-
-\begin{figure}[h]
-	\centering
-	\input{01_introduction/urbanCycle}
-	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
-\end{figure}
-
- Growing cities in developing countries aren't without their problems, for example, the widespread presence of slums. The World Bank describes these as 'growing pains', and notes that they have historically existed in cities like London, but are now no longer to be seen. It is therefore confirmed that urbanisation is a clear long term route to economic prosperity. It is encouraging that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world [@WorldBank2008a]. 
-
-3. It follows therefore that urbanisation is *inevitable* due to the economic prosperity it brings to the developing world. Thus it is troubling to learn that \emph{``\ldots 72\% of developing countries have adopted policies designed to stem the tide of migration to their cities.''} [@Donald2012].
-
-## Urbanisation poses challenges
-\label{sec:urban_challenges}
-
-Having considered urbanisation trends and the associated economic benefits, two primary challenges of urbanisation are now discussed -- those of *environmental strain* and *economic stability*.
 
 ### Environmental strain
 
@@ -228,12 +212,10 @@ These regimes are plotted in Figure~\ref{fig:bettencourt_growth}. To avoid the e
 	\caption{Representation of the innovation cycles necessary to postpone economic collapse taken from \citet{Bettencourt2007}. Note how the critical time $t_c$ reduces for each cycle.} \label{fig:bettencourt_innovation}
 \end{figure}
 
-### Summary
-
-In conclusion, there are two major challenges that urban planning must face. Firstly that of using resources more efficiently in order to minimise environmental strain experienced in and caused by cities. Secondly, in economies where innovation is the primary driver of growth, the economic collapse that can occur as cities outgrow their resource feed needs to be tackled by more efficient resource management in order to buy innovation time. In both cases, the root cause of the problems is an overconsumption of resources, and thus the solution is found in consuming fewer resources overall.
-
 ## Urban areas present opportunities
 \label{sec:urbanOpps}
+
+If the previous section established the need for cities to manage resources better, this section establishes the opportunity, particularly in relation to systems integration.
 
 Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
 
@@ -307,6 +289,22 @@ There are many opportunities in the energy, water and waste sector for more effi
 -->
 
 ## Urban metabolism -- the theoretical framework
+
+Closely related to the field of urban sustainability is the concept of an urban area's 'metabolism'.
+
+The field under which urban resource consumption has been studied is urban metabolism. [TODO: brief definition]. By analogy with the body and eco-systems. Thus the challenges tackled in this thesis can be framed in these terms. How can a city improve its metabolism? The lit-review will introduce UM in some detail, but for now: [TODO: necessary developments to the field] 
+
+Studying urban resource management is potentially a fragmented collection of study areas (where different resources are siloed into separate fields, where consumption is seen in isolation to urban form and functions, where [TODO: etc.]). So it is helpful that a field has grown up which to some extent merges these considerations. Thus UM studies can answer questions like:
+
+- How have patterns of resource use changed for city A?
+- How does the function of the city affect its metabolism?
+- How does the maturity of the city affect its metabolism?
+- What problems are caused by this city's particular resource use patterns?
+- To what extent does a city have linear or circular resource management patterns?
+
+But 
+
+n conclusion, there are two major challenges that urban planning must face. Firstly that of using resources more efficiently in order to minimise environmental strain experienced in and caused by cities. Secondly, in economies where innovation is the primary driver of growth, the economic collapse that can occur as cities outgrow their resource feed needs to be tackled by more efficient resource management in order to buy innovation time. In both cases, the root cause of the problems is an overconsumption of resources, and thus the solution is found in consuming fewer resources overall.
 
 It has been argued that cities are overconsuming resources, yet that they are also home to the opportunities for more efficient resource management. An underlying theoretical concept is required which can quantify the efficiency of urban resource use. To this end, the 'urban metabolism' (UM) concept is introduced. Thus, the discussion surrounding the linearisation and circularisation of resources is actually a comment on the nature of the metabolism of an environment. UM is useful in three ways:
 
