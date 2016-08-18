@@ -1,5 +1,7 @@
 # Metrics
 
+[TODO: remove parts repeated elsewhere]
+
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)

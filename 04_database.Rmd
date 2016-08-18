@@ -1,5 +1,7 @@
 # Technology database chapter
 
+[TODO: complete]
+
 [TODO: add note on which paper this comes from.]
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
