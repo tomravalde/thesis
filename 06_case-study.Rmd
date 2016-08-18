@@ -1,5 +1,7 @@
 # Case study: a Chinese urban development
 
+[TODO: complete] 
+
 [TODO: Add note on published aspects of this work (e.g. conference paper)?]
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
