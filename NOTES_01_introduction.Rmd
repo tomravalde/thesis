@@ -2,8 +2,6 @@
 
 \pagenumbering{arabic}
 
-Punchy introductory paragraph about the function of cities, and the general resource challenges they consume.
-
 TODO: complete Introduction.
 
 ## Urban metabolism

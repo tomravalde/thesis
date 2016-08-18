@@ -54,3 +54,7 @@
    \itshape}
   {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
 \makeatother
+
+% Insert the wordcount output from texcount
+\usepackage{verbatim}
+\newcommand\wordcount{\verbatiminput{\jobname.count}}

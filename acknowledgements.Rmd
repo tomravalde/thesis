@@ -2,4 +2,8 @@
 
 The urban metabolism flow dataset was kindly provided by Professor Chris Kennedy (University of Toronto). Tom Ravalde is supported by the EPSRC Doctoral Training Partnership at Imperial College London.
 
+- James
+- Ivan
+- Etc.
+
 [TODO: complete]

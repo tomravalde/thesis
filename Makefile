@@ -52,7 +52,7 @@ md:		update clean $(MDS)
 tex:		update clean $(MDS) $(TEXS)
 chapter:	update clean $(MDS) $(TEXS) chapter-xelatex
 count:		$(COUNTS)
-thesis:		update clean $(MDS) $(TEXS) combo
+thesis:		update clean $(MDS) $(TEXS) count-thesis combo
 
 
 ###--------------------------------------------------
@@ -98,9 +98,14 @@ update:
 chapter-xelatex:
 	latexmk -xelatex "-interaction=nonstopmode" preview.tex
 
-## Run texcount on tex files
-%.count: %.tex
-	texcount -sub=section $< > $@
+## Count thesis
+count-thesis:
+	texcount -sub=section -inc -sum main.tex > main.count
+	sed -n '/File(s)/,$$p' main.count > tmpfile
+	mv tmpfile main.count
+### Run texcount on tex files
+#%.count: %.tex
+#	texcount -sub=section $< > $@
 
 clean:
 	rm -f *.aux *.log *.out *.spl *.bbl *.blg *.fls *fdb_latexmk

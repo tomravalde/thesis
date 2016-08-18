@@ -6,6 +6,8 @@
 ``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''
 \end{chapquote}
 
+Add three words.
+
 Cities have proved key to humanity's success, by making a high quality of life possible for billions for people through the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing with cities being a means to increased wealth, improved healthcare, and other benefits. [TODO: cite World Bank, 2009]. However, to sustain their populations, cities consume large quantities of energy and water, and generate significant waste, which presents sustainability challenges[^challenges]. As such, efforts are being devoted to reducing urban resource consumption and waste output.
 
 [^challenges]: These will be defined in environmental and economic terms, below.
