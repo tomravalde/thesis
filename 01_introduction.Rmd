@@ -2,18 +2,31 @@
 
 # Introduction
 
-\begin{chapquote}{Lewis Carroll, \textit{Alice in Wonderland}}
-``Begin at the beginning,'' the King said, gravely, ``and go on till you
-come to an end; then stop.''
+\begin{chapquote}{Oxford English Dictionary [TODO: cite] }
+``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''
 \end{chapquote}
 
-Punchy introductory paragraph about the function of cities, and the general resource challenges they consume.
+Cities have proved key to humanity's success, by making a high quality of life possible for billions for people through the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing with cities being a means to increased wealth, improved healthcare, and other benefits. [TODO: cite World Bank, 2009]. However, to sustain their populations, cities consume large quantities of energy and water, and generate significant waste, which presents sustainability challenges[^challenges]. As such, efforts are being devoted to reducing urban resource consumption and waste output.
 
-Cities have been the means to a higher quality of life ... 
+[^challenges]: These will be defined in environmental and economic terms, below.
 
-As such, the globe has seen rapid urbanisation... 
+There are various ways to approach the challenge. Consider a city's electricity supply, where a power plant burns a fossil-fuel and uses the resulting heat energy to generate steam which turns a turbine, which moves a magnetic field to generate electrical energy, which can then be transported along power lines to its point of need. Resources could be saved by encouraging changes in consumer behaviour (e.g. turning lights off). In addition, the power plant could be made more efficient, so as to minimise energy losses when its transformed from one form to another. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. Another way to approach the challenge is to better design and operate the whole network which manages the resources.
 
-One particular advantage of cities is that they can deliver resources to their point of need more efficiently than smaller types of settlement. [POSSIBLY: The same mechanisms by which firms can organise enable ... ]
+The coal, power plant, electricity, and power lines are but one part of the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together as a system?
+
+<!--
+seen for example in campaigns to encourage behavioural change in consumers (e.g. turn their thermostats down), and policy measures to introducing new technologies (e.g. renewable energy). Another approach is to better design and operate the 'systems' which manage the resources. The management of urban resources requires networks of infrastructure to convert and transport resources. 
+
+While the resource quantities involved in cities are large, they manage their resources more efficiently than smaller types of settlement. This is because the infrastructure in cities can be 
+Thus while [TODO: stat], 
+and thus, an urban dweller will typically use resources more efficiently than a rural dweller who has the same quality of life.
+
+Today, over [TODO:] per cent of us live in urban areas (towns or cities), and this proportion is expected to rise to over [TODO:] per cent by [TODO:] [TODO: citation].
+
+One particular reason for the success of cities is in how they can manage the resources on which we rely.  
+
+resources to their point of need more efficiently than smaller types of settlement. [POSSIBLY: The same mechanisms by which firms can organise enable ... ]
+
 
 - But presents challenges for resource consumption and generation
 - But also opportunities
@@ -21,12 +34,10 @@ One particular advantage of cities is that they can deliver resources to their p
 
 but there is one opportunity specific to cities which merits further study, namely the 
 
-Closing paragraph to the Introduction introduction from JK's thesis:
-"Microgeneration has recently been the focus of both UK central and local government interest, driven largely by policy concerns such as climate change and security of supply. This potentially radical change in the delivery of domestic energy therefore raises important and timely questions about how households conceptualize and manage their energy consumption and how, in turn, the introduction of microgeneration technologies might alter this demand. This thesis investigates one such technology, solar photovoltaics, and its influence on household energy consumption behaviour."
-
 The rapid urbanisation of the globe is presenting both challenges and opportunities in the way that the Earth's finite resources are used in view of the problems presented by resource depletion and climate change. This project seeks firstly to take a broad look at global urbanisation trends and the environmental and economic challenges presented with respect to resource management; before looking at opportunities in the urban environment for more efficient use of resources through resource integration. Urban metabolism is introduced as the underlying theoretical concept which can be used to assess how efficiently an area uses resources. Having considered this big picture, the project focuses specifically on the development of mathematical models which optimise the integrated provision and management of energy, water and waste resources in an urban area. Existing models in these fields are reviewed, before the first steps in developing an integrated resource model are described. It is anticipated that the final outcome of the study will be a suite of tools that work at various scales, with different degrees of temporal and spatial resolution. This will be useful to urban planners, policy makers and utility service companies. First, global trends in urbanisation are considered.
 
 TODO: complete Introduction, e.g. with how our development of UM theory fits in.
+-->
 
 ## Urban metabolism
 
