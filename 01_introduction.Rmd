@@ -101,7 +101,11 @@ Some of these effects may be manifested at easily identifiable locations (such a
 \item [Energy] This sector evidences the global environmental impacts of urbanisation by the fact that whilst currently home to just over 50 per cent of the global population, urban areas are responsible for around 60 per cent of primary energy consumption, and 71 per cent of energy-related greenhouse gas emissions \cite{IEA2008}.
 %There are multiple causes of this including the lifecycle heating and power demands, and urban sprawl leading to increases in transport use due to longer and more frequent journeys [@Grubler2009].
 
-\item [Waste] also presents urban areas with a number of issues. These include groundwater contamination, public opposition to waste disposal near residential areas [@Li2006], as well as growing waste generation rates and decreasing disposal capacity [@Lu2009]. For example, [@Xydis2012] have described the waste management capacity limitation in Greece as having reached a 'critical point'. The decomposition of waste in landfill sites contributes to global warming through the production of methane (in addition to the emissions from the transport and management of waste [@ICE2011]). The health risks posed by open sites in developing countries are also of concern [@Durand2013].
+\item [Waste] This resource type also raises a number of issues in relation to urban areas. The primary issue is simply the volume of waste produced, which municipal governments need to deal with somehow. Urban dwellers, who want to enjoy a higher quality of life, consume more goods and services, and so generate more waste. Thus per capita waste generation rates are higher in cities than in rural areas, and with 
+
+But secondary issues included climate change (i.e. 5 per cent of total emissions: https://www.rt.com/news/global-waste-problem-urban-garbage-429/). Others include flooding, air pollution and health impacts [TODO: \url{http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf}], as well as smells and visual pollution are other concerns [TODO: cite \url{http://unstats.un.org/unsd/environment/envpdf/UNSD_UNEP_ECA%20Workshop/Session%2008-3%20Waste%20Statistics%20(UNSD).pdf}].
+
+These include groundwater contamination, public opposition to waste disposal near residential areas [@Li2006], as well as growing waste generation rates and decreasing disposal capacity [@Lu2009]. For example, [@Xydis2012] have described the waste management capacity limitation in Greece as having reached a 'critical point'. The decomposition of waste in landfill sites contributes to global warming through the production of methane (in addition to the emissions from the transport and management of waste [@ICE2011]). The health risks posed by open sites in developing countries are also of concern [@Durand2013].
 
 \item [Water] TODO: cite \url{http://www.unwater.org/downloads/Water_facts_and_trends.pdf}] This sector has slightly different issues to deal with than the energy and waste, as it is a resource which does not accumulate (like emissions [TODO: ?] or waste), but rather is cycled around the planet. The challenge is to get water in the right place at the right time, treated to an appropriate standard. As the world urbanises (with the associated phenomena of increased affluence, and business and industrial activity), per capita water consumption rises. Water stress (where the available water cannot meet all uses) occurs, with half of the world's cities with with populations greater than 100,000, groundwater is not replenished at the rate it is used [TODO: cite http://wp.iwaponline.com/content/ppiwawaterpol/15/3/335.full.pdf].
 
@@ -113,9 +117,15 @@ will take place). Thus many large cities use networks extending up to 200 kilome
 Urbanisation is leading to 'water stress' as populations grow and there is a demand for a higher quality of life. One example of how this can happen in urban areas is given by \citet{Kennedy2008} who considers the relationship between urbanisation and groundwater. At the early stages of urban development, shallow wells are sufficient to supply a population, and wastewater can discharge to a watercourse. As the population grows and water extraction rates rise, the water table falls requiring the digging of deeper wells. Shallow groundwater can also become contaminated by wastewater discharge. Thus water must be sourced (at significant expense) from outside the city, changing the city's groundwater characteristics such that the water table can rise above its original level and even cause flooding. In summary then, water security issues in urban areas are causing financial, health and environmental concerns.
 %Associated with the increasing demand is the need to treat the water and prevent contamination. This demand for water in high quantities comes with a financial burden [@Daigger2009]. 
 
+https://www.theguardian.com/global-development/2012/jun/06/world-urban-waste-mountain
+- "The report notes that municipal solid waste management is the most important service a city provides. In poorer countries, rubbish collection and processing is often the largest single budget item for cities, and one of the largest employers."
+- "A city that cannot effectively manage its waste is rarely able to manage more complex services such as health, education, or transportation, according to the report, and improving waste management is one of the most effective ways of strengthening overall municipal management."
+
 \end{description}
 
 Summary of above issues:
+
+The common culprit for issues outlined above is that the higher quality of life made possible by urban areas requires greater resource consumption to sustain it.
 
 - Affluence (i.e. the driver of urbanisation) is a common issue across the three resource types:
 - Water issues caused by (http://www.unwater.org/downloads/Water_facts_and_trends.pdf):
@@ -239,6 +249,8 @@ Note the difference between these issues:
 \label{sec:urbanOpps}
 
 - Headline stats, that for the same quality of life, cities are more efficient.
+
+- Waste collectors see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
 
 Returning to consider two themes introduced earlier
 
