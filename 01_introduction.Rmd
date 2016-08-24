@@ -2,7 +2,7 @@
 
 # Introduction
 
-\epigraph{``I don't know what London's coming to — the higher the buildings the lower the morals.''}{Noel Coward, \emph{Collected Sketches and Lyrics}}
+\epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{Luis Bettencourt, \emph{Nature}, \url{http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf}}
 
 \epigraph{``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''}{Oxford English Dictionary [TODO: cite]}
 
@@ -124,8 +124,6 @@ The backdrop against which many issues are set is that of climate change which i
 
 Not only do these three sectors share a common point of interaction with climate change, but these sectors interact with each other, such that issues in once sector feed the issues of another, thus exacerbating the environmental challenge. These interactions are introduced briefly, since this will become an important theme in this thesis.
 
-### Intersectoral interactions
-
 \begin{description}
 
 \item [Energy and water] As demand for water increases, so does the need for energy used in its treatment and distribution. It is estimated that approximately 35 per cent of the energy used by municipalities is for water supply and wastewater treatment \citep{El2005}. This link is strengthened by the connection back to climate change, since as it limits the availability of water in many places, energy consumption will need to increase for extracting water for human use (through desalination and other energy-intensive treatment methods). The link is \emph{further} strengthened as this increased energy use exacerbates climate change, invoking a self-reinforcing challenge \citep{Webber2011}.
@@ -148,13 +146,94 @@ https://www.theguardian.com/global-development/2012/jun/06/world-urban-waste-mou
 - "A city that cannot effectively manage its waste is rarely able to manage more complex services such as health, education, or transportation, according to the report, and improving waste management is one of the most effective ways of strengthening overall municipal management."
 -->
 
-### Policy environment
+<!--
+[TODO: MOVE]
+Another conclusion that is inevitable from this survey of challanges is that resource efficiency alone isn't enough. The world is already struggling to sustain the global population (for example, at current trends, the entire global biomass would be required to meet energy needs by 2050). Thus, a 'per capita' decrease in consumption in a growing population will not be sufficient to meet the challenge. Moreover, more efficient use of resources may cause people to seek a higher standard of living -- the so called 'take-back' effect. There must be dematerialisation in absolute terms [@Winiwarter2011].
+-->
 
-Using political instruments to address the large climate issues is familiar territory [TODO: complete]. Over recent decades, a united will to stop damazge to the ozone layer meant [TODO: N] counties banned CFCs with the result that [TODO: continue]. In more recent decades, climate change has been a constant target of policy, with nations coming together at Kyoto and Paris [TODO: provide further details] to set emissions targets [TODO: etc.] 
+## Economic stability
+
+The way that cities use resources does not just present environmental challenges, but economic challenges too (perhaps less familiar). Briefly, it is possible to show that a city's population can grow at such a rate that is impossible to sustain with the available resources [@Bettencourt2007a].
+
+This can be shown from equating a couple of equations. First, a now well-established idea is that at time $t$, quantities in cities $Y(t)$ (such as energy consumption or wealth), scale with population, $N(t)$, according to the following power law:
+<!--
+As entities that both consume and produce resources, they are analogous to living organisms and ecosystems, whose properties (such as body size or growth rate) scale in a 'self-similar' manner with mass (obeying Zipf's power law). In the case of a city, indicators, $Y$ (such as GDP or energy consumption) scale with population, $N$ as:
+-->
+
+\begin{align} \label{eq:urban_scale}
+	Y(t)=Y_0N(t)^{\beta}
+\end{align}
+
+where $Y_0$ is a normalisation constant and $\beta$ is a constant which corresponds to the indicator under consideration. This result is interesting in and of itself, as it reveals that cities of different sizes essentially scaled versions of one another, and thus different cities do in fact operate in very similar ways [^animal-analogy], such that it is possible to predict many different quantities from just knowing the population.
+
+Even more interesting are the values which $\beta$ takes for different types of $Y$ quantities. It turns out that for material quantities (such as the number of petrol stations, or the length of electrical cable), $\beta<1$; and for social quantities (such as GDP, or the number of serious crimes), $\beta>1$. In the former case, scaling is sublinear, and quantities exhibit economies of scale, such that bigger cities can serve their cities more efficiently (e.g. the number of gas stations required does not need to increase as quickly as the population). In the latter case, scaling is superlinear, such that bigger cities benefit from agglomeration effects of knowledge spillover and other social dynamics (e.g. wealth increases more quickly than that population)[^animal-analogy-departure]. This tension will become important later.
+
+[^animal-analogy]: In this way, cities are analogous to animals, whose physiological characteristics (e.g. metabolic rate) scale with its mass.
+
+[^animal-analogy-departure]: It is here that city behaviour departs from that of animals. In their case, all scaling is sublinear, i.e. biological systems develop to optimise their space, and thus behave according to economies of scale. However, there is nothing in animals that corresponds to the social characteristics of a city.
+
+Second, population growth can be expressed as a function of the resources required to sustain it. If each individual requires some quantity, $R$, to maintain them per unit time, and $E$ (extra) to accommodate a new member, then that total total resource requirement, $Y$ is given by
+
+\begin{align} \label{eq:urban_growth}
+	Y(t)=RN(t)+E\frac{dN(t)}{dt}
+\end{align}
+
+Equating Equations \eqref{eq:urban_scale} and \eqref{eq:urban_growth}, and solving for $N(t)$ gives
+<!--
+\begin{align*}
+	\frac{dN(t)}{dt}=\left(\frac{Y_0}{E}\right)N(t)^{\beta}-\left(\frac{R}{E}\right)N(t),
+\end{align*}
+-->
+
+\begin{align*}
+	N(t)=\left\{\frac{Y_0}{R}+\left(N^{1-\beta}(0)-\frac{Y_0}{R}\right)\exp\left[-\frac{R}{E}(1-\beta)t\right]\right\}^{\frac{1}{1-\beta}}
+\end{align*}
+
+<!--
+Thus material economies of scale is in tension with the super-linear scaling of innovation characteristics. 
+-->
+
+Of pertinence here is how $N(t)$ grows in cities where agglomeration effects drive the population growth, $\beta>1$. The population will grow at above-exponential rates, theoretically reaching infinity after critical time, $t=t_c$\footnote{This crictical time, $t_c$ is given by \begin{align*} $t_c&=-\frac{E}{(\beta-1)R}\ln\left[1-\frac{R}{Y_0}N^{1-\beta}(0)\right] \\ &\approx \left[\frac{E}{(\beta-1)R}\right]\frac{1}{N^{\beta-1}(0)} \end{align*}}. In other words, in these cities, the social dynamics (e.g. the number of patents registered) move faster, but this same dynamic leads to unbounded growth (http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf). 
+
+The problem of economic stability comes because in reality, resources $R$ and $E$ are limited, this unbounded growth cannot be sustained. At this point, $N$ stops growing and starts to collapse. To avoid this, requires innovation, to sustain agglomeration-driven growth. On @Bettencourt2007's model, this corresponds to resetting the values of Equation \eqref{eq:urban_growth}'s parameters, before $t_c$ is reached.
+
+However, $t_c$ for each new cycle of innovation becomes shorter and shorter requiring innovation to take place at increasingly faster paces (see Figure~\ref{fig:bettencourt_innovation}). This need for innovation to happen after ever-decreasing time intervals is consistent with historical movements between the Stone, Bronze, and Iron Ages, and the Computer, and Information and Digital Ages [TODO: cite http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf].
+
+<!--
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{01_introduction/bettencourt_growthPlots.pdf} 
+	\caption{Urban growth regimes taken from \citet{Bettencourt2007}. (a) Shows sublinear growth. (b) Shows exponential growth (linear). (c) Shows superlinear scaling before resources become limited. (d) Shows the economic collapse in the superlinear regime when resources become limited.} \label{fig:bettencourt_growth}
+\end{figure}
+
+These regimes are plotted in Figure~\ref{fig:bettencourt_growth}.
+-->
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{01_introduction/bettencourt_innovation.pdf} 
+	\caption{Representation of the innovation cycles necessary to postpone economic collapse taken from \citet{Bettencourt2007}. Note how the critical time $t_c$ reduces for each cycle.} \label{fig:bettencourt_innovation}
+\end{figure}
+
+## Summary
+
+Thus far, we've seen that urbanisation is helping more and more people live better quality of life, but the resource use which sustains these lifestyles is a cause of serious environmental and economic problems. Taking these issues together, the challenge can be considered one of *sustainable development*, first defined by the Brutland Commission as
+
+> "...meeting the needs of the present without the ability of future generations to meet their own needs." [@Brutland1987, TODO: page number]
+
+From the previous two sections, it is clear that 
+
+- economic felt within a city
+- environmental strain effects distributed more widely (less possible to calculate) -- i.e. planetary boundary issues
+
+The sustainability issue is one for both cities themselves to consider, and for the world to consider as a whole, and this is manifested in various policy proposals. Using political instruments to address the global climate issues is familiar territory [TODO: complete]. Over recent decades, a united will to stop damage to the ozone layer meant [TODO: N] countries banned CFCs with the result that [TODO: continue]. In more recent decades, climate change has been a constant target of policy, with nations coming together at Kyoto and Paris [TODO: provide further details] to set emissions targets [TODO: etc.].
 
 Less familiar are the policies concerning the other environmental issues outlined above, probably in part due to their specificity. Thus, as with the issues themselves, the policies proposed to address them are too numerous to list here. Around the world policies will vary according to need and political will; there is not the sense of global cause there is with the ozone layer or climate change. Nevertheless, policies do exist. This section gathers together just a few key voices from research and other areas, along with some specific policy examples to demonstrate that there is, at least to some extent, both a political will and a plan, to address some of these issues.
 
-Waste policy (World Bank): http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf
+- Waste policy (World Bank): http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf
+- EU Policy Making (European Environment Agency): file:///home/tr608/Downloads/Urban%20sustainability%20issues%20-%20Enabling%20resource-efficient%20cities.pdf
+- German example http://www2.giz.de/wbf/4tDx9kw63gma/FactSheet_09_Nexus_engl_21052013.pdf
+
 
 Given the environmental challenges, it is no surprise that there is an increasing emphasis on developing policies and decisions to tackle the issues presented by urbanisation. For example, @Agudelo-Vera2011] argues that the objective of urban planning needs to move on from simply solving the problems of accommodating larger populations and meeting transport needs, to include sustainable development. The authors contend that resource management is an essential part of sustainable development, and that resource management should move on from its historic aims of simply meeting demand. Thus, the discipline of urban planning should aim to end the pattern of over consumption and excessive waste production which the global ecosystem cannot carry. This approach is manifested in policies such as the European Union target to provide 20\% of final energy from renewable sources by 2020.
 
@@ -172,81 +251,21 @@ To bring together the interrelated resource management challenges and policies, 
 In summary, this thesis is in agreement with @Newman1999 that the environmental strain means that cities must take responsibility to manage their resources better.
 
 
-<!--
-[TODO: MOVE]
-Another conclusion that is inevitable from this survey of challanges is that resource efficiency alone isn't enough. The world is already struggling to sustain the global population (for example, at current trends, the entire global biomass would be required to meet energy needs by 2050). Thus, a 'per capita' decrease in consumption in a growing population will not be sufficient to meet the challenge. Moreover, more efficient use of resources may cause people to seek a higher standard of living -- the so called 'take-back' effect. There must be dematerialisation in absolute terms [@Winiwarter2011].
--->
+Regarding the economic stability of cities, the policy environment is even less established. Perhaps this is because the main need is for that of 'innovation', which is a somewhat organic phenomenon -- it is not possible to set targets as for emissions or landfill diversion rates. Nevertheless, in our times, there is much study of and thinking about cities; how they behave, and how they should develop. Thus Bettencourt's work leads him to use a *Nature* comment piece to call for urban development policies which consider the growth dynamics he has highlighted, commenting that "the difference between 'policy as usual' and policy led by a new quantitative understanding of cities may well be the choice between creating a "planet of slums" or finally achieving a sustainable, creative, prosperous, urbanized world expressing the best of the human spirit." [TODO: http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf, page 913].
 
-## Economic stability
-
-A second challenge is presented to the economic sustainability of cities. The argument here is based on the work of @Bettencourt2007 who seek a quantitative understanding of *''human social organization and dynamics in cities''*. As entities that both consume and produce resources, they are analogous to living organisms and ecosystems, whose properties (such as body size or growth rate) scale in a 'self-similar' manner with mass (obeying Zipf's power law). In the case of a city, indicators, $Y$ (such as GDP or energy consumption) scale with population, $N$ as:
-
-\begin{align} \label{eq:urban_scale}
-	Y(t)=Y_0N(t)^{\beta}
-\end{align}
-
-where $t$ is time, $Y_0$ is a normalisation constant and $\beta$ is a constant which corresponds to the indicator under consideration. It is observed that $\beta<1$ for indicators related to materials or infrastructure (such as the length of electrical cables), thus exhibiting economies of scale with population growth. However, for 'innovation driven' indicators such as income, employment in R\&D and patents registered, $\beta>1$, thus the pace of life increases with respect to these indicators as population grows.
-<!--
-Thus material economies of scale is in tension with the super-linear scaling of innovation characteristics. 
--->
-
-If the growth of city is constrained by the availability of resources such that $R$ resources are required per unit time to maintain a member of the existing population, and $E$ extra resources are required to accommodate a new member, urban growth can be described as:
-
-\begin{align} \label{eq:urban_growth}
-	Y(t)=RN(t)+E\frac{dN(t)}{dt}
-\end{align}
-
-Equating Equations~\eqref{eq:urban_scale} and~\eqref{eq:urban_growth}, and rearranging, urban growth is modelled as:
-
-\begin{align*}
-	\frac{dN(t)}{dt}=\left(\frac{Y_0}{E}\right)N(t)^{\beta}-\left(\frac{R}{E}\right)N(t),
-\end{align*}
-
-which has the solution:
-
-\begin{align*}
-	N(t)=\left\{\frac{Y_0}{R}+\left(N^{1-\beta}(0)-\frac{Y_0}{R}\right)\exp\left[-\frac{R}{E}(1-\beta)t\right]\right\}^{\frac{1}{1-\beta}}
-\end{align*}
-
-This solution exhibits different behaviours, according to the situation:
-
-1. *Scale economy driven growth.* As mentioned previously, in this case $\beta<1$, resulting in sigmoidal growth, such that the population will tend to a finite value.
-2. \label{itm:agglom} *Agglomeration economy driven growth.* In this case, knowledge and innovation are the growth drivers, such that $\beta>1$.
-
-	a. *Resources aren't at their limit.* $N$ will grow with $t$ at a greater-than-exponential rate, theoretically reaching an infinite population in a finite time, $t_c$:
-\begin{align*}
-	t_c&=-\frac{E}{(\beta-1)R}\ln\left[1-\frac{R}{Y_0}N^{1-\beta}(0)\right] \\
-	&\approx \left[\frac{E}{(\beta-1)R}\right]\frac{1}{N^{\beta-1}(0)}.
-\end{align*}
-	b. \label{itm:collapse} *Resources become limited.* However, since resources are limited, then there will come a time when they run out and stagnation and collapse occurs. 
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{01_introduction/bettencourt_growthPlots.pdf} 
-	\caption{Urban growth regimes taken from \citet{Bettencourt2007}. (a) Shows sublinear growth. (b) Shows exponential growth (linear). (c) Shows superlinear scaling before resources become limited. (d) Shows the economic collapse in the superlinear regime when resources become limited.} \label{fig:bettencourt_growth}
-\end{figure}
-
-These regimes are plotted in Figure~\ref{fig:bettencourt_growth}. To avoid the economic collapse of case \eqref{itm:collapse}, a transformation needs to be undergone which resets the initial conditions $Y_0$ and $N(0)$, to begin a new cycle of greater-than-exponential growth. However, $t_c$ for each cycle becomes shorter and shorter requiring innovation to take place at increasingly faster paces (see Figure~\ref{fig:bettencourt_innovation}). Thus, efficient resource management is a key challenge in urban design, because this effectively increases the value of $R$ and hence buys innovation time to push the stagnation point into the future.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{01_introduction/bettencourt_innovation.pdf} 
-	\caption{Representation of the innovation cycles necessary to postpone economic collapse taken from \citet{Bettencourt2007}. Note how the critical time $t_c$ reduces for each cycle.} \label{fig:bettencourt_innovation}
-\end{figure}
-
-### Summary
-
-Note the difference between these issues:
-
-- economic felt within a city
-- environmental strain effects distributed more widely (less possible to calculate)
+In addition to the policy proposals above, there is another concept -- key to this thesis -- that could be adopted to help meet these challenges. That is the properties inherent to a city which means they can manage resources efficiently.
 
 ## Urban areas: the opportunity
 \label{sec:urbanOpps}
 
-The policy environment suggest there is at least to some extent a will and a plan for cities to manage their resources better. However, one part of the plan for which there is certainly a will, but perhaps less of a plan, is the idea that a city can be understood as a system, and interventions can be made which improve the overall performance of the system.
+The headline statistics show that compared to rural areas, that on a per capita basis, cities use more energy and water, and produce more waste. However, if quality of life is factored in (which afterall is one of the key advantages to urbanisation), it is actually the case that, on the whole, cities use less resources per capita to achieve a given quality of life. This reveals that cities are actually more efficient at delivering resources. This conclusion should be obvious from the fact urbanisation happens -- there must be some advantage after all. It is also common sense: for example less energy is required to transport goods to a population of consumer. Furthermore, this result is consistent with the urban economies of scale revealed in @Bettencourt's scaling laws. (For detailed mathematical demonstration of this, see [TODO: cite http://science.sciencemag.org/content/sci/340/6139/1438.full.pdf]. 
 
-- Headline stats, that for the same quality of life, cities are more efficient.
+This urban efficiency data can be seen in a number of studies, including 
+(Note exceptions.)
+
+- Note, there is variation among cities http://www.pnas.org/content/112/19/5985.full.pdf
+
+The policy environment suggest there is at least to some extent a will and a plan for cities to manage their resources better. However, one part of the plan for which there is certainly a will, but perhaps less of a plan, is the idea that a city can be understood as a system, and interventions can be made which improve the overall performance of the system.
 
 - Waste collectors see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
 - Integrated Sustainable Waste Management (http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf)
@@ -257,6 +276,8 @@ Returning to consider two themes introduced earlier
 - the concept of a 'system'
 
 If the previous section established the need for cities to manage resources better, this section establishes the opportunity, particularly in relation to systems integration.
+
+As an alternative to 'innovation', efficient resource management should be adopted in order to effectively increase the value of $R$ and hence buys innovation time to push the stagnation point into the future.
 
 Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
 
