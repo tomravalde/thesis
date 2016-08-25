@@ -61,3 +61,19 @@
 % Insert the wordcount output from texcount
 \usepackage{verbatim}
 \newcommand\wordcount{\verbatiminput{\jobname.count}}
+
+% Set fonts (XeLaTeX)
+%\usepackage[scaled=.95]{gentium}
+%\usepackage{textcomp}
+%\usepackage[T1]{fontenc}
+%\usepackage[libertine,bigdelims,vvarbb]{newtxmath}
+%\usepackage[cal=boondoxo]{mathalfa}
+
+\usepackage{fontspec}
+%\setromanfont[Mapping=tex-text]{Gentium Basic}
+%\setmathsfont[Mapping=tex-text]{Linux Libertine}
+%\setsansfont[Mapping=tex-text]{Ubuntu}
+%\setmonofont[Mapping=tex-text]{Liberation Mono}
+
+% Box to note publication content
+\usepackage{tcolorbox}

@@ -39,7 +39,7 @@ The rapid urbanisation of the globe is presenting both challenges and opportunit
 TODO: complete Introduction, e.g. with how our development of UM theory fits in.
 -->
 
-## The challenge of urban resource management, simply stated
+## Urbanisation: the challenge
 
 Whatever mix of approaches is adopted to better manage the world's resources -- whether they be behavioural, efficiency, technological, or system wide -- the need to better manage urban resources is evident by the following argument:
 
@@ -49,9 +49,9 @@ Whatever mix of approaches is adopted to better manage the world's resources -- 
 	b. ... leads to environmentally and economically unsustainable resource consumption and output
 3. Therefore, urbanisation should not be opposed, but we should nevertheless act to reduce urban resource consumption and waste.
 
-The rest of this Introduction establishes the reality of this argument.
+The rest of this Section establishes the reality of this argument.
 
-## Urbanisation: an unstoppable and desirable phenomenon
+### Urbanisation: an unstoppable and desirable phenomenon
 
 Currently, urban areas are home to about half of the global population [@AREAS2012]. [TODO: update for submission]. By 2030, it is expected that the urban population will rise to 61 per cent of the total, and to 70 per cent by 2050 (Figure \ref{fig:urban_trends})\footnote{A breakdown of UN population statistics is available from \url{http://esa.un.org/wup2009/unup/index.asp?panel=1}.}. This growth has three components: cities absorb population growth; migration from rural areas; rural areas become reclassified as urban [@Cohen2006]. Growth predictions are not just the view of a small number, but widely accepted opinion. Thus even [@Cohen2004] who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent, and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
 
@@ -90,12 +90,13 @@ But as researchers, policy makers and planners seek to encourage sustainable urb
 \nomenclature{$k_{prq$}}{Coefficient of resource production}
 \nomenclature{$g$}{Acceleration due to gravity}
 
-## Environmental strain
+### Environmental strain
 
 Environmental strain is a term we are giving to various negative environmental consequences which can be traced to resource use in cities. The 'environment' is a huge field of study, and to summarise all negative environmental effects here would be impossible. However, by making reference to a few examples, it is possible to make a compelling case that the levels of resource use by urban areas is environmentally problematic enough to warrant attention from researches, planners, and policy makers.
 
-Some of these effects may be manifested at easily identifiable locations (such as a city itself or its immediate surroundings), while other effects may be felt more generally. These include land-use impacts, resource scarcity, poor water quality, emissions, the heat-island effect and eutrophication, much of which can be related to resource overconsumption [@Cao2011]. Such negative effects can be seen in relation to three sectors.
+#### Sectoral strains
 
+Some of these effects may be manifested at easily identifiable locations (such as a city itself or its immediate surroundings), while other effects may be felt more generally. These include land-use impacts, resource scarcity, poor water quality, emissions, the heat-island effect and eutrophication, much of which can be related to resource overconsumption \citep{Cao2011}. Such negative effects can be seen in relation to three sectors.
 
 \begin{description}
 
@@ -121,6 +122,8 @@ With just a brief look at each of the above sectors (and indeed for other sector
 [^sector-choice]: The energy, waste, and water sectors have been chosen because they will considered throughout the rest of this thesis, for reasons given in Section [TODO:]. Other sectors could have included transport, and materials (though these are arguably closely related to the energy and waste sectors).
 
 The backdrop against which many issues are set is that of climate change which is arguably the greatest environmental threat of all. As stated above, the energy and waste sector emit greenhouse gases, which is a cause of climate change. Climate change in turn limits the availability of water in many places [TODO: http://www.unwater.org/downloads/Water_facts_and_trends.pdf].
+
+#### Intersectoral synergies
 
 Not only do these three sectors share a common point of interaction with climate change, but these sectors interact with each other, such that issues in once sector feed the issues of another, thus exacerbating the environmental challenge. These interactions are introduced briefly, since this will become an important theme in this thesis.
 
@@ -151,7 +154,7 @@ https://www.theguardian.com/global-development/2012/jun/06/world-urban-waste-mou
 Another conclusion that is inevitable from this survey of challanges is that resource efficiency alone isn't enough. The world is already struggling to sustain the global population (for example, at current trends, the entire global biomass would be required to meet energy needs by 2050). Thus, a 'per capita' decrease in consumption in a growing population will not be sufficient to meet the challenge. Moreover, more efficient use of resources may cause people to seek a higher standard of living -- the so called 'take-back' effect. There must be dematerialisation in absolute terms [@Winiwarter2011].
 -->
 
-## Economic stability
+### Economic stability
 
 The way that cities use resources does not just present environmental challenges, but economic challenges too (perhaps less familiar). Briefly, it is possible to show that a city's population can grow at such a rate that is impossible to sustain with the available resources [@Bettencourt2007a].
 
@@ -215,7 +218,7 @@ These regimes are plotted in Figure~\ref{fig:bettencourt_growth}.
 	\caption{Representation of the innovation cycles necessary to postpone economic collapse taken from \citet{Bettencourt2007}. Note how the critical time $t_c$ reduces for each cycle.} \label{fig:bettencourt_innovation}
 \end{figure}
 
-## Summary
+### Summary
 
 Thus far, we've seen that urbanisation is helping more and more people live better quality of life, but the resource use which sustains these lifestyles is a cause of serious environmental and economic problems. Taking these issues together, the challenge can be considered one of *sustainable development*, first defined by the Brutland Commission as
 
@@ -250,68 +253,79 @@ To bring together the interrelated resource management challenges and policies, 
 
 In summary, this thesis is in agreement with @Newman1999 that the environmental strain means that cities must take responsibility to manage their resources better.
 
-
 Regarding the economic stability of cities, the policy environment is even less established. Perhaps this is because the main need is for that of 'innovation', which is a somewhat organic phenomenon -- it is not possible to set targets as for emissions or landfill diversion rates. Nevertheless, in our times, there is much study of and thinking about cities; how they behave, and how they should develop. Thus Bettencourt's work leads him to use a *Nature* comment piece to call for urban development policies which consider the growth dynamics he has highlighted, commenting that "the difference between 'policy as usual' and policy led by a new quantitative understanding of cities may well be the choice between creating a "planet of slums" or finally achieving a sustainable, creative, prosperous, urbanized world expressing the best of the human spirit." [TODO: http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf, page 913].
+
+As an alternative to 'innovation', efficient resource management should be adopted in order to effectively increase the value of $R$ and hence buys innovation time to push the stagnation point into the future.
 
 In addition to the policy proposals above, there is another concept -- key to this thesis -- that could be adopted to help meet these challenges. That is the properties inherent to a city which means they can manage resources efficiently.
 
-## Urban areas: the opportunity
+## Urbanisation: the opportunity
 \label{sec:urbanOpps}
 
-The headline statistics show that compared to rural areas, that on a per capita basis, cities use more energy and water, and produce more waste. However, if quality of life is factored in (which afterall is one of the key advantages to urbanisation), it is actually the case that, on the whole, cities use less resources per capita to achieve a given quality of life. This reveals that cities are actually more efficient at delivering resources. This conclusion should be obvious from the fact urbanisation happens -- there must be some advantage after all. It is also common sense: for example less energy is required to transport goods to a population of consumer. Furthermore, this result is consistent with the urban economies of scale revealed in @Bettencourt's scaling laws. (For detailed mathematical demonstration of this, see [TODO: cite http://science.sciencemag.org/content/sci/340/6139/1438.full.pdf]. 
+The headline statistics show that compared to rural areas, that on a per capita basis, cities use more energy and water, and produce more waste. However, once quality of life is factored in, it is actually the case that, on the whole, cities use less resources per capita to provide a given quality of life. This is, in essence, a key principle of urban areas -- they can supply goods and services to their point of need more efficiently than smaller settlement types.
 
-This urban efficiency data can be seen in a number of studies, including 
-(Note exceptions.)
+This efficiency must naturally follow from the scaling laws in @Bettencourt2010. If employment, GDP, and other quality-of-life indicators increase at a rate quicker than population growth[^qual-of-life], yet household consumption of energy and water increases at slower rate (see $\beta$ values in Table [TODO: cite table], then it necessarily follows that urbanisation is an efficiency-finding process. Even if one were to take overall electricity consumption (i.e. not just that of households) which grows at a quicker rate than the population, it is still a slower growth rate than GDP and employment.
+
+There maybe detailed mathematical demonstration of this, in http://science.sciencemag.org/content/sci/340/6139/1438.full.pdf.
+
+[^qual-of-life]: Note however, that negative indicators also follow greater-than-population growth rates, such as new AIDS cases ($\beta=1.23$) and serious crimes ($\beta=1.16$).
+
+[TODO: tabulate a subset of beta values: GDP, employment, household electrical and water consumption, total electrical consumption. This table may be better off in the Economic stability section.]
 
 - Note, there is variation among cities http://www.pnas.org/content/112/19/5985.full.pdf
 
-The policy environment suggest there is at least to some extent a will and a plan for cities to manage their resources better. However, one part of the plan for which there is certainly a will, but perhaps less of a plan, is the idea that a city can be understood as a system, and interventions can be made which improve the overall performance of the system.
+### Sectoral savings
 
-- Waste collectors see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
+This efficiency inherent to urban areas can largely be explained by one word -- *proximity*. In cities, resource consumers (and producers) are close to the infrastructure that manages those resources. Here are a few ways this manifests in resource-efficiency.
+
+\begin{description}
+
+\item [Transportation] Distances are shorter in cities saving fuel. (Note, there is sometimes countered by 'urban sprawl'.)
+
+\item [Waste collectors] In poorer areas, people see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
 - Integrated Sustainable Waste Management (http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf)
 
-Returning to consider two themes introduced earlier
+Proximity of the population to waste
 
-- the mechanism behind the success of the city (proximity/co-location)
-- the concept of a 'system'
+\item [Decentralisation] This idea takes proximity to new levels
 
-If the previous section established the need for cities to manage resources better, this section establishes the opportunity, particularly in relation to systems integration.
+is where energy is generated closer to the point of use than traditional centralised generation, bringing multiple benefits. For example, in electricity networks, power losses are reduced (and hence emissions) along with electricity costs \citep{Fleten2007}. What makes distributed generation of specific interest to this study is the fact that these systems incorporate a \emph{``wide range of technologies including combined heat and power plant (CHP), photovoltaic systems (PV), small wind turbines and other systems using renewable energy sources (e.g. biogas digesters)''} \citep[p. 1001]{Ren2010} with the intention that local resources can be used as inputs (biomass, for example). Both the positioning of the systems in urban centres (at multiple locations) and the use of local resources facilitates their utility in taking advantage of resource intersections, infrastructure synergies and systems integration . Models already confirm the feasibility and environmental and financial benefits of integrating distributed systems and centralised systems, together with district heating networks in order to meet the energy demands of a city \citep{Weber2011}. 
 
-As an alternative to 'innovation', efficient resource management should be adopted in order to effectively increase the value of $R$ and hence buys innovation time to push the stagnation point into the future.
+Decentralisation in water systems: http://www.waterworld.com/articles/wwi/print/volume-18/issue-3/features/decentralised-infrastructure-saves-system-costs-produces-biogas-energy.html
+
+The water sector can also take advantage of both decentralisation  \citet[p. 809]{Daigger2009} sees the answer to the problems of water stress in a toolkit of \emph{``closed-loop urban water and resource management systems''}, which includes: rainwater harvesting, conservation, reclamation and reuse, energy management, nutrient and source separation managed in centralised and decentralised forms, in order to move away from the linear \emph{``take, make, waste''} approach. For example, roof collectors and permeable pavements are decentralised methods of capturing rainwater.  Thus decentralisation occurs in the local collection and management (and even treatment) of water (even at the household scale)
+
+\item [Cascading] is another (yet related) move in energy systems. An example is CHP, whereby waste heat in electricity production is used in heating systems \citep{Grubler2009}. In energy markets, energy cascading will manifest as companies provide 'integrated energy services' (selling both heat and electricity to the consumer) \citep{Sugihara2004}. Biomass is another resource that can similarly be 'cascaded' in ''energetic recycling" using residues and wastes in energy provision, rather than appropriating more natural resources for the same purpose \citep{Haberl2001a}.
+
+Show how cascading is a function of proximity
+
+While the term 'cascading' is never used in the literature, this principle can also be adopted in the water sector, as wastewater from one purpose is used in another which requires less stringent quality standards. This requires 'source separation' to separate different streams of water for various uses---for example a potable/non-potable division means that water for use in toilet flushing requires less treatment than drinking water, resulting in the provision of additional water supplies to meet needs. For example, houses can contain systems to separate kitchen water and grey water locally, for separate treatments and uses.
+%%\citep{Kierstead2012b} Argues for integration (4.3)
+% Water-energy-wastewater nexus
+
+\end{description}
+
+<!--
+\citep{Cai2011} Systematic and intensive municiple infrastructure e.g. integrated water systems
+\citep{Clift2000} Systems approach
+
+% Energy
+%% Point out that there are inherent advantages to DER: price, reduces emissions, developing countires, fuel prices, low carbon construction
+-->
+
+### Intersectoral synergies
+
+A specific type of synergy that can stem from proximity is that of the resource management sectors
 
 Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
 
 The dense nature of cities is such that synergies between urban infrastructures can be identified and exploited. Thus a node in a resource management network can have multiple functionalities and the waste products of one process can become the inputs to another. Examples include waste-to-energy (WtE)---also known as energy-from-waste (EfW); biogas generation from the anaerobic digestion of sewage sludge; hydroelectric power generation; and the treatment and redistribution of wastewater \citep{Kharrazi2012}. This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which takes advantage of connectivity and proximity in cities to maximise the reuse of water, waste and other materials within an urban system, and the cascading of energy through multiple uses in order to 'close' cycles. Such 'circularisation' of resources is increasingly playing a part in sustainable urban design \citep{Meijer2011}. The rest of this section goes on to outline some of the specific resource interactions which exist in urban environments, considering the energy and water sectors in turn. From this starting point, the resource integration opportunities possible at the 'energy-water nexus' and the 'energy-waste nexus' can be outlined.
 
-<!--
-% General
-%The concepts that will be advocated include:
-%- systems perspective
-%- integration
-%- decentralisation
-%- closing the loop
-%- cascading
-%- synergies
-%\citep{Cai2011} Systematic and intensive municiple infrastructure e.g. integrated water systems
-%\citep{Clift2000} Systems approach
-
-% Energy
-%% Point out that there are inherent advantages to DER: price, reduces emissions, developing countires, fuel prices, low carbon construction
-%% Specific resource integration advantages: local management, and local resources.
-In the \emph{energy} sector, two key concepts are being advocated, those of `distributed' or `decentralised' provision and the notion of `energy cascading'. 
--->
-
-1. \emph{Decentralisation} is where energy is generated closer to the point of use than traditional centralised generation, bringing multiple benefits. For example, in electricity networks, power losses are reduced (and hence emissions) along with electricity costs \citep{Fleten2007}. What makes distributed generation of specific interest to this study is the fact that these systems incorporate a \emph{``wide range of technologies including combined heat and power plant (CHP), photovoltaic systems (PV), small wind turbines and other systems using renewable energy sources (e.g. biogas digesters)''} \citep[p. 1001]{Ren2010} with the intention that local resources can be used as inputs (biomass, for example). Both the positioning of the systems in urban centres (at multiple locations) and the use of local resources facilitates their utility in taking advantage of resource intersections, infrastructure synergies and systems integration . Models already confirm the feasibility and environmental and financial benefits of integrating distributed systems and centralised systems, together with district heating networks in order to meet the energy demands of a city \citep{Weber2011}. 
-2. \emph{Energy cascading} is another (yet related) move in energy systems. An example is CHP, whereby waste heat in electricity production is used in heating systems \citep{Grubler2009}. In energy markets, energy cascading will manifest as companies provide 'integrated energy services' (selling both heat and electricity to the consumer) \citep{Sugihara2004}. Biomass is another resource that can similarly be 'cascaded' in ''energetic recycling" using residues and wastes in energy provision, rather than appropriating more natural resources for the same purpose \citep{Haberl2001a}.
-\end{itemize}
-
-The \emph{water} sector can also take advantage of both decentralisation and cascading in order to achieve integrated water management. \citet[p. 809]{Daigger2009} sees the answer to the problems of water stress in a toolkit of \emph{``closed-loop urban water and resource management systems''}, which includes: rainwater harvesting, conservation, reclamation and reuse, energy management, nutrient and source separation managed in centralised and decentralised forms, in order to move away from the linear \emph{``take, make, waste''} approach. For example, roof collectors and permeable pavements are decentralised methods of capturing rainwater; and houses can contain systems to separate kitchen water and grey water locally, for separate treatments and uses. Thus decentralisation occurs in the local collection and management (and even treatment) of water (even at the household scale), and cascading occurs as wastewater from one purpose is used in another which requires less stringent quality standards. This requires 'source separation' to separate different streams of water for various uses---for example a potable/non-potable division means that water for use in toilet flushing requires less treatment than drinking water, resulting in the provision of additional water supplies to meet needs.
-<!--
-%%\citep{Kierstead2012b} Argues for integration (4.3)
-% Water-energy-wastewater nexus
--->
-
 Having considered the shape of the energy and water sectors in isolation, the possible cross-sectoral interactions and intersections the urban environment gives rise to are now considered, starting with the \emph{energy-water nexus}\footnote{This discussion will include the place of wastewaster, thus it could be considered relevant to the waste-water nexus, which won't be considered separately at this point}. An extensive survey of both the energetic needs of water management and the opportunities for energy generation by water provided by \citet{McMahon2011} concludes there is a high level of interdependence between water and electricity which will increase in the future as global energy consumption increases. Resource integration opportunities arising out of these interdependencies are now discussed.
+
+[TODO: diagram of links (note: only initial, but a systematic version will appear]
+
+#### Energy-water nexus
 
 1. \emph{Closed-loop cooling} is advocated by \citet{McMahon2011} at the centralised level. This minimises the extensive water use required for cooling in electricity production. Here, water is used multiple times in cooling before discharge. This is an example of cascading.
 2. \emph{Anaerobic digestion} of wastewater is an option (at the centralised level), in order to convert the organic content of wastewater to biogas. At the decentralised level, multiple pipe networks can separate kitchen and toilet water (which has high organic content) for use in energy production in this way.
@@ -328,6 +342,8 @@ In summary, the co-location of water and energy infrastructure means synergies c
 %%\citep{Nickson2011} Rainwater, waste-water (for energy) and reclaimed water (reduces pumping).
 -->
 
+#### Energy-waste nexus
+
 The \emph{waste-energy nexus} is also receiving a lot of attention as another opportunity for urban resource integration, with reuse, recycling and recovery are becoming more popular \citep{Geng2010}. 
 
 1. \emph{Incineration} is popular method of waste management because it both saves space and can generate power and heat through WtE. (Although, very often, energy generated isn't reclaimed).  
@@ -336,9 +352,9 @@ The \emph{waste-energy nexus} is also receiving a lot of attention as another op
 
 A simple model to optimise the flows in an energy-waste network is proposed by \citet{Kharrazi2012} as an example of an integrated resource network. Nodes represent the producers and consumers of waste and electricity, and links between the nodes are the flows of those resources. A real world application of WtE networks is seen in Greece bringing two-fold benefits: mitigating against landfill shortages and producing renewable energy \citep{Xydis2012}.
 
-### Summary
+#### Water-waste nexus
 
-There are many opportunities in the energy, water and waste sector for more efficient resource management through systems integration within urban areas. This is made necessary in order to meet the challenges facing urban areas which arise from inefficient resource management.
+[TODO: examples]
 
 <!--
 %An underlying theoretical framework is required which can help us measure the scale of the challenges presented; the opportunities on offer; and the success of the models. The 'urban metabolism' concept will serve this purpose.
@@ -350,31 +366,53 @@ There are many opportunities in the energy, water and waste sector for more effi
 %Furthermore, there is little research in this field (despite many calls for it).  
 -->
 
-<!--
-Firstly, the big picture is considered as global urban trends are outlined and their implications as challenges and opportunities. The urban metabolism concept is introduced as an underlying theoretical concept which can be used to describe the links between trends, challenges and opportunities. This background information then motivates a research question. Secondly, the report moves on to describe various optimisation models in existence in the fields of energy, water and waste which can be used as a starting point in the development of an integrated resource management model, before going on to show the first steps already taken in developing a model.
+#### Summary
 
-The subject of this thesis is an interesting topic of study. It requires both a broad understanding of the big picture of urban resource management in three areas (energy, water and waste), including knowledge of policy environments etc. coupled with an understanding of mathematical programming for optimsation models.
+[TODO: summary text]
 
-The final outcome of this study will be a suite of tools which can be used to optimise the provision of water, waste and energy resources within an urban area, at a minimal financial and environmental cost, subject to various constraints. Before the methodology and models are described, the context of the project is outliend in this introduction, to motivate their development. Firstly, global urban trends are summarised before outlining the challenges and opportunities that come with urban areas. The concept of `urban metabolism' is introduced, which will provide the underlying theoretical framework for the study. Features of urban resource flows are then discussed in order to highlight opportunities for `resource integration'. Having established the context of the study, a precise `research question' is formulated to guide the rest of the research.
--->
+## Systems optimisation
+
+Listing the intersectoral synergies is all very well. However, if planners and policy makers are to make the best use of these interactions [TODO:]. It is easy to see that it is not necessarily straightforward. Cities will vary in the precise demands they need (quantities and locations), as well as the infrastructure they have to meet those needs, and the ability they have to make decisions about that infrastructure.
+
+But in practice, there needs to be a comprehensive understanding and application of them. One 
+
+Returning to consider two themes introduced earlier
+
+- the mechanism behind the success of the city (proximity/co-location)
+- the concept of a 'system'
+
+The possibility is there. The question is, how can it be implemented (at least the engineering aspects)? For the answer, we look to systems thinking.
+
+In fact, one does not need to think about energy, water and waste sectors together to come across systems thinking.
+
+The more we consider the intersectoral synergies, the more we will appreciate that resource management can be thought of as a 'system'. Multiple components (which include resources and the infrastructure which manage them) are related in some way.
+
+Examples of individual sectors
+
+Example of 'industrial symbiosis'
+
+Brief summary of the mathematics/optimisation
+
+Comment that the literature review will show the need for an integrated model.
+
+The policy environment suggest there is at least to some extent a will and a plan for cities to manage their resources better. However, one part of the plan for which there is certainly a will, but perhaps less of a plan, is the idea that a city can be understood as a system, and interventions can be made which improve the overall performance of the system.
 
 ## Urban metabolism -- the theoretical framework
 
-[TODO: Move to UM section]
+Examples of the explanatory power of UM [TODO:], and indeed, most of what has been discussed thus far can be explained with reference to UM.
 
-Note the from the above listing of environmental strains, different resource types are the culprits. 
-In general, urban areas both experience an internal environmental strain and exert an environmental strain externally. A society starts to overconsume resources when the area which serves it (the hinterland) is unable to provide enough food, water and other materials to meet the needs of its inhabitants. An increasing population requires a larger quantity of resources to meet its needs. To extract and manage these resources itself requires a growing population inducing a self-feeding cycle of population  growth and resource management. At some point, a 'labour limit' is reached where the land can no longer sustain the workforce. Such resource scarcity can be true of both agricultural based societies as well as industrial based societies [@Haberl2001a, Haberl2001b, Gr2003]. In seeking to overcome these internal pressures on resources, cities look beyond the immediate hinterlands, making use of the transport system to become dependent on resource imports from global markets. Thus the environmental impact that cities are responsible for spreads such that it becomes an external, global problem [@Agudelo-Vera2011]. In summary, the internal environmental strain due to resource over-consumption leads to external impacts on a global scale.
-
-[TODO: Move to UM section]
-
-Urbanisation is leading to 'water stress' as populations grow and there is a demand for a higher quality of life. One example of how this can happen in urban areas is given by \citet{Kennedy2008} who considers the relationship between urbanisation and groundwater. At the early stages of urban development, shallow wells are sufficient to supply a population, and wastewater can discharge to a watercourse. As the population grows and water extraction rates rise, the water table falls requiring the digging of deeper wells. Shallow groundwater can also become contaminated by wastewater discharge. Thus water must be sourced (at significant expense) from outside the city, changing the city's groundwater characteristics such that the water table can rise above its original level and even cause flooding. In summary then, water security issues in urban areas are causing financial, health and environmental concerns.
+- In general, urban areas both experience an internal environmental strain and exert an environmental strain externally. A society starts to overconsume resources when the area which serves it (the hinterland) is unable to provide enough food, water and other materials to meet the needs of its inhabitants. An increasing population requires a larger quantity of resources to meet its needs. To extract and manage these resources itself requires a growing population inducing a self-feeding cycle of population  growth and resource management. At some point, a 'labour limit' is reached where the land can no longer sustain the workforce. Such resource scarcity can be true of both agricultural based societies as well as industrial based societies [@Haberl2001a, Haberl2001b, Gr2003]. In seeking to overcome these internal pressures on resources, cities look beyond the immediate hinterlands, making use of the transport system to become dependent on resource imports from global markets. Thus the environmental impact that cities are responsible for spreads such that it becomes an external, global problem [@Agudelo-Vera2011]. In summary, the internal environmental strain due to resource over-consumption leads to external impacts on a global scale.
+- Urbanisation is leading to 'water stress' as populations grow and there is a demand for a higher quality of life. One example of how this can happen in urban areas is given by \citet{Kennedy2008} who considers the relationship between urbanisation and groundwater. At the early stages of urban development, shallow wells are sufficient to supply a population, and wastewater can discharge to a watercourse. As the population grows and water extraction rates rise, the water table falls requiring the digging of deeper wells. Shallow groundwater can also become contaminated by wastewater discharge. Thus water must be sourced (at significant expense) from outside the city, changing the city's groundwater characteristics such that the water table can rise above its original level and even cause flooding. In summary then, water security issues in urban areas are causing financial, health and environmental concerns.
 %Associated with the increasing demand is the need to treat the water and prevent contamination. This demand for water in high quantities comes with a financial burden [@Daigger2009]. 
 
 The environmental and economic issues above can be brought together under the notion of 'sustainability'. [TODO: comment on the triple bottom line] 
 
 Closely related to the field of urban sustainability is the concept of an urban area's 'metabolism'.
 
+Perhaps one unexplored area of urban metabolism is the idea of systems optimisation [TODO: complete] 
+
 Thus the challenge tackled in this thesis can be framed in terms of urban metabolism (UM)
+
 
 - thus, the notion of 'overconsumption' can be considered as when cities rely on their hinterlands and global markets (e.g. Haberl)?
 
@@ -425,6 +463,8 @@ The results of these UM studies give the \emph{means} to achieving improved reso
 ## Aims and scope of the study
 \label{sec:aims}
 
+The subject of this thesis is an interesting topic of study. It requires both a broad understanding of the big picture of urban resource management in three areas (energy, water and waste), including knowledge of policy environments etc. coupled with an understanding of mathematical programming for optimsation models.
+
 Having now outlined the context and motivation for the study, a research question is posed. This gives the study a clear focus, and provides a benchmark for assessing the success of the final outcome of the study.
 
 The following question will be answered:
@@ -457,13 +497,16 @@ There are four (potentially) novel aspects to this research:
 
 ### Challenges not dealt with here
 
+There are many fascinating aspects to cities, some of which touch on the themes already introduced. However, 
+
+- institutional and creative forces
+
 - socioeconomic/political/agent-based (transfer to the real-world)
 - system operation
 
 It must be remembered however, that a city isn't simply a resource processing machine, but it is the home to many people, and the place where they seek economic opportunity.  Therefore, there is a particular challenge to better manage resources without impacting upon the 'livability' of cities.
 
-
-## Summary and contributions
+### Summary and contributions
 
 In conclusion, there is strong case to pursue research into a model that optimises the provision of urban energy, water and waste resources. This is because urbanisation has socioeconomic advantages, such that it should not be resisted, despite the environmental and economic challenges brought by resource overconsumption. Rather, urban centres provide an opportunity for more efficient resource management by exploiting the proximity and co-location of infrastructure. The urban metabolism concept can be used to quantify the resource efficiency of a city, hence providing an underlying theoretical framework to the project.%he challenges of resource management. On top of this there is a research-gap in the field of integrated resource provision.
 
@@ -476,8 +519,7 @@ Table of contributions
 %In summary, it has been argued cities need to focus on resource integration in order to reduce damage to the environment and economic risk. Currently, there are no models which consider the optimal management of multiple urban resources.
 -->
 
-
-## Methods and thesis structure
+### Methods and thesis structure
 
 Note the methodological challenge of the literature review(s), and how we meet that challenge through online search tools combined with bash and R programming.
 	- to gather data

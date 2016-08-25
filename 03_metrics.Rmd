@@ -1,5 +1,12 @@
 # Metrics
 
+\begin{tcolorbox}
+
+A version of this chapter was published as: 
+Tom Ravalde, James Keirstead, Comparing performance metrics for multi-resource systems: the case of urban metabolism, \emph{Journal of Cleaner Production}, doi: \url{http://dx.doi.org/10.1016/j.jclepro.2015.10.118}.
+
+\end{tcolorbox}
+
 [TODO: remove parts repeated elsewhere]
 
 
