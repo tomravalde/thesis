@@ -268,42 +268,51 @@ This efficiency must naturally follow from the scaling laws in @Bettencourt2010.
 
 There maybe detailed mathematical demonstration of this, in http://science.sciencemag.org/content/sci/340/6139/1438.full.pdf.
 
+- Incremental network growth to serve population
+- See Bettencourt's model of unitis of infrastructure at successive heirarchical levels ($h$) to show that land are per person, and shortes network deistance, decrease with N.
+- Cities can be suboptimal for:
+  	- failing to reach their social potential
+  	- reaching social potential in a way that transport costs become too high
+- acknowledges unequal distribution within a city
+- infrastructure volume scales faster than land area (though both sublinear), e.g. underground
+- Energy loss in transport processes follows socioeconomic scaling; unlike other complex systems. Implications for sustainable development
+- Cities appear like networks found in physiology or natural geography, but they are more like stars -- "open-ended social reactors" (p.1441).
+
 [^qual-of-life]: Note however, that negative indicators also follow greater-than-population growth rates, such as new AIDS cases ($\beta=1.23$) and serious crimes ($\beta=1.16$).
 
 [TODO: tabulate a subset of beta values: GDP, employment, household electrical and water consumption, total electrical consumption. This table may be better off in the Economic stability section.]
 
 - Note, there is variation among cities http://www.pnas.org/content/112/19/5985.full.pdf
 
-### Sectoral savings
+### More efficient still?
 
-This efficiency inherent to urban areas can largely be explained by one word -- *proximity*. In cities, resource consumers (and producers) are close to the infrastructure that manages those resources. Here are a few ways this manifests in resource-efficiency.
+This efficiency inherent to urban areas can largely be explained by one word -- *proximity*. The city faciliates the mixing of people the socioeconomic gains from this surpass the resource demands. However, there is another sort of proximity which applies to infrastructure, rather than people.
+
+In cities, resource consumers (and producers) are close to the infrastructure that manages those resources. Here are a few ways this manifests in resource-efficiency. With resource-management infrastructure co-located in cities, and close to multiple types of users, there are opportunities to make further resource savings, using strategies increasingly adopted in cities.
 
 \begin{description}
 
-\item [Transportation] Distances are shorter in cities saving fuel. (Note, there is sometimes countered by 'urban sprawl'.)
+%\item [Waste collectors] In poorer areas, people see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
+%- Integrated Sustainable Waste Management (http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf)
+%Proximity of the population to waste
 
-\item [Waste collectors] In poorer areas, people see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
-- Integrated Sustainable Waste Management (http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf)
+\item [Decentralisation] is a term from the field of energy management, to refer to energy generation that takes place closer to the point of use than traditional centralised generation. In electricity networks, this can reduce distribution power losses (and hence emissions) \citep{Fleten2007}. Of even greater interest, is that decentralisation enables a diverse mix of energy-generation technologies to use play their in the energy distribution, including combined heat and power (CHP), photovoltaic systems (PV), small wind turbines, biogas digesters and other systems \citep{Ren2010}. This permits a variety of local resources to be used as energy sources (including renewables such as wind, solar and biomass, as well as traditional fuels such as coal and gas).
 
-Proximity of the population to waste
+Modelling work \citep{Webber2011} and empirical data [TODO: cite example] suggest that there are environmental and financial benefits to integrating traditional centralised energy management with  technologies distributed across multiple locations, fed by local resources.
 
-\item [Decentralisation] This idea takes proximity to new levels
+Decentralisation can also be applied to water systems [TODO: cite http://www.waterworld.com/articles/wwi/print/volume-18/issue-3/features/decentralised-infrastructure-saves-system-costs-produces-biogas-energy.html], by using infrastructure to harvest rainwater through roof collectors and permable pavements, and reclaim or reuse waste water at locations distrubuted around a city, even down at the household scale. Resolving the collection and management (and even treatment) of water to local levels reduces freshwater withdrawals and energy requirements (for treatment and transport) \citet{Daigger2009}.
 
-is where energy is generated closer to the point of use than traditional centralised generation, bringing multiple benefits. For example, in electricity networks, power losses are reduced (and hence emissions) along with electricity costs \citep{Fleten2007}. What makes distributed generation of specific interest to this study is the fact that these systems incorporate a \emph{``wide range of technologies including combined heat and power plant (CHP), photovoltaic systems (PV), small wind turbines and other systems using renewable energy sources (e.g. biogas digesters)''} \citep[p. 1001]{Ren2010} with the intention that local resources can be used as inputs (biomass, for example). Both the positioning of the systems in urban centres (at multiple locations) and the use of local resources facilitates their utility in taking advantage of resource intersections, infrastructure synergies and systems integration . Models already confirm the feasibility and environmental and financial benefits of integrating distributed systems and centralised systems, together with district heating networks in order to meet the energy demands of a city \citep{Weber2011}. 
+\item [Cascading] is another principle to improve energy system efficiency. The classic example is CHP in which the waste heat from electricity generation is used in heating systems \citep{Grubler2009}. In energy markets, energy cascading will manifest as companies provide 'integrated energy services' (selling both heat and electricity to the consumer) \citep{Sugihara2004}.
 
-Decentralisation in water systems: http://www.waterworld.com/articles/wwi/print/volume-18/issue-3/features/decentralised-infrastructure-saves-system-costs-produces-biogas-energy.html
+Cascading can be adopted in urban water management\footnote{The term 'cascading' is not used in the literature, but the prinicple has similarities with energy cascading.}, when wastewater from one purpose is used in for another purpose which requires less stringent quality standards. A household example could be the the separation of potable and nonpotable water streams such that grey water from the washing could be used in toilet flushing or watering the plants [TODO: cite http://www.thegreenage.co.uk/tech/greywater-recycling/].
 
-The water sector can also take advantage of both decentralisation  \citet[p. 809]{Daigger2009} sees the answer to the problems of water stress in a toolkit of \emph{``closed-loop urban water and resource management systems''}, which includes: rainwater harvesting, conservation, reclamation and reuse, energy management, nutrient and source separation managed in centralised and decentralised forms, in order to move away from the linear \emph{``take, make, waste''} approach. For example, roof collectors and permeable pavements are decentralised methods of capturing rainwater.  Thus decentralisation occurs in the local collection and management (and even treatment) of water (even at the household scale)
+[TODO: Move to intersectoral synergies]
 
-\item [Cascading] is another (yet related) move in energy systems. An example is CHP, whereby waste heat in electricity production is used in heating systems \citep{Grubler2009}. In energy markets, energy cascading will manifest as companies provide 'integrated energy services' (selling both heat and electricity to the consumer) \citep{Sugihara2004}. Biomass is another resource that can similarly be 'cascaded' in ''energetic recycling" using residues and wastes in energy provision, rather than appropriating more natural resources for the same purpose \citep{Haberl2001a}.
-
-Show how cascading is a function of proximity
-
-While the term 'cascading' is never used in the literature, this principle can also be adopted in the water sector, as wastewater from one purpose is used in another which requires less stringent quality standards. This requires 'source separation' to separate different streams of water for various uses---for example a potable/non-potable division means that water for use in toilet flushing requires less treatment than drinking water, resulting in the provision of additional water supplies to meet needs. For example, houses can contain systems to separate kitchen water and grey water locally, for separate treatments and uses.
-%%\citep{Kierstead2012b} Argues for integration (4.3)
-% Water-energy-wastewater nexus
+Biomass is another resource that can similarly be 'cascaded' in ''energetic recycling" using residues and wastes in energy provision, rather than appropriating more natural resources for the same purpose \citep{Haberl2001a}.
 
 \end{description}
+
+Both decentralisation and cascading are are possible because of infrastructure proximity. The examples listed above show how cities can get the most of a particular infrastructure system. However, is is possible to find even more efficiency from urban resource management systems?
 
 <!--
 \citep{Cai2011} Systematic and intensive municiple infrastructure e.g. integrated water systems
@@ -313,26 +322,28 @@ While the term 'cascading' is never used in the literature, this principle can a
 %% Point out that there are inherent advantages to DER: price, reduces emissions, developing countires, fuel prices, low carbon construction
 -->
 
-### Intersectoral synergies
+#### Intersectoral synergies
 
-A specific type of synergy that can stem from proximity is that of the resource management sectors
+A specific type of synergy that can stem from proximity is that of the different sectors' infrastructure to each other, such that the waste and by-products of one sector can become the inputs to another, i.e. cascading between the decentralised resource management processes of different sectors. This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which takes advantage of connectivity and proximity in cities to maximise the reuse of water, waste and other materials within an urban system, and the cascading of energy through multiple uses in order to 'close' cycles. Having considered the shape of the energy and water sectors in isolation, the possible cross-sectoral interactions and intersections the urban environment gives rise to are now considered.
 
-Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
+\begin{description}
 
-The dense nature of cities is such that synergies between urban infrastructures can be identified and exploited. Thus a node in a resource management network can have multiple functionalities and the waste products of one process can become the inputs to another. Examples include waste-to-energy (WtE)---also known as energy-from-waste (EfW); biogas generation from the anaerobic digestion of sewage sludge; hydroelectric power generation; and the treatment and redistribution of wastewater \citep{Kharrazi2012}. This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which takes advantage of connectivity and proximity in cities to maximise the reuse of water, waste and other materials within an urban system, and the cascading of energy through multiple uses in order to 'close' cycles. Such 'circularisation' of resources is increasingly playing a part in sustainable urban design \citep{Meijer2011}. The rest of this section goes on to outline some of the specific resource interactions which exist in urban environments, considering the energy and water sectors in turn. From this starting point, the resource integration opportunities possible at the 'energy-water nexus' and the 'energy-waste nexus' can be outlined.
+\item [Energy and water] Opportunities to find synergies between these two sectors include hydroelectric power which converts water's hydrostatic and dynamic energy into electrical energy; water source heatpumps, which heat energy stored in water for some useful purpose; and anearobic digestion of wastewater which converts organic content of wastewater to biogas, which can be used as a fuel.
 
-Having considered the shape of the energy and water sectors in isolation, the possible cross-sectoral interactions and intersections the urban environment gives rise to are now considered, starting with the \emph{energy-water nexus}\footnote{This discussion will include the place of wastewaster, thus it could be considered relevant to the waste-water nexus, which won't be considered separately at this point}. An extensive survey of both the energetic needs of water management and the opportunities for energy generation by water provided by \citet{McMahon2011} concludes there is a high level of interdependence between water and electricity which will increase in the future as global energy consumption increases. Resource integration opportunities arising out of these interdependencies are now discussed.
+An indirect saving can be made via wastewater reclamation, which has the side effect of reducing overall water system energy requirements (by reducing the need to treat and distribute freshwater from scratch) \citet{Lundin2000}.
 
-[TODO: diagram of links (note: only initial, but a systematic version will appear]
+\item [Energy and waste] Synergies between these two sectors are increasingly advocated. One example is waste incineration; not only does this save on landfill space, the heat produced can be usefully diverted in either heating or power generation.
 
-#### Energy-water nexus
+Anaerobic digestion can also be applied here, for waste with organic content (e.g. foodwaste) to provide energy \citet{Iacovidou2012}. 
 
-1. \emph{Closed-loop cooling} is advocated by \citet{McMahon2011} at the centralised level. This minimises the extensive water use required for cooling in electricity production. Here, water is used multiple times in cooling before discharge. This is an example of cascading.
-2. \emph{Anaerobic digestion} of wastewater is an option (at the centralised level), in order to convert the organic content of wastewater to biogas. At the decentralised level, multiple pipe networks can separate kitchen and toilet water (which has high organic content) for use in energy production in this way.
-3. \emph{Reclamation} and subsequent treatment of water reduces its energy requirements (compared to the treatment and distribution in ordinary water supply). \citet{Lundin2000} gives evidence that recycling wastewater makes emissions savings.
-4. \emph{Nutrient recovery} from wastewater saves energy through displacing it from  energy-intensive processes such as fertiliser production. 
+Indirectly, any other ways of reusing or recycling waste will reduce energy required to manufacture new goods \citep{Geng2010}. 
 
-In summary, the co-location of water and energy infrastructure means synergies can be exploited in an 'integrated water system' such that both net water consumption and energy performance improves \citep{Makropoulos2008}.
+\item [Water and waste]
+
+[TODO: examples]
+
+\end{description}
+
 <!--
 %% INCLUDE FIG 5 and 6. 
 %%challenge of bioenergy increase in water use. (McMahon).
@@ -341,20 +352,6 @@ In summary, the co-location of water and energy infrastructure means synergies c
 %%\citep{Makropulos2008} Tool for IWM based on an holistic view. Tradeoffs
 %%\citep{Nickson2011} Rainwater, waste-water (for energy) and reclaimed water (reduces pumping).
 -->
-
-#### Energy-waste nexus
-
-The \emph{waste-energy nexus} is also receiving a lot of attention as another opportunity for urban resource integration, with reuse, recycling and recovery are becoming more popular \citep{Geng2010}. 
-
-1. \emph{Incineration} is popular method of waste management because it both saves space and can generate power and heat through WtE. (Although, very often, energy generated isn't reclaimed).  
-2. \emph{`Industrial symbiosis'} is advocated whereby firms use each others' waste outputs as raw material inputs in other processes (e.g. production and manufacturing as well as WtE applications), in line with the 'proximity principle' observed in Japan, whereby waste is managed close to source. %For example, the OWARE model of \citep{Eriksson2002} takes a systems perspective on all the possible sources and uses of waste in a system (such as a city) by combining various sub-models which consider the life-cycle costs associated with incinceration, landfill, recyling , anaerobic digestion and so on.
-3. \emph{Anaerobic co-digestion} of sewage sludge and food waste is another waste-energy intersection (also intersecting with the water sector) which is discussed by \citet{Iacovidou2012}. This is a source of renewable energy, reducing landfill. Furthermore waste products can be used in fertiliser production).
-
-A simple model to optimise the flows in an energy-waste network is proposed by \citet{Kharrazi2012} as an example of an integrated resource network. Nodes represent the producers and consumers of waste and electricity, and links between the nodes are the flows of those resources. A real world application of WtE networks is seen in Greece bringing two-fold benefits: mitigating against landfill shortages and producing renewable energy \citep{Xydis2012}.
-
-#### Water-waste nexus
-
-[TODO: examples]
 
 <!--
 %An underlying theoretical framework is required which can help us measure the scale of the challenges presented; the opportunities on offer; and the success of the models. The 'urban metabolism' concept will serve this purpose.
@@ -367,6 +364,18 @@ A simple model to optimise the flows in an energy-waste network is proposed by \
 -->
 
 #### Summary
+
+[TODO: diagram of links (note: only initial, but a systematic version will appear]
+
+In summary, the co-location of water and energy infrastructure means synergies can be exploited in an 'integrated water system' such that both net water consumption and energy performance improves \citep{Makropoulos2008}.
+
+Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
+
+The dense nature of cities is such that synergies between urban infrastructures can be identified and exploited. Thus a node in a resource management network can have multiple functionalities and the waste products of one process can become the inputs to another. Such 'circularisation' of resources is increasingly playing a part in sustainable urban design \citep{Meijer2011}. The rest of this section goes on to outline some of the specific resource interactions which exist in urban environments, considering the energy and water sectors in turn. From this starting point, the resource integration opportunities possible at the 'energy-water nexus' and the 'energy-waste nexus' can be outlined.
+
+\item [`Industrial symbiosis'] is advocated whereby firms use each others' waste outputs as raw material inputs in other processes (e.g. production and manufacturing as well as WtE applications), in line with the 'proximity principle' observed in Japan, whereby waste is managed close to source. %For example, the OWARE model of \citep{Eriksson2002} takes a systems perspective on all the possible sources and uses of waste in a system (such as a city) by combining various sub-models which consider the life-cycle costs associated with incinceration, landfill, recyling , anaerobic digestion and so on.
+
+Find its route to policy via urban metabolism [TODO: cite http://ac.els-cdn.com/S0921344912000250/1-s2.0-S0921344912000250-main.pdf?_tid=e4246f32-6bb1-11e6-8231-00000aab0f02&acdnat=1472232426_433302133d00ea76ce4dfa27702e30a7, page 4].
 
 [TODO: summary text]
 
@@ -388,6 +397,8 @@ In fact, one does not need to think about energy, water and waste sectors togeth
 The more we consider the intersectoral synergies, the more we will appreciate that resource management can be thought of as a 'system'. Multiple components (which include resources and the infrastructure which manage them) are related in some way.
 
 Examples of individual sectors
+
+A simple model to optimise the flows in an energy-waste network is proposed by \citet{Kharrazi2012} as an example of an integrated resource network. Nodes represent the producers and consumers of waste and electricity, and links between the nodes are the flows of those resources. A real world application of WtE networks is seen in Greece bringing two-fold benefits: mitigating against landfill shortages and producing renewable energy \citep{Xydis2012}.
 
 Example of 'industrial symbiosis'
 
@@ -465,7 +476,9 @@ The results of these UM studies give the \emph{means} to achieving improved reso
 
 The subject of this thesis is an interesting topic of study. It requires both a broad understanding of the big picture of urban resource management in three areas (energy, water and waste), including knowledge of policy environments etc. coupled with an understanding of mathematical programming for optimsation models.
 
-Having now outlined the context and motivation for the study, a research question is posed. This gives the study a clear focus, and provides a benchmark for assessing the success of the final outcome of the study.
+This Introduction has not attempted to be systematic in identifying all the challenges and opportunities in urban resource management. Nevertheless, there is enough here to suggest that there are environmental and economic issues to be tackled; and that there are enough intersectoral synergies, that they could become a viable source of urban resource efficiency.
+
+Having now outlined the context and motivation for the thesis, a research question is posed. This gives the study a clear focus, and provides a benchmark for assessing the success of the final outcome of the study.
 
 The following question will be answered:
 
