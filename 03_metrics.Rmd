@@ -1,5 +1,7 @@
 # Metrics
 
+\epigraph{``This article, certain to become the classic in the field, clearly demonstrates that apples and oranges are not only comparable; indeed they are quite similar. The admonition `Let's not compare apples with oranges' should be replaced immediately with a more appropriate expression such as `Let's not compare walnuts with elephants' or `Let's not compare tumour necrosis factor with linguini.'''}{\citet{Barone2000a}, The \emph{British Medical Journal}}.
+
 \begin{tcolorbox}
 
 A version of this chapter was published as: 
