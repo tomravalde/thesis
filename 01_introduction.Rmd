@@ -110,6 +110,7 @@ Urbanisation is the longterm result of humanity's search for the good life. Peop
 
 \begin{figure}[h]
 	\centering
+	\ssfamily
 	\input{01_introduction/urbanCycle}
 	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
 \end{figure}
@@ -158,7 +159,17 @@ The backdrop against which many of the above issues are set is climate change, w
 
 #### Intersectoral interactions
 
-Not only do the energy, water and waste sectors all interact with climate change, they also interact with each other, such that issues of once sector feed the issues of another, thus exacerbating the environmental challenges. These intersectoral interactions are introduced briefly, since this will become an important theme in this thesis, and are summarised in Figure [TODO: cross-ref] 
+Not only do the energy, water and waste sectors all interact with climate change, they also interact with each other, such that issues of once sector feed the issues of another, thus exacerbating the environmental challenges. These intersectoral interactions are introduced briefly, since this will become an important theme in this thesis, and are summarised in Figure \ref{fig:intersectoral-interactions}.
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{01_introduction/intersectoral-interactions.pdf_tex}}
+%	\end{spacing}
+	\caption{Summary of some environmental challenges arising from intersecoral interactions (GHGs = greenhouse gases).}
+	\label{fig:intersectoral-interactions}
+\end{figure}
 
 \begin{description}
 
