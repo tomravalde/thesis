@@ -1,25 +1,46 @@
 \pagenumbering{arabic}
 
+\nomenclature{$\delta_{rq}$}{Binary variable attributing a quality to a resource}
+\nomenclature{$k_{prq$}}{Coefficient of resource production}
+\nomenclature{$g$}{Acceleration due to gravity}
+
 # Introduction
+
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+library(knitr)
+opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
+
+library(extrafont)
+font_import(pattern="LinBiolinum")
+
+library(ggplot2)
+```
 
 \epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{\citet{Bettencourt2010}, \emph{Nature}}
 
 \epigraph{``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''}{\citet{OED-system2016}}
 
-Cities have brought a high quality of life possible to billions, by enabling the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing, as more and more people find in them access to greater wealth, improved healthcare, and other socioeconomic services [@WorldBank2009]. However, to support their populations, cities consume and produce unsustainable quantities energy, water, and waste. As such, efforts are being devoted to reducing urban resource consumption and waste output.
+Cities have brought a high quality to billions, by enabling the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing, as more and more people find in them access to greater wealth, improved healthcare, and other socioeconomic services [@WorldBank2009]. However, to support their populations, cities consume and produce unsustainable quantities energy, water, and waste. As such, efforts are being devoted to reducing urban resource consumption and waste output.
 
 <!--
 Not only is the world's urban population growing, but so is our understanding of the nature of cities. Whilst being complicated amalgamations of people, businesses, institutions and geographical features, cities are surprisingly comprehensible
 -->
 
-Cities face many challenges, and thus questions about how they should be designed, developed, governed, and organised, are increasingly important. This thesis considers these questions in relation to concerns about cities' resource management, in a world of finite resources and global challenges such as climate change. 
+Cities face many challenges, and thus questions about how they should be designed, developed, governed, and organised, are increasingly important. This thesis considers these questions in relation to concerns about levels of consumption and waste in cities. In addressing these challenges, there are many points at which planners and policy makers might make decisions in the vast networks of infrastructure and chains of processes which cities use to convert and supply goods and services.
 
-- Consider the complex network of infrastructure/chain of processes involved in managing urban resources
-- While interventions could be made at specific points, this thesis will zoom out to look at how it all works as a system. Is the mix of power plants, water treatment facilities, waste recycling facilities, and other stuff, the most efficient way to deliver resources
+Consider a city's electricity supply, in which a power plant burns a fossil-fuel and uses the resulting heat energy to generate steam which turns a turbine to generate electrical energy which is then delivered to the consumer by cable (Figure \ref{fig:elec}). Coal could be saved by encouraging consumers to use less electricity. Another approach could be to increase power plant efficiencies, so as to minimise energy losses within the plant. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. While interventions such as these have their place, this thesis will zoom out to look at how resource management works as a whole. Is the overall mix of power plants, water treatment facilities, waste management procedures, and other activities, the most efficient way to deliver resources?
 
-Various approaches can be taken. Consider a city's electricity supply, in which a power plant burns a fossil-fuel and uses the resulting heat energy to generate steam which turns a turbine to generate electrical energy. Resources could be saved by encouraging changes in consumers to use less electricity. Another approach could be to make the power plant could be made more efficient, so as to minimise energy losses when it is converted from one form to another. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. All these ideas have their placeAnother way to approach the challenge is to better design and operate the whole network which manages the resources.
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network.pdf_tex}}
+	\end{spacing}
+	\caption{Some components of urban electricity system.}
+	\label{fig:elec}
+\end{figure}
 
-The coal, power plant, electricity, and power lines are but one part of the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. Furthermore, the electricity system is but one part of the system which manages a city's energy, and this system is in turn just one of several systems at work in a city, others being water management, waste management, and transport. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together?
+In meeting consumer demand for electricity, the coal, power plant, electricity, and power lines are but a few components in the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. Furthermore, the electricity system is but one part of the larger system which manages a city's energy, and this system is in turn just one of several systems at work in a city, others including water management, waste management, and transport. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together?
 
 <!--
 seen for example in campaigns to encourage behavioural change in consumers (e.g. turn their thermostats down), and policy measures to introducing new technologies (e.g. renewable energy). Another approach is to better design and operate the 'systems' which manage the resources. The management of urban resources requires networks of infrastructure to convert and transport resources. 
@@ -56,25 +77,36 @@ Whatever mix of approaches is adopted to better manage the world's resources -- 
 	b. ... leads to environmentally and economically unsustainable resource consumption and output
 3. Therefore, urbanisation should not be opposed, but we should nevertheless act to reduce urban resource consumption and waste.
 
-The rest of this Section establishes the reality of this argument.
+The rest of this Section considers the evidence in support of this argument.
 
 ### Urbanisation: an unstoppable and desirable phenomenon
 
-Currently, urban areas are home to about half of the global population [@AREAS2012]. [TODO: update for submission]. By 2030, it is expected that the urban population will rise to 61 per cent of the total, and to 70 per cent by 2050 (Figure \ref{fig:urban_trends})\footnote{A breakdown of UN population statistics is available from \url{http://esa.un.org/wup2009/unup/index.asp?panel=1}.}. This growth has three components: cities absorb population growth; migration from rural areas; rural areas become reclassified as urban [@Cohen2006]. Growth predictions are not just the view of a small number, but widely accepted opinion. Thus even [@Cohen2004] who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent, and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
+Currently, urban areas are home to just over half of the global population [@UN2014]. By 2030, it is expected that the urban population grow to 60 per cent of the total, and to over 65 per cent by 2050 (Figure \ref{fig:pop_forecasts}).}. This growth has three components: cities absorb population growth; migration from rural areas; rural areas become reclassified as urban [@Cohen2006]. Growth predictions are not just the view of a small number, but widely accepted opinion. Thus even @Cohen2004 who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent, and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
 
 > *"...despite all the problems of error and inaccuracy and the long-standing definitional problems that have never been overcome, it is clear that the world is still in the midst of a sweeping and profound urban transformation that is literally changing the face of the planet."*
 
 
 [^urban-def]: See for example @DepartmentforCommunitiesandLocalGovernment2006. This point is considered in [TODO: cross-ref].
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{01_introduction/world_total_urban.pdf} 
-	\caption{Global urbanisation trends according to \citet{AREAS2012}.}
-	\label{fig:urban_trends}
-\end{figure}
+```{r pop_data, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
 
-Urbanisation happens as the longterm result of people acting in their socioeconomic self interest. They migrate from the countryside in search of employment, and better access to education, healthcare, and other services. Thus an urban population grows. As it does, firms benefit from economies of scale, and also become 'agglomeration economies' (in which different types of firms and industries benefit one another by way of supplying each other with goods and services, on account of their proximity to each other). Scale and agglomeration enables a city to generate cost-effective and specialised goods and services, which can be traded. Trade increases prosperity, and prosperity attracts migrants. @WorldBank2008a. Thus urbanisation becomes a virtuous circle in which city size and economic growth feed one another (Figure \ref{fig:urbanCycle}).
+## Raw data from https://esa.un.org/unpd/wup/CD-ROM/ (Files 3 and 5)
+pop_data <- read.csv("01_introduction/UN-population-forecasts.csv")
+pop_data <- melt(pop_data, id="Year", variable.name="Proportion")
+
+pop_data$Year <- as.numeric(pop_data$Year)
+pop_data$value <- pop_data$value / 1e6 ## Convert populations to billions
+pop_data$Proportion <- factor(pop_data$Proportion, levels = rev(levels(pop_data$Proportion)))
+
+pop_data_plot <- ggplot(pop_data, aes(Year, value)) +
+  geom_line(aes(linetype=Proportion)) +
+  ylab("Population [billions]") +
+  theme_bw() +
+  theme(axis.title.x = element_blank())
+pop_data_plot
+```
+
+Urbanisation is the longterm result of humanity's search for the good life. People migrate from the countryside in search of employment, as well as better access to education, healthcare, and other services. Thus an urban population grows. As it does, firms benefit from economies of scale, and at the same time, cities start to become 'agglomeration economies' (in which different types of firms and industries benefit one another by way of supplying each other with goods and services, on account of their proximity to each other). With scale and agglomeration, cities produce specialised goods and services at low cost, which can be traded. Trade increases prosperity, and prosperity attracts migrants. Thus urbanisation becomes a virtuous cycle in which city size and economic growth feed one another (Figure \ref{fig:urbanCycle}) [@WorldBank2009].
 
 \begin{figure}[h]
 	\centering
@@ -82,20 +114,12 @@ Urbanisation happens as the longterm result of people acting in their socioecono
 	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
 \end{figure}
 
-Urbanisation is a proven path to prosperity, so it is unsurprising that expert opinion their is little appetite to oppose it. That is not to say they provide an immediate solution to all issues of poverty. Cities often have a widespread presence of slums, especially at the beginning of their development. The World Bank describes these as 'growing pains', [TODO: citation, inc. page number] and notes their historical precedence in cities like London, where they are now no longer to be found. The majority of growth takes place in the developing world. (Africa and Asia will together account for 86 per cent of the increase in urban dwellers by 2050 [@York2011]). It is encouraging that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world [@WorldBank2008a] (and conversely, troubling to learn that *" ... 72\% of developing countries have adopted policies designed to stem the tide of migration to their cities.''* [@Donald2012].
+Urbanisation is a proven path to prosperity, so it is unsurprising that expert opinion reveals little appetite to oppose it. This is not to say they provide an immediate solution to all issues of poverty. Cities often have a widespread presence of slums, especially at the beginning of their development. The World Bank describes these as 'growing pains' [@WorldBank2009, p.69] and notes their historical precedence in cities like London, where slums are no longer to be found. The majority of growth takes place in the developing world. (Africa and Asia will together account for 86 per cent of the increase in urban dwellers by 2050 [@York2011]). It is encouraging that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world.
 <!--
 This growth is also Secondly, despite much excitement about megacities, urban growth is mainly in smaller cities (below 500,000 people) in the foreseeable future). Cities of more than 10 million residents will accommodate less than 10\% of the urban population [@Cohen2006]
 -->
 
-The number of cities, and the sizes of their populations are growing, driven by urbanisation's wealth-generating functions. And this is supported by the headline statistics, which show that cities are home to [TODO:] per cent of the global population, while generating 80 per cent [TODO: update statistic] of global GDP [@AREAS2012]. With urbanisation's socioeconomic benefits obvious, it is tempting to neglect to consider the challenges it throws up. It is such challenges -- in particular, those related to how cities manage their resources -- which we introduce in the following two sections.
-
-<!--
-But as researchers, policy makers and planners seek to encourage sustainable urbanisation, there are two problems to be addressed, environmental and economic in nature. 
--->
-
-\nomenclature{$\delta_{rq}$}{Binary variable attributing a quality to a resource}
-\nomenclature{$k_{prq$}}{Coefficient of resource production}
-\nomenclature{$g$}{Acceleration due to gravity}
+The number of cities, and the sizes of their populations are growing, driven by urbanisation's wealth-generating functions. While being home to over 50 per cent of the global population, cities generate around 80 per cent of global GDP [@WorldBank2016]. With urbanisation's benefits obvious, it is tempting to ignore the challenges it throws up. Some of these challenges -- in particular, those related to urban resource management -- which are introduced in the next two sections.
 
 ### Environmental strain
 
