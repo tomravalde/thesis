@@ -110,7 +110,7 @@ Urbanisation is the longterm result of humanity's search for the good life. Peop
 
 \begin{figure}[h]
 	\centering
-	\ssfamily
+	\sffamily
 	\input{01_introduction/urbanCycle}
 	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
 \end{figure}
@@ -179,7 +179,7 @@ Climate change serves only to this energy-water nexus challenge more difficult, 
 
 In the other direction, energy use increases water consumption through the need for cooling water in power plants \citep{McMahon2011}. 
 
-\item [Energy and waste] The waste sector has a large energy consumption corresponding to transportation needs (mainly vehicle) and management processes (such as sorting, recycling, and crushing). \citep{ICE2011, Hoornweg2012} 
+\item [Energy and waste] The waste sector has a large energy consumption corresponding to transportation needs (mainly vehicle) and management processes (such as sorting, recycling, and crushing) \citep{ICE2011; Hoornweg2012}.
 
 In the other direction, increased energy consumption increases waste output, for example, the amount of fly ash produced by coal plants in the United States is over half of the quantity of municipal solid waste\footnote{Annual MSW generation as about 254 millions tons \citep{EPA2014}, and annual fly ash generations is about 130 million tons \citep{WorseThanNuclear2012}}. Radioactive waste from nuclear energy generation is another significant challenge \citep{NEI2016}.
 
@@ -200,11 +200,11 @@ https://www.theguardian.com/global-development/2012/jun/06/world-urban-waste-mou
 Another conclusion that is inevitable from this survey of challanges is that resource efficiency alone isn't enough. The world is already struggling to sustain the global population (for example, at current trends, the entire global biomass would be required to meet energy needs by 2050). Thus, a 'per capita' decrease in consumption in a growing population will not be sufficient to meet the challenge. Moreover, more efficient use of resources may cause people to seek a higher standard of living -- the so called 'take-back' effect. There must be dematerialisation in absolute terms [@Winiwarter2011].
 -->
 
-### Economic stability
+### Economic challenges
 
-The way that cities use resources does not just present environmental challenges, but economic challenges too (perhaps less familiar). Briefly, it is possible to show that a city's population can grow at such a rate that is impossible to sustain with the available resources [@Bettencourt2007a].
+A second challenge brought about by rates of urban resource consumption is economic. Briefly, it is possible to demonstrate that a city's population can grow at such a rate that is impossible to sustain with the available resources [@Bettencourt2007a].
 
-This can be shown from equating a couple of equations. First, a now well-established idea is that at time $t$, quantities in cities $Y(t)$ (such as energy consumption or wealth), scale with population, $N(t)$, according to the following power law:
+This can be shown from equating a couple of equations which model features of urban growth. First, at time $t$, quantities in cities $Y(t)$ (such as energy consumption or wealth), scale with population, $N(t)$, according to a power law:
 <!--
 As entities that both consume and produce resources, they are analogous to living organisms and ecosystems, whose properties (such as body size or growth rate) scale in a 'self-similar' manner with mass (obeying Zipf's power law). In the case of a city, indicators, $Y$ (such as GDP or energy consumption) scale with population, $N$ as:
 -->
@@ -213,40 +213,69 @@ As entities that both consume and produce resources, they are analogous to livin
 	Y(t)=Y_0N(t)^{\beta}
 \end{align}
 
-where $Y_0$ is a normalisation constant and $\beta$ is a constant which corresponds to the indicator under consideration. This result is interesting in and of itself, as it reveals that cities of different sizes essentially scaled versions of one another, and thus different cities do in fact operate in very similar ways [^animal-analogy], such that it is possible to predict many different quantities from just knowing the population.
-
-Even more interesting are the values which $\beta$ takes for different types of $Y$ quantities. It turns out that for material quantities (such as the number of petrol stations, or the length of electrical cable), $\beta<1$; and for social quantities (such as GDP, or the number of serious crimes), $\beta>1$. In the former case, scaling is sublinear, and quantities exhibit economies of scale, such that bigger cities can serve their cities more efficiently (e.g. the number of gas stations required does not need to increase as quickly as the population). In the latter case, scaling is superlinear, such that bigger cities benefit from agglomeration effects of knowledge spillover and other social dynamics (e.g. wealth increases more quickly than that population)[^animal-analogy-departure]. This tension will become important later.
+where $Y_0$ is a normalisation constant, and $\beta$ is a constant which corresponds to the indicator under consideration. This result is interesting in and of itself because it shows that cities of different sizes are, in essence, scaled versions of each another, and thus different cities do in fact operate in very similar ways [^animal-analogy]. This makes it possible to predict many different quantities from just knowing a city's population.
 
 [^animal-analogy]: In this way, cities are analogous to animals, whose physiological characteristics (e.g. metabolic rate) scale with its mass.
 
-[^animal-analogy-departure]: It is here that city behaviour departs from that of animals. In their case, all scaling is sublinear, i.e. biological systems develop to optimise their space, and thus behave according to economies of scale. However, there is nothing in animals that corresponds to the social characteristics of a city.
+Even more interesting are the values which $\beta$ takes for different types of $Y$ quantities (examples are given in Table \ref{tab:beta}. It turns out that for material quantities (such as the number of petrol stations, or the length of electrical cable), $\beta<1$; while for socioeconomic quantities (such as GDP, or the number of serious crimes), $\beta>1$. In the former case, $Y$ exhibits economies of scale, such that bigger cities can serve their cities more efficiently (e.g. the number of gas stations required does not need to increase as quickly as the population). In the latter case, $Y$ exhibits increasing return to scale (e.g. wealth increases more quickly than that population), because bigger cities benefit from the agglomeration effects of knowledge spillover and other social dynamics.
 
-Second, population growth can be expressed as a function of the resources required to sustain it. If each individual requires some quantity, $R$, to maintain them per unit time, and $E$ (extra) to accommodate a new member, then that total total resource requirement, $Y$ is given by
+\begin{table}[]
+\centering
+\caption{Example $\beta$ values extracted from \citet{Bettencourt2007a, Table 1}.}
+\label{tab:beta}
+\begin{tabular}{@{}lll@{}}
+\toprule
+$Y$                              & $\beta$ & Country-year \\ \midrule
+GDP                              & 1.15    & China 2002   \\
+GDP                              & 1.26    & EU 1999-2003 \\
+GDP                              & 1.13    & Germany 2003 \\
+Total electrical consumption     & 1.07    & Germany 2002 \\
+Household electrical consumption & 1.00    & Germany 2002 \\
+Householdelectrical consumption  & 1.05    & China 2002   \\
+Household water consumption      & 1.01    & China 2002   \\
+Length of electrical cables      & 0.87    & Germany 2002 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+In the second equation of urban growth, population growth is related to the resources required to sustain it. If each individual requires some quantity, $R$, to maintain them per unit time, and $E$ (extra) to accommodate a new member, then total resource requirement, $Y$ is given by
 
 \begin{align} \label{eq:urban_growth}
 	Y(t)=RN(t)+E\frac{dN(t)}{dt}
 \end{align}
 
-Equating Equations \eqref{eq:urban_scale} and \eqref{eq:urban_growth}, and solving for $N(t)$ gives
+The result which demonstrates economic challenges is found by equating Equations \eqref{eq:urban_scale} and \eqref{eq:urban_growth}, and solving for $N(t)$\footnote{This gives $N(t)=\left\{\frac{Y_0}{R}+\left(N^{1-\beta}(0)-\frac{Y_0}{R}\right)\exp\left[-\frac{R}{E}(1-\beta)t\right]\right\}^{\frac{1}{1-\beta}}$}. This solution, shows that cities whose growth is driven by agglomeration ($\beta>1$), are so economically attractive that populations will grow at greater-than-exponential rates, with $N(t)$ theoretically reaching infinity after critical time, $t=t_c$\footnote{Crictical time is given by $t_c&=-\frac{E}{(\beta-1)R}\ln\left[1-\frac{R}{Y_0}N^{1-\beta}(0)\right] \approx \left[\frac{E}{(\beta-1)R}\right]\frac{1}{N^{\beta-1}(0)}$}.
+
 <!--
+In other words, in these cities, the social dynamics (e.g. the number of patents registered) move faster, but this same dynamic leads to unbounded growth (http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf). 
 \begin{align*}
 	\frac{dN(t)}{dt}=\left(\frac{Y_0}{E}\right)N(t)^{\beta}-\left(\frac{R}{E}\right)N(t),
 \end{align*}
 -->
 
-\begin{align*}
-	N(t)=\left\{\frac{Y_0}{R}+\left(N^{1-\beta}(0)-\frac{Y_0}{R}\right)\exp\left[-\frac{R}{E}(1-\beta)t\right]\right\}^{\frac{1}{1-\beta}}
-\end{align*}
-
 <!--
 Thus material economies of scale is in tension with the super-linear scaling of innovation characteristics. 
 -->
 
-Of pertinence here is how $N(t)$ grows in cities where agglomeration effects drive the population growth, $\beta>1$. The population will grow at above-exponential rates, theoretically reaching infinity after critical time, $t=t_c$\footnote{This crictical time, $t_c$ is given by \begin{align*} $t_c&=-\frac{E}{(\beta-1)R}\ln\left[1-\frac{R}{Y_0}N^{1-\beta}(0)\right] \\ &\approx \left[\frac{E}{(\beta-1)R}\right]\frac{1}{N^{\beta-1}(0)} \end{align*}}. In other words, in these cities, the social dynamics (e.g. the number of patents registered) move faster, but this same dynamic leads to unbounded growth (http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf). 
+However, unbounded growth assumes sufficient resources, $R$ and $E$, to sustain it. In reality, this is not the case, and thus Bettencourt's model predicts a collapse in population, resulting in an economic crash [@Ledford2007]. However, this collapse can be prevented, if innovation can take place which can sustain agglomeration-driven growth. In the model , this corresponds to resetting the values of Equation \eqref{eq:urban_growth}'s parameters, before $t_c$ is reached.
 
-The problem of economic stability comes because in reality, resources $R$ and $E$ are limited, this unbounded growth cannot be sustained. At this point, $N$ stops growing and starts to collapse. To avoid this, requires innovation, to sustain agglomeration-driven growth. On @Bettencourt2007's model, this corresponds to resetting the values of Equation \eqref{eq:urban_growth}'s parameters, before $t_c$ is reached.
+However, $t_c$ for each new cycle of innovation becomes shorter and shorter requiring innovation to take place at increasingly faster paces (see Figure \ref{fig:bettencourt_innovation}). This need for innovation to happen after ever-decreasing time intervals is consistent with historical movements between the Stone, Bronze, and Iron Ages, and the Computer, and Information and Digital Ages [@Bettencourt2010], as well as historical data from New York City [@Bettencourt2007a].
 
-However, $t_c$ for each new cycle of innovation becomes shorter and shorter requiring innovation to take place at increasingly faster paces (see Figure~\ref{fig:bettencourt_innovation}). This need for innovation to happen after ever-decreasing time intervals is consistent with historical movements between the Stone, Bronze, and Iron Ages, and the Computer, and Information and Digital Ages [TODO: cite http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf].
+```{r growth_cycles, fig.cap="Population growth, and the cycles of innovation required to sustain it, in agglomeration economies. (Figure adapted from \\citet{Bettencourt2007a}.)", results="asis"}
+
+time <- c(0:120)
+
+## Assume a city with a starting population of 100, a starting GDP of 1e6 USD, with beta=1.2
+
+beta <- 1.2
+N0 <- 100
+Y0 <- 1e6 / N0^beta
+
+res <- 0.0001
+extra <- 0.000005
+
+
+pop <- (Y0/res + (N0^(1-beta) - Y0/res) * exp((-res/extra) * (1-beta)*time)) ^ (1 / (1-beta))
+```
 
 <!--
 \begin{figure}[h!]
@@ -261,9 +290,10 @@ These regimes are plotted in Figure~\ref{fig:bettencourt_growth}.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{01_introduction/bettencourt_innovation.pdf} 
-	\caption{Representation of the innovation cycles necessary to postpone economic collapse taken from \citet{Bettencourt2007}. Note how the critical time $t_c$ reduces for each cycle.} \label{fig:bettencourt_innovation}
+	\caption{Population growth, and the cycles of innovation required to sustain it in agglomeration economies. Note how the critical time $t_c$ reduces for each cycle. Figure copied directly from \citet{Bettencourt2007a}.} \label{fig:bettencourt_innovation}
 \end{figure}
 
+<!--
 ### Summary
 
 Thus far, we've seen that urbanisation is helping more and more people live better quality of life, but the resource use which sustains these lifestyles is a cause of serious environmental and economic problems. Taking these issues together, the challenge can be considered one of *sustainable development*, first defined by the Brutland Commission as
@@ -297,6 +327,7 @@ To bring together the interrelated resource management challenges and policies, 
 \citep{Batt2010} to summarise.
 -->
 
+<!--
 In summary, this thesis is in agreement with @Newman1999 that the environmental strain means that cities must take responsibility to manage their resources better.
 
 Regarding the economic stability of cities, the policy environment is even less established. Perhaps this is because the main need is for that of 'innovation', which is a somewhat organic phenomenon -- it is not possible to set targets as for emissions or landfill diversion rates. Nevertheless, in our times, there is much study of and thinking about cities; how they behave, and how they should develop. Thus Bettencourt's work leads him to use a *Nature* comment piece to call for urban development policies which consider the growth dynamics he has highlighted, commenting that "the difference between 'policy as usual' and policy led by a new quantitative understanding of cities may well be the choice between creating a "planet of slums" or finally achieving a sustainable, creative, prosperous, urbanized world expressing the best of the human spirit." [TODO: http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf, page 913].
@@ -304,16 +335,20 @@ Regarding the economic stability of cities, the policy environment is even less 
 As an alternative to 'innovation', efficient resource management should be adopted in order to effectively increase the value of $R$ and hence buys innovation time to push the stagnation point into the future.
 
 In addition to the policy proposals above, there is another concept -- key to this thesis -- that could be adopted to help meet these challenges. That is the properties inherent to a city which means they can manage resources efficiently.
+-->
 
 ## Urbanisation: the opportunity
 \label{sec:urbanOpps}
 
+Urbanisation is helping more and more people to live a better quality of life, but this comes at a cost of environmental challenges and economic risks. However, cities, by their very nature, may be well placed to meet the challenge. This section will explore how, by introducing ideas key to this thesis.
+
 The headline statistics show that compared to rural areas, that on a per capita basis, cities use more energy and water, and produce more waste. However, once quality of life is factored in, it is actually the case that, on the whole, cities use less resources per capita to provide a given quality of life. This is, in essence, a key principle of urban areas -- they can supply goods and services to their point of need more efficiently than smaller settlement types.
 
-This efficiency must naturally follow from the scaling laws in @Bettencourt2010. If employment, GDP, and other quality-of-life indicators increase at a rate quicker than population growth[^qual-of-life], yet household consumption of energy and water increases at slower rate (see $\beta$ values in Table [TODO: cite table], then it necessarily follows that urbanisation is an efficiency-finding process. Even if one were to take overall electricity consumption (i.e. not just that of households) which grows at a quicker rate than the population, it is still a slower growth rate than GDP and employment.
+This efficiency must naturally follow from the scaling laws in @Bettencourt2007a. If employment, GDP, and other quality-of-life indicators increase at a rate quicker than population growth[^qual-of-life], yet household consumption of energy and water increases at slower rate (see $\beta$ values in Table \ref{tab:beta}), then it necessarily follows that urbanisation is an efficiency-finding process. Even if one were to take *overall* electricity consumption (i.e. not just that of households) which grows more quickly than the population, it is still a slower growth rate than GDP and employment.
 
-There maybe detailed mathematical demonstration of this, in http://science.sciencemag.org/content/sci/340/6139/1438.full.pdf.
+[^qual-of-life]: Note however, that negative indicators also follow greater-than-population growth rates, such as new AIDS cases ($\beta=1.23$) and serious crimes ($\beta=1.16$).
 
+<!--
 - Incremental network growth to serve population
 - See Bettencourt's model of unitis of infrastructure at successive heirarchical levels ($h$) to show that land are per person, and shortes network deistance, decrease with N.
 - Cities can be suboptimal for:
@@ -324,17 +359,19 @@ There maybe detailed mathematical demonstration of this, in http://science.scien
 - Energy loss in transport processes follows socioeconomic scaling; unlike other complex systems. Implications for sustainable development
 - Cities appear like networks found in physiology or natural geography, but they are more like stars -- "open-ended social reactors" (p.1441).
 
-[^qual-of-life]: Note however, that negative indicators also follow greater-than-population growth rates, such as new AIDS cases ($\beta=1.23$) and serious crimes ($\beta=1.16$).
-
 [TODO: tabulate a subset of beta values: GDP, employment, household electrical and water consumption, total electrical consumption. This table may be better off in the Economic stability section.]
 
 - Note, there is variation among cities http://www.pnas.org/content/112/19/5985.full.pdf
+-->
 
 ### More efficient still?
 
-This efficiency inherent to urban areas can largely be explained by one word -- *proximity*. The city faciliates the mixing of people the socioeconomic gains from this surpass the resource demands. However, there is another sort of proximity which applies to infrastructure, rather than people.
+The detailed mathematics which describe the phenomena that gives rise to these scaling laws is presented in @Bettencourt2013. The mathematics is not particularly advanced, but it is rather involved. However, the efficiency inherent to urban areas can be explained simply, with one word -- *proximity*. The city facilitates the mixing of people such that the socioeconomic gains from this surpass the resource demands. However, there is another sort of proximity which applies to infrastructure, rather than people.
+<!--
+If quality-of-life adjusted per capita resource efficiency is given by $\mbox{quality of life} / \mbox{consumption}$, then there are 
+-->
 
-In cities, resource consumers (and producers) are close to the infrastructure that manages those resources. Here are a few ways this manifests in resource-efficiency. With resource-management infrastructure co-located in cities, and close to multiple types of users, there are opportunities to make further resource savings, using strategies increasingly adopted in cities.
+In cities, resource management processes can be close to consumers who have a diverse mix of demands for goods and services. Not only that, processes can also be close to one another. Both of these facts facilitate a couple of strategies to use resources more efficiently.
 
 \begin{description}
 
@@ -342,23 +379,19 @@ In cities, resource consumers (and producers) are close to the infrastructure th
 %- Integrated Sustainable Waste Management (http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf)
 %Proximity of the population to waste
 
-\item [Decentralisation] is a term from the field of energy management, to refer to energy generation that takes place closer to the point of use than traditional centralised generation. In electricity networks, this can reduce distribution power losses (and hence emissions) \citep{Fleten2007}. Of even greater interest, is that decentralisation enables a diverse mix of energy-generation technologies to use play their in the energy distribution, including combined heat and power (CHP), photovoltaic systems (PV), small wind turbines, biogas digesters and other systems \citep{Ren2010}. This permits a variety of local resources to be used as energy sources (including renewables such as wind, solar and biomass, as well as traditional fuels such as coal and gas).
+\item [Decentralisation] is jargon from energy management, to refer to energy generation that takes place closer to the point of use than traditional centralised generation (such as a large power plant). In electricity networks, this can reduce distribution power losses (and hence emissions) \citep{Fleten2007a}. Of even greater interest, is that decentralisation enables a diverse mix of energy-generation technologies to use play a part in energy supply, including combined heat and power (CHP), photovoltaic systems (PV), small wind turbines, biogas digesters and other devices \citep{Ren2010}. These technologies can be fed by a variety of local resources (including renewables such as wind, solar and biomass, as well as traditional fuels such as coal and gas).
 
-Modelling work \citep{Webber2011} and empirical data [TODO: cite example] suggest that there are environmental and financial benefits to integrating traditional centralised energy management with  technologies distributed across multiple locations, fed by local resources.
+Modelling work \citep{Webber2011} and empirical studies \citet{CarbonTrust2014} show environmental and financial benefits to integrating traditional centralised energy management with decentralised processes.
 
-Decentralisation can also be applied to water systems [TODO: cite http://www.waterworld.com/articles/wwi/print/volume-18/issue-3/features/decentralised-infrastructure-saves-system-costs-produces-biogas-energy.html], by using infrastructure to harvest rainwater through roof collectors and permable pavements, and reclaim or reuse waste water at locations distrubuted around a city, even down at the household scale. Resolving the collection and management (and even treatment) of water to local levels reduces freshwater withdrawals and energy requirements (for treatment and transport) \citet{Daigger2009}.
+Decentralisation can also be applied to water systems \citet{Holler2016}. Rather than using large facilities to treat water and wastewater, distributed infrastructure can harvest rainwater through roof collectors and permable pavements, and reclaim or reuse waste water at multiple locations around a city (even down at the household scale). This disaggregation of collection, management, and treatment can reduce rates of freshwater withdrawal, as well as water-related energy requirements \citet{Daigger2009}.
 
-\item [Cascading] is another principle to improve energy system efficiency. The classic example is CHP in which the waste heat from electricity generation is used in heating systems \citep{Grubler2009}. In energy markets, energy cascading will manifest as companies provide 'integrated energy services' (selling both heat and electricity to the consumer) \citep{Sugihara2004}.
+\item [Cascading] is another way to improve energy system efficiency. The classic example is CHP, in which the waste heat from power generation is used to provide useful heat energy \citep{Grubler2009}.
 
-Cascading can be adopted in urban water management\footnote{The term 'cascading' is not used in the literature, but the prinicple has similarities with energy cascading.}, when wastewater from one purpose is used in for another purpose which requires less stringent quality standards. A household example could be the the separation of potable and nonpotable water streams such that grey water from the washing could be used in toilet flushing or watering the plants [TODO: cite http://www.thegreenage.co.uk/tech/greywater-recycling/].
-
-[TODO: Move to intersectoral synergies]
-
-Biomass is another resource that can similarly be 'cascaded' in ''energetic recycling" using residues and wastes in energy provision, rather than appropriating more natural resources for the same purpose \citep{Haberl2001a}.
+While the water management sector does not use the term 'cascading', the same principle can still be applied, namely using waste products of one process, as the input to another, in this case, when wastewater from one purpose is used in for another purpose which requires less stringent quality standards. An example for a household could be the the separation of potable and nonpotable water streams such that grey water from the washing could be used in toilet flushing or watering the plants \citep{TheGreenAge2016}.
 
 \end{description}
 
-Both decentralisation and cascading are are possible because of infrastructure proximity. The examples listed above show how cities can get the most of a particular infrastructure system. However, is is possible to find even more efficiency from urban resource management systems?
+Both decentralisation and cascading are are possible because of proximity of infrastructure to resource feeds, consumers and to each other. The examples listed above show how cities can get the most out of a particular infrastructure system. However, these efficiencies are not necessarily the limit of what can be achieved.
 
 <!--
 \citep{Cai2011} Systematic and intensive municiple infrastructure e.g. integrated water systems
@@ -370,25 +403,33 @@ Both decentralisation and cascading are are possible because of infrastructure p
 
 #### Intersectoral synergies
 
-A specific type of synergy that can stem from proximity is that of the different sectors' infrastructure to each other, such that the waste and by-products of one sector can become the inputs to another, i.e. cascading between the decentralised resource management processes of different sectors. This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which takes advantage of connectivity and proximity in cities to maximise the reuse of water, waste and other materials within an urban system, and the cascading of energy through multiple uses in order to 'close' cycles. Having considered the shape of the energy and water sectors in isolation, the possible cross-sectoral interactions and intersections the urban environment gives rise to are now considered.
+In cities, infrastructural proximity can also apply to the infrastructure of different sectors. In theory, this allows the waste and by-products of one sector to become the inputs to another. In other words this is the cascading of different resources between sectors (possibly made easier if processes are decentralised). This section lists a few of these intersectoral synergies, categorised according to each sector pairs.
 
 \begin{description}
 
-\item [Energy and water] Opportunities to find synergies between these two sectors include hydroelectric power which converts water's hydrostatic and dynamic energy into electrical energy; water source heatpumps, which heat energy stored in water for some useful purpose; and anearobic digestion of wastewater which converts organic content of wastewater to biogas, which can be used as a fuel.
+\item [Energy and water] Synergies in this pairing include hydroelectric power which converts water's hydrostatic and dynamic energy into electrical energy; and water source heat pumps, which extract the heat energy stored in water. If an 'integrated water system' is designed and operated correctly, it is possible to improve both water consumption and energy efficiency \citep{Makropoulos2008}.
 
-An indirect saving can be made via wastewater reclamation, which has the side effect of reducing overall water system energy requirements (by reducing the need to treat and distribute freshwater from scratch) \citet{Lundin2000}.
+\item [Energy and waste] Synergies between these two sectors include waste incineration, to generate heat which can be used for power generation or heating (and save on landfill space at the same time).
 
-\item [Energy and waste] Synergies between these two sectors are increasingly advocated. One example is waste incineration; not only does this save on landfill space, the heat produced can be usefully diverted in either heating or power generation.
+Anaerobic digestion is another process which can beneficially link the energy and waste sectors. In this process, waste with organic content (e.g. food waste) can be digested to produce biogas (which can then be used as a fuel).
 
-Anaerobic digestion can also be applied here, for waste with organic content (e.g. foodwaste) to provide energy \citet{Iacovidou2012}. 
+Energy savings can also be made indirectly through this link, by reusing or recycling waste, and thus reducing the energy required to manufacture new goods \citep{Geng2010}. Another indirect saving comes by way of wastewater reclamation, which can reduce overall water system energy requirements (by reducing the need to treat and distribute freshwater from scratch) \citet{Lundin2000}.
 
-Indirectly, any other ways of reusing or recycling waste will reduce energy required to manufacture new goods \citep{Geng2010}. 
-
-\item [Water and waste]
-
-[TODO: examples]
+\item [Water and waste] The reclamation of wastewater can reduce the need for freshwater withdrawal, which can be achieved through various methods.
 
 \end{description}
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{01_introduction/intersectoral-synergies.pdf_tex}}
+%	\end{spacing}
+	\caption{Summary of some the intersectoral synergies made possible by the co-location of infrastructure.}
+	\label{fig:intersectoral-synergies}
+\end{figure}
+
+This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which takes advantage of connectivity and proximity in cities to maximise the reuse of water, waste and other materials within an urban system, and the cascading of energy through multiple uses in order to 'close' cycles.
 
 <!--
 %% INCLUDE FIG 5 and 6. 
@@ -412,8 +453,7 @@ Indirectly, any other ways of reusing or recycling waste will reduce energy requ
 #### Summary
 
 [TODO: diagram of links (note: only initial, but a systematic version will appear]
-
-In summary, the co-location of water and energy infrastructure means synergies can be exploited in an 'integrated water system' such that both net water consumption and energy performance improves \citep{Makropoulos2008}.
+asdf
 
 Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
 
