@@ -710,18 +710,6 @@ In this paper, we formulate an optimisation model which meets demands for energy
 
 Before this main aim can be achieved however, there are intermediate aims which must be met. One important piece of work is to propose some way of representing a city as an 'engineered system', for use in the modelling. This question is the subject of Chapter [TODO:]. Another important consideration -- which has been introduced here, but not yet discussed in detail -- is the type of formulation for the model (e.g. linear or nonlinear, and other related considerations). This is dealt with in Chapter [TODO:]. Finally, a question posed by highly integrated urban resource management, is which metrics should be used to measure the efficiency of energy, water and waste systems in combination? This question has not been considered in this chapter, but it is the subject of the next chapter.
 
-### Definition of thesis title
-
-From our review of the literature, it is now possible to precisely define the meaning of the thesis title, in order to define the scope of the thesis:
-
-\begin{description}
-
-\item[Highly integrated] This refers to resource management optimisation models that consider the simultaneous optimisation of more than one system, in order to take advantage of synergies between them (see Section [TODO:]). In this thesis, these will be energy, water, and waste management systems.
-\item[Urban] Of the three definitions of 'urban' given in Section [TODO:], this thesis uses the 'geographic-plus' definition. This not only includes processes within a city's administrative boundaries, but also those upstream. Therefore, management infrastructure need only be close to \emph{each other}, because it is this pheneomenon that facilitates intersectoral synergies. I.e., it does not matter if some of the infrastructure is distant from the point of demand for goods and services.
-\item[Energy, water, and waste] As mentioned in Section [TODO:], these are the three 'lifeline' services which are common to all users in all cities (residential, commercial, and industrial). This does mean some resource-heavy processes maybe missed out. Such as the manufacturing sector (e.g. demands for iron and steel, process industries etc.). This approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of the problem, and makes a manageable piece of work for this thesis.
-\item[Systems] This incorporates everything required by resource management optimisation models, namely the resources and the processes which form a network.
-\end{description}
-
 <!--
 As the UM framework is used to study urban sustainability, in relation to its resource flows, forms, and function, one developing area is consider the processes occurring inside a city more closely.
 -->

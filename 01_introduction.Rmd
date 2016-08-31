@@ -32,10 +32,10 @@ Consider a city's electricity supply, in which a power plant burns a fossil-fuel
 
 \begin{figure}
 	\centering
-	\begin{spacing}{1.0}
+%	\begin{spacing}{1.0}
 	\sffamily
 	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network.pdf_tex}}
-	\end{spacing}
+%	\end{spacing}
 	\caption{Some components of urban electricity system.}
 	\label{fig:elec}
 \end{figure}
@@ -403,6 +403,8 @@ Both decentralisation and cascading are are possible because of proximity of inf
 
 #### Intersectoral synergies
 
+[TODO: Decide if this should be a third-level heading]
+
 In cities, infrastructural proximity can also apply to the infrastructure of *different* sectors. In theory, this allows the waste and by-products of one sector to become the inputs to another. In other words this is the cascading of different resources between sectors (possibly made easier if processes are decentralised). This section lists a few of these intersectoral synergies, categorised according to each sector pairs.
 
 \begin{description}
@@ -586,6 +588,14 @@ However:
 - sectors
 
 #### Title definition
+
+\begin{description}
+
+\item[Highly integrated] This refers to resource management optimisation models that consider the simultaneous optimisation of more than one system, in order to take advantage of synergies between them (see Section [TODO:]). In this thesis, these will be energy, water, and waste management systems.
+\item[Urban] Of the three definitions of 'urban' given in Section [TODO:], this thesis uses the 'geographic-plus' definition. This not only includes processes within a city's administrative boundaries, but also those upstream. Therefore, management infrastructure need only be close to \emph{each other}, because it is this pheneomenon that facilitates intersectoral synergies. I.e., it does not matter if some of the infrastructure is distant from the point of demand for goods and services.
+\item[Energy, water, and waste] As mentioned in Section [TODO:], these are the three 'lifeline' services which are common to all users in all cities (residential, commercial, and industrial). This does mean some resource-heavy processes maybe missed out. Such as the manufacturing sector (e.g. demands for iron and steel, process industries etc.). This approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of the problem, and makes a manageable piece of work for this thesis.
+\item[Systems] This incorporates everything required by resource management optimisation models, namely the resources and the processes which form a network.
+\end{description}
 
 The notions of systems optimisation models, and urban metabolism have been introduced [TODO:] which leads to the question of this thesis[^research-question]:
 
