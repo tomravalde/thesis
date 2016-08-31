@@ -32,10 +32,10 @@ Consider a city's electricity supply, in which a power plant burns a fossil-fuel
 
 \begin{figure}
 	\centering
-	\begin{spacing}{1.0}
+%	\begin{spacing}{1.0}
 	\sffamily
 	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network.pdf_tex}}
-	\end{spacing}
+%	\end{spacing}
 	\caption{Some components of urban electricity system.}
 	\label{fig:elec}
 \end{figure}
@@ -403,6 +403,8 @@ Both decentralisation and cascading are are possible because of proximity of inf
 
 #### Intersectoral synergies
 
+[TODO: Decide if this should be a third-level heading]
+
 In cities, infrastructural proximity can also apply to the infrastructure of *different* sectors. In theory, this allows the waste and by-products of one sector to become the inputs to another. In other words this is the cascading of different resources between sectors (possibly made easier if processes are decentralised). This section lists a few of these intersectoral synergies, categorised according to each sector pairs.
 
 \begin{description}
@@ -427,7 +429,29 @@ Anaerobic digestion is another process which can beneficially link the energy an
 	\label{fig:intersectoral-synergies}
 \end{figure}
 
-This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which takes advantage of connectivity and proximity in cities to maximise the reuse of water, waste and other materials within an urban system, and the cascading of energy through multiple uses in order to 'close' cycles.
+If these and other intersectoral synergies can be exploited, then it might be possible for cities to reduce their consumption and waste. Calls for this type of approach are found in the literature, for example, \citet{Leduc2010} advocate the 'urban harvest' approach to urban planning. This takes advantage of the infrastructural proximity and connectivity to maximise the reuse of water, waste and other materials within an urban system. This king of reorganisation of resources flows within a city was also proposed by the Dutch Working Group on Sustainable Urban Development \citep{Meijer2011}.
+
+#### Intersectoral synergies in practice
+
+There is precedent for this sort of approach, which comes from the field of 'industrial symbiosis' (IS). This is where firms use each others' waste outputs as inputs in other processes [@WRAP2016]. This idea is realised in 'eco-industrial parks' (EIPs) in which industries, business and consumers are co-located with the deliberate intention of practising IS [@PresidentsCouncil1996].
+
+The classic EIP case-study is Kalundborg, Denmark \citep{Lewis2000}, whose actors engage in many mutually beneficial material and energy exchanges: including a power station providing steam to an oil refinery (which in turn produces gas for the power station), waste heat to fish culture, and ash to cement manufacture; the fish culture provides sludge used by local farmers, who also use sludge from a bioplant fed by steam from the power station (Figure \ref{fig:Kalundborg}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{01_introduction/Kalundborg.png} 
+	\caption{Resource exchanges at Kalundborg EIP as of 2000. Figure taken from \citet{Lewis2000}.} \label{fig:kalundborg_innovation}
+\end{figure}
+
+There is good reason to want the energy, water and waste systems to work together so cities can exploit these kinds of synergies. However, just a little reflection and it is not hard to see that there are significant challenges for planners and decision makers. If a city contains a large number of resource management processes, located variously, then how should they adopt resource-saving strategies in the best way possible (and without breaking any financial, practical or other constraints)?
+
+There are various conditions which make this challenge difficult going beyond simply matching a pair of processes. First, there are indirect resource savings to account for, which may not be immediately evident[^indirect-savings]. Second the consumer resource-demand patterns will both evolve over time, and vary according to the time of day, the day of the week, and the week of the year; this means that processes will also vary their operation rates (and therefore the quantities of useful by-products they generate), and thus the optimal network of processes is not a simple calculation.
+
+<!--
+Listing the intersectoral synergies is all very well. However, if planners and policy makers are to make the best use of these interactions [TODO:]. It is easy to see that it is not necessarily straightforward. Cities will vary in the precise demands they need (quantities and locations), as well as the infrastructure they have to meet those needs, and the ability they have to make decisions about that infrastructure.
+-->
+
+[^indirect-savings]: Energy savings can also be made indirectly through this link, by reusing or recycling waste, and thus reducing the energy required to manufacture new goods \citep{Geng2010}. Another indirect saving comes by way of wastewater reclamation, which can reduce overall water system energy requirements (by reducing the need to treat and distribute freshwater from scratch) \citet{Lundin2000}.
 
 <!--
 %% INCLUDE FIG 5 and 6. 
@@ -452,74 +476,44 @@ This is what \citet{Leduc2010} refers to as the 'urban harvest' approach, which 
 Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
 -->
 
-SUMMARISE THE BENEFIT OF THE SYNERGIES
-
-The dense nature of cities is such that synergies between urban infrastructures can be identified and exploited. Thus a node in a resource management network can have multiple functionalities and the waste products of one process can become the inputs to another.
-
-Such has been practised at smaller scales: Industrial symbiosis is advocated whereby firms use each others' waste outputs as raw material inputs in other processes (e.g. production and manufacturing as well as WtE applications), in line with the 'proximity principle' observed in Japan, whereby waste is managed close to source. 
-
-NOTE HOW IT HELPS MEET CALLS IN THE LITERATURE
-
-REVEAL THE EXTENT OF THE COMPLEXITY
-
-Reflecting on these intersectoral synergies, we quickly see how complicated 
-
-Zoom out from considering just the transfer of resources between two processes, and the picture quickly gets more complicated
-
-Energy savings can also be made indirectly through this link, by reusing or recycling waste, and thus reducing the energy required to manufacture new goods \citep{Geng2010}. Another indirect saving comes by way of wastewater reclamation, which can reduce overall water system energy requirements (by reducing the need to treat and distribute freshwater from scratch) \citet{Lundin2000}.
-
-Such 'circularisation' of resources is increasingly playing a part in sustainable urban design \citep{Meijer2011}.
-
 ## Systems optimisation
 
-TO NAVIGATE THE COMPLEXITY OF THE PROBLEM, A FORMAL MODELLING APPROACH
+Given the complexity of planning beneficial intersectoral links synergies, planners and policy makers need some assistance in navigating the conundrum of how best to navigate the technical challenge.
 
-Listing the intersectoral synergies is all very well. However, if planners and policy makers are to make the best use of these interactions [TODO:]. It is easy to see that it is not necessarily straightforward. Cities will vary in the precise demands they need (quantities and locations), as well as the infrastructure they have to meet those needs, and the ability they have to make decisions about that infrastructure.
+Any possible network of resources and their associated management infrastructure can be thought of as a system (as defined at the start of the chapter). A system of this sort can be conceptualised as a network made up of nodes and links, where the nodes represent processes (such as a power plant, or pipe to transport water), and the links represent flows of resources between the nodes (such as electricity leaving the power plant to enter the cable). This is visualised in Figure [TODO: cross-ref] which re-presents Figure \ref{fig:elec} as nodes and links.
 
-But in practice, there needs to be a comprehensive understanding and application of them. One 
+[TODO: Diagram of electricity network re-represented as nodes and links]
 
-Here, we return to a theme introduced earlier: the idea of a 'system', which can be formally represented mathematically 
+The key idea in this thesis though is that nodes can have multiple functions. Thus a power plant might be considered as much a part of the heating network, as it is part of the electricity network. More than that, it is linked to the water network (via the need for cooling). These links and others are shown in Figure [TODO: cross-ref] which incorporates the electricity network.
 
-Brief summary of the mathematics/optimisation
+[TODO: Diagram of node-link electricity network formulated situation with links to other infrastructure]
 
-The possibility is there. The question is, how can it be implemented (at least the engineering aspects)?
+This graphical node-link representation is that starting point to formulating a mathematical representation of a system, in which the behaviour of processes (e.g. the relative ratios of their consumed and produced resources), and other system properties can be represented by equations. In other words, it is possible mathematically *model* urban resource management.
 
-EXAMPLES OF RESOURCE MANAGEMENT SYSTEMS
-
-In fact, one does not need to think about energy, water and waste sectors together to come across systems thinking.
-
-- For example, the OWARE model of \citep{Eriksson2002} takes a systems perspective on all the possible sources and uses of waste in a system (such as a city) by combining various sub-models which consider the life-cycle costs associated with incinceration, landfill, recyling , anaerobic digestion and so on.
-- Examples of individual sectors
-- A simple model to optimise the flows in an energy-waste network is proposed by \citet{Kharrazi2012} as an example of an integrated resource network. Nodes represent the producers and consumers of waste and electricity, and links between the nodes are the flows of those resources. A real world application of WtE networks is seen in Greece bringing two-fold benefits: mitigating against landfill shortages and producing renewable energy \citep{Xydis2012}.
+A particular type of modelling is optimisation modelling, in which the optimal configuration of any system can be computed. This is used extensively in urban resource management. Lots of examples are given in Section [TODO: cross-ref to lit review]. For example, to help plan the energy-waste sector, a simple model is proposed by \citet{Kharrazi2012} as an example of an integrated resource network. Nodes represent the producers and consumers of waste and electricity, and links between the nodes are the flows of those resources. A real world application of WtE networks is seen in Greece bringing two-fold benefits: mitigating against landfill shortages and producing renewable energy \citep{Xydis2012}.
 - Example of 'industrial symbiosis'
+<!--
+- For example, the OWARE model of \citep{Eriksson2002} takes a systems perspective on all the possible sources and uses of waste in a system (such as a city) by combining various sub-models which consider the life-cycle costs associated with incinceration, landfill, recyling , anaerobic digestion and so on.
+-->
 
-Comment that this is a good starting point for an integrated model
+The key thing here though is that these models do not consider the different resource management systems together, and thus are not formulated to take advantage of intersectoral synergies. Nevertheless, these (and other) precedent models could be a helpful starting point for the development of an integrated model.
 
 ## Urban metabolism -- the theoretical framework
 
-Thus far, this thesis has considered 
+Thus far, this thesis has considered urbanisation trends, and the challenges and opportunities this raises with respect to resource management. Any discourse on the sustainability of urban resource maangement should interact with the concept of 'urban metabolism' (UM).
 
-Any discourse on the sustainability of urban resource maangement should interact with the concept of 'urban metabolism' (UM).
-
-Closely related to the field of urban sustainability
-
-This will be considered in some detail in Chapter 2.
-By analogy with living organqisms, UM can be seens as an attempt to syunthesis various aspects of urban resource use
-
-Indeed, most of what has been discussed so far [TODO: continue] 
-
-Brings together what could be a fragmented study: Studying urban resource management is potentially a fragmented collection of study areas (where different resources are siloed into separate fields, where consumption is seen in isolation to urban form and functions, where [TODO: etc.]). So it is helpful that a field has grown up which to some extent merges these considerations. Thus UM studies can answer questions like:
+This will be considered in some detail in Chapter 2. Briefly, it makes the analogy with living organisms, that cities consume and produce goods, and this sustains their life: everything from their populations. UM relates resource flows to properties and functions of a city [@Kennedy2011]. This 'metaphorical framework' [@Pincetl2012, p.194] provides the language to analyse relationships between urban resource use and other aspects of a city, such as its form/layout, material stocks, socioeconomic characteristics, political and institutional arrangements [@Hobbes2007], activities and functions etc.
 
 METHODS
 
-Conducting a UM study can be used to understand the processes taking place within it. Such studies imagine the city as an organism (or an ecosystem) and aim to quantify the fluxes of water, energy, waste and other materials into and out of urban populations in order to find the \emph{``sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste''} \citep[p. 44]{Kennedy2008}. It is a broad discipline, and as such individual studies vary in their scope, about the inclusion of particular resources, and whether the study is related to socioeconomic or political concerns (as in \citet{Hobbes2007}). The key features of a UM study are now described.
-
-At its most stripped down, a UM study is a simple accounting exercise, to quantify the energy, water, materials, waste, and other resources [TODO: continue] 
+Clearly, UM is a broad discipline, and studies will vary in their scope. But broadly, studies entail, first quantifying some set of resource flows 
 
 1. The basic \emph{methdology} in a UM study is a 'material flow analysis' (MFA) where resource flows in and out of areas are measured to see where they accumulate \citep{Barles2009}. Inputs included 'domestic extraction' (DE) or `imports' whilst outpus are 'exports', `deliberate disposal' (DD) or 'wastes and emissions' (WE). 
 2. The basic \emph{results} of an UM study are 'indicators' given by operations on these variables. These can be used to compare the metabolism of different locations (or the same location at different times) to assess the relative sustainability of an area\footnote{For example, $\mbox{`material intensity'}=\mbox{Direct material input}/\mbox{GDP}$. This value reduces as a society dematerialises.} \citep{Hobbes2005}. \citet{Haberl2001a, Haberl2001b} show that the indicator 'human appropriation of net primary production' (HANNP), 'domestic consumption' and 'total energy input' divides societies into three categories: hunter-gather, agricultural and industrial. Each of these exhibits qualitatively different metabolic profiles. Hunter-gather communities have no struggle meeting their needs from their environment, however agricultural communities will reach a 'labour' limit where the environment will not be able to meet the needs of those working on it (see Section~\ref{sec:urban_challenges}), because their energetic needs (including that embodied in food and materials) simply cannot be met by the 'biological productivity' of the area---thus even agricultural regimes can be unsustainable. 
 
 EXPLANATORY POWER
+
+Indeed, much of what has been discussed so far can be related to UM, from the growth of an urban area, to 
 
 But UM can be used to provide greater explanatory power. Indeed , most of what has been discussed thus far can be explained with reference to UM. [TODO: give examples] 
 
@@ -532,6 +526,10 @@ But UM can be used to provide greater explanatory power. Indeed , most of what h
 %Associated with the increasing demand is the need to treat the water and prevent contamination. This demand for water in high quantities comes with a financial burden [@Daigger2009]. 
 
 RELATE TO THE CHALLENGE OF THIS THESIS
+
+The way in which UM relates to this thesis
+
+The questions raised
 
 Thus the challenges tackled in this thesis can be framed in these terms. How can a city improve its metabolism? The lit-review will introduce UM in some detail, but for now: [TODO: necessary developments to the field] 
 
@@ -586,6 +584,14 @@ However:
 - sectors
 
 #### Title definition
+
+\begin{description}
+
+\item[Highly integrated] This refers to resource management optimisation models that consider the simultaneous optimisation of more than one system, in order to take advantage of synergies between them (see Section [TODO:]). In this thesis, these will be energy, water, and waste management systems.
+\item[Urban] Of the three definitions of 'urban' given in Section [TODO:], this thesis uses the 'geographic-plus' definition. This not only includes processes within a city's administrative boundaries, but also those upstream. Therefore, management infrastructure need only be close to \emph{each other}, because it is this pheneomenon that facilitates intersectoral synergies. I.e., it does not matter if some of the infrastructure is distant from the point of demand for goods and services.
+\item[Energy, water, and waste] As mentioned in Section [TODO:], these are the three 'lifeline' services which are common to all users in all cities (residential, commercial, and industrial). This does mean some resource-heavy processes maybe missed out. Such as the manufacturing sector (e.g. demands for iron and steel, process industries etc.). This approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of the problem, and makes a manageable piece of work for this thesis.
+\item[Systems] This incorporates everything required by resource management optimisation models, namely the resources and the processes which form a network.
+\end{description}
 
 The notions of systems optimisation models, and urban metabolism have been introduced [TODO:] which leads to the question of this thesis[^research-question]:
 
