@@ -6,7 +6,7 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 ```
 
-# Literature review
+# Urban metabolism and systems optimisation
 
 \epigraph{
 \begin{description}
@@ -18,31 +18,45 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 \end{description}
 }{Extracts of a sketch from \emph{That Mitchell and Webb Look} (BBC Television)}
 
-[TODO: complete]
+\begin{tcolorbox}
 
-[TODO: note the published components of this literature review]
+Parts of this chapter have been adapted from publications: [TODO: complete] 
+
+\end{tcolorbox}
+
+Using modelling to realise opportunities to improve an area's metabolism via intersectoral synergies
 
 The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review has two main purposes: first, to identify the gaps in current research, and so to more precisely define the scope of this thesis; and second, to begin identifying methods which could be adopted in the modelling work.
 
 The two main areas research fields addressed by this theses are urban metabolism (UM), and resource optimisation modelling (ROM). This chapter identifies the key ideas, concepts, principles and methods of these subject areas, beginning in Section [TODO:] showing how UM research has been used to better understand how cities use resources, and notes developments in UM research pertinent to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that optimisation modelling can play a useful role in UM research, before Section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed. Once this survey of the literature has been completed, it is then possible to precisely define the scope [TODO: better word?] of this thesis, which is done by providing definitions of the words which comprise the thesis title, in Section [TODO:]. Finally, Section [TODO:] outlines [TODO: summarises?] the gaps and contributions met by this thesis.
 
-This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+This chapter reviews three areas of literature
 
+First, a general introduction to UM generally, before more specifically tracking the extent to which the role of resource management processes -- which will be shown to be an important consideration in this thesis -- have been considered in UM research.
+
+Second,
+
+Finally
+
+This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
 
 ## The past, present and future of urban metabolism research
 
-In this section, we introduce UM generally, before more specifically tracking the extent to which the role of resource management processes -- which will be shown to be an important consideration in this thesis -- have been considered in UM research.
+UM was introduced in 1965 by the American engineer Abel Wolman introduced. He recognised that resource consumption was necessary to sustain urban living, but wanted to make a close study of this because of his concerns that as cities grew, their rising material and energy inputs and outputs presented challenges for public the management of water supply, sewage disposal and air pollution. In that cause, he coined the phrase 'urban metabolism', defining the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.156, *Scientific American*].
 
-In 1965, the American engineer Abel Wolman introduced 'urban metabolism'. Writing in *Scientific American* he defined the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.156]. He recognised that resource consumption was necessary to sustain urban living, but was motivated to study urban metabolism because of his concerns that as cities grow, their rising material and energy inputs and outputs were causing problems with water supply, sewage disposal and air pollution. At its most basic, an urban metabolism study will quantify the material and/or energy inputs and outputs of any given area -- Wolman did this for a hypothetical city of one million inhabitants [TODO: using government data?].
+As a vehicle to explore the issues of public resource management in cities, Wolman quantified the material and energy inputs and outputs of a hypothetical city of one million inhabitants. This kind of accounting exercise is typically the fundamental starting point of UM studies. [TODO: add note on MFA and EFA]. Note here in Wolman's seminal work, are the two key elements of UM studies: first, the quantification of urban resource flows; second, some assessment of how these flows relate to other aspects of the city -- in Wolman's case, this was the challenges of "public economic" (p.156) decision making.
 
-Since Wolman the UM concept has given rise to more sophisticated studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics, and so more recently @Kennedy2007 has defined UM as "the sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" (p.44). UM research has become closely associated with the notion of 'sustainability' [@Brutland1987], which includes three components as part of its so-called "triple bottom line", namely to maintain economic, social and environmental performance). Consequently, the UM concept has provided tools which help planners and policy makers improve urban sustainability, and is even employed by governments to help [TODO: finish and tidy sentence] (for example, in the United Kingdom, by @Clift2015).
+Since Wolman the UM framework has cultivated a whole field of studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics. A more recent definition of UM which encapsulates the current breadth and depth of the field is given by @Kennedy2007, who defines UM as "the sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" (p.44).
+
+As of 2011, there have been around 20 comprehensive UM studies of cities [@Kennedy2011] [TODO: update this figure in view of Kennedy et al. PNAS paper? More recently, a number of researchers from all over the globe have ]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
+
+Thanks to UM's close association with 'sustainability', the UM concept is helping planners and policy makers understand and address urban sustainability issues, and is even employed by governments seeking sustainability strategies (for example, in the United Kingdom, by @Clift2015).
 
 <!--
 its basic function is to highlight how cities can sustain their developing forms and socioeconomic functions, but with less harmful resource (forms, functions and flows). @Zhang2013's review mainly focuses on the flows ("research on urban metabolism therefore focuses on the sources and consumption of resources, and on their cycling within the system plus the emission, treatment, and recycling of wastes"). 
 -->
 
-
-As of 2011, there have been around 20 comprehensive UM studies of cities [@Kennedy2011] [TODO: update this figure in view of Kennedy et al. PNAS paper? More recently, a number of researchers from all over the globe have ]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
+### Methods
 
 Typically, the methodology to conduct a UM study begins by defining a boundary around an urban area, and then consulting data sources in order to quantify material, energy, water and other resource flows into and out of a city on a yearly basis [@Kennedy2014] (more details on methodology are presented in Section [TODO:]). In practice therefore, a suitable definition of 'urban' is required. Definitions can range from defining an urban area in administrative terms¸ or in terms of population density [TODO: is there a World Bank reference for this?]. However, urban metabolism studies care about resource flows, and from this perspective there are at least three ways to define an urban boundary, suggested by @Ramaswami2011 (from the point of view of quantifying a city's greenhouse gas emissions), and adapted by @Keirstead2012b:
 
