@@ -583,6 +583,15 @@ However:
 - urban
 - sectors
 
+In practice therefore, a suitable definition of 'urban' is required. Definitions can range from defining an urban area in administrative terms¸ or in terms of population density [TODO: is there a World Bank reference for this?]. However, urban metabolism studies care about resource flows, and from this perspective there are at least three ways to define an urban boundary, suggested by @Ramaswami2011 (from the point of view of quantifying a city's greenhouse gas emissions), and adapted by @Keirstead2012b:
+
+- *Pure geographic* defines a boundary as the city's administrative boundaries;
+- *Geographic-plus* extends the pure geographic definition to include readily traceable upstream flows, such as electricity consumption;
+- *Pure consumption* attributes resource flows to the urban economy which generates a demand for a good or service. For example, a service-based city will require products manufactured in an industrial-based city. On the pure consumption definition, these flows would be attributed to the service-based city. This definition therefore attempts to 'even out' disparities between cities which arise from their different functions.
+
+This thesis will adopt the 'geographic-plus' definition, for reasons outlined in Section [TODO:].
+
+
 #### Title definition
 
 \begin{description}
@@ -591,6 +600,15 @@ However:
 \item[Urban] Of the three definitions of 'urban' given in Section [TODO:], this thesis uses the 'geographic-plus' definition. This not only includes processes within a city's administrative boundaries, but also those upstream. Therefore, management infrastructure need only be close to \emph{each other}, because it is this pheneomenon that facilitates intersectoral synergies. I.e., it does not matter if some of the infrastructure is distant from the point of demand for goods and services.
 \item[Energy, water, and waste] As mentioned in Section [TODO:], these are the three 'lifeline' services which are common to all users in all cities (residential, commercial, and industrial). This does mean some resource-heavy processes maybe missed out. Such as the manufacturing sector (e.g. demands for iron and steel, process industries etc.). This approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of the problem, and makes a manageable piece of work for this thesis.
 \item[Systems] This incorporates everything required by resource management optimisation models, namely the resources and the processes which form a network.
+\end{description}
+
+#### Other definitions
+
+\begin{description}
+
+\item[Process] Definition. Thus, unless qualified (e.g. 'economic processes'), 
+\item[Resource] Definition.
+
 \end{description}
 
 The notions of systems optimisation models, and urban metabolism have been introduced [TODO:] which leads to the question of this thesis[^research-question]:
