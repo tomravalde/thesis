@@ -255,7 +255,7 @@ Each of the model types above are to be found in the UM literature. Indeed, the 
 
 [^search]: The full search term is available at \\url{http://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=urban+metabolism+AND+model+OR+modelling&sid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&sot=b&sdt=cl&cluster=scosubjabbr%2c%22MEDI%22%2cf%2c%22BIOC%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22CHEM%22%2cf%2c%22NEUR%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22BUSI%22%2cf%2c%22ARTS%22%2cf%2c%22PSYC%22%2cf%2c%22HEAL%22%2cf%2c%22MULT%22%2cf%2c%22VETE%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&origin=savedSearchNewOnly&txGid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a15}]. This search excludes irrelevant subject areas (such as medicine).
 
-This search returned 239 results which were manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not satisfy the definitions of 'model' as described above. Looking further at the remaining results, each paper was classified according to three three categories: the **type** of model (of the definitions described above); the model's **focus**, which refers to the component(s) of urban metabolism studied by the model; and **level** of detail to which a system is modelled. The following three subsections summarise the variety of models to be found in UM.
+This search returned 239 results which were manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not satisfy the definitions of 'model' as described above. Looking further at the remaining results, each paper was classified according to three three categories: the **type** of model (according to the definitions given above); the model's **focus**, which refers to the component(s) of urban metabolism studied by the model; and **level** of detail to which a system is modelled. The following three subsections summarise the variety of models to be found in UM.
 
 #### Type
 
@@ -273,21 +273,13 @@ Finally, an optimisation model is put forward by \citet{Pederson2013} who use he
 
 #### Focus
 
-UM models have different foci. Here, there are two main subcategoreis to consider: those with a \emphj{resource} focus, and those with a {non-resource} focus. The resource-focussed subcategory is further divided:
+UM models have different foci, which are considered here under two sub-characteristics: models that try to understand more about the **resource** flows of a city, and models which study **non-resource** components of UM.
 
-\begin{itemize}
-\item \emph{single-resource focus}, such as \citet{Zeng2014}, who simulate urban water flows among various facilities and end uses);
-\item \emph{multiple-resource focus}, such as \citet{Liang2011}, who model how various energy and material flows including coal, water, biomass and pollutants, change under proposed policies.
-\item \emph{integrated-resource focus} models which unite multiple resource types under a single value system, such as \citet{Huang2005} who use emergy\footnote{\emph{Emergy} is further explained in Section [TODO:]} to encapsulate various flows including solar energy, rain, and fossil fuels.
-\end{itemize}
+**Resource**-focussed models can study just a \emph{single resource}, as in the case of \citet{Zeng2014}, who formulate mathematical models of water treatment technologies and end uses to simulate the quantity of water and wastewater flows between them. Other models focus on \emph{multiple resources}, such as \citet{Liang2011}, who evaluate how various energy and material flows (including coal, water, biomass and pollutants) change under proposed policies. Finally, some models consider multiple resources but \emph{integrate} them together under a single value system; examples include \citet{Huang2005} who quantify various flows including solar energy, rain and fossil fuels in units of emergy\footnote{\emph{Emergy} in order that all resource flows for a city might be considered together [TODO: check this].
 
-Non-resource foci include the following divisions:
+**Non-resource**-focussed models might look at \emph{urban form}, such as the steel-stock accounting model of \citet{Liang2014} (mentioned above); \emph{socioeconomics}, such as \citet{Newman1999}, (again, mentioned above); and the \emph{environment}, such as \citet{Huang2005} who predicts an area's greenhouse gas emissions according to the construction characteristics of houses in the areas.
 
-\begin{itemize}
-\item \emph{urban form}, such as \citet{Liang2014} (mentioned above) which quantifies a city's steel stock.
-\item \emph{socioeconomics}, such as \citet{Newman1999}, (mentioned above) who suggest UM studies should consider livability along with metabolic flows
-\item \emph{environment}, such as \citet{Ye2011} who  models which unite multiple resource types under a single value system, such as \citet{Huang2005} who considers the greenhouse gas emissions of an area as predicted by household construction characteristics.
-\end{itemize}
+\end{description}
 
 #### Level
 
