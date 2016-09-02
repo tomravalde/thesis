@@ -577,6 +577,10 @@ There are many fascinating aspects to cities, some of which touch on the themes 
 - system operation
 - livability (i.e. the conceptual model of metabolism)
 - interfacing with other tools
+- details about the optimisation mathematics
+- value judgements on system objectives
+- economics
+- consumer behaviour (e.g. rebound effects)
 
 However:
 
