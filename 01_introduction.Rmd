@@ -572,10 +572,15 @@ This introduction has not attempted to be systematic in identifying all the chal
 
 There are many fascinating aspects to cities, some of which touch on the themes already introduced. Some of these ideas are somewhat broad, and some terms used can have vague, unbounded meanings (such as 'resources', 'processes' and 'sector', amongst others). Thus this section defines the boundaries of the research, in order to be able to precisely define a research question.
 
-- institutional and creative forces
+- institutional and creative forces/real-world practicalities
 - socioeconomic/political/agent-based (transfer to the real-world)
 - system operation
-- livability
+- livability (i.e. the conceptual model of metabolism)
+- interfacing with other tools
+- details about the optimisation mathematics
+- value judgements on system objectives
+- economics
+- consumer behaviour (e.g. rebound effects)
 
 However:
 
