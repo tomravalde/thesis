@@ -13,9 +13,15 @@ This thesis builds on the premise that cities should supply goods and services m
 
 In the literature review, we saw that model formulations could vary in their generality. This chapter explores this notion more closely, in particular relating generality to other aspects of modelling, such as fidelity, tractability and usability. We do this by proposing three different formulations of the model (two linear, and one nonlinear), in order to compare them for various aspects, by applying them to a small case study. This case study is Tat Hamlet, for which the metabolism has previously been studied. We hope that our formulation will mark just the beginning of researchers using optimisation modelling for urban metabolism studies, and to that end, we hope that our Tat Hamlet case study will become a 'benchmarking problem' that will be used by others to further 
 
-This chapter begins by taking a theoretical look at the issues of generality, fidelity, tractability, and usability, before introducing the case study, and then finally deriving, applying, and comparing formulations for our benchmarking problem.
+This chapter begins by taking a theoretical look at the issues related to model formulations, namely *generality*, *fidelity*, *tractability*, and *usability*, before introducing the case study, and then finally deriving, applying, and comparing formulations for our benchmarking problem.
+
+## Types of formulation
+
+[TODO: Move in content on linear/nonlinear formulations here?]
 
 ## Tradeoffs in mathematical programming
+
+Related to formulation type [TODO: continue] 
 
 When we introduced modelling in the literature review, we were careful to not overstate the capabilities of a model. Rather, we noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising this helps us set right expectations for the ambitions of our model, and where we can afford to sacrifice fidelity ("how well [models] describe reality, and the quality of the results obtained") which will
 for other important attributes such as tractability ("how amenable the model is to optimization technques") which are necessary trade-offs in modelling [@McIntosh2012, p2]. @McIntosh2012 also notes that increased fidelity means not only does optimization modelling become more difficult, but so does formalizing the model itself. Thus we can say that all models will fit somewhere on a curve of fidelity measured against usability and tractability (FUT), as in Figure \ref{fig:FUT}.
