@@ -201,7 +201,7 @@ The literature review above surveyed UM research to highlight the different ways
 
 This section seeks to move this idea forward by considering the role modelling can play. First, the concept of modelling generally is introduced, before taking a systematic look at modelling within urban metabolism.
 
-### Modelling: an introduction
+### An introduction to modelling
 
 Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new model to the urban metabolism field.
 
@@ -249,7 +249,13 @@ The equations of simulation and optimisation models represent the physics of a s
 
 Simulation and optimisation models need to be based on descriptive models: what a descriptive model visualises, a mathematical model can formalise into mathematics, with the relationship between system components being expressed mathematically. A descriptive model has already in fact been proposed in this chapter, namely the hierarchical framework of Figure \ref{fig:metab}. The object of modelling in this work is to optimise the system -- the network of processes and resources -- for any given sets of demands and available resources
 
-### Modelling within UM
+### Model fideility, generality, usability and tractability
+
+[TODO: Move content to here from Model Development chapter?]
+
+All of the above will impact upon the formulation of a model, and how it can be applied [TODO: complete].
+
+### An overview of urban metabolism models
 
 Each of the model types above are to be found in the UM literature. Indeed, the idea of 'metabolism' is itself a descriptive model, i.e. the concept of 'metabolism' has inherent to it the fact that resource flows relate to an entity's form and function. To show where this thesis can fit within the UM modelling landscape, this section reviews the literature found by exploring the Scopus database using the search term `urban metabolism AND model OR modelling`[^search]. 
 
@@ -278,8 +284,6 @@ UM models have different foci, which are considered here under two sub-character
 **Resource**-focussed models can study just a \emph{single resource}, as in the case of \citet{Zeng2014}, who formulate mathematical models of water treatment technologies and end uses to simulate the quantity of water and wastewater flows between them. Other models focus on \emph{multiple resources}, such as \citet{Liang2011}, who evaluate how various energy and material flows (including coal, water, biomass and pollutants) change under proposed policies. Finally, some models consider multiple resources but \emph{integrate} them together under a single value system; examples include \citet{Huang2005} who quantify various flows including solar energy, rain and fossil fuels in units of emergy\footnote{\emph{Emergy} in order that all resource flows for a city might be considered together [TODO: check this].
 
 **Non-resource**-focussed models might look at \emph{urban form}, such as the steel-stock accounting model of \citet{Liang2014} (mentioned above); \emph{socioeconomics}, such as \citet{Newman1999}, (again, mentioned above); and the \emph{environment}, such as \citet{Huang2005} who predicts an area's greenhouse gas emissions according to the construction characteristics of houses in the areas.
-
-\end{description}
 
 #### Level
 
@@ -390,7 +394,7 @@ So far, this chapter has introduced UM as a research area that can support urban
 
 [^ROM]: Note that 'resource management optimisation modelling' is not a subject area which has a formal definition (unlike say, 'urban energy systems modelling' [TODO: cite @Keirstead review paper definition], rather it is used here to refer generally to optimisation models which are used to assist system managers improve the management of an energy or material resource for which they are responsible, and can incorporate everything from the efficient production of a single resource in some component of a plant [TODO: cite example], up to global strategies to manage [TODO: cite example, e.g. biomass].
 
-### An introduction to the resource optimisation modelling literature
+### An introduction to the literature
 
 Optimisation modelling (or mathematical programming) is generally used in to help planners and policy makers determine the design and operation of the infrastructure which extracts, refines, converts, and transports resources. Often these optimisation models take the form of a 'minimum cost network flow' problems [@Williams1999, p81], in which a set of equations are then solved to select an mix, layout, and operation schedule for resource management infrastructure, e.g. to maximise profit or minimise emissions.
 
@@ -409,7 +413,7 @@ Optimisation models also are used to help plan urban water supply networks. For 
 
 Finally, there are a number of waste management planning models such as @Guo2009 and @Li2006. These models allocate waste flows from their point of generation to various management facilities, to inform longterm decisions. (i.e. investment choices and capacity requirements) [TODO: Add note on the two-stage methodologies].
 
-### An overview of the resource optimisation modelling literature
+### An overview of the literature
 
 The energy, water and waste models introduced above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation models more generally, a quasi-systematic literature review can help to identify trends and patterns in how model formulations vary according to purpose. This will help to confirm gaps in the literature which can be met by this thesis, as well as precedent methods which can be used in this thesis. The first stage of the review is to use the Scopus tool to search for relevant literature, using the search term `energy AND water AND waste AND optimization model`, and excluding irrelevant subject areas (such as psychology) from the search [^search-res-models]. 
 
@@ -631,20 +635,25 @@ Across the different models, with their varying purposes, we could identify thei
 
 [^sys-review]: This modelling review procedure to identify modelling challenges and opportunities, has similarities with those used elsewhere -- see for example the review of urban energy systems models in @Keirstead2012b.
 
-\begin{description}
-\item[Detail] Some optimisation models are used in research, or the early exploratory stages of a system design, whereas other models are used to generate the precision required to design and operate a real-world system. These models tend to differ in terms of the detail to which they design a model. (Note: this is not the same as spatial or temporal scale, though it maybe more likely that models that consider smaller geographical areas and/or shorter time horizons can be more detailed.)
+#### Detail
+
+Some optimisation models are used in research, or the early exploratory stages of a system design, whereas other models are used to generate the precision required to design and operate a real-world system. These models tend to differ in terms of the detail to which they design a model. (Note: this is not the same as spatial or temporal scale, though it maybe more likely that models that consider smaller geographical areas and/or shorter time horizons can be more detailed.)
 
 The most detailed models make 'low-level' decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], and biomass moisture content in a gasification plant [TODO: cite Synthesis and thermo-economic design optimization of wood-gasifier-SOFC systems for small scale applications]. [TODO: note the biomass superstructure models for high-level.]
 
 At the high-level, the design considers a system's superstructure, representing a system as a network of resource sinks and sources, and their connections between them. Often, their job is to identify optimal resource transfers between sinks and sources, to meet some goal. They may optimise a spatial layout (the location of, and distance between sinks and sources), but they do not go into the precision of detailed design. Examples include @Keirstead2012's urban energy system (introduced in Section [TODO:], above), the urban water system models of @Lim2010 and @Makropoulos2008, whose models maximise opportunities for wastewater reuse, by identifying urban sinks and sources of waters of various different contamination levels, and optimising how they might be connected.
 
-\item[Methods] Solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), which are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet].
+#### Methods
+
+Solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), which are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet].
 
 Nonlinear formulations are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.}, especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet].
 
 Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
 
-\item[Integration] Thirdly, resource management optimisation models can vary in the extent to which they integrate different resource management systems. Here, we define three levels, each of which indicates to what extent a model considers intersectoral synergies is part of the optimisation (diagramatically represented in Figure \ref{fig:integn-levels}).
+#### Integration
+
+Thirdly, resource management optimisation models can vary in the extent to which they integrate different resource management systems. Here, we define three levels, each of which indicates to what extent a model considers intersectoral synergies is part of the optimisation (diagramatically represented in Figure \ref{fig:integn-levels}).
 
 \begin{figure}
   \centering
@@ -653,16 +662,13 @@ Nonlinear problems can be solved using the nonlinear programming methods [TODO: 
   \label{fig:integn-levels}
 \end{figure}
 
-\begin{itemize}
-\item \textbf{No integration.} These models consider just one resource system, such as the urban energy systems model of \citet{Keirstead2012}, or the urban water network model of \citet{@Keedwell2006}.
-\item \textbf{Integrated.} These models will optimise for one resource, but while considering other systems [TODO: examples]. While these models may identify synergetic opportunities, this is not their main purpose.
-\item \textbf{Highly integrated.} These models try to simultaneously meet the demands for more than one resource management system. These models have as their main purpose, the optimisation of synergies between different resource management systems. Examples include [TODO: cite examples from IE]. 
-
-\end{itemize}
+\begin{description}
+\item \item{No integration.} These models consider just one resource system, such as the urban energy systems model of \citet{Keirstead2012}, or the urban water network model of \citet{@Keedwell2006}.
+\item \item{Integrated.} These models will optimise for one resource, but while considering other systems [TODO: examples]. While these models may identify synergetic opportunities, this is not their main purpose.
+\item \item{Highly integrated.} These models try to simultaneously meet the demands for more than one resource management system. These models have as their main purpose, the optimisation of synergies between different resource management systems. Examples include [TODO: cite examples from IE]. 
+\end{description}
 
 The resource management optimisation models in our filtered list have been classified according to their level of integraion, and Figure \ref{fig:model-integration} plots each model as a point, located according to its scale and integration.
-
-\end{description}
 
 ```{r model-lit-review-categMatchPlot, fig.height=5, fig.cap="Model integration levels.\\label{fig:model-integration}"}
 
@@ -758,7 +764,7 @@ Moving to the detail category, when considering multiple resource system types, 
 
 Finally, with regards to method, the choice between linear and nonlinear formulations will be weighed up in Section [TODO:]
 
-## Summary of gaps in the literature and the contribution this thesis can make
+## Summary and conclusion
 
 As the Introduction in Chapter 1 argued, cities provide an opportunity to deliver goods and services more efficiently, if only they were to take advantage of the synergies possible between energy, water and waste management systems. In order to move towards such a goal, this chapter has reviewed two research areas which consider how cities can use resources more efficiently.
 
