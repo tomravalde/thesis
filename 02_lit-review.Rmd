@@ -635,6 +635,10 @@ Across the different models, with their varying purposes, we could identify thei
 
 [^sys-review]: This modelling review procedure to identify modelling challenges and opportunities, has similarities with those used elsewhere -- see for example the review of urban energy systems models in @Keirstead2012b.
 
+#### Scale
+
+[TODO: Add subsection on scale?]
+
 #### Detail
 
 Some optimisation models are used in research, or the early exploratory stages of a system design, whereas other models are used to generate the precision required to design and operate a real-world system. These models tend to differ in terms of the detail to which they design a model. (Note: this is not the same as spatial or temporal scale, though it maybe more likely that models that consider smaller geographical areas and/or shorter time horizons can be more detailed.)
@@ -642,14 +646,6 @@ Some optimisation models are used in research, or the early exploratory stages o
 The most detailed models make 'low-level' decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], and biomass moisture content in a gasification plant [TODO: cite Synthesis and thermo-economic design optimization of wood-gasifier-SOFC systems for small scale applications]. [TODO: note the biomass superstructure models for high-level.]
 
 At the high-level, the design considers a system's superstructure, representing a system as a network of resource sinks and sources, and their connections between them. Often, their job is to identify optimal resource transfers between sinks and sources, to meet some goal. They may optimise a spatial layout (the location of, and distance between sinks and sources), but they do not go into the precision of detailed design. Examples include @Keirstead2012's urban energy system (introduced in Section [TODO:], above), the urban water system models of @Lim2010 and @Makropoulos2008, whose models maximise opportunities for wastewater reuse, by identifying urban sinks and sources of waters of various different contamination levels, and optimising how they might be connected.
-
-#### Methods
-
-Solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), which are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet].
-
-Nonlinear formulations are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.}, especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet].
-
-Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
 
 #### Integration
 
