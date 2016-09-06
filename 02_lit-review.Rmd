@@ -249,12 +249,6 @@ The equations of simulation and optimisation models represent the physics of a s
 
 Simulation and optimisation models need to be based on descriptive models: what a descriptive model visualises, a mathematical model can formalise into mathematics, with the relationship between system components being expressed mathematically. A descriptive model has already in fact been proposed in this chapter, namely the hierarchical framework of Figure \ref{fig:metab}. The object of modelling in this work is to optimise the system -- the network of processes and resources -- for any given sets of demands and available resources
 
-### Model fideility, generality, usability and tractability
-
-[TODO: Move content to here from Model Development chapter?]
-
-All of the above will impact upon the formulation of a model, and how it can be applied [TODO: complete].
-
 ### An overview of urban metabolism models
 
 Each of the model types above are to be found in the UM literature. Indeed, the idea of 'metabolism' is itself a descriptive model, i.e. the concept of 'metabolism' has inherent to it the fact that resource flows relate to an entity's form and function. To show where this thesis can fit within the UM modelling landscape, this section reviews the literature found by exploring the Scopus database using the search term `urban metabolism AND model OR modelling`[^search]. 
@@ -640,6 +634,8 @@ Across the different models, with their varying purposes, we could identify thei
 [TODO: Add subsection on scale?]
 
 #### Detail
+
+[TODO: Add detail aesthetic to the plot?]
 
 Some optimisation models are used in research, or the early exploratory stages of a system design, whereas other models are used to generate the precision required to design and operate a real-world system. These models tend to differ in terms of the detail to which they design a model. (Note: this is not the same as spatial or temporal scale, though it maybe more likely that models that consider smaller geographical areas and/or shorter time horizons can be more detailed.)
 
