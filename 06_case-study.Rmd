@@ -1,5 +1,12 @@
 # Case study: a Chinese urban development
 
+\begin{tcolorbox}
+
+An early version of the work in this chapter was published as: 
+Tom Ravalde, James Keirstead, Integrated Resource Planning for a Chinese Urban Development, \emph{International Symposium for Next Generation Infrastrucutre Conference Proceedings}, doi: \url{http://discovery.ucl.ac.uk/1469209/}.
+
+\end{tcolorbox}
+
 [TODO: complete] 
 
 [TODO: Add note on published aspects of this work (e.g. conference paper)?]
