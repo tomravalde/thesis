@@ -1,0 +1,84 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'assemble-model.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{391.68717813bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.21101539)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{assemble-model.pdf}}%
+    \put(0.04179253,1.14675594){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Data}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{assemble-model.pdf}}%
+    \put(0.23378248,0.40943286){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Models} (\texttt{GAMS})}}}%
+    \put(0.23284515,0.59314871){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{R code}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{assemble-model.pdf}}%
+    \put(0.04179253,1.08548253){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Libraries (\texttt{YAML})}}}%
+    \put(0.04179253,1.05484583){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.04179253,1.0752703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24509355\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{assemble-model.pdf}}%
+    \put(0.04150557,0.891889){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Definitional (\texttt{CSV})}}}%
+    \put(0.04150556,0.88167678){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24509355\unitlength}\raggedright \footnotesize{Data which defines the model layout}\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{assemble-model.pdf}}%
+    \put(0.32947191,0.32080314){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Null}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{assemble-model.pdf}}%
+    \put(0.31756429,0.2151685){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{PRaQ}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{assemble-model.pdf}}%
+    \put(0.28383849,0.10955207){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Nonlinear}}}%
+    \put(0.04179253,1.0752703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25530578\unitlength}\raggedright \footnotesize{Data which defines the resources and processes}\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{assemble-model.pdf}}%
+    \put(0.42168753,1.14879839){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Formulation} (\texttt{GAMS})}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{assemble-model.pdf}}%
+    \put(0.51737696,0.98664061){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Null}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{assemble-model.pdf}}%
+    \put(0.50546934,0.88917576){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{PRaQ}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{assemble-model.pdf}}%
+    \put(0.47174355,0.79172911){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Nonlinear}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{assemble-model.pdf}}%
+    \put(0.45258813,1.08764745){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Non-specific}}}%
+    \put(0.30731054,1.1978171){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.4901871\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{assemble-model.pdf}}%
+  \end{picture}%
+\endgroup%

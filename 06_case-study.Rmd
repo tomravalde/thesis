@@ -73,6 +73,8 @@ Some proposed system design have been simulated (for example using the TRNSYS[^t
 
 This chapter proceeds by adapting the information from SCP documentation, to construct the model (for example identifying zones, interzonal links, and resource demands). Following this, Section [TODO: subsection number] introduces several scenarios which the model can test. These scenarios will all use the same demand patterns specified in the SPC documentation, but use different objectives, and have different sets of processes available. This will allow investigation of both currently proposed system designs, as well as others. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further.
 
+Like with the benchmark study (Chapter 5), architecture of the code separates the data and formulation. Everything required to run each scenario is available online, along with the results of the modelling [TODO: provide GitHub link].
+
 <!--
 - [SCP-4, slide 17: water, waste and energy jigsawed together]
 - [SCP-4, slide 19: Energy island with CHP, CCHP and sewage source heatpump 
@@ -124,7 +126,7 @@ plot_demand
 
 ### Site layout
 
-Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $Z=12$. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
+Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $|Z|=12$. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
 
 [TODO: insert a figure which is a zonal representation of the site, marked with interzonal distances.]
 
@@ -132,7 +134,7 @@ Thus to define the site layout, we first assume which pairings belong to set $nb
 
 [^road-cost]: As discussed in Section [TODO:], this means that roads have no financial cost in the model, whereas pipes and cables will.
 
-We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $NB=12$. With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO: 0.5] km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}.
+We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $|nb|=12$. With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO: 0.5] km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}.
 
 [TODO: insert a photo of me with a ruler, doing the measurements!]
 
@@ -178,9 +180,9 @@ school,reserved
 
 ### Times
 
-The SPC [demand] provides values of energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $T=3$, representing the winter, summer, and shoulder seasons. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
+The SPC [demand] provides values of energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
 
-Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $T=3 \times 2 = 6$), which could further be divided into hourly demands (thus $T=3 \times 2 \times 24 = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns. However, the choice of seasonal timesteps has at least three reasons. The pragmatic reason, is that this is how the SPC documentation defines the energy demands. The philosophical [TODO: better word? modelling judgement] reason is that seasonal time slices are appropriate to the exploratory early-stage planning purposes of this model [TODO: cite examples of similar models, e.g. MARKAL etc.] . Finer resolution would be appropriate the further along the design process the modelling is. However, modelling judgement is also the reason why it is inappropriate to aggregate the demand up to a coarser scale (i.e. a year). In such a case, a yearly averaged value of head (to take one example) would overdesign the summer system operation, while undersizing the winter system operation, potentially resulting in a suboptimal system design [TODO: clarify this]. Finally, there is a computational reason. As shown in Chapter 4, if $T$ doubles, the number of variables increases by [TODO:], leading to an estimated [TODO: X-fold] increase in computation time. [TODO: note on heirarchical time discretisation, for a more tractable approach, to be explored in future.] These latter two points interact, as the further along the planning process (from explanation to detailed design), it is justifiable to expend more effort (including computational resources), thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (the location of a particular conversion process, whilst its size remains unknown, for example), thus reducing the number of variables in the model, and thereby making some efficiency savings to the computations.
+Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $|T|=3 \mbox{ seasons} \times 2 \mbox{ day types}= 6$), which could further be divided into hourly demands (thus $T=3 \mbox{ seasons} \times 2 \mbox{ day types} \times 24 \mbox{ hours} = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns. However, the choice of seasonal timesteps has at least three reasons. The pragmatic reason, is that this is how the SPC documentation defines the energy demands. The philosophical [TODO: better word? modelling judgement] reason is that seasonal time slices are appropriate to the exploratory early-stage planning purposes of this model [TODO: cite examples of similar models, e.g. MARKAL etc.] . Finer resolution would be appropriate the further along the design process the modelling is. However, modelling judgement is also the reason why it is inappropriate to aggregate the demand up to a coarser scale (i.e. a year). In such a case, a yearly averaged value of head (to take one example) would overdesign the summer system operation, while undersizing the winter system operation, potentially resulting in a suboptimal system design [TODO: clarify this]. Finally, there is a computational reason. As shown in Chapter 4, if $|T|$ doubles, the number of variables increases by [TODO:], leading to an estimated [TODO: X-fold] increase in computation time. [TODO: note on heirarchical time discretisation, for a more tractable approach, to be explored in future.] These latter two points interact, as the further along the planning process (from explanation to detailed design), it is justifiable to expend more effort (including computational resources), thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (the location of a particular conversion process, whilst its size remains unknown, for example), thus reducing the number of variables in the model, and thereby making some efficiency savings to the computations.
 
 With this set of times chosen, the length of each timestep is defined as parameter $span(T)$ with the winter, summer, and shoulder seasons having spans of 90 days, 90 days, and 180 days respectively.
 
@@ -299,9 +301,13 @@ OTHER SCENARIO VARIATIONS
 - min cost/targets of individual sectors (energy, water, waste), or differently weight them?
 -->
 
-## Results (and discussion)
+### Results
 
 The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims. This section will first present each scenario's 'headline results' (costs, emissions, waste output and water consumption), before giving more detailed views of each scenario (the network of processes, and the schedule of resource imports and exports).
+
+There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
+
+#### Headline results
 
 The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
 
@@ -309,9 +315,40 @@ The headline results are given in Figure [TODO: insert figure and cross-ref]. [T
 
 headlines <- read.csv("06_case-study/headlines.csv")
 
+## Presentation scenario names
+headlines$scenario <- as.character(headlines$scenario)
+headlines[headlines$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
+headlines[headlines$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
+headlines[headlines$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
+headlines[headlines$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
+headlines[headlines$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
+headlines[headlines$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
+headlines[headlines$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
+headlines[headlines$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
+
+## Order the scenario names
+headlines <- transform(headlines,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+## Presentation costs
+headlines$metrics <- as.character(headlines$metrics)
+headlines[headlines$metrics=="headline_cost", "metrics"] <- "Cost [USD]"
+headlines[headlines$metrics=="headline_emissions", "metrics"] <- "Emissions [kg/year]"
+headlines[headlines$metrics=="headline_waste", "metrics"] <- "Waste [kg/year]"
+headlines[headlines$metrics=="headline_water", "metrics"] <- "Water [kg/year]"
+
 
 plot_headlines <- ggplot(headlines, aes(scenario, values)) +
-  geom_point(aes(colour=metrics)) +
+  geom_point() +
   facet_wrap(~metrics, ncol=1, scales="free_y") +
   theme_bw() +
   theme(axis.text.x = element_text(hjust=1, angle=30))
@@ -321,7 +358,11 @@ plot_headlines
 - First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
 - Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
 
+#### Metabolic inputs and outputs 
+
 Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
+
+#### The system middles
 
 Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
 
@@ -387,19 +428,9 @@ The number of technologies used by a scenario increases as more are available, s
 [TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
 [TODO: comment on coversion/transportation mix effect on (capital) costs?]
 
-There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
+#### Exergy analysis
 
-### Costs
-
-Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. capital costs and imports).
-
-### Emissions
-
-Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
-
-### Metabolic inputs and outputs
-
-Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
+#### Ecological network analysis
 
 ## (Discussion and) Conclusions
 <!--

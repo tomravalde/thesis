@@ -1257,31 +1257,28 @@ In addition, the boundaries on the imports and exports and the objective functio
 
 E.g. table of shared characteristics, equations, differences
 
-## Implementation
+## Implementation as code
 
-The model is encoded using the specialist GAMS language, and uses the CPLEX solver to solve. The model has two components, namely the **formulation**, which includes the abstracted mathematics, and other GAMS-specific parameters (such as the length of time a model should run for); and the **data**, i.e. the parameter values (site layout, resource demands, process behaviour etc.).
-
-The data are separated into two types. *Library* data defines the properties of resources (i.e. their quality attributes) and processes (i.e. their $k$ coefficients and maximum processes rates $F$); this data is defined in YAML format. *Model-definition* data defines everything else, including the site's spatial layout, the resource demands, and restrictions on imports and exports; this is all defined in CSV format. Both CSV and YAML data formats are chosen for their human-readability, their ease of editing, their ability to be read by programming languages, and the fact that as plain-text, they can be version-controlled.
-
-These two components of data and formulation are kept strictly separate. To build a model, the requisite set of data needs to be combined with the correct aspects of the formulation in the correct order. For example, a case study may decide to consider just a limited set of conversion technologies, and might choose a minimum cost objective (rather than a minimum emissions objective, for example). Combining the data and formulation, is performed by a  script (written using the R programming language), which can specify the data and formulation-elements required, and write the GAMS script. This architecture is visualised in Figure \ref{fig:assemble-model}.
-
-This approach to implementation means its easy to generate new models, just by changing or adding to the CSV or YAML data. It also means that data used in multiple models need only be defined once, and relatedly, makes it possible to use the same data with different formulations. Finally, this 'modular' implementation makes it easy to modify or extend the formulation, and apply to multiple cases.
-
-These properties serve not just the practical convenience for a modeller, but make help establish this model as a benchmarking study by making it as straightforward as possible to test new formulations on the same case study, and to compare them with other formulations. All the data and code to run these models, as well as the results of the Tat Hamlet study (below) are freely available online at \url{https://github.com/tomravalde/model-development-code}.
+As for implementation, our model requires both its equations to be encoded in a programming language which can be solved using MILP solvers (such as CPLEX or Gurobi), and the parameter data which defines the demands, process-behaviour and other constraints. These two elements are kept separate, making it convenient to generate different models for convenience. The data are stored in CSV and YAML text files, both of which are chosen for their human-readability and their ease of editing:
 
 \begin{figure}
 	\centering
 	\sffamily
-	\resizebox{0.5\columnwidth}{!}{\input{05_model-development/assemble-model.pdf_tex}}
-	\caption{Schematic for assembling the benchmark models for the Tat Hamlet case study.}
-	\label{fig:assemble-model}
+	\resizebox{\columnwidth}{!}{\input{05_model-development/implementation.pdf_tex}}
+	\caption{TODO: Caption.}
+	\label{fig:implementation}
 \end{figure}
+
+- CSV files specify any data with a spatial element, including the layout, the demands, import/export limits, etc. These have the advantage of being editable using spreadsheet software.
+- YAML[^yaml] files define both resources and processes [TODO: further detail] in a human-readable format. This format allows data to be stored heirarchichally (i.e. nested like sub-items and sub-sub items in an itemized list).
+
+[^yaml]: "YAML ain't a markup language". This format is more human-readable than other heirarchical data storage formats approaches such as XML and JSON.
+
+To define a particular model instance, a configuration YAML specifies which YAML and CSV files), and R code then writes a GAMS script which combines the data with the code.
 
 ## Applying formulations to Tat Hamlet
 
-Having formulated three alternative mathematical programming models which optimise the management of energy, water and waste resources, we now will apply each model to our benchmark problem of the Tat case study. This enables us to compare how each model performs, in relation to the tradeoffs we introduced in the Background section (generality, fidelity, usability and tractability).
-
-Our method will be to build up the Tat network one conversion process at a time (starting with the just the dam) -- introducing resources necessary to each demand set of processes, and transport processes used by these resources -- until the network in figure [TODO: cross-ref] is built. Each network is run, and quantitative information extracted, thus model characteristics and behaviour can be observed as the number of processes increases. The order in which the network is built up is given in Table [TODO: cross-ref table] (which also presents the results of the characteristic analysis), with diagrams of the networks provided in Appendix [TODO: cross-ref]. We applied a time limit of 1,000 seconds to the length of time a model can be run for[^time-limit].
+Having formulated three alternative mathematical programming models which optimise the management of energy, water and waste resources, we now will apply each model to our benchmark problem of the Tat case study. This enables us to compare how each model performs, in relation to the tradeoffs we introduced in the Background section (generality, fidelity, usability and tractability). Our method will be to build up the Tat network one conversion process at a time (starting with the just the dam) -- introducing resources necessary to each demand set of processes, and transport processes used by these resources -- until the network in figure [TODO: cross-ref] is built. Each network is run, and quantitative information extracted, thus model characteristics and behaviour can be observed as the number of processes increases. The order in which the network is built up is given in Table [TODO: cross-ref table] (which also presents the results of the characteristic analysis), with diagrams of the networks provided in Appendix [TODO: cross-ref]. We applied a time limit of 1,000 seconds to the length of time a model can be run for[^time-limit].
 
 [^time-limit]: In GAMS, this is specified with the resource limit option, i.e. `option reslim=1000`.
 
