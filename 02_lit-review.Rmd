@@ -390,11 +390,11 @@ So far, this chapter has introduced UM as a research area that can support urban
 
 [^ROM]: Note that 'resource management optimisation modelling' is not a subject area which has a formal definition (unlike say, 'urban energy systems modelling' [TODO: cite @Keirstead review paper definition], rather it is used here to refer generally to optimisation models which are used to assist system managers improve the management of an energy or material resource for which they are responsible, and can incorporate everything from the efficient production of a single resource in some component of a plant [TODO: cite example], up to global strategies to manage [TODO: cite example, e.g. biomass].
 
+All the various types of models are used to (defined in Section [TODO:]) are all to be found in resource optimisation modelling. Concrete models are often used to find the optimal paramters and conditions for running some process (e.g. anaerobic digestion) -- these are in the form of laboratory experiments or scaled-down versions of a plant. These concrete models can be coupled with statistical techniques to help find the most optimal
+
+In other times, the processes under study are represented mathematically. In simulations, variables can be changed, to investigate the effect on resource yield or some other objective related to resource management. In optimisation modelling, planners and policy makers are helped to determine the design and operation of the infrastructure which extracts, refines, converts, and transports resources. Often these optimisation models take the form of a 'minimum cost network flow' problems [@Williams1999, p81], in which a set of equations are then solved to select an mix, layout, and operation schedule for resource management infrastructure, e.g. to maximise profit or minimise emissions.
+
 ### An introduction to the literature
-
-[TODO: Note on how this covers models more generally than mathematical optimisation]
-
-Optimisation modelling (or mathematical programming) is generally used in to help planners and policy makers determine the design and operation of the infrastructure which extracts, refines, converts, and transports resources. Often these optimisation models take the form of a 'minimum cost network flow' problems [@Williams1999, p81], in which a set of equations are then solved to select an mix, layout, and operation schedule for resource management infrastructure, e.g. to maximise profit or minimise emissions.
 
 The most famous resource management models are arguably the models used to design energy systems at the national scale, such as MARKAL which attempts to plan an energy system, considering resource availability, infrastructural capabilities, technological possibilities, as taxation and policy regimes [TODO: https://www.ucl.ac.uk/energy-models/models/uk-markal]. It is used by governments, NGOs, and researchers around the world to help propose and plan energy strategies [TODO: https://www.epa.gov/air-research/epaus9r-energy-systems-database-use-market-allocation-markal-model].
 
@@ -635,7 +635,7 @@ Across the different models, with their varying purposes, we could identify thei
 
 #### Scale
 
-[TODO: Add subsection on scale?]
+There are various scales at which resource management is optimised, ranging from a component in a plant [TODO: reference] to thinking about how resources should be managed at the global level [TODO:reference]. The majority of the literature concerns how to optimally use resources within a plant (such as a power plant, chemical plant ore refinery), however, there are still a significant presence of models which consider multiple facilities, within EIPs, cities and regions.
 
 #### Level
 
@@ -664,7 +664,9 @@ Some models have *no integration* These models consider just one resource system
 
 #### Summary
 
-The resource management optimisation models in our filtered list have been classified according to their level of integration, and Figure \ref{fig:model-integration} plots each model as a point, located according to its scale and integration.
+The resource management optimisation models in our filtered list have been classified according to their level of integration, and Figure \ref{fig:model-integration} plots each model as a point, located according to its scale, integration, and level. (The points are also coloured according to the modelling technique they use.)
+
+The plot shows that in general, smaller-scale systems are modelled are interested in just a single resource, and the system is modelled in greater detail. These models are more likely to be experimental. Larger systems are more likely to consider multiple resources in a (highly) integrated fashion, and none of these models go into design detail (all are either medium- or high-level). For these models, mathematical optimisation is the majority method.
 
 ```{r model-lit-review-categMatchPlot, fig.height=7, fig.cap="Overview of the resource management optimisation literature, with each point representing a reference. Random noise (known as 'jittering') is used to position each point to prevent overplotting of these discrete ordinal data \\citep{Wicklin2011}.\\label{fig:model-integration}"}
 
@@ -764,18 +766,19 @@ plot_lit_int.scale
 
 [TODO: note this reference "Optimization methods applied to the design of eco-industrial parks: A literature review" (review of literature (methods) where EIP's engage in the exchange of energy/materials/water (similar to our paper). Conclusions could be interesting).]
 
-Having described how resource optimisation models can be classified by their detail, methods, and integration level, it is now possible to propose where the model formulated in this thesis fits in to these categories. First with respect to the level of integration, this thesis will propose a highly integrated model. Presently, these are rare in the literature, and are rarer still at the urban scale where models tend to only consider one resource sector in isolation (e.g. an urban energy system), or the integration of energy or water systems into other systems. The search only captured two models classed as highly integrated, both of which integrate urban water and wastewater systems, to minimise freshwater consumption. Thus current optimisation models use to help plan urban resource management systems impose a ceiling on potential material and energy savings, by not considering energy, water and waste systems in combination.
+Highly integrated models (the focus of this thesis) are still the least common form, especially so at the city scale where models tend to only consider one resource sector in isolation (e.g. an urban energy system), or the integration of energy or water systems into other systems. The two highly integrated models captured by the search both consider how water and wastewater systems can work together to minimise freshwater consumption.
 
-There are however a few highly integrated models, which attempt to take advantage of the co-location of various resource management infrastructure, to use synergies between different systems [TODO: reference], where the wastes and by-products of one process become the inputs to another, for example for refineries, where the co-functioning of energy, water systems used in chemical production is simultaneously optimised [TODO: cite example]. The highly integrated models closest to the ambitions of this thesis are formulated for eco-industrial parks (EIPs). These models try to realise maximum benefit from IE possibilities, and thereby identify the most beneficial energy and material exchanges between processes [TODO: cite an example?].
+Thus it seams that bringing in other resources (energy, and waste), it is the case that to day, there is a lack of highly integrated models, which attempt to take advantage of the infrastructure co-location to take advantage of synergies intersectoral synergies. Thus current optimisation models use to help plan urban resource management systems impose a ceiling on potential material and energy savings, by not considering energy, water and waste systems in combination.
+<!--
+The highly integrated models closest to the ambitions of this thesis are formulated for eco-industrial parks (EIPs). These models try to realise maximum benefit from IE possibilities, and thereby identify the most beneficial energy and material exchanges between processes [TODO: cite an example?].
+-->
 <!--
  However, as the review article by @Boix2015 notes, these models emphasize "...either the water network, or the energy links or waste disposal facilities but never the whole networking" (p.314). 
 -->
 
-Moving to the detail category, when considering multiple resource system types, it would be prudent to start with a simple representation of the various systems, before delving into the intricacies of the detail design and operation of the systems, which require specialist expertise regarding the systems being modelled. This means looking to high-level models.
+By definition, this thesis will formulate a city-scale, highly integrated optimisation model. An additional insight this literature overview gives is that that the model should be high-level. This is intuitive when considering multiple resource system types: it is prudent to start with a simple representation of the various systems, before delving into the intricacies of the detail design and operation of the systems, which require specialist expertise regarding the systems being modelled.
 
-Finally, with regards to method, the choice between linear and nonlinear formulations will be weighed up in Section [TODO:]
-
-## Summary and conclusion
+## Summary
 
 As the Introduction in Chapter 1 argued, cities provide an opportunity to deliver goods and services more efficiently, if only they were to take advantage of the synergies possible between energy, water and waste management systems. In order to move towards such a goal, this chapter has reviewed two research areas which consider how cities can use resources more efficiently.
 
