@@ -364,7 +364,7 @@ plot_headlines
 
 Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
 
-```{r metabolic_flows, fig.height=5, fig.width=6.5, results="asis"}
+```{r metabolic_flows, fig.height=7, fig.width=6.5, results="asis"}
 
 metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
 
@@ -396,16 +396,59 @@ plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
 	axis.title=element_blank())
 plot_metabolic_flows
 
+## Give exports a negative value
+metabolic_flows[metabolic_flows$Flow=="exports", "value"] <- -1 * metabolic_flows[metabolic_flows$Flow=="exports", "value"]
+
 #plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
-#  geom_point(aes(colour=season), position=position_dodge(width=0.6)) +
-#  facet_wrap(~scenario) +
-#  geom_hline(yintercept=0) +
-#  theme_bw()
+#  geom_point(aes(colour=season), position=position_dodge(width=0.6), stat="identity") +
+#  facet_wrap(~scenario, ncol=1) +
+#  theme_bw() +
+#  theme(axis.text.x=element_text(hjust=1, angle=30),
+#	axis.title=element_blank())
 #plot_metabolic_flows
 
 ```
 
 #### The system middles
+
+<!--
+```{r process_mix, fig.height=7, fig.width=6.5, results="asis"}
+
+process_mix <- read.csv("06_case-study/process_mix.csv")
+
+## Remove zero-valued entries
+process_mix <- filter(process_mix, rate!=0)
+
+## Calculate total capacity (rate * number)
+
+process_mix$total_capacity <- process_mix$rate * process_mix$number
+
+## Order the scenario names
+process_mix <- transform(process_mix,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+
+
+plot_process_mix <- ggplot(process_mix, aes(zone, process)) +
+  geom_tile(fill="white", colour="black") +
+  geom_text(aes(label=paste("R=", rate, "\n", "N=", number)), size=2) +
+  facet_wrap(~scenario, ncol=3) +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30),
+	axis.title=element_blank())
+plot_process_mix
+
+```
+-->
 
 Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
 
