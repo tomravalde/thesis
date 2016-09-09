@@ -85,6 +85,15 @@ update:
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/paper/resource-demands.csv 06_case-study ; \
 	fi
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/headlines.csv 06_case-study ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/metabolic_flows.csv 06_case-study ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/process_mix.csv 06_case-study ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minCost.pdf ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minEmissions/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minEmissions.pdf ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minWaste/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minWaste.pdf ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minWater/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minWater.pdf ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_current_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_current_minCost.pdf ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_medium_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_medium_minCost.pdf ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_long_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_long_minCost.pdf ; \
 
 #	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
 

@@ -311,7 +311,9 @@ There are limitations to what the results show. We have already noted the approx
 
 The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
 
-```{r test, fig.height=5, results="asis"}
+Give mathematical formulations for each of them ($\sum_r \mbox{cost}_r I_r$ etc.)
+
+```{r headlines, fig.height=5, results="asis"}
 
 headlines <- read.csv("06_case-study/headlines.csv")
 
@@ -341,7 +343,7 @@ headlines <- transform(headlines,
 
 ## Presentation costs
 headlines$metrics <- as.character(headlines$metrics)
-headlines[headlines$metrics=="headline_cost", "metrics"] <- "Cost [USD]"
+headlines[headlines$metrics=="headline_cost", "metrics"] <- "Cost [USD/year]"
 headlines[headlines$metrics=="headline_emissions", "metrics"] <- "Emissions [kg/year]"
 headlines[headlines$metrics=="headline_waste", "metrics"] <- "Waste [kg/year]"
 headlines[headlines$metrics=="headline_water", "metrics"] <- "Water [kg/year]"
@@ -362,9 +364,136 @@ plot_headlines
 
 Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
 
+```{r metabolic_flows, fig.height=7, fig.width=6.5, results="asis"}
+
+metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
+
+## Reshape imports and exports into the same column
+metabolic_flows <- melt(metabolic_flows, variable.name="Flow")
+
+## Remove zero-valued entries
+metabolic_flows <- filter(metabolic_flows, value!=0)
+
+
+## Order the scenario names
+metabolic_flows <- transform(metabolic_flows,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
+  geom_point(aes(colour=season, size=value), position=position_dodge(width=0.6)) +
+  facet_wrap(~Flow, ncol=1) +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30),
+	axis.title=element_blank())
+plot_metabolic_flows
+
+## Give exports a negative value
+metabolic_flows[metabolic_flows$Flow=="exports", "value"] <- -1 * metabolic_flows[metabolic_flows$Flow=="exports", "value"]
+
+#plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
+#  geom_point(aes(colour=season), position=position_dodge(width=0.6), stat="identity") +
+#  facet_wrap(~scenario, ncol=1) +
+#  theme_bw() +
+#  theme(axis.text.x=element_text(hjust=1, angle=30),
+#	axis.title=element_blank())
+#plot_metabolic_flows
+
+```
+
 #### The system middles
 
+<!--
+```{r process_mix, fig.height=7, fig.width=6.5, results="asis"}
+
+process_mix <- read.csv("06_case-study/process_mix.csv")
+
+## Remove zero-valued entries
+process_mix <- filter(process_mix, rate!=0)
+
+## Calculate total capacity (rate * number)
+
+process_mix$total_capacity <- process_mix$rate * process_mix$number
+
+## Order the scenario names
+process_mix <- transform(process_mix,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+
+
+plot_process_mix <- ggplot(process_mix, aes(zone, process)) +
+  geom_tile(fill="white", colour="black") +
+  geom_text(aes(label=paste("R=", rate, "\n", "N=", number)), size=2) +
+  facet_wrap(~scenario, ncol=3) +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30),
+	axis.title=element_blank())
+plot_process_mix
+
+```
+-->
+
 Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minCost.pdf} 
+	\caption{Process network for the Design case (minimum cost) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minEmissions.pdf} 
+	\caption{Process network for the Design case (minimum emissions) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWaste.pdf} 
+	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWater.pdf} 
+	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_current_minCost.pdf} 
+	\caption{Process network for the Wildcard case (current) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_medium_minCost.pdf} 
+	\caption{Process network for the Wildcard case (medium) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_long_minCost.pdf} 
+	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
 
 Having explained the SNA plots, we can note the following: [TODO: note the difference] 
 
