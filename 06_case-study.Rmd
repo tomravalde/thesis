@@ -452,6 +452,49 @@ plot_process_mix
 
 Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minCost.pdf} 
+	\caption{Process network for the Design case (minimum cost) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minEmissions.pdf} 
+	\caption{Process network for the Design case (minimum emissions) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWaste.pdf} 
+	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWater.pdf} 
+	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_current_minCost.pdf} 
+	\caption{Process network for the Wildcard case (current) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_medium_minCost.pdf} 
+	\caption{Process network for the Wildcard case (medium) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_long_minCost.pdf} 
+	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+
 Having explained the SNA plots, we can note the following: [TODO: note the difference] 
 
 [^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
