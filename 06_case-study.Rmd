@@ -311,7 +311,9 @@ There are limitations to what the results show. We have already noted the approx
 
 The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
 
-```{r test, fig.height=5, results="asis"}
+Give mathematical formulations for each of them ($\sum_r \mbox{cost}_r I_r$ etc.)
+
+```{r headlines, fig.height=5, results="asis"}
 
 headlines <- read.csv("06_case-study/headlines.csv")
 
@@ -341,7 +343,7 @@ headlines <- transform(headlines,
 
 ## Presentation costs
 headlines$metrics <- as.character(headlines$metrics)
-headlines[headlines$metrics=="headline_cost", "metrics"] <- "Cost [USD]"
+headlines[headlines$metrics=="headline_cost", "metrics"] <- "Cost [USD/year]"
 headlines[headlines$metrics=="headline_emissions", "metrics"] <- "Emissions [kg/year]"
 headlines[headlines$metrics=="headline_waste", "metrics"] <- "Waste [kg/year]"
 headlines[headlines$metrics=="headline_water", "metrics"] <- "Water [kg/year]"
@@ -361,6 +363,47 @@ plot_headlines
 #### Metabolic inputs and outputs 
 
 Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
+
+```{r metabolic_flows, fig.height=5, fig.width=6.5, results="asis"}
+
+metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
+
+## Reshape imports and exports into the same column
+metabolic_flows <- melt(metabolic_flows, variable.name="Flow")
+
+## Remove zero-valued entries
+metabolic_flows <- filter(metabolic_flows, value!=0)
+
+
+## Order the scenario names
+metabolic_flows <- transform(metabolic_flows,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
+  geom_point(aes(colour=season, size=value), position=position_dodge(width=0.6)) +
+  facet_wrap(~Flow, ncol=1) +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30),
+	axis.title=element_blank())
+plot_metabolic_flows
+
+#plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
+#  geom_point(aes(colour=season), position=position_dodge(width=0.6)) +
+#  facet_wrap(~scenario) +
+#  geom_hline(yintercept=0) +
+#  theme_bw()
+#plot_metabolic_flows
+
+```
 
 #### The system middles
 
