@@ -307,13 +307,32 @@ The results for each scenario (namely the variable values) are ouputted by GAMS 
 
 There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
 
+With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
+
 #### Headline results
 
-The headline results are given in Figure [TODO: insert figure and cross-ref]. [TODO: insert description of results].
+System cost is the first headline result, summing the cost of the conversion and transport infrastructure, as well as the cost of importing resources. These costs are calculated on an annual basis, assuming a ten year life span of infrastructure. This can be done using Equation \ref{eq:objective_cost}, $C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}$ with $\gamma^*$ taking values of 1, 0.1, and 0.1, respectively.
 
-Give mathematical formulations for each of them ($\sum_r \mbox{cost}_r I_r$ etc.)
+Emissions, water footprint and waste output are calculated on an annual basis, using the general equation [TODO: write and reference an emissions equation], with the following conditions:
 
-```{r headlines, fig.height=5, results="asis"}
+- $r = \mbox{\CO2}$
+- $r \in S^{water}$
+- $r \in S^{waste}$
+
+(Provide footnotes to define the water and waste sets.)
+
+The headline results are given in Figure \ref{fig:headlines}. The results show:
+
+- That when cost is the minimum objective -- the case for all scenarios with the exception of three of the design cases -- that low costs can indeed be achieved.
+- Looking at each of the design cases, they each successfully minimise the quantity of interest to zero, and in fact manage to do while other quantities go to zero.
+- However there is an exception to this, which reveals a clear tradeoff: for example, that minimum waste design case results in a large water consumption.
+- The wildcard cases improve performance the longer the more processes they consider.
+
+<!--
+($\sum_{pz} C^P_p N^P_p + \sum{\tau zz'} C^{\tau}_{\tau} \delta_{\tau zz'} l_zz'$, emissions, waste output and water footprint.
+-->
+
+```{r headlines, fig.height=5, fig.cap="fig:headlines", results="asis"}
 
 headlines <- read.csv("06_case-study/headlines.csv")
 
@@ -362,9 +381,14 @@ plot_headlines
 
 #### Metabolic inputs and outputs 
 
-Turning to consider the metabolism of each scenario in more detail, Figure [TODO:] shows which resources are imported into and exported from the area. [TODO: highlight noteworthy similarities and differences between scenarios].
+Turning to consider the metabolism of each scenario in more detail, Figure \ref{fig:metabolic-flows} gives a closer look at the resource imports and exports for each scenario. Note the following:
 
-```{r metabolic_flows, fig.height=7, fig.width=6.5, results="asis"}
+- The fewer processes available, the simpler the import/export regime
+- seasonal variation
+
+Coupling these results to the headline: more resources are used to achieve the headline outcomes.
+
+```{r metabolic_flows, fig.height=7, fig.cap="fig:metabolic-flows", fig.width=6.5, results="asis"}
 
 metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
 
@@ -450,7 +474,14 @@ plot_process_mix
 ```
 -->
 
-Next we consider the network of conversion processes which makeup each system. These are shown in Figures [TODO: cross-ref]) which are 'social network analysis' (SNA) plots. Each process type used in a scenario is represented by a circle (whose colour indicates the type of process it is[^sna-process-type]. The plots use grey lines to connect any pair of processes in which one process of the pair uses a resource produced by they other. As well as including processes in this diagram, we've included 'imports' and 'exports' (coloured orange) such that they can be imagined as being a process; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it can be concluded that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
+Next we consider the network of conversion processes which makeup each system. These are shown in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long} in plots which show synergies between processes (i.e. their linking due to the transfer of resources between them). This is achieve by using 'social network analysis' (SNA) plots. Note the following features:
+
+- Each process is represented by a circle whose colour indicates the sector it belongs to[^sna-process-type].
+- Grey lines connect any pair of processes in which one of the processes uses a resource produced by they other.
+- The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
+- As well as including processes in this diagram, 'imports' and 'exports' are marked (coloured orange); thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The rules of proximity apply here also.
+
+[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
 
 \begin{figure}[h!]
 	\centering
@@ -461,45 +492,39 @@ Next we consider the network of conversion processes which makeup each system. T
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minEmissions.pdf} 
-	\caption{Process network for the Design case (minimum emissions) scenario.} \label{fig:designCase_minCost}
+	\caption{Process network for the Design case (minimum emissions) scenario.} \label{fig:designCase_minEmissions}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWaste.pdf} 
-	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minCost}
+	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minWaste}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWater.pdf} 
-	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minCost}
+	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minWater}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_current_minCost.pdf} 
-	\caption{Process network for the Wildcard case (current) scenario.} \label{fig:designCase_minCost}
+	\caption{Process network for the Wildcard case (current) scenario.} \label{fig:wildcard_current}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_medium_minCost.pdf} 
-	\caption{Process network for the Wildcard case (medium) scenario.} \label{fig:designCase_minCost}
+	\caption{Process network for the Wildcard case (medium) scenario.} \label{fig:wildcard_medium}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_long_minCost.pdf} 
-	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:designCase_minCost}
+	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:wildcard_long}
 \end{figure}
 
-
-Having explained the SNA plots, we can note the following: [TODO: note the difference] 
-
-[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
-
-Finally, we consider the transport network in each scenario. [TODO: decide which type of plot to include, notate what they show, and highlight points of note.] 
 
 ```{r network-plot, results="asis"}
 
@@ -534,32 +559,35 @@ Finally, we consider the transport network in each scenario. [TODO: decide which
 ##      displaylabels = TRUE)
 ```
 
-\begin{figure}
-	\centering
-	\begin{spacing}{1.0}
-%	\includegraphics[width=\columnwidth]{final-network.pdf}
-	\end{spacing}
-	\caption{The process network used in the design case. Processes are colourd according to the main resource they process. Graph is plotted using the R package from \citet{SNA2005}. A colour version of this plot is available in the electronic version of this paper.}
-	\label{fig:sna_interactions}
-\end{figure}
+Having explained the SNA plots, we can note the following: [TODO: note the difference] 
 
-
-[TODO: Dot plot of scenario costs (import, transport, conversion, etc.)].
-
-[TODO: Dot plot of imports and exports. All scenarios on same figure, faceted by resource and scenario].
-
-With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
-
-The number of technologies used by a scenario increases as more are available, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible. When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
+- For the design case scenarios, integration is lacking for the minimum cost case -- imports tend to go straight to end-use (e.g. electricity, natural gas, and water). But for the other cases, i.e. where an objective is applied to a *resource*, integration does happen
+- Design case (minimum emissions): does not find synergies, so much, but rather shows how processes can be connected in a chain
+- Design case scenarios: majority of integration is within the energy sector (as expected, according to the SPC energy island strategy), though some is intersectoral (e.g. anaerobic digestion producing gas for use in the boilers)
+- There is genuine sensitivity to the objective: i.e. the AD/boiler synergies does not exist int the minimum water design case scenario (though the energy island does work well).  When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
+- The wildcard scenarios take advantage of the availability of more processes, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible.
+- Broadly, it's energy processes dominate the wildcard network, both in terms of presence, and in their own synergies. Nevertheless, there are still intersectoral links [TODO: provide examples] 
 
 [TODO: comment on the mix of technology sizes in various scenarios.]
 [TODO: comment on which technogies are most relied upon in each system.]
 [TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
 [TODO: comment on coversion/transportation mix effect on (capital) costs?]
 
+#### Transport infrastructure
+
+Finally, we consider the transport network in each scenario. [TODO: decide which type of plot to include, notate what they show, and highlight points of note.] 
+
+[TODO: plots]
+
+Show that plots reveal more transport connections for the wildcard case.
+
 #### Exergy analysis
 
+Tablulate absolute values and efficiency:
+
 #### Ecological network analysis
+
+Plot graphs for each scenario.
 
 ## (Discussion and) Conclusions
 <!--
@@ -577,11 +605,19 @@ In this chapter we have
 demonstrating how one might go from a site about which some information is known, to develop 
 in doing so, we have also provided a rule-of-thumb method to estimate the costs of processes which do not yet exist, and to consider economies of scale in system design.
 
+- Broad comments
+- Comments about the high prevalence of energy: is this accounted for by the quantities produced by water?
+- Consider that water/waste management processes may not be as prevelent in the database (and hence in reality anyway)
+- Hidden savings: don't forget that (unlike energy optimisation models), the water and waste flows for energy processes are considered!
+- Need to look further at household level water and waste management.
+- Not all the sectors are strictly defined for processes
+- General comments about more processes = better
+- Exergy analysis and ENA to confirm the intuitive findings.
+- Decentralisation seems to be the way! Especially with energy. Decentralisation may be the way to a better energy system
+- More processes may also give more flexibility to respond to adapt operation upon changing consumer demands.
 The overall contribution to this thesis is to [TODO:]. To the field as a whole [TODO:] 
 
-[TODO: Other ideas]
-
-Add text to check whole-thesis build.
+[TODO: Other ideas and content]
 
 TODO IDEAS:
 

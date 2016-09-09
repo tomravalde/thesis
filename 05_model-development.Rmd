@@ -828,6 +828,7 @@ where the parameter $l_{zz'}$ defines the distance (length) between two zones. T
 
 \begin{align}
 C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}
+\label{eq:objective_cost}
 \end{align}
 
 where coefficients $\gamma^*$ could weight the component costs according to time span (e.g. a 20 year investment period), or their relative importance to a particular stakeholder.
