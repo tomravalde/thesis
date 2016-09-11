@@ -1,7 +1,5 @@
 # Model development
 
-[TODO: finalise which content shifts to the lit review.]
-
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 

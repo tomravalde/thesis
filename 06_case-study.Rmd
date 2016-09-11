@@ -566,7 +566,7 @@ Having explained the SNA plots, we can note the following: [TODO: note the diffe
 - Design case scenarios: majority of integration is within the energy sector (as expected, according to the SPC energy island strategy), though some is intersectoral (e.g. anaerobic digestion producing gas for use in the boilers)
 - There is genuine sensitivity to the objective: i.e. the AD/boiler synergies does not exist int the minimum water design case scenario (though the energy island does work well).  When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
 - The wildcard scenarios take advantage of the availability of more processes, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible.
-- Broadly, it's energy processes dominate the wildcard network, both in terms of presence, and in their own synergies. Nevertheless, there are still intersectoral links [TODO: provide examples] 
+- Broadly, the networks are based around distributed energy systems with a diverse range of technologies, it's energy processes dominate the wildcard network, both in terms of presence, and in their own synergies. Nevertheless, there are still intersectoral links [TODO: provide examples] 
 
 [TODO: comment on the mix of technology sizes in various scenarios.]
 [TODO: comment on which technogies are most relied upon in each system.]
@@ -583,11 +583,53 @@ Show that plots reveal more transport connections for the wildcard case.
 
 #### Exergy analysis
 
-Tablulate absolute values and efficiency:
+The [TODO: N] subsections above could be considered black-box metrics. In this section and the next, 
+
+Perform a simplified version of the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], in which there is no need to distribute the flows between the processes within the city, on the understanding that in the model, any process products unused within other processes will become system outputs (exports), thus exergy analysis can be peformed on a whole-system level on a black-box, with the internal 'grey box' analysis implicit to it:
+
+- $Ex^{prod}$ are any demands (exogenously defined)
+- $Ex^{waste}$ are any resources which find themselves amongst the 'outputs' ('exports'), and have thus, not become inputs to any processes before crossing out of the urban boundary
+
+Thus, a simplified way to calculate the exergetic inputs to the SPC site, $\alpha^{in}_{ex}$ is by the following simplification to Equation [TODO:cross-ref Equation (3.5a)]. 
+
+\begin{align}
+\alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
+&= \sum_{i \in R^i} Ex_i 
+\label{eq:SPC-ex-in}
+\end{align}
+
+Similarly, calculation of the site's exergetic outputs $\alpha^{prod}_{ex}$, simplifies Equation [TODO:cross-ref Equation (3.5b)] to
+
+\begin{align}
+\alpha^{prod}_{ex}&= \sum_{j \in R^j} Ex_j
+\label{eq:SPC-ex-out}
+\end{align}
+
+where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this). This method is applied to the scenarios (data and calculations provided in Appendix [TODO: cross-ref]), and the results are given in Table [TODO: cross-ref].
+
+[TODO: Tablulate absolute values and efficiency]
+
+[TODO: describe results]
 
 #### Ecological network analysis
 
-Plot graphs for each scenario.
+Chapter 3 also showed how to quantify how well cities work together as *sectors* (rather than just individual processes), using the methods of ecological network analysis.
+
+The results of this type of analysis are important, because they indicate to planners the extent to which the different *management* parties need to cooperate to implement such a system, as well as where there are risks/vulnerabilities in the system if there is no cooperation.
+
+Again, using the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
+
+[TODO: Plot graphs for each scenario.]
+
+#### Summary
+
+However, the synergies that we look for will not necessarily occur if the objective is to minimise cost.
+
+The preference of the model, as shown by the wildcard scenarios, is to choose a large number of of varied processes, and also make use of the available transport connections, to decentralise resource management. Note however that the model is nevertheless discerning: given 300 [TODO: accurate number] processes to choose from, it selects only [TODO: number] for the wildcard scenarios. Similarly, out of N possible transport options [TODO: footnote giving calculations: available connections  transport types for each]. Thus the PRaQ model successfully and intelligently optimizes the process mix.
+
+We also know however, from the design scenarios, that the optimal mix of processes is sensitive to the objective chosen. [TODO: check this -- Try testing the wildcard options with different objectives and demands, and see how different the process mixes are. I.e. can similar systems manage meet different set of demands and/or objectives?]
+
+The exergy analysis and ENA analysis has demonstrated that -- as far as ‘metabolically efficient’ can be defined -- that proposed systems are metabolically efficient.
 
 ## (Discussion and) Conclusions
 <!--
@@ -600,6 +642,12 @@ Paragraph ideas from JK's MILP paper
 - "The model was illustrated using..."
 - "There are a number of future directions for the model..."
 -->
+
+The results of the modelling show that the PRaQ model is helpful to the SPC planners, showing that they are right to propose an integrated system of resource management to meet planning objectives. The model validates their proposed plans for the integrated resource planning, with the energy island and water reuse project, but also challenges the planners to consider a more sophisticated, varied and decentralised network of processes, alongside a varied schedule of resource imports.
+
+This complex result of the wildcard model is itself a demonstration of the power of modelling: such a system design is far too complex to be designed by hand. [TODO: continue thought]
+
+Even if the proposed wildcard designs are too complex, it is still the case, that the more processes involved, the greater the level optimisation that can be achieved, thus the SPC planners may wish to consider at least a subset of resources,
 
 In this chapter we have 
 demonstrating how one might go from a site about which some information is known, to develop 
@@ -624,3 +672,8 @@ TODO IDEAS:
 - Shannon Index
 - Degree of capacity (e.g. depth of colour of node in network plot) to show redundancy which can fill in for unexpected rises in demand (or drops in resource availability)
 
+
+### Further work
+
+- Sensitivity analysis
+- Operational study
