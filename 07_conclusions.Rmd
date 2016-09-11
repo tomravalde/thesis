@@ -1,8 +1,37 @@
 # Conclusions
 
-[TODO: complete]
+\epigraph{``...when you close your eyes and imagine an epidemic spreading, or any other social dynamic, you are running some model or other. It is just an implicit model that you haven't written down...\par At least I can write mine down so that it can, in principle, be calibrated to data...\par The choice, then, is not whether to build models; it's whether to build explicit ones. In explicit models, assumptions are laid out in detail, so we can study exactly what they entail. On these assumptions, this sort of thing happens. When you alter the assumptions that is what happens. By writing explicit models, you let others replicate your results.''}{\citet{Epstein2008}}
 
-Introductory text.
+Cities are places of both great opportunity and great challenge.
+
+This thesis has proposed that in view of the challenges posed by urbanisation, optimisation modelling should be adopted to help planners take advantage of intersectoral synergies. The model developed in this thesis achieved this by adding to the rliterature on resouce management, a generic MILP model at the urban scale which highly integrates the energy, water and waste management systems.
+
+This work has been stated/formulated in terms of ‘urban metabolism’, since this is a research field which brings together various aspects of the study of urban areas in relation to their patterns of resource use, and thus provides an overarching framework, into which this work can speak and advance. 
+
+Therefore the specific research question considered was:
+
+> *By how much can the metabolism of an urban area be improved by creating and implementing models which optimise the integrated provision of energy, water and waste?*
+
+This thesis has argued that to date, the UM has not yet sufficiently accounted for how an area's mix of resource management processes -- in this work, defined as the 'middle' of an urban system -- affects the aggregate exchanges of resources with the environment. 
+
+To that end, a deterministic mathematical description of a system's middle has been formulated, Along the way, this thesis has advanced understanding of a system’s middle, formalising a heirarchical representation,
+
+However, a mere mathematical description of the middle of a system is not sufficient to explore these questions, and thus we assembled a database of over 300 processes which a city might use in its management of energy, water and waste, which provides data for the model.
+
+Related to this, this thesis has explored the best way to understand the efficiency of an area’s metabolism.
+
+This understanding has provided the model formulation, metrics of performance, and data
+
+- benchmark model
+- The database
+
+Other contributions:
+
+- Various types of systematic literature review
+
+In addition to contributing a model for use in research, planning and policy, our results have showed that for the Shann Gu site, an objective (e.g. minimising cost, emissions, or some other quantity) is more readily met by taking advantage of more process types (particularly of a smaller capacity), in a decentralised network, rather than the more traditional centralised systems. Given the move to more decentralised systems within individual sectors (e.g. energy supply and water supply), the modelling results suggest that this can be coupled with advances in intersectoral synergies, with waste- and by-products cascading down through a system [TODO: provide reference].
+
+[TODO: complete]
 
 ## Have we met the challenges?
 
@@ -15,6 +44,12 @@ Optimisation modelling in general, and synergy-exploiting optimisation modelling
 However, this is only the beginning of the work, and one component of this thesis is to encourage it to continue, in particular through open-science [TODO: cite Davis etc.], and to that end, as far as possible, we have made our formulation available, along with a 'benchmark problem', which researchers can use to develop and test extension to our work, some of which are discussed in the following section.
 
 ## Further work
+
+[TODO: summarise and explain other key findings]
+
+Having contributed this new tool, we recognise that given the early nature of this work, there is further work which can help make this tool more usable in the real world. Firstly, more data can be contributed to the @Ravalde2016 database (e.g. process costs, appropriate to specific locations and currencies). Secondly, the model formulation can be made more sophisticated, perhaps introducing separate categories of technologies which distinguish between domestic and non-domestic technologies, and introducing storage technologies [@Keirstead2013, equations 9.3--9.10, pp166--170]. It could also incorporate 'hierarchical non-uniform time discretization' which is a sophisticated way to consider the variation in resource demand over hourly, daily¸ weekly, and seasonal periods, at lower computational cost than considering continuous profile over a long period [@Keirstead2013, p161]. Another addition to the formulation could be a device's spatial footprint. [TODO -- Note to James: domestic techs, and spatial footprint are considered in the unpublished paper, but not the book chapter.]
+
+Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
 
 - Extended focus, i.e. range of demands (e.g. iron and steel manufacture, which can be significant components of an urban metabolism). This would have a corresponding extended range of 
 - Sophisticated formulation
@@ -35,13 +70,12 @@ However, this is only the beginning of the work, and one component of this thesi
 	- Perhaps it can help different (private/public) non-competative companies to work together (as in EIPs),
 	- Alternatviely, ABM can be used
 - Upscaling and downscaling the principles to within-building, area, city, region, national, international levels (and associated data requirements, both for demands, and processes)
+- Validation
 
-In addition to contributing a model for use in research, planning and policy, our results have showed that for the Shann Gu site, an objective (e.g. minimising cost, emissions, or some other quantity) is more readily met by taking advantage of more process types (particularly of a smaller capacity), in a decentralised network, rather than the more traditional centralised systems. This fits with findings from individual sectors (e.g. energy supply and water supply) where decentralised are increasingly encourages, with waste- and by-products cascading down through a system [TODO: provide reference].
-
-[TODO: summarise and explain other key findings]
-
-Having contributed this new tool, we recognise that given the early nature of this work, there is further work which can help make this tool more usable in the real world. Firstly, more data can be contributed to the @Ravalde2016 database (e.g. process costs, appropriate to specific locations and currencies). Secondly, the model formulation can be made more sophisticated, perhaps introducing separate categories of technologies which distinguish between domestic and non-domestic technologies, and introducing storage technologies [@Keirstead2013, equations 9.3--9.10, pp166--170]. It could also incorporate 'hierarchical non-uniform time discretization' which is a sophisticated way to consider the variation in resource demand over hourly, daily¸ weekly, and seasonal periods, at lower computational cost than considering continuous profile over a long period [@Keirstead2013, p161]. Another addition to the formulation could be a device's spatial footprint. [TODO -- Note to James: domestic techs, and spatial footprint are considered in the unpublished paper, but not the book chapter.]
-
-Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
+## Summary
 
 In conclusion, in an increasingly resource-constrained world which faces the combined challenges of population growth, global warming, water scarcity, and shrinking landfill capacity, cities are being hailed as the most efficient means to provide goods and services. However, to take full advantage of this, cities should exploit their co-location of processes to benefit from synergies between energy, water and waste management systems. Our model is one step further along the journey to that end.
+
+Even with the case study, this work has largely advanced UM *theory*, but the proposed scheme of further work will move the principles into practice. With this, it is hoped that this thesis can help to meet the environmental and economic challenges of cities.
+
+Returning to the idea of modelling itself, in Chapter 2, we noted that models advanced understanding of some system, by explicitly representing that system in a way that could be questioned and developed. This insight is powerfully expressed by Professor Joshua Epstein in the quote which begins this chapter. We hope that the PRaQ model formulated in this thesis serves this purpose, and that furthermore, the developments we have proposed here (and hope that others propose) serve to advance work in UM, in order that the energy, water and waste sectors might work better together, as cities take advantage of their opportunities to help the world become more economically and environmentally sustainable.
