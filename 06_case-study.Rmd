@@ -583,7 +583,9 @@ Show that plots reveal more transport connections for the wildcard case.
 
 #### Exergy analysis
 
-Perform a simplified version of the method outlines in Section [TODO: cite Grey-box metrics subsection of Chapter 3], in which there is no need to distribute the flows between the processes within the city, on the understanding that in the model, any process products unused within other processes will become system outputs (exports), thus exergy analysis can be peformed on a whole-system level on a black-box, with the internal 'grey box' analysis implicit to it:
+The [TODO: N] subsections above could be considered black-box metrics. In this section and the next, 
+
+Perform a simplified version of the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], in which there is no need to distribute the flows between the processes within the city, on the understanding that in the model, any process products unused within other processes will become system outputs (exports), thus exergy analysis can be peformed on a whole-system level on a black-box, with the internal 'grey box' analysis implicit to it:
 
 - $Ex^{prod}$ are any demands (exogenously defined)
 - $Ex^{waste}$ are any resources which find themselves amongst the 'outputs' ('exports'), and have thus, not become inputs to any processes before crossing out of the urban boundary
@@ -603,13 +605,21 @@ Similarly, calculation of the site's exergetic outputs $\alpha^{prod}_{ex}$, sim
 \label{eq:SPC-ex-out}
 \end{align}
 
-where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this).
+where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this). This method is applied to the scenarios (data and calculations provided in Appendix [TODO: cross-ref]), and the results are given in Table [TODO: cross-ref].
 
-Tablulate absolute values and efficiency:
+[TODO: Tablulate absolute values and efficiency]
+
+[TODO: describe results]
 
 #### Ecological network analysis
 
-Plot graphs for each scenario.
+Chapter 3 also showed how to quantify how well cities work together as *sectors* (rather than just individual processes), using the methods of ecological network analysis.
+
+The results of this type of analysis are important, because they indicate to planners the extent to which the different *management* parties need to cooperate to implement such a system, as well as where there are risks/vulnerabilities in the system if there is no cooperation.
+
+Again, using the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
+
+[TODO: Plot graphs for each scenario.]
 
 #### Summary
 

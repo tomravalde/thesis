@@ -1,5 +1,7 @@
 # Technology database chapter
 
+\epigraph{``It is a capital mistake to theorize before one has data.''}{Sherlock Holmes in \emph{A Study in Scarlett} (Arthur Conan Doyle)}
+
 [TODO: complete]
 
 [TODO: add note on which paper this comes from.]
