@@ -1,10 +1,15 @@
-# Technology database chapter
+# A database of urban resource management processes
 
 \epigraph{``It is a capital mistake to theorize before one has data.''}{Sherlock Holmes in \emph{A Study in Scarlett} (Arthur Conan Doyle)}
 
-[TODO: complete]
+\begin{tcolorbox}
 
-[TODO: add note on which paper this comes from.]
+A version of this chapter was published as: 
+Tom Ravalde, James Keirstead, A database to facilitate a process-oriented approach to urban metabolism, \emph{Journal of Industrial Ecology}, doi: \url{http://dx.doi.org/10.1111/jiec.12429}.
+
+The `Approaches to urban metabolism' section of the paper was reworked into the literature review [TODO: continue], along with parts of the section headed 'The place of processes in urban metabolism modelling'.
+
+\end{tcolorbox}
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
@@ -13,59 +18,15 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-## Introduction 
+The literature review showed the importance of UM as an area of study (especially given the resource management challenges of cities), but pointed out a shortcoming in the field, namely that to date, little attention has been paid to how the mix of resource management processes in the 'middle' of a UM system affect the aggregate exchanges of material and energy with the external environment.
 
-In 1965, the American engineer Abel Wolman introduced 'urban metabolism'. Writing in *Scientific American* he defined the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.156]. He recognised that resource consumption was necessary to sustain urban living, but was motivated to study urban metabolism because of his concerns that as cities grow, their rising material and energy inputs and outputs were causing problems with water supply, sewage disposal and air pollution.
+In this Chapter we seek to support process-oriented approaches to UM we identify the resource conversion processes that can shape urban metabolism both now and in the future, and quantify the resource consumption and production of each individual process, assembling this information into a database. We then discuss possible applications of the database, concentrating mainly on how this database can provide data for use in the model to be developed in this thesis, demonstrating intersectoral synergies [TODO: tidy].
 
-[TODO: copy following paragraph to thesis introduction?]
+## Supporting fields of research
 
-Since Wolman, urbanisation has continued apace with more than 50% of the global population currently living in towns or cities, and predictions that this will exceed 70% by 2030 [@UnitedNations2014]. Metabolic problems have also grown in both magnitude and variety. Urban energy consumption is estimated to contribute up to 76% of global CO$_2$ emissions [@IPCC2013]; urban water consumption rates make water shortage a perennial reality for 150 million urban inhabitants [@McDonald2011]; and urban waste output levels are leading to water contamination, air pollution, greenhouse gas emissions and public health concerns [@Hoornweg2012].
+This background introduces two research areas important to the assembly and use of the database: first, we look at databases the currently exist which are similar to ours, and how one may go about assembling; second, we discuss 'open data', particularly in relation to industrial ecology, and how that might bear on the database.
 
-As the environmental problems associated with urbanisation have increased, so urban metabolism has become an important tool for developing sustainable cities [@NextCity2014]. Specifically, urban metabolism studies could provide insight on how to maintain the socioeconomic benefits of urbanisation (highlighted by the @WorldBank2009 and others) while limiting environmental harm. Studying it enables planners and policy makers to take stock of an area's resource consumption and output, ascertaining its long-term trends and comparing its own metabolism with other areas. The outcomes of studies can then inform policy analysis and urban design [@Kennedy2011].
-
-Analysis can focus on the different parts of an urban metabolic system, each of which work together in a hierarchical framework as shown in Figure \ref{fig:metab}. At the bottom lie end consumers, namely the homes, business, industry and transport that exert demands for final energy and water consumption, as well as generating wastes. At the top are the aggregate exchanges between a city and the surrounding environment: both the import of natural resources required to meet consumer demand, and the export of a city's wastes and effluents. In the middle is a network of processes that link the top and the bottom, converting natural resources to demands, as well as treating and managing locally generated wastes. Typically, urban metabolism studies seek to quantify the overall metabolic flows at the top, and to locate the origins of these flows at their point of demand at the bottom.
-
-In this paper we will extend published arguments that advocate giving greater attention to the middle of the system, in order to show how the mix of processes used to meet demand at the bottom will affect overall metabolic inputs and outputs at the top. To support such approaches, we identify the resource conversion processes that can shape urban metabolism both now and in the future, and quantify the resource consumption and production of each individual process, assembling this information into a database. We then discuss possible applications of the database, before summarising our work and suggesting areas of further work.
-
-\begin{figure}
-	\centering
-	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{04_database/metab-hierarchy.pdf_tex}}
-	\end{spacing}
-	\caption{Three components to an urban metabolism system with example resource flows adapted from the hypothetical city in \cite{Wolman1965}.}
-	\label{fig:metab}
-\end{figure}
-
-## Background
-
-Our background discussion has two elements: first, we justify our proposal for a database of processes by reviewing current approaches to urban metabolism to highlight their merits and shortcomings. Second, we introduce two research areas which will facilitate the assembly and use of the database.
-
-### Approaches to urban metabolism
-
-#### "Top-down"
-
-According to @Chrysoulakis2014, most urban metabolism studies take a top-down approach. Their aim is to quantify the impacts of an entire urban area's consumption and waste generation [@Sahely2003]. Typically studies do this using data aggregated at the city scale (i.e. it cannot be traced back to particular locations or activities) [@Chrysoulakis2014]. Several methods are described in @Sahely2003. One example is Wolman's seminal study which derived a hypothetical city's resource flows from national rates of consumption (water, food and fuel) and generation (sewage, waste and air pollutants). A more sophisticated approach might adjust these values; for example, a city's food intake could be calculated by adjusting the national average food consumption according to a city's grocery bill expenditure (as suggested in Sahely et al.). Ideally though, data would be supplied directly from appropriate organisations: water consumption data from the public or private providers; electricity consumption data from market operators; and waste data from municipal authorities. Once collected, the data can be used to analyse trends and make inter-city comparisons, to reveal how variables (such as climate, urban form, economic activity etc.) correlate with overall metabolic flows, as exemplified by @Kennedy2015's study of megacities. Top-down studies can inform policy, as seen in @Liang2011 who use government statistics in a top-down metabolism study of Suzhou, China. Their findings lead to precise proposals to achieve decarbonization, in this case focussing CO$_2$ mitigation strategies on vehicle pollution (because trends indicate that the city is on course for low-carbon development in other sectors).
-
-#### "Bottom-up"
-
-An alternative approach is to build up a picture of a city's metabolism from the bottom up, by quantifying resource flows at small scales before aggregating them over the region of study [@Chrysoulakis2009]. For example, @Kellett2013 describe a method to quantify a neighbourhood's CO$_2$ emissions by modelling the CO$_2$ flows in the neighbourhood's buildings, transport, humans, and vegetation components. For instance, to calculate the total emissions attributable to buildings, first building types are determined from architectural features (found from fieldwork, databases, and LiDAR information), enabling researchers to know the number of each building type of building in the neighbourhood; next the emissions for each type of building (such as an apartment) are estimated using a model which takes into account a building's occupancy, age and HVAC equipment. Finally, emissions for each building type can be multiplied by the prevalence of each building type to calculate total emissions.
-
-Another bottom-up approach comes out of the Vulcan Project which measures CO$_2$ emissions at fine spatial and temporal resolutions, using networks of ground and air remote sensing technologies [@Asefi-Najafabady2014]. @Gurney2012 present results for the city of Indianapolis to understand the origins of its emissions, enabling decision makers to implement mitigation strategies, which are both effective and low cost.
-
-Bottom-up methods often depend on high-tech tools including: sensor technology to measure energy, water, and pollutant fluxes; GIS and remote sensing devices to collect information on land-use, thermal radiance and rainfall; and advanced numerical modelling to simulate resource fluxes [@Chrysoulakis2009]. An alternative low-tech approach is to survey residents of a city about their resource use habits; for instance, deriving information on urban water flows by asking householders about their typical dishwasher loads and shower durations [@Eberlein2014].
-
-#### Merits, limitations, and a complementary approach
-
-Top-down approaches are methodologically simple, but they do not nurture an appreciation of the ultimate causes of emissions or other environmental impacts [@Kellett2013], and are thus unable to predict how metabolic flows might change under different scenarios, hence the power of bottom-up methods which can be used to test scenarios and policies. Kellett et al. exemplify this in their neighbourhood emissions model by altering land-use, building efficiency, transport fuels, and consumer behaviour to observe how overall emissions change.
-
-@Zhang2013 notes that both bottom-up and top-down approaches fail to consider the mechanisms within the urban system which determine its behaviour -- or as we have denoted it -- the *middle* of the system. The top-down approaches are well suited to identify the scale of metabolic problems, and the bottom-up approaches contribute understanding on the ultimate causes of problematic flows, but appreciation of the middle will add to the insights of bottom-up studies by revealing the role of a the internal mechanisms between the top and the bottom of an urban system. Thus Zhang argues research should prioritise quantitative analysis of an urban system's components, which models urban systems as a network of nodes and flows. This representation of a system provides a framework to understand how fluxes circulate between nodes, thus enabling researchers to test how management interventions and other scenarios will change the distribution of fluxes between nodes.
-
-If these recommendations are to be realised, the urban metabolism field should seek a comprehensive understanding of what constitutes the middle to enable modelling to take place; i.e. identifying and describing the nodes and the links within metabolic networks. From an engineered-system perspective (as opposed to say an economic one), these nodes and links correspond to processes and resource flows, respectively (as per part (B) of Figure \ref{fig:metab}). Studying nodes and links could suggest how a city's mix of processes could meet resource demand in cheaper and greener ways, beyond demand-side management. As a case in point, consider how a city meets domestic heating demand: bottom-up studies could explore how measures such as thermal insulation and lower thermostat settings reduce fuel requirements at the top. But studying the middle would explore how investment in processes could reduce fuel usage, for example showing how how heat demand could be met by waste heat from power generation rather than gas boilers. We brand this type of analysis 'process-oriented'.
-
-### Supporting fields of research
-
-#### Existing databases and technology scanning
+### Existing databases and technology scanning
 
 We now consider three precedents for our proposed database to locate our work within the existing landscape of tools. The first example are the 'technology roadmaps' published by the International Energy Agency [@IEA2015a]. These constitute comprehensive reports which outline important energy management technologies in view of climate change targets. For example, the technology roadmap for hydrogen and fuel cells outlines various hydrogen using systems (e.g. fuel cell vehicles) and hydrogen generating technologies (e.g. electrolysers), and includes narrative reporting which describes how the technologies work; tables of technical parameters such as process capacity, efficiency, capital cost, and lifetime expectancy; and the results of modelling which indicate the role hydrogen technologies could play in achieving targets [@IEA2015b]. 
 
@@ -80,7 +41,7 @@ To build the database, we will use principles from technology scanning, which ca
 As an example, in healthcare, researchers identified technologies which would improve clinical care in the most financially viable way through searching literature, databases and digital libraries, as well as consulting industrial experts [@AHRQ2015]. In another case study from the railroad industry, technology scanning was used to sift through many possible technologies to identify those which reduce costs or improve services,
 in order to direct research and investment efforts [@Martland2002]. Martland et al.'s method involves first a "general search" to identify technologies, and second "technology mapping" which researches the performance and cost of each technology, and goes on to classify technologies according to maturity, functionality and other variables. Their scanning proved valuable as it uncovered technologies (such as nanotechnology) which had never before been identified in railroad technology strategies.
 
-#### Open data
+### Open data
 
 Open data is "data that can be freely used, re-used and redistributed by anyone -- subject only, at most, to the requirement to attribute and sharealike" [@OpenKnowledge2015], and is increasingly prevalent in academic research (Figure \ref{fig:open_data}). A high profile example is the Human Genome Project which placed all their human genomic sequence information in the public domain, so research would be of maximum societal benefit [@HUGO1996]. The term 'open data' first appeared in 1995, and was clarified in 2007 to incorporate three principles: "openness, participation and collaboration" [@Chignard2013]. Open data brings many benefits, including: opening up scientific enquiry, promoting new research, allowing verification of published results, and enabling research to go in directions not envisaged by the initial investigators [@Uhlir2007]. Added to this, making data open protects it from loss due to hardware malfunction, and also makes it a useful teaching tool [@Roche2014].
 
@@ -231,7 +192,8 @@ en_dot <- ggplot(processes_CH4, aes(value, plot_name.y)) +
   xlab("Quantity [kg or MJ]") +
   geom_vline(xintercept=0) +
   facet_wrap(~ plot_name.x, ncol=2) +
-  geom_text(aes(x=-23, y=1.5, label=TRL_name), size=3, hjust=0)
+#  geom_text(aes(x=-23, y=1.5, label=TRL_name), size=3, hjust=0)
+  geom_text(aes(label=TRL_name), x=-23, y=1.5, size=3, hjust=0)
 en_dot
 ```
 

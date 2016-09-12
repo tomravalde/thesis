@@ -5,11 +5,9 @@
 \begin{tcolorbox}
 
 A version of this chapter was published as: 
-Tom Ravalde, James Keirstead, Comparing performance metrics for multi-resource systems: the case of urban metabolism, \emph{Journal of Cleaner Production}, doi: \url{http://dx.doi.org/10.1016/j.jclepro.2015.10.118}.
+Tom Ravalde, James Keirstead, Comparing performance metrics for multi-resource systems: the case of urban metabolism, \emph{Journal of Cleaner Production}, doi: \url{http://dx.doi.org/10.1016/j.jclepro.2015.10.118} The `Urban metabolism and sustainability' section of the paper was reworked into the literature review [TODO: continue].
 
 \end{tcolorbox}
-
-[TODO: remove parts repeated elsewhere]
 
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
@@ -21,8 +19,6 @@ font_import(pattern="LinBiolinum")
 
 library(ggplot2)
 ```
-
-[TODO: include a box to note the replication of paper]
 
 One of the first challenges which presents itself as we consider an urban area's metabolic requirements and wastes, is that of how to actually quantify them, given that they are composed of multiple resource types. Some resources can be quantified by both mass *or* energy (e.g. fuels), some can be quantified by mass *or* energy (e.g. water with a give quantity, at a given velocity, elevation and hydrostatic pressure), and others can only be quantified in energy terms (e.g. electricity and heat). To add them up would be to "compare apples and oranges".
 
@@ -40,22 +36,13 @@ An important subset of MR systems are towns and cities, which enable a growing g
 
 Our aim here is to evaluate how energy and material flow accounts from urban metabolism studies can be used to support performance measures of urban resource use in view of the MRTP, for example, to guide policy or investment decisions. After reviewing the contribution of the urban metabolism concept to improved urban sustainability (Section 2),  we provide a general framework for assessing the resource performance of an MR system, thus unifying previously published metrics (Section 3).  Recognizing that the MRTP can be shaped by a number of subjective criteria, we focus primarily on physical measures of performance (but the framework is general and could be used for other objectives as well). We then apply these metrics to a global set of urban metabolism data (Section 4) and discuss what the results might mean for decision makers seeking to measure and improve urban resource performance, the limitations of these measures, and how the urban metabolism field might develop to overcome these obstacles (Section 5).
 
-## Urban metabolism and sustainability
+## This section on 'Urban metabolism and sustainability' has been reworked into the Literature Review
 
-The 'urban metabolism' (UM) concept seeks to find the "sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" [@Kennedy2007, p.44]. Since Wolman first described the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.179], his theoretical ideas have been applied to the real world, with around 20 comprehensive UM studies of cities as of 2011 [@Kennedy2011]. Typically, the methodology to conduct a UM study starts by defining a boundary around an urban area, and then consulting data sources in order to quantify material, energy, water and other resource flows into and out of a city on a yearly basis [@Kennedy2014]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
-
-A survey of the literature shows at least four ways the UM concept contributes to understanding urban sustainability.
-
-- *To compare resource consumption.* For example, @Krausmann2008 compare the metabolism of agrarian, developing and industrialised societies. @Kennedy2007 narrows in on eight metropolitan regions around the world, examining their metabolisms since 1965 to show general trends of increasing per capita consumption of energy, water and waste (with some exceptions, such as Toronto's energy and water use). Comparisons might also take place between sectors within a single city (such as construction or commercial services), for example to determine which sectors produce the most waste [@Browne2009].
-- *To provide inputs to other types of analysis.* UM studies compile annual inventories of resource flows, which can then be coupled to other data for further analysis.  For example, by combining urban metabolic data with carbon intensity factors, a city's greenhouse gas emissions can be calculated, as in @Kennedy2009 and @Kennedy2010. The 'ecological footprint' (EF) is another quantity that has been calculated from UM data [@BFF2002]. @Zucaro2014 use UM data to calculate 'urban sustainability indicators' for Rome, including carbon emissions, acidification and emergy flows.
-- *To understand or model relationships in the urban environment.* A more novel use of UM is to "develop mathematical models of processes within the urban metabolism" [@Kennedy2011, p.1970] in order to examine how policies or technological interventions might change stocks and flows. For example, from knowing the quantities of some of the material and energy flows into and out of processes within the urban environment, the STAN model of @Cencic2008 can be used to calculate the values of unknown process inputs and outputs. Another use is to explore relationships between different resources, with @Kenway2013 examining the links between urban energy and water consumption. Geographical dependencies can also be studied, for example @Barles2009 reveals Paris' reliance on surrounding regions for material provisions and waste management. @Bristow2013 assesses resilience and vulnerability of a city's resources, ascertaining whether or not Toronto has sufficient energy stocks in the event of supply failure or other shocks. Finally @Liu2011a have used UM inventory data to study the interdependence of economic sectors within a city.
-- *To relate consumption to other dependent variables.* This includes identifying particular environmental problems with urban resource consumption such as waste generation impacts [@Browne2009]; water stress and contamination [@Kennedy2007]; and the degree to which economic growth is dependent on material consumption [@Schulz2007].
-
-In summary, the urban metabolism concept (and in particular the associated resource inventory data) has proved itself as a useful 'enabling' tool, providing a framework to examine resource consumption alongside notions of urban sustainability.
+ [TODO: May want to add text here to relate the work of the chapter to UM.]
 
 ## Measuring the resource performance of MR systems
 
-Having shown the ways urban metabolism accounts can be used to measure the resource performance of towns and cities, we now consider MR systems more generally, providing a formal definition of resource performance measures and identifying how they have been applied in the literature to date. To do this, we introduce a general framework which distinguishes between 'black-box' and 'grey-box' representations of an MR system (illustrated in Figure \ref{fig:MR-represent}).
+Having shown the ways urban metabolism accounts can be used to measure the resource performance of towns and cities [TODO: cross-ref to previous chapter?], we now consider MR systems more generally, providing a formal definition of resource performance measures and identifying how they have been applied in the literature to date. To do this, we introduce a general framework which distinguishes between 'black-box' and 'grey-box' representations of an MR system (illustrated in Figure \ref{fig:MR-represent}).
 
 \input{03_metrics/figure.tex}
 \begin{figure}
