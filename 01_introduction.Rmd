@@ -478,6 +478,8 @@ Having seen how a more efficient use of resources is the route to meeting the pr
 
 ## Systems optimisation
 
+As systems are considered not in isolation, but together, recogising that the outputs of one system (can) become the inputs to another, such that they exhibit both interactions and synergies, the complexity of the design and planning problem becomes evident.
+
 Given the complexity of planning beneficial intersectoral links synergies, planners and policy makers need some assistance in navigating the conundrum of how best to navigate the technical challenge.
 
 Any possible network of resources and their associated management infrastructure can be thought of as a system (as defined at the start of the chapter). A system of this sort can be conceptualised as a network made up of nodes and links, where the nodes represent processes (such as a power plant, or pipe to transport water), and the links represent flows of resources between the nodes (such as electricity leaving the power plant to enter the cable). This is visualised in Figure [TODO: cross-ref] which re-presents Figure \ref{fig:elec} as nodes and links.
