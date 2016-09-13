@@ -69,8 +69,11 @@ update:
 	then \
 	cp /home/tr608/ImpCol/PhD/my-refs.bib . ; \
 	inkscape -D -z --file=01_introduction/power-network.svg --export-pdf=01_introduction/power-network.pdf --export-latex ; \
+	inkscape -D -z --file=01_introduction/power-network-system.svg --export-pdf=01_introduction/power-network-system.pdf --export-latex ; \
+	inkscape -D -z --file=01_introduction/broader-network-system.svg --export-pdf=01_introduction/broader-network-system.pdf --export-latex ; \
 	inkscape -D -z --file=01_introduction/intersectoral-interactions.svg --export-pdf=01_introduction/intersectoral-interactions.pdf --export-latex ; \
 	inkscape -D -z --file=01_introduction/intersectoral-synergies.svg --export-pdf=01_introduction/intersectoral-synergies.pdf --export-latex ; \
+	inkscape -D -z --file=01_introduction/thesis-structure.svg --export-pdf=01_introduction/thesis-structure.pdf --export-latex ; \
 	inkscape -D -z --file=04_database/metab-hierarchy.svg --export-pdf=04_database/metab-hierarchy.pdf --export-latex ; \
 	inkscape -D -z --file=05_model-development/model-family.svg --export-pdf=05_model-development/model-family.pdf --export-latex ; \
 	inkscape -D -z --file=05_model-development/pipe-dam-example.svg --export-pdf=05_model-development/pipe-dam-example.pdf --export-latex ; \
