@@ -482,11 +482,30 @@ As systems are considered not in isolation, but together, recogising that the ou
 
 Given the complexity of planning beneficial intersectoral links synergies, planners and policy makers need some assistance in navigating the conundrum of how best to navigate the technical challenge.
 
-Any possible network of resources and their associated management infrastructure can be thought of as a system (as defined at the start of the chapter). A system of this sort can be conceptualised as a network made up of nodes and links, where the nodes represent processes (such as a power plant, or pipe to transport water), and the links represent flows of resources between the nodes (such as electricity leaving the power plant to enter the cable). This is visualised in Figure [TODO: cross-ref] which re-presents Figure \ref{fig:elec} as nodes and links.
+Any possible network of resources and their associated management infrastructure can be thought of as a system (as defined at the start of the chapter). A system of this sort can be conceptualised as a network made up of nodes and links, where the nodes represent processes (such as a power plant, or pipe to transport water), and the links represent flows of resources between the nodes (such as electricity leaving the power plant to enter the cable). This is visualised in Figure \ref{fig:elec-system} which re-presents Figure \ref{fig:elec} as nodes and links.
 
-[TODO: Diagram of electricity network re-represented as nodes and links]
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network-system.pdf_tex}}
+%	\end{spacing}
+	\caption{A node-link conceptualisation of the urban electricity system of Figure \ref{fig:elec}. A solid double-ended arrow represents an import of coal from outside the system; a solid single-ended arrow represents the transfer of resources between processes; and a dashed arrow represents a demand in the system.}
+	\label{fig:elec-system}
+\end{figure}
 
-The key idea in this thesis though is that nodes can have multiple functions. Thus a power plant might be considered as much a part of the heating network, as it is part of the electricity network. More than that, it is linked to the water network (via the need for cooling). These links and others are shown in Figure [TODO: cross-ref] which incorporates the electricity network.
+The key idea in this thesis though is that nodes can have multiple functions. Thus a power plant might be considered as much a part of the heating network, as it is part of the electricity network. More than that, it is linked to the water network (via the need for cooling). These links and others are shown in Figure \ref{fig:broader-system} which incorporates the electricity network.
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{01_introduction/broader-network-system.pdf_tex}}
+%	\end{spacing}
+	\caption{TODO:}
+	\label{fig:broader-system}
+\end{figure}
+
 
 [TODO: Diagram of node-link electricity network formulated situation with links to other infrastructure]
 
