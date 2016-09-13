@@ -522,52 +522,41 @@ The key thing here though (as the literature review in Chapter 2 will show) is t
 
 ## Urban metabolism -- the theoretical framework
 
-Thus far, this thesis has considered urbanisation trends, and the challenges and opportunities this raises with respect to resource management. Any discourse on the sustainability of urban resource maangement should interact with the concept of 'urban metabolism' (UM).
+Any discourse on the sustainability of urban resource management should interact with the field of 'urban metabolism' (UM). UM (whose history and methodology will be considered in more detail in Chapter 2) analogises cities and living organisms: both entities consume resources, and produce wastes, and in doing so, sustain their activities and growth [@Kennedy2011]. This analogy of metabolism provides a 'metaphorical framework' [@Pincetl2012, p.194] to assist the understanding and analysis of how the resources flows into and out of a city, and their stocks held in a city, relate to aspects of a city, such as its form and layout, socioeconomic indicators, political and institutional arrangements [@Hobbes2007], and activities and functions.
 
-This will be considered in some detail in Chapter 2. Briefly, it makes an analogy between cities and living organisms, in as much as both entities consume resources, and produce wastes, and this results ion their growth and activities [@Kennedy2011]. In other words, UM is a 'metaphorical framework' [@Pincetl2012, p.194] which facilitates the analysis of relationships between urban resource flows and other aspects of a city, such as its form/layout, material stocks, socioeconomic characteristics, political and institutional arrangements [@Hobbes2007], activities and functions etc.
+Some key results from UM studies show that in general there is an increasing per capita consumption of water, energy and materials, and output of waste and wastewater \citep{Kennedy2008}, and that this growth of resource flows is coupled to growing GDP \citep{Schulz2007a, Kowalski1997}. Nevertheless, for some cities, there are observed per capita reductions in energy and water use (through increased efficiency) and reduced per capita waste consumption (following increased recycling rates) \citep{Kennedy2008}. 
 
-Clearly, UM is a broad discipline, and studies will vary in their scope. But broadly, studies entail, first quantifying a set of resource flows in and out of a city, and then relating this to 
+Some UM studies take a wide-angle perspective, for example showing that as human settlements grow (from hunter-gather, to agricultural communities, to industrial centres), they become dependent for their resources on an ever-widening surrounding area \citep{Haberl2001a, Haberl2001b, Barles2009}. Other studies zoom in on the detail: for example, considering exactly how a city becomes water-stressed through the different stages of urban development \citep{Kennedy2008}.
 
-1. The basic \emph{methdology} in a UM study is a 'material flow analysis' (MFA) where resource flows in and out of areas are measured to see where they accumulate \citep{Barles2009}. Inputs included 'domestic extraction' (DE) or `imports' whilst outpus are 'exports', `deliberate disposal' (DD) or 'wastes and emissions' (WE). 
-2. The basic \emph{results} of an UM study are 'indicators' given by operations on these variables. These can be used to compare the metabolism of different locations (or the same location at different times) to assess the relative sustainability of an area\footnote{For example, $\mbox{`material intensity'}=\mbox{Direct material input}/\mbox{GDP}$. This value reduces as a society dematerialises.} \citep{Hobbes2005}. \citet{Haberl2001a, Haberl2001b} show that the indicator 'human appropriation of net primary production' (HANNP), 'domestic consumption' and 'total energy input' divides societies into three categories: hunter-gather, agricultural and industrial. Each of these exhibits qualitatively different metabolic profiles. Hunter-gather communities have no struggle meeting their needs from their environment, however agricultural communities will reach a 'labour' limit where the environment will not be able to meet the needs of those working on it (see Section~\ref{sec:urban_challenges}), because their energetic needs (including that embodied in food and materials) simply cannot be met by the 'biological productivity' of the area---thus even agricultural regimes can be unsustainable. 
+The metaphor has proved useful, and carries lots of explanatory power. Indeed, the challenges set out in this thesis have already been defined by others in terms of UM, proposing that cities should move from having a linear metabolism (where resources are consumed and expelled by a city with little or no reuse or recycling within the city) to a circular metabolism (where co-located activities use one-anothers' wastes and by-products) [@Leduc2010, @Leduc2013, @VillarroelWalker2014, @Leidreiter2012], as represented in Figures \ref{fig:linear-met} and \ref{fig:circ-met}.
 
-EXPLANATORY POWER
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{01_introduction/linear-metabolism.jpg} 
+	\caption{Schematic of a linear metabolism. Figure taken from \citet{EcologyinArch2016}.} \label{fig:linear-met}
+\end{figure}
 
-Indeed, much of what has been discussed so far can be related to UM, from the growth of an urban area, to 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{01_introduction/circular-metabolism.jpg} 
+	\caption{Schematic of a linear metabolism. Figure taken from \citet{EcologyinArch2016}.} \label{fig:circ-met}
+\end{figure}
 
-But UM can be used to provide greater explanatory power. Indeed , most of what has been discussed thus far can be explained with reference to UM. [TODO: give examples] 
+As a final note, UM is being used increasingly in the design and planning of urban areas, and is find its way into policy [@Agudelo-Vera2012] with @Kennedy2011 advocating the use of UM thinking to produce \emph{``more ecologically sensitive designs''} of a city through infrastructure integration, closing loops to minimise overall inputs and outputs of resources. In conclusion, it can be said that the UM concept is key to improving resource management in order to bring sustainable design considerations to urban planning [@Agudelo-Vera2011].
 
-- (Socio)Economic-relations
-1. \emph{In general, there is an increasing per capita metabolism.} \citet{Kennedy2008} demonstrates the power of the UM concept in reviewing the studies of eight regions around the world since 1965. The authors conclude that in general, there is an increasing per capita metabolism for water, wastewater, energy and materials (therefore cities are assimilating mroe of these resources per person). The largest components in UM studies tend to be energy, water and waste, thus justifying the approach of this study in targetting these resources for resource integration opportunities. London is a good example of this result \citep{BFF2002}.
-2. \emph{Improvements in metabolism are observed in some areas.} Despite the global trends, some places (such as Toronto) have seen per capita reductions in energy and water use. This has been achieved through increased efficiency. Similarly, multiple cities have increased recycling rates and hence reduced per capita waste consumption \citep{Kennedy2008}. 
-3. \emph{High metabolism and economic indicators are linked}. A particular challenge noted in the literature is the coupling between direct material consumption (DMC), direct material inputs (DMI) and GDP, for example, in the case of Singapore \citep{Schulz2007a}. Thus \citet{Kowalski1997} argues the challenge that sustainable urban design faces is the need to de-link prosperity and quality of life from metabolism. This can be achieved as technologies increase in efficiency faster than the economic growth of a society (as well as bringing about changes in cultural expectations and behaviours). The way that such efficiency improvements can be achieved at the urban scale (as opposed to the individual technology scale) is through the circularisation of urban resource flows (rather than the current linear approach)---which ultimately reduces inputs, as argued by \citet{Newman1999} who advocates the 'extended metabolism model'. This approach wants to recognise that a city is more than a mechanism for the physical processing of resources, but also the centre of human opportunity. 
-- Compiling metabolic accounts for different types of settlement shows how environmental challenges come about: In general, urban areas both experience an internal environmental strain and exert an environmental strain externally. A society starts to overconsume resources when the area which serves it (the hinterland) is unable to provide enough food, water and other materials to meet the needs of its inhabitants. An increasing population requires a larger quantity of resources to meet its needs. To extract and manage these resources itself requires a growing population inducing a self-feeding cycle of population  growth and resource management. At some point, a 'labour limit' is reached where the land can no longer sustain the workforce. Such resource scarcity can be true of both agricultural based societies as well as industrial based societies [@Haberl2001a, Haberl2001b, Gr2003]. In seeking to overcome these internal pressures on resources, cities look beyond the immediate hinterlands, making use of the transport system to become dependent on resource imports from global markets. Thus the environmental impact that cities are responsible for spreads such that it becomes an external, global problem [@Agudelo-Vera2011]. In summary, the internal environmental strain due to resource over-consumption leads to external impacts on a global scale.
-- UM studies can take a more detailed look at a particular resources, and its associated issues. Consider the example of water stress, discussed earlier. One example of how this can happen in urban areas is given by \citet{Kennedy2008} who considers the relationship between urbanisation and groundwater. At the early stages of urban development, shallow wells are sufficient to supply a population, and wastewater can discharge to a watercourse. As the population grows and water extraction rates rise, the water table falls requiring the digging of deeper wells. Shallow groundwater can also become contaminated by wastewater discharge. Thus water must be sourced (at significant expense) from outside the city, changing the city's groundwater characteristics such that the water table can rise above its original level and even cause flooding. In summary then, water security issues in urban areas are causing financial, health and environmental concerns.
+<!--
+2. The basic \emph{results} of an UM study are 'indicators' given by operations on these variables. These can be used to compare the metabolism of different locations (or the same location at different times) to assess the relative sustainability of an area\footnote{For example, $\mbox{`material intensity'}=\mbox{Direct material input}/\mbox{GDP}$. This value reduces as a society dematerialises.} \citep{Hobbes2005}.
+
+hunter-gather, agricultural and industrial. Each of these exhibits qualitatively different metabolic profiles. Hunter-gather communities have no struggle meeting their needs from their environment, however agricultural communities will reach a 'labour' limit where the environment will not be able to meet the needs of those working on it (see Section~\ref{sec:urban_challenges}), because their energetic needs (including that embodied in food and materials) simply cannot be met by the 'biological productivity' of the area---thus even agricultural regimes can be unsustainable. 
+
+who considers the relationship between urbanisation and groundwater. At the early stages of urban development, shallow wells are sufficient to supply a population, and wastewater can discharge to a watercourse. As the population grows and water extraction rates rise, the water table falls requiring the digging of deeper wells. Shallow groundwater can also become contaminated by wastewater discharge. Thus water must be sourced (at significant expense) from outside the city, changing the city's groundwater characteristics such that the water table can rise above its original level and even cause flooding. In summary then, water security issues in urban areas are causing financial, health and environmental concerns.
+
+\citet{Haberl2001a, Haberl2001b} show that the indicator 'human appropriation of net primary production' (HANNP), 'domestic consumption' and 'total energy input' divides societies into three categories: hunter-gather, agricultural and industrial. Each of these exhibits qualitatively different metabolic profiles. Hunter-gather communities have no struggle meeting their needs from their environment, however agricultural communities will reach a 'labour' limit where the environment will not be able to meet the needs of those working on it (see Section~\ref{sec:urban_challenges}), because their energetic needs (including that embodied in food and materials) simply cannot be met by the 'biological productivity' of the area---thus even agricultural regimes can be unsustainable. 
+
+Compiling metabolic accounts for different types of settlement shows how environmental challenges come about: In general, urban areas both experience an internal environmental strain and exert an environmental strain externally. A society starts to overconsume resources when the area which serves it (the hinterland) is unable to provide enough food, water and other materials to meet the needs of its inhabitants. An increasing population requires a larger quantity of resources to meet its needs. To extract and manage these resources itself requires a growing population inducing a self-feeding cycle of population  growth and resource management. At some point, a 'labour limit' is reached where the land can no longer sustain the workforce. Such resource scarcity can be true of both agricultural based societies as well as industrial based societies [@Haberl2001a, Haberl2001b, Gr2003]. In seeking to overcome these internal pressures on resources, cities look beyond the immediate hinterlands, making use of the transport system to become dependent on resource imports from global markets. Thus the environmental impact that cities are responsible for spreads such that it becomes an external, global problem [@Agudelo-Vera2011]. In summary, the internal environmental strain due to resource over-consumption leads to external impacts on a global scale.
+
 %Associated with the increasing demand is the need to treat the water and prevent contamination. This demand for water in high quantities comes with a financial burden [@Daigger2009]. 
-
-RELATE TO THE CHALLENGE OF THIS THESIS
-
-The way in which UM relates to this thesis
-
-The questions raised
-
-Thus the challenges tackled in this thesis can be framed in these terms. How can a city improve its metabolism? The lit-review will introduce UM in some detail, but for now: [TODO: necessary developments to the field] 
-
-Perhaps one unexplored area of urban metabolism is the idea of systems optimisation [TODO: complete] 
-
-Thus the challenge tackled in this thesis can be framed in terms of urban metabolism (UM)
-
-UM IN POLICY AND PLANNING
-
-Find its route to policy via urban metabolism [TODO: cite http://ac.els-cdn.com/S0921344912000250/1-s2.0-S0921344912000250-main.pdf?_tid=e4246f32-6bb1-11e6-8231-00000aab0f02&acdnat=1472232426_433302133d00ea76ce4dfa27702e30a7, page 4].
-
-Thus, UM is an accounting tool which offers a way to quantify the sustainability challenges presented by the overconsumption of resources. Hence it can be a useful consideration in sustainable urban design. \citet{Barles2010} makes the case for its importance in sustainable urban development issues, noting how research has moved on from viewing cities as .parasites', feeding off the environment at its expense. Instead, the UM approach has allowed the consideration of optimisation, making use of possible industrial symbioses, thus moving from linear to circular resource management in cities. Some specific results and features of UM studies which are pertinent to resource management efficiency are now discussed.
-
-The results of these UM studies give the \emph{means} to achieving improved resource efficiency by identifying specific areas for circularisation and dematerialisation. For example, a multi-scale UM study of Paris and the surrounding region in \citet{Barles2009} shows the city's dependence on a large area for its waste management. Thus, actions can be targeted in that sector to improve Paris's sustainability. Having an appreciation for the utility of the UM concept in assessing the resource efficiency of an area, it can be seen why \citet{Kennedy2011} advocates UM studies in design, using MFAs to produce \emph{``more ecologically sensitive designs''} of a city through infrastructure integration, closing loops to minimise overall inputs and outputs of resources. In conclusion, it can be said that the UM concept is key to improving resource management in order to bring sustainable design considerations to urban planning \citep{Agudelo-Vera2011}.
-
-SUMMARY
-
-Link up ideas 
+-->
 
 <!--
 %% definitions
@@ -581,99 +570,84 @@ Link up ideas
 ## Aims and scope of the study
 \label{sec:aims}
 
+<!--
 The world is urbanising, and this is good news because of the socioeconomic benefits this extends to the growing numbers of people who live in towns and cities. However, the quantities of resources consumed and wasted by cities is a cause for concern, particularly in relation to environmental and economic challenges. However, while being the cause of challenges, cities, by their very nature present great opportunities to manage resources more efficiently. 
 
 The particular ways to find resource efficiency in this thesis is the idea of finding synergies between energy, water and waste management activities, in which the wastes and by-products from one sector can become the inputs to another.
 
-To realise these benefits in practice is no small challenge -- not least because of the technical difficulty of choosing which mix of processes will result in the overall best set of synergies. However, this type of problem is well-suited to optimisation modelling, in which the system under study is mathematically represented in such a way that that sufficient computing power can find the optimal configuration of energy, water and waste management infrastructure.
+This research challenge of identifying strategies for an area to makes its resource management more efficient can be framed in terms of 'urban metabolism' -- a concept which locates patterns of urban resource consumption within a broader set of ideas about urban form and functions.
+-->
 
-This research challenge of identifying strategies for an area to makes its resource management more efficient can be framed in terms of 'urban metabolism' -- a concept which locates patterns of urban resource consumption within a broader set of ideas about urban form and functions. The UM concept also is gaining traction with a large body of researchers, policy makers and planners who area interested in issues of urban sustainability.
+This introduction has not attempted to be systematic in identifying all the challenges and opportunities in urban resource management. Nevertheless, there is enough evidence to suggest that there are environmental and economic issues to be tackled; and that synergies between energy, water and waste management could become a viable way to improve an urban area's metabolism
 
-This introduction has not attempted to be systematic in identifying all the challenges and opportunities in urban resource management. Nevertheless, there is enough here to suggest that there are environmental and economic issues to be tackled; and that synergies between energy, water and waste management could become a viable way to improve urban metabolism, which might be realised through a model which integrates urban energy, water and waste management.
+To realise these benefits in practice is no small challenge -- not least because of the difficulty of choosing which mix of processes will result in the overall best set of synergies. However, this type of problem is well-suited to optimisation modelling, in which the system under study is mathematically represented in such a way that that sufficient computing power can find the optimal configuration of energy, water and waste management infrastructure.
 
-### Research boundaries
+Urban resource consumption is connected to a lot of different issues and considerations, and thus to provide a focussed are of research, where clear novel contributions can be proposed, requires that research boundaries be defined, in order to pose a precise research question.
 
-There are many fascinating aspects to cities, some of which touch on the themes already introduced. Some of these ideas are somewhat broad, and some terms used can have vague, unbounded meanings (such as 'resources', 'processes' and 'sector', amongst others). Thus this section defines the boundaries of the research, in order to be able to precisely define a research question.
+### Title definition
 
-- institutional and creative forces/real-world practicalities
-- socioeconomic/political/agent-based (transfer to the real-world)
-- system operation
-- livability (i.e. the conceptual model of metabolism)
-- interfacing with other tools
-- details about the optimisation mathematics
-- value judgements on system objectives
-- economics
-- consumer behaviour (e.g. rebound effects)
-
-However:
-
-- sectors
-
-#### Title definition
+Of the many fascinating aspects of cities, some broad, and some terms used can have vague, unbounded meanings (such as 'resources', 'processes' and 'sector', amongst others). Thus this section defines the boundaries of the research, in order to be able to precisely define a research question.
 
 \begin{description}
 
-\item[Highly integrated] This refers to resource management optimisation models that consider the simultaneous optimisation of more than one system, in order to take advantage of synergies between them. Section [TODO:] defines this more thoroughly 
-\item[Urban] Definitions of `urban' can range from those expressed in administrative terms¸ or in terms of population density \citep{@Deuskar2015}. However, urban metabolism studies care about resource flows, and from this perspective there are at least three ways to define an urban boundary, proposed by \citet{Ramaswami2011}\footnote{Ramaswami's original purpose was to quantify a city's greenhouse gas emissions.}, and adapted by \citetKeirstead2012b}:
+\item [Highly integrated] This term refers to resource management optimisation models that consider the simultaneous optimisation of more than one system, in order to take into account interactions and synergies between them. (Section [TODO:] defines this more thoroughly, in relation to definitions of systems that are not integrated or only 'integrated'.)
+\item [urban] There are many definitions of `urban'. \citet{Keirstead2012b} proposes three ways to define an urban boundary\footnote{Ramaswami's original purpose was to quantify a city's greenhouse gas emissions.}, which are adapted by \citet{Keirstead2012b}:
 
 \begin{itemize}
 \item \emph{Pure geographic;} this defines a city's in terms of its administrative boundaries;
 \item \emph{Geographic-plus;} this extends the pure geographic definition to include readily traceable upstream flows, such as electricity consumption;
-\item \emph{Pure consumption;} this definition attributes resource flows to the urban economy which generates the demand for a good or service. For example, a service-based city will require products manufactured in an industrial-based city. On the pure consumption definition, these flows would be attributed to the service-based city. This definition therefore attempts to 'even out' disparities between cities which arise from their different functions.
+\item \emph{Pure consumption;} this definition attributes resource flows to the economy which generated the demand for a good or service. For example, a service-based city will require products manufactured in an industry-based city (and vice versa). On the pure consumption definition, consumption is accounted to the service-based city, even though manufacturing took place in the industry-based city. This approach attempts to even out disparities between cities which arise from their different functions.
 \end{itemize}
 
-This thesis uses the 'geographic-plus' definition in order that infrastructure located outside a city's administrative boundaries, which may well be proximate to other infrastructure, will be included in models. Therefore, management infrastructure need only be close to \emph{each other}, because it is this pheneomenon that facilitates intersectoral synergies; i.e., it does not matter if some of the infrastructure is distant from the point of demand for goods and services.
+With its focus on resource management infrastructure, the interest of this thesis is essentially engineering rather than politics or economics. In particular, the way that a set of co-located consumers (i.e. a city) uses infrastructure to deliver goods and services. Thus the `geographic-plus' definition is used. In this way, infrastructure located outside a city's administrative boundaries, but is proximate to other infrastructure, will be considered in the modelling work.
 
-\item[Energy, water, and waste] As mentioned in Section [TODO:], these are the three 'lifeline' services which are common to all users in all cities (residential, commercial, and industrial). This does mean some resource-heavy processes maybe missed out. Such as the manufacturing sector (e.g. demands for iron and steel, process industries etc.). This approach is somewhat arbitrary (and perhaps even limiting -- see Further Work, in Chapter 7), but it helps define the boundaries of the problem, and makes a manageable piece of work for this thesis.
-\item[Systems] This is the network of processes and resources which manage a city's which ceverything required by resource management optimisation models, namely the resources and the processes which form a network.
+\item [energy, water, and waste] These resources are the concern of three of the five 'lifeline infrastructures' \citep{Young2013}, and specifically, are the three which involve resource conversions managed by utility companies\footnote{The other lifeline structures are communications and transportation.}. Limiting the study to these three sectors means some resource-heavy processes are not considered (such as steel manufacture and chemical industries). However, this approach defines the boundaries of the research, and helps makes the thesis manageable.
+\item [systems] These are the network of processes (those that convert and transport) and resources within a city.
 \end{description}
 
-#### Other definitions
+Implicit in this title definition are certain boundaries to the research, for example, the already noted focus on the management of just energy, water and waste. There are other boundaries to the research worth noting. 
 
-\begin{description}
+With respect to the optimisation modelling itself, there will be no discussion on the detailed mathematics of optimisation algorithms, and there will be no attempt to either soft- or hard-link this model to other tools.
 
-\item[Process] Definition. Thus, unless qualified (e.g. 'economic processes', 'development process'). Some times 'management process', 'conversion process' and 'transport process' will be used interchangably.
-\item[Resource] Definition.
-\item[Goods and services] 
+Considering the application of the modelling, there will be little consideration of how modelling results could be implemented within the real-world, with the social/management aspects to urban resource challenges beyond the scope of this thesis. For the same reason, this thesis considers how modelling affects urban resource flows, but not its effect on other aspects of UM, such as a city's economy, livability, or governance.
 
-\end{description}
+In summary, this thesis aims to focuses on the engineering possibilities of urban resource management challenges, in sufficient detail to be useful to researchers, planners and policy makers, but without diving into the whole sea of political, social, and economic realities.
 
 ### Research question
 
-With the boundaries in place, the following research question can be formulated, to give a clear focus to the thesis, and which can be used as a benchmark to measure the success of the research.
+With the research boundaries in place, the following research question is posed, to give a clear focus to the thesis, and which can be used as a benchmark to measure the success of the research.
 
-> *By how much can the metabolism of an urban area be improved by creating and implementing models which optimise the integrated provision of energy, water and waste?*
+> *By how much can an area's metabolism be quantifiably improved by an optimisation model which integrates the planning of energy, water and waste systems?*
 
-This end goal is divided into the following three aims, which connect together to meat the overall goal:
+This end goal is made up of three aims, which join together to address the overall research question:
 
-1. *Investigate the opportunity and methods.* This addresses the background necessary to develop and applying the model, including identifying methods to build the model, data for the model, and the means by which the model can be assessed.
-2. *Develop an optimisation model which computes the optimal network to meet demand for goods and services for an urban area.* These models must integrate the energy, water and waste systems, be computationally tractable, and provide results in a form useful to researchers, planners and policy makers. This aim will entail developing tests models which will be applied to a small-scale case study in order to test their methodology. This particular case study will be a 'benchmark' case study, which can be used to assess the performance of models (in terms of tractability, ease of writing, etc.)
-3. *Assess how well the models improve urban metabolism.* This will be achieved by applying the model to a case study, to show how well the model optimises a mix of technological opportunities to minimise environmental impacts and ensure economic stability for urban areas.
+1. *Investigate the opportunity and methodology.* This addresses the background necessary to develop and applying the model, including identifying methods to build the model, data for the model, and the means by which the model can be assessed.
+2. *Develop a model which computes the optimal mix of resources to meet demand for goods and services for an urban area.* These models must integrate the energy, water and waste systems, be computationally tractable, and provide results in a form useful to researchers, planners and policy makers. This will involve developing test models which will be applied to a small-scale case study to provide a 'benchmark' case study, which can be used to assess the performance of models (in terms of tractability, ease of writing, etc.)
+3. *Assess how well the models improve urban metabolism.* This requires applying the model to a case study to quantify how well the model optimises a mix of technological opportunities to minimise environmental impacts and ensure economic stability for urban areas.
 
-#### Thesis structure
+### Contributions
 
-These three aims will be realised over the seven chapters of this thesis. This chapter has argued that urbanisation is both a socioeconomically desirable phenomenon, and a source of environmental and economic problems related to resource overconsumption, but that cities possess the solution to their own problem, if only they were to take full advantage of the resource integration opportunities inherent in them. Chapter 2 examines the literature to show how this work advances the urban metabolism concept, and adds to existing models which optimise resource management.
+This thesis makes five contributions to research:
 
-With the background work laid down, the next three chapters do contribute the all that is needed to apply and assess the model. Chapter 3 explores the different ways one could define the efficiency of urban metabolism in order, when measuring across multiple resource types -- these can be used to measure the success of the model. Chapter 4 will systematically researches all the processes that can be used to manage energy, water and waste in the short- to mid-term. This will provide a database of processes to act as model inputs. Chapter 5 introduces the small-scale case study, and three possible ways to formulate a systems optimisation model, and by application to the small-scale case study, select the best option for the purposes of this thesis.
+- Advances the UM framework by considering how resource management processes affect an area's overall metabolic flows
+- In this cause, this thesis contributes a new open-source database of resource management processes
+- Develops a tool to simultaneously optimise energy, water and waste management. 
+- The model uses a new method to incorporate resource quality requirements in a manner that makes the model computationally efficient and tractable. 
+- Provides a too new to an audience of urban planners, policy makers and utility service companies.
 
-To finish off, Chapter 6 applies the model to a real-world application case study in China, and Chapter 7 evaluates how successful the work has been at meeting its aim of reducing environmental and economic threats from urbanisation; considers the broader implications of the work; and suggest areas of further work.
+### Thesis structure
 
-#### Contributions
+These above contributions will be realised over the seven chapters of this thesis. A diagram of how the thesis chapters build upon each other is given in Figure \ref{fig:thesis-structure}, and a summary of each chapter's objectives and contribution, and how they relate to each other, are given in Table \ref{tab:outline}.
 
-There are four (potentially) novel aspects to this research: 
-1. Whilst there are tools which consider the optimisation of two resources (for example, the minimisation of energy requirements for meeting water demands in a town), there are no such tools which simultaneously optimise energy, water and waste management. 
-2. Secondly, a new method will be required which incorporates resource quality requirements in a manner that makes the model computationally efficient and tractable. 
-3. Thirdly, the application of optimisation methods to the field of urban metabolism is new ground, with the literature dominated by accounting studies.
-4. Fourthly, the tools developed will be new to an audience of urban planners, policy makers and utility service companies.
+This chapter has argued that urbanisation is both a socioeconomically desirable phenomenon, and a source of environmental and economic problems related to resource overconsumption, but that cities possess the solution to their own problem, if only they were to take full advantage of the resource integration opportunities inherent in them. Chapter 2 examines the literature to show how this work advances the urban metabolism concept, and develops existing models which optimise resource management.
 
-- Database
-- Research methods for systematic literature review
+The next three chapters contribute the all that is needed to develop and apply. Chapter 3 explores the different ways one could quantify the efficiency of urban metabolism. Chapter 4 systematically researches all the processes that can be used to manage energy, water and waste in the short- to mid-term, to provide data for the model. Chapter 5 formulates three possible optimisation models, and applies them to the benchmark study to establish the most suitable formulation.
 
-#### Summary
+Chapter 6 applies the model to a real-world application case study in China, and Chapter 7 evaluates how successful the work has been at meeting its aim of reducing environmental and economic threats from urbanisation, considers the broader implications of the work, and suggests areas of further work.
 
+<!--
 In conclusion, there is strong case to pursue research into a model that optimises the provision of urban energy, water and waste resources. This is because urbanisation has socioeconomic advantages, such that it should not be resisted, despite the environmental and economic challenges brought by resource overconsumption. Rather, urban centres provide an opportunity for more efficient resource management by exploiting the proximity and co-location of infrastructure. The urban metabolism concept can be used to quantify the resource efficiency of a city, hence providing an underlying theoretical framework to the project.%he challenges of resource management. On top of this there is a research-gap in the field of integrated resource provision.
-
-A summary of each chapter's objectives and how they relate to each other in the context of the thesis as a whole, as well as the contributions made to the research landscape are given in Table \ref{tab:outline}.
+-->
 
 
 \begin{landscape}
@@ -693,8 +667,6 @@ print(tab.tex,
 ```
 
 \end{landscape}
-
-A diagram of how the thesis chapters build upon each other is given in Figure \ref{fig:thesis-structure}.
 
 \begin{figure}
 	\centering
