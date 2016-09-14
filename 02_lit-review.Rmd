@@ -20,7 +20,7 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 \begin{tcolorbox}
 
-The introduction to Section 1.1 and Section 1.1.1 have been adapted from Section 2 of \citet{Ravalde2015a} (`Urban metabolism and sustainability'). Section 1.1.2 has been adapted from \citet{Ravalde2016} (`Approaches to Urban Metabolism').
+The introduction to Section 1.1, and Section 1.1.1 have been adapted from Section 2 of \citet{Ravalde2015a} (`Urban metabolism and sustainability'). Section 1.1.2 has been adapted from \citet{Ravalde2016} (`Approaches to Urban Metabolism').
 
 \end{tcolorbox}
 
@@ -824,21 +824,16 @@ The highly integrated models closest to the ambitions of this thesis are formula
 
 By definition, this thesis will formulate a city-scale, highly integrated optimisation model. An additional insight this literature overview gives is that that the model should be high-level. This is intuitive when considering multiple resource system types: it is prudent to start with a simple representation of the various systems, before delving into the intricacies of the detail design and operation of the systems, which require specialist expertise regarding the systems being modelled.
 
-## Summary
+## Conclusion
 
-As the Introduction in Chapter 1 argued, cities provide an opportunity to deliver goods and services more efficiently, if only they were to take advantage of the synergies possible between energy, water and waste management systems. In order to move towards such a goal, this chapter has reviewed two research areas which consider how cities can use resources more efficiently.
+This chapter has provided overviews two research fields important to the development of optimisation models that can improve an area's metabolism. With regards to urban metabolism, the metaphorical framework is not currently sufficient to account for a city's overall metabolic flows in relation to the mix of resource management processes used within a city. The review also showed that while modelling is often used to aid understanding of urban metabolisms, there is room to contribute a model which considers how multiple resources and various resource management processes can be optimally mixed.
 
-The first research area is that of UM, where the review showed first that there can be more research into how the resource management processes used by an urban area affect its metabolism; and second, that while modelling is commonly adopted within UM, there is space for a resource systems model [TODO: rephrase]. This can be achieved if cities are considered as an 'engineered system', made up of a network of resource management processes, through which resources from beyond the city boundary are converted, in order to meet demand for energy, and water (similarly, the network manages wastes, and returns them to the wider environment).
+Turning to the second field of research, namely that of resource optimisation modelling, a review found that there were no models which integrated the design of energy, water and waste management systems the urban scale. Nevertheless, there were models which integrated the planning of more than one system at other scales, thus providing precedent for the type of modelling work, but confirming a new area application.
 
-The second research area studies here was that of resource optimisation modelling. A review of the literature found that at the urban scale, there were no models which integrated the design of energy, water and waste management systems (nevertheless, there were models which integrated the planning of more than one system at other scales).
+In order to answer the research question [TODO: cross-ref], this rest of this thesis brings together the two fields reviewed in this chapter. Introducing the proposed network representation of a city into the conceptual model of an area's UM, opens up the possibility of formulating a model which can consider interactions and synergies between the energy, water and waste sectors to help plan urban resource management in more sustainable ways.
+in the chapters that follow.
 
-These two gaps in these research fields can both be addressed in this thesis. Introducing the proposed network representation of a city into the conceptual model of an area's UM, opens up the possibility of using optimisation modelling to design a model which can help researchers, planners and policy makers plan resource management to adopt principles of industrial ecology found in EIPs, and take advantages of the synergies between different resource management systems. 
-
-In this way, the main challenge of the thesis can be met [TODO: refer back to research questions from Chapter 1], by formulating a model which could inform planners how to minimise drawing from, and returning wastes to, the environment, and thereby improve an area's overall metabolism. Such a model would be high-level (rather than detailed), with its novelty lying in its highly-integrated consideration of energy, water, and waste resource management systems.
-
-In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
-
-Before this main aim can be achieved however, there are intermediate aims which must be met. One important piece of work is to propose some way of representing a city as an 'engineered system', for use in the modelling. This question is the subject of Chapter [TODO:]. Another important consideration -- which has been introduced here, but not yet discussed in detail -- is the type of formulation for the model (e.g. linear or nonlinear, and other related considerations). This is dealt with in Chapter [TODO:]. Finally, a question posed by highly integrated urban resource management, is which metrics should be used to measure the efficiency of energy, water and waste systems in combination? This question has not been considered in this chapter, but it is the subject of the next chapter.
+Getting to the point of applying such a model must come after a number of intermediate steps. First, the conceptual model of Figure \ref{fig:metabl} needs to be represented mathematically (Chapter 5). Second, the model will require data to define parameters, such as the resource consumption of processes (Chapter 4). Thirdly, it is not obvious how to measure the performance of a highly-integrated systems, because each system will have its own associated metrics (such as freshwater consumption for water management systems) -- the next chapter attempts to find suitable metrics for highly integrated systems.
 
 <!--
 As the UM framework is used to study urban sustainability, in relation to its resource flows, forms, and function, one developing area is consider the processes occurring inside a city more closely.
