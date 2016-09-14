@@ -147,30 +147,15 @@ Other authors have noted that there is a "poor mechanistic underlying urban meta
 
 As a case in point, consider how a city meets domestic heating demand: bottom-up studies could explore how measures such as thermal insulation and lower thermostat settings reduce fuel requirements at the top. But studying the middle would explore how investment in processes could reduce fuel usage, for example showing how how heat demand could be met by waste heat from power generation rather than gas boilers. This kind of approach can be extended to study how a city's process mix, layout and scheduling can be optimised to maximise synergies, and thereby minimise a city's overall resource consumption and waste generation. Indeed, informing optimisation strategies to improve UM is highlighted by @Zhang as a great need for future UM research.
 
+<!--
 http://pubs.acs.org/doi/pdf/10.1021/acs.est.5b03060
-In particular,
-a systems engineering approach should be introduced to unify
-and standardize the methods of categorizing and quantifying
-data; to establish databases that will support investigation,
-analysis, and evaluation; to obtain multiscale data to meet the
-Environmental Science & Technology Critical Review
-DOI: 10.1021/acs.est.5b03060
-Environ. Sci. Technol. 2015, 49, 11247−11263
-11256
-database requirements of such analyses; to improve our
-understanding of urban metabolic principles and scale effects
-to support management and policy development and meet the
-requirements of different stakeholders; to integrate the insights
-from different fields of research; and to design research that will
-provide solutions for specific social policy problems, which will
-guide industrial development and that will promote restoration
-of the urban ecological balance.
+
+In particular, a systems engineering approach should be introduced to unify and standardize the methods of categorizing and quantifying data; to establish databases that will support investigation, analysis, and evaluation; to obtain multiscale data to meet the database requirements of such analyses; to improve our understanding of urban metabolic principles and scale effects to support management and policy development and meet the requirements of different stakeholders; to integrate the insights from different fields of research; and to design research that will provide solutions for specific social policy problems, which will guide industrial development and that will promote restoration of the urban ecological balance.
+-->
 
 ### Summary
 
-Returning to consider the broader aims of the thesis [TODO: continue] 
-
-In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they relate), within the study of flows, the arguments of @Zhang2013 can be extended to highlight a need to study how the processes within a city relate to each other, as an engineered system. Furthermore, @Zhang2013 points out the need for optimisation studies. This is the basis for the work of this thesis, namely to formulate an optimisation model which can take advantage of synergies between different resource management infrastructure) helps to meet this gap. In this way our work meets calls for IE perspectives on UM [@Clift2015] which (for example) identify future sustainable urban technologies.
+In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they work together), the arguments of @Zhang2013 can be extended to argue for research into how a city's processes work together as an engineered system. From such an understanding, it can become possible to formulate an optimisation model which can take advantage of synergies between different resource management infrastructure), and so contribute the answering the research question of this thesis.
 
 <!--
 In addition to summarising the evolution of UM research, @Zhang's also points out that 
@@ -211,19 +196,19 @@ Techniques:
 
 The literature review above surveyed UM research to highlight the different ways UM contributed to understanding resource flows in cities. In doing so, it highlighted the need for better understanding of the 'inside' of a UM system generally, and the engineered system specifically -- in the case of this thesis, the role of resource management processes in affecting the overall flows of energy, water, and waste into and out of a city.
 
-This section seeks to move this idea forward by considering the role modelling can play. First, the concept of modelling generally is introduced, before taking a systematic look at modelling within urban metabolism.
+This section seeks to move this idea forward by considering the role modelling can play in UM by taking a systematic look at the current state of affairs with regards to modelling within UM. Before this however, this section first takes a diversion to introduce the idea of modelling generally. 
 
 ### An introduction to modelling
 
-Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new model to the urban metabolism field.
-
-A model can be defines as
+Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new model to the urban metabolism field. e model can be defined as
 
 > "A simplified or idealized description of conception of a particular system, situation, or process, often in mathematical terms, that is put forward as a basis for theoretical or empirical understanding, or for calculations, predictions, etc..."
 
 \attrib{\citet{OED-model2016}, definition 8a}
 
-Note here the explicit reference to 'system' in the above definition. It is precisely the complexity of a system -- a concept introduced back in Chapter 1 -- with its various interactions and moving parts, which warrants simplified representations, i.e. models.
+Note in this definition, the explicit reference to a 'system'. It is precisely the complexity of a system -- a concept introduced back in Chapter 1 -- with its various interactions and moving parts, which warrants simplified descriptions in the form of models to aid understanding, calculation, and prediction.
+
+#### Pros and cons of models
 
 @Williams1999 highlights three benefits of building models:
 
@@ -233,11 +218,11 @@ Note here the explicit reference to 'system' in the above definition. It is prec
 
 However, modelling is not without its critics, and it is right to address their objections if this thesis to propose, formulate and apply a new model. Some only see crude reductionism in the way that mathematical programming seeks to quantify something, resting decisions on the numerical value of an equation. @Williams1999 points out that in fact all decisions will make quantitative evaluations implicitly, if not explicitly, and suggests modelling is at least an honest and scientific way to formalise the quantitative component of decision making. Others point out that inaccuracies in coefficient values will propagate to inaccurate results. Williams responds by showing how models can be tested for a range of parameter values (to reflect uncertainty), for example establishing the ranges for which parameters can change with predictable effects on the values of variables and the objectives.
 
-Models are therefore not a 'magic bullet', but nonetheless they are still important as "one of a number of tools for decision making" [@Williams1999, p5] to test different options, and identify possible courses of action.
+Models are therefore not a 'magic bullet', but nonetheless they are still important as "one of a number of tools for decision making" [@Williams1999, p5] to understand systems, test their performance, and identify ways to improve the system.
 
-### Types of models
+#### Types of models
 
-Models come in different types, which are summarised in Figure \ref{fig:models} (which is based on the @Williams1999's brief introduction to models). The first categorisation divides models into those that are *concrete* or *abstract*. The former type are exist physically, for example, a scaled-down construction of an aeroplane or laboratory-scale version of some resource management process). The latter type exist as conceptualised representations of a system.
+Models exist in different types, which are summarised in Figure \ref{fig:models} (which is based on the @Williams1999's brief introduction to models). The first categorisation divides models into those that are *concrete* or *abstract*. The former type are exist physically, for example, a scaled-down construction of an aeroplane or laboratory-scale version of some resource management process). The latter type exist as conceptualised representations of a system.
 
 Abstract models can be purely *descriptive* (sometimes called 'conceptual'). These models graphically or visually or diagramatically represent a system as an explanatory aid to help people understand the workings of the real system. A classic example is the nitrogen cycle diagram that many learn in school, which uses arrows to show how nitrogen, and transfers between the atmosphere, ground, and plants (sometimes changing its form due to the activity of plants and bacteria). It does not include any mathematical content, but it does visualise how plants, bacteria, the atmosphere, and other components convert nitrogen [@BBC2014].
 
@@ -251,15 +236,13 @@ Abstract models can be purely *descriptive* (sometimes called 'conceptual'). The
 	\label{fig:models}
 \end{figure}
 
-Abstract models can also be *mathematical*. These use mathematical relationships to represent the properties of a system. One particular type of mathematical models are statistical models. In these, the statistical properties of a set of sample data (for example, the relationships between the age and height of 50 children selected randomly from a school) are used to predict the characteristics of a larger group (for example, the height, if the age of any child in the school is known).
+Abstract models can also be *mathematical*. These use mathematical relationships to describe a system. One particular type of mathematical models are statistical models. In these, the statistical properties of a set of sample data (for example, the relationships between the age and height of 50 children selected randomly from a school) are used to predict the characteristics of a larger group (for example, the height of any student in the school, given the age).
 
-Other types of mathematical models include simulation models, and optimisation models (the latter is also known as mathematical programming, which was briefly introduced in Section [TODO:]). Both of these use equations, inequalities and logical dependencies to represent the properties of a system. A simulation predicts how a system will perform under a given set of conditions, for example could be the length of a traffic queue given a particular system of traffic signals [@Grether2012]. Optimization models compute the conditions under which a system will perform best (with 'best' defined by the modeller). An example would be to work out how traffic signals should be timed in order to minimise traffic congestion [@Osorio2008].
+Other types of mathematical models include simulation models, and optimisation models (the latter is also known as mathematical programming, and was briefly introduced in Section [TODO: Ch 1]). Both of these use equations, inequalities and logical dependencies to represent the workings of a system.  Simulation models predict how a system will perform under a given set of conditions, for example could be the length of a traffic queue given a particular system of traffic signals [@Grether2012]. Optimization models compute the conditions under which a system will perform best (with 'best' defined by the modeller). An example would be to work out how traffic signals should be timed in order to minimise traffic congestion [@Osorio2008].
 
-The equations of simulation and optimisation models represent the physics of a system and the real-world constraints applied to it. These equations are formed of parameters, which are fixed values representing unchanging realities of the system ((such as the length of a given road); and variables, which are allowed to change (such as the length of time for a signal to display a green light). In simulation models, the variable values are selected by the modeller, who wants to investigate the effect of their changes; whereas for optimisation models, the reverse is true -- the desired effect is specified first, and the variables to achieve this are chosen by by mathematical routines.
+The equations of simulation and optimisation models are formed of parameters, which are fixed values representing unchanging conditions of the system (such as the length of a given road); and variables, which are at liberty to to change (such as the length of time for a signal to display a green light). In simulation models, the variable values are selected by the modeller, who wants to investigate the effect of their changes; whereas for optimisation models, the reverse is true -- the desired outcome is specified first, and the variables to achieve this are chosen by mathematical algorithms.
 
-[TODO: Move to a summary section.]
-
-Simulation and optimisation models need to be based on descriptive models: what a descriptive model visualises, a mathematical model can formalise into mathematics, with the relationship between system components being expressed mathematically. A descriptive model has already in fact been proposed in this chapter, namely the hierarchical framework of Figure \ref{fig:metab}. The object of modelling in this work is to optimise the system -- the network of processes and resources -- for any given sets of demands and available resources
+Simulation and optimisation models need to be based on descriptive models: what a descriptive model visualises, a mathematical model can formalise mathematically. A descriptive model has already in fact been proposed in this chapter, namely the hierarchical framework of Figure \ref{fig:metab}. The object of modelling in this work is to optimise the system -- the network of processes and resources -- for any given set of demands and available resources.
 
 ### An overview of urban metabolism models
 
