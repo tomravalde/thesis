@@ -20,35 +20,24 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 \begin{tcolorbox}
 
-Parts of this chapter have been adapted from publications: [TODO: complete] 
+The introduction to Section 1.1, and Section 1.1.1 have been adapted from Section 2 of \citet{Ravalde2015a} (`Urban metabolism and sustainability'). Section 1.1.2 has been adapted from \citet{Ravalde2016} (`Approaches to Urban Metabolism').
 
 \end{tcolorbox}
 
-Using modelling to realise opportunities to improve an area's metabolism via intersectoral synergies
+The aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review shows to what extent the research question has been answered.
 
-The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review has two main purposes: first, to identify the gaps in current research, and so to more precisely define the scope of this thesis; and second, to begin identifying methods which could be adopted in the modelling work.
-
-The two main areas research fields addressed by this theses are urban metabolism (UM), and resource optimisation modelling (ROM). This chapter identifies the key ideas, concepts, principles and methods of these subject areas, beginning in Section [TODO:] showing how UM research has been used to better understand how cities use resources, and notes developments in UM research pertinent to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that optimisation modelling can play a useful role in UM research, before Section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed. Once this survey of the literature has been completed, it is then possible to precisely define the scope [TODO: better word?] of this thesis, which is done by providing definitions of the words which comprise the thesis title, in Section [TODO:]. Finally, Section [TODO:] outlines [TODO: summarises?] the gaps and contributions met by this thesis.
-
-This chapter reviews three areas of literature
-
-First, a general introduction to UM generally, before more specifically tracking the extent to which the role of resource management processes -- which will be shown to be an important consideration in this thesis -- have been considered in UM research.
-
-Second,
-
-Finally
-
-This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+To address this question, two key bodies of research are explored. The first subject of exploration shows how the UM field has developed to better understand issues or urban resource management, and identifies how ideas of UM should be further developed so it is equipped to address the concern of this thesis, namely how resource management processes affect an area's metabolism. The second area of exploration introduces the various ways modelling has been used to optimise the performance of resource management systems.
 
 ## The past, present and future of urban metabolism research
 
 UM was introduced in 1965 by the American engineer Abel Wolman introduced. He recognised that resource consumption was necessary to sustain urban living, but wanted to make a close study of this because of his concerns that as cities grew, their rising material and energy inputs and outputs presented challenges for public the management of water supply, sewage disposal and air pollution. In that cause, he coined the phrase 'urban metabolism', defining the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play" [@Wolman1965, p.156, *Scientific American*].
 
-As a vehicle to explore the issues of public resource management in cities, Wolman quantified the material and energy inputs and outputs of a hypothetical city of one million inhabitants. This kind of accounting exercise is typically the fundamental starting point of UM studies. [TODO: add note on MFA and EFA]. Note here in Wolman's seminal work, are the two key elements typical of UM studies: first, the quantification of urban resource flows; second, some assessment of how these flows relate to other aspects of the city -- in Wolman's case, this was the challenges of "public economic" (p.156) decision making.
+As a vehicle to explore the issues of public resource management in cities, Wolman quantified the material and energy inputs and outputs of a hypothetical city of one million inhabitants. This kind of accounting exercise -- known as material flow analysis, and energy flow analysis -- is typically the fundamental starting point of UM studies. Note here in Wolman's seminal work, are the two key elements typical of UM studies: first, the quantification of urban resource flows; second, some assessment of how these flows relate to other aspects of the city -- in Wolman's case, this was the challenges of "public economic" (p.156) decision making.
 
 Since Wolman the UM framework has cultivated a whole field of studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics. A more recent definition of UM which encapsulates the current breadth and depth of the field is given by @Kennedy2007, who defines UM as "the sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" (p.44).
 
-As of 2011, there have been around 20 comprehensive UM studies of cities [@Kennedy2011] [TODO: update this figure in view of Kennedy et al. PNAS paper? More recently, a number of researchers from all over the globe have ]. The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
+Since initial steady growth in UM studies, there has been a recent rise in research facilitated by conferences, journals, and research collaborations [@Zhang2015a], and most recently @Kennedy2015a has, through collaboration with researchers worldwide, conducted UM studies of 27 global megacities.
+ The field has grown such that 'urban metabolism' is fast becoming a buzzword in urban research literature, perhaps enjoying the benefits of increased data availability in conjunction with "an explosion of research on cities and on sustainability in recent years" [@NextCity2014]. @Kennedy2012a write of the "substantial momentum" (p.781) to its study and highlight its usefulness to "address concerns over the magnitudes of global resource flows" as well as the "analysis of specific policy issues" (p.780). 
 
 Thanks to UM's close association with 'sustainability', the UM concept is helping planners and policy makers understand and address urban sustainability issues, and is even employed by governments seeking sustainability strategies (for example, in the United Kingdom, by @Clift2015).
 
@@ -133,11 +122,15 @@ Bottom-up methods often depend on high-tech tools including: sensor technology t
 
 Top-down approaches are methodologically simple, but they do not nurture an appreciation of the ultimate causes of emissions or other environmental impacts [@Kellett2013], and are thus unable to predict how metabolic flows might change under different scenarios, hence the power of bottom-up methods which can be used to test scenarios and policies. Kellett et al. exemplify this in their neighbourhood emissions model by altering land-use, building efficiency, transport fuels, and consumer behaviour to observe how overall emissions change.
 
-@Zhang2013 traces the evolution of the UM concept and concludes that more attention should be paid to the *middle* of a system. Starting with Wolman's seminal study, UM understood a city to be a linear system into and out of which resources flowed. On this view, sustainability efforts are focussed on minimising the inputs and outputs. This understanding was refined by @Giradet1990, who suggested that in addition to minimising resource inputs (e.g. by using solar energy and more efficient energy processes such as CHP), cities should be adopting circular metabolisms, whereby outputs could be reused as inputs through waste recycling.
+@Zhang2013 traces the evolution of the UM concept and concludes that more attention should be paid to the *middle* of a system (figure \ref{fig:zhang}). Starting with Wolman's seminal study, UM understood a city to be a linear system into and out of which resources flowed. On this view, sustainability efforts are focussed on minimising the inputs and outputs. This understanding was refined by @Giradet1990, who suggested that in addition to minimising resource inputs (e.g. by using solar energy and more efficient energy processes such as CHP), cities should be adopting circular metabolisms, whereby outputs could be reused as inputs through waste recycling.
 
 Both understandings above are black-box representations, in which there is no consideration of mechanisms at work within a city. Thus @Zhang2009 proposed a network-process model in which research considers how resources move within a system. Specifically that work (and its offspring, such as @Li2011) considers the economic sectors (nodes) within a system, and the degree to which they are dependent upon one another by resource flows (links). Such information is useful to help identify potential problems for an urban system (e.g. due to sectors competing for a limited resource).
 
-[TODO: reproduce @Zhang2013's figure]
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{02_lit-review/zhang-um-developments.jpg} 
+	\caption{Developments in ways to think about urban metabolism. Figure copied directly from \citet{Zhang2013}.} \label{fig:zhang}
+\end{figure}
 
 In this way, @Zhang2013 notes that both bottom-up and top-down approaches fail to consider the mechanisms within the urban system which determine its behaviour -- or as we have denoted it -- the *middle* of the system. The top-down approaches are well suited to identify the scale of metabolic problems, and the bottom-up approaches contribute understanding on the ultimate causes of problematic flows, but appreciation of the middle will add to the insights of bottom-up studies by revealing the role of internal activities and functions between the top and the bottom of an urban system. Thus Zhang argues research should prioritise quantitative analysis of an urban system's components, which models urban systems as a network of nodes and flows. This representation of a system provides a framework to understand how fluxes circulate between nodes, thus enabling researchers to test how management interventions and other scenarios will change the distribution of fluxes between nodes.
 
@@ -154,11 +147,15 @@ Other authors have noted that there is a "poor mechanistic underlying urban meta
 
 As a case in point, consider how a city meets domestic heating demand: bottom-up studies could explore how measures such as thermal insulation and lower thermostat settings reduce fuel requirements at the top. But studying the middle would explore how investment in processes could reduce fuel usage, for example showing how how heat demand could be met by waste heat from power generation rather than gas boilers. This kind of approach can be extended to study how a city's process mix, layout and scheduling can be optimised to maximise synergies, and thereby minimise a city's overall resource consumption and waste generation. Indeed, informing optimisation strategies to improve UM is highlighted by @Zhang as a great need for future UM research.
 
+<!--
+http://pubs.acs.org/doi/pdf/10.1021/acs.est.5b03060
+
+In particular, a systems engineering approach should be introduced to unify and standardize the methods of categorizing and quantifying data; to establish databases that will support investigation, analysis, and evaluation; to obtain multiscale data to meet the database requirements of such analyses; to improve our understanding of urban metabolic principles and scale effects to support management and policy development and meet the requirements of different stakeholders; to integrate the insights from different fields of research; and to design research that will provide solutions for specific social policy problems, which will guide industrial development and that will promote restoration of the urban ecological balance.
+-->
+
 ### Summary
 
-Returning to consider the broader aims of the thesis [TODO: continue] 
-
-In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they relate), within the study of flows, the arguments of @Zhang2013 can be extended to highlight a need to study how the processes within a city relate to each other, as an engineered system. Furthermore, @Zhang2013 points out the need for optimisation studies. This is the basis for the work of this thesis, namely to formulate an optimisation model which can take advantage of synergies between different resource management infrastructure) helps to meet this gap. In this way our work meets calls for IE perspectives on UM [@Clift2015] which (for example) identify future sustainable urban technologies.
+In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they work together), the arguments of @Zhang2013 can be extended to argue for research into how a city's processes work together as an engineered system. From such an understanding, it can become possible to formulate an optimisation model which can take advantage of synergies between different resource management infrastructure), and so contribute the answering the research question of this thesis.
 
 <!--
 In addition to summarising the evolution of UM research, @Zhang's also points out that 
@@ -199,19 +196,19 @@ Techniques:
 
 The literature review above surveyed UM research to highlight the different ways UM contributed to understanding resource flows in cities. In doing so, it highlighted the need for better understanding of the 'inside' of a UM system generally, and the engineered system specifically -- in the case of this thesis, the role of resource management processes in affecting the overall flows of energy, water, and waste into and out of a city.
 
-This section seeks to move this idea forward by considering the role modelling can play. First, the concept of modelling generally is introduced, before taking a systematic look at modelling within urban metabolism.
+This section seeks to move this idea forward by considering the role modelling can play in UM by taking a systematic look at the current state of affairs with regards to modelling within UM. Before this however, this section first takes a diversion to introduce the idea of modelling generally. 
 
 ### An introduction to modelling
 
-Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new model to the urban metabolism field.
-
-A model can be defines as
+Whenever models are used, it is important to justify their use, but it is especially important here specifically, as we introduce a new model to the urban metabolism field. e model can be defined as
 
 > "A simplified or idealized description of conception of a particular system, situation, or process, often in mathematical terms, that is put forward as a basis for theoretical or empirical understanding, or for calculations, predictions, etc..."
 
 \attrib{\citet{OED-model2016}, definition 8a}
 
-Note here the explicit reference to 'system' in the above definition. It is precisely the complexity of a system -- a concept introduced back in Chapter 1 -- with its various interactions and moving parts, which warrants simplified representations, i.e. models.
+Note in this definition, the explicit reference to a 'system'. It is precisely the complexity of a system -- a concept introduced back in Chapter 1 -- with its various interactions and moving parts, which warrants simplified descriptions in the form of models to aid understanding, calculation, and prediction.
+
+#### Pros and cons of models
 
 @Williams1999 highlights three benefits of building models:
 
@@ -221,11 +218,11 @@ Note here the explicit reference to 'system' in the above definition. It is prec
 
 However, modelling is not without its critics, and it is right to address their objections if this thesis to propose, formulate and apply a new model. Some only see crude reductionism in the way that mathematical programming seeks to quantify something, resting decisions on the numerical value of an equation. @Williams1999 points out that in fact all decisions will make quantitative evaluations implicitly, if not explicitly, and suggests modelling is at least an honest and scientific way to formalise the quantitative component of decision making. Others point out that inaccuracies in coefficient values will propagate to inaccurate results. Williams responds by showing how models can be tested for a range of parameter values (to reflect uncertainty), for example establishing the ranges for which parameters can change with predictable effects on the values of variables and the objectives.
 
-Models are therefore not a 'magic bullet', but nonetheless they are still important as "one of a number of tools for decision making" [@Williams1999, p5] to test different options, and identify possible courses of action.
+Models are therefore not a 'magic bullet', but nonetheless they are still important as "one of a number of tools for decision making" [@Williams1999, p5] to understand systems, test their performance, and identify ways to improve the system.
 
-### Types of models
+#### Types of models
 
-Models come in different types, which are summarised in Figure \ref{fig:models} (which is based on the @Williams1999's brief introduction to models). The first categorisation divides models into those that are *concrete* or *abstract*. The former type are exist physically, for example, a scaled-down construction of an aeroplane or laboratory-scale version of some resource management process). The latter type exist as conceptualised representations of a system.
+Models exist in different types, which are summarised in Figure \ref{fig:models} (which is based on the @Williams1999's brief introduction to models). The first categorisation divides models into those that are *concrete* or *abstract*. The former type are exist physically, for example, a scaled-down construction of an aeroplane or laboratory-scale version of some resource management process). The latter type exist as conceptualised representations of a system.
 
 Abstract models can be purely *descriptive* (sometimes called 'conceptual'). These models graphically or visually or diagramatically represent a system as an explanatory aid to help people understand the workings of the real system. A classic example is the nitrogen cycle diagram that many learn in school, which uses arrows to show how nitrogen, and transfers between the atmosphere, ground, and plants (sometimes changing its form due to the activity of plants and bacteria). It does not include any mathematical content, but it does visualise how plants, bacteria, the atmosphere, and other components convert nitrogen [@BBC2014].
 
@@ -239,21 +236,21 @@ Abstract models can be purely *descriptive* (sometimes called 'conceptual'). The
 	\label{fig:models}
 \end{figure}
 
-Abstract models can also be *mathematical*. These use mathematical relationships to represent the properties of a system. One particular type of mathematical models are statistical models. In these, the statistical properties of a set of sample data (for example, the relationships between the age and height of 50 children selected randomly from a school) are used to predict the characteristics of a larger group (for example, the height, if the age of any child in the school is known).
+Abstract models can also be *mathematical*. These use mathematical relationships to describe a system. One particular type of mathematical models are statistical models. In these, the statistical properties of a set of sample data (for example, the relationships between the age and height of 50 children selected randomly from a school) are used to predict the characteristics of a larger group (for example, the height of any student in the school, given the age).
 
-Other types of mathematical models include simulation models, and optimisation models (the latter is also known as mathematical programming, which was briefly introduced in Section [TODO:]). Both of these use equations, inequalities and logical dependencies to represent the properties of a system. A simulation predicts how a system will perform under a given set of conditions, for example could be the length of a traffic queue given a particular system of traffic signals [@Grether2012]. Optimization models compute the conditions under which a system will perform best (with 'best' defined by the modeller). An example would be to work out how traffic signals should be timed in order to minimise traffic congestion [@Osorio2008].
+Other types of mathematical models include simulation models, and optimisation models (the latter is also known as mathematical programming, and was briefly introduced in Section [TODO: Ch 1]). Both of these use equations, inequalities and logical dependencies to represent the workings of a system.  Simulation models predict how a system will perform under a given set of conditions, for example could be the length of a traffic queue given a particular system of traffic signals [@Grether2012]. Optimization models compute the conditions under which a system will perform best (with 'best' defined by the modeller). An example would be to work out how traffic signals should be timed in order to minimise traffic congestion [@Osorio2008].
 
-The equations of simulation and optimisation models represent the physics of a system and the real-world constraints applied to it. These equations are formed of parameters, which are fixed values representing unchanging realities of the system ((such as the length of a given road); and variables, which are allowed to change (such as the length of time for a signal to display a green light). In simulation models, the variable values are selected by the modeller, who wants to investigate the effect of their changes; whereas for optimisation models, the reverse is true -- the desired effect is specified first, and the variables to achieve this are chosen by by mathematical routines.
+The equations of simulation and optimisation models are formed of parameters, which are fixed values representing unchanging conditions of the system (such as the length of a given road); and variables, which are at liberty to to change (such as the length of time for a signal to display a green light). In simulation models, the variable values are selected by the modeller, who wants to investigate the effect of their changes; whereas for optimisation models, the reverse is true -- the desired outcome is specified first, and the variables to achieve this are chosen by mathematical algorithms.
 
-[TODO: Move to a summary section.]
-
-Simulation and optimisation models need to be based on descriptive models: what a descriptive model visualises, a mathematical model can formalise into mathematics, with the relationship between system components being expressed mathematically. A descriptive model has already in fact been proposed in this chapter, namely the hierarchical framework of Figure \ref{fig:metab}. The object of modelling in this work is to optimise the system -- the network of processes and resources -- for any given sets of demands and available resources
+Simulation and optimisation models need to be based on descriptive models: what a descriptive model visualises, a mathematical model can formalise mathematically. A descriptive model has already in fact been proposed in this chapter, namely the hierarchical framework of Figure \ref{fig:metab}. The object of modelling in this work is to optimise the system -- the network of processes and resources -- for any given set of demands and available resources.
 
 ### An overview of urban metabolism models
 
-Each of the model types above are to be found in the UM literature. Indeed, the idea of 'metabolism' is itself a descriptive model, i.e. the concept of 'metabolism' has inherent to it the fact that resource flows relate to an entity's form and function. To show where this thesis can fit within the UM modelling landscape, this section reviews the literature found by exploring the Scopus database using the search term `urban metabolism AND model OR modelling`[^search]. 
+Each of the model types above are to be found in the UM literature. Indeed, the idea of 'metabolism' is itself a descriptive model, i.e. the concept of 'metabolism' has inherent to it the fact that resource flows relate to an entity's form and function. To show where this thesis can fit within the UM modelling landscape, this section reviews the literature found by exploring the Scopus database using the search term `urban metabolism AND model OR modelling`\footnote{The full search term is available at \url{[TODO: URL]} This search excludes irrelevant subject areas (such as medicine).}
 
-[^search]: The full search term is available at \\url{http://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=urban+metabolism+AND+model+OR+modelling&sid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&sot=b&sdt=cl&cluster=scosubjabbr%2c%22MEDI%22%2cf%2c%22BIOC%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22CHEM%22%2cf%2c%22NEUR%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22BUSI%22%2cf%2c%22ARTS%22%2cf%2c%22PSYC%22%2cf%2c%22HEAL%22%2cf%2c%22MULT%22%2cf%2c%22VETE%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a150&origin=savedSearchNewOnly&txGid=A080B1BFA7BBE9DC169DA27B04E5945E.f594dyPDCy4K3aQHRor6A%3a15}]. This search excludes irrelevant subject areas (such as medicine).
+<!--
+https://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=urban+metabolism+AND+model+OR+modelling&sid=E0C49FA0042774D044085C15DE330D78.f594dyPDCy4K3aQHRor6A%3a110&sot=b&sdt=cl&cluster=scosubjabbr%2c"MEDI"%2cf%2c"BIOC"%2cf%2c"PHAR"%2cf%2c"NURS"%2cf%2c"CHEM"%2cf%2c"NEUR"%2cf%2c"IMMU"%2cf%2c"MATH"%2cf%2c"BUSI"%2cf%2c"ARTS"%2cf%2c"PSYC"%2cf%2c"HEAL"%2cf%2c"MULT"%2cf%2c"VETE"%2cf%2c"Undefined"%2cf&sessionSearchId=E0C49FA0042774D044085C15DE330D78.f594dyPDCy4K3aQHRor6A%3a110&origin=savedSearchNewOnly&txGid=0}.
+-->
 
 This search returned 239 results which were manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not satisfy the definitions of 'model' as described above. Looking further at the remaining results, each paper was classified according to three three categories: the **type** of model (according to the definitions given above); the model's **focus**, which refers to the component(s) of urban metabolism studied by the model; and **level** of detail to which a system is modelled. The following three subsections summarise the variety of models to be found in UM.
 
@@ -261,7 +258,7 @@ This search returned 239 results which were manually reduced to 108 after removi
 
 As explained above, UM is itself a descriptive model, but it has growth since Wolman's first study which considered simply the flows of resources, and the challenges of their public management. One such development of the concept is that of @Newman1999a, who proposes the 'Extended Metabolism Model of the City' (p.220), who adds 'livability' to encourage researchers to consider how resource flows relate health, incomes, housing stock, and other aspects of urban living.
 
-Other descriptive models are those models highlighted by @Zhang2013, namely [TODO: cite Girardet and @Zhang2009b], both of which add detail to how the flows are considered; the former incorporates recycling of resources, and the latter asks modellers to consider how resources flow between sectors within the urban boundary.
+Other descriptive models are those models highlighted by @Zhang2013, namely @Girardet1990 and @Zhang2009b, both of which add detail to how the flows are considered; the former incorporates recycling of resources, and the latter asks modellers to consider how resources flow between sectors within the urban boundary.
 
 An example of a statistical model is that of \citet{Liang2014} who find a statistical relationship between the level of a city's nighttime lighting (as measured by satellites) and the city's steel stock, such that the latter can be predicted from the former.
 
@@ -269,13 +266,11 @@ An example of a statistical model is that of \citet{Liang2014} who find a statis
 
 Finally, an optimisation model is put forward by \citet{Pederson2013} who use heuristics to 'evolve' optimised city designs, through new building envelopes, road networks, public spaces etc. according to the metabolic capabilities and limitations.
 
-[TODO: Add note on how some simulation models adopt statistical models?]
-
 #### Focus
 
 UM models have different foci, which are considered here under two sub-characteristics: models that try to understand more about the **resource** flows of a city, and models which study **non-resource** components of UM.
 
-**Resource**-focussed models can study just a \emph{single resource}, as in the case of \citet{Zeng2014}, who formulate mathematical models of water treatment technologies and end uses to simulate the quantity of water and wastewater flows between them. Other models focus on \emph{multiple resources}, such as \citet{Liang2011}, who evaluate how various energy and material flows (including coal, water, biomass and pollutants) change under proposed policies. Finally, some models consider multiple resources but \emph{integrate} them together under a single value system; examples include \citet{Huang2005} who quantify various flows including solar energy, rain and fossil fuels in units of emergy\footnote{\emph{Emergy} in order that all resource flows for a city might be considered together [TODO: check this].
+**Resource**-focussed models can study just a \emph{single resource}, as in the case of \citet{Zeng2014}, who formulate mathematical models of water treatment technologies and end uses to simulate the quantity of water and wastewater flows between them. Other models focus on \emph{multiple resources}, such as \citet{Liang2011}, who evaluate how various energy and material flows (including coal, water, biomass and pollutants) change under proposed policies. Finally, some models consider multiple resources but \emph{integrate} them together under a single value system; examples include \citet{Huang2005} who quantify various flows including solar energy, rain and fossil fuels in units of emergy\footnote{\emph{Emergy} in order that all resource flows for a city might be considered together.
 
 **Non-resource**-focussed models might look at \emph{urban form}, such as the steel-stock accounting model of \citet{Liang2014} (mentioned above); \emph{socioeconomics}, such as \citet{Newman1999}, (again, mentioned above); and the \emph{environment}, such as \citet{Huang2005} who predicts an area's greenhouse gas emissions according to the construction characteristics of houses in the areas.
 
@@ -294,8 +289,6 @@ The third way UM models are classified here is according to the level at which t
 Each of the 108 papers captured in the search and filtering of the UM modelling literature are plotted as a point on Figure \ref{fig:UM-model-lit}. The point is coloured according to the model **type**, while its **focus** and **level** is represented by its position on the x-y plane. The models cited above are labelled on the plot.
 
 Examining the plot, it is possible note features and gaps in the UM modelling landscape, such as the dominance of simulation models and models which focus on how an area uses resources. However, when it comes to optimisation models, there is only one (which considers urban form). This suggests that this thesis can contribute a model whose purpose is to consider the **optimisation** of energy, water and waste flows (i.e. **multiple resources**) between resource management processes (i.e. **low level**).
-
-[TODO: remove the NA points on the plot]
 
 ```{r metab-lit-review, results="asis"}
 ###--------------------------------------------------
@@ -386,23 +379,19 @@ plot_cluster
 
 So far, this chapter has introduced UM as a research area that can support urban sustainability measures, and has shown that modelling is one means by which this can happen. The work of this thesis is to add to UM modelling capabilities a model which can optimise the simultaneous design of urban energy, water, and waste systems, so as to take advantage of intersectoral synergies, and thus improve an area's metabolism. To assist that cause, this section reviews a number of 'resource management optimisation models'[^ROM]. This has two purposes: first, to confirm the need for a model which can simultaneously optimise multiple resource management systems at the urban scale (thus complementing the findings above that the UM modelling literature includes no such models); and second, to suggest possible methodologies which can be adapted in this thesis.
 
-[TODO: Note on how this covers models more generally than mathematical optimisation]
-
 [^ROM]: Note that 'resource management optimisation modelling' is not a subject area which has a formal definition (unlike say, 'urban energy systems modelling' [TODO: cite @Keirstead review paper definition], rather it is used here to refer generally to optimisation models which are used to assist system managers improve the management of an energy or material resource for which they are responsible, and can incorporate everything from the efficient production of a single resource in some component of a plant [TODO: cite example], up to global strategies to manage [TODO: cite example, e.g. biomass].
 
-All the various types of models are used to (defined in Section [TODO:]) are all to be found in resource optimisation modelling. Concrete models are often used to find the optimal paramters and conditions for running some process (e.g. anaerobic digestion) -- these are in the form of laboratory experiments or scaled-down versions of a plant. These concrete models can be coupled with statistical techniques to help find the most optimal
+All the various types of models are used to (defined in Section [TODO:]) are all to be found in resource optimisation modelling. Concrete models are often used to find the optimal parameters and conditions for running some process (e.g. anaerobic digestion) -- these are in the form of laboratory experiments or scaled-down versions of a plant. These concrete models can be coupled with statistical techniques to help find the most optimal
 
 In other times, the processes under study are represented mathematically. In simulations, variables can be changed, to investigate the effect on resource yield or some other objective related to resource management. In optimisation modelling, planners and policy makers are helped to determine the design and operation of the infrastructure which extracts, refines, converts, and transports resources. Often these optimisation models take the form of a 'minimum cost network flow' problems [@Williams1999, p81], in which a set of equations are then solved to select an mix, layout, and operation schedule for resource management infrastructure, e.g. to maximise profit or minimise emissions.
 
 ### An introduction to the literature
 
-The most famous resource management models are arguably the models used to design energy systems at the national scale, such as MARKAL which attempts to plan an energy system, considering resource availability, infrastructural capabilities, technological possibilities, as taxation and policy regimes [TODO: https://www.ucl.ac.uk/energy-models/models/uk-markal]. It is used by governments, NGOs, and researchers around the world to help propose and plan energy strategies [TODO: https://www.epa.gov/air-research/epaus9r-energy-systems-database-use-market-allocation-markal-model].
+The most famous resource management models are arguably the models used to design energy systems at the national scale, such as MARKAL which attempts to plan an energy system, considering resource availability, infrastructural capabilities, technological possibilities, as taxation and policy regimes [@UCL2015]. It is used by governments, NGOs, and researchers around the world to help propose and plan energy strategies [@USEPA2015].
 
-Of most interest to this thesis however, are optimisation models formulated for the urban scale, and in particular, those that consider energy, water, and waste systems. These three resource types in particular have been chosen as their need for management needs are common to a city's 'bottom' [TODO: cross-ref the figure] (domestic, industrial, processing). These resources are generally the responsibility of utility companies (public or private), rather than individuals. Furthermore, energy, water and waste systems are considered three of the "lifeline infrastructures" (http://ro.uow.edu.au/cgi/viewcontent.cgi?article=1053&context=isngi2013), and in particular the three which involve resource conversions and transport (unlike communications and transport).
+Of most interest to this thesis however, are optimisation models formulated for the urban scale, and in particular, those that consider energy, water, and waste systems. These three resource types in particular have been chosen as their need for management needs are common to a city's 'bottom' (referring back to Figure \ref{fig:metab}) (domestic, industrial, processing). These resources are generally the responsibility of utility companies (public or private), rather than individuals. Furthermore, energy, water and waste systems are considered three of the "lifeline infrastructures" [@Young2013], and in particular the three which involve resource conversions and transport (unlike communications and transport).
 
-One urban-scale example of a resource management optimisation model is the urban energy systems model of @Keirstead2012. In one application, the model evaluates energy supply for a UK eco-town, focussing on the potential benefits of biomass-based systems[^Keirstead-other-applications]. A set of linear equations represent the resource quantities (e.g. biomass, heat, electricity, etc.) supplied to and removed from zones within the town at any given time. Parameters represent the zonal resource demands, resource availability, and technology behaviour. Variables represent whether a technology is present in a given zone, and at what rate is operates, as well as a schedule of resource movements within and without the city.
-
-[^Keirstead-other-applications]: Other applications of this model include [TODO: complete...]
+One urban-scale example of a resource management optimisation model is the urban energy systems model of @Keirstead2012. In one application, the model evaluates energy supply for a UK eco-town, focussing on the potential benefits of biomass-based systems. A set of linear equations represent the resource quantities (e.g. biomass, heat, electricity, etc.) supplied to and removed from zones within the town at any given time. Parameters represent the zonal resource demands, resource availability, and technology behaviour. Variables represent whether a technology is present in a given zone, and at what rate is operates, as well as a schedule of resource movements within and without the city.
 
 Optimisation models also are used to help plan urban water supply networks. For example @Zanganeh2010's model optimises the performance of an area's existing water network, choosing reservoir heights, pump sizes. @Lejano2006 applies optimisation modelling to a network design, starting with the spatial distribution of customer demands, it selects appropriate locations for the pipes. Some water optimisation models have ambitions greater than merely meeting demand, but also seek to minimise freshwater consumption through employing water reclamation processes, water saving technologies -- examples of these can be found in @Lim2010 and @Makropoulos2008.
 <!--
@@ -623,11 +612,9 @@ cut_list_size <- dim(lit)[1]
 cut_list_size <- prettyNum(cut_list_size, big.mark=",") # Insert a 1,000s comma separator
 ```
 
-This step returned `r uncut_list_size` results, which were filtered using R code to automatically remove titles not containing words related to 'optimization' [TODO: add footnote with URL], and titles unrelated to resource management[^filter-words]; before manually removing other irrelevant titles. This left `r cut_list_size` documents, which describe optimisation models at various scales, from optimising some component in a powerplant [TODO: example], to planning strategies at a regional level [TODO: example].
+This step returned `r uncut_list_size` results, which were filtered using R code to automatically remove titles not containing words related to 'optimization' [TODO: add footnote with URL], and titles unrelated to resource management[^filter-words]; before other irrelevant titles were removed manually. This left `r cut_list_size` documents, which describe optimisation models at various scales, from optimising some component in a powerplant [TODO: example], to planning strategies at a regional level [TODO: example]. The literature included both concrete models (usually in the form of laboratory-based experiments to find the operating conditions which resulted in optimal resource production), and abstract models.
 
-[^filter-words]: We started by removing common words (e.g. 'the') using the functionality of the textmining package `tm` in R, before identifying 11,967 unique words. From this automatically generated list, we manually removed words which did not refer to resources (e.g. 'network'), leaving 366 unique words. Only titles containing words from this list remained in our review. [TODO: add note on ]
-
-[TODO: note difference between concrete (i.e. experimental) and abstract models.]
+[^filter-words]: We started by removing common words (e.g. 'the') using the functionality of the textmining package `tm` in R, before identifying 11,967 unique words. From this automatically generated list, we manually removed words which did not refer to resources (e.g. 'network'), leaving 366 unique words. Only titles containing words from this list remained in our review.
 
 Across the different models, with their varying purposes, we could identify their various traits in order to highlight the need for our intersectoral synergy urban model, as well identify a suitable methodology to use[^sys-review].  There are many aspects we could consider (e.g. spatial and temporal resolution, time horizon, incorporation of endogenous resource demands, integration capabilities with other models, etc.), but here, we focus on three characteristics of the modelled systems most relevant to this thesis, namely: the **scale** for which the model optimises resources; the **level** at which models make infrastructure planning decisions; and the extent to which models integrate different resource management systems in order to take advantage of synergies (**integration**). Each of these dimensions are considered in more detail below. Note that this reviews the way the system has been conceptualised, rather than the technical detail of the model (which will be discussed in Chapter [TODO: cross-ref Ch 5]).
 
@@ -639,11 +626,9 @@ There are various scales at which resource management is optimised, ranging from
 
 #### Level
 
-[TODO: Add detail aesthetic to the plot, following another pass through the literature?]
-
 Some optimisation models are used in research, or the early exploratory stages of a system design, whereas other models are used to generate the precision required to design and operate a real-world system. These models tend to differ in terms of the detail to which they design a model. (Note: this is not the same as spatial or temporal scale, though it maybe more likely that models that consider smaller geographical areas and/or shorter time horizons can be more detailed.)
 
-The most detailed models make *low-level* decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], and biomass moisture content in a gasification plant [TODO: cite Synthesis and thermo-economic design optimization of wood-gasifier-SOFC systems for small scale applications]. [TODO: note the biomass superstructure models for high-level.]
+The most detailed models make *low-level* decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], and biomass moisture content in a gasification plant [@Morandin2013]. [TODO: note the biomass superstructure models for high-level.]
 
 At the *high-level*, the design considers a system's superstructure, representing a system as a network of resource sinks and sources, and their connections between them. Often, their job is to identify optimal quantities and timings of resource transfers between these sinks and sources. They may optimise a spatial layout (the location of, and distance between sinks and sources), but they do not go into the precision of detailed design. Examples include @Keirstead2012's urban energy system (introduced in Section [TODO:], above), the urban water system models of @Lim2010 and @Makropoulos2008, whose models maximise opportunities for wastewater reuse, by identifying urban sinks and sources of waters of various different contamination levels, and optimising how they might be connected.
 
@@ -653,12 +638,39 @@ At the *high-level*, the design considers a system's superstructure, representin
 
 Thirdly, resource management optimisation models can vary in the extent to which they integrate different resource management systems. Here, we define three levels, each of which indicates to what extent a model considers intersectoral synergies is part of the optimisation (diagramatically represented in Figure \ref{fig:integn-levels}).
 
+
+\begin{figure}
+	\centering
+  	\begin{subfigure}{0.3\textwidth}
+        \includegraphics{02_lit-review/none-integrated.pdf}
+	\caption{None-integrated modelling.}
+	\label{fig:interation-none}
+	\end{subfigure}
+
+  	\begin{subfigure}{0.3\textwidth}
+        \includegraphics{02_lit-review/integrated.pdf}
+	\caption{Integrated modelling.}
+	\label{fig:interation-medium}
+	\end{subfigure}
+
+  	\begin{subfigure}{0.3\textwidth}
+        \includegraphics{02_lit-review/highly-integrated.pdf}
+	\caption{Highly-integrated modelling.}
+	\label{fig:interation-high}
+	\end{subfigure}
+
+	\caption{Different levels of integration when modelling systems which manage resources.}
+        \label{fig:integn-levels}
+\end{figure}
+
+<!--
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{02_lit-review/integration-levels}
   \caption{Representation of low-, medium-, and high-levels of integration in resource optimisation modelling.}
   \label{fig:integn-levels}
 \end{figure}
+-->
 
 Some models have *no integration* These models consider just one resource system, such as the urban energy systems model of \citet{Keirstead2012}, or the urban water network model of \citet{@Keedwell2006}. *Integrated* models on the other hand will optimise for one resource, but while considering other systems [TODO: examples]. While these models may identify synergetic opportunities, this is not their main purpose. Finally, *highly integrated*} models try to simultaneously meet the demands for more than one resource management system. These models have as their main purpose, the optimisation of synergies between different resource management systems. Examples include [TODO: cite examples from IE]. 
 
@@ -678,6 +690,15 @@ The plot shows that in general, smaller-scale systems are modelled are intereste
 unique_levels <- unique(lit$level)
 unique_cats <- unique(lit$cat_matches_list)
 unique_optimised.systems <- unique(lit$optimised.system.s.)
+
+## Provide a more user-friendly name for levels on the facet strips
+lit$level <- as.character(lit$level)
+lit[lit$level=="high", "level"] <- "high level"
+lit[lit$level=="medium", "level"] <- "medium level"
+lit[lit$level=="low", "level"] <- "low level"
+
+## Remove the misc. model (just for clarity)
+lit <- filter(lit, methods!="misc.")
 
 ## Sort so levels are plotted in ascending order
 lit <- transform(lit,
@@ -708,9 +729,9 @@ lit <- transform(lit,
 			    "highly integrated"),
 		    ordered=TRUE),
 		 level=factor(level,
-	            levels=c("high",
-			     "medium",
-			     "low"),
+	            levels=c("high level",
+			     "medium level",
+			     "low level"),
 		    ordered=TRUE),
 		 cat_matches_list=factor(cat_matches_list,
 		   levels=c("various, waste",
@@ -764,8 +785,6 @@ plot_lit_int.scale
 
 ```
 
-[TODO: note this reference "Optimization methods applied to the design of eco-industrial parks: A literature review" (review of literature (methods) where EIP's engage in the exchange of energy/materials/water (similar to our paper). Conclusions could be interesting).]
-
 Highly integrated models (the focus of this thesis) are still the least common form, especially so at the city scale where models tend to only consider one resource sector in isolation (e.g. an urban energy system), or the integration of energy or water systems into other systems. The two highly integrated models captured by the search both consider how water and wastewater systems can work together to minimise freshwater consumption.
 
 Thus it seams that bringing in other resources (energy, and waste), it is the case that to day, there is a lack of highly integrated models, which attempt to take advantage of the infrastructure co-location to take advantage of synergies intersectoral synergies. Thus current optimisation models use to help plan urban resource management systems impose a ceiling on potential material and energy savings, by not considering energy, water and waste systems in combination.
@@ -778,21 +797,23 @@ The highly integrated models closest to the ambitions of this thesis are formula
 
 By definition, this thesis will formulate a city-scale, highly integrated optimisation model. An additional insight this literature overview gives is that that the model should be high-level. This is intuitive when considering multiple resource system types: it is prudent to start with a simple representation of the various systems, before delving into the intricacies of the detail design and operation of the systems, which require specialist expertise regarding the systems being modelled.
 
-## Summary
+## Conclusion
 
-As the Introduction in Chapter 1 argued, cities provide an opportunity to deliver goods and services more efficiently, if only they were to take advantage of the synergies possible between energy, water and waste management systems. In order to move towards such a goal, this chapter has reviewed two research areas which consider how cities can use resources more efficiently.
+This chapter has provided overviews two research fields important to the development of optimisation models that can improve an area's metabolism. With regards to urban metabolism, the metaphorical framework is not currently sufficient to account for a city's overall metabolic flows in relation to the mix of resource management processes used within a city. The review also showed that while modelling is often used to aid understanding of urban metabolisms, there is room to contribute a model which considers how multiple resources and various resource management processes can be optimally mixed.
 
-The first research area is that of UM, where the review showed first that there can be more research into how the resource management processes used by an urban area affect its metabolism; and second, that while modelling is commonly adopted within UM, there is space for a resource systems model [TODO: rephrase]. This can be achieved if cities are considered as an 'engineered system', made up of a network of resource management processes, through which resources from beyond the city boundary are converted, in order to meet demand for energy, and water (similarly, the network manages wastes, and returns them to the wider environment).
+Turning to the second field of research, namely that of resource optimisation modelling, a review found that there were no models which integrated the design of energy, water and waste management systems the urban scale. Nevertheless, there were models which integrated the planning of more than one system at other scales, thus providing precedent for the type of modelling work, but confirming a new area application.
 
-The second research area studies here was that of resource optimisation modelling. A review of the literature found that at the urban scale, there were no models which integrated the design of energy, water and waste management systems (nevertheless, there were models which integrated the planning of more than one system at other scales).
+In order to answer the research question [TODO: cross-ref], this rest of this thesis brings together the two fields reviewed in this chapter. Introducing the proposed network representation of a city into the conceptual model of an area's UM, opens up the possibility of formulating a model which can consider interactions and synergies between the energy, water and waste sectors to help plan urban resource management in more sustainable ways.
+in the chapters that follow.
 
-These two gaps in these research fields can both be addressed in this thesis. Introducing the proposed network representation of a city into the conceptual model of an area's UM, opens up the possibility of using optimisation modelling to design a model which can help researchers, planners and policy makers plan resource management to adopt principles of industrial ecology found in EIPs, and take advantages of the synergies between different resource management systems. 
+Getting to the point of applying such a model must come after a number of intermediate steps. First, the conceptual model of Figure \ref{fig:metabl} needs to be represented mathematically (Chapter 5). Second, the model will require data to define parameters, such as the resource consumption of processes (Chapter 4). Thirdly, it is not obvious how to measure the performance of a highly-integrated systems, because each system will have its own associated metrics (such as freshwater consumption for water management systems) -- the next chapter attempts to find suitable metrics for highly integrated systems.
 
-In this way, the main challenge of the thesis can be met [TODO: refer back to research questions from Chapter 1], by formulating a model which could inform planners how to minimise drawing from, and returning wastes to, the environment, and thereby improve an area's overall metabolism. Such a model would be high-level (rather than detailed), with its novelty lying in its highly-integrated consideration of energy, water, and waste resource management systems.
+<!--
 
-In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
+TODO: Consider moving content from here into the literature review
 
-Before this main aim can be achieved however, there are intermediate aims which must be met. One important piece of work is to propose some way of representing a city as an 'engineered system', for use in the modelling. This question is the subject of Chapter [TODO:]. Another important consideration -- which has been introduced here, but not yet discussed in detail -- is the type of formulation for the model (e.g. linear or nonlinear, and other related considerations). This is dealt with in Chapter [TODO:]. Finally, a question posed by highly integrated urban resource management, is which metrics should be used to measure the efficiency of energy, water and waste systems in combination? This question has not been considered in this chapter, but it is the subject of the next chapter.
+This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+-->
 
 <!--
 As the UM framework is used to study urban sustainability, in relation to its resource flows, forms, and function, one developing area is consider the processes occurring inside a city more closely.
