@@ -24,21 +24,9 @@ The introduction to Section 1.1, and Section 1.1.1 have been adapted from Sectio
 
 \end{tcolorbox}
 
-Using modelling to realise opportunities to improve an area's metabolism via intersectoral synergies
+The aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review shows to what extent the research question has been answered.
 
-The main aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review has two main purposes: first, to identify the gaps in current research, and so to more precisely define the scope of this thesis; and second, to begin identifying methods which could be adopted in the modelling work.
-
-The two main areas research fields addressed by this theses are urban metabolism (UM), and resource optimisation modelling (ROM). This chapter identifies the key ideas, concepts, principles and methods of these subject areas, beginning in Section [TODO:] showing how UM research has been used to better understand how cities use resources, and notes developments in UM research pertinent to this thesis. Section [TODO:] then introduces to the idea of 'modelling' in order to make the case that optimisation modelling can play a useful role in UM research, before Section [TODO:] looks in more detail at the types of models used in resource management modelling, in order to identify both the need for an integrated resource management model, and the methods by which such a model can be constructed. Once this survey of the literature has been completed, it is then possible to precisely define the scope [TODO: better word?] of this thesis, which is done by providing definitions of the words which comprise the thesis title, in Section [TODO:]. Finally, Section [TODO:] outlines [TODO: summarises?] the gaps and contributions met by this thesis.
-
-This chapter reviews three areas of literature
-
-First, a general introduction to UM generally, before more specifically tracking the extent to which the role of resource management processes -- which will be shown to be an important consideration in this thesis -- have been considered in UM research.
-
-Second,
-
-Finally
-
-This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+To address this question, two key bodies of research are explored. The first subject of exploration shows how the UM field has developed to better understand issues or urban resource management, and identifies how ideas of UM should be further developed so it is equipped to address the concern of this thesis, namely how resource management processes affect an area's metabolism. The second area of exploration introduces the various ways modelling has been used to optimise the performance of resource management systems.
 
 ## The past, present and future of urban metabolism research
 
@@ -834,6 +822,13 @@ In order to answer the research question [TODO: cross-ref], this rest of this th
 in the chapters that follow.
 
 Getting to the point of applying such a model must come after a number of intermediate steps. First, the conceptual model of Figure \ref{fig:metabl} needs to be represented mathematically (Chapter 5). Second, the model will require data to define parameters, such as the resource consumption of processes (Chapter 4). Thirdly, it is not obvious how to measure the performance of a highly-integrated systems, because each system will have its own associated metrics (such as freshwater consumption for water management systems) -- the next chapter attempts to find suitable metrics for highly integrated systems.
+
+<!--
+
+TODO: Consider moving content from here into the literature review
+
+This review first argues that the UM field should advance [TODO: foster, nuture, develop?] a more sophisticated understanding of how the resource management processes in a city affects its overall metabolism. Second, the review shows that urban resource optimisation modelling tends to only consider one resource sector in isolation (e.g. an urban energy system), and thus we argue for optimisation models which consider the simultaneous design of energy, water, and waste systems, i.e. 'integrated'. Nevertheless, there are sufficient precedent models to suggest that such a model can be both formulated, and applied. The rest of this thesis goes on to meet the first challenge by proposing that a city's management of goods and services can be modelled as an 'engineered system' (i.e., a network of processes which convert and transport resources). Notably, this understanding incorporates energy, water and waste management systems, and thus this thesis is placed to address the second challenge, by representing this engineered system using a set of equations which can form the basis of an optimisation model. In this way, this chapter lays the foundation to justify and contribute an optimisation tool which can help improve a city's metabolism.
+-->
 
 <!--
 As the UM framework is used to study urban sustainability, in relation to its resource flows, forms, and function, one developing area is consider the processes occurring inside a city more closely.
