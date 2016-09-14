@@ -660,20 +660,20 @@ Thirdly, resource management optimisation models can vary in the extent to which
 
 \begin{figure}
 	\centering
-  	\begin{subfigure}[b]{0.3\textwidth}
+  	\begin{subfigure}{0.3\textwidth}
         \includegraphics{02_lit-review/none-integrated.pdf}
 	\caption{None-integrated modelling.}
 	\label{fig:interation-none}
 	\end{subfigure}
 
-  	\begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=0.5\textwidth]{02_lit-review/integrated.pdf}
+  	\begin{subfigure}{0.3\textwidth}
+        \includegraphics{02_lit-review/integrated.pdf}
 	\caption{Integrated modelling.}
 	\label{fig:interation-medium}
 	\end{subfigure}
 
-  	\begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=0.5\textwidth]{02_lit-review/highly-integrated.pdf}
+  	\begin{subfigure}{0.3\textwidth}
+        \includegraphics{02_lit-review/highly-integrated.pdf}
 	\caption{Highly-integrated modelling.}
 	\label{fig:interation-high}
 	\end{subfigure}
@@ -710,6 +710,15 @@ unique_levels <- unique(lit$level)
 unique_cats <- unique(lit$cat_matches_list)
 unique_optimised.systems <- unique(lit$optimised.system.s.)
 
+## Provide a more user-friendly name for levels on the facet strips
+lit$level <- as.character(lit$level)
+lit[lit$level=="high", "level"] <- "high level"
+lit[lit$level=="medium", "level"] <- "medium level"
+lit[lit$level=="low", "level"] <- "low level"
+
+## Remove the misc. model (just for clarity)
+lit <- filter(lit, methods!="misc.")
+
 ## Sort so levels are plotted in ascending order
 lit <- transform(lit,
 		 scale=factor(scale,
@@ -739,9 +748,9 @@ lit <- transform(lit,
 			    "highly integrated"),
 		    ordered=TRUE),
 		 level=factor(level,
-	            levels=c("high",
-			     "medium",
-			     "low"),
+	            levels=c("high level",
+			     "medium level",
+			     "low level"),
 		    ordered=TRUE),
 		 cat_matches_list=factor(cat_matches_list,
 		   levels=c("various, waste",
