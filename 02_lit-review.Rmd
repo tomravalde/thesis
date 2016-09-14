@@ -657,12 +657,39 @@ At the *high-level*, the design considers a system's superstructure, representin
 
 Thirdly, resource management optimisation models can vary in the extent to which they integrate different resource management systems. Here, we define three levels, each of which indicates to what extent a model considers intersectoral synergies is part of the optimisation (diagramatically represented in Figure \ref{fig:integn-levels}).
 
+
+\begin{figure}
+	\centering
+  	\begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics{02_lit-review/none-integrated.pdf}
+	\caption{None-integrated modelling.}
+	\label{fig:interation-none}
+	\end{subfigure}
+
+  	\begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=0.5\textwidth]{02_lit-review/integrated.pdf}
+	\caption{Integrated modelling.}
+	\label{fig:interation-medium}
+	\end{subfigure}
+
+  	\begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=0.5\textwidth]{02_lit-review/highly-integrated.pdf}
+	\caption{Highly-integrated modelling.}
+	\label{fig:interation-high}
+	\end{subfigure}
+
+	\caption{Different levels of integration when modelling systems which manage resources.}
+        \label{fig:integn-levels}
+\end{figure}
+
+<!--
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{02_lit-review/integration-levels}
   \caption{Representation of low-, medium-, and high-levels of integration in resource optimisation modelling.}
   \label{fig:integn-levels}
 \end{figure}
+-->
 
 Some models have *no integration* These models consider just one resource system, such as the urban energy systems model of \citet{Keirstead2012}, or the urban water network model of \citet{@Keedwell2006}. *Integrated* models on the other hand will optimise for one resource, but while considering other systems [TODO: examples]. While these models may identify synergetic opportunities, this is not their main purpose. Finally, *highly integrated*} models try to simultaneously meet the demands for more than one resource management system. These models have as their main purpose, the optimisation of synergies between different resource management systems. Examples include [TODO: cite examples from IE]. 
 
