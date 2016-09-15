@@ -7,64 +7,70 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-This thesis builds on the premise that cities should supply goods and services more efficiently, by taking advantage of the synergies possible between energy, water and waste management processes. The literature review noted that within the energy, water and waste management sectors, optimisation modelling has been successfully used to determine system designs and operational strategies which meet some resource management objective, and thus proposed an optimisation model which could manage these sectors in combination, to find ways to minimise the impact of resource consumption. This chapter proposes and defends a formulation for a *highly integrated urban energy, water, and waste systems* optimisation model.
+Modelling is central to this thesis. Chapter 2 showed that the field of urban metabolism can be advanced by a model which considers how an area's resource management processes affect its overall metabolic flows. The particular reason this thesis is interested in such a model, is that it may assist the high integration of resource management processes, which may yield environmental and economic benefits.  It is the purpose of this chapter to formulate a *highly integrated urban energy, water, and waste systems* optimisation model. Once formulated, the model can be applied to a case study, using the data assembled in Chapter 4, assessing the modelling results on the basis of the work in Chapter 3.
 
-This chapter introduces and two theoretical ideas about modelling:
+Since modelling is a simplification of the real-world, there will be inevitably be compromises in the performance of the model. This chapter explores these performance features in relation to three possible formulations, which use two different methods (introduced in Section [TODO:]). The rest of the chapter goes on to apply the three formulations to a case study. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, which can be used by other researches to improve the modelling (Section [TODO:]). The case study is introduced in Section [TODO:], the model formulations are developed in Section [TODO:], and are applied to the case study in Section [TODO:], which also discusses how the models perform with respect to the performance features of Section [TODO:], which is the basis for choosing a model formulation to carry forward (Section [TODO:]). 
 
-- linearity
-- trade-offs
+## Model performance and formulation
 
-In the literature review, we saw that model formulations could vary in their generality. This chapter explores this notion more closely, in particular relating generality to other aspects of modelling, such as fidelity, tractability and usability. We do this by proposing three different formulations of the model (two linear, and one nonlinear), in order to compare them for various aspects, by applying them to a small case study. This case study is Tat Hamlet, for which the metabolism has previously been studied. We hope that our formulation will mark just the beginning of researchers using optimisation modelling for urban metabolism studies, and to that end, we hope that our Tat Hamlet case study will become a 'benchmarking problem' that will be used by others to further 
+This section introduces two areas important to modelling. The first area is that of performance features, which relate to how well a model represents the real world; and the second area is that of model formulation types, namely the mathematics of the model. Both these areas will affect the extent of a model's application, the results returned by a model, and the practicalities of their everyday use, and so are important considerations as a novel model is introduced to the urban metabolism field.
 
-This chapter begins by taking a theoretical look at the issues related to model formulations, namely *generality*, *fidelity*, *tractability*, and *usability*, before introducing the case study, and then finally deriving, applying, and comparing formulations for our benchmarking problem.
+### Performance features of models
 
-## Types of formulation
+When introducing modelling in the literature review, care was taken to not overstate the capabilities of a model (Section [TODO: cross-ref]). Rather, it was noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising that simplifications are inevitable leads to the understanding that there will be compromises with respect to features of the model. Four such features are *fidelity*, *generality*, *tractability*, and *usability*.
 
-Solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), which are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet].
+*Fidelity* and *generality* are both functions of a model's representation of the real-world. The former measures how well a model describes reality [@McIntosh2012], and the latter corresponds to to the number of real world systems a model can be applied to @[Matthewson2008]. In relation to modelling undertaken here, fidelity would be a measure of how accurately the behaviour of a resource management process -- for example, a water pipe -- is represented by the model's mathematics[^pipe-flow]. Generality would measure to what extent the model's equations can be applied to multiple process types, for example both a water pipe, and an electrical cable.
 
-Nonlinear formulations are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.}, especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet].
+[^pipe-flow]: TODO: brief discussion of models of pipe flow.
+
+*Tractability* and *usability* are functions of a model's use. The former quantifies the amenability of the model to optimization techniques, while the latter is a measure of how easy is is to actually formulate the model for a particular case [@McIntosh2012].
+
+Compromises arise, because these four features generally needed to be traded-off against each other. Models that are more general will be lower fidelity, because they are not tailored to the specific details of a real-world [@McIntosh2012]. Models of higher fidelity are both less tractable and less usable, because of more advanced mathematics is required, and makes formalizing the model more difficult.
+
+The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
+
+### Optimisation model formulation types and solution methods
+
+As outlined in Chapter 1, the equations of optimisation models are comprised of parameters and variables, where the values of parameters are fixed, and the values of the variables are chosen during the optimisation procedure. There are different forms of equations, and these different forms require their own  methods to solve.
+
+There are two broad categories of formulation: *linear* and *nonlinear*. *Linear programmes* (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. Linear formulations have a number of subsets: for example, if some variables must take integer values (which might be necessary to specify the number of resource management processes, for example), they are *mixed-integer linear programming* (MILP) problems. Linear models can also have uncertain parameters, which are defined by probability distributions -- this is often true of waste management models, in which the parameter defining a rate of waste generation is uncertain. These models require *multiple-stage* methods to solve [TODO: list examples from the spreadsheet].
+
+*Nonlinear programmes* (NLP) are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP).
+
+[^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
 Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
 
+### Summary
 
-[TODO: Move in content on linear/nonlinear formulations here?]
-
-## Tradeoffs in mathematical programming
-
-Related to formulation type [TODO: continue] 
-
-When we introduced modelling in the literature review, we were careful to not overstate the capabilities of a model. Rather, we noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising this helps us set right expectations for the ambitions of our model, and where we can afford to sacrifice *fidelity* ("how well [models] describe reality, and the quality of the results obtained") which will
-for other important attributes such as *tractability* ("how amenable the model is to optimization technques") which are necessary trade-offs in modelling [@McIntosh2012, p2]. @McIntosh2012 also notes that increased fidelity means not only does optimization modelling become more difficult, but so does formalizing the model itself -- this idea will be referred to as *usability*. Thus we can say that all models are a trade-off between fidelity, tractability, and usability .
-
-<!--
-and @Weisberg2002
--->
+The two areas outlined in the subsections above are related inasmuch as nonlinear models may often (but not necessarily) represent a real-world system with greater fidelity, the reason being, that very often, models are formulated linearly with the express purpose of simplifying nonlinear realities. On the other hand, however, the more complicated mathematics of nonlinear models may make them both less usable and less tractable.
 
 ## Benchmark problems
 
-Introductory paragraph, including the definition of a 'benchmark' [TODO: complete] 
+There are many different ways to model urban resource management systems, and the the considerations of linearity and performance features raised above suggest that there might well be different outcomes to such models, each with their own set of advantages and disadvantages. Because of this, this chapter will propose three different formulations (two linear, and one nonlinear) which vary in their fidelity, generality, tractability and usability.
 
-> "*Computing.* A program or set of programs used as a standard against which the performance of other programs (or computer systems running them) is compared or evaluated ... "
+These three formulations will be applied to the same case study to provide a fair test by which to compare the different approaches. This case study will therefore provide a 'benchmark' study.  In computing, a benchmark is defined as "A program or set of programs used as a standard against which the performance of other programs (or computer systems running them) is compared or evaluated ... " [@OED-benchmark2016, Draft Additions October 2001]. Benchmarking assesses a model's quality by providing "a systematic mechanism for comparing computational tools" [@Farmani2003, p.250] through the use of a test case, on which all computational tools can be applied. 
 
-\attrib{\citet{OED-benchmark2016}, Draft Additions October 2001}
-
+<!--
 In order to "assess the relative performance of an object" [@Gangl2016, p.19] (e.g. a numerical solver)
 
-This concept of benchmarking can be applied to assessing the "quality of a computational model [@Farmani2003, p.249], known as 'design benchmarking'. As opposed to 'process benchmarking' which compares the performance of a system. Design benchmarking compares the tools for actually designing/planning the systems by providing "as systematic mechanism for comparing computational tools" (p250) through the use of a test case, on which all computational tools can be applied. 
+using test problems containing "features common to engineering optimization problems" [@Chase2016, p.14]
 
-Sometimes benchmark problems can be used to compare particular algorithms (e.g. evolutionary algorithms [TODO: @Li2008], finding optimisation search algorithms that can work effectively and efficiently over a range of problems, using test problems containing "features common to engineering optimization problems" [@Chase2016, p.14], problems in mechanics including dynamic systems [@TechComm2016, @Schiehlen2015], finite element problems in structural mechanics [@Sze2004, @Agrawal2005], numerical solutions to Maxwell's equations in electromagnetic problems [@Gangl2016], fluid mechanics [@Vuik2004, @Bathe2007], parameter estimation in biological systems found through optimisation [@Villaverde2015]
+parameter estimation in biological systems found through optimisation [@Villaverde2015]
+
+system compared piecewise linear approximations+MILP, search methods, and 'Transformation using ceiling function X DE';
 
 Particularly common in optimisation problems. They should be: easy to use and complete (so users don't have to go elsewhere for data or instruction). For example, Exeter's online library of benchmark problems [@Farmani20013].
+-->
 
-Focussing more within our field, benchmarking problems have been defined for plant production location problems [@Sabolev2013], EAs to optimise water distribution networks [@Wang2015], energy storage [@Salas2013]
+Benchmark problems can be used to find the best algorithm to tackle problems belonging to a particular field, for example, standard problems of mechanics [@TechComm2016, @Schiehlen2015], finite element analysis [@Sze2004, @Agrawal2005], Maxwell's equations of electromagnetism [@Gangl2016], and fluid mechanics [@Vuik2004, @Bathe2007].
 
-For example, @Farmani2003, p.249 specify a few problems which can be used to test algorithms which optimise water distribution systems. Some specific benchmarking probelsm include the New York Tunnel system (used since 1969, and studied also in [@Wu2001]) [TODO: more examples from other references]. Also, the Anytown network, also considered in [@Piratla2015, check details here], presenting algorithms which produce results of better water quality, at no additional computational cost by adding 'resiliance index' to the already existing cost objective. Adding resilience to the New York water network problem [TODO: check details here] [@Piratla2015].
+Benchmarking problems also exist in fields more closely related to this thesis. In the energy sector, there are benchmarking problems for energy storage [@Salas2013] problems, plant location problems [@Sabolev2013], and plant operation problems [@IEEJ2015]. This third example compared different ways to approximate using equations -- a task not too dissimilar that undertaken in this chapter. In the water sector, there are benchmark problems to test the different algorithms applied to the optimisation of distribution networks [@Wang2015, @Farmani2003, @Wu2001]) and the quality of managed water [@Piratla2015].
 <!--
 http://castlelab.princeton.edu/Papers/Jiang-ComparisonADPonBenchmarkEnergy-DoesAnythingWorkJune52014.pdf -- note conslusions: no methods suitable, so new theory/methodology is required].
 -->
 
-For example, for energy plant operation problems [@IEEJ2015], compared piecewise linear approximations+MILP, search methods, and 'Transformation using ceiling function X DE'; waste collection vehicle routing, testing two types of algorithms, comparing their solutions (objectives variables), computational time, showing which methods finds the preferable solution with speed and the solutions have been successfully used in the real-world.
-
+The benchmarking study in this chapter will be the first application of a model which considers the highly integrated management of energy, water and waste systems. This novely warrants that the formulations and data can be made available to the wider research community, who can work do improve upon the models develope here.
 <!--
 - Benchmarking model of default probabilities of listed companies
   	- http://papers.ssrn.com/sol3/papers.cfm?abstract_id=982984
@@ -1361,28 +1367,48 @@ In summary, the null model requires writing an average of about 18 lines of code
 
 - Why don't we use a piecewise linear model? The advantage of this is the solvability (easier to get a global optimum than nonlinear methods). But this isn't our problem. We are concerned with generality, such that we don't have to come up with lots of complex process and transport technology models.
 
-#### Model behaviour and flexibility
+#### Model behaviour and flexibility and generality
 
 Our final consideration when evaluating the model performance is the behaviour and flexibility of the model. In this respect, the null model is the poorest performing model, with the least flexibility, because it doesn't incorporate quality considerations. When comparing the PRaQ and NL models, we must conclude that the NL model is superior. Whilst both consider resource quality, the NL model's handling of it is more flexible. For example, in the case of the dam in the NL model, the fact that the water's mass and energy head are both variables means one can compensate for the other in the $MgH$ calculation, when meeting and electricity demand. In the PRaQ model, only $M$ is a variable, hence the model is 'locked-in' to a relationship whereby 1 kg of water will produce 98.1 J of electricity -- in effect, a dam height of 10 m has to be assumed.
 
-## Summary and conclusion
+Generality is important in this work because a necessary part of it is to write a model which can model resource consumption/production, transport and storage for different resource types. Within the energy, water and waste sectors, models can consider the properties of individual resources and their management infrastructure (for example how pipe friction affects water flows), and thus be high fidelity, but such considerations may be too much of a luxury for a more generic model, where we want our equations to be able to apply to more real world systems (i.e. energy, water and waste management processes) Alongside this fidelity-generality trade-off is a relationship between generality and usability: as the former decreases, so does usability, due to the need to write equations that represent the resource management processes in our model (see Chapter 4). Philosophers of science have formalised these trade-offs to rigorously prove their existence, for example in @Matthewson2008
 
-Another trade-off arises from a model's 'generality', [TODO: can we insert a quoted definition here? ] which refers to the number of real world systems a model can be applied to. Models that are more generic will have lower fidelity, because they demand less predictive accuracy concerning a real-world system [@Matthewson2008]. Generality is important in this work because a necessary part of it is to write a model which can model resource consumption/production, transport and storage for different resource types. Within the energy, water and waste sectors, models can consider the properties of individual resources and their management infrastructure (for example how pipe friction affects water flows), and thus be high fidelity, but such considerations may be too much of a luxury for a more generic model, where we want our equations to be able to apply to more real world systems (i.e. energy, water and waste management processes) Alongside this fidelity-generality trade-off is a relationship between generality and usability: as the former decreases, so does usability, due to the need to write equations that represent the resource management processes in our model (see Chapter 4). Philosophers of science have formalised these trade-offs to rigorously prove their existence, for example in @Matthewson2008
+## Conclusion
 
-[TODO: we will show that the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.]
+SUMMARISE WORK/FINDINGS OF CHAPTER
 
-This study has established three plausible methods to optimise an integrated urban resource network. However, we don't yet know enough to be able to determine which is the best for our purposes. Currently the PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility. However, the current network design being used doesn't contain any spatial or temporal disaggregation -- it is here that we predict the effects of nonlinearity will take greater effect. Thus, the next key piece of work to do will be to build and compare models for a spatially disaggregated network, in order to re-compare the PRaQ and NL formulations. 
+This study has established three plausible methods to optimise an integrated urban resource network. The PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility.
 
-In addition to this, we need to consider more closely the options concerning the NL model. It may be possible to (partially) linearise it using various techniques (for example piecewise linearisation). Other solution methods also exist in addition to the standard nonlinear solution methods. These include genetic algorithms and other heuristic methods, which should be explored. These alternatives to the standard nonlinear model can also be explored during the next stage of work.
+- Comment on role of spatial/temporal disaggregation generality
 
-The formulation we select, and why it is best placed to answer our research question, given the work of earlier chapters:
+The performance of the models where compared for their
+generality
+fidelity
+tractability
+usability
+
+the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
+
+CONCLUDING COMMENTS (multiple paragraphs if necessary)
+the results suggest...
+this appears to be because...
+the future development of...
+
+QUESTIONS:
+the finding suggest a number of important questions...
+these issues are explored further in...
+
 - E.g. the process search gave us a lot of results: we need a generic method to handle that.
-
 - In some situations, the null method might be a quick solution
 - However, because of the code I've written, it isn't actually any harder to define a PRaQ model than a null model. Lots of the awkward calculations happen under the hood.
 - The nonlinear method does have promise, and could perhaps be developed in the future, using sector-specific expertise.
 
 The PRaQ model will be carried forward into the next chapter, where we use it on a case study, to help optimise the intersectoral synergies of a Chinese urban development.
+
+FURTHER WORK
+
+- the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
+- It may be possible to (partially) linearise it using various techniques (for example piecewise linearisation). Other solution methods also exist in addition to the standard nonlinear solution methods. These include genetic algorithms and other heuristic methods, which should be explored. These alternatives to the standard nonlinear model can also be explored during the next stage of work.
 
 <!--
 ## Why modelling? [TODO: could this introduce the model review section of the literature review?]
