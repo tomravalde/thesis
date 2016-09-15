@@ -1361,28 +1361,48 @@ In summary, the null model requires writing an average of about 18 lines of code
 
 - Why don't we use a piecewise linear model? The advantage of this is the solvability (easier to get a global optimum than nonlinear methods). But this isn't our problem. We are concerned with generality, such that we don't have to come up with lots of complex process and transport technology models.
 
-#### Model behaviour and flexibility
+#### Model behaviour and flexibility and generality
 
 Our final consideration when evaluating the model performance is the behaviour and flexibility of the model. In this respect, the null model is the poorest performing model, with the least flexibility, because it doesn't incorporate quality considerations. When comparing the PRaQ and NL models, we must conclude that the NL model is superior. Whilst both consider resource quality, the NL model's handling of it is more flexible. For example, in the case of the dam in the NL model, the fact that the water's mass and energy head are both variables means one can compensate for the other in the $MgH$ calculation, when meeting and electricity demand. In the PRaQ model, only $M$ is a variable, hence the model is 'locked-in' to a relationship whereby 1 kg of water will produce 98.1 J of electricity -- in effect, a dam height of 10 m has to be assumed.
 
-## Summary and conclusion
-
 Another trade-off arises from a model's 'generality', [TODO: can we insert a quoted definition here? ] which refers to the number of real world systems a model can be applied to. Models that are more generic will have lower fidelity, because they demand less predictive accuracy concerning a real-world system [@Matthewson2008]. Generality is important in this work because a necessary part of it is to write a model which can model resource consumption/production, transport and storage for different resource types. Within the energy, water and waste sectors, models can consider the properties of individual resources and their management infrastructure (for example how pipe friction affects water flows), and thus be high fidelity, but such considerations may be too much of a luxury for a more generic model, where we want our equations to be able to apply to more real world systems (i.e. energy, water and waste management processes) Alongside this fidelity-generality trade-off is a relationship between generality and usability: as the former decreases, so does usability, due to the need to write equations that represent the resource management processes in our model (see Chapter 4). Philosophers of science have formalised these trade-offs to rigorously prove their existence, for example in @Matthewson2008
 
-[TODO: we will show that the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.]
+## Conclusion
 
-This study has established three plausible methods to optimise an integrated urban resource network. However, we don't yet know enough to be able to determine which is the best for our purposes. Currently the PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility. However, the current network design being used doesn't contain any spatial or temporal disaggregation -- it is here that we predict the effects of nonlinearity will take greater effect. Thus, the next key piece of work to do will be to build and compare models for a spatially disaggregated network, in order to re-compare the PRaQ and NL formulations. 
+SUMMARISE WORK/FINDINGS OF CHAPTER
 
-In addition to this, we need to consider more closely the options concerning the NL model. It may be possible to (partially) linearise it using various techniques (for example piecewise linearisation). Other solution methods also exist in addition to the standard nonlinear solution methods. These include genetic algorithms and other heuristic methods, which should be explored. These alternatives to the standard nonlinear model can also be explored during the next stage of work.
+This study has established three plausible methods to optimise an integrated urban resource network. The PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility.
 
-The formulation we select, and why it is best placed to answer our research question, given the work of earlier chapters:
+- Comment on role of spatial/temporal disaggregation generality
+
+The performance of the models where compared for their
+generality
+fidelity
+tractability
+usability
+
+the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
+
+CONCLUDING COMMENTS (multiple paragraphs if necessary)
+the results suggest...
+this appears to be because...
+the future development of...
+
+QUESTIONS:
+the finding suggest a number of important questions...
+these issues are explored further in...
+
 - E.g. the process search gave us a lot of results: we need a generic method to handle that.
-
 - In some situations, the null method might be a quick solution
 - However, because of the code I've written, it isn't actually any harder to define a PRaQ model than a null model. Lots of the awkward calculations happen under the hood.
 - The nonlinear method does have promise, and could perhaps be developed in the future, using sector-specific expertise.
 
 The PRaQ model will be carried forward into the next chapter, where we use it on a case study, to help optimise the intersectoral synergies of a Chinese urban development.
+
+FURTHER WORK
+
+- the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
+- It may be possible to (partially) linearise it using various techniques (for example piecewise linearisation). Other solution methods also exist in addition to the standard nonlinear solution methods. These include genetic algorithms and other heuristic methods, which should be explored. These alternatives to the standard nonlinear model can also be explored during the next stage of work.
 
 <!--
 ## Why modelling? [TODO: could this introduce the model review section of the literature review?]
