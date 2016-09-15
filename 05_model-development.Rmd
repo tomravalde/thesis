@@ -37,7 +37,7 @@ There are two broad categories of formulation: *linear* and *nonlinear*. *Linear
 
 *Nonlinear programmes* (NLP) are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP).
 
-[^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
+[^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)/(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
 Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
 
@@ -145,48 +145,57 @@ The benchmarking study in this chapter will be the first application of a model 
 
 ## Tat Hamlet case study
 
-The case study which we choose to develop as our benchmarking problem is that of Tat Hamlet, a village in Vietnam, in which fieldwork was carried out in 2001, resulting in reports on its material flows [TODO: reference] and energy flows [@Heezen2004]. Since this fieldwork, various other studies have been carried out to draw insights including [TODO:...]. The village has been used for other studies include a study of its livestock development strategies (opportunities and constraints) [@ThanhLab2010], and the social organisation of the natural resources by the village [@TerryRambo2001]
+The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 gave provided reports on the village's material and energy flows and socioeconomic features [@Schandl2006, @Heezen2004]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007].
 
-Thus, the Tat Hamlet is a known case study within [TODO: urban?] metabolism literature, with various insights drawn. The insight drawn in this chapter however, is of a different nature. Rather than drawing conclusions on the village's resource management, we will show how the MFA and EFA studies can be used to formulate an integrated resource management model. More specifically, we derive three different formulations of the model, of varying genericity, fidelity, tracatability and usability, which can be compared. In this way, it can become a benchmark problem, like the water network of Anytown [TODO: and others], which can provide the problem definition for which the research community can attempt to improve on our model formulation.
+Thus, the Tat Hamlet is a known case study within [TODO: urban?] metabolism literature. In this chapter, the features of Tat will be used to describe the three model formulations developed, and the data from the material flow and energy flow studies will be used in the model, to apply the benchmarking tests.
 
-### Features of Tat
+Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. The village does have small shops and education functions, but its main activity is agriculture, with rice cultivation (where paddy fields are irrigated by a small river), swidden cultivation, and biomass (timber, bamboo shoots, cassava roots) collection from a forest. Some agricultural products are sold to external traders, though most remain in the village. About 80 of the households own their own livestock (including chickens, dogs, buffalo, and cows), and most households have their own ponds for aquaculture, such that the village produces most of its own meat, dairy products, animal manure and green manure. Water can be piped to homes for drinking, household use, and for washing livestock.
 
-Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. Tat mainly consists of agricultural activities and includes wet rice paddy fields (irrigated by a small river), swidden cultivation, and a forest from which biomass can be collected (timber, bamboo shoots, cassava roots) -- some of these products are sold to external traders. About 80 of the households have their own livestock which include chicken, dogs, buffalo, and cows. Most households have their own ponds for aquaculture. Tat's other services include shops and education.
-
-- The village generates the majority of its own meat (and other livestock products such as eggs), palm leaves and broom grass (as fishfeed), both animal manure (from livestock) and green manure (e.g. cassava stems) vegetable and fish from the agriculture and aquaculture. Water can be piped to homes for drinking, household use, and for washing livestock.
-- The main flows into the village include annual rainfall, electricity (from Vietnam's electrcity grid), construction materials, fossil fuels (e.g. gasoline) for motorbikes, and petroleum lighting, some vegetable and meat imports.
-- The village wastes include household and agricultural wastes, incineration products, fossil-ful emissions. Other outputs include wood
+Aggregate metabolic flows into the village comprise rainfall, electricity from the grid, construction materials, fossil fuels (such as gasoline for motorbikes, and petroleum lighting), and a small amount of vegetable and meat imports. Metabolic flows out of the village include household and agricultural wastes, incineration products, fossil-fuel emissions, and biomass which is sold.
 
 [TODO: Summary diagram]
 
-Before deriving mathematical representations of technology behaviour and resource flows, we next specifically define the problem: namely the processes, resources and demands which will define the benchmark problem's parameters.
-
 ### Problem definition
 
-The relatively small size of Tat (relative to other cases this model will be applied to) makes it possible to develop a user-friendly benchmarking problem, as there will be only a small number of processes, resources and zones. Thus, the problem can be more easily understood at a glance (e.g. represented by a diagram), and developed by researchers. Specifically, we can identify the following activities and resources from the MFA and EFA studies:
+The small size of Tat serves to make the benchmark problem user-friendly inasmuch as the problem can conceptualised in a diagram on a single page of A4. The village's features described above will be used to define components of the problem, namely namely the village's demands for goods and services, and the network of resources and processes which will meet this demand. The purpose of the model will be to compute how Tat can meet demands for goods and services at the lowest cost, using the village's resource management processes. Goods and services include food, water and energy, and resource management processes include everything from small domestic stoves to agricultural activities.
 
-This represents the first step of any modelling. We will use the data from the EFA and MFA studies to define the benchmark problem. More specifically, we will use values from the literature to define the resource demands which must be met by a model, along with the resources and processes which can be used to that end.
+#### Adjustments
 
-#### Assumptions
+To construct the problem, data from the literature will be used to derive resource demands, and to select and define the behaviour of the resource management processes. However, to help produce a benchmark problem that is both user-friendly, and at the same complicated enough to test the different formulations, various adjustments are made, in the form of *simplifications*, *assumptions*, and *additions*.
 
-In order that the problem be suitable for a benchmark problem.
 
-To simplify the problem and make up for the lack of complete information, we will make the following assumptions:
+<!--
+The studies in the literature do not comprehensively all the necessary information to do this, therefore we have consulted studies of other similar contexts, so we an create a plausible network of resources and processes[^tat-context].
+-->
 
-- Ignore the commercial sector (i.e. the shops, which sells 'final goods' which have been imported, which are in any case less interesting for our metabolism problem)
-- Consider all the different livestock types (chickens, dogs, buffalo, and cows) under one category as simply 'livestock'. This means when we derive the quantities of livestock requirements and products, we sum the requirements and products over all the livestock types. We also ignore some of the more negligable livestock outputs (e.g. eggs).
-- Consider the agriculture, aquacultural, livestock, and domestic activities as separate entities (rather than considering a household as having each of these functions).
-- Agricultural activities are also considered generically, with the requirements and outputs of each type summed over paddy, swidden, forest and other types.  We also adopt generalised versions of the agricultural products, limiting them to just biomass, manure, green manure, fish feed, firewood and vegetables, rather than specifics (such as fruit, bamboo shoots, cassava leaves, and rice etc.)
-- Assume the total electricity imports (31.7 GJ/year) [TODO: check this value is electricity specifically, rather than energy generally]. We will assume this is split between domestic, agriculture and pumping water (and generated by a dam)
-- Total heat from firewood = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
-- The literature does not provide any spatial information in relation to the resources and their management processes (e.g. the point of demand and the location of processes). For the sake of including zones in our benchmarking problem, we will arbitrarily define four zones.
+\begin{description}
 
-Stuff we've written in:
+\item [Simplifications] help ensure the benchmark study is user-friendly:
 
-- Added a dam -- which enables nonlinear tests
-- Household activities include cooking, space heating, and hot water heating.
+\begin{itemize}
+\item The commercial sector (i.e. the shops, which sells 'final goods') will be ignored. These goods are directly imported, and are thus not managed by processes, so add nothing to the benchmark study
+\item Amalgamate all livestock (chickens, dogs, buffalo, and cows) into a single 'livestock' category which produces all livestock products in the village (meat, dairy, and manure).
+\item Amalgamate all agricultural activities into a single 'agriculture' category which produces all agricultural produced in the village (firewood, swidden, green manure, vegetables)
+\end{itemize}
 
-These assumptions are justified on the basis that this chapter's focus is on how best of formulate a  model, rather than searching for insights to help improve Tat's metabolism. The simplifications ensure the model is not overly complicated for others using the benchmarking problem. An alternative approach would have been to make up a case study, but this approach shows how one can go about formulating a problem from real life data, and its current place in the literature will hopefully help it gain traction.
+\item [Assumptions] account for the fact that the literature does not resolve Tat's energy flows down to their final use:
+
+\begin{itemize}
+\item Tat's total electricity use are split equally between domestic, agriculture, and water pumping purposes.
+\item Tat's total heat output  = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
+\end{itemize}
+
+\item [Additions] give the benchmarking study greater ability to test different types of formulation:
+
+\begin{itemize}
+\item A dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
+\item Each household will include cooking, space heating, and hot water heating processes.
+\item The literature does not provide any spatial information regarding the point of demand and the location of processes. In order that the benchmarking can consider spatial disaggregation, Tat will be divided into four zones (each of which have equal demands for resources).
+\end{itemize}
+
+\end{description}
+
+The above simplifications, assumptions and additions are justified on the basis that this chapter's aim is to establish the best formulation for this thesis's purposes, and not to improve Tat's metabolism. These adjustments achieve a both simplicity in understanding the model, and sufficient sophistication that can suitably test the different outcomes. Of course, one a case study could have been invented to serve these goals, but this approach shows how one can formulate a problem from real world data. Furthermore, it is hoped that Tat's current presence in the UM literature will help the benchmarking study gain traction amongst the academic community.
 
 <!--
 - literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
@@ -310,22 +319,9 @@ These assumptions are justified on the basis that this chapter's focus is on how
 	- Dog: 22
 -->
 
-#### Problem description
+#### Problem conceptualisation
 
-Here, we will use the information from Tat Hamlet to formulate a resource management problem which concerns the optimal delivery of the necessary goods and services to Tat's inhabitants. For example, we will use the data from the literature to derive resource demands, a network of processes which can convert and transport those resources to meet those demands [TODO: anything else?]. The studies in the literature do not comprehensively all the necessary information to do this, therefore we have consulted studies of other similar contexts, so we an create a plausible network of resources and processes[^tat-context].
-
-From the data in the literature, coupled with our assumptions, this chapter can now derive a statement of the Tat Hamlet problem -- formulations should consider the following elements (all of which are in the Keirstead model:
-
-- spatial description -- this can be understood in terms of zones
-- The resources which are demands for Tat, and/or can be converted to meet those demand
-- The processes which can be used to convert one resource to another (e.g. a stove converts firewood to heat), and transport resources between zones.
-- The zones which define the location of demands and processes, and into which resources can be imported and between which they can be transported.
-
-Other parameters are related to these (such as limits on imports -- i.e. whilst firewood can be imported, heat cannot). Our representation of Tat will include 27 resources and 16 processes. As previously stated, we are arbitrarily assuming four zones [TODO: give more reasoning here]. Further we assume that any demands should be equally shared among the zones, and that processes can be located within any zone, and that if a resource can be imported, it can be imported to any zone, with the exception of water, which can only be imported into one zone (resources can be exported from any zone).
-
-We decide that there are seven resources to be demanded, all of which are for the domestic level: water, hot water, electricity (for appliances), space heating, meat, fish and vegetables. The quantity of these demands are given in Table \ref{tab:tat-resources}, which also lists the resources available to the Tat network, and which of them can be imported. To meet demands for water requires both treatment and pumping processes; demands for hot water and space heating are met by various types of stove; while meat, fish and vegetables require a cooking process in the home, with aquaculture, agriculture and livestock processes upstream, and water treatment, irrigation, farming machinery further upstream still. Electricity can only be imported from the grid.
-
-The network which combines Tat's processes and resources to achieve this is portrayed by the nodes-links network shown in Figure \ref{fig:tat-16}.
+The information from the literature and the adjustments (outlined above) provide a starting point to provide a conceptual model of Tat's resource management. This is partly visualised in Figure \ref{fig:tat-16}, which shows 27 resources managed by 16 conversion processes. The figure also indicates which resources are demands, and which resources can be imported into the village. (It is assumed any resource can be exported.)
 
 \begin{figure}
 	\centering
@@ -337,46 +333,12 @@ The network which combines Tat's processes and resources to achieve this is port
 	\label{fig:tat-16}
 \end{figure}
 
-[TODO: insert Inkscape figure of network]
+Not represented by this conceptualisation are the four arbitrarily defined zones. With regards to these, demands are split equally between the zones, and processes can be located in any of them. However, there will be limits imposed which zones can import resources, which will force the model to use transport processes to transfer resources between zones (though there are no restrictions on zones exporting resources). Also not represented are transport processes.
+<!--
+and that if a resource can be imported, it can be imported to any zone, with the exception of water, which can only be imported into one zone (resources can be exported from any zone).
+-->
 
-### Define demands
-
-\begin{table}[]
-\centering
-\caption{My caption}
-\label{tab:tat-resources}
-\begin{tabular}{@{}llllll@{}}
-\toprule
-Resource                         & Demand & Number of import zones & Notes        &  &  \\ \midrule
-water\_source                    &        & 1                      & See appendix &  &  \\
-water\_generated                 &        & 0                      & See appendix &  &  \\
-water\_qualDomestic              &        & 0                      & See appendix &  &  \\
-water\_waste\_treatmentDomestic  &        & 0                      & See appendix &  &  \\
-water\_pumped                    & 111    & 0                      & See appendix &  &  \\
-\textit{elec}                    &        & 4                      & See appendix &  &  \\
-\textit{appUse}                  & 1585   & 0                      & See appendix &  &  \\
-water\_qualLivestock             &        & 0                      & See appendix &  &  \\
-water\_waste\_treatmentLivestock &        & 0                      & See appendix &  &  \\
-meat\_raw                        &        & 4                      & See appendix &  &  \\
-veg\_raw                         &        & 4                      & See appendix &  &  \\
-manure                           &        & 0                      & See appendix &  &  \\
-manure\_green                    &        & 0                      & See appendix &  &  \\
-fishFeed                         &        & 4                      & See appendix &  &  \\
-water\_irrigation                &        & 0                      & See appendix &  &  \\
-petrol                           &        & 4                      & See appendix &  &  \\
-biomassMedium                    &        & 4                      & See appendix &  &  \\
-firewood                         &        & 4                      & See appendix &  &  \\
-biomassWet                       &        & 0                      & See appendix &  &  \\
-fish\_raw                        &        & 4                      & See appendix &  &  \\
-\textit{heat\_domestic}          & 896000 & 0                      & See appendix &  &  \\
-\textit{heat\_stove}             &        & 0                      & See appendix &  &  \\
-hotWater\_domestic               & 111    & 0                      & See appendix &  &  \\
-meat\_cooked                     & 1.8    & 0                      & See appendix &  &  \\
-veg\_cooked                      & 117    & 0                      & See appendix &  &  \\
-fish\_cooked                     & 0.07   & 0                      & See appendix &  &  \\
-CO2                              &        & 0                      & See appendix &  &  \\ \bottomrule
-\end{tabular}
-\end{table}
+The figure shows that there are seven resource demands for goods and services: water, hot water, electrical appliance use, space heating, meat, fish and vegetables. Demands for water depend upon treatment and pumping processes. Within a household, hot water space heating, and food demands are met by combustion and cooking processes, with food also depending on processes 'upstream' of a house, namely aquaculture, agriculture and livestock, which depend upon water treatment, irrigation, and machinery processes further upstream still. Electricity can only be imported from the grid. Quantitative details regarding demands are given in Appendix [TODO: Table \ref{tab:tat-resources}].
 
 <!--
 #### Water
@@ -676,62 +638,7 @@ We will add other processes which interact between the processes.
 - Dam (to generate some electricity, and allow us to define water with different energy head qualities)
 -->
 
-[^tat-context]: Examples include @Alam1997 and Tripathi2001.
-
-\begin{table}[]
-\centering
-\caption{Summary of each network to which the null, PRaQ and nonlinear networks have been applied.}
-\label{tab:network-summary}
-\begin{tabular}{@{}lllllllll@{}}
-\multicolumn{3}{l}{Conversion processes}                      & \multicolumn{3}{l}{Resources}                                                                                                                                                                   & \multicolumn{3}{l}{Transport processes}                                                                                           \\
-No. & Added                                    & Abbrev.      & No. & Added                                                                                                                        & Abbrev.                                                    & No. & Added                                                                            & Abbrev.                                  \\
-1   & Dam                                      & Dam          & 3   & Water, Water (dam), Electricity                                                                                              & W, W (dam), El.                                            & 1   & Cable                                                                            & Cab.                                     \\
-2   & Water treatment (for livestock)          & WT (l/stock) & 5   & Water (livestock), Wastewater (livestock)                                                                                    & W (l/stock), WW (l/stock)                                  & 2   & Pipe (livestock water)                                                           & P (l/stock)                              \\
-3   & Water treatment (for domestic use)       & WT (dom.)    & 7   & Water (domestic), Wastewater (domestic)                                                                                      & W (dom.), WW (dom.)                                        & 2   &                                                                                  &                                          \\
-4   & Irrigation                               & Irrig.       & 8   & Water (irrigation)                                                                                                           & W (irrig.)                                                 & 3   & Pipe (irrigation water)                                                          & P (irrig.)                               \\
-5   & Pump                                     & Pump         & 9   & Water (pumped)                                                                                                               & W (pump.)                                                  & 4   & Pipe (domestic water)                                                            & P (dom.)                                 \\
-6   & Agriculture                              & Agric.       & 17  & Vegetables, Manure, Green manure, Fish feed, Petrol, Biomass (medium moisture content), Biomass (high moisture content), CO2 & Veg., Man., G/man., F/feed, Pet., BM (med.), BM (wet), CO2 & 8   & Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables) & V (man.), V (g/man.), V (pet.), V (veg.) \\
-7   & Livestock                                & L/stock      & 18  & Meat                                                                                                                         & Meat                                                       & 9   & Vehicle (meat)                                                                   & V (meat)                                 \\
-8   & Stove                                    & Stove        & 20  & Heat (stove), Firewood                                                                                                       & H (stove), F/wood                                          & 10  & Vehicle (firewood)                                                               & V (f/wood)                               \\
-9   & Biomass drying (medium moisture content) & BMD (med.)   & 20  &                                                                                                                              &                                                            & 10  &                                                                                  &                                          \\
-10  & Biomass drying (high moisture content)   & BMD (wet)    & 20  &                                                                                                                              &                                                            & 10  &                                                                                  &                                          \\
-11  & aquaculture                              & Aqua         & 21  & Fish                                                                                                                         & Fish                                                       & 12  & Vehicle (fish), Vehicle (fish feed)                                              & V (fish), V (f/feed)                     \\
-12  & Cooking                                  & Cook.        & 24  & Meat (cooked), Vegetables (cooked), Fish (cooked)                                                                            & Meat (c), Veg. (c), Fish (c)                               & 12  &                                                                                  &                                          \\
-13  & Agricultural machinary                   & Agric. Mach. & 24  &                                                                                                                              &                                                            & 12  &                                                                                  &                                          \\
-14  & Domestic appliances                      & App.         & 25  & Appliance use                                                                                                                & App. Use                                                   & 12  &                                                                                  &                                          \\
-15  & Heating                                  & Heat.        & 26  & Heat (domestic)                                                                                                              & H (dom.)                                                   & 12  &                                                                                  &                                          \\
-16  & Water heating                            & WH           & 27  & Hot water                                                                                                                    & HW                                                         & 12  &                                                                                  &                                          \\ \bottomrule
-\end{tabular}
-\end{table}
-
-
-
-\begin{table}[]
-\centering
-\caption{How the Tat network is built up process-by-process. (The specific resources and transport processes added at each stage are tabulated in Appendix TODO: cross ref.)}
-\label{my-label}
-\begin{tabular}{@{}lllll@{}}
-\toprule
-\multicolumn{3}{l}{Conversion processes}                      & \multirow{2}{*}{No. of resources} & \multirow{2}{*}{No. of transport processes} \\ \cmidrule(r){1-3}
-No. & Added                                    & Abbrev.      &                                   &                                             \\ \cmidrule(l){4-5} 
-1   & Dam                                      & Dam          & 3                                 & 1                                           \\
-2   & Water treatment (for livestock)          & WT (l/stock) & 5                                 & 2                                           \\
-3   & Water treatment (for domestic use)       & WT (dom.)    & 7                                 & 2                                           \\
-4   & Irrigation                               & Irrig.       & 8                                 & 3                                           \\
-5   & Pump                                     & Pump         & 9                                 & 4                                           \\
-6   & Agriculture                              & Agric.       & 17                                & 8                                           \\
-7   & Livestock                                & L/stock      & 18                                & 9                                           \\
-8   & Stove                                    & Stove        & 20                                & 10                                          \\
-9   & Biomass drying (medium moisture content) & BMD (med.)   & 20                                & 10                                          \\
-10  & Biomass drying (high moisture content)   & BMD (wet)    & 20                                & 10                                          \\
-11  & aquaculture                              & Aqua         & 21                                & 12                                          \\
-12  & Cooking                                  & Cook.        & 24                                & 12                                          \\
-13  & Agricultural machinary                   & Agric. Mach. & 24                                & 12                                          \\
-14  & Domestic appliances                      & App.         & 25                                & 12                                          \\
-15  & Heating                                  & Heat.        & 26                                & 12                                          \\
-16  & Hot water                                & HW           & 27                                & 12                                          \\ \bottomrule
-\end{tabular}
-\end{table}
+[^tat-context]: Examples include @Alam1997 and @Tripathi2001.
 
 <!--
 [TODO: Move to the appendix]
@@ -740,13 +647,17 @@ No. & Added                                    & Abbrev.      &                 
 
 ## Deriving three mathematical formulations
 
-Our model will consider a city as divided into a number of zones, for which can be specified demands for resource management, and which can contain the processes which convert resources. These zones also possess connections to other zones for resource transportation, and to outside the city for importing and exporting. To this end, our models will be based on the model by @Keirstead2013a which we introduced earlier as a high-level MILP model to plan urban energy resource systems.
+As the conceptualisation above indicates, the highly integrated resource management model needs to consider a city as comprised of a number of zones, for which can be specified resource demands, and which contain the conversion processes which manage resources. These zones will be connected to one another via transport processes. The model should also be able consider that resources will need to be imported into the city (either to meet a demand directly, or to feed a process), and resources which neither meet a demand nor feed a process (excess waste heat, perhaps), can be exported from the area. Added to this is also the need for a temporal component, such that resource demands can vary with time, along with the schedule of resource imports and exports, and process operations.
 
-Neater transition into Keirstead's model.
+An existing model which can do all these things, specifically for that energy sector has been developed by @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section [TODO:], this is a city scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system).
+
+[TODO: copy a diagram of Keirstead's model -- i.e. a conceptualisation of results.]
 
 ### Basics of the formulations
 
 To model the processes which convert resources, @Keirstead2013a looks to the engineering State-Task Network model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another. Keirstead's model applies the same principles to urban energy systems in a so-called Resource-Technology Network (RTN), developing a model which chooses the mix of processes that uses available resources to meet demand for heat and electricity. While @Keirstead's model is categorised as having no system integration, the State-Task network representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be easily extended to consider resources and processes from multiple sectors.
+
+[TODO: copy a diagram of an STN -- i.e. a conceptualisation of results.]
 
 Like Keirstead's model, processes are separated into conversion processes (such as a wastewater treatment plant) and transport processes (such as a pipeline). The transport processes will connect the different zones into which an urban area is divided, allowing resources to be transported to and from different parts of the city. The main equation is a resource balance,
 
@@ -1288,6 +1199,62 @@ Having formulated three alternative mathematical programming models which optimi
 
 Our method will be to build up the Tat network one conversion process at a time (starting with the just the dam) -- introducing resources necessary to each demand set of processes, and transport processes used by these resources -- until the network in figure [TODO: cross-ref] is built. Each network is run, and quantitative information extracted, thus model characteristics and behaviour can be observed as the number of processes increases. The order in which the network is built up is given in Table [TODO: cross-ref table] (which also presents the results of the characteristic analysis), with diagrams of the networks provided in Appendix [TODO: cross-ref]. We applied a time limit of 1,000 seconds to the length of time a model can be run for[^time-limit].
 
+\begin{table}[]
+\centering
+\caption{Summary of each network to which the null, PRaQ and nonlinear networks have been applied.}
+\label{tab:network-summary}
+\begin{tabular}{@{}lllllllll@{}}
+\multicolumn{3}{l}{Conversion processes}                      & \multicolumn{3}{l}{Resources}                                                                                                                                                                   & \multicolumn{3}{l}{Transport processes}                                                                                           \\
+No. & Added                                    & Abbrev.      & No. & Added                                                                                                                        & Abbrev.                                                    & No. & Added                                                                            & Abbrev.                                  \\
+1   & Dam                                      & Dam          & 3   & Water, Water (dam), Electricity                                                                                              & W, W (dam), El.                                            & 1   & Cable                                                                            & Cab.                                     \\
+2   & Water treatment (for livestock)          & WT (l/stock) & 5   & Water (livestock), Wastewater (livestock)                                                                                    & W (l/stock), WW (l/stock)                                  & 2   & Pipe (livestock water)                                                           & P (l/stock)                              \\
+3   & Water treatment (for domestic use)       & WT (dom.)    & 7   & Water (domestic), Wastewater (domestic)                                                                                      & W (dom.), WW (dom.)                                        & 2   &                                                                                  &                                          \\
+4   & Irrigation                               & Irrig.       & 8   & Water (irrigation)                                                                                                           & W (irrig.)                                                 & 3   & Pipe (irrigation water)                                                          & P (irrig.)                               \\
+5   & Pump                                     & Pump         & 9   & Water (pumped)                                                                                                               & W (pump.)                                                  & 4   & Pipe (domestic water)                                                            & P (dom.)                                 \\
+6   & Agriculture                              & Agric.       & 17  & Vegetables, Manure, Green manure, Fish feed, Petrol, Biomass (medium moisture content), Biomass (high moisture content), CO2 & Veg., Man., G/man., F/feed, Pet., BM (med.), BM (wet), CO2 & 8   & Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables) & V (man.), V (g/man.), V (pet.), V (veg.) \\
+7   & Livestock                                & L/stock      & 18  & Meat                                                                                                                         & Meat                                                       & 9   & Vehicle (meat)                                                                   & V (meat)                                 \\
+8   & Stove                                    & Stove        & 20  & Heat (stove), Firewood                                                                                                       & H (stove), F/wood                                          & 10  & Vehicle (firewood)                                                               & V (f/wood)                               \\
+9   & Biomass drying (medium moisture content) & BMD (med.)   & 20  &                                                                                                                              &                                                            & 10  &                                                                                  &                                          \\
+10  & Biomass drying (high moisture content)   & BMD (wet)    & 20  &                                                                                                                              &                                                            & 10  &                                                                                  &                                          \\
+11  & aquaculture                              & Aqua         & 21  & Fish                                                                                                                         & Fish                                                       & 12  & Vehicle (fish), Vehicle (fish feed)                                              & V (fish), V (f/feed)                     \\
+12  & Cooking                                  & Cook.        & 24  & Meat (cooked), Vegetables (cooked), Fish (cooked)                                                                            & Meat (c), Veg. (c), Fish (c)                               & 12  &                                                                                  &                                          \\
+13  & Agricultural machinary                   & Agric. Mach. & 24  &                                                                                                                              &                                                            & 12  &                                                                                  &                                          \\
+14  & Domestic appliances                      & App.         & 25  & Appliance use                                                                                                                & App. Use                                                   & 12  &                                                                                  &                                          \\
+15  & Heating                                  & Heat.        & 26  & Heat (domestic)                                                                                                              & H (dom.)                                                   & 12  &                                                                                  &                                          \\
+16  & Water heating                            & WH           & 27  & Hot water                                                                                                                    & HW                                                         & 12  &                                                                                  &                                          \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[]
+\centering
+\caption{How the Tat network is built up process-by-process. (The specific resources and transport processes added at each stage are tabulated in Appendix TODO: cross ref.)}
+\label{my-label}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\multicolumn{3}{l}{Conversion processes}                      & \multirow{2}{*}{No. of resources} & \multirow{2}{*}{No. of transport processes} \\ \cmidrule(r){1-3}
+No. & Added                                    & Abbrev.      &                                   &                                             \\ \cmidrule(l){4-5} 
+1   & Dam                                      & Dam          & 3                                 & 1                                           \\
+2   & Water treatment (for livestock)          & WT (l/stock) & 5                                 & 2                                           \\
+3   & Water treatment (for domestic use)       & WT (dom.)    & 7                                 & 2                                           \\
+4   & Irrigation                               & Irrig.       & 8                                 & 3                                           \\
+5   & Pump                                     & Pump         & 9                                 & 4                                           \\
+6   & Agriculture                              & Agric.       & 17                                & 8                                           \\
+7   & Livestock                                & L/stock      & 18                                & 9                                           \\
+8   & Stove                                    & Stove        & 20                                & 10                                          \\
+9   & Biomass drying (medium moisture content) & BMD (med.)   & 20                                & 10                                          \\
+10  & Biomass drying (high moisture content)   & BMD (wet)    & 20                                & 10                                          \\
+11  & aquaculture                              & Aqua         & 21                                & 12                                          \\
+12  & Cooking                                  & Cook.        & 24                                & 12                                          \\
+13  & Agricultural machinary                   & Agric. Mach. & 24                                & 12                                          \\
+14  & Domestic appliances                      & App.         & 25                                & 12                                          \\
+15  & Heating                                  & Heat.        & 26                                & 12                                          \\
+16  & Hot water                                & HW           & 27                                & 12                                          \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
 [^time-limit]: In GAMS, this is specified with the resource limit option, i.e. `option reslim=1000`.
 
 [TODO: Apendicise the network bit by bit build up of the network diagrams.]
@@ -1559,6 +1526,43 @@ For the Appendix?
 -->
 
 ## Appendix
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{tab:tat-resources}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Resource                         & Demand & Number of import zones & Notes        &  &  \\ \midrule
+water\_source                    &        & 1                      & See appendix &  &  \\
+water\_generated                 &        & 0                      & See appendix &  &  \\
+water\_qualDomestic              &        & 0                      & See appendix &  &  \\
+water\_waste\_treatmentDomestic  &        & 0                      & See appendix &  &  \\
+water\_pumped                    & 111    & 0                      & See appendix &  &  \\
+\textit{elec}                    &        & 4                      & See appendix &  &  \\
+\textit{appUse}                  & 1585   & 0                      & See appendix &  &  \\
+water\_qualLivestock             &        & 0                      & See appendix &  &  \\
+water\_waste\_treatmentLivestock &        & 0                      & See appendix &  &  \\
+meat\_raw                        &        & 4                      & See appendix &  &  \\
+veg\_raw                         &        & 4                      & See appendix &  &  \\
+manure                           &        & 0                      & See appendix &  &  \\
+manure\_green                    &        & 0                      & See appendix &  &  \\
+fishFeed                         &        & 4                      & See appendix &  &  \\
+water\_irrigation                &        & 0                      & See appendix &  &  \\
+petrol                           &        & 4                      & See appendix &  &  \\
+biomassMedium                    &        & 4                      & See appendix &  &  \\
+firewood                         &        & 4                      & See appendix &  &  \\
+biomassWet                       &        & 0                      & See appendix &  &  \\
+fish\_raw                        &        & 4                      & See appendix &  &  \\
+\textit{heat\_domestic}          & 896000 & 0                      & See appendix &  &  \\
+\textit{heat\_stove}             &        & 0                      & See appendix &  &  \\
+hotWater\_domestic               & 111    & 0                      & See appendix &  &  \\
+meat\_cooked                     & 1.8    & 0                      & See appendix &  &  \\
+veg\_cooked                      & 117    & 0                      & See appendix &  &  \\
+fish\_cooked                     & 0.07   & 0                      & See appendix &  &  \\
+CO2                              &        & 0                      & See appendix &  &  \\ \bottomrule
+\end{tabular}
+\end{table}
 
 \begin{sidewaystable}[]
 \centering
