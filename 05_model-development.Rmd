@@ -7,12 +7,13 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-This thesis builds on the premise that cities should supply goods and services more efficiently, by taking advantage of the synergies possible between energy, water and waste management processes. The literature review noted that within the energy, water and waste management sectors, optimisation modelling has been successfully used to determine system designs and operational strategies which meet some resource management objective, and thus proposed an optimisation model which could manage these sectors in combination, to find ways to minimise the impact of resource consumption. This chapter proposes and defends a formulation for a *highly integrated urban energy, water, and waste systems* optimisation model.
+Modelling is central to this thesis. Chapter 2 showed that the field of urban metabolism can be advanced by a model which considers how an area's resource management processes affect its overall metabolic flows. The particular reason this thesis is interested in such an idea, is that it may assist the high integration of resource management processes, which may yield environmental and economic benefits.  It is the purpose of this chapter to formulate a *highly integrated urban energy, water, and waste systems* optimisation model.
 
-This chapter introduces and two theoretical ideas about modelling:
+Once chosen, the formulated model can be applied to a case study, using the data assembled in Chapter 4, assessing the modelling results on the basis of the work in Chapter 3.
 
-- linearity
-- trade-offs
+Since modelling is a simplification of the real-world, there will be inevitably be compromises in the performance of the model (outlined in Section [TODO:]). This chapter explores these in relation to three possible formulations, which use two different methods (Section [TODO:]). The rest of the chapter goes on to apply the three formulations to a case study. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, which can be used by other researches to improve the modelling (Section [TODO:]). The case study is introduced in Section [TODO:], the model formulations are developed in Section [TODO:], and are applied to the case study in Section [TODO:], which also discusses how the models perform with respect to the performance features of Section [TODO:], which is the basis for choosing a model formulation to carry forward (Section [TODO:]). 
+
+## Features of models
 
 In the literature review, we saw that model formulations could vary in their generality. This chapter explores this notion more closely, in particular relating generality to other aspects of modelling, such as fidelity, tractability and usability. We do this by proposing three different formulations of the model (two linear, and one nonlinear), in order to compare them for various aspects, by applying them to a small case study. This case study is Tat Hamlet, for which the metabolism has previously been studied. We hope that our formulation will mark just the beginning of researchers using optimisation modelling for urban metabolism studies, and to that end, we hope that our Tat Hamlet case study will become a 'benchmarking problem' that will be used by others to further 
 
