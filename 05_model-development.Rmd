@@ -9,9 +9,13 @@ font_import(pattern="LinBiolinum")
 
 Modelling is central to this thesis. Chapter 2 showed that the field of urban metabolism can be advanced by a model which considers how an area's resource management processes affect its overall metabolic flows. The particular reason this thesis is interested in such a model, is that it may assist the high integration of resource management processes, which may yield environmental and economic benefits.  It is the purpose of this chapter to formulate a *highly integrated urban energy, water, and waste systems* optimisation model. Once formulated, the model can be applied to a case study, using the data assembled in Chapter 4, assessing the modelling results on the basis of the work in Chapter 3.
 
-Since modelling is a simplification of the real-world, there will be inevitably be compromises in the performance of the model (outlined in Section [TODO:]). This chapter explores these in relation to three possible formulations, which use two different methods (Section [TODO:]). The rest of the chapter goes on to apply the three formulations to a case study. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, which can be used by other researches to improve the modelling (Section [TODO:]). The case study is introduced in Section [TODO:], the model formulations are developed in Section [TODO:], and are applied to the case study in Section [TODO:], which also discusses how the models perform with respect to the performance features of Section [TODO:], which is the basis for choosing a model formulation to carry forward (Section [TODO:]). 
+Since modelling is a simplification of the real-world, there will be inevitably be compromises in the performance of the model. This chapter explores these performance features in relation to three possible formulations, which use two different methods (introduced in Section [TODO:]). The rest of the chapter goes on to apply the three formulations to a case study. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, which can be used by other researches to improve the modelling (Section [TODO:]). The case study is introduced in Section [TODO:], the model formulations are developed in Section [TODO:], and are applied to the case study in Section [TODO:], which also discusses how the models perform with respect to the performance features of Section [TODO:], which is the basis for choosing a model formulation to carry forward (Section [TODO:]). 
 
-## Features of models
+## Model performance and formulation
+
+This section introduces two areas important to modelling. The first area is that of performance features, which relate to how well a model represents the real world; and the second area is that of model formulation types, namely the mathematics of the model. Both these areas will affect the extent of a model's application, the results returned by a model, and the practicalities of their everyday use, and so are important considerations as a novel model is introduced to the urban metabolism field.
+
+### Performance features of models
 
 When introducing modelling in the literature review, care was taken to not overstate the capabilities of a model (Section [TODO: cross-ref]). Rather, it was noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising that simplifications are inevitable leads to the understanding that there will be compromises with respect to features of the model. Four such features are *fidelity*, *generality*, *tractability*, and *usability*.
 
@@ -25,48 +29,48 @@ Compromises arise, because these four features generally needed to be traded-off
 
 The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
 
-## Optimisation model methods
+### Optimisation model formulation types and solution methods
 
-Solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), which are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet].
+As outlined in Chapter 1, the equations of optimisation models are comprised of parameters and variables, where the values of parameters are fixed, and the values of the variables are chosen during the optimisation procedure. There are different forms of equations, and these different forms require their own  methods to solve.
 
-Nonlinear formulations are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.}, especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet].
+There are two broad categories of formulation: *linear* and *nonlinear*. *Linear programmes* (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. Linear formulations have a number of subsets: for example, if some variables must take integer values (which might be necessary to specify the number of resource management processes, for example), they are *mixed-integer linear programming* (MILP) problems. Linear models can also have uncertain parameters, which are defined by probability distributions -- this is often true of waste management models, in which the parameter defining a rate of waste generation is uncertain. These models require *multiple-stage* methods to solve [TODO: list examples from the spreadsheet].
+
+*Nonlinear programmes* (NLP) are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP).
+
+[^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
 Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
 
+### Summary
 
-[TODO: Move in content on linear/nonlinear formulations here?]
-
-## Tradeoffs in mathematical programming
-
-<!--
-and @Weisberg2002
--->
+The two areas outlined in the subsections above are related inasmuch as nonlinear models may often (but not necessarily) represent a real-world system with greater fidelity, the reason being, that very often, models are formulated linearly with the express purpose of simplifying nonlinear realities. On the other hand, however, the more complicated mathematics of nonlinear models may make them both less usable and less tractable.
 
 ## Benchmark problems
 
-Introductory paragraph, including the definition of a 'benchmark' [TODO: complete] 
+There are many different ways to model urban resource management systems, and the the considerations of linearity and performance features raised above suggest that there might well be different outcomes to such models, each with their own set of advantages and disadvantages. Because of this, this chapter will propose three different formulations (two linear, and one nonlinear) which vary in their fidelity, generality, tractability and usability.
 
-> "*Computing.* A program or set of programs used as a standard against which the performance of other programs (or computer systems running them) is compared or evaluated ... "
+These three formulations will be applied to the same case study to provide a fair test by which to compare the different approaches. This case study will therefore provide a 'benchmark' study.  In computing, a benchmark is defined as "A program or set of programs used as a standard against which the performance of other programs (or computer systems running them) is compared or evaluated ... " [@OED-benchmark2016, Draft Additions October 2001]. Benchmarking assesses a model's quality by providing "a systematic mechanism for comparing computational tools" [@Farmani2003, p.250] through the use of a test case, on which all computational tools can be applied. 
 
-\attrib{\citet{OED-benchmark2016}, Draft Additions October 2001}
-
+<!--
 In order to "assess the relative performance of an object" [@Gangl2016, p.19] (e.g. a numerical solver)
 
-This concept of benchmarking can be applied to assessing the "quality of a computational model [@Farmani2003, p.249], known as 'design benchmarking'. As opposed to 'process benchmarking' which compares the performance of a system. Design benchmarking compares the tools for actually designing/planning the systems by providing "as systematic mechanism for comparing computational tools" (p250) through the use of a test case, on which all computational tools can be applied. 
+using test problems containing "features common to engineering optimization problems" [@Chase2016, p.14]
 
-Sometimes benchmark problems can be used to compare particular algorithms (e.g. evolutionary algorithms [TODO: @Li2008], finding optimisation search algorithms that can work effectively and efficiently over a range of problems, using test problems containing "features common to engineering optimization problems" [@Chase2016, p.14], problems in mechanics including dynamic systems [@TechComm2016, @Schiehlen2015], finite element problems in structural mechanics [@Sze2004, @Agrawal2005], numerical solutions to Maxwell's equations in electromagnetic problems [@Gangl2016], fluid mechanics [@Vuik2004, @Bathe2007], parameter estimation in biological systems found through optimisation [@Villaverde2015]
+parameter estimation in biological systems found through optimisation [@Villaverde2015]
+
+system compared piecewise linear approximations+MILP, search methods, and 'Transformation using ceiling function X DE';
 
 Particularly common in optimisation problems. They should be: easy to use and complete (so users don't have to go elsewhere for data or instruction). For example, Exeter's online library of benchmark problems [@Farmani20013].
+-->
 
-Focussing more within our field, benchmarking problems have been defined for plant production location problems [@Sabolev2013], EAs to optimise water distribution networks [@Wang2015], energy storage [@Salas2013]
+Benchmark problems can be used to find the best algorithm to tackle problems belonging to a particular field, for example, standard problems of mechanics [@TechComm2016, @Schiehlen2015], finite element analysis [@Sze2004, @Agrawal2005], Maxwell's equations of electromagnetism [@Gangl2016], and fluid mechanics [@Vuik2004, @Bathe2007].
 
-For example, @Farmani2003, p.249 specify a few problems which can be used to test algorithms which optimise water distribution systems. Some specific benchmarking probelsm include the New York Tunnel system (used since 1969, and studied also in [@Wu2001]) [TODO: more examples from other references]. Also, the Anytown network, also considered in [@Piratla2015, check details here], presenting algorithms which produce results of better water quality, at no additional computational cost by adding 'resiliance index' to the already existing cost objective. Adding resilience to the New York water network problem [TODO: check details here] [@Piratla2015].
+Benchmarking problems also exist in fields more closely related to this thesis. In the energy sector, there are benchmarking problems for energy storage [@Salas2013] problems, plant location problems [@Sabolev2013], and plant operation problems [@IEEJ2015]. This third example compared different ways to approximate using equations -- a task not too dissimilar that undertaken in this chapter. In the water sector, there are benchmark problems to test the different algorithms applied to the optimisation of distribution networks [@Wang2015, @Farmani2003, @Wu2001]) and the quality of managed water [@Piratla2015].
 <!--
 http://castlelab.princeton.edu/Papers/Jiang-ComparisonADPonBenchmarkEnergy-DoesAnythingWorkJune52014.pdf -- note conslusions: no methods suitable, so new theory/methodology is required].
 -->
 
-For example, for energy plant operation problems [@IEEJ2015], compared piecewise linear approximations+MILP, search methods, and 'Transformation using ceiling function X DE'; waste collection vehicle routing, testing two types of algorithms, comparing their solutions (objectives variables), computational time, showing which methods finds the preferable solution with speed and the solutions have been successfully used in the real-world.
-
+The benchmarking study in this chapter will be the first application of a model which considers the highly integrated management of energy, water and waste systems. This novely warrants that the formulations and data can be made available to the wider research community, who can work do improve upon the models develope here.
 <!--
 - Benchmarking model of default probabilities of listed companies
   	- http://papers.ssrn.com/sol3/papers.cfm?abstract_id=982984
