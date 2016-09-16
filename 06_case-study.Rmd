@@ -39,6 +39,8 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
+This chapter first introduces the case study (Section [TODO:]), before adapting information from the documentation, to construct the model (for example identifying zones, interzonal links, and resource demands) (Section [TODO:]). Following this, Section [TODO: subsection number] introduces several scenarios to which PRaQ is applied. These scenarios will all use the same demand patterns specified in the SPC documentation, but vary in their objectives, and the set of processes available to manage resources. This will allow investigation of both currently proposed system designs, as well as other more ambitious ideas. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further (Section [TODO:]).
+
 The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
 
 [^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SCP [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
@@ -71,7 +73,6 @@ Some proposed system design have been simulated (for example using the TRNSYS[^t
 
 [^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. This program allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
 
-This chapter proceeds by adapting the information from SCP documentation, to construct the model (for example identifying zones, interzonal links, and resource demands). Following this, Section [TODO: subsection number] introduces several scenarios which the model can test. These scenarios will all use the same demand patterns specified in the SPC documentation, but use different objectives, and have different sets of processes available. This will allow investigation of both currently proposed system designs, as well as others. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further.
 
 Like with the benchmark study (Chapter 5), architecture of the code separates the data and formulation. Everything required to run each scenario is available online, along with the results of the modelling [TODO: provide GitHub link].
 
@@ -106,13 +107,15 @@ This section gives the key particulars on how the sets and parameters above are 
 
 ```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SCP site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
 demands <- read.csv("06_case-study/resource-demands.csv")
+demands <- demands[complete.cases(demands$value.conv), ]
 
 #library("dplyr")
 #filter(demands, value.conv!=0)
 
 plot_demand <- ggplot(demands, aes(zone, value.conv)) +
-  geom_dotplot(aes(fill=season), binaxis="y", position=position_dodge(width=0.6)) +
-  facet_wrap(~resource) +
+#  geom_dotplot(aes(fill=season), binaxis="y", position=position_dodge(width=0.6)) +
+  geom_point(aes(colour=season), binaxis="y", position=position_dodge(width=0.6)) +
+  facet_wrap(~resource, scales="free_y") +
   xlab("Zone") +
   labs(fill="Season") +
   theme_bw() +
@@ -583,6 +586,7 @@ Show that plots reveal more transport connections for the wildcard case.
 
 #### Exergy analysis
 
+
 The [TODO: N] subsections above could be considered black-box metrics. In this section and the next, 
 
 Perform a simplified version of the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], in which there is no need to distribute the flows between the processes within the city, on the understanding that in the model, any process products unused within other processes will become system outputs (exports), thus exergy analysis can be peformed on a whole-system level on a black-box, with the internal 'grey box' analysis implicit to it:
@@ -591,6 +595,39 @@ Perform a simplified version of the method outlined in Section [TODO: cite Grey-
 - $Ex^{waste}$ are any resources which find themselves amongst the 'outputs' ('exports'), and have thus, not become inputs to any processes before crossing out of the urban boundary
 
 Thus, a simplified way to calculate the exergetic inputs to the SPC site, $\alpha^{in}_{ex}$ is by the following simplification to Equation [TODO:cross-ref Equation (3.5a)]. 
+
+```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
+
+library(xtable)
+exergy <- read.csv("06_case-study/exergy.csv")
+
+ex_prod <- exergy$prod[1]
+
+## Presentation scenario names
+exergy$scenario <- as.character(exergy$scenario)
+exergy[exergy$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
+exergy[exergy$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
+exergy[exergy$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
+exergy[exergy$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
+exergy[exergy$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
+exergy[exergy$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
+exergy[exergy$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
+exergy[exergy$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
+
+exergy <- select(exergy, scenario, in., waste, irrev, eff)
+names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\alpha^{waste}_{ex}$", "$\\alpha^{irrev}_{ex}$", "$\\eta_{ex}$ [per cent]")
+
+tab.exergy.tex <- xtable(exergy,
+			  caption="Results of exergy analysis for SPC scenarios. All $\\alpha^*_{ex}$ values in MW. \\label{tab:SPC-exergy}",
+			  align="llllll")
+
+print(tab.exergy.tex,
+##      size='\\small',
+      table.placement='htbp!',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
 
 \begin{align}
 \alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
@@ -605,11 +642,69 @@ Similarly, calculation of the site's exergetic outputs $\alpha^{prod}_{ex}$, sim
 \label{eq:SPC-ex-out}
 \end{align}
 
-where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this). This method is applied to the scenarios (data and calculations provided in Appendix [TODO: cross-ref]), and the results are given in Table [TODO: cross-ref].
-
-[TODO: Tablulate absolute values and efficiency]
+where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this). Because each scenario has the same set of demands, $\alpha_{ex}^{prod}=$ `r ex_prod` for all scenarios. Exergy calculations are performed for all scenarios, and the results are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]).
 
 [TODO: describe results]
+
+The Grid case has no waste exergy, because there are no processes on site:
+
+- i.e. all exergy losses would be accounted for offsite 
+- there is a small exergy loss in terms of wastewater generated by the site, however the exergy value of this is negligable [TODO: recalculate with physical exergy] 
+
+Design case (all)
+
+- networks have cost (10), emissions (8), waste (12), and water (12) processes respectively, and all have the following eight management processes common to them:
+
+	- AD
+	- WWTP
+	- WTP
+	- CHP
+	- GSHP
+	- HVAC (cooling)
+	- Heat ex. (col)
+	- Absorp. chill
+
+In addition to the common processes:
+
+- min cost
+
+	- HVAC heating
+	- Absorp. (heat)
+
+- emissions -- no extra, i.e. the common eight
+
+- waste and water:
+
+  	- boiler
+  	- WSHP
+  	- HVAC heating
+	- Absorp heat
+
+
+
+- Only minor differences in the imports schedule (e.g. no summer import of electricity in the min waste scenario, due to 
+  Also note an excess use of AD, hence exports of natural gas
+
+Note that minimum waste and minimum water design the same system (though operated slightly differently, as evidenced by the exports of potable water and excess natural gas (from AD) in the minimum waste scenario.
+
+- differences in the amount of imported natural gas between minimum waste/minimum emissions
+
+Design case (min cost)
+
+- Only water wastes, so no exergy waste
+- Lower import requirements that Grid case (slightly lower elec, and gas, and much lower summer elec, due to absorption cooling, rather than electrically-powered HVAC). Different set of water imports (not actually affecting exergy flows)
+
+Design case (min emissions)
+
+Avoids CO2 emitting processes (NOTE not CO2 from CHP!!)
+
+General observations:
+
+- Results would suggest that optimising for some objectives may not result in the most efficient system, as defined by exergy
+- Exergy wastes could be considered products rather than wastes if they were sold (e.g. the large electricity and heating exports from the design case). Hence the in efficiency of these cases.
+- Should focus on non-water exports or selling other exports to increase exergy efficiency
+- While water itself has negligable effects on exergy, the type of water imported may have indirect exergy impacts, due to treatment processes, etc.
+
 
 #### Ecological network analysis
 
@@ -619,7 +714,62 @@ The results of this type of analysis are important, because they indicate to pla
 
 Again, using the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
 
-[TODO: Plot graphs for each scenario.]
+```{r ena, fig.height=5, fig.cap="fig:ena", results="asis"}
+
+ena <- read.csv("06_case-study/ENA.csv")
+
+## Presentation scenario names
+ena$scenario <- as.character(ena$scenario)
+ena[ena$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
+ena[ena$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
+ena[ena$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
+ena[ena$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
+ena[ena$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
+ena[ena$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
+ena[ena$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
+ena[ena$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
+
+names(ena) <- c("Scenario", "Direct", "Utility")
+
+tab.ena.tex <- xtable(ena,
+			  caption="Results of ENA for SPC scenarios. \\label{tab:SPC-ENA}",
+			  align="llll")
+
+print(tab.ena.tex,
+##      size='\\small',
+      table.placement='htbp!',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
+
+```{r ena-matrices, fig.height=7, fig.cap="fig:ena", results="asis"}
+
+ena_matrices <- read.csv("06_case-study/ena-matrices.csv")
+
+
+ena_matrices <- transform(ena_matrices,
+		       Sign=factor(Sign, levels=c(-1,0,1),
+				    labels=c("-","0","+")))
+
+## Presentation scenario names
+ena_matrices$Scenario <- as.character(ena_matrices$Scenario)
+ena_matrices[ena_matrices$Scenario=="designCase_minCost", "Scenario"] <- "Design case (min. cost)"
+ena_matrices[ena_matrices$Scenario=="designCase_minEmissions", "Scenario"] <- "Design case (min. emissions)"
+ena_matrices[ena_matrices$Scenario=="designCase_minWaste", "Scenario"] <- "Design case (min. waste)"
+ena_matrices[ena_matrices$Scenario=="designCase_minWater", "Scenario"] <- "Design case (min. water)"
+ena_matrices[ena_matrices$Scenario=="wildcard_current_minCost", "Scenario"] <- "Wildcard case (current)"
+ena_matrices[ena_matrices$Scenario=="wildcard_medium_minCost", "Scenario"] <- "Wildcard case (medium)"
+ena_matrices[ena_matrices$Scenario=="wildcard_long_minCost", "Scenario"] <- "Wildcard case (long)"
+
+plot_ENA <- ggplot(ena_matrices, aes(From, To)) +
+  geom_tile(fill=NA, color="black", na.value=NA) +
+  geom_text(aes(label=Sign), size=3) +
+  facet_grid(Scenario~Matrix) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle=30, hjust=1))
+plot_ENA
+```
 
 #### Summary
 
