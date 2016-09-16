@@ -112,7 +112,7 @@
 "energy","waste",-1,"designCase_minEmissions","Utility"
 "external","waste",-1,"designCase_minEmissions","Utility"
 "internal","waste",-1,"designCase_minEmissions","Utility"
-"waste","waste",1,"designCase_minEmissions","Utility"
+"waste","waste",-1,"designCase_minEmissions","Utility"
 "water","waste",-1,"designCase_minEmissions","Utility"
 "energy","water",-1,"designCase_minEmissions","Utility"
 "external","water",-1,"designCase_minEmissions","Utility"
