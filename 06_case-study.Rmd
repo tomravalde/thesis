@@ -382,6 +382,31 @@ plot_headlines
 - First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
 - Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
 
+#### Costs
+
+Comparing the systems which were minimised for cost:
+
+```{r costs, fig.height=5, fig.cap="fig:costs", results="asis"}
+system_costs <- filter(headlines, scenario %in% c("Grid case (min. cost)",
+						  "Design case (min. cost)",
+						  "Wildcard case (current)",
+						  "Wildcard case (medium)",
+						  "Wildcard case (long)"))
+system_costs <- filter(system_costs, metrics=="Cost [USD/year]")
+
+system_costs <- mutate(system_costs, values=values/1e6)
+
+plot_system_costs <- ggplot(system_costs, aes(scenario, values)) +
+  geom_point() +
+  xlab("Scenario") +
+  ylab("Annualised cost [millions USD]") +
+  theme_bw() +
+  theme(axis.text.x = element_text(hjust=1, angle=30))
+plot_system_costs
+```
+
+Note that the design case is an order of magnitude higher in cost, but increasing the number of processes avaialble brings the process down to the same order as the grid case.
+
 #### Metabolic inputs and outputs 
 
 Turning to consider the metabolism of each scenario in more detail, Figure \ref{fig:metabolic-flows} gives a closer look at the resource imports and exports for each scenario. Note the following:
