@@ -583,6 +583,7 @@ Show that plots reveal more transport connections for the wildcard case.
 
 #### Exergy analysis
 
+
 The [TODO: N] subsections above could be considered black-box metrics. In this section and the next, 
 
 Perform a simplified version of the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], in which there is no need to distribute the flows between the processes within the city, on the understanding that in the model, any process products unused within other processes will become system outputs (exports), thus exergy analysis can be peformed on a whole-system level on a black-box, with the internal 'grey box' analysis implicit to it:
@@ -607,7 +608,41 @@ Similarly, calculation of the site's exergetic outputs $\alpha^{prod}_{ex}$, sim
 
 where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this). This method is applied to the scenarios (data and calculations provided in Appendix [TODO: cross-ref]), and the results are given in Table [TODO: cross-ref].
 
-[TODO: Tablulate absolute values and efficiency]
+```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
+
+library(xtable)
+exergy <- read.csv("06_case-study/exergy.csv")
+
+ex_prod <- exergy$prod[1]
+
+## Presentation scenario names
+exergy$scenario <- as.character(exergy$scenario)
+exergy[exergy$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
+exergy[exergy$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
+exergy[exergy$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
+exergy[exergy$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
+exergy[exergy$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
+exergy[exergy$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
+exergy[exergy$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
+exergy[exergy$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
+
+exergy <- select(exergy, scenario, in., waste, irrev, eff)
+names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\alpha^{waste}_{ex}$", "$\\alpha^{irrev}_{ex}$", "$\\eta_{ex}$")
+
+tab.exergy.tex <- xtable(exergy,
+			  caption="Results of exergy analysis for SPC scenarios. All values in MW. \\label{tab:SPC-exergy}",
+			  align="llllll")
+
+print(tab.exergy.tex,
+##      size='\\small',
+      table.placement='htbp!',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
+
+The value of $Ex^{prod}=$ `r ex_prod` for all scenarios.
+
 
 [TODO: describe results]
 
@@ -618,6 +653,35 @@ Chapter 3 also showed how to quantify how well cities work together as *sectors*
 The results of this type of analysis are important, because they indicate to planners the extent to which the different *management* parties need to cooperate to implement such a system, as well as where there are risks/vulnerabilities in the system if there is no cooperation.
 
 Again, using the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
+
+```{r ena, fig.height=5, fig.cap="fig:ena", results="asis"}
+
+ena <- read.csv("06_case-study/ENA.csv")
+
+## Presentation scenario names
+ena$scenario <- as.character(ena$scenario)
+ena[ena$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
+ena[ena$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
+ena[ena$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
+ena[ena$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
+ena[ena$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
+ena[ena$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
+ena[ena$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
+ena[ena$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
+
+names(ena) <- c("Scenario", "Direct", "Utility")
+
+tab.ena.tex <- xtable(ena,
+			  caption="Results of ENA for SPC scenarios. \\label{tab:SPC-ENA}",
+			  align="llll")
+
+print(tab.ena.tex,
+##      size='\\small',
+      table.placement='htbp!',
+      include.rownames=FALSE,
+      sanitize.text.function=identity,
+      comment = FALSE)
+```
 
 [TODO: Plot graphs for each scenario.]
 
