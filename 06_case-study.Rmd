@@ -39,6 +39,8 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
 
+This chapter first introduces the case study (Section [TODO:]), before adapting information from the documentation, to construct the model (for example identifying zones, interzonal links, and resource demands) (Section [TODO:]). Following this, Section [TODO: subsection number] introduces several scenarios to which PRaQ is applied. These scenarios will all use the same demand patterns specified in the SPC documentation, but vary in their objectives, and the set of processes available to manage resources. This will allow investigation of both currently proposed system designs, as well as other more ambitious ideas. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further (Section [TODO:]).
+
 The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
 
 [^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SCP [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
@@ -71,7 +73,6 @@ Some proposed system design have been simulated (for example using the TRNSYS[^t
 
 [^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. This program allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
 
-This chapter proceeds by adapting the information from SCP documentation, to construct the model (for example identifying zones, interzonal links, and resource demands). Following this, Section [TODO: subsection number] introduces several scenarios which the model can test. These scenarios will all use the same demand patterns specified in the SPC documentation, but use different objectives, and have different sets of processes available. This will allow investigation of both currently proposed system designs, as well as others. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further.
 
 Like with the benchmark study (Chapter 5), architecture of the code separates the data and formulation. Everything required to run each scenario is available online, along with the results of the modelling [TODO: provide GitHub link].
 
@@ -683,7 +684,33 @@ print(tab.ena.tex,
       comment = FALSE)
 ```
 
-[TODO: Plot graphs for each scenario.]
+```{r ena-matrices, fig.height=7, fig.cap="fig:ena", results="asis"}
+
+ena_matrices <- read.csv("06_case-study/ena-matrices.csv")
+
+
+ena_matrices <- transform(ena_matrices,
+		       Sign=factor(Sign, levels=c(-1,0,1),
+				    labels=c("-","0","+")))
+
+## Presentation scenario names
+ena_matrices$Scenario <- as.character(ena_matrices$Scenario)
+ena_matrices[ena_matrices$Scenario=="designCase_minCost", "Scenario"] <- "Design case (min. cost)"
+ena_matrices[ena_matrices$Scenario=="designCase_minEmissions", "Scenario"] <- "Design case (min. emissions)"
+ena_matrices[ena_matrices$Scenario=="designCase_minWaste", "Scenario"] <- "Design case (min. waste)"
+ena_matrices[ena_matrices$Scenario=="designCase_minWater", "Scenario"] <- "Design case (min. water)"
+ena_matrices[ena_matrices$Scenario=="wildcard_current_minCost", "Scenario"] <- "Wildcard case (current)"
+ena_matrices[ena_matrices$Scenario=="wildcard_medium_minCost", "Scenario"] <- "Wildcard case (medium)"
+ena_matrices[ena_matrices$Scenario=="wildcard_long_minCost", "Scenario"] <- "Wildcard case (long)"
+
+plot_ENA <- ggplot(ena_matrices, aes(From, To)) +
+  geom_tile(fill=NA, color="black", na.value=NA) +
+  geom_text(aes(label=Sign), size=3) +
+  facet_grid(Scenario~Matrix) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle=30, hjust=1))
+plot_ENA
+```
 
 #### Summary
 

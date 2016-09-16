@@ -92,6 +92,7 @@ update:
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/process_mix.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/exergy.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/ENA.csv 06_case-study ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/ena-matrices.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minCost.pdf ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minEmissions/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minEmissions.pdf ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minWaste/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minWaste.pdf ; \
