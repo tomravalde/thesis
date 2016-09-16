@@ -312,29 +312,6 @@ There are limitations to what the results show. We have already noted the approx
 
 With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
 
-#### Headline results
-
-System cost is the first headline result, summing the cost of the conversion and transport infrastructure, as well as the cost of importing resources. These costs are calculated on an annual basis, assuming a ten year life span of infrastructure. This can be done using Equation \ref{eq:objective_cost}, $C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}$ with $\gamma^*$ taking values of 1, 0.1, and 0.1, respectively.
-
-Emissions, water footprint and waste output are calculated on an annual basis, using the general equation [TODO: write and reference an emissions equation], with the following conditions:
-
-- $r = \mbox{\CO2}$
-- $r \in S^{water}$
-- $r \in S^{waste}$
-
-(Provide footnotes to define the water and waste sets.)
-
-The headline results are given in Figure \ref{fig:headlines}. The results show:
-
-- That when cost is the minimum objective -- the case for all scenarios with the exception of three of the design cases -- that low costs can indeed be achieved.
-- Looking at each of the design cases, they each successfully minimise the quantity of interest to zero, and in fact manage to do while other quantities go to zero.
-- However there is an exception to this, which reveals a clear tradeoff: for example, that minimum waste design case results in a large water consumption.
-- The wildcard cases improve performance the longer the more processes they consider.
-
-<!--
-($\sum_{pz} C^P_p N^P_p + \sum{\tau zz'} C^{\tau}_{\tau} \delta_{\tau zz'} l_zz'$, emissions, waste output and water footprint.
--->
-
 ```{r headlines, fig.height=5, fig.cap="fig:headlines", results="asis"}
 
 headlines <- read.csv("06_case-study/headlines.csv")
@@ -363,24 +340,77 @@ headlines <- transform(headlines,
 			    "Wildcard case (long)"),
 		    ordered=TRUE))
 
+```
+
+#### Costs
+
+System cost is the first headline result, summing the cost of the conversion and transport infrastructure, as well as the cost of importing resources. These costs are calculated on an annual basis, assuming a ten year life span of infrastructure. This can be done using Equation \ref{eq:objective_cost}, $C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}$ with $\gamma^*$ taking values of 1, 0.1, and 0.1, respectively.
+
+- First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
+
+Comparing the systems which were minimised for cost:
+
+Note that the design case is an order of magnitude higher in cost, but increasing the number of processes avaialble brings the process down to the same order as the grid case.
+
+```{r costs, fig.height=5, fig.cap="fig:costs", results="asis"}
+
 ## Presentation costs
 headlines$metrics <- as.character(headlines$metrics)
 headlines[headlines$metrics=="headline_cost", "metrics"] <- "Cost [USD/year]"
-headlines[headlines$metrics=="headline_emissions", "metrics"] <- "Emissions [kg/year]"
-headlines[headlines$metrics=="headline_waste", "metrics"] <- "Waste [kg/year]"
-headlines[headlines$metrics=="headline_water", "metrics"] <- "Water [kg/year]"
+headlines[headlines$metrics=="headline_emissions", "metrics"] <- "Emissions [million tons/year]"
+headlines[headlines$metrics=="headline_waste", "metrics"] <- "Waste [million tons/year]"
+headlines[headlines$metrics=="headline_water", "metrics"] <- "Water [million tons/year]"
+system_costs <- filter(headlines, scenario %in% c("Grid case (min. cost)",
+						  "Design case (min. cost)",
+						  "Wildcard case (current)",
+						  "Wildcard case (medium)",
+						  "Wildcard case (long)"))
 
+system_costs <- filter(system_costs, metrics=="Cost [USD/year]")
 
-plot_headlines <- ggplot(headlines, aes(scenario, values)) +
+system_costs <- mutate(system_costs, values=values/1e6)
+
+plot_system_costs <- ggplot(system_costs, aes(scenario, values)) +
+  geom_point() +
+  xlab("Scenario") +
+  ylab("Annualised cost [millions USD]") +
+  theme_bw() +
+  theme(axis.text.x = element_text(hjust=1, angle=30))
+plot_system_costs
+```
+
+#### Other headline results
+
+Emissions, water footprint and waste output are calculated on an annual basis, using the general equation [TODO: write and reference an emissions equation], with the following conditions:
+
+- $r = \mbox{\CO2}$
+- $r \in S^{water}$
+- $r \in S^{waste}$
+
+(Provide footnotes to define the water and waste sets.)
+
+The headline results are given in Figure \ref{fig:headlines}. The results show:
+
+- That when cost is the minimum objective -- the case for all scenarios with the exception of three of the design cases -- that low costs can indeed be achieved.
+- Looking at each of the design cases, they each successfully minimise the quantity of interest to zero, and in fact manage to do while other quantities go to zero.
+- However there is an exception to this, which reveals a clear tradeoff: for example, that minimum waste design case results in a large water consumption.
+- The wildcard cases improve performance the longer the more processes they consider.
+- Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
+
+<!--
+($\sum_{pz} C^P_p N^P_p + \sum{\tau zz'} C^{\tau}_{\tau} \delta_{\tau zz'} l_zz'$, emissions, waste output and water footprint.
+-->
+
+```{r other-headlines, fig.height=5, fig.cap="fig:costs", results="asis"}
+headlines <- filter(headlines, metrics!="Cost [USD/year]")
+
+plot_headlines <- ggplot(headlines, aes(scenario, values/1e9)) +
   geom_point() +
   facet_wrap(~metrics, ncol=1, scales="free_y") +
   theme_bw() +
   theme(axis.text.x = element_text(hjust=1, angle=30))
 plot_headlines
 ```
-
-- First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
-- Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
 
 #### Metabolic inputs and outputs 
 
