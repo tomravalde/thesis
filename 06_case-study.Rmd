@@ -379,6 +379,59 @@ plot_system_costs <- ggplot(system_costs, aes(scenario, values)) +
 plot_system_costs
 ```
 
+```{r component-costs, fig.height=5, fig.cap="fig:costs", results="asis"}
+component_costs <- read.csv("06_case-study/component-costs.csv")
+component_costs <- melt(component_costs, variable.name="Component")
+
+## Presentation system component names
+component_costs$"Component" <- as.character(component_costs$"Component")
+component_costs[component_costs$"Component"=="Conversion.processes", "Component"] <- "Conversion processes"
+component_costs[component_costs$"Component"=="Transport.processes", "Component"] <- "Transport processes"
+
+## Presentation scenario names
+component_costs$Scenario <- as.character(component_costs$Scenario)
+component_costs[component_costs$Scenario=="gridCase_minCost", "Scenario"] <- "Grid case (min. cost)"
+component_costs[component_costs$Scenario=="designCase_minCost", "Scenario"] <- "Design case (min. cost)"
+component_costs[component_costs$Scenario=="designCase_minEmissions", "Scenario"] <- "Design case (min. emissions)"
+component_costs[component_costs$Scenario=="designCase_minWaste", "Scenario"] <- "Design case (min. waste)"
+component_costs[component_costs$Scenario=="designCase_minWater", "Scenario"] <- "Design case (min. water)"
+component_costs[component_costs$Scenario=="wildcard_current_minCost", "Scenario"] <- "Wildcard case (current)"
+component_costs[component_costs$Scenario=="wildcard_medium_minCost", "Scenario"] <- "Wildcard case (medium)"
+component_costs[component_costs$Scenario=="wildcard_long_minCost", "Scenario"] <- "Wildcard case (long)"
+
+## Order the scenario names
+component_costs <- transform(component_costs,
+		 Scenario=factor(Scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE),
+		Component=factor(Component,
+				levels=c("Conversion processes",
+					"Transport processes",
+				       "Resources"),
+			 ordered=TRUE))	 
+			     
+component_costs <- filter(component_costs, Scenario %in% c("Grid case (min. cost)",
+						  "Design case (min. cost)",
+						  "Wildcard case (current)",
+						  "Wildcard case (medium)",
+						  "Wildcard case (long)"))
+
+plot_component_costs <- ggplot(component_costs, aes(Scenario, value/1e6, fill=Component)) +
+  geom_bar(stat="identity") +
+  xlab("Scenario") +
+  ylab("Annualised cost [millions USD]") +
+  theme_bw() +
+  theme(axis.text.x = element_text(hjust=1, angle=30))
+plot_component_costs
+```
+
 #### Other headline results
 
 Emissions, water footprint and waste output are calculated on an annual basis, using the general equation [TODO: write and reference an emissions equation], with the following conditions:
