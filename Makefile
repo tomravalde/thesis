@@ -88,6 +88,7 @@ update:
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/paper/resource-demands.csv 06_case-study ; \
 	fi
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/headlines.csv 06_case-study ; \
+	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/component-costs.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/metabolic_flows.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/process_mix.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/exergy.csv 06_case-study ; \
