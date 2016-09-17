@@ -312,6 +312,8 @@ There are limitations to what the results show. We have already noted the approx
 
 With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
 
+The results are described in the following subsections, before discussion in Section [TODO:]. 
+
 ```{r headlines, fig.height=5, fig.cap="fig:headlines", results="asis"}
 
 headlines <- read.csv("06_case-study/headlines.csv")
@@ -457,6 +459,13 @@ The headline results are given in Figure \ref{fig:headlines}. The results show:
 ```{r other-headlines, fig.height=5, fig.cap="fig:costs", results="asis"}
 headlines <- filter(headlines, metrics!="Cost [USD/year]")
 
+## Just for the design case
+
+headlines <- filter(headlines, scenario %in% c("Design case (min. cost)",
+					       "Design case (min. emissions)",
+					       "Design case (min. water)",
+					       "Design case (min. waste)"))
+
 plot_headlines <- ggplot(headlines, aes(scenario, values/1e9)) +
   geom_point() +
   facet_wrap(~metrics, ncol=1, scales="free_y") +
@@ -475,6 +484,8 @@ Turning to consider the metabolism of each scenario in more detail, Figure \ref{
 Coupling these results to the headline: more resources are used to achieve the headline outcomes.
 
 ```{r metabolic_flows, fig.height=7, fig.cap="fig:metabolic-flows", fig.width=6.5, results="asis"}
+
+## Another arbitrary edit
 
 metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
 
@@ -680,6 +691,8 @@ Perform a simplified version of the method outlined in Section [TODO: cite Grey-
 Thus, a simplified way to calculate the exergetic inputs to the SPC site, $\alpha^{in}_{ex}$ is by the following simplification to Equation [TODO:cross-ref Equation (3.5a)]. 
 
 ```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
+
+## Arbitrary edit
 
 library(xtable)
 exergy <- read.csv("06_case-study/exergy.csv")
