@@ -271,7 +271,7 @@ This section has provided the data used to define the model's parameters while s
 
 Now, this chapter turns to outline the [TODO: N] scenarios that our model will test. 
 
-## Model scenarios
+## Application to model scenarios
 
 We study [TODO: number] scenarios using different subsets of the processes, to suggest how different networks of processes can satisfy demand under varying circumstances (following the methodology of @Keirstead2012). For some scenarios, we model sub-scenarios, where we use different objective functions, or introduce an additional constraint to illustrate Pareto optimality. The scenarios are:
 
@@ -304,15 +304,7 @@ OTHER SCENARIO VARIATIONS
 - min cost/targets of individual sectors (energy, water, waste), or differently weight them?
 -->
 
-### Results
-
-The results for each scenario (namely the variable values) are ouputted by GAMS into a set of CSV files, which can then be processed using R to analyse and plot the results. These results are presented here in a number of ways (summarised in Table [TODO: cross-ref]. This section visualises and describes the results, before the next section discusses their relevance in view of this chapter's aims. This section will first present each scenario's 'headline results' (costs, emissions, waste output and water consumption), before giving more detailed views of each scenario (the network of processes, and the schedule of resource imports and exports).
-
-There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
-
-With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
-
-The results are described in the following subsections, before discussion in Section [TODO:]. 
+Each scenario is run by GAMS, which outputs the results into a set of CSV files, which are then analysed and plotted using R. The following subsections visualise and describe the results, before the next section discusses their relevance in view of this chapter's aims. With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
 
 ```{r headlines, fig.height=5, fig.cap="fig:headlines", results="asis"}
 
@@ -344,15 +336,224 @@ headlines <- transform(headlines,
 
 ```
 
-#### Costs
+### Metabolic flows and system designs
 
-System cost is the first headline result, summing the cost of the conversion and transport infrastructure, as well as the cost of importing resources. These costs are calculated on an annual basis, assuming a ten year life span of infrastructure. This can be done using Equation \ref{eq:objective_cost}, $C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}$ with $\gamma^*$ taking values of 1, 0.1, and 0.1, respectively.
+The first results of interest to this thesis are the SPC site's aggregate metabolic inputs and outputs, and the mix of processes selected by PRaQ which result in their flows. These results begin to answer this thesis' interest in the link between a system's 'middle', and the overall metabolic flows into and out of a system. These results are presented and discussed generally, before scenarios are considered on an individual basis, and in comparison to each other.
 
-- First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]).
+Metabolic inputs and outputs for each scenario are displayed in Figure \ref{fig:metabolic-flows}. Note that in general, the more processes available to the system, the more diverse the schedule of resource inputs and outputs [TODO: could put numbers here, perhaps tabulate: scenario, inputs, outputs, total]. Note also that there can be seasonal variation for a single resource type, such as for electricity output in the design case.
 
-Comparing the systems which were minimised for cost:
+```{r metabolic_flows, fig.height=7, fig.cap="fig:Metabolic flows into and out of the SPC site.\\label{fig:metabolic-flows}", fig.width=6.5, results="asis"}
 
-Note that the design case is an order of magnitude higher in cost, but increasing the number of processes avaialble brings the process down to the same order as the grid case.
+## Another arbitrary edit
+
+metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
+
+## Reshape imports and exports into the same column
+metabolic_flows <- melt(metabolic_flows, variable.name="Flow")
+
+## Remove zero-valued entries
+metabolic_flows <- filter(metabolic_flows, value!=0)
+
+
+## Order the scenario names
+metabolic_flows <- transform(metabolic_flows,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+## Rename the flows
+metabolic_flows$Flow <- as.character(metabolic_flows$Flow)
+metabolic_flows[metabolic_flows$Flow=="imports", "Flow"] <- "Inputs"
+metabolic_flows[metabolic_flows$Flow=="exports", "Flow"] <- "Outputs"
+
+## TODO: RENAME AND REORDER THE RESOURCES
+
+plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
+  geom_point(aes(colour=season, size=value), position=position_dodge(width=0.6)) +
+  facet_wrap(~Flow, ncol=1) +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30),
+	axis.title=element_blank())
+plot_metabolic_flows
+
+### Give exports a negative value
+#metabolic_flows[metabolic_flows$Flow=="exports", "value"] <- -1 * metabolic_flows[metabolic_flows$Flow=="exports", "value"]
+
+#plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
+#  geom_point(aes(colour=season), position=position_dodge(width=0.6), stat="identity") +
+#  facet_wrap(~scenario, ncol=1) +
+#  theme_bw() +
+#  theme(axis.text.x=element_text(hjust=1, angle=30),
+#	axis.title=element_blank())
+#plot_metabolic_flows
+
+```
+<!--
+```{r process_mix, fig.height=7, fig.width=6.5, results="asis"}
+
+process_mix <- read.csv("06_case-study/process_mix.csv")
+
+## Remove zero-valued entries
+process_mix <- filter(process_mix, rate!=0)
+
+## Calculate total capacity (rate * number)
+
+process_mix$total_capacity <- process_mix$rate * process_mix$number
+
+## Order the scenario names
+process_mix <- transform(process_mix,
+		 scenario=factor(scenario,
+		   levels=c("Grid case (min. cost)",
+			    "Design case (min. cost)", 
+			    "Design case (min. emissions)", 
+			    "Design case (min. waste)", 
+			    "Design case (min. water)", 
+			    "Wildcard case (current)", 
+			    "Wildcard case (medium)", 
+			    "Wildcard case (long)"),
+		    ordered=TRUE))
+
+
+
+plot_process_mix <- ggplot(process_mix, aes(zone, process)) +
+  geom_tile(fill="white", colour="black") +
+  geom_text(aes(label=paste("R=", rate, "\n", "N=", number)), size=2) +
+  facet_wrap(~scenario, ncol=3) +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30),
+	axis.title=element_blank())
+plot_process_mix
+
+```
+-->
+
+The network of processes for each scenario are visualised in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long}. These are SNA-style node-link graphs (undirected) in which processes which transfer resources one to another are joined by lines. The proximity of any pair of linked processes is proportional to the quantities of resources transferred. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this. The processes have been coloured according to the management sector to which they belong[^sna-process-type]; this helps visualise the intersectoral interactions and synergies. Inputs, outputs and demands are also represented; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports).
+
+[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
+
+Note that for all scenarios, energy conversion processes are dominant, but there is nevertheless interactions and synergies between processes within and across sectors. Note also that in general, that the more processes available to a scenario, the more that tend to be used [TODO: quantify any proportionality here].
+
+networks have cost (10), emissions (8), waste (12), and water (12) processes respectively, and all have the following eight management processes common to them:
+
+	- AD
+	- WWTP
+	- WTP
+	- CHP
+	- GSHP
+	- HVAC (cooling)
+	- Heat ex. (col)
+	- Absorp. chill
+
+In addition to the common processes:
+
+- min cost
+
+	- HVAC heating
+	- Absorp. (heat)
+
+- emissions -- no extra, i.e. the common eight
+
+- waste and water:
+
+  	- boiler
+  	- WSHP
+  	- HVAC heating
+	- Absorp heat
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minCost.pdf} 
+	\caption{Process network for the Design case (minimum cost) scenario.} \label{fig:designCase_minCost}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minEmissions.pdf} 
+	\caption{Process network for the Design case (minimum emissions) scenario.} \label{fig:designCase_minEmissions}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWaste.pdf} 
+	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minWaste}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWater.pdf} 
+	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minWater}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_current_minCost.pdf} 
+	\caption{Process network for the Wildcard case (current) scenario.} \label{fig:wildcard_current}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_medium_minCost.pdf} 
+	\caption{Process network for the Wildcard case (medium) scenario.} \label{fig:wildcard_medium}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_long_minCost.pdf} 
+	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:wildcard_long}
+\end{figure}
+
+- For the design case scenarios, integration is lacking for the minimum cost case -- imports tend to go straight to end-use (e.g. electricity, natural gas, and water). But for the other cases, i.e. where an objective is applied to a *resource*, integration does happen
+- Design case (minimum emissions): does not find synergies, so much, but rather shows how processes can be connected in a chain
+- Design case scenarios: majority of integration is within the energy sector (as expected, according to the SPC energy island strategy), though some is intersectoral (e.g. anaerobic digestion producing gas for use in the boilers)
+- There is genuine sensitivity to the objective: i.e. the AD/boiler synergies does not exist int the minimum water design case scenario (though the energy island does work well).  When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
+- The wildcard scenarios take advantage of the availability of more processes, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible.
+- Broadly, the networks are based around distributed energy systems with a diverse range of technologies, it's energy processes dominate the wildcard network, both in terms of presence, and in their own synergies. Nevertheless, there are still intersectoral links [TODO: provide examples] 
+
+[TODO: comment on the mix of technology sizes in various scenarios.]
+[TODO: comment on which technogies are most relied upon in each system.]
+[TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
+[TODO: comment on coversion/transportation mix effect on (capital) costs?]
+
+Design case (all)
+
+
+
+
+- Only minor differences in the imports schedule (e.g. no summer import of electricity in the min waste scenario, due to 
+  Also note an excess use of AD, hence exports of natural gas
+
+Note that minimum waste and minimum water design the same system (though operated slightly differently, as evidenced by the exports of potable water and excess natural gas (from AD) in the minimum waste scenario.
+
+- differences in the amount of imported natural gas between minimum waste/minimum emissions
+
+Design case (min cost)
+
+- Only water wastes, so no exergy waste
+- Lower import requirements that Grid case (slightly lower elec, and gas, and much lower summer elec, due to absorption cooling, rather than electrically-powered HVAC). Different set of water imports (not actually affecting exergy flows)
+
+Design case (min emissions)
+
+Avoids CO2 emitting processes (NOTE not CO2 from CHP!!)
+
+General observations:
+
+- Results would suggest that optimising for some objectives may not result in the most efficient system, as defined by exergy
+- Exergy wastes could be considered products rather than wastes if they were sold (e.g. the large electricity and heating exports from the design case). Hence the in efficiency of these cases.
+- Should focus on non-water exports or selling other exports to increase exergy efficiency
+- While water itself has negligable effects on exergy, the type of water imported may have indirect exergy impacts, due to treatment processes, etc.
+
+
+### System costs
+
+System cost is calculated as the sum of the processes (conversion and transport) and resource imports. These costs are calculated on an annual basis, assuming infrastructure has a ten year lifespan. This can be done using Equation \ref{eq:objective_cost}, $C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}$ with $\gamma^*$ taking values of 1, 0.1, and 0.1, respectively. Figure \ref{fig:system-costs} displays the system cost for those scenarios whose objective is to minimise cost (1, 2a, and 3a-c).
 
 ```{r costs, fig.height=5, fig.cap="fig:costs", results="asis"}
 
@@ -372,16 +573,16 @@ system_costs <- filter(system_costs, metrics=="Cost [USD/year]")
 
 system_costs <- mutate(system_costs, values=values/1e6)
 
-plot_system_costs <- ggplot(system_costs, aes(scenario, values)) +
-  geom_point() +
-  xlab("Scenario") +
-  ylab("Annualised cost [millions USD]") +
-  theme_bw() +
-  theme(axis.text.x = element_text(hjust=1, angle=30))
-plot_system_costs
+#plot_system_costs <- ggplot(system_costs, aes(scenario, values)) +
+#  geom_point() +
+#  xlab("Scenario") +
+#  ylab("Annualised cost [millions USD]") +
+#  theme_bw() +
+#  theme(axis.text.x = element_text(hjust=1, angle=30))
+#plot_system_costs
 ```
 
-```{r component-costs, fig.height=5, fig.cap="fig:costs", results="asis"}
+```{r component-costs, fig.height=5, fig.cap="System costs for scenarios where the objective function was to minimise cost.\\label{fig:system-costs}", results="asis"}
 component_costs <- read.csv("06_case-study/component-costs.csv")
 component_costs <- melt(component_costs, variable.name="Component")
 
@@ -434,7 +635,9 @@ plot_component_costs <- ggplot(component_costs, aes(Scenario, value/1e6, fill=Co
 plot_component_costs
 ```
 
-#### Other headline results
+Note that the design case is an order of magnitude higher in cost, but increasing the number of processes avaialble brings the process down to the same order as the grid case.
+
+### Other headline results
 
 Emissions, water footprint and waste output are calculated on an annual basis, using the general equation [TODO: write and reference an emissions equation], with the following conditions:
 
@@ -474,203 +677,8 @@ plot_headlines <- ggplot(headlines, aes(scenario, values/1e9)) +
 plot_headlines
 ```
 
-#### Metabolic inputs and outputs 
 
-Turning to consider the metabolism of each scenario in more detail, Figure \ref{fig:metabolic-flows} gives a closer look at the resource imports and exports for each scenario. Note the following:
-
-- The fewer processes available, the simpler the import/export regime
-- seasonal variation
-
-Coupling these results to the headline: more resources are used to achieve the headline outcomes.
-
-```{r metabolic_flows, fig.height=7, fig.cap="fig:metabolic-flows", fig.width=6.5, results="asis"}
-
-## Another arbitrary edit
-
-metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
-
-## Reshape imports and exports into the same column
-metabolic_flows <- melt(metabolic_flows, variable.name="Flow")
-
-## Remove zero-valued entries
-metabolic_flows <- filter(metabolic_flows, value!=0)
-
-
-## Order the scenario names
-metabolic_flows <- transform(metabolic_flows,
-		 scenario=factor(scenario,
-		   levels=c("Grid case (min. cost)",
-			    "Design case (min. cost)", 
-			    "Design case (min. emissions)", 
-			    "Design case (min. waste)", 
-			    "Design case (min. water)", 
-			    "Wildcard case (current)", 
-			    "Wildcard case (medium)", 
-			    "Wildcard case (long)"),
-		    ordered=TRUE))
-
-plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
-  geom_point(aes(colour=season, size=value), position=position_dodge(width=0.6)) +
-  facet_wrap(~Flow, ncol=1) +
-  theme_bw() +
-  theme(axis.text.x=element_text(hjust=1, angle=30),
-	axis.title=element_blank())
-plot_metabolic_flows
-
-## Give exports a negative value
-metabolic_flows[metabolic_flows$Flow=="exports", "value"] <- -1 * metabolic_flows[metabolic_flows$Flow=="exports", "value"]
-
-#plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
-#  geom_point(aes(colour=season), position=position_dodge(width=0.6), stat="identity") +
-#  facet_wrap(~scenario, ncol=1) +
-#  theme_bw() +
-#  theme(axis.text.x=element_text(hjust=1, angle=30),
-#	axis.title=element_blank())
-#plot_metabolic_flows
-
-```
-
-#### The system middles
-
-<!--
-```{r process_mix, fig.height=7, fig.width=6.5, results="asis"}
-
-process_mix <- read.csv("06_case-study/process_mix.csv")
-
-## Remove zero-valued entries
-process_mix <- filter(process_mix, rate!=0)
-
-## Calculate total capacity (rate * number)
-
-process_mix$total_capacity <- process_mix$rate * process_mix$number
-
-## Order the scenario names
-process_mix <- transform(process_mix,
-		 scenario=factor(scenario,
-		   levels=c("Grid case (min. cost)",
-			    "Design case (min. cost)", 
-			    "Design case (min. emissions)", 
-			    "Design case (min. waste)", 
-			    "Design case (min. water)", 
-			    "Wildcard case (current)", 
-			    "Wildcard case (medium)", 
-			    "Wildcard case (long)"),
-		    ordered=TRUE))
-
-
-
-plot_process_mix <- ggplot(process_mix, aes(zone, process)) +
-  geom_tile(fill="white", colour="black") +
-  geom_text(aes(label=paste("R=", rate, "\n", "N=", number)), size=2) +
-  facet_wrap(~scenario, ncol=3) +
-  theme_bw() +
-  theme(axis.text.x=element_text(hjust=1, angle=30),
-	axis.title=element_blank())
-plot_process_mix
-
-```
--->
-
-Next we consider the network of conversion processes which makeup each system. These are shown in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long} in plots which show synergies between processes (i.e. their linking due to the transfer of resources between them). This is achieve by using 'social network analysis' (SNA) plots. Note the following features:
-
-- Each process is represented by a circle whose colour indicates the sector it belongs to[^sna-process-type].
-- Grey lines connect any pair of processes in which one of the processes uses a resource produced by they other.
-- The proximity of any pair of processes is proportional to the degree to which they are dependent on one another. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this.
-- As well as including processes in this diagram, 'imports' and 'exports' are marked (coloured orange); thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports). The rules of proximity apply here also.
-
-[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minCost.pdf} 
-	\caption{Process network for the Design case (minimum cost) scenario.} \label{fig:designCase_minCost}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minEmissions.pdf} 
-	\caption{Process network for the Design case (minimum emissions) scenario.} \label{fig:designCase_minEmissions}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWaste.pdf} 
-	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minWaste}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWater.pdf} 
-	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minWater}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_current_minCost.pdf} 
-	\caption{Process network for the Wildcard case (current) scenario.} \label{fig:wildcard_current}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_medium_minCost.pdf} 
-	\caption{Process network for the Wildcard case (medium) scenario.} \label{fig:wildcard_medium}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_wildcard_long_minCost.pdf} 
-	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:wildcard_long}
-\end{figure}
-
-
-```{r network-plot, results="asis"}
-
-## Inter-sectoral plot for whole network stored separately, so it's easy to suppress from paper compilation (to save time)
-#base::source("resource-network.R")
-#
-#resource_sectors <- read.csv("resources-sector.csv")
-#sectors_lookup <- rbind(c("energy", "blue"),
-#			c("water", "red"),
-#			c("waste", "black"),
-#			c("other", "green"))
-#sectors_lookup <- data.frame(sectors_lookup)
-#colnames(sectors_lookup) <- c("sector", "node_vector")
-#resources_sectors_node <- inner_join(resource_sectors, sectors_lookup)
-#node_vector <- c(resources_sectors_node$node_vector)
-#
-### Network plot (using SNA package)
-#layout <-  c("fruchtermanreingold", "kamadakawai", "spring", "circle", "eigen", "hall", "mds", "princoord", "target")
-#
-##library(sna) # Code to plot figure for saving (and subsequent manual editing)
-##gplot(link_matrix,
-##      mode=layout[1],
-##      gmode="graph",
-##      label = resources,
-##      label.pos = 1,
-##      jitter=FALSE,
-###      arrowhead = FALSE,
-##      thresh=0,
-###      vertex.sides = 0,
-##      vertex.col = node_vector,
-##      edge.col = rgb(220, 217, 217, maxColorValue=255),
-##      displaylabels = TRUE)
-```
-
-Having explained the SNA plots, we can note the following: [TODO: note the difference] 
-
-- For the design case scenarios, integration is lacking for the minimum cost case -- imports tend to go straight to end-use (e.g. electricity, natural gas, and water). But for the other cases, i.e. where an objective is applied to a *resource*, integration does happen
-- Design case (minimum emissions): does not find synergies, so much, but rather shows how processes can be connected in a chain
-- Design case scenarios: majority of integration is within the energy sector (as expected, according to the SPC energy island strategy), though some is intersectoral (e.g. anaerobic digestion producing gas for use in the boilers)
-- There is genuine sensitivity to the objective: i.e. the AD/boiler synergies does not exist int the minimum water design case scenario (though the energy island does work well).  When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
-- The wildcard scenarios take advantage of the availability of more processes, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible.
-- Broadly, the networks are based around distributed energy systems with a diverse range of technologies, it's energy processes dominate the wildcard network, both in terms of presence, and in their own synergies. Nevertheless, there are still intersectoral links [TODO: provide examples] 
-
-[TODO: comment on the mix of technology sizes in various scenarios.]
-[TODO: comment on which technogies are most relied upon in each system.]
-[TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
-[TODO: comment on coversion/transportation mix effect on (capital) costs?]
-
-#### Transport infrastructure
+### Transport infrastructure
 
 Finally, we consider the transport network in each scenario. [TODO: decide which type of plot to include, notate what they show, and highlight points of note.] 
 
@@ -678,7 +686,7 @@ Finally, we consider the transport network in each scenario. [TODO: decide which
 
 Show that plots reveal more transport connections for the wildcard case.
 
-#### Exergy analysis
+### Exergy analysis
 
 
 The [TODO: N] subsections above could be considered black-box metrics. In this section and the next, 
@@ -747,62 +755,7 @@ The Grid case has no waste exergy, because there are no processes on site:
 - i.e. all exergy losses would be accounted for offsite 
 - there is a small exergy loss in terms of wastewater generated by the site, however the exergy value of this is negligable [TODO: recalculate with physical exergy] 
 
-Design case (all)
-
-- networks have cost (10), emissions (8), waste (12), and water (12) processes respectively, and all have the following eight management processes common to them:
-
-	- AD
-	- WWTP
-	- WTP
-	- CHP
-	- GSHP
-	- HVAC (cooling)
-	- Heat ex. (col)
-	- Absorp. chill
-
-In addition to the common processes:
-
-- min cost
-
-	- HVAC heating
-	- Absorp. (heat)
-
-- emissions -- no extra, i.e. the common eight
-
-- waste and water:
-
-  	- boiler
-  	- WSHP
-  	- HVAC heating
-	- Absorp heat
-
-
-
-- Only minor differences in the imports schedule (e.g. no summer import of electricity in the min waste scenario, due to 
-  Also note an excess use of AD, hence exports of natural gas
-
-Note that minimum waste and minimum water design the same system (though operated slightly differently, as evidenced by the exports of potable water and excess natural gas (from AD) in the minimum waste scenario.
-
-- differences in the amount of imported natural gas between minimum waste/minimum emissions
-
-Design case (min cost)
-
-- Only water wastes, so no exergy waste
-- Lower import requirements that Grid case (slightly lower elec, and gas, and much lower summer elec, due to absorption cooling, rather than electrically-powered HVAC). Different set of water imports (not actually affecting exergy flows)
-
-Design case (min emissions)
-
-Avoids CO2 emitting processes (NOTE not CO2 from CHP!!)
-
-General observations:
-
-- Results would suggest that optimising for some objectives may not result in the most efficient system, as defined by exergy
-- Exergy wastes could be considered products rather than wastes if they were sold (e.g. the large electricity and heating exports from the design case). Hence the in efficiency of these cases.
-- Should focus on non-water exports or selling other exports to increase exergy efficiency
-- While water itself has negligable effects on exergy, the type of water imported may have indirect exergy impacts, due to treatment processes, etc.
-
-
-#### Ecological network analysis
+### Ecological network analysis
 
 Chapter 3 also showed how to quantify how well cities work together as *sectors* (rather than just individual processes), using the methods of ecological network analysis.
 
@@ -867,7 +820,7 @@ plot_ENA <- ggplot(ena_matrices, aes(From, To)) +
 plot_ENA
 ```
 
-#### Summary
+### Summary
 
 However, the synergies that we look for will not necessarily occur if the objective is to minimise cost.
 
@@ -877,7 +830,7 @@ We also know however, from the design scenarios, that the optimal mix of process
 
 The exergy analysis and ENA analysis has demonstrated that -- as far as ‘metabolically efficient’ can be defined -- that proposed systems are metabolically efficient.
 
-## (Discussion and) Conclusions
+## Discussion and conclusions
 <!--
 Paragraph ideas from JK's MILP paper
 # Conclusions
@@ -923,3 +876,9 @@ TODO IDEAS:
 
 - Sensitivity analysis
 - Operational study
+
+There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
+
+- Cost function
+	- Selling/exporting products (which would change the exergy calculations)
+	- Fines (e.g. on CO2)
