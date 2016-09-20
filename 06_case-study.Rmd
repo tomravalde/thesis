@@ -440,34 +440,6 @@ The network of processes for each scenario are visualised in Figures \ref{fig:de
 
 Note that for all scenarios, energy conversion processes are dominant, but there is nevertheless interactions and synergies between processes within and across sectors. Note also that in general, that the more processes available to a scenario, the more that tend to be used [TODO: quantify any proportionality here].
 
-networks have cost (10), emissions (8), waste (12), and water (12) processes respectively, and all have the following eight management processes common to them:
-
-	- AD
-	- WWTP
-	- WTP
-	- CHP
-	- GSHP
-	- HVAC (cooling)
-	- Heat ex. (col)
-	- Absorp. chill
-
-In addition to the common processes:
-
-- min cost
-
-	- HVAC heating
-	- Absorp. (heat)
-
-- emissions -- no extra, i.e. the common eight
-
-- waste and water:
-
-  	- boiler
-  	- WSHP
-  	- HVAC heating
-	- Absorp heat
-
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minCost.pdf} 
@@ -510,6 +482,16 @@ In addition to the common processes:
 	\caption{Process network for the Wildcard case (long) scenario.} \label{fig:wildcard_long}
 \end{figure}
 
+#### Design case scenarios
+
+The design cases can use up to twelve unique processes. Each have a common set of seven processes: water and wastewater treatment plants, an anaerobic digestion facility (which generates gas from the organic fraction of waste), ground-source and water-source heatpumps, and absorption chilling and heating facilities (which are connected to energy conversion technologies, and deliver [TODO: better word] hot and cold water through a pipe network (which also includes heat exchangers). The four scenarios then have additional conversion processes, according to their objective.
+
+For example, the minimum emissions scenario does not include CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), and as such, the schedule of resource outputs displays zero emissions for this scenario (Figure [TODO: cross-ref]). All other scenarios use the CHP to provide much of the heat. However, the minimum cost scenario joins the emissions scenario in not using the gas-fuelled boilers as a cost-saving measure. However, the waste-minimisation scenario uses them to reduce the fly-ash produced by the CHP, and the water-minimisation scenario [TODO: check these results, comlete explanation, rerun models with corrected data if necessary!] To minimise waste, the waste-minimisation scenario, the anaerobic digestion plant plays a greater role.
+
+[Note on scope 1/2/3 emissions.]
+
+In terms of level of integration, the 
+
 - For the design case scenarios, integration is lacking for the minimum cost case -- imports tend to go straight to end-use (e.g. electricity, natural gas, and water). But for the other cases, i.e. where an objective is applied to a *resource*, integration does happen
 - Design case (minimum emissions): does not find synergies, so much, but rather shows how processes can be connected in a chain
 - Design case scenarios: majority of integration is within the energy sector (as expected, according to the SPC energy island strategy), though some is intersectoral (e.g. anaerobic digestion producing gas for use in the boilers)
@@ -538,10 +520,6 @@ Design case (min cost)
 
 - Only water wastes, so no exergy waste
 - Lower import requirements that Grid case (slightly lower elec, and gas, and much lower summer elec, due to absorption cooling, rather than electrically-powered HVAC). Different set of water imports (not actually affecting exergy flows)
-
-Design case (min emissions)
-
-Avoids CO2 emitting processes (NOTE not CO2 from CHP!!)
 
 General observations:
 
