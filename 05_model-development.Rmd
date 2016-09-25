@@ -647,36 +647,49 @@ We will add other processes which interact between the processes.
 
 ## Deriving three mathematical formulations
 
-As the conceptualisation above indicates, the highly integrated resource management model needs to consider a city as comprised of a number of zones, for which can be specified resource demands, and which contain the conversion processes which manage resources. These zones will be connected to one another via transport processes. The model should also be able consider that resources will need to be imported into the city (either to meet a demand directly, or to feed a process), and resources which neither meet a demand nor feed a process (excess waste heat, perhaps), can be exported from the area. Added to this is also the need for a temporal component, such that resource demands can vary with time, along with the schedule of resource imports and exports, and process operations.
+As the conceptualisation above indicates, the highly integrated resource management model should be able to consider a city as comprised of a number of zones, for which can be specified resource demands, and which contain the conversion processes which manage resources. These zones will be connected to one another via transport processes. The model should also be able consider that resources will need to be imported into the city (either to meet a demand directly, or to feed a process), and resources which neither meet a demand nor feed a process (excess waste heat, perhaps), can be exported from the area. Added to this is also the need for a temporal component, such that resource demands can vary with time, along with the schedule of resource imports and exports, and process operations.
+
+## @Keirstead2013a
 
 An existing model which can do all these things, specifically for that energy sector has been developed by @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section [TODO:], this is a city scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system).
 
-[TODO: copy a diagram of Keirstead's model -- i.e. a conceptualisation of results.]
+\begin{figure}
+\input{05_model-development/BiomassRTN.tex}
+\caption{Example of an urban energy system designed by the MILP model of [TODO: Keirstead reference].}
+\label{fig:Keirstead-RTN}
+\end{figure}
 
 ### Basics of the formulations
 
-To model the processes which convert resources, @Keirstead2013a looks to the engineering State-Task Network model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another. Keirstead's model applies the same principles to urban energy systems in a so-called Resource-Technology Network (RTN), developing a model which chooses the mix of processes that uses available resources to meet demand for heat and electricity. While @Keirstead's model is categorised as having no system integration, the State-Task network representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be easily extended to consider resources and processes from multiple sectors.
+To model the processes which convert resources, @Keirstead2013a is based upon the engineering State-Task Network model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another. Keirstead's model applies the same principles to urban energy systems in a so-called Resource-Technology Network (RTN), developing a model which chooses the mix of processes that uses available resources to meet demand for heat and electricity. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be easily extended to consider resources and processes from multiple sectors.
 
 [TODO: copy a diagram of an STN -- i.e. a conceptualisation of results.]
 
-Like Keirstead's model, processes are separated into conversion processes (such as a wastewater treatment plant) and transport processes (such as a pipeline). The transport processes will connect the different zones into which an urban area is divided, allowing resources to be transported to and from different parts of the city. The main equation is a resource balance,
+Processes in the model developed here will be considered similarly as those in @Keirstead2013a, separated into those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). The transport processes connect the different zones into which an urban area is divided, allowing resources to be transported to and from different parts of the city. The main equation is a resource balance,
 
-We noted in particular that a generic model would be a suitable way to handle the challenge of needing to optimise multiple resource types, and thus identified the MILP urban energy systems model of Keirstead [@Keirstead2013] as a particularly useful starting point. The model divides the urban area into a number of zones and the time horizon into a number of time periods. 
+The model divides the urban area into a number of zones and the time horizon into a number of time periods. 
+
 \begin{align}
 \begin{split}
-&\mbox{Imports} + \mbox{Net inflow from other cells} + \mbox{Net production of resource by processes}\\
+&\mbox{Imports} + \mbox{Net inflow from other zones} + \mbox{Net production of resource by processes}\\
 &= \mbox{Demand} + \mbox{Exports}
 \label{eq:balance}
 \end{split}
 \end{align}
 
-Demand (for each resource, in each zone and each time period) is a variable selected by the optimisation modelling process, while imports and exports are variables whose values can be limited using constraints, while the new inflow and net production terms are variables which can be defined by equations which model the behaviour of conversion and transport technologies. In the next three subsections, we specify three different model formulations based on this model: 
+Demand (for each resource, in each zone and each time period) is a variable selected by the optimisation modelling process, while imports and exports are variables whose values can be limited using constraints, while the new inflow and net production terms are variables which can be defined by equations which model the behaviour of conversion and transport technologies. The next three subsections specify three different model formulations based on this model, which vary in terms of fidelity, generality, tractability, and usability:
 
-1. Null model. The formulation is more or less identical to the MILP urban energy systems model (though it's application is broader).
-2. Processes, resources and qualities model (PRaQ).
-3. Nonlinear.
+[TODO: Comment on black-box process models]
 
-Figure \ref{fig:evolution} shows how the models are related both to the original urban energy systems model, and each other. For clarity, our formulations will drop the time period, as this will not substantially change the formulation.
+\begin{description}
+
+\item [Null model] This formulation is very similar to the MILP urban energy systems model, only it is applied to a broader set of resources and processes, to incorporate the water and waste sectors. The purpose of this model is to investigate what can be achieved for as little computational effort as possible. 
+\item [Processes resources and qualities model (PRaQ)] This formulation also linear, and is in many ways similar to the null model, but it develops it to encapsulate a more sophisticated definition of resources, in which a resource can have multiple properties attributed to it. For example, water can have both a mass and an energy head. In practice, this requires defining extra parameters and variables in the model, and inserting some additional equations.
+\item [Nonlinear (NL)] This formulation uses nonlinear f
+\end{description}
+
+
+Figure \ref{fig:evolution} shows how the models are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on]
 
 [TODO: Add note about the model objective]
 
@@ -690,7 +703,9 @@ Figure \ref{fig:evolution} shows how the models are related both to the original
 	\label{fig:evolution}
 \end{figure}
 
-#### Dam example [TODO: better title] 
+#### An exapmle to demonstrate the differences
+
+The differences between the formulations can be explained with reference to the example of a dam (a conversion process) and a pipe (a transport process).
 
 [TODO: Introduce the dam example (and Bernoulli) here? Show Bernoulli's simplification for Null and PRaQ.]
 
@@ -773,7 +788,7 @@ The user runs the model multiple times, changing the value of $lim$, such that o
 
 ### Null (N) formulation
 
-The purpose of the null model is to see what can be achieved for as little computational effort as possible. The null model can be defined by the same equations as the MILP urban energy systems model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
+The null model can be defined by the same equations as the MILP urban energy systems model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
 
 \begin{align}
 I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \forall r,z
@@ -900,7 +915,6 @@ Thus equations \eqref{eq:null_balance_qty}--\eqref{eq:null_obj} define the mathe
 
 ### Processes, resources and qualitites (PRaQ) formulation
 
-MOTIVATING REASON FOR PRAQ:
 We should note here that this model defines resources fairly crudely. In the dam example, there are two 'water' resources (one high-head, the other low-head). Other water resources could include water at different temperatures or contamination levels. However, there is nothing more sophisticated than this, and for this reason we now introduce the next model.
 
 [TODO: note, another reason it's better is that it might be advantageous for design, to know (e.g.) the energy of water through a pipe, etc.]
