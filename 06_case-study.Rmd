@@ -1,15 +1,13 @@
 # Case study: a Chinese urban development
 
+[TODO: Add epigraph]
+
 \begin{tcolorbox}
 
 An early version of the work in this chapter was published as: 
-Tom Ravalde, James Keirstead, Integrated Resource Planning for a Chinese Urban Development, \emph{International Symposium for Next Generation Infrastrucutre Conference Proceedings}, doi: \url{http://discovery.ucl.ac.uk/1469209/}.
+Tom Ravalde, James Keirstead, Integrated Resource Planning for a Chinese Urban Development, \emph{International Symposium for Next Generation Infrastructure Conference Proceedings}, doi: \url{http://discovery.ucl.ac.uk/1469209/}.
 
 \end{tcolorbox}
-
-[TODO: complete] 
-
-[TODO: Add note on published aspects of this work (e.g. conference paper)?]
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)
@@ -37,13 +35,15 @@ Sections in JK's MILP paper
 -->
 
 
-This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, in combination, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The computational implementation of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using the metrics of Chapter 3 to assess the systems designed by the model.
+This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The architecture of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using some of the metrics of Chapter 3 to assess the systems designed by the model.
 
-This chapter first introduces the case study (Section [TODO:]), before adapting information from the documentation, to construct the model (for example identifying zones, interzonal links, and resource demands) (Section [TODO:]). Following this, Section [TODO: subsection number] introduces several scenarios to which PRaQ is applied. These scenarios will all use the same demand patterns specified in the SPC documentation, but vary in their objectives, and the set of processes available to manage resources. This will allow investigation of both currently proposed system designs, as well as other more ambitious ideas. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SCP site plans further (Section [TODO:]).
+This chapter first introduces the case study (Section [TODO:]), before outlining the data (for example defining zones, interzonal links, and resource demands) (Section [TODO:]). Following this, Section [TODO: subsection number] introduces several scenarios for the case study to which PRaQ is applied. These scenarios will all use the same demand patterns, but vary in their objectives, and the set of processes available to manage resources. This will allow investigation of both currently proposed system designs, as well as other more ambitious ideas. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SPC site plans further (Section [TODO:]).
 
-The case study is an ongoing Chinese urban development. The development is led by the Xi'an Shann Gu Power Company (SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [TODO: cite http://www.shaangu.com/ENGLISH/About.jsp?urltype=tree.TreeTempUrl&wbtreeid=1071]. The SPC are currently implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodates 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have needs to manage energy, water and waste. Another specific need of interest is in the recreational area, which includes an artifical lake, which the planners hope to source via a water reuse project [SCP-water].
+## The case study
 
-[^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SCP [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
+The case study is an ongoing Chinese urban development led by the Xi'an Shann Gu Power Company (hereafter, SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [@SPC2014]. The SPC are implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodate 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have energy, water and waste management needs.
+
+[^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SPC [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
 
 \begin{figure}
 	\centering
@@ -51,11 +51,11 @@ The case study is an ongoing Chinese urban development. The development is led b
 	\sffamily
 	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site.pdf_tex}}
 	\end{spacing}
-	\caption{A stylized representation of the SCP redevelopment site, adapted from a figure in the SCP documentation. The outer dashed rectangle encloses the full 13 km$^2$ site; the solid rectangles and their bold text labels represent broad regions within the site (e.g. region nine is \textbf{residential}; the unbolded text labels denote zones more specifically (e.g. a hospital within the residential region).}
+	\caption{A conceptual representation of the SPC redevelopment site, adapted from a figure in the SPC documentation. The outer dashed rectangle encloses the full 13 km$^2$ site; the solid rectangles and their bold text labels represent broad regions within the site (e.g. region nine is \textbf{residential}; the unbolded text labels denote zones more specifically (e.g. a hospital within the residential region).}
 	\label{fig:site}
 \end{figure}
 
-One stated ambition of the SCP site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Current plans to that end include using heat held within wastewater within a water source sewage pump, and generating biogas from wastewater fermentation. These, and other intersectoral integration possibilities [TODO: better word?] are summarised in Figure [TODO:], which shows part of the resource management infrastructure proposed for the SPC site, indicating the type of intersectoral integration considered by the planners and decision makers involved with the SPC site redevelopment project.
+A stated ambition of the SPC site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Proposals to that end include using heat stored within wastewater within a water source sewage pump, and generating biogas from wastewater fermentation. Another specific need of interest is in the recreational area, which includes an artificial lake, which the planners hope to source via a water reuse project [SPC-water]. These, and other intersectoral integration possibilities [TODO: better word?] are summarised in Figure [TODO:], which shows part of the resource management infrastructure proposed for the SPC site, indicating the type of intersectoral integration considered by the planners and decision makers involved with the SPC site redevelopment project.
 
 [TODO: adapt Figure below, to show all connections.]
 
@@ -65,25 +65,23 @@ One stated ambition of the SCP site redevelopment is to integrate the energy, wa
 	\sffamily
 	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site-dimensions.pdf_tex}}
 	\end{spacing}
-	\caption{A re-representation of the SCP redevelopment site, indicating connections defined for set $nb(z,z')$. All distances are in kilometers. Each region centre connects to the other zones in the region (e.g. \textbf{Factory (south)} $\leftrightarrow$ Assembly) with a connection assumed to be 0.5 km in length.}
+	\caption{A re-representation of the SPC redevelopment site, indicating connections defined for set $nb(z,z')$. All distances are in kilometers. Each region centre connects to the other zones in the region (e.g. \textbf{Factory (south)} $\leftrightarrow$ Assembly) with a connection assumed to be 0.5 km in length.}
 	\label{fig:site-connectionss}
 \end{figure}
 
-Some proposed system design have been simulated (for example using the TRNSYS[^trnsys] to simulate the energy, system), however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
+Some aspects of the proposed system design have been simulated (for example using the TRNSYS[^trnsys] to simulate the energy, system), however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
 
-[^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. This program allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
+[^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. TRNSYS allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
 
-
-Like with the benchmark study (Chapter 5), architecture of the code separates the data and formulation. Everything required to run each scenario is available online, along with the results of the modelling [TODO: provide GitHub link].
 
 <!--
-- [SCP-4, slide 17: water, waste and energy jigsawed together]
-- [SCP-4, slide 19: Energy island with CHP, CCHP and sewage source heatpump 
-- [SCP-4, slide 21: Energy island]
-- [SCP-4, slide 22: Energy provision via CHP, CCHP and sewage source heatpump, (as well as traditional and renewable approaches)]
-- [SCP-4, slide 25: "Increase energy supply efficiency", "decrease discharge cost" and influence "by cycle reuse", in order to save energy, give social benefits, and economic efficiency]
-- [SCP-4, slide 26: Energy island logic diagram, incorporating sewage treatment, water reuse, solid waste treatment, cooling/heating, and solar-PV power]
-- [SCP-4, slide 27: Within that, the "Combined water supply and treatment system" has WSHP, rainwater collection, fermentation to produce biogas, sewage plant, water treatment, and water reclamation]
+- [SPC-4, slide 17: water, waste and energy jigsawed together]
+- [SPC-4, slide 19: Energy island with CHP, CCHP and sewage source heatpump 
+- [SPC-4, slide 21: Energy island]
+- [SPC-4, slide 22: Energy provision via CHP, CCHP and sewage source heatpump, (as well as traditional and renewable approaches)]
+- [SPC-4, slide 25: "Increase energy supply efficiency", "decrease discharge cost" and influence "by cycle reuse", in order to save energy, give social benefits, and economic efficiency]
+- [SPC-4, slide 26: Energy island logic diagram, incorporating sewage treatment, water reuse, solid waste treatment, cooling/heating, and solar-PV power]
+- [SPC-4, slide 27: Within that, the "Combined water supply and treatment system" has WSHP, rainwater collection, fermentation to produce biogas, sewage plant, water treatment, and water reclamation]
 -->
 
 ## Model data
@@ -99,13 +97,13 @@ Like with the benchmark study (Chapter 5), architecture of the code separates th
 		- dummy processes (e.g. MSW splitting, waste generalising)
 -->
 
-When applying the model to a case study, the first step is to specify the zones and time steps [TODO: better word? slices?] used in the model, which are indexed by $z$ and $t$, respectively. With the zones determined, another a set specifies whether any pair of zones $(z,z')$ are neighbours, defined as any pair of zones which exist in the $nb(z,z')$ set. Following this, the sets of processes and resources available to the model can be specified, indexed by set $p$ and $r$, respectively. Once the resources have been specified, there is enough information to define the two final sets: first, quality attributes which should be defined (specified by a set indexed by $q$); and second, the transport technologies which can transport the resources between zones (indexed by $\tau$).
+When applying the model to a case study, the first step is to specify the zones and time steps [TODO: better word? slices?] used in the model, which are defined by sets $z \in Z$ and $t \in T$, respectively. With the zones determined, another a set specifies whether any pair of zones $(z,z')$ are neighbours, by defining them as part of the set, $nb(z,z')$. Following this, the sets of processes and resources available to the model can be specified ($p \in P$ and $r \in R$, respectively). Once the resources have been specified, there is enough information to define the two final sets: first, quality attributes which should be defined ($q \in Q$); and second, the transport technologies, $\tau \in \Tau$ which can transport the resources between zones.
 
-With the sets specified, their related parameters can be defined. First the distance between between two any two neighbouring zones defines the $l_{zz'}$ parameter (km), while the $span_t$ parameter defines the length of time (days) of each time step lasts. The resource demands can then be specified for each time and location with the $D^{(qty}_{rzt})$ parameter. (As mentioned in Chapter 5, the model code is built so that it will automatically define the $D^{(qual)}_{qzt}$ parameter.) Other parameters will include the limits on imports and exporting resources to particular zones, and the costs of resources and processes [TODO: TBC].
+With the sets specified, their related [TODO: better word?] parameters can be defined. First the distance between between two any two neighbouring zones defines the $l_{zz'}$ parameter (km), while the $span_t$ [TODO: better notation] parameter defines the length of time, in days, of each time step, $t$. The resource demands can then be specified for each time and location with the $D^{(qty}_{rzt})$ parameter. The $D^{(qual)}_{qzt}$ is then defined, which (as mentioned in Chapter 5), can be automatically defined by the R script which combines the formulation and data from the $D^{(qty}_{rzt})$ parameter, and a resource definition.) Other parameters will include the limits on imports and exporting resources to particular zones, and the costs of resources and processes [TODO: TBC].
 
-This section gives the key particulars on how the sets and parameters above are defined from the SPC documentation, with further details provided in Appendix [TODO: cross-ref]. The explanations are deliberately comprehensive, reflecting on why certain decisions and assumptions regarding data are made, with the intention of justifying modelling decisions taken here, as well as walking the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions. The details are given in the recommended order of how a user might construct a particular case study model, and thus each subsection describes how different components of the formulation (e.g. sets and parameters) relate to each other [TODO: tidy this last part of explanation].
+The following subsections outline how the sets and parameters are defined from the SPC documentation (with further details provided in Appendix [TODO: cross-ref]). The explanations are deliberately comprehensive, reflecting on why certain choices and assumptions regarding data are made, to justify the modelling decisions taken here. This walks the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions. The details are given in the recommended order of how a user might construct a particular case study model, and thus each subsection describes how different components of the formulation (e.g. sets and parameters) relate to each other [TODO: tidy this last part of explanation].
 
-```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SCP site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
+```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SPC site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
 demands <- read.csv("06_case-study/resource-demands.csv")
 demands <- demands[complete.cases(demands$value.conv), ]
 
@@ -129,15 +127,14 @@ plot_demand
 
 ### Site layout
 
-Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger regions, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $|Z|=12$. The parameter which defines site layout is $l_{zz'}$, which specifies the distance between any $z,z'$ pairs belonging to set $nb(z,z')$. All this information for the SPC case study is shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model. Note then that in this model, to be a 'neighbour' is not primarily a function of geographical proximity, rather it is one of 'connectedness'.
+Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $|Z|=12$. The information to define site layout, namely the pairs of neighbouring zones, $nb(z,z')$, and the distances between zones in these pairs,
+$l_{zz'}$, are shown on Figure [TODO:], in which the zones and regions from Figure \ref{fig:site} have been translated into the zones for the model.
 
 [TODO: insert a figure which is a zonal representation of the site, marked with interzonal distances.]
 
-Thus to define the site layout, we first assume which pairings belong to set $nb(z,z')$, and then estimate the lengths of these connections. For the SPC site, we will assume that roads are assumed to exist along any connection. Additionally, these connections can optionally include underground pipes and overhead cables, running along the length of the road[^road-cost].
+It is assumed that the three regions will be linked via a connection running north-south through the site, and also that the functions within a region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $|nb|=12$. With the connections determined, the distances are estimated, based on the site's dimensions. Assuming that the region-to-region connections join the regional centroids, distances can be estimated by scaling distances from the site plans in the SPC documentation. The region-to-function distances will be assumed as [TODO: 0.5] km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}. The nature [TODO: more helpful word?] of the connections will be detailed in Section [TODO:], but briefly, roads are assumed to exist along any connection. Additionally, these connections have the option to run underground pipes and overhead cables along the length of the road[^road-cost].
 
 [^road-cost]: As discussed in Section [TODO:], this means that roads have no financial cost in the model, whereas pipes and cables will.
-
-We will assume that the three broader regions will be linked via a connection running north-south through the site. Then we assume that the functions within a particular region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $|nb|=12$. With the connections determined, the distances are estimated, based on the site's dimensions. We assume that the region-to-region connections join the regional centroids, thus distances can be measured by scaling distances from the site plans in the SCP documentation. The region-to-function distances will be assumed as [TODO: 0.5] km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}.
 
 [TODO: insert a photo of me with a ruler, doing the measurements!]
 
@@ -183,11 +180,13 @@ school,reserved
 
 ### Times
 
-The SPC [demand] provides values of energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
+The SPC [demand] provides values of energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons, having spans, $span(T)$, of 90 days, 90 days, and 180 days respectively. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the chain of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
 
-Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $|T|=3 \mbox{ seasons} \times 2 \mbox{ day types}= 6$), which could further be divided into hourly demands (thus $T=3 \mbox{ seasons} \times 2 \mbox{ day types} \times 24 \mbox{ hours} = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns. However, the choice of seasonal timesteps has at least three reasons. The pragmatic reason, is that this is how the SPC documentation defines the energy demands. The philosophical [TODO: better word? modelling judgement] reason is that seasonal time slices are appropriate to the exploratory early-stage planning purposes of this model [TODO: cite examples of similar models, e.g. MARKAL etc.] . Finer resolution would be appropriate the further along the design process the modelling is. However, modelling judgement is also the reason why it is inappropriate to aggregate the demand up to a coarser scale (i.e. a year). In such a case, a yearly averaged value of head (to take one example) would overdesign the summer system operation, while undersizing the winter system operation, potentially resulting in a suboptimal system design [TODO: clarify this]. Finally, there is a computational reason. As shown in Chapter 4, if $|T|$ doubles, the number of variables increases by [TODO:], leading to an estimated [TODO: X-fold] increase in computation time. [TODO: note on heirarchical time discretisation, for a more tractable approach, to be explored in future.] These latter two points interact, as the further along the planning process (from explanation to detailed design), it is justifiable to expend more effort (including computational resources), thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (the location of a particular conversion process, whilst its size remains unknown, for example), thus reducing the number of variables in the model, and thereby making some efficiency savings to the computations.
+Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $|T|=3 \mbox{ seasons} \times 2 \mbox{ day types}= 6$), which could further be divided into hourly demands (thus $T=3 \mbox{ seasons} \times 2 \mbox{ day types} \times 24 \mbox{ hours} = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns.
 
-With this set of times chosen, the length of each timestep is defined as parameter $span(T)$ with the winter, summer, and shoulder seasons having spans of 90 days, 90 days, and 180 days respectively.
+Thus the decision here to use seasonal timesteps is not as coarse as it could be (i.e. yearly), but neither is it the finest. This choice achieves a balance between modelling judgement and computational expense. A coarser resolution would (to take one example) would overdesign the summer system, while undersizing the winter system operation [TODO: clarify, and add an example]. However, to go into greater resolution would require downscaling the data from the SPC documentation, and furthermore, (as shown in Chapter 4), if $|T|$ doubles, the number of variables increases by [TODO:], leading to an estimated [TODO: X-fold] increase in computation time. [TODO: note on heirarchical time discretisation, for a more tractable approach, to be explored in future.]
+
+In summary, seasonal timesteps are appropriate for appropriate to the exploratory early-stage planning purposes of this model [in common with TODO: cite examples of similar models, e.g. MARKAL etc.]. Further along the planning process when detailed designs are being planned, it is justifiable to expend more effort (including computational resources), thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (the location of a particular conversion process, whilst its capacity remains unknown, for example), thus reducing the number of variables in the model, and thereby speeding up computation.
 
 ### Resource demands
 
@@ -195,33 +194,29 @@ Having determined the seasons and the time steps in the model, it is now possibl
 
 The resource demands used in the SPC model are summarised in Figure \ref{fig:site-demands}, showing the seasonal demand for energy (electricity, heating, and cooling), water (potable, and reclaimed), and waste management (wastewater, nonorganic solid waste, and organic solid waste). The precise numeric values used in the model are provided in Appendix [TODO:]. 
 
-Resource demands are defined as rates, i.e. on a per-second basis (kg/s or MW). This is a common way to express energy quantities, which makes sense given that energy is most commonly demanded on such a basis[^energy-rate]. This makes resource quantities in the model consistent with how the model defines process behaviour, where the process rate is defined on a per-second basis, and thus no adjustment multipliers need to be added into the equations. Thus by using rates, whatever the temporal resolution of a model (see the options discussed in Section [TODO:], above), the formulation need not substantially change[^rates-objective].
+Resource demands are defined as rates, i.e. on a per-second basis (kg/s or MW). This is a common way to express energy quantities, which makes sense given that energy is most commonly demanded on such a basis, i.e. as a power[^energy-rate]. This means the $D^*_*$ parameter definition is consistent with PRaQ's definition of process behaviour, where the process rate is defined on a per-second basis. Practically, this means all the terms in the main resource balance equation [TODO: cross-ref] are defined in the same units, without the need for multiplication factors (which would have to vary according to the temporal resolution of the model -- see the options discussed in Section [TODO:], above). [TODO: footnote an example of this?] 
 
 [^energy-rate]: This is in contrast to waste management services (to give one example) in which waste may be collected at regular intervals (e.g. weekly), and set to a particular processing unit once a certain threshold (e.g. tons) has been met. Nevertheless, for usability, there should be consistency between the definition of energy and mass quantities. One way to capture the non-rate properties of many material-based processes (and indeed, some energy-based processes, such as [TODO:]) would be to introduce storage processes into the model. This may be the subject of future developments, as discussed in Section [TODO:]. 
-
-[^rates-objective]: The objective function formulation may need to consider the temporal resolution of the model. For example, if the objective function calculates system costs over a year, then an appropriate multiplication factor will need to be applied to each time period. This can by achieved with the appropriate definitions of the $span(t)$ parameter.
 
 ### Other resources
 
 The resource demands discussed above will define some of the $r$ items in set $R$, but to complete this set requires the resources which used in the network of conversion processes to meet demand. In total, there are [TODO: 63?] resources, including everything from algae to wood.
 
-Each resources has at least one associated quality $q$ (belonging to set $Q$), and attributed to the resource using the $X_{rq}$ and $\delta^R_{rq}$ parameters. The qualities used in this case study are *mass* and *energy*. Most resources are only attributed with one of these (e.g. algae possesses mass, and heat possesses energy), though some resources are attributed with both mass and energy (e.g. ground water). The full list of resources and their associated qualities can be found in Appendix [TODO:].
+Each resource has at least one associated quality $q$ (belonging to set $Q$), and attributed to the resource using the $X_{rq}$ and $\delta^R_{rq}$ parameters. The qualities used in this case study are *mass* and *energy*. Most resources are only attributed with one of these (e.g. algae possesses mass, and heat possesses energy), though some resources are attributed with both mass and energy (e.g. ground water). Each resource is also given a cost, based on values from the literature. The full list of resources along with their associated qualities and costs is given in Appendix [TODO:].
 
-Costs are also associated with resources for use in the objective function. These are based on [TODO:], and are given in Table [TODO:]. 
-
-With the resources, zones and times determined (indixed by $r$, $z$, $t$, respectively), the parameters which impose limits on how many zones can import and export particular resources ($N^I_r$, $N^E_r$), and the maximum allowable imports of a resource in a season ($I^{max}_{rt}$, $E^{max}_{rt}$) can be specified. These values are shown in Table [TODO:], below. 
+With the resources, zones and times determined (indexed by $r$, $z$, $t$, respectively), the parameters which impose limits on how many zones can import and export particular resources ($N^I_r$, $N^E_r$), and the maximum allowable imports of a resource in a season ($I^{max}_{rt}$, $E^{max}_{rt}$) can be specified. These values are given in Table [TODO:], below. 
 
 [TODO: insert table of resource/zone import constraints. Many are the same, so only need to include the exceptions.]
 
 ### Conversion processes
 
-The resource conversion processes used in the model will be taken from the open-source database of urban metabolism processes outlined in @Ravalde2015b[^process-data], or the Shann Gu documentation. Each process definition also includes its capacity (i.e. the maximum MJ/s or kg/s which can be converted). This database provides the values to define process behaviour data (namely the coefficients which define the input and output resource quantities with $k_{pr}$, and maximum process rates $F^{max}_p$). The size of the process set $P$ will vary for each scenario (with are detailed in Section [TODO:] below).
+The contents of the process set $P$ will vary for each scenario (with are detailed in Section [TODO:] below), and will draw from both the SPC documentation, and the database of urban metabolism processes outlined in Chapter [TODO:]. The information needed to define the processes are the coefficients which define the input and output resource quantities with ($k_{pr}$), and maximum process rates $F^{max}_p$). For the database processes this information already exists, but for the processes identified in the SPC documentation this information needs to be created.
 
-In addition to these parameters, each process needs to have a cost for use in the objective function [TODO:]. We attempt to estimate process costs here, but note the difficulties in doing this. Aside from the shear number of processes in the database ([TODO: N] in total), several factors make this tricky. First and foremost, the process database includes future processes which have not yet penetrated into the market, thus there is no values to be used. Secondly, currency exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, our costing is approximate.
+In addition to these parameters, each process needs a cost for use in the objective function [TODO:]. We attempt to estimate process costs here, despite the difficulties in doing this. First, there is the shear number of processes in the database ([TODO: N] in total). Second, the process database includes future processes which have not yet penetrated into the market, thus there are no values which can be easily lifted from the literature. Third, currency exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, costing is approximate, but still good enough for the exploratory planning purposes of this case study [TODO: note that this provides a good justification for not running a more detailed model. Note this in further work].
 
-The broad approach to estimating process costs is to assemble a database of 'process types' ($PT$), with each $PT$ forming [TODO: better word] a category to which processes from the database -- 'database processes' ($DP$) -- are assigned. As an example, *'biogas-fuelled CHP'* is defined as a $PT$, which includes [TODO: find data, and list examples]. For each $PT$, unit costs (USD/MW or USD/kg/s) is obtained from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given in Appendix [TODO:]). One guiding principle of the process cost estimation are that economies of scale should be applied[^scale-economy]. For this to be captured in the model, each $PT$ has both lowerbound and upperbound unit costs, obtained from the literature (and adjusted according to necessary assumptions). Thus, the total cost (USD) of any particular $DP$ with a given capacity (MW or kgs/s) can be calculated from:
+The broad approach to estimating process costs is to assemble a database of 'process types' ($\mbox{PT}$), with each $\mbox{PT}$ forming [TODO: better word] a category to which processes from the database -- 'database processes' ($\mbox{DP}$) -- are assigned. As an example, *'biogas-fuelled CHP'* is defined as a $\mbox{PT}$, which includes [TODO: find data, and list examples]. For each $\mbox{PT}$, unit costs (USD/MW or USD/kg/s) are obtained from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given in Appendix [TODO:]). A guiding principle of these estimations is that process costs exhibit economies of scale [^scale-economy]. For this to be captured in the model, each $\mbox{PT}$ has both lowerbound and upperbound unit costs (obtained from the literature, and adjusted according to appropriate assumptions). Thus, the total cost of any particular $\mbox{DP}$ with a given capacity (MW or kgs/s) can be calculated from:
 
-[^scale-economy]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW plants than 10 1 MW plants, of the same type.
+[^scale-economy]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW power plants than ten 1 MW power plants.
 
 $$
 \begin{align}
@@ -229,66 +224,65 @@ $$
 \end{align}
 $$
 
-where $^*$ is wildcard notion to indicate either a lowerbound or an upperbound cost ($Cost^{LB}$ and $Cost^{UB}$, respectively). In this way, lowerbound costs are applied to larger instances of a process, and the latter applied to a smaller instance.
+where $^*$ is wildcard notion to indicate either a lowerbound or an upperbound cost ($\mbox{Cost}^{LB}$ and $\mbox{Cost}^{UB}$, respectively). In this way, lowerbound costs are applied to larger instances of a process, and upperbound costs applied to smaller instances.
 
-This method estimates costs for conversion processes which do not yet exist in the market by For processes which do not yet exist by assigning these $DP$s [TODO: e.g. <example>], to a $PC$ which has a similar main resource in its conversion (either as a main input output)[^main]. This method is broadly conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lower cost than a more traditional means of conversion[^cost-estimation].
+For the conversion processes which do not yet exist in the market, costs are estimated by basing them on existing processes which have the same main resource[^main]. This method is conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lower cost than a more traditional means of conversion[^cost-estimation].
 
 [^main]: Recall from Chapter [TODO: chapter and section reference] the idea of a 'main' resource being the (e.g. electricity output for a powerplant, or wastewater input to a treatment facility), and always has a value of $k_{pr}=\pm 1$.
 
-[^cost-estimation]: Though this may be countered by the fact that a novel process may be more expensive than older methods due to other benefits (e.g environmental benefits). However, this thesis can only hope to be approximate with the cost of conversion processes, and indeed, such estimations warrant their own separate research focus [TODO: https://www.rand.org/content/dam/rand/pubs/reports/2006/R2481.pdf, https://core.ac.uk/download/files/23/140606.pdf].
+[^cost-estimation]: Though this economic conservatism may be countered by the fact that a novel process may be more expensive than older methods due to other benefits (e.g environmental benefits). However, this thesis can only hope to be approximate with the cost of conversion processes, and indeed, such estimations warrant their own separate research focus [@Merrow1979, @Roy2005].
 
-In summary, the database assembled in Chapter [TODO:] will provide the conversion processes which can be considered in the SPC case study (using various subsets according to different modelling scenarios, as outlined in Section [TODO:] below, defining model parameters $k_{prq}$ and $F^{max}_p$. Added to these processes have been estimated costs (defining model parameters $c^P_p$), which enable to model to take account of economies of scale, and the cost of processes which do not yet exist. The result is that the SPC modelling has up to [TODO:] conversion processes from which to design an integrated resource management system, for which a rough cost can be obtained. 
+In summary, the conversion processes in this case study come from both the SPC documentation, and the database assembled in Chapter [TODO:], with each scenario using a subset of these processes (as outlined in Section [TODO:], below). Cost estimates have been provided for these processes, which enable PRaQ to take into account economies of scale, and the cost of processes which do not yet exist in the market. The result is that the SPC modelling has up to [TODO:] conversion processes from which to design an integrated resource management system, for which a rough overall system cost can be computed.
 
 ### Transport processes
 
-The selection of transport processes to define set [TODO: design a symbol which isn't T for this]  for the SPC case study are based on the resources being considered, many of which can be transported between zones via various infrastructure (with some exceptions such as heat[^heat-transport]). To transport these resources, there are three types of transport infrastucuture: roads, alongwhich vehicles can transport everything from municipal solid waste, to gases and liquids carried by tankers; pipes, which transport water and gases; and cables, to carry electricity. As explained in the Section [TODO:], the roads are assumed to already exist to connect neighbouring zones ($nb(z,z')$), whilst underground pipes and overhead cables can be optionally added by the optimisation model, if and where necessary.
+Many of the resources (with some exceptions such as heat[^heat-transport]) can be transported between zones, via three types of transport infrastucuture: roads, alongwhich vehicles can transport everything from municipal solid waste, to gases and liquids carried by tankers; pipes, which transport water and gases; and cables, to carry electricity. As explained in the Section [TODO:], the roads are assumed to already exist to connect neighbouring zones ($nb(z,z')$), whilst underground pipes and overhead cables can be optionally added by PRaQ, if and where necessary.
 
 [^heat-transport]: Though whilst heat itself cannot be transported, it can be carried by water, e.g. in a district heating network.
 
-Regarding the behaviour of transport processes, the origin-to-destination input and output coefficients, $k^*_{\tau rq}$ should obviously include the resource carried (e.g. water through a pipe). In addition to this, transport processes may need 'auxilliary' resources, namely the source of the energy used to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. While it is taken for granted that the carried resource entirely leaves to origin zone, and arrives in the destination zone (perhaps less some losses, such as electrical losses along a cable), it needs to be determined how wastes, by-products and emissions are shared between zones. The details on transport process behaviour for the three main types of technologies considerations are now described, with specific values of $k^*_{\tau rq}$ given in Table \ref{tab:transp-coeffs}. 
+Transport processes are defined by the origin-to-destination resource input and output coefficients, $k^*_{\tau rq}$, should obviously include the resource carried (e.g. water through a pipe). In addition to this, transport processes may require 'auxiliary' resources, namely the source of the energy used to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. Where as the main resource typically leaves the origin zone and arrives in the destination (perhaps minus some losses, such as electricity along a cable), the consumption and production of auxiliary resources should be appropriately shared shared between the origin and destination. The specifics of transport process coefficients are outlined below, for the three main types of transport technologies, with example values of $k^*_{\tau rq}$ given in Table \ref{tab:transp-coeffs}. 
 
 \begin{description}
 
-\item[Cable] This is the simplest transport process type since the resource carried, and the resource which provides the carrying energy are one and the same, namely electricity, thus only a single $r$ value is necessary here. Electrical cables do incurr losses of between 3--7\% over 1,000 km distances [TODO: cite \url{http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf}], however, given the interzonal distances for the SPC site are all under [TODO: N] km, losses are considered negligable. Thus cables can be defined simply with $k^{\alpha}_{\tau rq}=1$, $k^{\alpha'}_{\tau rq}=-1$, and $k^{\beta}_{\tau rq}=0$, when $\tau=\mbox{cable}$ and $r=\mbox{elec.}$ [TODO: tidy].
+\item[Cables] This is the simplest transport process type, with no auxiliary resources, thus only a single $r$ value is necessary here. Electricity transported via cables do incurr losses at rates of between 3--7\% over 1,000 km distances \citep{@IEA2016}, however, given the interzonal distances for the SPC site are all under 3 [TODO: update with final number] km, losses are considered negligable. Thus cables can be defined simply with $k^{\alpha}_{\tau rq}=1$, $k^{\alpha'}_{\tau rq}=-1$, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq}=0$ when $\tau=\mbox{cable}$, $r=\mbox{elec.}$ (and $q=\mbox{energy}$). 
 
-\item[pipes] These carry a resource (e.g. $r=\mbox{water}$) as well as pumping energy. As hydraulic calculations given in Appendix [TODO:] show, for water in a pipe of no slope, this can be roughly calculated as approximately $0.0054l_{zz'}$ to overcome friction between the water and the pipe, on the assumption that the volume flowrate is around $1 m^3/s$\footnote{At this value, the nonlinearities in the relationship between transport mass and volume can be ignored [TODO: better phrasing?]}. It is assumed that all this electricity is provided in the zone of the water's origin, thus [TODO: summarise $k$ values] . For gases it is assumed that friction is lower enough so as to make the energy requirements negligable for the distances in the SPC site.
+\item[Pipes] These transport water or gas, and also require the auxilliary resource of electricity to provide pumping energy. As hydraulic calculations given in Appendix [TODO:] show, for water in a pipe of zero slope, this can be roughly calculated as $0.0054l_{zz'}$ to overcome friction between the water and the pipe, on the assumption that the volume flowrate is around $1~m^3/s$\footnote{At this value, the nonlinearities in the relationship between transport mass and volume can be ignored [TODO: better phrasing and move to appendix?]}. It is assumed that all this electricity is provided in the zone of the water's origin. For gases it is assumed that friction is low enough so as to make the energy requirements negligable for the distances in the SPC site.
 
-\item[vehicles] Other resources are carried by vehicles along the road network. As well as the carried resource (e.g. $r=\mbox{biomass}$. The source of carrier energy is $r=\mbox{gasoline}$, which is provided entirely by the source zone. As well as this, \CO2 emissions are emitted, with these being shared equally between the origin and destination zones. Calculations in Appendix [TODO:] derive $k$ values as [TODO: complete].
+\item[Vehicles] Other resources are carried by vehicles. As well as the carried resource (e.g. $r=\mbox{biomass}$, vehicles require gasoline as an auxilliary resource. It is assumed this is provided entirely by the source zone. As well as this, \CO2 emissions are emitted, with these being shared equally between the origin and destination zones. The $k_{\tau rq}^*$ values are derived in Appendix.
 
 \end{description}
 
 \input{06_case-study/tab-transp-coeffs.tex}
 
-For process rates, $F^{transp}_{\tau zzt}$, [TODO: complete] 
-
-As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in our model, as they would have the same cost, whatever the system designed by the model. The cost for the pipes and roads are defined per kilometer, and the values and sources for these calculations are provided in Appendix [TODO:] .
+As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in our model, as their total cost would be that same, whatever the system designed by the model. The cost for the pipes and roads are defined per kilometer, and the values and sources for these calculations are provided in Appendix [TODO:] .
 
 [TODO: clarify if it's possible for the model to charge per vehicle, for the road transport infrastructure]
 
 ### Summary
 
-This section has provided the data used to define the model's parameters while showing how various parts of the model relate to each other, and in doing-so has provided a guide on how one might construct the PRaQ model for a particular case study. 
+[TODO: Extend or cut]
 
-Now, this chapter turns to outline the [TODO: N] scenarios that our model will test. 
+This section has introduced the sources, assumptions, and calculations used to define the model's parameters. By showing how various parts of the model relate to each other, it has provided a guide on how one might construct the PRaQ model for a particular case study. 
 
 ## Application to model scenarios
 
-We study [TODO: number] scenarios using different subsets of the processes, to suggest how different networks of processes can satisfy demand under varying circumstances (following the methodology of @Keirstead2012). For some scenarios, we model sub-scenarios, where we use different objective functions, or introduce an additional constraint to illustrate Pareto optimality. The scenarios are:
+PRaQ is applied to [TODO: number] scenarios to suggest how different networks of processes can satisfy SPC demand (following the methodology of @Keirstead2012 [TODO: What did I mean here?]) using different sets of available processes and objective functions:
 
-1. *Base case.* This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results.
-2. *Design case.* The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. We consider how the process choice changes, with different objecitves:
+1. *Base case.* This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results to which other results can be compared.
+
+2. *Design case.* The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. This scenario has four sub-scenarios to test how the process mix changes, with different objectives:
 	a. Minimise cost
 	b. Minimise emissions
 	c. Minimise waste
 	d. Minimise freshwater consumption
-3. *Wildcard case.* This scenario allows any process from the database compiled by @Ravalde2016 to be incorporated into the site's resource management network. This database includes both existing and still-to-be-implemented management processes, so we consider the following sub-scenarios, at minimum cost:
+3. *Wildcard case.* This scenario finds the minimum-cost process mix, when the processes of the @Ravalde2016 database are made available, using three time horizons of process-availability:
    	a. Currently available processes
    	b. Medium-term available technologies
    	c. Long-term available technologies
 
-Scenario 3a [TODO: update if necessary] is the largest, and thus indicates the computational effort required to solve the problems, having [TODO: number] single variables, [TODO: number] discrete variables, [TODO: number] binary variables, [TODO: number] equations [TODO: etc.].
+Scenario 3c [TODO: update if necessary] is the largest, and thus indicates the computational effort required to solve the problems, having [TODO: number] single variables, [TODO: number] discrete variables, [TODO: number] binary variables, [TODO: number] equations [TODO: etc.].
 
-These scenarios are fairly simple, and illustrate the sensitivity of a network to fairly broad considerations (technology availability, and simple objective functions). Detailed design problems should be more narrowly focussed, by applying sensitivity analysis to understand how a system design responds to changes in efficiency (reducing demand), market value of imported and exported goods, and other factors. [TODO: reproduce Saltelli et al. citation from @Keirstead2012??].
+These scenarios are fairly simple, and enable testing of a network's sensitivity to fairly broad design considerations (technology availability, and objectives). Detailed design problems should be more narrowly focussed, by applying sensitivity analysis to understand how a system design responds to changes in efficiency (reducing demand), market value of imported and exported goods, and other factors. [TODO: reproduce Saltelli et al. citation from @Keirstead2012??]. These detailed considerations are beyond the scope of this study [TODO: provide a reason].
 <!--
 OTHER SCENARIO VARIATIONS
 - DSM
@@ -304,7 +298,12 @@ OTHER SCENARIO VARIATIONS
 - min cost/targets of individual sectors (energy, water, waste), or differently weight them?
 -->
 
-Each scenario is run by GAMS, which outputs the results into a set of CSV files, which are then analysed and plotted using R. The following subsections visualise and describe the results, before the next section discusses their relevance in view of this chapter's aims. With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
+When GAMS runs a scenario, it outputs the results into a set of CSV files, which are then analysed and plotted using R[^case-study-runs]. The following subsections visualise and describe the results, before the next section discusses their implications in view of this chapter's aims. With some systems so large (over [TODO: number]) process types, space limitations prevent the display of all information that may be of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
+
+- metabolic flows and system designs
+- what this means for other metrics: headline (cost, emissions, water footprint), exergy, ENA
+
+[^case-study-runs]: As with the benchmark study (Chapter [TODO: cross-reference]), architecture of the code separates the data and formulation, to support easy running, reproducibility, modification, and development of the scenario tests. Also to that end, the data and formulation are available at [TODO: provide GitHub link], along with the results of the modelling.
 
 ```{r headlines, fig.height=5, fig.cap="fig:headlines", results="asis"}
 
@@ -338,9 +337,7 @@ headlines <- transform(headlines,
 
 ### Metabolic flows and system designs
 
-The first results of interest to this thesis are the SPC site's aggregate metabolic inputs and outputs, and the mix of processes selected by PRaQ which result in their flows. These results begin to answer this thesis' interest in the link between a system's 'middle', and the overall metabolic flows into and out of a system. These results are presented and discussed generally, before scenarios are considered on an individual basis, and in comparison to each other.
-
-Metabolic inputs and outputs for each scenario are displayed in Figure \ref{fig:metabolic-flows}. Note that in general, the more processes available to the system, the more diverse the schedule of resource inputs and outputs [TODO: could put numbers here, perhaps tabulate: scenario, inputs, outputs, total]. Note also that there can be seasonal variation for a single resource type, such as for electricity output in the design case.
+An idea important to this thesis is that the metabolic flows into and out of a city are governed in part by the middle of the system -- the network of resource management processes. The metabolic inputs and outputs for each scenario are displayed in Figure \ref{fig:metabolic-flows}. Note that in general, making more processes available to a system makes possible a more diverse the schedule of resource inputs and outputs: [TODO: could put numbers here, perhaps tabulate: scenario, inputs, outputs, total] this means both a greater number and variety of resource types, and seasonal variation within resource types (such as for electricity output in the design case).
 
 ```{r metabolic_flows, fig.height=7, fig.cap="fig:Metabolic flows into and out of the SPC site.\\label{fig:metabolic-flows}", fig.width=6.5, results="asis"}
 
@@ -434,11 +431,11 @@ plot_process_mix
 ```
 -->
 
-The network of processes for each scenario are visualised in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long}. These are SNA-style node-link graphs (undirected) in which processes which transfer resources one to another are joined by lines. The proximity of any pair of linked processes is proportional to the quantities of resources transferred. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this. The processes have been coloured according to the management sector to which they belong[^sna-process-type]; this helps visualise the intersectoral interactions and synergies. Inputs, outputs and demands are also represented; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports).
+The network of processes for each scenario are visualised in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long}. These are SNA-style node-link graphs (undirected) in which processes that transfer resources one to another are joined by lines. The proximity of any pair of linked processes is proportional to the quantities of resources transferred. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this. The processes have been coloured according to the management sector to which they belong[^sna-process-type]; this helps visualise the intersectoral interactions and synergies. Inputs, outputs and demands are also represented; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports).
 
 [^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
 
-Note that for all scenarios, energy conversion processes are dominant, but there is nevertheless interactions and synergies between processes within and across sectors. Note also that in general, that the more processes available to a scenario, the more that tend to be used [TODO: quantify any proportionality here].
+In all scenarios, energy conversion processes are dominant, but there are nevertheless intersectoral interactions, such as the energy demands in water and wastewater treatment, and synergies, such as heat generated by the watersource heatpump [TODO: cite Design case scenarios]. Note also that in general, that the more processes available to a scenario, the more that tend to be chosen by PRaQ [TODO: quantify any proportionality here]. Clearly, in each scenario, the system middle and metabolic flows differ, according to the design objective and available processes.
 
 \begin{figure}[h!]
 	\centering
@@ -484,52 +481,41 @@ Note that for all scenarios, energy conversion processes are dominant, but there
 
 #### Design case scenarios
 
-The design cases can use up to twelve unique processes. Each have a common set of seven processes: water and wastewater treatment plants, an anaerobic digestion facility (which generates gas from the organic fraction of waste), ground-source and water-source heatpumps, and absorption chilling and heating facilities (which are connected to energy conversion technologies, and deliver [TODO: better word] hot and cold water through a pipe network (which also includes heat exchangers). The four scenarios then have additional conversion processes, according to their objective.
+The design case scenarios have up to twelve unique processes available to use. Each scenario uses common set of seven processes: water and wastewater treatment plants, an anaerobic digestion facility (which generates gas from the organic fraction of waste), ground-source and water-source heatpumps, and absorption chilling and heating facilities (which are connected to energy conversion technologies, and deliver [TODO: better word] hot and cold water through a pipe network (which also includes heat exchangers). Overall, the schedule of imports exhibit only one minor difference between the subscenarios, namely no summer import of electricity in the min waste scenario, due to [TODO: identify reason].
 
-For example, the minimum emissions scenario does not include CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), and as such, the schedule of resource outputs displays zero emissions for this scenario (Figure [TODO: cross-ref]). All other scenarios use the CHP to provide much of the heat. However, the minimum cost scenario joins the emissions scenario in not using the gas-fuelled boilers as a cost-saving measure. However, the waste-minimisation scenario uses them to reduce the fly-ash produced by the CHP, and the water-minimisation scenario [TODO: check these results, comlete explanation, rerun models with corrected data if necessary!] To minimise waste, the waste-minimisation scenario, the anaerobic digestion plant plays a greater role.
+The sub-scenario differences in outputs and processes are greater, according to their objective. For example, the minimum emissions scenario does not include CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), and as such, there are zero emissions (Figure [TODO: cross-ref]). All other scenarios use the CHP to provide much of the heat. However, the minimum-cost scenario joins the emissions scenario in avoiding the gas-fuelled boilers, but this time as a cost-saving measure (though with the side effect of lowering imports of natural gas). However, the waste-minimisation scenario does use gas-fuelled boilers to reduce the need for CHP use which produces fly-ash produced by the CHP, and the water-minimisation scenario [TODO: check these results, complete explanation, rerun models with corrected data if necessary!].
 
-[Note on scope 1/2/3 emissions.]
+Note also that minimum waste and minimum water design the same system, though they operate slightly differently, for example, AD plays a greater role in the former case (resulting in exports of natural gas from the site). It also exports greater amounts of treated water, because it has not had constraints on how much untreated water can be imported.
 
-In terms of level of integration, the 
+Relative to the grid case, the import requirements of the design scenarios are lower (slightly lower electricity and gas in general, and much lower summer electricity because of the use of absorption cooling rather than electrically-powered HVAC systems). There is also a different set of water imports, i.e. water for treatment on site, rather than water to arrive on site pretreated.
 
-- For the design case scenarios, integration is lacking for the minimum cost case -- imports tend to go straight to end-use (e.g. electricity, natural gas, and water). But for the other cases, i.e. where an objective is applied to a *resource*, integration does happen
-- Design case (minimum emissions): does not find synergies, so much, but rather shows how processes can be connected in a chain
-- Design case scenarios: majority of integration is within the energy sector (as expected, according to the SPC energy island strategy), though some is intersectoral (e.g. anaerobic digestion producing gas for use in the boilers)
-- There is genuine sensitivity to the objective: i.e. the AD/boiler synergies does not exist int the minimum water design case scenario (though the energy island does work well).  When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
-- The wildcard scenarios take advantage of the availability of more processes, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible.
-- Broadly, the networks are based around distributed energy systems with a diverse range of technologies, it's energy processes dominate the wildcard network, both in terms of presence, and in their own synergies. Nevertheless, there are still intersectoral links [TODO: provide examples] 
+[Note on scope 1/2/3 emissions << add to further work.]
+
+#### Wildcard scenarios
+
+The wildcard scenarios each have the same objective of cost minimisation, and share [TODO: N] processes in common. Broadly, the networks are based around distributed energy systems with a diverse range of technologies, nevertheless, there are still intersectoral links, with both interactions and synergies [TODO: provide examples].
+
+However, there is some small variation in both the overall metabolic flows, and the process mix. With regards to the inflows, inputs of fossil fuels (coal and gasoline) are a notable variation: the current scenario imports them in all three seasons, whereas the medium-term scenario imports them in the winter only, and the longterm scenario imports them in winter and summer. The longterm scenario also has a summer inflow of algae. [TODO: explain these differences with reference to the networks.] 
+
+Studying the outflows, there are further variations, in both the type and quantity of resources, such as the outflow of ash and methane (in the longterm only), and digestate (medium and longterm), and electricity (current only). [TODO: explain these differences with reference to the networks.] 
+
+The differences can be seen on a seasonal level, where solid waste output is reduced to zero in medium-term summer, and the longterm summer and shoulder.  [TODO: explain these differences with reference to the networks.] 
+
+To summarise the, the wildcard scenarios take advantage of the availability of more conversion processes in order to meet the objective of cost minimisation as best as possible [TODO: check that a greater number are actually used.] [TODO: move to summary and conclusions section] 
+
+### Other measures
+
+It follows from this that an area's optimal networks are sensitive to the objective, seen also when different objectives are applied to the same process mix (e.g. 2a and 2b [TODO: update if necessary]). However, what is the effect of PRaQ's optimisation on other metrics?
 
 [TODO: comment on the mix of technology sizes in various scenarios.]
+
 [TODO: comment on which technogies are most relied upon in each system.]
+
 [TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
+
 [TODO: comment on coversion/transportation mix effect on (capital) costs?]
 
-Design case (all)
-
-
-
-
-- Only minor differences in the imports schedule (e.g. no summer import of electricity in the min waste scenario, due to 
-  Also note an excess use of AD, hence exports of natural gas
-
-Note that minimum waste and minimum water design the same system (though operated slightly differently, as evidenced by the exports of potable water and excess natural gas (from AD) in the minimum waste scenario.
-
-- differences in the amount of imported natural gas between minimum waste/minimum emissions
-
-Design case (min cost)
-
-- Only water wastes, so no exergy waste
-- Lower import requirements that Grid case (slightly lower elec, and gas, and much lower summer elec, due to absorption cooling, rather than electrically-powered HVAC). Different set of water imports (not actually affecting exergy flows)
-
-General observations:
-
-- Results would suggest that optimising for some objectives may not result in the most efficient system, as defined by exergy
-- Exergy wastes could be considered products rather than wastes if they were sold (e.g. the large electricity and heating exports from the design case). Hence the in efficiency of these cases.
-- Should focus on non-water exports or selling other exports to increase exergy efficiency
-- While water itself has negligable effects on exergy, the type of water imported may have indirect exergy impacts, due to treatment processes, etc.
-
-
-### System costs
+#### System costs
 
 System cost is calculated as the sum of the processes (conversion and transport) and resource imports. These costs are calculated on an annual basis, assuming infrastructure has a ten year lifespan. This can be done using Equation \ref{eq:objective_cost}, $C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}$ with $\gamma^*$ taking values of 1, 0.1, and 0.1, respectively. Figure \ref{fig:system-costs} displays the system cost for those scenarios whose objective is to minimise cost (1, 2a, and 3a-c).
 
@@ -613,9 +599,10 @@ plot_component_costs <- ggplot(component_costs, aes(Scenario, value/1e6, fill=Co
 plot_component_costs
 ```
 
-Note that the design case is an order of magnitude higher in cost, but increasing the number of processes avaialble brings the process down to the same order as the grid case.
+The grid case is fixed such that its costs consist entirely of resources, and is very expensive because of the premium for importing a resource. However, the design case and wildcard case show much lower costs, with the wildcard cases coming out the cheapest, because of having a larger set of conversion process to choose from.
 
-### Other headline results
+<!--
+#### Other headline results
 
 Emissions, water footprint and waste output are calculated on an annual basis, using the general equation [TODO: write and reference an emissions equation], with the following conditions:
 
@@ -632,11 +619,13 @@ The headline results are given in Figure \ref{fig:headlines}. The results show:
 - However there is an exception to this, which reveals a clear tradeoff: for example, that minimum waste design case results in a large water consumption.
 - The wildcard cases improve performance the longer the more processes they consider.
 - Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]).
+-->
 
 <!--
 ($\sum_{pz} C^P_p N^P_p + \sum{\tau zz'} C^{\tau}_{\tau} \delta_{\tau zz'} l_zz'$, emissions, waste output and water footprint.
 -->
 
+<!--
 ```{r other-headlines, fig.height=5, fig.cap="fig:costs", results="asis"}
 headlines <- filter(headlines, metrics!="Cost [USD/year]")
 
@@ -654,27 +643,32 @@ plot_headlines <- ggplot(headlines, aes(scenario, values/1e9)) +
   theme(axis.text.x = element_text(hjust=1, angle=30))
 plot_headlines
 ```
+-->
 
+### Grey-box metrics
 
-### Transport infrastructure
+The aggregate metabolic flows and costs considered above could be considered black-box metrics. The results show how these metrics or metabolic flows are affected by the mix of management processes (as hypothesised throughout this thesis). However, Chapter [TODO: cross-ref] showed that the so-called grey-box metrics of exergy analysis and ENA can further understanding an area's use of resources, by delving into the details of process mixes and their organising governance structures [TODO: better phrasing].
 
-Finally, we consider the transport network in each scenario. [TODO: decide which type of plot to include, notate what they show, and highlight points of note.] 
+#### Exergy analysis
 
-[TODO: plots]
+Exergy analysis was shown to provide a process-based engineering perspective on urban resource efficiency in response to the challenge of the MRTP, namely the fact that a city sustains its populations using multiple resource types. It does this in three particular ways: going to the process level (rather than the system level) to understand process efficiency; understanding how resources are deployed among the processes; and highlighting where there should be contextual allowances.
 
-Show that plots reveal more transport connections for the wildcard case.
+Here, exergy analysis is carried out for each scenario, using a simplified version of the method described Section [TODO: cite Grey-box metrics subsection of Chapter 3]. In this version, there is no need to distribute the flows between the processes within the city (the second step), on the understanding that PRaQ's mathematics accounts any process products unused by other processes to become system outputs (exports). Thus exergy analysis can be performed on a whole-system level on a black box, with the internal grey box analysis implicit to it. Thus exergy efficiency $\eta_{ex}=\alpha^{prod}_{ex}/\alpha^{in}_{ex}$ (equation [TODO: cross-ref]) can be calculated using where $Ex^{prod}$ are any demands (PRaQ's input), and $Ex^{waste}$ are any resources which find themselves amongst the exports (PRaQ's output), and have thus, not become inputs to any processes before crossing out of the urban boundary\footnote{These calculations can be formalised by the following equations [TODO: sort out equation numbering here]: 
 
-### Exergy analysis
+\begin{align}
+\alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
+&= \sum_{i \in R^i} Ex_i 
+\label{eq:SPC-ex-in}
+\end{align}
 
+\begin{align}
+\alpha^{prod}_{ex}&= \sum_{j \in R^j} Ex_j
+\label{eq:SPC-ex-out}
+\end{align}
 
-The [TODO: N] subsections above could be considered black-box metrics. In this section and the next, 
+where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this).
 
-Perform a simplified version of the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], in which there is no need to distribute the flows between the processes within the city, on the understanding that in the model, any process products unused within other processes will become system outputs (exports), thus exergy analysis can be peformed on a whole-system level on a black-box, with the internal 'grey box' analysis implicit to it:
-
-- $Ex^{prod}$ are any demands (exogenously defined)
-- $Ex^{waste}$ are any resources which find themselves amongst the 'outputs' ('exports'), and have thus, not become inputs to any processes before crossing out of the urban boundary
-
-Thus, a simplified way to calculate the exergetic inputs to the SPC site, $\alpha^{in}_{ex}$ is by the following simplification to Equation [TODO:cross-ref Equation (3.5a)]. 
+}
 
 ```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
 
@@ -711,35 +705,28 @@ print(tab.exergy.tex,
       comment = FALSE)
 ```
 
-\begin{align}
-\alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
-&= \sum_{i \in R^i} Ex_i 
-\label{eq:SPC-ex-in}
-\end{align}
 
-Similarly, calculation of the site's exergetic outputs $\alpha^{prod}_{ex}$, simplifies Equation [TODO:cross-ref Equation (3.5b)] to
+The results of exergy analysis for each scenario are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]). (Each scenario has the same set of demands, thus $\alpha_{ex}^{prod}=$ `r ex_prod` for all scenarios.)
 
-\begin{align}
-\alpha^{prod}_{ex}&= \sum_{j \in R^j} Ex_j
-\label{eq:SPC-ex-out}
-\end{align}
+The results show that [TODO: describe results]
 
-where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this). Because each scenario has the same set of demands, $\alpha_{ex}^{prod}=$ `r ex_prod` for all scenarios. Exergy calculations are performed for all scenarios, and the results are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]).
+- The Grid case has no waste exergy, because there are no processes on site:
+	- i.e. all exergy losses would be accounted for offsite 
+	- there is a small exergy loss in terms of wastewater generated by the site, however the exergy value of this is negligable [TODO: recalculate with physical exergy] 
+- Results would suggest that optimising for some objectives may not result in the most efficient system, as defined by exergy
+- Exergy wastes could be considered products rather than wastes if they were sold (e.g. the large electricity and heating exports from the design case). Hence the in efficiency of these cases.
+- Should focus on non-water exports or selling other exports to increase exergy efficiency
+- While water itself has negligable effects on exergy, the type of water imported may have indirect exergy impacts, due to treatment processes, etc.
 
-[TODO: describe results]
+#### Ecological network analysis
 
-The Grid case has no waste exergy, because there are no processes on site:
+The other grey-box metric considered in this thesis is ecological network analysis (ENA). Chapter 3 also showed this approach could reveal how well a city's sectors work together. The results of this type of analysis are important, because they indicate to planners the extent to which the different *management* parties need to cooperate to implement such a system, as well as where there are risks/vulnerabilities in the system if there is no high-level integrated view of how sectors depend on one another.
 
-- i.e. all exergy losses would be accounted for offsite 
-- there is a small exergy loss in terms of wastewater generated by the site, however the exergy value of this is negligable [TODO: recalculate with physical exergy] 
+Again, using the method outlined in Section [TODO: cross-ref Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
 
-### Ecological network analysis
 
-Chapter 3 also showed how to quantify how well cities work together as *sectors* (rather than just individual processes), using the methods of ecological network analysis.
+[TODO: Work the below into this subsection, or delete]
 
-The results of this type of analysis are important, because they indicate to planners the extent to which the different *management* parties need to cooperate to implement such a system, as well as where there are risks/vulnerabilities in the system if there is no cooperation.
-
-Again, using the method outlined in Section [TODO: cite Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
 
 ```{r ena, fig.height=5, fig.cap="fig:ena", results="asis"}
 
@@ -800,13 +787,13 @@ plot_ENA
 
 ### Summary
 
-However, the synergies that we look for will not necessarily occur if the objective is to minimise cost.
+[TODO: Amalgamate or reorder the subsection and the next section]
 
-The preference of the model, as shown by the wildcard scenarios, is to choose a large number of of varied processes, and also make use of the available transport connections, to decentralise resource management. Note however that the model is nevertheless discerning: given 300 [TODO: accurate number] processes to choose from, it selects only [TODO: number] for the wildcard scenarios. Similarly, out of N possible transport options [TODO: footnote giving calculations: available connections  transport types for each]. Thus the PRaQ model successfully and intelligently optimizes the process mix.
+This chapter has demonstrated how to apply the PRaQ model to a site about which information regarding its seasonally and spatially demands for goods and services to plan 'highly integrated' resource management systems. Alongside the PRaQ modelling itself, this chapter has described and applied a rule-of-thumb method to estimate the costs of processes, taking into account economies of scale, even for conversion process which do not yet exist.
 
-We also know however, from the design scenarios, that the optimal mix of processes is sensitive to the objective chosen. [TODO: check this -- Try testing the wildcard options with different objectives and demands, and see how different the process mixes are. I.e. can similar systems manage meet different set of demands and/or objectives?]
+Application of PRaQ to the SPC site show the sensitivity of integrated systems to the objective (the design-case scenarios), as well as the preference of integrated systems to choose a large number of varied processes, and also make use of the available transport connections, to decentralise resource management (wildcard scenarios) [TODO: check this point on decentralisation]. Note however that the model is nevertheless discerning: given 300 [TODO: accurate number] processes to choose from, it selects only [TODO: number] for the wildcard scenarios. Similarly, out of N possible transport options [TODO: footnote giving calculations: available connections  transport types for each]. Thus the PRaQ model successfully and intelligently optimizes the process mix.
 
-The exergy analysis and ENA analysis has demonstrated that -- as far as ‘metabolically efficient’ can be defined -- that proposed systems are metabolically efficient.
+Finally, the case study has shown how grey-box metrics can provide insight on the make-up of highly integrated systems produced by the PRaQ model, by quantifying both the overall system efficiency (exergy analysis), and the interdependencies between the management sectors of an integrated system (ENA). [TODO: Add to this paragraph.] 
 
 ## Discussion and conclusions
 <!--
@@ -820,43 +807,40 @@ Paragraph ideas from JK's MILP paper
 - "There are a number of future directions for the model..."
 -->
 
-The results of the modelling show that the PRaQ model is helpful to the SPC planners, showing that they are right to propose an integrated system of resource management to meet planning objectives. The model validates their proposed plans for the integrated resource planning, with the energy island and water reuse project, but also challenges the planners to consider a more sophisticated, varied and decentralised network of processes, alongside a varied schedule of resource imports.
+The results of the modelling show that the PRaQ model is helpful to the SPC planners, justifying their decision to integrate resource management systems. The modelling of the design-case scenarios show the SPC's plans to use the energy island and water reuse project are an improvement over direct imports of resources and exports of wastes , but the wildcard modelling also challenges the planners to consider a more sophisticated, assorted and decentralised network of processes which uses a varied schedule of resource imports and exports
 
-This complex result of the wildcard model is itself a demonstration of the power of modelling: such a system design is far too complex to be designed by hand. [TODO: continue thought]
+This complex results from the wildcard scenarios are themselves a demonstration of the power of modelling for the SPC, as it allows their decision making to take into account the ever-increasing numbers of technologies to manage the variety of energy, water, and waste resources (with many more still under development). 
 
-Even if the proposed wildcard designs are too complex, it is still the case, that the more processes involved, the greater the level optimisation that can be achieved, thus the SPC planners may wish to consider at least a subset of resources,
+The results themselves provide an interesting area of discussion, with the design-case scenarios showing the sensitivity of the design to objective functions, especially with respect to the schedule of resource outputs, and process mix. The SPC therefore need to be clear on their design objectives when applying PRaQ.
 
-In this chapter we have 
-demonstrating how one might go from a site about which some information is known, to develop 
-in doing so, we have also provided a rule-of-thumb method to estimate the costs of processes which do not yet exist, and to consider economies of scale in system design.
+In addition to the black-box metrics and inspection of the process mix, the SPC should can get insight from the grey-box metrics. The exergy analysis reveals how well resources are deployed among the system, and how efficient the system is as a whole (by providing a single-metric, $\eta_{ex}$ under which energy, water, and waste efficiency can be quantified). The ENA will reveal how much interdependency the designed systems contain, and hence the degree to which management sectors need to work together to take advantage of the opportunities as well as manage risks. [TODO: add specifics from the case studies in relation to these.]
 
-- Broad comments
+### Further work
+
+While useful to the SPC planners, as is always the case with modelling, there are some limitations and opportunities to improve the results. Firstly, there are two improvements which can be made to the model's input data. The first concerns the choice of processes to include in the modelling. It maybe possible to rule out some processes as not available or feasible for the SPC and/or to decide that the complex wildcard output as a whole is simply infeasible. On the other hand, the SPC decision makers may know of processes not currently in the library [TODO: better term] which could be included. This both produces more realistic outputs, and speeds up the modelling (if the number of possibilities has been reduced). Once the process availability has been refined, then the process and resource costs can be improved, from their current rough estimates. The SPC planners may like to use RMB costs which take into account local prices, and exchanges rates. 
+
+Having performed PRaQ modelling with improved input data, the next stage could be to start looking into the operational activity of a system. For the sake of exploratory early-stage planning, this case study has aggregated yearly demand to a single per-second value, however, in reality the process operation rates, inputs and outputs will vary throughout the day. As noted in Section [TODO: cross-ref], increasing temporal resolution increases computation time, so this sort of modelling should happen after a technology mix has been choses, such that the technology choice variables can be fixed [TODO: footnote on how GAMS does this]. The simplest way to consider operation is to split demand into two periods, average and peak, though finer resolutions could also be chosen. By taking into account demand variation within a day, it will be possible to more appropriately size the system's conversion processes.
+
+A third type of further work is to alter the objective function used by PRaQ. There are many ways to do this, even under the condition it must be formulated as a linear equation. Examples include incorporating revenue from the selling of exports (e.g. electricity in some of the design cases and wildcard cases) (this would also increase exergy efficiency as waste exergies from process $p$, $Ex_p^{waste}$, come to be defined as useful products, $Ex_p^{prod}$. Other alterations to the objective could be to include environmental taxes on carbon dioxide emissions.
+
+Fourthly, in parallel to the above three improvements, the SPC planners should apply sensitivity analysis to the modelling. In general, this studies the sensitivity of the model's output (e.g. technology choice and aggregate metabolic flows) in response to changes in the input data. This could study the effects of: changing prices on processes and resources; changing demands; and changing objective functions. (This third type has already been seen in this chapter, within the four design-case scenarios.) There are many input parameters whose values can be changed, and modelling results can be due to the interaction of these parameters, thus this should be done using carefully chosen parameters, perhaps at a high level (e.g. an overall change in prices overall, rather than individually changes each process's price).
+
+## To move to chapter 7
+
+Returning to consider the broader aims of this thesis, namely to quantifiably improve an area's metabolism through a model which integrates the planning of energy, water and waste systems. The case study in this chapter has served aim 3 of the research question [TODO: cross reference], namely to "Assess how well the model improves urban metabolism" through its application to the SPC case study. [TODO: Edit the aim from "models improve" to "model improves"]
+
+PRaQ works in conjunction with the database
+
+there complexity of identifying optimal process-mixes and operation schedules will increasingly require computational solutions.
+
+- wildcard: new technologies appear: suggesting there are metabolic benefits to the research and development into new resource management processes
+
+- inform which processes research could most fruitfully pursue
 - Comments about the high prevalence of energy: is this accounted for by the quantities produced by water?
 - Consider that water/waste management processes may not be as prevelent in the database (and hence in reality anyway)
 - Hidden savings: don't forget that (unlike energy optimisation models), the water and waste flows for energy processes are considered!
 - Need to look further at household level water and waste management.
 - Not all the sectors are strictly defined for processes
-- General comments about more processes = better
-- Exergy analysis and ENA to confirm the intuitive findings.
 - Decentralisation seems to be the way! Especially with energy. Decentralisation may be the way to a better energy system
 - More processes may also give more flexibility to respond to adapt operation upon changing consumer demands.
-The overall contribution to this thesis is to [TODO:]. To the field as a whole [TODO:] 
 
-[TODO: Other ideas and content]
-
-TODO IDEAS:
-
-- Shannon Index
-- Degree of capacity (e.g. depth of colour of node in network plot) to show redundancy which can fill in for unexpected rises in demand (or drops in resource availability)
-
-
-### Further work
-
-- Sensitivity analysis
-- Operational study
-
-There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
-
-- Cost function
-	- Selling/exporting products (which would change the exergy calculations)
-	- Fines (e.g. on CO2)
