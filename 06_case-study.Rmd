@@ -825,22 +825,3 @@ A third type of further work is to alter the objective function used by PRaQ. Th
 
 Fourthly, in parallel to the above three improvements, the SPC planners should apply sensitivity analysis to the modelling. In general, this studies the sensitivity of the model's output (e.g. technology choice and aggregate metabolic flows) in response to changes in the input data. This could study the effects of: changing prices on processes and resources; changing demands; and changing objective functions. (This third type has already been seen in this chapter, within the four design-case scenarios.) There are many input parameters whose values can be changed, and modelling results can be due to the interaction of these parameters, thus this should be done using carefully chosen parameters, perhaps at a high level (e.g. an overall change in prices overall, rather than individually changes each process's price).
 
-## To move to chapter 7
-
-Returning to consider the broader aims of this thesis, namely to quantifiably improve an area's metabolism through a model which integrates the planning of energy, water and waste systems. The case study in this chapter has served aim 3 of the research question [TODO: cross reference], namely to "Assess how well the model improves urban metabolism" through its application to the SPC case study. [TODO: Edit the aim from "models improve" to "model improves"]
-
-PRaQ works in conjunction with the database
-
-there complexity of identifying optimal process-mixes and operation schedules will increasingly require computational solutions.
-
-- wildcard: new technologies appear: suggesting there are metabolic benefits to the research and development into new resource management processes
-
-- inform which processes research could most fruitfully pursue
-- Comments about the high prevalence of energy: is this accounted for by the quantities produced by water?
-- Consider that water/waste management processes may not be as prevelent in the database (and hence in reality anyway)
-- Hidden savings: don't forget that (unlike energy optimisation models), the water and waste flows for energy processes are considered!
-- Need to look further at household level water and waste management.
-- Not all the sectors are strictly defined for processes
-- Decentralisation seems to be the way! Especially with energy. Decentralisation may be the way to a better energy system
-- More processes may also give more flexibility to respond to adapt operation upon changing consumer demands.
-
