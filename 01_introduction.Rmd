@@ -488,7 +488,7 @@ Any possible network of resources and their associated management infrastructure
 	\sffamily
 	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network-system.pdf_tex}}
 %	\end{spacing}
-	\caption{A node-link conceptualisation of the urban electricity system of Figure \ref{fig:elec}. A solid double-ended arrow represents an import of coal from outside the system; a solid single-ended arrow represents the transfer of resources between processes; and a dashed arrow represents a demand in the system.}
+	\caption{A node-link conceptualisation of the urban electricity system of Figure \ref{fig:elec}. A solid double-ended arrow represents an import of coal from outside the system; a solid single-ended arrow represents the transfer of resources between processes; and a dashed arrow represents a demand in the system. [TODO: add system boundary] }
 	\label{fig:elec-system}
 \end{figure}
 
@@ -500,7 +500,7 @@ The key idea in this thesis though is that nodes can have multiple functions. Th
 	\sffamily
 	\resizebox{\columnwidth}{!}{\input{01_introduction/broader-network-system.pdf_tex}}
 %	\end{spacing}
-	\caption{A node-link conceptualisation of how an urban electricity system interacts with the water and waste sectors.}
+	\caption{A node-link conceptualisation of how an urban electricity system interacts with the water and waste sectors. [TODO: add system boundary] }
 	\label{fig:broader-system}
 \end{figure}
 
@@ -591,7 +591,7 @@ Of the many fascinating aspects of cities, some broad, and some terms used can h
 \begin{description}
 
 \item [Highly integrated] This term refers to resource management optimisation models that consider the simultaneous optimisation of more than one system, in order to take into account interactions and synergies between them. (Section [TODO:] defines this more thoroughly, in relation to definitions of systems that are not integrated or only 'integrated'.)
-\item [urban] There are many definitions of `urban'. \citet{Keirstead2012b} proposes three ways to define an urban boundary\footnote{Ramaswami's original purpose was to quantify a city's greenhouse gas emissions.}, which are adapted by \citet{Keirstead2012b}:
+\item [urban] There are many definitions of `urban'. \citet{Ramaswami} proposes three ways to define an urban boundary\footnote{Ramaswami's original purpose was to quantify a city's greenhouse gas emissions.}, which are adapted by \citet{Keirstead2012b}:
 
 \begin{itemize}
 \item \emph{Pure geographic;} this defines a city's in terms of its administrative boundaries;
@@ -627,13 +627,13 @@ This end goal is made up of three aims, which join together to address the overa
 
 ### Contributions
 
-This thesis makes five contributions to research:
+This thesis makes five contributions to research [TODO: check these are mentioned in the conclusion as well]:
 
 - Advances the UM framework by considering how resource management processes affect an area's overall metabolic flows
 - In this cause, this thesis contributes a new open-source database of resource management processes
-- Develops a tool to simultaneously optimise energy, water and waste management. 
+- Develops a model to simultaneously optimise energy, water and waste management. 
 - The model uses a new method to incorporate resource quality requirements in a manner that makes the model computationally efficient and tractable. 
-- Provides a too new to an audience of urban planners, policy makers and utility service companies.
+- Provides a new tool to an audience of urban planners, policy makers and utility service companies.
 
 ### Thesis structure
 

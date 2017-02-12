@@ -4,6 +4,8 @@
 
 [TODO: Intriguing opening paragraph]
 
+[TODO: Refer to notions of interactions and synergies]
+
 Optimisation modelling in general, and synergy-exploiting optimisation modelling is not far away from UM, and has been successfully applied in Industrial Ecology, especially as a means to integrate the operations of multiple facilities within Eco-Industrial Parks. This thesis has brought optimisation into the broader field
 
 To provide goods and services, cities are places of both great challenge and opportunities. In sustaining ever-growing populations in search of an improving quality of life, urban resource management needs are confronted by economic and environmental challenges. 
@@ -76,7 +78,11 @@ It was assistance of that cause that wrought the main methodological contributio
 
 The idea of highly integrated urban resource management systems did raise questions about how the performance of multi-resource systems should be best quantified. Chapter 4's answer to this provides another theoretical contribution to advocate for grey-box metrics to understand what's going on inside a UM system. The grey-box method of ENA also provides a point of contact between Zhang's conceptual model, and this one, via ENA. The engineered system's processes in PRaQ each belong to different economic sectors, and so it is possible to see how integrated systems (before or after optimisation) perform as a set of economic sectors.
 
-Some specific outcomes of the SPC case study offer a very early view of the way UM systems may develop in the future, as UM continues to become part of the sustainability discussion, and is therefore evermore incorporated into urban design [TODO: link to Kennedy's paper, and that blogpost]. One avenue of exploration is the use of systems with more process types (particularly of a smaller capacity), in decentralised networks, rather than the more traditional centralised systems. Decentralisation is already happening within individual sectors (e.g. energy supply and water supply), so the SPC modelling results suggest that this can be coupled with advances in intersectoral synergies, with waste- and by-products cascading through a system [TODO: provide reference]. The use of wildcard type modelling might inform best what new technologies are particularly worthy of further R&D, in order to fit best into existing systems. Research could. Furthermore, a city with a greater variety of processes could well be more flexible in responding to changing demands in resource-efficient ways.
+Turning to consider some specific way this research informs the future development of UM systems, the SPC case study offers a very early view of the way UM systems may develop in the future, as UM continues to become part of the sustainability discussion, and is therefore evermore incorporated into urban design [TODO: link to Kennedy's paper, and that blogpost]. The model opens up several avenues of exploration:
+
+- the use of systems with more process types (particularly of a smaller capacity), in decentralised networks, rather than the more traditional centralised systems. Decentralisation is already happening within individual sectors (e.g. energy supply and water supply), so the SPC modelling results suggest that this can be coupled with advances in intersectoral synergies, with waste- and by-products cascading through a system [TODO: provide reference].
+- The use of wildcard type modelling might inform best what new technologies are particularly worthy of further R&D, in order to fit best into existing systems. Research could.
+- Furthermore, a city with a greater variety of processes could well be more flexible in responding to changing demands in resource-efficient ways.
 
  [TODO: Note later, that it would be worth conducting studies into the flexibility of decentralised highly integrated urban resource management systems]
 
@@ -99,7 +105,7 @@ By-products: literature review methods:
 
 ## Shortcomings and further work
 
-Development of the PRaQ model can be seen as the coming together of four ideas: urban metabolism, industrial ecology, systems optimisation modelling, and opensource. This thesis has focussed on introducing this collocation of ideas and how they might be applied. However, the focus has been upon introducing the idea, and thus some detail has been sacrificed for the sake of introducing a new idea to UM. Thus the early nature of this work means there is much more value to be squeezed out from the contributions of this thesis towards using PRaQ to improve urban metabolism.
+Development of the PRaQ model can be seen as the coming together of four ideas: urban metabolism, industrial ecology, systems optimisation modelling, and open-source development. This thesis has focussed on introducing this collocation of ideas and how they might be applied. However, the focus has been upon introducing the idea, and thus some detail has been sacrificed for the sake of introducing a new idea to UM. Thus the early nature of this work means there is much more value to be squeezed out from the contributions of this thesis towards using PRaQ to improve urban metabolism.
 
 Some specifics have already been proposed in earlier chapters
 [TODO: summarise already-proposed further work]
@@ -185,20 +191,15 @@ Moving from considering the metabolic **flows**, and turning our attention to th
 
 ### The UM modelling community and platform
 
-This section has made several mentions the opensource contributions of this work. This is such an opportunity for research and development, that it is worth devoting a subsection to how this aspect of the research can be developed, with a view to maximising enhancements to the formulation and application in useful research.
+This section has made several mentions the opensource contributions of this work, and indeed, the database has already been added to an online repository of opensource tools for industrial ecology and urban metabolism [TODO: Cite Chris Davis' GitHub repository] . This is such an opportunity for research and development, that it is worth devoting a subsection to how this aspect of the research can be developed, with a view to maximising enhancements to the formulation and application in useful research.
 
 The simplest opensource development is to extend the @Ravalde2016, as this merely involves adding and editing the YAML files -- something that requires virtually no specialist knowledge, and nothing more than a text editor. However, the gains here are potentially large. Additions to the current processes include process costs (appropriate to specific locations, currencies, exchange rates, and purchasing power parities), spatial footprints, process type (i.e. domestic, commercial, municipal, or industrial). Other processes can be added, even outside the current types considered, for example to include industrial processes such as steel and cement manufacturing, and chemical production. Finally, all of the above, can be incorporated into the semantic web ecosystem (as outlined in Chapter 4), where database content links to structured and unstructured information, regarding the top, middle, and bottom of UM systems.
 
-A second data contribution would be to collect data of existing cities (as discussed in Section [TODO: cross-reference]), to enable PRaQ to be applied to them. This would include the processes they use (i.e. their operating parameters), and their geography. This is a substantial project, and should begin with small examples, which show what others need to contribute.
+A second data contribution would be to collect data of existing cities (as discussed in Section [TODO: cross-reference]), to enable PRaQ to be applied to them. This would include the processes they use (i.e. their operating parameters), their geography, and their metabolic demands. This is a substantial project, and should begin with small examples, which show what others need to contribute.
 
-Python (e.g. Calliope)
+Finally, the current proposals in this thesis are not yet truly open source, because the GAMS language compiler is propiertary. There do however exist examples of successful optimisation models coded in open source programming languages, for example, the Calliope energy systems model written in Python [TODO: reference]. The online repository of code and documentation makes an excellent example of what PRaQ could become[^callope].
 
-Reference Chris Davis, and other online/github repositories of stuff.
-
-- Data
-  	- urban metabolic demands for global cities
-  	- existing infrastructure systems for existing cities
-	- The above two points can then be combined, along with the notion of 'fixed components', to suggest how a particular city might move to optimising its resource system.
+[^callope]: \url{http://calliope.readthedocs.io/en/stable/}
 
 ## Summary
 

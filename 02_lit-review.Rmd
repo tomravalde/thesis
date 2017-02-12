@@ -256,15 +256,9 @@ This search returned 239 results which were manually reduced to 108 after removi
 
 #### Type
 
-As explained above, UM is itself a descriptive model, but it has growth since Wolman's first study which considered simply the flows of resources, and the challenges of their public management. One such development of the concept is that of @Newman1999a, who proposes the 'Extended Metabolism Model of the City' (p.220), who adds 'livability' to encourage researchers to consider how resource flows relate health, incomes, housing stock, and other aspects of urban living.
+As explained above, the concept UM itself is a descriptive model. By appropriating the language of real biological systems to explain urban resource flows. The concept has grown from Wolman's first study which considered simply the flows of resources, and the challenges of their public management. One such development of the concept is that of @Newman1999a, who proposes the 'Extended Metabolism Model of the City' (p.220), who adds 'livability' to encourage researchers to consider how resource flows relate health, incomes, housing stock, and other aspects of urban living. Other descriptive models are highlighted by @Zhang2013, extend the conceptualisation of how metabolic flows are considered: @Girardet1990 incorporates the recycling of resource outputs as inputs, and @Zhang2009b asks modellers to consider how resources flow between sectors within the urban boundary.
 
-Other descriptive models are those models highlighted by @Zhang2013, namely @Girardet1990 and @Zhang2009b, both of which add detail to how the flows are considered; the former incorporates recycling of resources, and the latter asks modellers to consider how resources flow between sectors within the urban boundary.
-
-An example of a statistical model is that of \citet{Liang2014} who find a statistical relationship between the level of a city's nighttime lighting (as measured by satellites) and the city's steel stock, such that the latter can be predicted from the former.
-
-\citet{Kellet2013} provides an example of a simulation model, in which a city's emissions are quantified from equations which calculate the contributions from building, transport, human, and vegetation sources.
-
-Finally, an optimisation model is put forward by \citet{Pederson2013} who use heuristics to 'evolve' optimised city designs, through new building envelopes, road networks, public spaces etc. according to the metabolic capabilities and limitations.
+Moving beyond the conceptual models, various types of mathematical models have been developed to understand urban resources. An example of a statistical model is that of \citet{Liang2014} who find a statistical relationship between the level of a city's nighttime lighting (as measured by satellite observations) and the city's steel stock, making it possible to predict the latter from the former. \citet{Kellet2013} provides an example of a simulation model, in which a city's emissions are quantified from equations which calculate the contributions from building, transport, human, and vegetation sources. Finally, an optimisation model is put forward by \citet{Pederson2013} who use heuristics to 'evolve' optimised city designs, through new building envelopes, road networks, public spaces etc. according to the metabolic capabilities and limitations.
 
 #### Focus
 
@@ -286,7 +280,7 @@ The third way UM models are classified here is according to the level at which t
 \end{itemize}
 
 
-Each of the 108 papers captured in the search and filtering of the UM modelling literature are plotted as a point on Figure \ref{fig:UM-model-lit}. The point is coloured according to the model **type**, while its **focus** and **level** is represented by its position on the x-y plane. The models cited above are labelled on the plot.
+Each of the 108 papers captured in the search and filtering of the UM modelling literature are plotted as a point on Figure \ref{fig:UM-model-lit}. The point is coloured according to the model **type**, while its **focus** and **level** is represented by its location. The models cited above are labelled on the plot.
 
 Examining the plot, it is possible note features and gaps in the UM modelling landscape, such as the dominance of simulation models and models which focus on how an area uses resources. However, when it comes to optimisation models, there is only one (which considers urban form). This suggests that this thesis can contribute a model whose purpose is to consider the **optimisation** of energy, water and waste flows (i.e. **multiple resources**) between resource management processes (i.e. **low level**).
 
@@ -320,7 +314,7 @@ lit_final_cut <- select(lit_final_cut,
 ```
 
 
-```{r metab-lit-review-plot, fig.height=8, fig.width=6, fig.cap="An overview of the UM modelling literature.\\label{fig:UM-model-lit}"} 
+```{r metab-lit-review-plot, fig.height=8, fig.width=6, fig.cap="An overview of the UM modelling literature. Jitter (normally distributed random noise) has been applied to the points to prevent them overlapping one another. \\label{fig:UM-model-lit}"} 
 
 ###--------------------------------------------------
 ### Select and order attributes for ordinal data
@@ -402,9 +396,7 @@ Finally, there are a number of waste management planning models such as @Guo2009
 
 ### An overview of the literature
 
-The energy, water and waste models introduced above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation models more generally, a quasi-systematic literature review can help to identify trends and patterns in how model formulations vary according to purpose. This will help to confirm gaps in the literature which can be met by this thesis, as well as precedent methods which can be used in this thesis. The first stage of the review is to use the Scopus tool to search for relevant literature, using the search term `energy AND water AND waste AND optimization model`, and excluding irrelevant subject areas (such as psychology) from the search [^search-res-models]. 
-
-[^search-res-models]: The full search term is available at \\url{http://www.scopus.com/results/results.uri?sort=r-f&src=s&sid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&sot=a&sdt=cl&cluster=scosubjabbr%2c%22CHEM%22%2cf%2bscosubtype%2c%22ar%22%2ct%2bscosubjabbr%2c%22BIOC%22%2cf%2c%22MATE%22%2cf%2c%22PHYS%22%2cf%2c%22MEDI%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22SOCI%22%2cf%2c%22ECON%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22VETE%22%2cf%2c%22ARTS%22%2cf%2c%22HEAL%22%2cf%2c%22NEUR%22%2cf%2c%22PSYC%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&origin=savedSearchNewOnly&txGid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a10}.
+The energy, water and waste models introduced above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation models more generally, a quasi-systematic literature review can help to identify trends and patterns in how model formulations vary according to purpose. This will help to confirm gaps in the literature which can be met by this thesis, as well as precedent methods which can be used in this thesis. The first stage of the review is to use the Scopus tool to search for relevant literature, using the search term `energy AND water AND waste AND optimization model`, and excluding irrelevant subject areas (such as psychology) from the search\footnote{The full search term is available at \url{http://www.scopus.com/results/results.uri?sort=r-f&src=s&sid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&sot=a&sdt=cl&cluster=scosubjabbr%2c%22CHEM%22%2cf%2bscosubtype%2c%22ar%22%2ct%2bscosubjabbr%2c%22BIOC%22%2cf%2c%22MATE%22%2cf%2c%22PHYS%22%2cf%2c%22MEDI%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22SOCI%22%2cf%2c%22ECON%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22VETE%22%2cf%2c%22ARTS%22%2cf%2c%22HEAL%22%2cf%2c%22NEUR%22%2cf%2c%22PSYC%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&origin=savedSearchNewOnly&txGid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a10}.}
 
 ```{r model-lit-review-load, results="asis"}
 
