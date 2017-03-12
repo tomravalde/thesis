@@ -7,9 +7,9 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-Urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services, and thus affect the aggregate resources flows into and out of a city. Understanding these aggregate flows is a key component of urban metabolism research, but as Chapter 2 argued, the field has not yet systematically related the network of processes to the overall flows. Understanding at this level is of particular interest because of the intersectoral interactions as synergies (as defined by Chapter [TODO: cross-ref] which present both opportunities and challenges when it comes to efficient resource provision yielding environmental and economic benefits. A model that seeks understanding at this level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this model from a concept to a formalised mathematical representation.
+Urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services, and thus affect the aggregate resources flows into and out of a city. Understanding these aggregate flows is a key component of urban metabolism research, but as Chapter 2 argued, the field has not yet systematically represented [TODO: modelled?] how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies (as defined by Chapter [TODO: cross-ref]) which present opportunities for and challenges to efficient resource provision, yielding environmental and economic benefits. A model that seeks understanding at this level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this model from a concept to a formalised mathematical representation.
 
-Since modelling is a simplification of the real-world [TODO: cross-reference] , there will be inevitably be compromises in the performance of the model. This chapter explores these in relation to three formulations (introduced in Section [TODO:]). The formulations are then applied to a case study followed by discussion regarding how well the models perform given the compromises. This study leads to the selection of one of the models to be carried forward to a case study in Chapter [TODO: cross-ref chapter 6]. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, with the formulations and data being made publicly available, so others can develop the model.
+Since modelling is a simplification of the real-world [TODO: cross-reference] , there will be inevitably be compromises in the performance of the model. This chapter explores these through three formulations (introduced in Section [TODO:]). The formulations are then applied to a case study which is followed by discussion on their performance given the compromises. This study leads to the selection of one of the models to be carried forward to a case study in Chapter [TODO: cross-ref chapter 6]. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, with the formulations and data being made publicly available, so others can develop the model.
 
 ## Model performance and formulation
 
@@ -19,11 +19,15 @@ Fidelity and generality are both functions of a model's representation of the re
 
 [^pipe-flow]: The example of pipe flow is developed in Section [TODO: cross-ref].
 
-These four features usually trade off against one another, which means a model will usually be a compromise. Models that are more general will be lower fidelity, because they are not tailored to the specific details of a real-world [@McIntosh2012]. Models of higher fidelity are both less tractable and less usable, because of more advanced mathematics is required, and makes formalizing the model more difficult. The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
+These four features usually trade off against one another, which is the source of a model's compromise. Models that are more general will be lower fidelity, because they are not tailored to the specific details of a real-world [@McIntosh2012]. Models of higher fidelity are both less tractable and less usable because they encode real-world system in more detail, using more equations (to capture the detail), with more advanced mathematics; these models are more difficult to formalise, use, and solve.
 
-These four features will be reflected a model's mathematics. The less generic an optimisation model (and the higher its fidelity), the more detail with which it encodes reality. This means it will use more equations and parameters, making it less usable and tractable. As outlined in Chapter 1, the equations of optimisation models are comprised of parameters and variables, where the values of parameters are fixed, and the values of the variables are chosen during the optimisation procedure. There are different forms of equations, and these different forms require their own  methods to solve.
+Moving to consider an optimisation model's mathematics in greater depth, recall from Chapter 1 that the equations of optimisation models are comprised of parameters and variables, where the values of parameters are fixed, and the values of the variables are chosen during the optimisation procedure. There are different forms of equations, and these different forms require their own  methods to solve. There are two broad categories of formulation: *linear* and *nonlinear*.
 
-There are two broad categories of formulation: *linear* and *nonlinear*. Linear programmes (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. Linear formulations have a number of subsets: for example, if some variables must take integer values (which might be necessary to specify the number of resource management processes, for example), they are mixed-integer linear programming (MILP) problems. Linear models can also have uncertain parameters, which are defined by probability distributions -- this is often true of waste management models, in which the parameter defining a rate of waste generation is uncertain. These models require multiple-stage methods to solve [TODO: list examples from the spreadsheet]. A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
+Linear programmes (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. Linear formulations have a number of subsets: for example, if some variables must take integer values (which might be necessary to specify the number of resource management processes, for example), they are mixed-integer linear programming (MILP) problems. Linear models can also have uncertain parameters, which are defined by probability distributions -- this is often true of waste management models, in which the parameter defining a rate of waste generation is uncertain. These models require multiple-stage methods to solve [TODO: list examples from the spreadsheet]. A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
+
+<!--
+ The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
+-->
 
 *Nonlinear programmes* (NLP) are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP).
 
@@ -183,7 +187,7 @@ The studies in the literature do not comprehensively all the necessary informati
 
 \end{description}
 
-The above simplifications, assumptions and additions are justified on the basis that this chapter's aim is to establish the best formulation for this thesis's purposes, and not to improve Tat's metabolism. These adjustments achieve a both simplicity in understanding the model, and sufficient sophistication that can suitably test the different outcomes. Of course, one a case study could have been invented to serve these goals, but this approach shows how one can formulate a problem from real world data. Furthermore, it is hoped that Tat's current presence in the UM literature will help the benchmarking study gain traction amongst the academic community.
+The above adjustments are justified on the basis that this chapter's aim is to establish the best formulation for this thesis's purposes, and not to improve Tat's metabolism. These adjustments achieve a both simplicity in understanding the model, and sufficient sophistication that can suitably test the different outcomes. Of course, one a case study could have been invented to serve these goals, but this approach shows how one can formulate a problem from real world data. Furthermore, it is hoped that Tat's current presence in the UM literature will help the benchmarking study gain traction amongst the academic community.
 
 <!--
 - literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
@@ -321,7 +325,7 @@ The information from the literature and the adjustments (outlined above) provide
 	\label{fig:tat-16}
 \end{figure}
 
-Not represented by this conceptualisation are the four zones into which Tat is split (arbitrarily, in order to see how the formulations deal with spatial disaggregation), between which resource demands are equally split. The models will be free to locate processes in any of them, but there will be limits imposed as to which zones can import resources, thus forcing formulations to use transport processes (which are also not represented on this diagram).
+Not represented by this conceptualisation are the four zones into which Tat is split (arbitrarily, in order to test how the formulations deal with spatial disaggregation), between which resource demands are equally split. The models will be free to locate processes in any of them, but there will be limits imposed as to which zones can import resources, thus forcing formulations to use transport processes (which are also not represented on this diagram).
 
 [TODO: Check if there are limits on the numbers of certain processes, e.g. dam, and use another diagram to show zones and transport processes.]
 
@@ -673,7 +677,7 @@ The next three subsections specify three different model formulations based on [
 \begin{description}
 
 \item [Null model] This formulation is very similar to the MILP urban energy systems model, only it is applied to a broader set of resources and processes, to incorporate the water and waste sectors. The purpose of this model is to investigate what can be achieved for as little computational effort as possible. 
-\item [Processes resources and qualities model (PRaQ)] This formulation also linear, and is in many ways similar to the null model, but it develops it to use a more sophisticated definition of resources, in which a resource can have multiple properties ('qualities') attributed to it. For example, water can have both a mass and an energy head. This means that processes can be defined to require (and produce) resources of particular qualities, e.g. a dam needs not just a sufficient mass of water, but a sufficient mass of water at a required energy head. In practice, this requires defining extra parameters and variables in the model, and inserting some additional equations.
+\item [Processes resources and qualities model (PRaQ)] This formulation also linear, and is in many ways similar to the null model, but it develops it to use a more sophisticated definition of resources, in which a resource can have multiple properties ('qualities') attributed to it. For example, water can have both a mass and an energy head. This means that processes can be defined to require (and produce) resources of particular qualities, e.g. a dam needs not just a sufficient mass of water, but a sufficient mass of water at a required energy head. This more detailed representation of resources can more accurately characterise the properties of a system's resource, and the transformations it undergoes during a process (e.g. as water passes through a dam, its mass remains the same, but its quantity changes). In practice, this requires defining extra parameters and variables in the model, and inserting some additional equations. 
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
@@ -735,6 +739,8 @@ mgz_B = \eta^{dam} (\mbox{elec gen})
 ### Null (N) formulation
 
 The null model can be defined by the same equations as the MILP urban energy systems model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
+
+[TODO: Add (qty) superscript, so it doesn't have to be explained in the PRaQ model section]
 
 \begin{align}
 I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \forall r,z
@@ -854,34 +860,14 @@ Thus equations \eqref{eq:null_balance_qty}--\eqref{eq:null_obj} define the mathe
 
 ### Processes, resources and qualitites (PRaQ) formulation
 
-In the Null model, resources are defined fairly crudely. In the dam example, there are two 'water' resources (one high-head, the other low-head). Other water resources could include water at different temperatures or contamination levels. However, there is nothing more sophisticated than this, and for this reason we now introduce the next model.
-
-[TODO: note, another reason it's better is that it might be advantageous for design, to know (e.g.) the energy of water through a pipe, etc.]
-
-We have called the second linear model PRaQ. It is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies. However, the PRaQ model develops from the null model in the way that it defines a resource, by explicitly defining its attributes, which we will refer to here as 'qualities'. For example, consider the dam example: in this formulation¸ the water can be explicitly defined as having both a mass and an energy head, as in Figure [TODO: cross-ref] below.
-
-[TODO: figure. Note that this should note NA where a quality does not apply to a resource.].
-
-This representation of resources enables us to more precisely define a resource, and thus characterise and area's natural resources (or resource needs) more realistically. For example, for the dam [TODO: continue example].
-
-This means that not only do we consider how the resource quantities balance in the system, but also how their qualities balance, and thus we need to add to and modify some of the null model equations with the introduction of a quality parameter $q$ into the formulation. In addition to the resource quantity balance in Equation \eqref{null_balance_qty}, we also define a system quality balance which ensures that the quality $q$ (e.g. energy) due to each resource (e.g. water energy head and generated electrical energy) within each zone $z$ is balanced.
-
-The formulation is based around a resource balance equation which says for each zone and time periods, and for each resource:
+The PRaQ model is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies, and so as before, there is a resource quantity balance (Equation \eqref{praq_balance_qty}:
 
 \begin{align}
 I_{rzt} + \sum_p^P G^{(qty)}_{przt} + \sum_{\tau} V^{(qty)}_{rzt\tau} &= D^{(qty)}_{rzt} + E_{rzt},
-\label{eq:bal_qty}
+\label{eq:praq_balance_qty}
 \end{align}
 
-
-[TODO: consider alternative form which is summed over r -- doesn't acually make a difference, but there is some sort of logic to it?]
-
-\begin{align}
-\sum_r \big ( X_{rq} I_{rz} + J^{qual}_{rqz} + G^{qual}_{rqz} ) &= \sum_r (D_{rqz} + X_{rq} E_{rz})
-\label{eq:praq_balance_qual}
-\end{align}
-
-which specifies the amount of a particular resource $r$ at any given time $t$ in zone $z$. The demand $D^{(qty)}$ parameter is specified by the user, and the model will choose the resource quantity imported into the city $I$, exported from the city $E$, generated by conversion processes $G$, and net inflow from other zones $V$ (referred to as 'variables'). Like Keirstead's model, the resources are expressed in terms of quantities (such as MW of electricity or kg/s of solid waste), which in our equations is denoted by the $^{(qty)}$ superscript. However, here we evolve Keirstead's formulation, by defining resource flows in terms of their *quality*, such that a resource can be attributed with both an energy and a mass. This is useful as we consider interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- in our model we would need to know both its mass, and its energy head due to elevation. Thus the formulation specifies an equation analogous to \eqref{eq:bal_qty} which defines flows in terms of their quality (using the $^{(qual)}$ superscript notation):
+In addition, PRaQ develops Keirstead's formulation, to incorporate a more sophisticated definition of a resource, by using an analogous equation to ensure that the quality $q$ (e.g. energy) due to each resource (e.g. water energy head and generated electrical energy) within each zone $z$ is balanced:
 
 \begin{align}
 X_{rq} I_{rzt} + \sum_p^P G^{(qual)}_{prqzt} + \sum_{\tau}^T V^{(qual)}_{\tau rqzt} &= D^{(qual)}_{rqzt} + X_{rq} E_{rzt} \qquad \forall q,
@@ -892,16 +878,32 @@ This introduces the quality index $q$, and the parameter $X$ which defines a res
 
 [^qual-param]: For example, 1 kg of static water at a 10 m elevation would have an energy head of 98.1 J. Thus $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$.
 
+[TODO: note, another reason it's better is that it might be advantageous for design, to know (e.g.) the energy of water through a pipe, etc.]
+
+[TODO: consider alternative form which is summed over r -- doesn't acually make a difference, but there is some sort of logic to it?]
+<!--
+\begin{align}
+\sum_r \big ( X_{rq} I_{rz} + J^{qual}_{rqz} + G^{qual}_{rqz} ) &= \sum_r (D_{rqz} + X_{rq} E_{rz})
+\label{eq:praq_balance_qual}
+\end{align}
+-->
+
+<!--
+The demand $D^{(qty)}$ parameter is specified by the user, and the model will choose the resource quantity imported into the city $I$, exported from the city $E$, generated by conversion processes $G$, and net inflow from other zones $V$ (referred to as 'variables').
+
+Like Keirstead's model, the resources are expressed in terms of quantities (such as MW of electricity or kg/s of solid waste), which in our equations is denoted by the $^{(qty)}$ superscript.
+-->
+
 #### Conversion processes
 
-The variable $G$ denotes the net quality of resource produced by a conversion process in a zone at a particular time. Conversion processes are modelled as black boxes with resource inputs and outputs, defined by the coefficients $k^{proc}_{prq}$:
+The modelling of conversion processes is similar to the black-box formulation of the null model, but again, two equations are used. The first defines the net resource quality $G^{(qual)}_{prqzt}$ produced by a conversion process in a zone at a particular time, for a process with variable operation rate $F_p$, and parameters to define the relative ratio of resource inputs and outputs, $k^{proc}_{prq}$:
 
 \begin{align}
-G^{(qual)}_{prqzt} &= k_{prq} F_p,
+G^{(qual)}_{prqzt} &= k_{prq} F_pzt,
 \label{eq:conv_qual}
 \end{align}
 
-The variable $F_p$ defines the operation rate of a process $p$ which can run between a range of values (e.g. a power plant's maximum operating capacity). Using the $X_{rq}$ parameter, we can formulate the quantity version of \eqref{eq:conv_qual}:
+The second equation is the quantity version of the above, which again uses the $X_{rq}$ parameter, to translate a quantity we can formulate the quantity version of the process black box:
 
 \begin{align}
 X_{rq}G^{(qty)}_{przt} &= k_{prq} F_{pzt},
@@ -911,6 +913,13 @@ X_{rq}G^{(qty)}_{przt} &= k_{prq} F_{pzt},
 <!--
 This equation only needs to be applied in the case where a process $p$ produces or consumes resource $r$ with qualities $q$, hence the condition based on the $\delta_{prq}$.
 -->
+
+\begin{tcolorbox}
+The dam example has two 'water' resources (one high-head, the other low-head); other water resources could include water at different temperatures or contamination levels. 
+
+ However, here we evolve Keirstead's formulation, by defining resource flows in terms of their *quality*, such that a resource can be attributed with both an energy and a mass. This is useful as we consider interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- in our model we would need to know both its mass, and its energy head due to elevation. Thus the formulation specifies an equation analogous to \eqref{eq:bal_qty} which gives the quality balance for each resource  in terms of their quality (using the $^{(qual)}$ superscript notation):
+\end{tcolorbox}
+
 
 #### Transport processes
 
