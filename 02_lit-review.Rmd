@@ -6,6 +6,9 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 ```
 
+\epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{\citet{Bettencourt2010}, \emph{Nature}}
+
+
 # Urban metabolism and systems optimisation
 
 \epigraph{
@@ -23,6 +26,8 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 The introduction to Section 1.1, and Section 1.1.1 have been adapted from Section 2 of \citet{Ravalde2015a} (`Urban metabolism and sustainability'). Section 1.1.2 has been adapted from \citet{Ravalde2016} (`Approaches to Urban Metabolism').
 
 \end{tcolorbox}
+
+Another. Edit.
 
 The aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review shows to what extent the research question has been answered.
 

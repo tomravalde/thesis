@@ -20,7 +20,7 @@ library(ggplot2)
 
 \epigraph{``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''}{\citet{OED-system2016}}
 
-Cities have brought a high quality to billions, by enabling the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing, as more and more people find in them access to greater wealth, improved healthcare, and other socioeconomic services [@WorldBank2009]. Despite their economic success, cities face many challenges, and thus questions about how they should be designed, developed, governed, and organised, are increasingly important.
+Cities have brought a high quality of life to billions, by enabling the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing, as more and more people find in them access to greater wealth, improved healthcare, and other socioeconomic services [@WorldBank2009]. But despite their success, cities face many challenges, and questions about how they should be designed, developed, governed, and organised, are increasingly important.
 
 <!--
 Not only is the world's urban population growing, but so is our understanding of the nature of cities. Whilst being complicated amalgamations of people, businesses, institutions and geographical features, cities are surprisingly comprehensible
