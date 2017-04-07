@@ -20,15 +20,14 @@ library(ggplot2)
 
 \epigraph{``\textbf{system}, n. An organized or connected group of things \ldots A group or set of related or associated things perceived or thought of as a unity or complex whole.''}{\citet{OED-system2016}}
 
-Cities have brought a high quality of life to billions, by enabling the efficient provision of goods and services. Therefore, in many ways, it is a cause for celebration that the global urban population is growing, as more and more people find in them access to greater wealth, improved healthcare, and other socioeconomic services [@WorldBank2009]. But despite their success, cities face many challenges, and questions about how they should be designed, developed, governed, and organised, are increasingly important.
-
+There can be no doubt that urbanisation has brought a high quality of life to billions of people. While being home to over 50 per cent of the global population, cities generate around 80 per cent of global GDP [@WorldBank2016]. In cities, labour, business, infrastructure and local government all come together in geographical proximity, to enable the efficient provision of goods and services to their inhabitants. It should be a cause for celebration that the global urban population is growing, leading more and more people access to greater wealth, improved healthcare, and other socioeconomic and cultural benefits [@WorldBank2009]. However, cities face many challenges, and questions about how they should be designed, developed, governed, and organised, are becoming increasingly important. In amongst all the challenges -- providing suitable transport links, preventing the spread of infectious diseases, and reducing air pollution to name just three -- this thesis takes up one challenge in particular, namely, how cities could support their populations with vital resource management services more sustainably.
 <!--
 Not only is the world's urban population growing, but so is our understanding of the nature of cities. Whilst being complicated amalgamations of people, businesses, institutions and geographical features, cities are surprisingly comprehensible
 -->
 
-One particular challenge relates to cities' resource management. To support their populations, they consume large quantities of energy and water, and generate significant waste, which presents sustainability challenges. In addressing these, there are many points at which planners and policy makers might make decisions in the vast networks of infrastructure and chains of processes which cities use to convert and supply goods and services.
+More specifically, this thesis will focus on urban energy, water consumption and waste generation, which take place to sustain a city's population. As will be shown later, this leads to both economic and environmental concerns. In addressing these, there are many complementary approaches which planners and policy makers might take. Consider a city whose electricity partly supplied by a coal-fuelled power plant, using the resulting heat energy to generate steam which rotates a turbine to generate electricity which is then delivered to the consumer by cable (Figure \ref{fig:elec}). One way to save coal is to encourage consumers to use less electricity. Another option is to increase power plant efficiencies, so as to minimise energy losses within the plant. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. While interventions such as these have their place, this thesis will zoom out to look at how resource management works as a whole. Is the overall mix of power plants, water treatment facilities, waste management procedures, and other activities, the most efficient way to manage resources?
 
-Consider a city's electricity supply, in which a power plant burns a fossil-fuel and uses the resulting heat energy to generate steam which turns a turbine to generate electrical energy which is then delivered to the consumer by cable (Figure \ref{fig:elec}). Coal could be saved by encouraging consumers to use less electricity. Another approach could be to increase power plant efficiencies, so as to minimise energy losses within the plant. Alternatively, the power plant could be replaced by a process using renewable resources, such as solar. While interventions such as these have their place, this thesis will zoom out to look at how resource management works as a whole. Is the overall mix of power plants, water treatment facilities, waste management procedures, and other activities, the most efficient way to deliver resources?
+
 
 \begin{figure}
 	\centering
@@ -41,6 +40,10 @@ Consider a city's electricity supply, in which a power plant burns a fossil-fuel
 \end{figure}
 
 In meeting consumer demand for electricity, the coal, power plant, electricity, and power lines are but a few components in the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. Furthermore, the electricity system is but one part of the larger system which manages a city's energy, and this system is in turn just one of several systems at work in a city, others including water management, waste management, and transport. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together?
+What is interesting about this work is that it is the very nature of a city which makes this possible -- that fact that infrastructure is geographically co-located means that the different sectors can work together. The city contains within it the opportunity to tackle the problems it creates.
+<!--
+ Is it possible to make design decisions regarding the infrastructure networks and chains of processes used to convert and supply goods and services?
+-->
 
 <!--
 seen for example in campaigns to encourage behavioural change in consumers (e.g. turn their thermostats down), and policy measures to introducing new technologies (e.g. renewable energy). Another approach is to better design and operate the 'systems' which manage the resources. The management of urban resources requires networks of infrastructure to convert and transport resources. 
@@ -67,26 +70,15 @@ The rapid urbanisation of the globe is presenting both challenges and opportunit
 TODO: complete Introduction, e.g. with how our development of UM theory fits in.
 -->
 
-## Urbanisation: the challenge
+## Urbanisation: the challenges
 
-Whatever mix of approaches is adopted to better manage the world's resources -- whether they be behavioural, efficiency, technological, or system wide -- the need to better manage urban resources is evident by the following argument:
-
-1. The world is urbanising
-2. Urbanisation ...
-	a. ... is on the whole a desirable phenomenon,
-	b. ... leads to environmentally and economically unsustainable resource consumption and output
-3. Therefore, urbanisation should not be opposed, but we should nevertheless act to reduce urban resource consumption and waste.
-
-The rest of this Section considers the evidence in support of this argument.
-
-### Urbanisation: an unstoppable and desirable phenomenon
-
-Currently, urban areas are home to just over half of the global population [@UN2014]. By 2030, it is expected that the urban population grow to 60 per cent of the total, and to over 65 per cent by 2050 (Figure \ref{fig:pop_forecasts}).}. This growth has three components: cities absorb population growth; migration from rural areas; rural areas become reclassified as urban [@Cohen2006]. Growth predictions are not just the view of a small number, but widely accepted opinion. Thus even @Cohen2004 who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent, and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
+Before considering the economic and environmental challenges of urban resource management, there are two important things to say. First, that urbanisation is not going to stop anytime soon -- it is inevitable; second, urbanisation should not by stopped anytime soon -- it is desirable. First, urbanisation's inevitability. At present, urban areas are home to just over half of the global population [@UN2014]. By 2030, this figure is expected to grow to 60 per cent, and to over 65 per cent by 2050 (Figure \ref{fig:pop_forecasts}).}. This growth has three components: cities absorb population growth; migration from rural areas; and rural areas becoming reclassified as urban [@Cohen2006]. These predictions are not just the view of a small number, but widely accepted opinion. Thus even @Cohen2004 who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent, and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
 
 > *"...despite all the problems of error and inaccuracy and the long-standing definitional problems that have never been overcome, it is clear that the world is still in the midst of a sweeping and profound urban transformation that is literally changing the face of the planet."*
 
 
-[^urban-def]: See for example @DepartmentforCommunitiesandLocalGovernment2006. This point is considered in [TODO: cross-ref].
+[^urban-def]: See for example @DepartmentforCommunitiesandLocalGovernment2006. This point is considered in Section \ref{sec:title-def} later in this chapter.
+
 
 ```{r pop_data, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
 
@@ -106,7 +98,7 @@ pop_data_plot <- ggplot(pop_data, aes(Year, value)) +
 pop_data_plot
 ```
 
-Urbanisation is the longterm result of humanity's search for the good life. People migrate from the countryside in search of employment, as well as better access to education, healthcare, and other services. Thus an urban population grows. As it does, firms benefit from economies of scale, and at the same time, cities start to become 'agglomeration economies' (in which different types of firms and industries benefit one another by way of supplying each other with goods and services, on account of their proximity to each other). With scale and agglomeration, cities produce specialised goods and services at low cost, which can be traded. Trade increases prosperity, and prosperity attracts migrants. Thus urbanisation becomes a virtuous cycle in which city size and economic growth feed one another (Figure \ref{fig:urbanCycle}) [@WorldBank2009].
+The inevitability of urbanisation ultimately derives from its desirablity -- urbanisation is the longterm result of humanity's search for the good life, and the process by which it happens can be articulated quite briefly. People migrate from the countryside in search of employment, as well as better access to education, healthcare, and other services. Thus an urban population grows. As it does, firms benefit from economies of scale, and at the same time, cities start to become 'agglomeration economies' (in which different types of firms and industries benefit one another by way of supplying each other with goods and services, on account of their proximity to each other). With scale and agglomeration, cities can specialise in the goods they produce and the services they supply, goods and services which can then be traded. Trade increases prosperity, and prosperity attracts migrants. Thus urbanisation becomes a virtuous cycle in which city size and economic growth feed one another (Figure \ref{fig:urbanCycle}) [@WorldBank2009].
 
 \begin{figure}[h]
 	\centering
@@ -115,51 +107,35 @@ Urbanisation is the longterm result of humanity's search for the good life. Peop
 	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
 \end{figure}
 
-Urbanisation is a proven path to prosperity, so it is unsurprising that expert opinion reveals little appetite to oppose it. This is not to say they provide an immediate solution to all issues of poverty. Cities often have a widespread presence of slums, especially at the beginning of their development. The World Bank describes these as 'growing pains' [@WorldBank2009, p.69] and notes their historical precedence in cities like London, where slums are no longer to be found. The majority of growth takes place in the developing world. (Africa and Asia will together account for 86 per cent of the increase in urban dwellers by 2050 [@York2011]). It is encouraging that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world.
+Urbanisation is a proven path to prosperity, so it is unsurprising that expert opinion reveals little appetite to oppose it, especially now that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world, where the majority of growth is happening -- Africa and Asia will together account for 86 per cent of the increase in urban dwellers by 2050 [@York2011]. (This is not to say that cities provide an immediate solution to all issues of poverty. Cities often have a widespread presence of slums, especially at the beginning of their development. The World Bank describes these as 'growing pains' [@WorldBank2009, p.69] and notes their historical precedence in cities like London, where slums are no longer to be found.) All this is to say, that whatever urbanisation's problems, the idea that they should be addressed by slowing, pausing or reversing urbanisation is unrealistic. Whatever mix of approaches is used to address the sustainability challenges of urban resource management (outlined in the following two sections), must be addressed in some other way.
 <!--
 This growth is also Secondly, despite much excitement about megacities, urban growth is mainly in smaller cities (below 500,000 people) in the foreseeable future). Cities of more than 10 million residents will accommodate less than 10\% of the urban population [@Cohen2006]
 -->
 
-The number of cities, and the sizes of their populations are growing, driven by urbanisation's wealth-generating functions. While being home to over 50 per cent of the global population, cities generate around 80 per cent of global GDP [@WorldBank2016]. With urbanisation's benefits obvious, it is tempting to ignore the challenges it throws up. Some of these challenges -- in particular, those related to urban resource management -- which are introduced in the next two sections.
-
 ### Environmental challenges
 
-There are many negative environmental consequences which can be traced to urban resource consumption. The environment is a huge field of study, and to summarise all negative environmental effects here would be impossible. However, just a few examples is enough to build make a compelling case that the levels of resource use by urban areas is environmentally problematic enough to warrant attention from researches, planners, and policy makers.
+The environment is a huge field of study, and to summarise all negative environmental effects arising from the way that cities use resources would be impossible. However, just a few examples builds a compelling case that levels of resource use by urban areas is problematic enough to warrant attention from researches, planners, and policy makers. To give some sense of order to the environmental challenges, they will be listed in relation to the resource 'sector(s)' which cause them, first as problems which are manifestations from a specific sector, and second as problems which emerge from the interactions of two or more sectors. This notion of sectors will also become important an theme of the thesis[^sectors].
 
 #### Sectoral strains
 
-As a way in to give some sense of order to the environmental challenges, they will be listed in relation to the resource 'sector' from which they originate. This understanding of notion of 'sectors' will also become important an theme of the thesis[^sectors].
-
-[^sectors]: The energy, waste, and water sectors have been chosen here since they will considered throughout the rest of this thesis, for reasons given in Section [TODO:]. Other sectors could have included transport, and materials (though these are arguably closely related to the energy and waste sectors).
+[^sectors]: The energy, waste, and water sectors have been chosen here since they will considered throughout the rest of this thesis, for reasons given Section \ref{sec:title-def}'s definition of 'energy, water, and waste'. Other sectors not considered here could include transport and materials.
 
 <!--
 Some environmental challenges may be manifested at easily identifiable locations (such as a city itself or its immediate surroundings), while other effects may be felt more generally. These include land-use impacts, resource scarcity, poor water quality, emissions, the heat-island effect and eutrophication, much of which can be related to resource overconsumption \citep{Cao2011}. Such negative effects can be seen in relation to three sectors.
 -->
 
-\begin{description}
+Consider first the **energy** sector. Cities are home to just over 50 per cent of the globabl population, yet they are responsible for around 60 per cent of primary energy consumption, and 71 per cent of energy-related greenhouse gas emissions \citep{IEA2008}. The disproportionaly high energy consumption is driven mainly by the higher quality of life enjoyed by city dwellers relative to their rural counterparts \citep{@Grubler2009}. Climate change is a global problem (i.e. the effects are not felt by the ares in proportion to their part in causing them. Thus rightly managing the urban energy sector is a matter of global importance.
 
-\item [Energy] Cities are home to just over 50 per cent of the globabl population, yet they are responsible for around 60 per cent of primary energy consumption, and 71 per cent of energy-related greenhouse gas emissions \cite{IEA2008}. Climate change is a global problem (i.e. it does not necessarily affect cities in proportion to their emissions. Thus rightly managing the urban energy sector can rightly be considered a matter of global importance.
-%There are multiple causes of this including the lifecycle heating and power demands, and urban sprawl leading to increases in transport use due to longer and more frequent journeys [@Grubler2009].
+The primary issue in the **waste** sector is simply the volume of waste produced, which municipal governments need to deal with somehow, even as disposal capacity is decreasing [@Lu2009]. With their higher quality of life, urban dwellers consume more goods, and so generate more waste. Thus per capita waste generation rates are higher in cities than in rural areas. With the world both urbanising, and those urban dwellers continuing to improve their living standards, the World Bank estimates that total municipal solid waste could increase by 70 per cent between 2012 and 2025 \citep{Hoornweg2012}. Other waste-related challenges include urban waste's contribution to climate change -- about five per cent of total greenhouse emissions come from waste, as the combined contributions of methane (from organic waste) and carbon dioxide (from incineration, which also leads to air pollution) \citep{Hoornweg2012}; flooding due to the blocking of drainage \citep{Lamond2012}; groundwater contamination [@Li2006], and public health concerns \citep{Kouame2014} (especially of open landfill sites in development countries [@Durand2013], bad odours, and aesthetic impacts \citep{Shah2012}.
 
-\item [Waste] The primary issue here is simply the volume of waste produced, which municipal governments need to deal with somehow. With their higher quality of life, urban dwellers consume more goods, and so generate more waste. Thus per capita waste generation rates are higher in cities than in rural areas. With the world both urbanising, and those urban dwellers continuing to improve their living standards, the World Bank estimates that total municipal solid waste could increase by 70 per cent between 2012 and 2025 \citep{Hoornweg2012}.
+The **water** sector has also felt the strain of urbanisation: increases in affluence, and business and industrial activity, has increased per capita rates of water consumption \citep{AlFry2006}. Water is a limited resource subject to the hydrological cycle, so water stress (where the available water cannot meet all required uses) is commonplace -- about half of the world's cities with with populations greater than 100,000 cannot replenish their water resources at the rate they use them \citep{Richter2013}. The effects of water stress may not be felt where they are caused, since the infrastructure use to treat and transport water is more easily afforded by the affluent, but not by the poor (thus water stress is disproportionately suffered in the developing countries, which is also where most urbanisation is happening). Many large cities use networks extending up to 200 kilometers into their surrounding area to meet demand, but for many urbanising regions, it is difficult to invest quickly enough to build the infrastructure to meet demand \citep{EEA2016}.
+<!--
+The common driver of the problems listed above is the increased demand for goods and services caused by the affluence of city dwellers. Urban areas have proved successful at providing a high quality of life, but this at risk tension with the detrimental effects on quality of life which will emerge.
+-->
 
-Other waste-related challenges include urban waste's contribution to climate change -- about 5 per cent of total greenhouse emissions come from waste, as the combined contributions of methane (from organic waste) and carbon dioxide (from incineration, which also leads to air pollution) \citep{Hoornweg2012}; flooding due to the blocking of drainage \citep{Lamond2012}; and public health concerns \citep{Kouame2014}, bad odours, and aesthetic impacts \citep{Shah2012}.
-
-%These include groundwater contamination, public opposition to waste disposal near residential areas [@Li2006], as well as growing waste generation rates and decreasing disposal capacity [@Lu2009]. For example, [@Xydis2012] have described the waste management capacity limitation in Greece as having reached a 'critical point'. The decomposition of waste in landfill sites contributes to global warming through the production of methane (in addition to the emissions from the transport and management of waste [@ICE2011]). The health risks posed by open sites in developing countries are also of concern [@Durand2013].
-
-\item [Water] While there is a problem of overconsumption in this sector, it is of a different nature than the equivalent energy- and waste-related challenges, as waster is a resource which does not have a problem of accumulation (like emissions or waste). Rather, water is cycled around the planet and the challenge is to get water in the right place at the right time, treated to an appropriate standard. As urbanisation increases affluence, and business and industrial activity, per capita water consumption rises \citep{AlFry2006}. Water stress (where the available water cannot meet all uses) is a commonplace problem -- about half of the world's cities with with populations greater than 100,000 cannot replenish their water resources at the rate they use them \citep{Richter2013}.
-
-The cycling behaviour of water means the effects of water stress may not be felt where they are caused, since the management infrastructure (for treatment and transport) can be afforded by the affluent, but not by the poor (thus water stress is disproportionately suffered in the developing countries, which is also where most urbanisation is happening). Thus many large cities use networks extending up to 200 kilometers over their surrounding area to meet demand, but for many urbanising regions, it is difficult to invest quickly enough to build the infrastructure to meet demand \citep{EEA2016}.
-
-\end{description}
-
-With just a brief look at each of the above sectors, it is clear from the expert opinion that there are serious concerns to be addressed. The common cause of these problems is that of affluence. Urban areas have proved successful at providing a high quality of life, but this is inevitably in tension with the detrimental effects on quality of life which will emerge.
-
-The backdrop against which many of the above issues are set is climate change, which is arguably the greatest environmental threat of all [@WEF2016]. With the energy and waste sectors large contributers of greenhouse gas emissions, coupled with the fact that climate change limits the availability of water in many places [@AlFry2006], climate change links the challenges of the energy, water, and waste sectors.
+The meeting point of the above issues is climate change, which is arguably the greatest environmental threat of all [@WEF2016]. With the energy and waste sectors large contributers of greenhouse gas emissions, coupled with the fact that climate change limits the availability of water in many places [@AlFry2006], climate change links the challenges of the energy, water, and waste sectors. However, not only do the energy, water and waste sectoral strains share a point of contact with climate change, they also interact with one another; in other words, demand in one sector can feed the issues of another. The effect of these 'intersectoral interactions' (introduced below, and summarised in Figure \ref{fig:intersectoral-interactions}) is to exacerbate the environmental challenges listed above.
 
 #### Intersectoral interactions
-
-Not only do the energy, water and waste sectors all interact with climate change, they also interact with each other, such that issues of once sector feed the issues of another, thus exacerbating the environmental challenges. These intersectoral interactions are introduced briefly, since this will become an important theme in this thesis, and are summarised in Figure \ref{fig:intersectoral-interactions}.
 
 \begin{figure}
 	\centering
@@ -171,23 +147,12 @@ Not only do the energy, water and waste sectors all interact with climate change
 	\label{fig:intersectoral-interactions}
 \end{figure}
 
-\begin{description}
+First consider the interactions of the **energy and water** sectors. As demand for water increases, so does the need for the energy required for its treatment and distribution. It is estimated that approximately 35 per cent of the energy used by municipalities in the United States is for water supply and wastewater treatment \citep{Elliott2005}. In the other direction, these sectors interact through the need for cooling water. The more energy generated in powerplants, the more water that is required to cool them \citep{McMahon2011}. Climate change serves only to intensify this energy-water nexus, because it limits the availability of water in many places, thus increasing energy requirements (e.g. to provide water via desalination and other energy-intensive treatment methods). Of course, the increased energy use further exacerbates climate change. Thus the energy-water intersectoral interactions become a self-reinforcing challenge. \citep{Webber2011}.
 
-\item [Energy and water] As demand for water increases, so does the need for the energy required for its treatment and distribution. It is estimated that approximately 35 per cent of the energy used by municipalities in the United States is for water supply and wastewater treatment \citep{Elliott2005}. 
+The **energy and waste sectors** interact through the energy consumption needs of waste transportation and management processes (such as sorting, recycling, and crushing) \citep{ICE2011, Hoornweg2012}. In the other direction, increased energy consumption increases waste output. To take one example: the amount of fly ash produced by coal plants in the United States is over half of the quantity of municipal solid waste\footnote{Annual MSW generation as about 254 millions tons \citep{EPA2014}, and annual fly ash generations is about 130 million tons \citep{WorseThanNuclear2012}.}. Radioactive waste from nuclear energy generation another significant challenge arising from this intersectoral interaction \citep{NEI2016}.
 
-Climate change serves only to this energy-water nexus challenge more difficult, since as it limits the availability of water in many places, thus increasing energy requirements (e.g. to provide water via desalination and other energy-intensive treatment methods). Of course, the increased energy use further exacerbates climate change. Thus the energy-water intersectoral interactions become a self-reinforcing challenge. \citep{Webber2011}
+Finally, in the **water and waste** sectors, increased water consumption leads to a corresponding increase in wastewater generation which needs to be managed through either treatment or disposal \citep{McMahon2011}. In the other direction, wastewater is often discharged into freshwater system, contaminating them. While nature can purify and recycle contaminated water to some extent, this is happening at a rate that nature cannot keep up with and so expensive (and energy intensive!) treatments are required \citep{AlFry2006}. Solid waste is also problematic in this regard because the leachate contaminates groundwater and surface water sources \citep{Hoornweg2012}.
 
-In the other direction, energy use increases water consumption through the need for cooling water in power plants \citep{McMahon2011}. 
-
-\item [Energy and waste] The waste sector has a large energy consumption corresponding to transportation needs (mainly vehicle) and management processes (such as sorting, recycling, and crushing) \citep{ICE2011, Hoornweg2012}.
-
-In the other direction, increased energy consumption increases waste output, for example, the amount of fly ash produced by coal plants in the United States is over half of the quantity of municipal solid waste\footnote{Annual MSW generation as about 254 millions tons \citep{EPA2014}, and annual fly ash generations is about 130 million tons \citep{WorseThanNuclear2012}.}. Radioactive waste from nuclear energy generation is another significant challenge \citep{NEI2016}.
-
-\item [Water and waste] Increases in water consumption leads to increased wastewater generation which needs to be managed through either treatment or disposal \citep{McMahon2011}.
-
-In the other direction, wastewater is often discharged into freshwater systems. While nature can purify and recycle contaminated water to some extent, this is happening at a rate that nature cannot keep up with (and so expensive treatments are required) \citep{AlFry2006}. Solid waste is also problematic in this regard because leachate contaminates groundwater and surface water sources \citep{Hoornweg2012}.
-
-\end{description}
 
 <!--
 https://www.theguardian.com/global-development/2012/jun/06/world-urban-waste-mountain
@@ -202,9 +167,7 @@ Another conclusion that is inevitable from this survey of challanges is that res
 
 ### Economic challenges
 
-A second challenge brought about by rates of urban resource consumption is economic. Briefly, it is possible to demonstrate that a city's population can grow at such a rate that is impossible to sustain with the available resources [@Bettencourt2007a].
-
-This can be shown from equating a couple of equations which model features of urban growth. First, at time $t$, quantities in cities $Y(t)$ (such as energy consumption or wealth), scale with population, $N(t)$, according to a power law:
+The second sustainability challenge brought about by rates of urban resource consumption is economic. @Bettencourt2007a has demonstrated that the populations of certain city types (namely, those cities whose economies are 'knowledge-based') can grow a rate that is impossible to sustain with the available resources [@Bettencourt2007a]. This fact is derived from two equations which model features of urban growth. First, at time $t$, quantities in cities $Y(t)$ (such as energy consumption or wealth), scale with population, $N(t)$, according to a power law:
 <!--
 As entities that both consume and produce resources, they are analogous to living organisms and ecosystems, whose properties (such as body size or growth rate) scale in a 'self-similar' manner with mass (obeying Zipf's power law). In the case of a city, indicators, $Y$ (such as GDP or energy consumption) scale with population, $N$ as:
 -->
@@ -213,15 +176,15 @@ As entities that both consume and produce resources, they are analogous to livin
 	Y(t)=Y_0N(t)^{\beta}
 \end{align}
 
-where $Y_0$ is a normalisation constant, and $\beta$ is a constant which corresponds to the indicator under consideration. This result is interesting in and of itself because it shows that cities of different sizes are, in essence, scaled versions of each another, and thus different cities do in fact operate in very similar ways [^animal-analogy]. This makes it possible to predict many different quantities from just knowing a city's population.
+where $Y_0$ is a normalisation constant, and $\beta$ is a constant which corresponds to the indicator under consideration. This is a well-known result, and is interesting in and of itself because it shows that cities of different sizes are, in essence, scaled versions of each another, and thus different cities do in fact operate in very similar ways [^animal-analogy]. This means it is possible to predict many different quantities from just knowing a city's population.
 
 [^animal-analogy]: In this way, cities are analogous to animals, whose physiological characteristics (e.g. metabolic rate) scale with its mass.
 
-Even more interesting are the values which $\beta$ takes for different types of $Y$ quantities (examples are given in Table \ref{tab:beta}. It turns out that for material quantities (such as the number of petrol stations, or the length of electrical cable), $\beta<1$; while for socioeconomic quantities (such as GDP, or the number of serious crimes), $\beta>1$. In the former case, $Y$ exhibits economies of scale, such that bigger cities can serve their cities more efficiently (e.g. the number of gas stations required does not need to increase as quickly as the population). In the latter case, $Y$ exhibits increasing return to scale (e.g. wealth increases more quickly than that population), because bigger cities benefit from the agglomeration effects of knowledge spillover and other social dynamics.
+Even more interesting are the values which $\beta$ takes for different types of $Y$ quantities (examples are given in Table \ref{tab:beta}. It turns out that for material quantities (such as the number of petrol stations, or the length of electrical cable), $\beta<1$; while for socioeconomic quantities (such as GDP, or the number of serious crimes), $\beta>1$. In the former case, $Y$ exhibits economies of scale, such that bigger cities can serve their cities more efficiently (e.g. the number of gas stations required does not need to increase as quickly as the population). In the latter case, $Y$ exhibits increasing returns to scale (e.g. wealth increases more quickly than that population), because bigger cities benefit from the agglomeration effects of knowledge spillover and other social dynamics.
 
 \begin{table}[]
 \centering
-\caption{Example $\beta$ values extracted from \citet{Bettencourt2007a, Table 1}.}
+\caption{Example $\beta$ values taken from \citet{Bettencourt2007a, Table 1}.}
 \label{tab:beta}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -237,13 +200,15 @@ Length of electrical cables      & 0.87    & Germany 2002 \\ \bottomrule
 \end{tabular}
 \end{table}
 
-In the second equation of urban growth, population growth is related to the resources required to sustain it. If each individual requires some quantity, $R$, to maintain them per unit time, and $E$ (extra) to accommodate a new member, then total resource requirement, $Y$ is given by
+In a second equation of urban growth, population growth is related to the resources required to sustain it. If each individual requires some quantity, $R$, to maintain them per unit time, and $E$ ('extra') to accommodate a new member, then total resource requirement, $Y$ is given by
 
 \begin{align} \label{eq:urban_growth}
 	Y(t)=RN(t)+E\frac{dN(t)}{dt}
 \end{align}
 
-The result which demonstrates economic challenges is found by equating Equations \eqref{eq:urban_scale} and \eqref{eq:urban_growth}, and solving for $N(t)$\footnote{This gives $N(t)=\left\{\frac{Y_0}{R}+\left(N^{1-\beta}(0)-\frac{Y_0}{R}\right)\exp\left[-\frac{R}{E}(1-\beta)t\right]\right\}^{\frac{1}{1-\beta}}$}. This solution, shows that cities whose growth is driven by agglomeration ($\beta>1$), are so economically attractive that populations will grow at greater-than-exponential rates, with $N(t)$ theoretically reaching infinity after critical time, $t=t_c$\footnote{Crictical time is given by $t_c&=-\frac{E}{(\beta-1)R}\ln\left[1-\frac{R}{Y_0}N^{1-\beta}(0)\right] \approx \left[\frac{E}{(\beta-1)R}\right]\frac{1}{N^{\beta-1}(0)}$}.
+The result which demonstrates economic challenges is found by equating Equations \eqref{eq:urban_scale} and \eqref{eq:urban_growth}, and solving for $N(t)$\footnote{This gives $N(t)=\left\{\frac{Y_0}{R}+\left(N^{1-\beta}(0)-\frac{Y_0}{R}\right)\exp\left[-\frac{R}{E}(1-\beta)t\right]\right\}^{\frac{1}{1-\beta}}$}. This solution, shows that cities whose growth is driven by agglomeration ($\beta>1$), are so economically attractive that populations will grow at greater-than-exponential rates, with $N(t)$ theoretically reaching infinity after critical time, $t=t_c$\footnote{Crictical time is given by $t_c&=-\frac{E}{(\beta-1)R}\ln\left[1-\frac{R}{Y_0}N^{1-\beta}(0)\right] \approx \left[\frac{E}{(\beta-1)R}\right]\frac{1}{N^{\beta-1}(0)}$}. However, unbounded growth assumes sufficient resources, $R$ and $E$, to sustain it. In reality, this is not the case, and thus Bettencourt's model predicts a collapse in population, resulting in an economic crash [@Ledford2007]. 
+
+The key to economic sustainability of knowledge-based urban economies therefore, is to prevent this collapse through innovation that can sustain agglomeration-driven growth. In the model, this corresponds to resetting the values of Equation \eqref{eq:urban_growth}'s parameters, before $t_c$ is reached. However, $t_c$ for each new cycle of innovation becomes shorter and shorter requiring innovation to take place at increasingly faster paces (see Figure \ref{fig:bettencourt_innovation}). This need for innovation to happen after ever-decreasing time intervals is consistent with historical movements between the Stone, Bronze, and Iron Ages, and the Computer, and Information and Digital Ages [@Bettencourt2010], as well as historical data from New York City [@Bettencourt2007a].
 
 <!--
 In other words, in these cities, the social dynamics (e.g. the number of patents registered) move faster, but this same dynamic leads to unbounded growth (http://www.nature.com/nature/journal/v467/n7318/pdf/467912a.pdf). 
@@ -256,9 +221,7 @@ In other words, in these cities, the social dynamics (e.g. the number of patents
 Thus material economies of scale is in tension with the super-linear scaling of innovation characteristics. 
 -->
 
-However, unbounded growth assumes sufficient resources, $R$ and $E$, to sustain it. In reality, this is not the case, and thus Bettencourt's model predicts a collapse in population, resulting in an economic crash [@Ledford2007]. However, this collapse can be prevented, if innovation can take place which can sustain agglomeration-driven growth. In the model , this corresponds to resetting the values of Equation \eqref{eq:urban_growth}'s parameters, before $t_c$ is reached.
 
-However, $t_c$ for each new cycle of innovation becomes shorter and shorter requiring innovation to take place at increasingly faster paces (see Figure \ref{fig:bettencourt_innovation}). This need for innovation to happen after ever-decreasing time intervals is consistent with historical movements between the Stone, Bronze, and Iron Ages, and the Computer, and Information and Digital Ages [@Bettencourt2010], as well as historical data from New York City [@Bettencourt2007a].
 
 ```{r growth_cycles, fig.cap="Population growth, and the cycles of innovation required to sustain it, in agglomeration economies. (Figure adapted from \\citet{Bettencourt2007a}.)", results="asis"}
 
@@ -584,7 +547,7 @@ To realise these benefits in practice is no small challenge -- not least because
 
 Urban resource consumption is connected to a lot of different issues and considerations, and thus to provide a focussed are of research, where clear novel contributions can be proposed, requires that research boundaries be defined, in order to pose a precise research question.
 
-### Title definition
+### Title definition {#sec:title-def}
 
 Of the many fascinating aspects of cities, some broad, and some terms used can have vague, unbounded meanings (such as 'resources', 'processes' and 'sector', amongst others). Thus this section defines the boundaries of the research, in order to be able to precisely define a research question.
 
