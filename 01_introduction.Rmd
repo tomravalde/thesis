@@ -39,7 +39,7 @@ More specifically, this thesis will focus on urban energy, water consumption and
 	\label{fig:elec}
 \end{figure}
 
-In meeting consumer demand for electricity, the coal, power plant, electricity, and power lines are but a few components in the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined above. Furthermore, the electricity system is but one part of the larger system which manages a city's energy, and this system is in turn just one of several systems at work in a city, others including water management, waste management, and transport. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together?
+In meeting consumer demand for electricity, the coal, power plant, electricity, and power lines are but a few components in the network of infrastructure used to manage a city's electricity. This network could include other energy sources (renewable and non-renewable), at various scales (large centralised power plants at one extreme, and small distributed microgeneration units at the other), all of which work in combination to meet electricity demand at any point in time. In other words, a city's electricity supply is a good example of a 'system' as defined in the epigraph. Furthermore, the electricity system is but one part of the larger system which manages a city's energy, and this system is in turn just one of several systems at work in a city, others including water management, waste management, and transport. This thesis considers how system improvements can benefit urban resource management. More specifically, why and how should systems for the energy, water and waste sectors -- traditionally considered separately -- work together?
 What is interesting about this work is that it is the very nature of a city which makes this possible -- that fact that infrastructure is geographically co-located means that the different sectors can work together. The city contains within it the opportunity to tackle the problems it creates.
 <!--
  Is it possible to make design decisions regarding the infrastructure networks and chains of processes used to convert and supply goods and services?
@@ -118,7 +118,7 @@ The environment is a huge field of study, and to summarise all negative environm
 
 #### Sectoral strains
 
-[^sectors]: The energy, waste, and water sectors have been chosen here since they will considered throughout the rest of this thesis, for reasons given Section \ref{sec:title-def}'s definition of 'energy, water, and waste'. Other sectors not considered here could include transport and materials.
+[^sectors]: The energy, waste, and water sectors have been chosen here since they will considered throughout the rest of this thesis, for reasons given in the definition of 'energy, water, and waste' in  Section \ref{sec:title-def}. Other sectors not considered here could include transport and materials.
 
 <!--
 Some environmental challenges may be manifested at easily identifiable locations (such as a city itself or its immediate surroundings), while other effects may be felt more generally. These include land-use impacts, resource scarcity, poor water quality, emissions, the heat-island effect and eutrophication, much of which can be related to resource overconsumption \citep{Cao2011}. Such negative effects can be seen in relation to three sectors.
@@ -126,7 +126,7 @@ Some environmental challenges may be manifested at easily identifiable locations
 
 Consider first the **energy** sector. Cities are home to just over 50 per cent of the globabl population, yet they are responsible for around 60 per cent of primary energy consumption, and 71 per cent of energy-related greenhouse gas emissions \citep{IEA2008}. The disproportionaly high energy consumption is driven mainly by the higher quality of life enjoyed by city dwellers relative to their rural counterparts \citep{@Grubler2009}. Climate change is a global problem (i.e. the effects are not felt by the ares in proportion to their part in causing them. Thus rightly managing the urban energy sector is a matter of global importance.
 
-The primary issue in the **waste** sector is simply the volume of waste produced, which municipal governments need to deal with somehow, even as disposal capacity is decreasing [@Lu2009]. With their higher quality of life, urban dwellers consume more goods, and so generate more waste. Thus per capita waste generation rates are higher in cities than in rural areas. With the world both urbanising, and those urban dwellers continuing to improve their living standards, the World Bank estimates that total municipal solid waste could increase by 70 per cent between 2012 and 2025 \citep{Hoornweg2012}. Other waste-related challenges include urban waste's contribution to climate change -- about five per cent of total greenhouse emissions come from waste, as the combined contributions of methane (from organic waste) and carbon dioxide (from incineration, which also leads to air pollution) \citep{Hoornweg2012}; flooding due to the blocking of drainage \citep{Lamond2012}; groundwater contamination [@Li2006], and public health concerns \citep{Kouame2014} (especially of open landfill sites in development countries [@Durand2013], bad odours, and aesthetic impacts \citep{Shah2012}.
+In the **waste** sector, the primary issue is simply the volume generated, which municipal governments need to deal with somehow, even as disposal capacity is decreasing [@Lu2009]. With their higher quality of life, urban dwellers consume more goods, and so generate more waste. Thus per capita waste generation rates are higher in cities than in rural areas. With the world both urbanising, and those urban dwellers continuing to improve their living standards, the World Bank estimates that total municipal solid waste could increase by 70 per cent between 2012 and 2025 \citep{Hoornweg2012}. Other waste-related challenges include urban waste's contribution to climate change -- about five per cent of total greenhouse emissions come from waste, as the combined contributions of methane (from organic waste) and carbon dioxide (from incineration, which also leads to air pollution) \citep{Hoornweg2012}; flooding due to the blocking of drainage \citep{Lamond2012}; groundwater contamination [@Li2006], and public health concerns \citep{Kouame2014} (especially from open landfill sites in developing countries [@Durand2013], bad odours, and aesthetic impacts \citep{Shah2012}.
 
 The **water** sector has also felt the strain of urbanisation: increases in affluence, and business and industrial activity, has increased per capita rates of water consumption \citep{AlFry2006}. Water is a limited resource subject to the hydrological cycle, so water stress (where the available water cannot meet all required uses) is commonplace -- about half of the world's cities with with populations greater than 100,000 cannot replenish their water resources at the rate they use them \citep{Richter2013}. The effects of water stress may not be felt where they are caused, since the infrastructure use to treat and transport water is more easily afforded by the affluent, but not by the poor (thus water stress is disproportionately suffered in the developing countries, which is also where most urbanisation is happening). Many large cities use networks extending up to 200 kilometers into their surrounding area to meet demand, but for many urbanising regions, it is difficult to invest quickly enough to build the infrastructure to meet demand \citep{EEA2016}.
 <!--
@@ -300,16 +300,13 @@ As an alternative to 'innovation', efficient resource management should be adopt
 In addition to the policy proposals above, there is another concept -- key to this thesis -- that could be adopted to help meet these challenges. That is the properties inherent to a city which means they can manage resources efficiently.
 -->
 
-## Urbanisation: the opportunity
-\label{sec:urbanOpps}
+## Urbanisation: the opportunity {#sec:urbanOpps}
 
-Urbanisation is helping more and more people to live a better quality of life, but this comes at a cost of environmental challenges and economic risks. However, cities, by their very nature, may be well placed to meet the challenge. This section will explore how, by introducing ideas key to this thesis.
-
-The headline statistics show that compared to rural areas, that on a per capita basis, cities use more energy and water, and produce more waste. However, once quality of life is factored in, it is actually the case that, on the whole, cities use less resources per capita to provide a given quality of life. This is, in essence, a key principle of urban areas -- they can supply goods and services to their point of need more efficiently than smaller settlement types.
-
-This efficiency must naturally follow from the scaling laws in @Bettencourt2007a. If employment, GDP, and other quality-of-life indicators increase at a rate quicker than population growth[^qual-of-life], yet household consumption of energy and water increases at slower rate (see $\beta$ values in Table \ref{tab:beta}), then it necessarily follows that urbanisation is an efficiency-finding process. Even if one were to take *overall* electricity consumption (i.e. not just that of households) which grows more quickly than the population, it is still a slower growth rate than GDP and employment.
+So far, this chapter has described how urbanisation is helping more into a better quality of life, but that this comes at a cost to environmental and economic sustainability. However, the picture is a little more nuanced than this; the headline statistics show that compared to rural areas, that on a per capita basis, cities use more energy and water, and produce more waste, but once quality of life is factored in, it is actually the case that, on the whole, cities use less resources per capita to provide a given quality of life. This is, in essence, a key principle of urban areas -- they can supply goods and services to their point of need more efficiently than smaller settlement types. This efficiency follows naturally is reflected in the scaling laws of @Bettencourt2007a. If employment, GDP, and other quality-of-life indicators increase more quickly than population growth, yet household consumption of energy and water increases at slower rate (see $\beta$ values in Table \ref{tab:beta})[^qual-of-life], then it necessarily follows that urbanisation is an efficiency-finding process. This is true even if one were to take *overall* electricity consumption (i.e. not just that of households) which grows more quickly than the population, it is still a slower growth rate than GDP and employment.
 
 [^qual-of-life]: Note however, that negative indicators also follow greater-than-population growth rates, such as new AIDS cases ($\beta=1.23$) and serious crimes ($\beta=1.16$).
+
+The detailed mathematics which describe the phenomena that gives origin to these scaling laws is presented in @Bettencourt2013. The mathematics is not particularly advanced, but it is rather involved. However, the efficiency inherent to urban areas can be explained simply, with one word -- *proximity*. The city facilitates the mixing of people such that the socioeconomic gains surpass the resource demands. This thesis will look particularly at the infrastructural proximity, and how (as mentioned earlier), its geographical co-location means cities might be well placed to be the solution to their own problem. Specifically, where management processes are close to both one another, and to consumers who have a diverse mix of demands, there are a couple of strategies which can be exploited to use resources more efficiently.
 
 <!--
 - Incremental network growth to serve population
@@ -327,34 +324,27 @@ This efficiency must naturally follow from the scaling laws in @Bettencourt2007a
 - Note, there is variation among cities http://www.pnas.org/content/112/19/5985.full.pdf
 -->
 
-### More efficient still?
-
-The detailed mathematics which describe the phenomena that gives rise to these scaling laws is presented in @Bettencourt2013. The mathematics is not particularly advanced, but it is rather involved. However, the efficiency inherent to urban areas can be explained simply, with one word -- *proximity*. The city facilitates the mixing of people such that the socioeconomic gains from this surpass the resource demands. However, there is another sort of proximity which applies to infrastructure, rather than people.
 <!--
 If quality-of-life adjusted per capita resource efficiency is given by $\mbox{quality of life} / \mbox{consumption}$, then there are 
 -->
 
-In cities, resource management processes can be close to consumers who have a diverse mix of demands for goods and services. Not only that, processes can also be close to one another. Both of these facts facilitate a couple of strategies to use resources more efficiently.
 
-\begin{description}
 
+<!--
 %\item [Waste collectors] In poorer areas, people see the opportunity in poorer areas (http://practicalaction.org/urban-waste-management-3)
 %- Integrated Sustainable Waste Management (http://documents.worldbank.org/curated/en/302341468126264791/pdf/68135-REVISED-What-a-Waste-2012-Final-updated.pdf)
 %Proximity of the population to waste
+-->
 
-\item [Decentralisation] is jargon from energy management, to refer to energy generation that takes place closer to the point of use than traditional centralised generation (such as a large power plant). In electricity networks, this can reduce distribution power losses (and hence emissions) \citep{Fleten2007a}. Of even greater interest, is that decentralisation enables a diverse mix of energy-generation technologies to use play a part in energy supply, including combined heat and power (CHP), photovoltaic systems (PV), small wind turbines, biogas digesters and other devices \citep{Ren2010}. These technologies can be fed by a variety of local resources (including renewables such as wind, solar and biomass, as well as traditional fuels such as coal and gas).
-
-Modelling work \citep{Webber2011} and empirical studies \citet{CarbonTrust2014} show environmental and financial benefits to integrating traditional centralised energy management with decentralised processes.
+The first strategy is **decentralisation**. This is jargon from energy management, to refer to energy generation that takes place closer to the point of use than traditional centralised generation (such as a large power plant). In electricity networks, this can reduce distribution power losses \citep{Fleten2007a}. Of even greater interest, is that decentralisation enables a diverse mix of energy-generation technologies to use play a part in energy supply, including combined heat and power (CHP), photovoltaic systems (PV), small wind turbines, biogas digesters and other devices \citep{Ren2010}. These technologies can be fed by a variety of local resources including renewables such as wind, solar and biomass, as well as traditional fuels such as coal and gas. Modelling work \citep{Webber2011} and empirical studies \citet{CarbonTrust2014} show environmental and financial benefits to integrating traditional centralised energy management with decentralised processes.
 
 Decentralisation can also be applied to water systems \citet{Holler2016}. Rather than using large facilities to treat water and wastewater, distributed infrastructure can harvest rainwater through roof collectors and permable pavements, and reclaim or reuse waste water at multiple locations around a city (even down at the household scale). This disaggregation of collection, management, and treatment can reduce rates of freshwater withdrawal, as well as water-related energy requirements \citet{Daigger2009}.
 
-\item [Cascading] is another way to improve energy system efficiency. The classic example is CHP, in which the waste heat from power generation is used to provide useful heat energy \citep{Grubler2009}.
+A second strategy is **cascading** -- another way to improve energy system efficiency. The classic example is CHP, in which the waste heat from power generation is used to provide useful heat energy \citep{Grubler2009}. While the water management sector does not use the term 'cascading', the same principle can still be applied, namely using waste products of one process, as the input to another. Often, this is when wastewater from one purpose is used for another purpose which requires less stringent quality standards. An example for a household could be the separation of potable and nonpotable water streams, such that grey water from the washing could be used in toilet flushing or watering the plants \citep{TheGreenAge2016}.
 
-While the water management sector does not use the term 'cascading', the same principle can still be applied, namely using waste products of one process, as the input to another, in this case, when wastewater from one purpose is used in for another purpose which requires less stringent quality standards. An example for a household could be the the separation of potable and nonpotable water streams such that grey water from the washing could be used in toilet flushing or watering the plants \citep{TheGreenAge2016}.
+### Intersectoral synergies
 
-\end{description}
-
-Both decentralisation and cascading are are possible because of proximity of infrastructure to resource feeds, consumers and to each other. The examples listed above show how cities can get the most out of a particular infrastructure system. However, these efficiencies are not necessarily the limit of what can be achieved.
+Both decentralisation and cascading are are possible because of proximity of infrastructure to resource feeds, consumers and to each other. The examples listed above show how cities can get the most out of a particular infrastructure system. However, these efficiencies are not necessarily the limit of what can be achieved. In cities, infrastructural proximity can also apply to the infrastructure of *different* sectors. In theory, this allows the waste and by-products of one sector to become the inputs to another. In other words, resources can be cascaded between sectors (and this can be facilitated by the decentralisation of processes). So not only are there the intersectoral strains mentioned above, but the same sectoral pairs also present opportunities for intersectoral synergies.
 
 <!--
 \citep{Cai2011} Systematic and intensive municiple infrastructure e.g. integrated water systems
@@ -364,23 +354,7 @@ Both decentralisation and cascading are are possible because of proximity of inf
 %% Point out that there are inherent advantages to DER: price, reduces emissions, developing countires, fuel prices, low carbon construction
 -->
 
-#### Intersectoral synergies
-
-[TODO: Decide if this should be a third-level heading]
-
-In cities, infrastructural proximity can also apply to the infrastructure of *different* sectors. In theory, this allows the waste and by-products of one sector to become the inputs to another. In other words this is the cascading of different resources between sectors (possibly made easier if processes are decentralised). This section lists a few of these intersectoral synergies, categorised according to each sector pairs.
-
-\begin{description}
-
-\item [Energy and water] Synergies in this pairing include hydroelectric power, which converts water's hydrostatic and dynamic energy into electrical energy; and water source heat pumps, which extract the heat energy stored in water. If energy and water systems are intergrated in the right way, it is possible to improve the efficiency of both systems \citep{Makropoulos2008}.
-
-\item [Energy and waste] Synergies between these two sectors include waste incineration, to generate heat which can be used for power generation or heating (and save on landfill space at the same time).
-
-Anaerobic digestion is another process which can beneficially link the energy and waste sectors. In this process, waste with organic content (e.g. food waste) can be digested to produce biogas (which can then be used as a fuel).
-
-\item [Water and waste] The reclamation of wastewater can reduce the need for freshwater withdrawal, which can be achieved through various methods.
-
-\end{description}
+Between the **energy and water**, synergies include hydroelectric power (which converts water's hydrostatic and dynamic energy into electrical energy); and water source heat pumps, which extract the heat energy stored in water. If energy and water systems are integrated in the right way, it is possible to improve the efficiency of both systems \citep{Makropoulos2008}. Synergies between the **energy and waste** sectors include waste incineration, to generate heat which can be used for power generation or heating (and save on landfill space at the same time), and anaerobic digestion, where waste with organic content (e.g. food waste) is to generate biogas (which can then be used as a fuel). Finally , the synergies in the **water and waste** sectors mainly include the reclamation of wastewater, so as to reduce the need for freshwater withdrawal. 
 
 \begin{figure}
 	\centering
@@ -392,9 +366,9 @@ Anaerobic digestion is another process which can beneficially link the energy an
 	\label{fig:intersectoral-synergies}
 \end{figure}
 
-If these and other intersectoral synergies can be exploited, then it might be possible for cities to reduce their consumption and waste. Calls for this type of approach are found in the literature, for example, \citet{Leduc2010} advocate the 'urban harvest' approach to urban planning. This takes advantage of the infrastructural proximity and connectivity to maximise the reuse of water, waste and other materials within an urban system. This king of reorganisation of resources flows within a city was also proposed by the Dutch Working Group on Sustainable Urban Development \citep{Meijer2011}.
+If these and other intersectoral synergies (summarised in Figure \ref{fig:intersectoral-synergies}) can be exploited, then it might be possible for cities to reduce their consumption and waste. Calls for this type of approach are found in the literature, for example, by \citet{Leduc2010} who advocate an approach to urban planning they call 'urban harvest'; this takes advantage of infrastructural proximity and connectivity to maximise the reuse of water, waste and other materials within an urban system. This kind of reorganisation of resources flows within a city was also proposed by the Dutch Working Group on Sustainable Urban Development \citep{Meijer2011}.
 
-#### Intersectoral synergies in practice -- industrial symbiosis
+### Intersectoral synergies in practice -- industrial symbiosis
 
 There is precedent for this sort of approach, which comes from the field of 'industrial symbiosis' (IS). This is where firms use each others' waste outputs as inputs in other processes [@WRAP2016]. This idea is realised in 'eco-industrial parks' (EIPs) in which industries, business and consumers are co-located with the deliberate intention of practising IS [@PresidentsCouncil1996].
 
