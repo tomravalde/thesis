@@ -6,9 +6,6 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 ```
 
-\epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{\citet{Bettencourt2010}, \emph{Nature}}
-
-
 # Urban metabolism and systems optimisation
 
 \epigraph{
@@ -89,7 +86,7 @@ In coming to an understanding of **-middle** systems, some models choose to unit
 
 To summarize, UM is an important idea, which provides a framework to examine resource consumption alongside issues of urban sustainability [@NextCity2014]. UM studies enables comparisons of resource consumption/output; facilitates the calculation of greenhouse gas emissions and similar indicators; measures relationships between patterns of resources use, challenges, and socioeconomic indicators; and explores relationships at work within urban boundaries. In these ways, UM studies can provide insight on how to maintain of urbanisation's socioeconomic benefits while limiting environmental harm.
 
-### The place of processes in urban metabolism modelling
+### The place of processes in urban metabolism modelling {#sec:procs-in-UM}
 
 UM has contributed many useful insights, but of most interest to this thesis is the fourth type of UM study listed above, since this work is concerned with how different mixes resource management processes (i.e. activities occurring within an urban boundary) can affect overall metabolic flows. A key question then, is to what extent have UM studies sought to understand the role of resource management processes on an area's metabolic flows? This section considers this question by taking a closer look at how processes fit within urban resource management as a whole, and considering how UM studies have portrayed this. 
 
@@ -374,7 +371,7 @@ plot_cluster <- ggplot(lit_main_cats, aes(x=techniques.broad, y=focus.broad)) +
 plot_cluster
 ```
 
-## Review of resource managagement optimisation modelling
+## Review of resource managagement optimisation modelling {#sec:rev-um-opt-models}
 
 So far, this chapter has introduced UM as a research area that can support urban sustainability measures, and has shown that modelling is one means by which this can happen. The work of this thesis is to add to UM modelling capabilities a model which can optimise the simultaneous design of urban energy, water, and waste systems, so as to take advantage of intersectoral synergies, and thus improve an area's metabolism. To assist that cause, this section reviews a number of 'resource management optimisation models'[^ROM]. This has two purposes: first, to confirm the need for a model which can simultaneously optimise multiple resource management systems at the urban scale (thus complementing the findings above that the UM modelling literature includes no such models); and second, to suggest possible methodologies which can be adapted in this thesis.
 
@@ -399,7 +396,7 @@ Optimisation models also are used to help plan urban water supply networks. For 
 
 Finally, there are a number of waste management planning models such as @Guo2009 and @Li2006. These models allocate waste flows from their point of generation to various management facilities, to inform longterm decisions. (i.e. investment choices and capacity requirements) [TODO: Add note on the two-stage methodologies].
 
-### An overview of the literature
+### An overview of the literature {#sec:optim-model-overview}
 
 The energy, water and waste models introduced above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation models more generally, a quasi-systematic literature review can help to identify trends and patterns in how model formulations vary according to purpose. This will help to confirm gaps in the literature which can be met by this thesis, as well as precedent methods which can be used in this thesis. The first stage of the review is to use the Scopus tool to search for relevant literature, using the search term `energy AND water AND waste AND optimization model`, and excluding irrelevant subject areas (such as psychology) from the search\footnote{The full search term is available at \url{http://www.scopus.com/results/results.uri?sort=r-f&src=s&sid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&sot=a&sdt=cl&cluster=scosubjabbr%2c%22CHEM%22%2cf%2bscosubtype%2c%22ar%22%2ct%2bscosubjabbr%2c%22BIOC%22%2cf%2c%22MATE%22%2cf%2c%22PHYS%22%2cf%2c%22MEDI%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22SOCI%22%2cf%2c%22ECON%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22VETE%22%2cf%2c%22ARTS%22%2cf%2c%22HEAL%22%2cf%2c%22NEUR%22%2cf%2c%22PSYC%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&origin=savedSearchNewOnly&txGid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a10}.}
 
