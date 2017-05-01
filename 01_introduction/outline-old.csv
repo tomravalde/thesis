@@ -1,0 +1,8 @@
+"Chapter","Objective","Contribution to thesis","Contribution to the field"
+1,"\textbf{Objective 1:} Research the links between urbanisation trends, and resource management challenges and opportunities to motivate the thesis.","Establish the research question",
+2,"\textbf{Objective 2(a):} Research the urban metabolism concept which provides a theoretical framework to assess urban resource consumption. \textbf{Objective 2(b):} Research modelling methods used currently in designing for sustainable resource management.","Locate this research question within the existing literature","To identify theoretical and methodological opportunities and gaps in the literature."
+3,"\textbf{Objective 3:} Determine metrics to quantify performance of multi-resource systems, appropriate to measure the success at meeting environmental and economic challenges.","Theory","Determine metrics appropriate to measure UM (work published in \citet{Ravalde2016})."
+4,"\textbf{Objective 4:} Systematically research the processes likely to influence urban metabolism between now and 2030 (for model inputs).","Data","Assemble an open database of the resource management processes over the coming years (work published in \citet{Ravalde2016})."
+5,"\textbf{Objective 5:} Develop the mathematical formulation and the computational implementation of the model.","Method","Benchmarking problem (published online at [TODO:])"
+6,"\textbf{Objective 6:} Apply the model to a case study to demonstrate resource integration.","Case study","Demonstration of model (early version of this work presented at ISNGI, 2014 and published in \citet{Ravalde2014}.)"
+7,"\textbf{Objective 7:} Evaluate the success and implications of the model.","Answer research question, and prose an agenda for future research",

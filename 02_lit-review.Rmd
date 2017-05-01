@@ -6,9 +6,6 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 
 ```
 
-\epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{\citet{Bettencourt2010}, \emph{Nature}}
-
-
 # Urban metabolism and systems optimisation
 
 \epigraph{
@@ -26,8 +23,6 @@ opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.w
 The introduction to Section 1.1, and Section 1.1.1 have been adapted from Section 2 of \citet{Ravalde2015a} (`Urban metabolism and sustainability'). Section 1.1.2 has been adapted from \citet{Ravalde2016} (`Approaches to Urban Metabolism').
 
 \end{tcolorbox}
-
-Another. Edit.
 
 The aim of this thesis is to build a model which can assist planners and decision makers in improving the urban metabolism of an area, in order that the benefits of urbanisation can continue to be realised to the benefit of a growing urban global population, while reducing the environmental and economic threats they pose. With this in mind, this literature review shows to what extent the research question has been answered.
 
@@ -89,7 +84,7 @@ In coming to an understanding of **-middle** systems, some models choose to unit
 
 To summarize, UM is an important idea, which provides a framework to examine resource consumption alongside issues of urban sustainability [@NextCity2014]. UM studies enables comparisons of resource consumption/output; facilitates the calculation of greenhouse gas emissions and similar indicators; measures relationships between patterns of resources use, challenges, and socioeconomic indicators; and explores relationships at work within urban boundaries. In these ways, UM studies can provide insight on how to maintain of urbanisation's socioeconomic benefits while limiting environmental harm.
 
-### The place of processes in urban metabolism modelling
+### The place of processes in urban metabolism modelling {#sec:procs-in-UM}
 
 UM has contributed many useful insights, but of most interest to this thesis is the fourth type of UM study listed above, since this work is concerned with how different mixes resource management processes (i.e. activities occurring within an urban boundary) can affect overall metabolic flows. A key question then, is to what extent have UM studies sought to understand the role of resource management processes on an area's metabolic flows? This section considers this question by taking a closer look at how processes fit within urban resource management as a whole, and considering how UM studies have portrayed this. 
 
@@ -251,11 +246,9 @@ Simulation and optimisation models need to be based on descriptive models: what 
 
 ### An overview of urban metabolism models
 
-Each of the model types above are to be found in the UM literature. Indeed, the idea of 'metabolism' is itself a descriptive model, i.e. the concept of 'metabolism' has inherent to it the fact that resource flows relate to an entity's form and function. To show where this thesis can fit within the UM modelling landscape, this section reviews the literature found by exploring the Scopus database using the search term `urban metabolism AND model OR modelling`\footnote{The full search term is available at \url{[TODO: URL]} This search excludes irrelevant subject areas (such as medicine).}
+Each of the model types above are to be found in the UM literature. Indeed, the idea of 'metabolism' is itself a descriptive model, i.e. the concept of 'metabolism' has inherent to it the fact that resource flows relate to an entity's form and function. To show where this thesis can fit within the UM modelling landscape, this section reviews the literature found by exploring the Scopus database using the search term `urban metabolism AND model OR modelling`[^search-term].
 
-<!--
-https://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=urban+metabolism+AND+model+OR+modelling&sid=E0C49FA0042774D044085C15DE330D78.f594dyPDCy4K3aQHRor6A%3a110&sot=b&sdt=cl&cluster=scosubjabbr%2c"MEDI"%2cf%2c"BIOC"%2cf%2c"PHAR"%2cf%2c"NURS"%2cf%2c"CHEM"%2cf%2c"NEUR"%2cf%2c"IMMU"%2cf%2c"MATH"%2cf%2c"BUSI"%2cf%2c"ARTS"%2cf%2c"PSYC"%2cf%2c"HEAL"%2cf%2c"MULT"%2cf%2c"VETE"%2cf%2c"Undefined"%2cf&sessionSearchId=E0C49FA0042774D044085C15DE330D78.f594dyPDCy4K3aQHRor6A%3a110&origin=savedSearchNewOnly&txGid=0}.
--->
+[^search-term]: The full search term is available at TODO: URL. This search excludes irrelevant subject areas (such as medicine).
 
 This search returned 239 results which were manually reduced to 108 after removing articles which were  inaccessible, not published in English, only tangentially related to UM, or did not satisfy the definitions of 'model' as described above. Looking further at the remaining results, each paper was classified according to three three categories: the **type** of model (according to the definitions given above); the model's **focus**, which refers to the component(s) of urban metabolism studied by the model; and **level** of detail to which a system is modelled. The following three subsections summarise the variety of models to be found in UM.
 
@@ -269,7 +262,7 @@ Moving beyond the conceptual models, various types of mathematical models have b
 
 UM models have different foci, which are considered here under two sub-characteristics: models that try to understand more about the **resource** flows of a city, and models which study **non-resource** components of UM.
 
-**Resource**-focussed models can study just a \emph{single resource}, as in the case of \citet{Zeng2014}, who formulate mathematical models of water treatment technologies and end uses to simulate the quantity of water and wastewater flows between them. Other models focus on \emph{multiple resources}, such as \citet{Liang2011}, who evaluate how various energy and material flows (including coal, water, biomass and pollutants) change under proposed policies. Finally, some models consider multiple resources but \emph{integrate} them together under a single value system; examples include \citet{Huang2005} who quantify various flows including solar energy, rain and fossil fuels in units of emergy\footnote{\emph{Emergy} in order that all resource flows for a city might be considered together.
+**Resource**-focussed models can study just a \emph{single resource}, as in the case of \citet{Zeng2014}, who formulate mathematical models of water treatment technologies and end uses to simulate the quantity of water and wastewater flows between them. Other models focus on \emph{multiple resources}, such as \citet{Liang2011}, who evaluate how various energy and material flows (including coal, water, biomass and pollutants) change under proposed policies. Finally, some models consider multiple resources but \emph{integrate} them together under a single value system; examples include \citet{Huang2005} who quantify various flows including solar energy, rain and fossil fuels in units of emergy\footnote{\emph{Emergy} in order that all resource flows for a city might be considered together.}.
 
 **Non-resource**-focussed models might look at \emph{urban form}, such as the steel-stock accounting model of \citet{Liang2014} (mentioned above); \emph{socioeconomics}, such as \citet{Newman1999}, (again, mentioned above); and the \emph{environment}, such as \citet{Huang2005} who predicts an area's greenhouse gas emissions according to the construction characteristics of houses in the areas.
 
@@ -374,7 +367,7 @@ plot_cluster <- ggplot(lit_main_cats, aes(x=techniques.broad, y=focus.broad)) +
 plot_cluster
 ```
 
-## Review of resource managagement optimisation modelling
+## Review of resource managagement optimisation modelling {#sec:rev-um-opt-models}
 
 So far, this chapter has introduced UM as a research area that can support urban sustainability measures, and has shown that modelling is one means by which this can happen. The work of this thesis is to add to UM modelling capabilities a model which can optimise the simultaneous design of urban energy, water, and waste systems, so as to take advantage of intersectoral synergies, and thus improve an area's metabolism. To assist that cause, this section reviews a number of 'resource management optimisation models'[^ROM]. This has two purposes: first, to confirm the need for a model which can simultaneously optimise multiple resource management systems at the urban scale (thus complementing the findings above that the UM modelling literature includes no such models); and second, to suggest possible methodologies which can be adapted in this thesis.
 
@@ -399,9 +392,9 @@ Optimisation models also are used to help plan urban water supply networks. For 
 
 Finally, there are a number of waste management planning models such as @Guo2009 and @Li2006. These models allocate waste flows from their point of generation to various management facilities, to inform longterm decisions. (i.e. investment choices and capacity requirements) [TODO: Add note on the two-stage methodologies].
 
-### An overview of the literature
+### An overview of the literature {#sec:optim-model-overview}
 
-The energy, water and waste models introduced above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation models more generally, a quasi-systematic literature review can help to identify trends and patterns in how model formulations vary according to purpose. This will help to confirm gaps in the literature which can be met by this thesis, as well as precedent methods which can be used in this thesis. The first stage of the review is to use the Scopus tool to search for relevant literature, using the search term `energy AND water AND waste AND optimization model`, and excluding irrelevant subject areas (such as psychology) from the search\footnote{The full search term is available at \url{http://www.scopus.com/results/results.uri?sort=r-f&src=s&sid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&sot=a&sdt=cl&cluster=scosubjabbr%2c%22CHEM%22%2cf%2bscosubtype%2c%22ar%22%2ct%2bscosubjabbr%2c%22BIOC%22%2cf%2c%22MATE%22%2cf%2c%22PHYS%22%2cf%2c%22MEDI%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22SOCI%22%2cf%2c%22ECON%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22VETE%22%2cf%2c%22ARTS%22%2cf%2c%22HEAL%22%2cf%2c%22NEUR%22%2cf%2c%22PSYC%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&origin=savedSearchNewOnly&txGid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a10}.}
+The energy, water and waste models introduced above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation models more generally, a quasi-systematic literature review can help to identify trends and patterns in how model formulations vary according to purpose. This will help to confirm gaps in the literature which can be met by this thesis, as well as precedent methods which can be used in this thesis. The first stage of the review is to use the Scopus tool to search for relevant literature, using the search term `energy AND water AND waste AND optimization model`, and excluding irrelevant subject areas (such as psychology) from the search\footnote{The full search term is available at TODO: copy in second URL}.
 
 ```{r model-lit-review-load, results="asis"}
 
