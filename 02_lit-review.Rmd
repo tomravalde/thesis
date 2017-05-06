@@ -129,7 +129,7 @@ To address this gap in UM research, @Zhang2009 proposed research into how resour
 \end{figure}
 
 
-#### A comprehensive understanding of the 'middle'
+#### A comprehensive understanding of the 'middle' {#sec:understand-the-middle}
 
 If these recommendations are to be realised, the urban metabolism field should seek a comprehensive understanding of what constitutes the middle to enable modelling to take place; i.e. identifying and describing the nodes and the links within metabolic networks. In Zhang's paper, the middle of the system is understood to be a set of economic sectors (represented by nodes), which consume and produce resources that transfer to between sectors (along links), as well as importing and exporting them across the urban boundary. This conceptual model has led Zhang and others to conduct UM studies which investigate the effect of the 'middle' of the system, using ecological network analysis (ENA) to investigate the extent to which different economic sectors are dependent on each other, and the implications for a city's overall metabolic flows (e.g. @Zhang2010 and @Liu2011a)[^ena-studies].
 
