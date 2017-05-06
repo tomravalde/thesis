@@ -411,7 +411,7 @@ Listing the intersectoral synergies is all very well. However, if planners and p
 Having seen how a more efficient use of resources is the route to meeting the problems caused by urbanisation, this section explores how urban areas are uniquely home to great opportunities to achieve this aim, chiefly due to the density of urban areas, and the resulting co-location of infrastructures. Thus, \emph{``urban planning in the 21\textsuperscript{st} Century should evolve towards an ecologically-oriented macro-architecture fully integrating the design and location of energy- and material-efficient buildings and urban infrastructure with overall spatial planning further to minimize material throughput.''} \citep{Rees1999}. 
 -->
 
-### Systems optimisation
+### Systems optimisation {#sec:systems-optimisation}
 
 To help navigate the complexity of resource management that integrates energy, water and waste, it is time to return to a point noted at the start of this chapter, namely that a network of resources and their associated management infrastructure can be thought of as a 'system'. A system of this sort can be conceptualised as a network made up of nodes and links, in which the nodes represent processes (such as a power plant, or a cable), and the links represent the transfer of resources between the nodes (such as electricity leaving the power plant to enter the cable). This is visualised in Figure \ref{fig:elec-system} which re-presents Figure \ref{fig:elec} using nodes and links.
 
@@ -451,7 +451,7 @@ as an example of an integrated resource network. Nodes represent the producers a
 -->
 
 
-## Urban metabolism -- the theoretical framework
+## Urban metabolism -- the theoretical framework {#sec:UM-theory}
 
 Any discussion on the sustainability of urban resource management should interact with the field of 'urban metabolism' (UM). UM -- whose history and methodology will be considered in more detail in Chapter 2 -- proposes that cities and living organisms are in some ways analagous: both entities consume resources, and produce wastes, and in doing so, sustain their activities and growth [@Kennedy2011]. This analogy offers a 'metaphorical framework' [@Pincetl2012, p.194] which provides the concepts and language to aid understanding of the relationship between a city and its resources -- both the flows into, within, and out of a city, and the stocks held inside a city over time. The field is broad and flexible, and patterns of resource use can be related to many aspects of a city, including its form and geography, socioeconomic indicators, political and institutional arrangements, and its activities and functions [@Hobbes2007].
 
@@ -536,7 +536,7 @@ As well as the research boundaries identified by the title definition, there are
 
 In summary, this thesis aims to focuses on the engineering possibilities of urban resource management challenges, in sufficient detail to be useful to researchers, planners and policy makers, but without becoming lost in an unbounded set of political, social, and economic realities.
 
-### Research question
+### Research question {#sec:research-qn}
 
 With the research boundaries in place, the following research question is posed, to give a clear focus to the thesis, and which can be used as a benchmark to measure the success of the research:
 

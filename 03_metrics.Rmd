@@ -63,7 +63,7 @@ Having shown the ways urban metabolism accounts can be used to measure the resou
   \label{fig:MR-represent}
 \end{figure}
 
-### 'Black-box' metrics
+### 'Black-box' metrics {#sec:black-box-metrics}
 
 In this representation, we have no knowledge of the processes within the MR system; one only observes the resource flows in and out, as is the case with typical urban metabolism accounts. This is also the standard representation of a system within systems engineering and it allows one to define two broad categories of performance metric: absolute measures ($\alpha$) and efficiency ratios ($\eta$). We outline these below, and summarise their properties in Table \ref{tab:metrics-closed}.
 
@@ -115,7 +115,7 @@ print(tab.metrics.tex,
       comment = FALSE)
 ```
 
-### Grey-box metrics
+### Grey-box metrics {#sec:grey-box-metrics}
 
 Black-box metrics are widely used and understood but they provide very little information about the processes at work within the urban boundaries. In the grey-box representation (Figure \ref{fig:MR-open}), analysts have information about the conversion processes occurring within the city, which would allow them to identify industrial symbioses that could not be discovered simply by examining overall system inputs and outputs. For example, @Eckelman2013 show how savings in greenhouse gas emissions are achieved by using waste steam outputs from a cogeneration plant in a nearby oil refining process. This section considers two methods that can be used to derive metrics from such information: exergy analysis and ecological network analysis.
 
