@@ -34,6 +34,7 @@ Linear programmes (LP) include many of the energy systems models (such as [TODO:
 -->
 
 *Nonlinear programmes* (NLP) are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). These problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity. However, usability may be hampered, for two reasons: first, the formulation is still detailed; and second, heuristic solutions usually require bespoke approaches.
+
 [^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)/(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
 
@@ -141,13 +142,9 @@ The benchmarking study in this chapter will be the first application of a model 
 
 ## Tat Hamlet case study
 
-The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 gave provided reports on the village's material and energy flows and socioeconomic features [@Schandl2006, @Heezen2004]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007].
+The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 gave provided reports on the village's material and energy flows and socioeconomic features [@Schandl2006, @Heezen2004]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007]. Thus, the Tat Hamlet is a known case study within [TODO: urban?] metabolism literature. In this chapter, the features of Tat will be used to describe the three model formulations developed, and the data from the material flow and energy flow studies will be used in the model, to apply the benchmarking tests.
 
-Thus, the Tat Hamlet is a known case study within [TODO: urban?] metabolism literature. In this chapter, the features of Tat will be used to describe the three model formulations developed, and the data from the material flow and energy flow studies will be used in the model, to apply the benchmarking tests.
-
-Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. The village does have small shops and education functions, but its main activity is agriculture, with rice cultivation (where paddy fields are irrigated by a small river), swidden cultivation, and biomass (timber, bamboo shoots, cassava roots) collection from a forest. Some agricultural products are sold to external traders, though most remain in the village. About 80 of the households own their own livestock (including chickens, dogs, buffalo, and cows), and most households have their own ponds for aquaculture, such that the village produces most of its own meat, dairy products, animal manure and green manure. Water can be piped to homes for drinking, household use, and for washing livestock.
-
-Aggregate metabolic flows into the village comprise rainfall, electricity from the grid, construction materials, fossil fuels (such as gasoline for motorbikes, and petroleum lighting), and a small amount of vegetable and meat imports. Metabolic flows out of the village include household and agricultural wastes, incineration products, fossil-fuel emissions, and biomass which is sold.
+Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. The village does have small shops and education functions, but its main activity is agriculture, with rice cultivation (where paddy fields are irrigated by a small river), swidden cultivation, and biomass (timber, bamboo shoots, cassava roots) collection from a forest. Some agricultural products are sold to external traders, though most remain in the village. About 80 of the households own their own livestock (including chickens, dogs, buffalo, and cows), and most households have their own ponds for aquaculture, such that the village produces most of its own meat, dairy products, animal manure and green manure. Water can be piped to homes for drinking, household use, and for washing livestock. Aggregate metabolic flows into the village comprise rainfall, electricity from the grid, construction materials, fossil fuels (such as gasoline for motorbikes, and petroleum lighting), and a small amount of vegetable and meat imports. Metabolic flows out of the village include household and agricultural wastes, incineration products, fossil-fuel emissions, and biomass which is sold.
 
 [TODO: Summary diagram]
 
@@ -694,7 +691,7 @@ Figure \ref{fig:evolution} shows how the three formulations are related both to 
 	\sffamily
 	\resizebox{\columnwidth}{!}{\input{05_model-development/model-family.pdf_tex}}
 	\end{spacing}
-	\caption{How the formulations here are related to the original SynCity model.}
+	\caption{How the formulations here are related to the urban energy systems model of \citet{Keirstead2013a}.}
 	\label{fig:evolution}
 \end{figure}
 
@@ -740,9 +737,7 @@ mgz_B = \eta^{dam} (\mbox{elec gen})
 
 ### Null (N) formulation
 
-The null model can be defined by the same equations as the MILP urban energy systems model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
-
-[TODO: Add (qty) superscript, so it doesn't have to be explained in the PRaQ model section]
+The null model can be defined using similar base equations as for the @Keirstead2013a model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
 
 \begin{align}
 I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \forall r,z
@@ -849,6 +844,8 @@ where $nb$ defines a set of neighbouring pairs of zones. For the final constrain
 \delta^{transp}_{tzz'} = \delta^{transp}_{tz'z} \label{eq:null_direction}
 \end{align}
 
+[TODO: Move this to a separate subsection?]
+
 There are a number of objectives that the model can meet (for example minimum emissions or minimum water footprint), but here we will minimise the cost of the overall system:
 
 \begin{align}
@@ -858,31 +855,45 @@ cost = \min\left\{\sum_{rz} C^R_r I_{rz} + \sum_{pz} C^P_p N_{pz}\right\}
 
 #### Summary
 
-Thus equations \eqref{eq:null_balance_qty}--\eqref{eq:null_obj} define the mathematical relationships (equations, inequalities and logical relationships) of the null model. The one thing not define here is the model's objective, for which a seperate section has been devoted [TODO: cross-reference]. In summary, at minimum, this model requires the user to specify zonal demands for the available technologies, as well as the parameters for available conversion process and transport technologies (which can be defined using a few simple lines of code). The model is linear, and thus can be easily solved by a wide range of solvers.
+The Null model is build around the resource balance \eqref{eq:null_balance_qty}, for which resource imports and exports are constrained by \eqref{eq:null_imp_min}--\eqref{eq:null_exp_max}. The conversion processes operate according to \eqref{eq:null_process} and the number of them which exist is constrained by \eqref{eq:null_process_rate}. Similarly, transport processes operate at rates governed by \eqref{null_transp_rate}, with their existence between zones defined by \eqref{eq:null_transp_min}--\eqref{eq:null_direction}. Finally, these constraints are solved in order to minimise an linearly-defined objective function, such as \eqref{eq:null_obj}.
+
+
+The formulation includes continuous variables (e.g. resource quantities and process rates), integer variables (e.g. the number of conversion processes in a zone), and binary variables (e.g. to define the existence of a transport process between two zones). All equations are linear, resulting in a mixed-integer linear programme (MILP). At a minimum, this model requires users to specify zonal demands for the resources available to an area, as well as the parameters for available conversion process and transport technologies.
 
 ### Processes, resources and qualitites (PRaQ) formulation
 
-The PRaQ model is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies, and so as before, there is a resource quantity balance (Equation \eqref{praq_balance_qty}:
+The PRaQ model is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies, and so as before, there is an equation which balances the resource quantities in each zone (Equation \eqref{praq_balance_qty}:
 
 \begin{align}
-I_{rzt} + \sum_p^P G^{(qty)}_{przt} + \sum_{\tau} V^{(qty)}_{rzt\tau} &= D^{(qty)}_{rzt} + E_{rzt},
+I_{rz} + \sum_p^P G^{(qty)}_{prz} + \sum_{\tau} V^{(qty)}_{rz\tau} &= D^{(qty)}_{rz} + E_{rz},
 \label{eq:praq_balance_qty}
 \end{align}
 
-In addition, PRaQ develops Keirstead's formulation, to incorporate a more sophisticated definition of a resource, by using an analogous equation to ensure that the quality $q$ (e.g. energy) due to each resource (e.g. water energy head and generated electrical energy) within each zone $z$ is balanced:
+In addition, PRaQ develops Keirstead's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. An example where this would be useful is a water pump, where the head to which the water input must be pumped needs to be matched by the electrical energy input (Figure \ref{fig:praq-water-pump}). To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
+
+[^qual-param]: For example, 1 kg of water at a 10 m elevation would have an energy head of 98.1 J, thus, $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$. Therefore, if this body of water were being imported into zone $z$, $X_{\mbox{water}, q}I_{\mbox{water}, z}=$ 1 kg and 98.1 J, for $q=$ mass and energy, respectively.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale = 0.5]{05_model-development/praq-water-pump.pdf}
+	\caption{Example of PRaQ's resource-quality balance for a water pump which is bringing a kilogram of water to an elevation of 10 m. In this example, there are two input resources (water, and electricity). The water has two qualities attributed to it (mass and energy), and the electricity has just energy associated with it. Both mass and energy balance across the pump.}
+	\label{fig:praq-water-pump}
+\end{figure}
 
 \begin{align}
-X_{rq} I_{rzt} + \sum_p^P G^{(qual)}_{prqzt} + \sum_{\tau}^T V^{(qual)}_{\tau rqzt} &= D^{(qual)}_{rqzt} + X_{rq} E_{rzt} \qquad \forall q,
-\label{eq:bal_qual}
+X_{rq} I_{rz} + \sum_p^P G^{(qual)}_{prqz} + \sum_{\tau}^T V^{(qual)}_{\tau rqz} &= D^{(qual)}_{rqz} + X_{rq} E_{rz} \qquad \forall q,
+\label{eq:praq_balance_qual}
 \end{align}
 
-This introduces the quality index $q$, and the parameter $X$ which defines a resource's quality[^qual-param] which is a multiplier of any resource quantity value, such that it separates a quantity into its qualities.
+The limits on imports and exports are defined in the same way as for the Null model:
 
-[^qual-param]: For example, 1 kg of static water at a 10 m elevation would have an energy head of 98.1 J. Thus $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$.
+\begin{align}
+I_{rz} &\geq \delta^I_{rz} I^{min}_r \label{eq:praq_imp_min} \\
+I_{rz} &\leq \delta^I_{rz} I^{max}_r \label{eq:praq_imp_max} \\
+E_{rz} &\geq \delta^E_{rz} E^{min}_r  \label{eq:praq_exp_min} \\
+E_{rz} &\leq \delta^E_{rz} E^{max}_r \label{eq:praq_exp_max}
+\end{align}
 
-[TODO: note, another reason it's better is that it might be advantageous for design, to know (e.g.) the energy of water through a pipe, etc.]
-
-[TODO: consider alternative form which is summed over r -- doesn't acually make a difference, but there is some sort of logic to it?]
 <!--
 \begin{align}
 \sum_r \big ( X_{rq} I_{rz} + J^{qual}_{rqz} + G^{qual}_{rqz} ) &= \sum_r (D_{rqz} + X_{rq} E_{rz})
@@ -898,18 +909,29 @@ Like Keirstead's model, the resources are expressed in terms of quantities (such
 
 #### Conversion processes
 
-The modelling of conversion processes is similar to the black-box formulation of the null model, but again, two equations are used. The first defines the net resource quality $G^{(qual)}_{prqzt}$ produced by a conversion process in a zone at a particular time, for a process with variable operation rate $F_p$, and parameters to define the relative ratio of resource inputs and outputs, $k^{proc}_{prq}$:
+The modelling of conversion processes is similar to the black-box formulation of the null model, but again, two equations are used. The first defines the net resource quality, $G^{(qual)}_{prqz}$, generated by a conversion process in a zone at a particular time, for a process with variable operation rate $F_p$, and parameters to define the relative ratio of resource inputs and outputs, $k^_{prq}$:
 
 \begin{align}
-G^{(qual)}_{prqzt} &= k_{prq} F_pzt,
-\label{eq:conv_qual}
+G^{(qual)}_{prqz} &= k_{prq} F_pzt,
+\label{eq:praq_conv_qual}
 \end{align}
 
-The second equation is the quantity version of the above, which again uses the $X_{rq}$ parameter, to translate a quantity we can formulate the quantity version of the process black box:
+The second equation is required so that resource quantities also balance. This constraint is effectively the same balance of quality as above, but is defined using the quantity variable ($G^{(qual)}_{prq}$, by using the $X_{rq}$ parameter to translate a resource's quantity into its quality attributes:
 
 \begin{align}
-X_{rq}G^{(qty)}_{przt} &= k_{prq} F_{pzt},
-\label{eq:conv_qty}
+X_{rq}G^{(qty)}_{prz} &= k_{prq} F_{pz} \delta^R_{rq}, \qquad \forall~\delta^P_{prq}=1
+\label{eq:praq_conv_qty}
+\end{align}
+
+This equation uses two binary parameters to ensure the balance only applies to qualities when they are attributed to a resource: therefore $\delta^R_{rq}=1$ for all resource-quality pairings which exist, otherwise it takes a value of zero[^binary-res-qual]. There is then a process equivalent parameter, $\delta^P_{prq}$, which takes a value for 1 for all resource-quality pairings which exist (i.e. $\delta^P_{prq} \forall p$ when $\delta^R_{rq}=1$).
+
+[^binary-res-qual]: For example, $\delta_{rq}=1$ when $r=\mbox{water}$ and $q=\mbox{mass or energy}$, and when $r=\mbox{electricity}$ and $q=\mbox{energy}$; but when $r=\mbox{electricity}$ and $q=\mbox{mass}$, $\delta_{rq}=0$.
+
+The constraint on the number of allowable processes is defined as for the Null model:
+
+\begin{align}
+	F_{pz} \leq N_{pz} F^{max}_{p} \qquad 
+\label{eq:praq_process_rate}
 \end{align}
 
 <!--
@@ -922,116 +944,43 @@ The dam example has two 'water' resources (one high-head, the other low-head); o
  However, here we evolve Keirstead's formulation, by defining resource flows in terms of their *quality*, such that a resource can be attributed with both an energy and a mass. This is useful as we consider interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- in our model we would need to know both its mass, and its energy head due to elevation. Thus the formulation specifies an equation analogous to \eqref{eq:bal_qty} which gives the quality balance for each resource  in terms of their quality (using the $^{(qual)}$ superscript notation):
 \end{tcolorbox}
 
-
 #### Transport processes
 
-Transport processes are defined similarly to conversion processes, using coefficients to represent the relative quantities of resources involved in the transfer from one zone to another, to calculate the variable $V$ for each zone, as the net inflow of a resource ($\mbox{summed inflow from all other zones} - \mbox{summed outflow to all other zones}$):
+The transport processes are defined similarly, following the same logic as the Null model formulation to quantify the net inflow of resource quality, $V^{(qual)}_{\tau rqz}$, into a zone, according to the rate at which the transport technologies can operate, and losses, and other resources involved:
 
 \begin{align}
-V^{(qual)}_{\tau rqzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{transp}_{\tau zz't} + \\
+V^{(qual)}_{\tau rqzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{transp}_{\tau zz't} \\
 + &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{transp}_{\tau z'zt}
-\label{eq:transp_qual}
+\label{eq:praq_transp_qual}
+\end{align}
+<!--
+Coefficients and process rates are defined for transport technology $\tau$, both for the zone of origin $z$, and the zone of destination $z'$ (where the $'$ notation indicates the destination zone). Furthermore, the quantity of input resources can be defined by the linear sum of two coefficients, denoted by $\alpha$ and $\beta$. For example to transport 1 kg of coal from $z$ to $z'$ (defined by $k_{\tau rq}^{\alpha}=-1$, $k_{\tau rq}^{\alpha'}=1$) will require a quantity of petrol dependent on the distance between the zones $l_{zz'}$, thus defined by $k_{\tau rq}^{\beta}$ and $k_{\tau rq}^{\beta'}$. In the case where transport losses occur (such as electricity transported via a cable), $k^{\alpha}_{\tau rq} > k^{\alpha'}_{\tau rq}$. To calculate the quantity flows, we once again use the $X_{rq}$ parameter:
+-->
+
+Again, this balance is also defined in terms of net inflow of quantities, $V^{(qty)}_{\tau rz}$, by using the $X_{rq}$ parameter, and the binary parameter, $\delta^{R}_{rq}=1, \mbox{where } \delta^{\tau}_{\tau rq}=1$ (these parameters are defined according to a similar logic to that used for the conversion processes[^binary-transp]):
+
+\begin{align}
+X_{rq}V^{(qty)}_{\tau rzt} &= \Big[ \sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{transp}_{\tau zz't} \\
+&+ \sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{transp}_{\tau z'zt} \Big] \delta^R_{rq} \qquad \forall~\delta^{\tau}_{\tau rq}=1
+\label{eq:praq_transp_qty}
 \end{align}
 
-Coefficients and process rates are defined for transport technology $\tau$, both for the zone of origin $z$, and the zone of destination $z'$ (where the $'$ notation indicates the destination zone). Furthermore, the quantity of input resources can be defined by the linear sum of two coefficients, denoted by $\alpha$ and $\beta$. For example to transport 1 kg of coal from $z$ to $z'$ (defined by $k_{\tau rq}^{\alpha}=-1$, $k_{\tau rq}^{\alpha'}=1$) will require a quantity of petrol dependent on the distance between the zones $l_{zz'}$, thus defined by $k_{\tau rq}^{\beta}$ and $k_{\tau rq}^{\beta'}$. In the case where transport losses occur (such as electricity transported via a cable), $k^{\alpha}_{\tau rq} > k^{\alpha'}_{\tau rq}$. To calculate the quantity flows, we once again use the $X_{rq}$ parameter:
+[^binary-transp]: As for the conversion processes, $\delta^{\tau}_{prq}$ takes a value for 1 for all resource-quality pairings which exist (i.e. $\delta^{\tau}_{prq}~\forall p$ when $\delta^R_{rq}=1$).
+
+
+The existence of transport processes between zones are defined using the same equations as for the Null model:
 
 \begin{align}
-X_{rq}V^{(qty)}_{\tau rzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{transp}_{\tau zz't} + \\
-+ &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{transp}_{\tau z'zt}
-\label{eq:transp_qty}
+F^{transp}_{tzz'} &\geq \delta^{transp}_{tzz'} F^{transp,min}_t \label{eq:praq_transp_min} \\
+F^{transp}_{tzz'} &\leq \delta^{transp}_{tzz'} F^{transp,max}_t \label{eq:praq_transp_max} \\
+\delta^{transp}_{tzz'} &= 0, \qquad \forall (z,z') \notin nb \label{eq:praq_neighbs} \\
+\delta^{transp}_{tzz'} &= \delta^{transp}_{tz'z} \label{eq:praq_direction}
 \end{align}
 
 #### Summary
 
-Equations \eqref{eq:bal_qty}--\eqref{eq:ob} form the programme's main constraints. For a full description, see Appendix [TODO: cross-ref to appropriate appendix] which lists other constraints (such as upper limits imposed on resource imports). The formulation includes continuous variables (such as resource quantities and process rates), integer variables (the number of conversion processes in a zone), and binary variables (for the existence of a transport process between two zones). All equations are linear, resulting in a mixed-integer linear programme (MILP).
+Equations \eqref{eq:praq_balance_qty}--\eqref{eq:praq_direction} form the PRaQ model's main constraints, and is formulated using a similar set of equations to the Null model, namely resource balances, import and export limits, and black-box models of conversion processes and transport processes. In order to incorporate resource qualities, the formulation introduces additional equations, which use new parameters and variables whose purpose is to map resource qualities onto quantities. The formulation is also a MILP.
 
-The maximum rate at which a conversion process can operate is given as:
-
-\begin{align}
-F_{pz} \le N_{pz} F^{max}_p,
-\end{align}
-
-where the variable $N_{pz}$ is the number of process type $p$ in zone $z$, and the parameter $F^{max}_p$ is process $p$'s maximum operating rate.
-
-The maximum rate between zones $z$ and $z'$ at which a transport process can operate is given as:
-
-\begin{align}
-F^{transp}_{\tau zz'} \le \delta^{transp}_{\tau zz'} F^{transp, max}_\tau,
-\end{align}
-
-where the integer variable $\delta_{\tau zz'}=1$ when transport process $\tau$ exists between zones $z$ and $z'$, and the parameter $F^{transp,max}_p$ is process $\tau$'s maximum operating rate (e.g. the maximum water flow rate of a pipe). Having defined the existence of a transport link between two zones, we assume that a link in one direction ($z \rightarrow z'$) necessarily defines a link in the opposite direction, thus:
-
-\begin{align}
-\delta^{transp}_{\tau zz'} = \delta^{transp}_{\tau z'z}
-\end{align}
-
-Further, we define a set $nb$ which specifies whether any two zones are neighbours. Only connections within this set can be linked by transport infrastructure. This not only models reality, but also reduces the model size:
-
-\begin{align}
-\delta^{transp}_{\tau zz'} = 0 \qquad \forall (z,z') \notin nb
-\end{align}
-
-The imports and export quantities must lie between $I^{min}$ and $I^{max}$ parameters, and thus can be expressed with the following constraint:
-
-\begin{align}
-\delta^{I}_{rz'} I^{min}_{rt} \leq I_{rzt} \leq \delta^{I}_{rz'} I^{max}_{rt}
-\end{align}
-
-where $\delta^I_{rz}$ is a binary variable which equals 1 if conversion process $r$ exists in zone $z$. This variable is itself subject to the constraint that only a $N^I_r$ zones can be used to import any given resource $r$:
-
-\begin{align}
-\sum_z \delta^{I}_{rz'} \leq N^I_r
-\end{align}
-
-Analogous constrains apply to exports:
-
-\begin{align}
-\delta^{E}_{rz'} E^{min}_{rt} &\leq E_{rzt} \leq \delta^{E}_{rz'} E^{max}_{rt} \\
-\sum_z \delta^{E}_{rz'} &\leq N^E_r
-\end{align}
-
-The import and export parameters $I$ and $E$ are defined as for the null model, but are multiplied by a new parameter $X_{rq}$ which defines the quality attributes for a resource. For example, for the high head water, $X_{rq}$ would take values of [TODO: fill in example]. This quality attribute parameter also needs to be used to modify the equations which model resource conversion and transport, along with the new definitions for the $k^*_*$ coefficients:
-
-\begin{align}
-	G_{prz} X_{rq} &=k_{prq} F_{pz} \delta^R_{rq} \qquad \mbox{if } \delta^P_{prq} \mbox{ exists}
-\label{eq:praq_process_qty}
-\end{align}
-
-This equation introduces two new binary variables which ensure equations only apply to appropriate qualities, i.e. when they are attributed to a resource: $\delta^R_{rq}=1$ for all resource-quality pairings which exist (so =1 for water-contaminant, but =0 for electricity-contaminant) $\delta^P_{prq}=1$ for all processes $p$.
-
-[TODO: Change X_rq to A_rq ('A'ttributes), and correctly formalise the if X_rq exists notation.]
-
-\begin{align}
-\begin{split}
-	J_{trz} X_{rq} = \bigg [ &\sum_{tz'} (k^{qty,src}_{trq} + k^{dist,src}_{tr}\l_{zz'})F^{transp}_{tzz'} + \\
-	       &\sum_{tz'} (k^{qty,dest}_{trq} + k^{dist,dest}_{tr}\l_{z'z})F^{transp}_{tz'z} \bigg ] \delta^R_{rq}
-\label{eq:praq_transp_qty}
-\end{split}
-\end{align}
-
-The constraints which define the maximum operation rates of the conversion and transport process remain as in Equations \eqref{eq:null_process_rate}.
-
-Returning to the main resource quality balance, two new variables are introduced, similar to the resource production and net flow values, to define the production and net flow of qualities. $G^{qual}_{rqz}$ is defined using a similar equation to $G_{prz}$ in \eqref{eq:praq_process_qty}:
-
-\begin{align}
-	G^{qual}_{rqz} &= \sum_p (k_{prq} F_{pz})
-\label{eq:praq_process_qual}
-\end{align}
-
-And likewise for $J^{qual}_{rqz}$ being defined similarly to $J_{trz}$ in Equation \eqref{eq:praq_transp_qty}:
-
-\begin{align}
-\begin{split}
-	J_{rqz} =  &\sum_{tz'} (k^{qty,src}_{trq} + k^{dist,src}_{tr}\l_{zz'})F^{transp}_{tzz'} + \\
-	       &\sum_{tz'} (k^{qty,dest}_{trq} + k^{dist,dest}_{tr}\l_{z'z})F^{transp}_{tz'z}
-\label{eq:praq_transp_qual}
-\end{split}
-\end{align}
-
-The constraints on transport technologies remain the same (the limits to their operation rates, their existance between neighbouring zones only, and their b  \eqref{eq:null_transp_rate}
-
-All other constraints and the objective function remain the same including the constraint on transport technologies existing only between neighbouring zones, and their bi-directionality. Thus the PRaQ model is defined from equations \eqref{null_balance_qty}, \eqref{eq:null_imp_min}--\eqref{eq:null_exp_allowed}, \eqref{eq:null_transp_min}--\eqref{eq:ob}, and \eqref{eq:praq_balance_qual}--\eqref{eq:praq_transp_qual}.
-	
 <!--
 The quantity of resource produced can then be determined by ensuring that the resource quality produced by each processes matches the resource quality produced in the system as a whole. The resource-quality pairs that exist (and hence need to be balanced) are defined by the boolean $\delta_{rq}$. The balance needs to take place on these resource-quality pairs for every process in the system (that is, where the boolean $\delta_{prq}=1$).
 -->
