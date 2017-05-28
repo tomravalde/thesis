@@ -316,11 +316,12 @@ The information from the literature and the adjustments (outlined above) provide
 
 \begin{figure}
 	\centering
-	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
-	\end{spacing}
-	\caption{Complete network of processes and resources in the Tat Hamlet case study. (See Table [TODO:] for details about transport technologies. .}
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
+	\includegraphics[width=\textwidth]{05_model-development/tat-network-full.pdf}
+%	\end{spacing}
+	\caption{Complete network of the resources and sixteen conversion processes in the Tat Hamlet case study. Resource demands are showin in \textbf{bold}, while resources which can be imported from outside of the system are indicated by a *. Details of transport processes are provided in Table [TODO:].}
 	\label{fig:tat-16}
 \end{figure}
 
@@ -643,19 +644,24 @@ We will add other processes which interact between the processes.
 
 As the conceptualisation above indicates, the highly integrated resource management model should be able to consider a city as comprised of a number of zones, for which can be specified resource demands, and which contain the conversion processes which manage resources. These zones will be connected to one another via transport processes. The model should also be able consider that resources will need to be imported into the village (either to meet a demand directly, or to feed a process), and resources which neither meet a demand nor feed a process (excess waste heat, perhaps), can be exported from the area. Added to this is also the need for a temporal component, such that resource demands can vary with time, along with the schedule of resource imports and exports, and process operations.
 
-An existing model which can do all these things, specifically for that energy sector has been developed by @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section [TODO:], this is a city scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system).
+An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
+
+To model the processes which convert resources, @Keirstead2013a is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be extended to consider resources and processes from multiple sectors. The urban energy systems model constains two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{05_model-development/STN-Kondili-et-al.png}
+	\caption{A diagram of an STN representation of a chemical engineering system, taken from \citet[p.241, Figure 1b]{Kondili1993}. The circles represent resources (`states'), while the rectangels represent the `tasks' which convert a resource from one state to another. The paper then goes on to turn this concpetualisation into a MILP which can compute an optimal operation schedule for a chemical plant which maximises profits.}
+	\label{fig:STN}
+\end{figure}
 
 \begin{figure}
 \input{05_model-development/BiomassRTN.tex}
-\caption{Example of an urban energy system designed by the MILP model of [TODO: Keirstead reference].}
+\caption{Example of an urban energy system optimised by the MILP model of [TODO: Keirstead reference], which shows resources (circles) and conversion processes (rectangles) -- note this diagram does not show transport processes.}
 \label{fig:Keirstead-RTN}
 \end{figure}
 
-To model the processes which convert resources, @Keirstead2013a is based upon the engineering State-Task Network model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another. Keirstead's model applies the same principles to urban energy systems in a so-called Resource-Technology Network (RTN), developing a model which chooses the mix of processes that uses available resources to meet demand for heat and electricity. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be easily extended to consider resources and processes from multiple sectors. Processes in the model developed here will be considered similarly as those in @Keirstead2013a, separated into those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
-
-[TODO: copy a diagram of an STN -- i.e. a conceptualisation of results.]
-
-A feature of [TODO: cite Keirstead]'s model is that it it spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a resource balance:
+A feature of @Keirstead2013a's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a resource balance:
 
 \begin{align}
 \begin{split}
@@ -678,35 +684,39 @@ The next three subsections specify three different model formulations based on @
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
-Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on] The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained in [TODO: cross-ref the tcolorbox]. For the purposes of simplification, the model formulations below have not been defined temporally. Model objective functions are also not defined with the model constraints -- instead, Section [TODO: cross-ref] provides an overview of the sorts of objectives which could be used with any of the formulations.
+Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on] The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained in [TODO: cross-ref the tcolorbox]. For the purposes of simplification, the model formulations below have not been defined temporally. Model objective functions are also not defined with the model constraints -- instead, Section \ref{sec:model-objs} provides an overview of the sorts of objectives which could be used with any of the formulations.
 
 \begin{figure}
 	\centering
-	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{05_model-development/model-family.pdf_tex}}
-	\end{spacing}
-	\caption{How the formulations here are related to the urban energy systems model of \citet{Keirstead2013a}.}
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/model-family.pdf_tex}}
+	\includegraphics[width=0.7\columnwidth]{05_model-development/model-relationships.pdf}
+%	\end{spacing}
+	\caption{The relationship of this chapter's formulations to each other and the urban energy systems model of \citet{Keirstead2013a}.}
 	\label{fig:evolution}
 \end{figure}
 
 \begin{figure}
 	\centering
+	\begin{spacing}{1.0}
+	\sffamily
 	\resizebox{\columnwidth}{!}{\input{05_model-development/pipe-dam-example.pdf_tex}}
-	\caption{TODO: Caption.}
+	\end{spacing}
+	\caption{An example to illustrate the difference between model formulations. There are two zones, with an electricity demand in zone two, which can be met by a dam (conversion process), also in zone two. However, the water must first be pumped (in zone 1), and transported from zone one to two via a pipe (transport process).}
 	\label{fig:pump-dam-example}
 \end{figure}
 
-[TODO: Add a node-link representation]
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{05_model-development/pipe-dam-network.pdf}
+	\caption{An RTN representation of Figure \ref{fig:pump-dam-example}. The electricity (E) required by the pump can be imported from outside the system; the amount required depends on the mass of water (W) to be pumped, and the elevation to which it needs pumping. The dashed arrow indicates that the electricity in zone 2 is a demand.}
+	\label{fig:pump-dam-RTN}
+\end{figure}
 
 \clearpage
 \begin{tcolorbox}
-
-[TODO:Show Bernoulli's simplification for Null and PRaQ, possibly in later boxes.]
-
-The example defines two zones (`one' and 'two') with an electricity demand in zone two, which can be met by a dam, also in zone two. However, the water must first be pumped from zone one to the required height in zone two via a pipe. Thus, the task is to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This problem will first be expressed using equations of fluid mechanics, before showing how it would be modelled by the three formulations.
-
-The Bernoulli equation states that along a streamline of fluid of density $\rho$, energy is conserved:
+For the pipe-dam example of Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}, the models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
 
 \begin{align}
 \frac{P}{\rho g} + z + \frac{v^2}{2g} = \mbox{constant}
@@ -1076,7 +1086,7 @@ Equations such as these allow us to formulate nonlinear problems. In the example
 In addition, the boundaries on the imports and exports and the objective function are defined as for the null and PRaQ models.
 -->
 
-### Model objectives
+### Model objectives {#sec:model-objs}
 
 The three models will minimise some objective. The are numerous possibilities with a simple objective being to minimise the imports of a particular resource (e.g. water) -- this would require no additional parameters to be defined in the model. A more sophisticated objective is the financial cost of resources ($C^R$), conversion processes ($C^R$), and transport processes ($C^{\tau}$):
 
