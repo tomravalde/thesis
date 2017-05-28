@@ -669,9 +669,7 @@ Demand (for each resource, in each zone and each time period) is a paramter give
 
 [TODO: add illustrative diagrams, e.g. for the processes, and the zones]
 
-The next three subsections specify three different model formulations based on [TODO: cite Keirstead]. They are each based on the resource balance, however they differ in the way that they model the conversion [TODO: and transport?] processes, varying in their fidelity, generality, tractability, and usability:
-
-[TODO: Comment on black-box process models]
+The next three subsections specify three different model formulations based on @Keirstead2013a. They are each based on the resource balance, however they differ in the way that they model the conversion [TODO: and transport?] processes, varying in their fidelity, generality, tractability, and usability:
 
 \begin{description}
 
@@ -680,10 +678,7 @@ The next three subsections specify three different model formulations based on [
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
-Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on] The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained in [TODO: cross-ref the tcolorbox] 
-
-[TODO: Add note about the model objective]
-[TODO: Add a note about dropping the time index from the formulations for clarity]
+Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on] The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained in [TODO: cross-ref the tcolorbox]. For the purposes of simplification, the model formulations below have not been defined temporally. Model objective functions are also not defined with the model constraints -- instead, Section [TODO: cross-ref] provides an overview of the sorts of objectives which could be used with any of the formulations.
 
 \begin{figure}
 	\centering
@@ -769,14 +764,12 @@ To calculate the production of a resource by a particular process $p$ in a zone,
 \label{eq:null_process}
 \end{align}
 
-where the $F$ variable defines the operation rate of a technology (for example, a dam may operate with a generating capacity of 3 MW). Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the output resource (in the dam example this would be electricity) always has a coefficient value, $k_{pr}=1$. The value of the $F$ is defined from the number $N$ of any type of process in a zone, and their maximum operating capacities $F^{max}$:
+where the $F$ variable defines the operation rate of a technology (for example, a dam may operate with a generating capacity of 3 MW). Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the output resource (in the dam example this would be electricity) always has a coefficient value, $k_{pr}=1$. The value of the $F_{pz}$ is defined from the number $N$ of any type of process in a zone, and their maximum operating capacities, $F^{max}$:
 
 \begin{align}
 	F_{pz} \leq N_{pz} F^{max}_{p} \qquad 
 \label{eq:null_process_rate}
 \end{align}
-
-[TODO: check which equation has the inequality, and update if necessary]
 
 \begin{tcolorbox}
 Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ [TODO: cross-reference back to the node-link diagram earlier]. Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the electricity is considered the dam's `main' output, and hence its output coefficient is set to  1 MJ\footnote{Recall that this means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
@@ -853,12 +846,6 @@ cost = \min\left\{\sum_{rz} C^R_r I_{rz} + \sum_{pz} C^P_p N_{pz}\right\}
 \label{eq:null_obj}
 \end{align}
 
-#### Summary
-
-The Null model is build around the resource balance \eqref{eq:null_balance_qty}, for which resource imports and exports are constrained by \eqref{eq:null_imp_min}--\eqref{eq:null_exp_max}. The conversion processes operate according to \eqref{eq:null_process} and the number of them which exist is constrained by \eqref{eq:null_process_rate}. Similarly, transport processes operate at rates governed by \eqref{null_transp_rate}, with their existence between zones defined by \eqref{eq:null_transp_min}--\eqref{eq:null_direction}. Finally, these constraints are solved in order to minimise an linearly-defined objective function, such as \eqref{eq:null_obj}.
-
-
-The formulation includes continuous variables (e.g. resource quantities and process rates), integer variables (e.g. the number of conversion processes in a zone), and binary variables (e.g. to define the existence of a transport process between two zones). All equations are linear, resulting in a mixed-integer linear programme (MILP). At a minimum, this model requires users to specify zonal demands for the resources available to an area, as well as the parameters for available conversion process and transport technologies.
 
 ### Processes, resources and qualitites (PRaQ) formulation
 
@@ -977,9 +964,6 @@ F^{transp}_{tzz'} &\leq \delta^{transp}_{tzz'} F^{transp,max}_t \label{eq:praq_t
 \delta^{transp}_{tzz'} &= \delta^{transp}_{tz'z} \label{eq:praq_direction}
 \end{align}
 
-#### Summary
-
-Equations \eqref{eq:praq_balance_qty}--\eqref{eq:praq_direction} form the PRaQ model's main constraints, and is formulated using a similar set of equations to the Null model, namely resource balances, import and export limits, and black-box models of conversion processes and transport processes. In order to incorporate resource qualities, the formulation introduces additional equations, which use new parameters and variables whose purpose is to map resource qualities onto quantities. The formulation is also a MILP.
 
 <!--
 The quantity of resource produced can then be determined by ensuring that the resource quality produced by each processes matches the resource quality produced in the system as a whole. The resource-quality pairs that exist (and hence need to be balanced) are defined by the boolean $\delta_{rq}$. The balance needs to take place on these resource-quality pairs for every process in the system (that is, where the boolean $\delta_{prq}=1$).
@@ -997,64 +981,66 @@ dam water_source contam -0.004
 dam water_generated contam 0.004
 \end{lstlisting}
 
+<!--
 The equations of null and PRaQ, and how their formulations are analogous to one another are summarised in Table~\ref{tab:null_praq_eqns}.
 
 \clearpage
 \input{05_model-development/tabs/null_praq_equations.tex}
+-->
 
 ### Nonlinear (NL) formulation
 
-The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. In the earlier discussion of model generality and fidelity, we discussed that we could achieve greater fidelity with a less general model. This derivation will show how a nonlinear model formulation can achieve greater fidelity to the way conversion and transport processes behave in reality (in contrast to our simple black-box representations).
+The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. In the earlier discussion of model generality and fidelity, we discussed that we could achieve greater fidelity with a less general model. This derivation will show how a nonlinear model formulation can achieve greater fidelity to the way conversion and transport processes behave in reality (in contrast to our simple black-box representations). [TODO: Move this to the discussion?] 
 
-The equations of this model are largely based on those of the Null model, with the main balance equation defined as in [TODO: \eqref], as well as the contraints in imports in [TODO: \eqref to \eqref]. However, we change the equation which represents the processes [TODO: \eqref] so that we can represent processes with non-linear behaviour. We keep the general form that the resource generated $G$ in a zone is the product of a process rate and the resource production/consumption of a resource with $k_{pr}$ being replaced by $(G^{IN}_{prz} - G^{OUT}_{prz})$:
-
-replacing parameters of equation [TODO:] with [TODO:]. 
+The equations of this model are largely based on those of the Null model, with the main balance equation, and the imports and exports defined in the same way:
 
 \begin{align}
-G_{prz} = (G^{OUT}_{pr} - G^{IN}_{pr}) F_{pz}
+I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \forall r,z \label{eq:null_balance_qty} \\
+I_{rz} &\geq \delta^I_{rz} I^{min}_r \label{eq:null_imp_min} \\
+I_{rz} &\leq \delta^I_{rz} I^{max}_r \label{eq:null_imp_max} \\
+E_{rz} &\geq \delta^E_{rz} E^{min}_r  \label{eq:null_exp_min} \\
+E_{rz} &\leq \delta^E_{rz} E^{max}_r \label{eq:null_exp_max}
 \end{align}
 
-The point at which generality is lost
+#### Conversion processes
 
-This is is defined specifically for each process. For example, for a dam of height $h$ we can define mass and energy balances:
+The change that the NL model makes is in the way conversion processes are modelled -- these have the choice of either being linear or nonlinear, by way of an adaptation to the conversion process equation \eqref{eq:null_process}:
 
 \begin{align}
-G^{IN}_{p=dam,r=water\_in} g h &=  G^{OUT}_{p=dam,r=water\_out} g H^{out} + G^{OUT}_{p=dam,r=elec} \\
-G^{IN}_{p=dam,r=water\_in} &=  G^{OUT}_{p=dam,r=water\_out}
+	G_{prz}&=(\kappa^{O}_{pr}-\kappa^{I}_{pr}) F_{pz} \qquad 
+\label{eq:nl_process}
 \end{align}
 
-Note that like in the null case, $F^{transp}$ is defined with respect to the resource that is considered the 'main output' which by definition has a magnitude of one, thus we need to fix this in the formulation. In the case of the dam, the main output is electricity, thus:
+In \eqref{ed:nl_process}, the $k_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These values can then be defined in their own way. For a linear process, $\kappa^{*}_{pr}$ can be defined by a number, which essentially reduces \eqref{eq:nl_process} to become the same as the null form \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance and a mass balance:
 
 \begin{align}
-G^{OUT}_{p=dam,r=elec} = 1
+\kappa^{I}_{\mbox{dam},\mbox{water}} g H_I &=  \kappa^{O}_{\mbox{dam},\mbox{water}} g H_O + \kappa^{O}_{\mbox{dam},\mbox{elec}} \label{eq:nl_process_dam_energy} \\
+\kappa^{I}_{\mbox{dam},\mbox{water}} &=  \kappa^{O}_{\mbox{dam},\mbox{water}} \label{eq:nl_process_dam_mass}
 \end{align}
 
-[TODO: Note that we fix other process-resource pairings to 0.]
+where $H_I$ and $H_O$ are heights of the water on the input and output sides of the dam, respectively. In this dam example, variables can be multiplied by each other (i.e. the mass of water and its height). 
 
-We can do something similar for transport technologies with nonlinear behaviour, first defining a general equation that resource flow into/out of a zone is a product of the technology operation rate, and the flows into/out of the technology:
+The number of processes is defined as for the Null model:
 
 \begin{align}
-J_{trz} = \sum_{z'} (J^{OUT}_{tr} F^{transp}_{tzz'} - J^{IN}_{tr} F^{transp}_{tz'z}
+	F_{pz} \leq N_{pz} F^{max}_{p} \qquad 
+\label{eq:nl_process_rate}
 \end{align}
 
-For example, for water which travels via $t=\mbox{pipe}$, we can define mass and energy balances:
+Note that as in the Null model, $F_{pz}$ is defined with respect to the resource that is considered the 'main output' which by definition has a magnitude of one, this needs to be fixed in the NL formulation. In the case of the dam, the main output is electricity, thus $\kappa^{O}_{\mbox{dam},\mbox{elec}}=1$
+
+#### Transport processes
+
+In theory, these could be formulated in a similar way to the conversion processes, to allow for nonlinear behaviour, however, they have been defined using the same set of equations as for the Null model:
 
 \begin{align}
-J^{IN}_{t=pipe,r=water\_in} g H^{IN} + G^{IN}_{t=pipe,r=elec} &= J^{OUT}_{p=dam,r=water\_out} g H^{out} \\
-J^{IN}_{t=pipe,r=water\_in} &=  J^{OUT}_{t=dam,r=water\_out}
+J_{trz} &= \sum_{tz'} (k^{qty,src}_{tr} + k^{dist,src}_{tr}\l_{zz'})F^{transp}_{tzz'} \\
+&+ \sum_{tz'} (k^{qty,dest}_{tr} + k^{dist,dest}_{tr}\l_{z'z})F^{transp}_{tz'z} \label{eq:nl_transp_rate} \\
+F^{transp}_{tzz'} &\geq \delta^{transp}_{tzz'} F^{transp,min}_t \label{eq:nl_transp_min} \\
+F^{transp}_{tzz'} &\leq \delta^{transp}_{tzz'} F^{transp,max}_t \label{eq:nl_transp_max} \\
+\delta^{transp}_{tzz'} &= 0, \qquad \forall (z,z') \notin nb \label{eq:nl_neighbs} \\
+\delta^{transp}_{tzz'} &= \delta^{transp}_{tz'z} \label{eq:nl_direction}
 \end{align}
-
-Again, we need to fix the pipe's main output (water) equal to one:
-
-\begin{align}
-J^{OUT}_{t=pipe,r=elec} = 1
-\end{align}
-
-(This could be further refined to take into account the length of the pipe and pipe friction.)
-
-[TODO: Footnotes to Bernoulli.]
-
-For the disucssion -- genericity here is not on a scale; it is a binary characteristic (so we can't mix and match)
 
 <!--
 NOTE: MUCH OF THIS CONTENT IS REPEATED ABOVE. bUT SOME WORKING MAY BE BETTER HERE.]
@@ -1090,20 +1076,9 @@ Equations such as these allow us to formulate nonlinear problems. In the example
 In addition, the boundaries on the imports and exports and the objective function are defined as for the null and PRaQ models.
 -->
 
-### Summary
+### Model objectives
 
-E.g. table of shared characteristics, equations, differences
-
-#### Model objectives
-
-[TODO: Decide where to locate this] Finally, the model will minimise some objective, for example, the cost of resource imports:
-
-\begin{align}
-\min\left\{\sum_{rzt} \mbox{cost}_r I_{rzt}\right\}
-\label{eq:ob}
-\end{align}
-
-Finally we consider possible objective functions, which could be a combination of costs ($C^*$) and environmental impacts. Resource costs could be defined, thus:
+The three models will minimise some objective. The are numerous possibilities with a simple objective being to minimise the imports of a particular resource (e.g. water) -- this would require no additional parameters to be defined in the model. A more sophisticated objective is the financial cost of resources ($C^R$), conversion processes ($C^R$), and transport processes ($C^{\tau}$):
 
 \begin{align}
 C^R &= \sum_{rzt} c_r I_{rzt} \\
@@ -1111,32 +1086,36 @@ C^P &= \sum_{pz} c_p N_{pz} \\
 C^{\tau} &= \sum_{\tau zz'} c_\tau \delta^{transp}_{\tau zz'} l_{zz'}
 \end{align}
 
-where the parameter $l_{zz'}$ defines the distance (length) between two zones. The costs above can be combined into a single objective function.
+where the parameters $c_r$, $c_p$, $c_{\tau}$ defines the cost of an item per unit (e.g. a kilogram of water, a joule of energy, or a single process). These costs can be combined into a single objective function:
 
 \begin{align}
 C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}
 \label{eq:objective_cost}
 \end{align}
 
-where coefficients $\gamma^*$ could weight the component costs according to time span (e.g. a 20 year investment period), or their relative importance to a particular stakeholder.
+where coefficients $\gamma^*$ could weight the costs appropriately: for example, annualising system cost by multiplying the resource imports up to a yearly level, and dividing the capital costs over its expected lifetime.
 
-Other types of objective function could include the carbon footprint $(CF)$ of an area, using the emissions factor of a resource $(ef)_r$:
+Other types of objective function could include the carbon footprint $(CF)$ of an area, defining this using the emissions factor of a resource $(EF)_r$:
 
 \begin{align}
 CF &= \sum_{rzt} (ef)_r I_{rzt}
 \end{align}
 
-More simple objective function might simply be to minimise the imports of a particular resource (e.g. water imports).
-
-Objectives can be traded-off against each other, using so-called 'Pareto optimisation'. One equation is used as the objective function (for example cost), while another is defined as an inequality constraint (for example emissons):
+Multiple objectives can be used, and traded-off against one other, in so-called 'Pareto optimisation'. In this method, one objective is used as the objective function (for example cost), while another is defined as an inequality constraint (for example emissons):
 
 \begin{align}
-\sum_{rzt} (ef)_r I_{rzt} \leq lim
+\sum_{rzt} (EF)_r I_{rzt} \leq \mbox{Emissions limit}
 \end{align}
 
-The user runs the model multiple times, changing the value of $lim$, such that one can plot a curve of emissions against cost.
+The model is then run multiple times, changing the value of the emissions limit each time, enabling the plotting of a curve of the system's emissions against its cost.
 
-[TODO: add illustrative diagrams, e.g. for the processes, and the zones]
+### Summary
+
+The Null model is built around the resource balance \eqref{eq:null_balance_qty}, for which resource imports and exports are constrained by \eqref{eq:null_imp_min}--\eqref{eq:null_exp_max}. The conversion processes operate according to \eqref{eq:null_process} and the number of them which exist is constrained by \eqref{eq:null_process_rate}. Similarly, transport processes operate at rates governed by \eqref{null_transp_rate}, with their existence between zones defined by \eqref{eq:null_transp_min}--\eqref{eq:null_direction}. 
+
+The PRaQ model is formed using a similar set of constraints to the Null model (Equations \eqref{eq:praq_balance_qty}--\eqref{eq:praq_direction}), namely resource balances, import and export limits, and black-box models of conversion processes and transport processes. In order to incorporate resource qualities, the formulation introduces additional equations, which use new parameters and variables whose purpose is to map resource qualities onto quantities. Finally, the NL model is formulated in the same way as the Null model, apart from for the conversion process equation, which is formulated to allow processes to be modelled is either linear or nonlinear.
+
+The three formulations use continuous variables (e.g. resource quantities and process rates), integer variables (e.g. the number of conversion processes in a zone), and binary variables (e.g. to define the existence of a transport process between two zones). The Null and PRaQ models are linear, and so forms mixed-interger linear programmes (MILP), whilst the nonlinear model forms a mixed-integer nonlinear programme (MINLP). In each case, the models requires users to specify zonal demands for the resources available to an area, as well as the parameters (and/or equations) for available conversion process and transport technologies. The constraints are solved in order to minimise an objective function (with the option of defining additional constraints to accomplish Pareto optimisation).
 
 ## Implementation
 
