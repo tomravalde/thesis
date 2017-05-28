@@ -53,5 +53,7 @@
     \put(0.4900338,0.3854834){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{B}}}%
     \put(0.16845813,0.13937888){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{A}}}%
     \put(0.80021844,0.10874368){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{C}}}%
+    \put(0.13732381,0.4879086){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Zone 1}}}%
+    \put(0.54301202,0.48947641){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Zone 2}}}%
   \end{picture}%
 \endgroup%

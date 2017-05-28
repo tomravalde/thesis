@@ -50,7 +50,7 @@
   \makeatother%
   \begin{picture}(1,0.58886758)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{model-family.pdf}}%
-    \put(0.30985563,0.58837021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright SynCity\end{minipage}}}%
+    \put(0.30985563,0.58837021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright \citet\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{model-family.pdf}}%
     \put(-0.19780777,0.19767275){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2730996\unitlength}\raggedright Null\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{model-family.pdf}}%
