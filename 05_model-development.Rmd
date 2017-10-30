@@ -1030,6 +1030,7 @@ This is because nonlinear models are harder to solve than equivalently sized lin
 ```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed''} show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section [TODO:].) \\label{fig:comparison-formulations}"}
 
 setwd("05_model-development")
+
 source("process-results.R")
 
 plot_conversion
@@ -1057,89 +1058,56 @@ Our final consideration when evaluating the model performance is the behaviour a
 
 As well as the representational considerations above, there are practicalities to modelling More natural introduction of which tractability is one element. The most straightforward measure of this is computation time, with the nonlinear model being the clear loser here (see Table \ref{tab:results}): The linear models are solved in a few seconds, significantly quicker than NL model which takes about 13 minutes to run. Figure [TODO: cross-ref] shows that the driver of these times is the non-linearity: this is because the relationship between the number of conversion processes and the number of equations or variables is linear for both types of model, and futhermore, the nonlinear model never has the highest number of equations or variables. Yet, as the model grows through the addition of conversion processes, the solution time increases exponentially for the nonlinear model, but linearly for the linear models.  Furthermore, these solution times are for models without spatial or temporal disaggregation, which would widen the gap between linear and nonlinear solutions even more. [TODO: some sensechecking maths on how variables increase with the the spatial and temporal indices.]
 
-[TODO: Plot just the linear solutions times separately, to (hopefully) show that their run time is linear, possibly scatter them against variables/equations]
-
 Of course, the longer computation times are not necessarily a problem -- computations gets faster and faster over time, and some might have the power of parallel computing at their disposal. Even without the computational advantages, their are the heuristic methods [TODO: cross-ref appropriate section] which can find near-optimal solutions in shorter times. And nonlinear models can even by linearised into so-called piecewise linear models. This is where the second practical consideration -- usability -- comes into play.
 
 Usability is a more qualitative metric than tractability, and so harder to quantify precisely, but it can be measured buy the ease of model construction. The simplest model to build is the null model, followed by PRaQ, with NL being the slowest and most difficult to construct. The reason for the ease of construction for the linear models is that the equations which model the processes and the resource balances can be defined generically. Then only the production coefficients $k_{pr}$ and $k_{prq}$ need to be specified. The PRaQ model is slightly slower to construct because of the extra variables additional variables. However, once $X_{rq}$ has been defined, the model construction can mainly be carried out using 'copy and paste', changing just a few words. Furthermore, the procedure for building the null and PRaQ models can be made faster by having these processes already matched with their coefficients, to be stored in a library. The user then just needs to specify the processes, to automatically generate the code which defines the network. [TODO: Relate this back to the model architecture outlined earlier in the chapter] In practice, with the build scripts supplied with the formulations, both Null and PRaQ models can be built just as easily, from the same library of process definition YAML files.
 
 On the other hand, the NL model takes longer to construct, because it can't be defined generically, with the model equations requiring much more customisation. The activity of defining production coefficients in the null and PRaQ models becomes defining process equations in the NL model. The generic way in which the system resources are balanced in null and PRaQ gives way to a need to specify each resource balance individually in the NL model -- this is because the way a resource balance is defined depends on which processes exist in the network. In summary, the null model requires writing an average of about 18 lines of code per process, most of which is simply specifying a production coefficient. The PRaQ model requires about 58 lines of code per process. Most of this is either specifying a single number for production coefficients, or copy-and-pasting the process-resource-quality sets to define the quality coefficients $\delta_{prq}$ -- defining these coefficients is nearly 60\% of the model code. The NL model requires about 43 lines of code per resource, almost all of which are custom equations (rather than coefficients), which are specific to the resource-technology-network being considered. Thus, whilst smaller in length than the PRaQ model, the NL model is significantly more effort to formulate. [TODO: Update, because the new NL formulation might be a bit quicker.] 
 
+- The implications Reduced usability: unable to complete a number of tests in reasonable time. E.g. looping over different parameter values.
+
+This is true of a network with only 16 processes, and so will become even more apposite [TODO: better word] when recalling that Chapter 4 introduced a library of over [TODO: number] processes. If all these were considered in a model, then computational times could become unrealistic for research purposes.
+
 ## Conclusion
 
-[TODO: Move to conclusion >>>]
+- This study has established three plausible methods to optimise an integrated urban resource network. The PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility.
+- The performance of the models where compared for their
+	- generality
+	- fidelity
+	- tractability
+	- usability
+- The choice of formulation is first and foremost guided by the model's purpose -- it is this which provides the priority of the four characteristics.
+- The priority a modelling gives to ... depens on the purpose of the model
+- Given the necessity for usability and generality, non-linearity matters less...
+- Given that the model's purposes allow a certain amount of freedom in fidelity, other properties become more prominent in deciding the model most suited for this work
 - Generality is important in this work because a necessary part of it is to write a model which can model resource consumption/production, transport and storage for different resource types.
 - but nonlinear considerations may be too much of a luxury for a more generic model, where the equations should apply to more real world systems (i.e. energy, water and waste management processes)
-
-Alongside this fidelity-generality trade-off is a relationship between generality and usability: as the former decreases, so does usability, due to the need to write equations that represent the resource management processes in our model (see Chapter 4). Philosophers of science have formalised these trade-offs to rigorously prove their existence, for example in @Matthewson2008
-
-Given that the model's purposes allow a certain amount of freedom in fidelity, other properties become more prominent in deciding the model most suited for this work
-
-fidelity is in fact a *necessary* trade-off for a model in which trying stuff out/judgement etc. is the primary use 
-generality
-
-
-- especially when traded off against the other benefits (<< put this in the conclusion)
-[<<< TODO: Move to conclusion]
-
-[TODO: Move to conclusion/further work >>>]
-- Were this to undergo a full validation, one might 
-most of the effort of this type of work will go into the data collection to formulate the black-box models
- (this has been proposed in 'further work')
-
-reliant on the measurements of upstream city inputs being at least as accurate as the model
-[<<< TODO: Move to conclusion/further work]
-
-The choice of formulation is first and foremost guided by the model's purpose -- it is this which provides the priority of the four characteristics.
-
-The implications Reduced usability: unable to complete a number of tests in reasonable time. E.g. looping over different parameter values.
-
-Reasons for a linear model:
-
-- Can be constructed generically (note how this links with usability)
-- Easier, and hence more appropriate, within the early stages of optimisation modelling within UM. Increased complexity can come later, now we built a foundation for this type of work
-- More widely useable (i.e. does not require such advanced solvers)
-- Generality: more widely applicable (see discussion on fidelity criteria)
-
+- Alongside this fidelity-generality trade-off is a relationship between generality and usability: as the former decreases, so does usability, due to the need to write equations that represent the resource management processes in our model (see Chapter 4).
+- fidelity is in fact a *necessary* trade-off for a model in which trying stuff out/judgement etc. is the primary use 
+- Reasons for a linear model:
+	- Can be constructed generically (note how this links with usability)
+	- Easier, and hence more appropriate, within the early stages of optimisation modelling within UM. Increased complexity can come later, now we built a foundation for this type of work
+	- More widely useable (i.e. does not require such advanced solvers)
+	- Generality: more widely applicable (see discussion on fidelity criteria)
 - Why don't we use a piecewise linear model? The advantage of this is the solvability (easier to get a global optimum than nonlinear methods). But this isn't our problem. We are concerned with generality, such that we don't have to come up with lots of complex process and transport technology models.
-
-[TODO: Move to conclusions >>>]
-The implications for us are that unless the nonlinear formulation carries with it significant computational disadvantages. This conclusion is drawn on the basis of having only 16 processes, and so will become even more apposite [TODO: better word] when recalling that Chapter 4 introduced a library of over [TODO: number] processes. If all these were considered in a model, then computational times could become unrealistic for research purposes.
-[<<< TODO: Move to conclusions]
-
-
-This study has established three plausible methods to optimise an integrated urban resource network. The PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility.
-
-- Comment on role of spatial/temporal disaggregation generality
-
-The performance of the models where compared for their
-generality
-fidelity
-tractability
-usability
-
-the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
-
-CONCLUDING COMMENTS (multiple paragraphs if necessary)
-the results suggest...
-this appears to be because...
-the future development of...
-
-QUESTIONS:
-the finding suggest a number of important questions...
-these issues are explored further in...
-
 - E.g. the process search gave us a lot of results: we need a generic method to handle that.
+
 - In some situations, the null method might be a quick solution
 - However, because of the code I've written, it isn't actually any harder to define a PRaQ model than a null model. Lots of the awkward calculations happen under the hood.
 - The nonlinear method does have promise, and could perhaps be developed in the future, using sector-specific expertise.
 
+the results suggest...
+this appears to be because...
+the future development of...
+
 The PRaQ model will be carried forward into the next chapter, where we use it on a case study, to help optimise the intersectoral synergies of a Chinese urban development.
 
-FURTHER WORK
+#### Further work 
 
 - the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
 - It may be possible to (partially) linearise it using various techniques (for example piecewise linearisation). Other solution methods also exist in addition to the standard nonlinear solution methods. These include genetic algorithms and other heuristic methods, which should be explored. These alternatives to the standard nonlinear model can also be explored during the next stage of work.
+- the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
+
 
 <!--
 ## Why modelling? [TODO: could this introduce the model review section of the literature review?]
