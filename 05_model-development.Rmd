@@ -1070,44 +1070,19 @@ This is true of a network with only 16 processes, and so will become even more a
 
 ## Conclusion
 
-- This study has established three plausible methods to optimise an integrated urban resource network. The PRaQ model is preferred due to its speed and ease of construction, whilst the NL model is preferred due to its flexibility.
-- The performance of the models where compared for their
-	- generality
-	- fidelity
-	- tractability
-	- usability
-- The choice of formulation is first and foremost guided by the model's purpose -- it is this which provides the priority of the four characteristics.
-- The priority a modelling gives to ... depens on the purpose of the model
-- Given the necessity for usability and generality, non-linearity matters less...
-- Given that the model's purposes allow a certain amount of freedom in fidelity, other properties become more prominent in deciding the model most suited for this work
-- Generality is important in this work because a necessary part of it is to write a model which can model resource consumption/production, transport and storage for different resource types.
-- but nonlinear considerations may be too much of a luxury for a more generic model, where the equations should apply to more real world systems (i.e. energy, water and waste management processes)
-- Alongside this fidelity-generality trade-off is a relationship between generality and usability: as the former decreases, so does usability, due to the need to write equations that represent the resource management processes in our model (see Chapter 4).
-- fidelity is in fact a *necessary* trade-off for a model in which trying stuff out/judgement etc. is the primary use 
-- Reasons for a linear model:
-	- Can be constructed generically (note how this links with usability)
-	- Easier, and hence more appropriate, within the early stages of optimisation modelling within UM. Increased complexity can come later, now we built a foundation for this type of work
-	- More widely useable (i.e. does not require such advanced solvers)
-	- Generality: more widely applicable (see discussion on fidelity criteria)
-- Why don't we use a piecewise linear model? The advantage of this is the solvability (easier to get a global optimum than nonlinear methods). But this isn't our problem. We are concerned with generality, such that we don't have to come up with lots of complex process and transport technology models.
-- E.g. the process search gave us a lot of results: we need a generic method to handle that.
+This chapter has established three methods to optimise an integrated urban resource network, and has discussed the relative merits of each method with respect to fidelity, generality, tractability and usability. The linear models were shown to be the most general, tractable and usable, whilst the nonlinear model is in theory the most faithful to the reality being modelled.
 
-- In some situations, the null method might be a quick solution
-- However, because of the code I've written, it isn't actually any harder to define a PRaQ model than a null model. Lots of the awkward calculations happen under the hood.
-- The nonlinear method does have promise, and could perhaps be developed in the future, using sector-specific expertise.
+The choice of which formulation should be carried forward is first and foremost guided by the model's purpose -- it is this which informs the priority of the four characteristics of models. The most important characteristic is generality -- the whole purpose of this thesis is to develop a method which considers the production, consumption and transport of energy, water and waste management together. In this way, it follows on from the work of @Keirstead in seeking a generic approach to urban resource modelling.
 
-the results suggest...
-this appears to be because...
-the future development of...
+Relatedly, usability is an important consideration -- if the model is to be able to consider different configurations of systems, it must be able to be easy to define the models which test these. The linear definitions of process behaviour help make this possible, avoiding the need for the modeller to go to the effort of writing bespoke equations of process behaviour. Recall that Chapter 4 assembled a database of 263 [TODO: check number] resource management processes which were linearly defined -- this task was itself arduous, and to write nonlinear equations for these would be considerably more so! The place of tractability is also important for similar reasons. If the model's purpose is to generate high-level networks of management processes, then it is important that the model runs quick enough for a modeller to be able to test numerous options. Furthermore, models which are more tractable and usable can be used more widely, requiring less specialist knowledge and software (such as nonlinear solvers).
 
-The PRaQ model will be carried forward into the next chapter, where we use it on a case study, to help optimise the intersectoral synergies of a Chinese urban development.
+The above considerations mean that the greater theoretical fidelity of the nonlinear model relative to the linear models is not so important. Increasing fidelity reduces generality, usability and tractability, such that it becomes necessary to sacrifice fidelity for model characteristics prioritised in this thesis. For now, nonlinear process behaviour may be too much of a luxury for a more generic model, where the equations should apply to multiple real world systems which are being investigated at a high-level, especially given the solution time for nonlinear models.
 
-#### Further work 
+That is not to say that over the longterm, there is no hope for a nonlinear formulation. One approach is to adopt 'piecewise linear modelling'. In this approach, nonlinear functions are linearised by approximating them as being made up of several linear components [TODO: diagram]. Another approach is to use heuristic methods to solve nonlinear models (such as genetic algorithms). Finally, one could rely on the fact that computing speeds are becoming quicker all the time, which will make solving nonlinear quicker in the future. However, note that these approaches only solve the issues of tractability; the lack of generality remains, becuase of the need to define nonlinear equations of process behaviour. If a nonlinear version of the model is to be realised, it will likely require sector-specific expertise; perhaps dividing up the 263 [TODO: check numbers] current processes among several specialists in the fields who can write equations to model then. Moreover, this chapter has proposed Tat Hamlet as a benchmarking problem for optimising UM intersectoral synergies. Thus, updates to the formulations and/or new formulations are welcomed. Some of these may be made to the formulation (e.g. adding nonlinearity), while other changes may develop the nature of the model itself, for example applying it to lower-level processes [TODO: cross-ref to examples].
 
-- the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
-- It may be possible to (partially) linearise it using various techniques (for example piecewise linearisation). Other solution methods also exist in addition to the standard nonlinear solution methods. These include genetic algorithms and other heuristic methods, which should be explored. These alternatives to the standard nonlinear model can also be explored during the next stage of work.
-- the nonlinear model falls down on generality, due to the need to define processes differently. Future work might assemble a library of nonlinear process descriptions to help here.
+Having ruled out the nonlinear formulation, the question remains as to whether the Null or the PRaQ model should be carried forward. At a surface level, it would seam that the PRaQ model is harder to write than the Null model -- it has more equations and variables. However, because of the model architecture described in Section [TODO: cross-ref], very little extra effort is required. [TODO: complete extra explanations here] -- the R-script does the hard work of converting the library data into a form which can be used by the model.
 
+In summary, this chapter proposes the PRaQ model to be carried forward for future use, but also accepts that improvements can be made to the formulations, and has thus published this work as a benchmarking study for the UM field. It is of course important that the considerations of this section inform how the model is used -- this thesis has chosen to prioritise generality, usability and tractability over fidelity, and so the PRaQ model should not be used for detailed design decisions. Rather, it provides high-level guidance on how systems might improve an area's urban metabolism. This shall now be the focus of the next chapter, where the PRaQ model is used in a case study, to help optimise the intersectoral synergies of a Chinese urban development.
 
 <!--
 ## Why modelling? [TODO: could this introduce the model review section of the literature review?]
