@@ -11,7 +11,7 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-Urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services, and thus affect the aggregate resources flows into and out of a city. Understanding these aggregate flows is a key component of urban metabolism research, but as Chapter 2 argued, the field has not yet systematically represented [TODO: modelled?] how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies (as defined by Chapter [TODO: cross-ref]) which present opportunities for and challenges to efficient resource provision, yielding environmental and economic benefits. A model that seeks understanding at this level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this model from a concept to a formalised mathematical representation.
+The systems of urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services. Upstream and downstream of these networks are the aggregate flows of inputs and wastes into and out of a city. Understanding what drives these aggregate flows is a key component of UM research, but -- as Chapter 2 argued -- the field has not yet produced a formal representation of how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies (as defined by Chapter [TODO: cross-ref]) which present opportunities for and challenges to efficient resource provision, yielding environmental and economic benefits. A model that seeks understanding at this level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this model from a concept to a formalised mathematical model.
 
 Since modelling is a simplification of the real-world [TODO: cross-reference] , there will be inevitably be compromises in the performance of the model. This chapter explores these through three formulations (introduced in Section [TODO:]). The formulations are then applied to a case study which is followed by discussion on their performance given the compromises. This study leads to the selection of one of the models to be carried forward to a case study in Chapter [TODO: cross-ref chapter 6]. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, with the formulations and data being made publicly available, so others can develop the model.
 
@@ -23,17 +23,17 @@ Fidelity and generality are both functions of a model's representation of the re
 
 [^pipe-flow]: The example of pipe flow is developed in Section [TODO: cross-ref].
 
-These four features usually trade off against one another, which is the source of a model's compromise. Models that are more general will be lower fidelity, because they are not tailored to the specific details of a real-world [@McIntosh2012]. Models of higher fidelity are both less tractable and less usable because they encode real-world system in more detail, using more equations (to capture the detail), with more advanced mathematics; these models are more difficult to formalise, use, and solve.
+These four features usually trade off against one another, which is the source of a model's compromise. Models that are more general will be lower fidelity, because they are not tailored to the specific details of a real-world [@McIntosh2012]. Models of higher fidelity are both less tractable and less usable because they encode real-world system in more detail, using more equations (to capture the detail), with more advanced mathematics; these models are more difficult to formalise, use, and solve. 
 
 Moving to consider an optimisation model's mathematics in greater depth, recall from Chapter 1 that the equations of optimisation models are comprised of parameters and variables, where the values of parameters are fixed, and the values of the variables are chosen during the optimisation procedure. There are different forms of equations, and these different forms require their own  methods to solve. There are two broad categories of formulation: *linear* and *nonlinear*.
 
-Linear programmes (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. Linear formulations have a number of subsets: for example, if some variables must take integer values (which might be necessary to specify the number of resource management processes, for example), they are mixed-integer linear programming (MILP) problems. Linear models can also have uncertain parameters, which are defined by probability distributions -- this is often true of waste management models, in which the parameter defining a rate of waste generation is uncertain. These models require multiple-stage methods to solve [TODO: list examples from the spreadsheet]. A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
+Linear programmes (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. A specific class of linear programmes are those where some variables must adopt integer values (which might be necessary to specify the number of resource management processes, for example); these are mixed-integer linear programmes (MILP). A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
 
 <!--
  The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
 -->
 
-*Nonlinear programmes* (NLP) are often found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation can be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). These problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity. However, usability may be hampered, for two reasons: first, the formulation is still detailed; and second, heuristic solutions usually require bespoke approaches.
+*Nonlinear programmes* (NLP) have equations in which variables are multiplied by one another. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). For this reason, NLP are often used to model water management problems, because hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation might be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. These problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity. However, usability may be hampered, for two reasons: first, the formulation is still detailed; and second, heuristic solutions usually require bespoke approaches.
 
 [^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)/(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
@@ -67,7 +67,7 @@ Benchmarking problems also exist in fields more closely related to this thesis. 
 http://castlelab.princeton.edu/Papers/Jiang-ComparisonADPonBenchmarkEnergy-DoesAnythingWorkJune52014.pdf -- note conslusions: no methods suitable, so new theory/methodology is required].
 -->
 
-The benchmarking study in this chapter will be the first application of a model which considers the highly integrated management of energy, water and waste systems. This novely warrants that the formulations and data can be made available to the wider research community, who can work do improve upon the models develope here.
+The benchmarking study in this chapter will be the first application of a model which considers the highly integrated management of energy, water and waste systems. This novelty warrants that the formulations and data can be made available to the wider research community, who can work do improve upon the models develope here.
 <!--
 - Benchmarking model of default probabilities of listed companies
   	- http://papers.ssrn.com/sol3/papers.cfm?abstract_id=982984
@@ -142,177 +142,22 @@ The benchmarking study in this chapter will be the first application of a model 
 
 ## Tat Hamlet case study
 
-The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 gave provided reports on the village's material and energy flows and socioeconomic features [@Schandl2006, @Heezen2004]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007]. Thus, the Tat Hamlet is a known case study within [TODO: urban?] metabolism literature. In this chapter, the features of Tat will be used to describe the three model formulations developed, and the data from the material flow and energy flow studies will be used in the model, to apply the benchmarking tests.
+The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 led to reports on the village's material and energy flows and socioeconomic characteristics [@Schandl2006, @Heezen2004]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007], making Tat Hamlet a known case study within the UM literature. In this chapter, Tat will be used as a benchmarking study to test the three model formulations, using data from the material flow and energy flow studies.
 
 Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. The village does have small shops and education functions, but its main activity is agriculture, with rice cultivation (where paddy fields are irrigated by a small river), swidden cultivation, and biomass (timber, bamboo shoots, cassava roots) collection from a forest. Some agricultural products are sold to external traders, though most remain in the village. About 80 of the households own their own livestock (including chickens, dogs, buffalo, and cows), and most households have their own ponds for aquaculture, such that the village produces most of its own meat, dairy products, animal manure and green manure. Water can be piped to homes for drinking, household use, and for washing livestock. Aggregate metabolic flows into the village comprise rainfall, electricity from the grid, construction materials, fossil fuels (such as gasoline for motorbikes, and petroleum lighting), and a small amount of vegetable and meat imports. Metabolic flows out of the village include household and agricultural wastes, incineration products, fossil-fuel emissions, and biomass which is sold.
 
 [TODO: Summary diagram]
 
-### Problem definition
+The small size of Tat serves to make the benchmark problem user-friendly because the problem can conceptualised in a diagram on a single page of A4. The village's features described above will be used to define the village's demands for goods and services, and the network of resources and processes which will meet this demand. The models will compute how Tat can meet demands for goods and services at the lowest cost, using the village's resource management processes. Goods and services include food, water and energy, and resource management processes include everything from small domestic stoves to agricultural activities.
 
-The small size of Tat serves to make the benchmark problem user-friendly inasmuch as the problem can conceptualised in a diagram on a single page of A4. The village's features described above will be used to define components of the problem, namely namely the village's demands for goods and services, and the network of resources and processes which will meet this demand. The purpose of the model will be to compute how Tat can meet demands for goods and services at the lowest cost, using the village's resource management processes. Goods and services include food, water and energy, and resource management processes include everything from small domestic stoves to agricultural activities.
-
-To construct the problem, data from the literature will be used to derive resource demands, and to select and define the behaviour of the resource management processes. However, to help produce a benchmark problem that is both user-friendly, and at the same complicated enough to test the different formulations, various adjustments are made, in the form of *simplifications*, *assumptions*, and *additions*.
-
-
+To construct the problem, data from the literature will be used to derive resource demands, and to select and define the behaviour of the resource management processes. However, to define a benchmark problem that is both user-friendly, and at the same complicated enough to test the different formulations, various adjustments are made, in the form of simplifications, assumptions, and additions (outlined in Appendix [TODO: cross-reference]; these are justified on the basis that this the end-goal of the benchmarking is to identify the best formulation, rather than to improve Tat's metabolism. The adjustments achieve a both simplicity in understanding the model, and yet retain enough complexity in order to suitably test the formulations. This benchmarking also demonstrates how one can formulate a problem from real world data.
 <!--
 The studies in the literature do not comprehensively all the necessary information to do this, therefore we have consulted studies of other similar contexts, so we an create a plausible network of resources and processes[^tat-context].
 -->
 
-\begin{description}
-
-\item [Simplifications] help ensure the benchmark study is user-friendly:
-
-\begin{itemize}
-\item The commercial sector (i.e. the shops, which sells 'final goods') will be ignored. These goods are directly imported, and are thus not managed by processes, so add nothing to the benchmark study
-\item Amalgamate all livestock (chickens, dogs, buffalo, and cows) into a single 'livestock' category which produces all livestock products in the village (meat, dairy, and manure).
-\item Amalgamate all agricultural activities into a single 'agriculture' category which produces all agricultural produced in the village (firewood, swidden, green manure, vegetables)
-\end{itemize}
-
-\item [Assumptions] account for the fact that the literature does not resolve Tat's energy flows down to their final use:
-
-\begin{itemize}
-\item Tat's total electricity use are split equally between domestic, agriculture, and water pumping purposes.
-\item Tat's total heat output  = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
-\end{itemize}
-
-\item [Additions] give the benchmarking study greater ability to test different types of formulation:
-
-\begin{itemize}
-\item A dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
-\item Each household will include cooking, space heating, and hot water heating processes.
-\item The literature does not provide any spatial information regarding the point of demand and the location of processes. In order that the benchmarking can consider spatial disaggregation, Tat will be divided into four zones (each of which have equal demands for resources).
-\end{itemize}
-
-\end{description}
-
-The above adjustments are justified on the basis that this chapter's aim is to establish the best formulation for this thesis's purposes, and not to improve Tat's metabolism. These adjustments achieve a both simplicity in understanding the model, and sufficient sophistication that can suitably test the different outcomes. Of course, one a case study could have been invented to serve these goals, but this approach shows how one can formulate a problem from real world data. Furthermore, it is hoped that Tat's current presence in the UM literature will help the benchmarking study gain traction amongst the academic community.
-
-<!--
-- literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
-- 105 households
-- Average size = 4.4 people
-- 69 hectares of farmland
-- Small river, to supply the paddy field
-- mainly agricultural community:
-	- Wet rice paddy fileds
-	- Swidden cultivation
-	- Livestock
-	- Collecting products from the forest, including non-timber forest products (NTFP) such as bamboo shoots, cassava roots and Canna, sold to visiting traders.
-- Electricity available since 2001
-- Dirt road (parallel to the river)
-- Houses use electricity, water
-- Other services: education and shops
-- Flows include (p.15):
-  	- paddy and swidden fields inputs
-  	- Livestock: feed, productions, livestock sold, bought and killed
-	  	- water (for feeding and washing)
-  	- NTFP
-	- firewood
-	- bamboo (for fire and construction)
-	- Household artefacts
-	- Lamp oil, batteries and candles
-	- gasoline for motorcycles
-- System components (p18)
-  	- Atmospohere
-	- Fishpond
-	- Forest
-	- Grasslands
-	- Ground
-	- Home/tree gardens
-	- Household
-	- Household assests
-	- Houses
-	- Human population
-	- Livestock
-	- Middleman
-	- External markets
-	- Public structures
-	- Paddy fields
-	  	- Need more water
-	- Swiden fields (forest areas on mountain slopes, can't be fertilised)
-	- Shop
-	- Storage of seeds etc.
-	- Swidden fields
-	- Water bodies
-	- Other
-
-- Paddy and Swidden fields both belong to 59% of the houses, though 26% only have pddy, and 5% only swidden
-- Average paddy size = 1160m2
-- Average swidden size = 1770m2
-- 78% engage in logging
-- Buffalo (56%), cows (51%), and pigs (47%) for meat (a few goats, and chickens)
-- Construction materials also present as stocks and flows
-- Annual rainfall 1840 mm/year
-- p.28
-  	- Biomass: rice, swidden, fruit and feg, fish from fish ponds, time and bamboo from forest, NLTP, livestock grazing (interal, external, or imports)
-	- Water: household, livestock washing and drinking
-	- Fuel and process foods and constructon materials (importes)
-	- Outputs (dispolas): fertilisers, fishpond feed
-	- Outputs (biomass): timber, NTFP, livestock products, live animals, harvests
-	- Wastes and emissons: feces, incinerated products, household and agricultural wasates, durables, fossil-fuel emissions, wastewater, water varpour from drying agricultural and forest products
-- biomass is dried, and unsed residue is thrown away
-- Fishponds belong to 80 hoseholds
-- pipes transport water to the home (p38)
-- 20 households use 696 l of water per day
-  	- 60 litres to wash 2 pigs, 10 l to feed 2 pigs
-- 530 tons of firewood per year
-- 95 tons per year of bamboo used for cooking fuel
-- 60 tons per year bamboo shoots (=food), 30 t are sold at market
-- Green manure (for paddy fileds and fishponds): 9.1 tons per year
-- plant roots (medicinal and food) = (2.3 + 0.9 tons per year)
-- 930 tons per year land products
-  	- 120 tons imported
-	- 810 land products from paddy, swidden, homes gardens and fish ponds
-- Domestic extraction of food (biomass) = 408 t/yr (of which rice is 97 t/yr). This corresps. to by products (e.g. leaves) of 405 t/yr (107 t/yr)
-- Household food imports = 81 t/yr (another 2 tons per year for seeds etc.)
-- Imported meat: 2.6 t/yr
-- Final goods: 46 t/year (e.g. appliances, herbicide etc.)
-- Fossil fules: 4 tons per year
-  	- 2.9 t/yr for motorbikes
-	- 0.87 t/yr for petroleum lighting
-	- 0.37 t/yr lamp oil
-	- 0.19 t/yr lubricant oils
-- Outputs:
-  	- Water: 2600 t/yr extracted and thrown away; 630 tons per year evaporated from biomass
-	- Wood: 230 t/yr, bamboo: 52 t/yr (cooking fuel)
-	- Fish fee (palm leaves and broom grass): 6.6 and 12 tons per year
-	- Lnad products: cassava leaves (270 t/yr), grass (46 t/yr), bran (30 t/yr) for fish feed
-	- Land products: cassava stems (49 t/yr) for fields
-	- H/hold biomass waste and food (49 t/yr) + rice straw (9.4 t/yr)
-	- Manure: 270 t/yr (fertilizer and fish feed)
-	- Final good wastes and emissions: 36 tons per year
-- Stocks (2001). Feed in brackets in t/yr (e.g. cassava leaves, rice bran, etc.)
-  	- Buffalo: 107 (7.8) 
-  	- Cow: 138 (85)
-  	- Pig: 214 (265)
-  	- Chicken: 1600 (43)
-  	- Dog: 46 (22)
-  	- Goat: 8
-  	- Duck: 65 (5.6)
-- Livestock products (t/yr):
-  	- Eggs: 0.038
-	- Manure: 270 (210 in fishonds, 55 on paddy fields, 2.5 for home gardens)
-	- Chicken meat: 0.26
-	- Duck meat: 0.0056
-	- Buffalo meat: 3.1
-	- Cow meat: 0.57
-	- Pig meat: 0.49
-	- Goat meat: 0.11
-	- Dog meat: 0.077
-- Livestock feed (t/yr):
-	- Chicken: 43
-	- Duck: 5.6
-	- Buffalo: 7.8
-	- Cow: 85
-	- Pig: 265
-	- Goat: -
-	- Dog: 22
--->
-
 ### Problem conceptualisation
 
-The information from the literature and the adjustments (outlined above) provide a starting point to provide a conceptual model of Tat's resource management. This is partly visualised in Figure \ref{fig:tat-16}, which shows 27 resources managed by 16 conversion processes. The figure also indicates which resources are demands, and which resources can be imported into the village. (It is assumed any resource can be exported.)
+The information from the literature and the adjustments provide a starting point to conceptualise Tat's means of resource management. This is partly visualised in Figure \ref{fig:tat-16}, which shows 27 resources managed by 16 conversion processes. The figure also indicates which resources are demands, and which resources can be imported into the village. (It is assumed any resource can be exported.) Not represented here are the four zones into which Tat is split (arbitrarily for the purposes of this chapter, in order to test how the formulations deal with spatial disaggregation), between which resource demands are equally split; The models will be free to locate processes in any of them, but there will be limits imposed as to which zones can import resources, thus to meet demand, there must be the transport of resources from one zone to another (via transport processes, also unrepresented on this diagram).
 
 \begin{figure}
 	\centering
@@ -324,8 +169,6 @@ The information from the literature and the adjustments (outlined above) provide
 	\caption{Complete network of the resources and sixteen conversion processes in the Tat Hamlet case study. Resource demands are showin in \textbf{bold}, while resources which can be imported from outside of the system are indicated by a *. Details of transport processes are provided in Table [TODO:].}
 	\label{fig:tat-16}
 \end{figure}
-
-Not represented by this conceptualisation are the four zones into which Tat is split (arbitrarily, in order to test how the formulations deal with spatial disaggregation), between which resource demands are equally split. The models will be free to locate processes in any of them, but there will be limits imposed as to which zones can import resources, thus forcing formulations to use transport processes (which are also not represented on this diagram).
 
 [TODO: Check if there are limits on the numbers of certain processes, e.g. dam, and use another diagram to show zones and transport processes.]
 
@@ -646,7 +489,7 @@ As the conceptualisation above indicates, the highly integrated resource managem
 
 An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
 
-To model the processes which convert resources, @Keirstead2013a is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be extended to consider resources and processes from multiple sectors. The urban energy systems model constains two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
+To model the processes which convert resources, @Keirstead2013a is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation); this makes the formulation extendable to other types of resources and processes. The urban energy systems model has two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
 
 \begin{figure}
 	\centering
@@ -661,7 +504,7 @@ To model the processes which convert resources, @Keirstead2013a is based upon th
 \label{fig:Keirstead-RTN}
 \end{figure}
 
-A feature of @Keirstead2013a's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a resource balance:
+A feature of @Keirstead2013a's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a balance of resources in each zone at any moment in time:
 
 \begin{align}
 \begin{split}
@@ -671,11 +514,13 @@ A feature of @Keirstead2013a's model is that it is spatially and temporally disa
 \end{split}
 \end{align}
 
-Demand (for each resource, in each zone and each time period) is a paramter given to the model, with the other terms a being variables whose values are selected by the optimisation process. The import and export variables can be limited using constraints, while the net inflow and net production variable are computed using equations which model the behaviour of conversion and transport technologies. The overall goal of the programme is then to choose variable values which minimise some objective (such as cost or emissions) which is formulated from the programme's parameters and variables -- examples are given in Section [TODO: cross-reference to section on objectives].
+[TODO: express this in our notation, then in next paragraph, use notation to highlight the difference between the models. Then possibly join the next two paragraphs]
+
+Demand (for each resource, in each zone and each time period) is a parameter given to the model, with the other terms being variables whose values are selected by the optimisation process. The import and export variables can be limited using constraints, while the net inflow and net production variable are computed using equations which model the behaviour of conversion and transport technologies. The overall goal of the programme is then to choose variable values which minimise some objective (such as cost or emissions) which is formulated from the programme's parameters and variables -- examples are given in Section [TODO: cross-reference to section on objectives].
 
 [TODO: add illustrative diagrams, e.g. for the processes, and the zones]
 
-The next three subsections specify three different model formulations based on @Keirstead2013a. They are each based on the resource balance, however they differ in the way that they model the conversion [TODO: and transport?] processes, varying in their fidelity, generality, tractability, and usability:
+The next three subsections specify three different model formulations based on @Keirstead2013a. They are each based on the resource balance, however they differ in the way that they model the conversion [TODO: and transport?] processes (in other words, how the variable $G_{prz}$) is defined), varying in their fidelity, generality, tractability, and usability:
 
 \begin{description}
 
@@ -710,7 +555,7 @@ Figure \ref{fig:evolution} shows how the three formulations are related both to 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{05_model-development/pipe-dam-network.pdf}
-	\caption{An RTN representation of Figure \ref{fig:pump-dam-example}. The electricity (E) required by the pump can be imported from outside the system; the amount required depends on the mass of water (W) to be pumped, and the elevation to which it needs pumping. The dashed arrow indicates that the electricity in zone 2 is a demand.}
+	\caption{An RTN representation of Figure \ref{fig:pump-dam-example}. The electricity (E) required by the pump can be imported from outside the system; the amount required depends on the mass of water (W) to be pumped, and the elevation to which it needs pumping. The dashed arrow indicates that the electricity in Zone 2 is a demand.}
 	\label{fig:pump-dam-RTN}
 \end{figure}
 
@@ -1125,7 +970,7 @@ The Null model is built around the resource balance \eqref{eq:null_balance_qty},
 
 The PRaQ model is formed using a similar set of constraints to the Null model (Equations \eqref{eq:praq_balance_qty}--\eqref{eq:praq_direction}), namely resource balances, import and export limits, and black-box models of conversion processes and transport processes. In order to incorporate resource qualities, the formulation introduces additional equations, which use new parameters and variables whose purpose is to map resource qualities onto quantities. Finally, the NL model is formulated in the same way as the Null model, apart from for the conversion process equation, which is formulated to allow processes to be modelled is either linear or nonlinear.
 
-The three formulations use continuous variables (e.g. resource quantities and process rates), integer variables (e.g. the number of conversion processes in a zone), and binary variables (e.g. to define the existence of a transport process between two zones). The Null and PRaQ models are linear, and so forms mixed-interger linear programmes (MILP), whilst the nonlinear model forms a mixed-integer nonlinear programme (MINLP). In each case, the models requires users to specify zonal demands for the resources available to an area, as well as the parameters (and/or equations) for available conversion process and transport technologies. The constraints are solved in order to minimise an objective function (with the option of defining additional constraints to accomplish Pareto optimisation).
+The three formulations use continuous variables (e.g. resource quantities and process rates), integer variables (e.g. the number of conversion processes in a zone), and binary variables (e.g. to define the existence of a transport process between two zones). The Null and PRaQ models are linear, and so form mixed-interger linear programmes (MILPs), whilst the nonlinear model forms a mixed-integer nonlinear programme (MINLP). In each case, the models requires users to specify zonal demands for the resources available to an area, as well as the parameters (and/or equations) for available conversion process and transport technologies. The constraints are solved in order to minimise an objective function (with the option of defining additional constraints to accomplish Pareto optimisation).
 
 ## Implementation
 
@@ -1187,9 +1032,9 @@ plot_conversion
 
 #### The formulations representation of reality: fidelity and generality
 
-A model's fidelity can be assessed in two ways. The first is practical; the model's results are validated against the results of real, historic data. However, the parameters in the Tat Hamlet case study (i.e. the $k$ coefficients) have actually been derived from the historic data, and so this test is not fair. In theory, one could keep all processes in the real-life Tat system the same, but change some of the demands, observing how the network of processes responds; one would then see if this could be replicated in the model by changing the same demands. However, this would be both impractical and unethical; and as pointed out earlier, practical and ethical limitations are what makes models useful [p.TODO: page reference, quoting @Williams1990]. The work of this paper is not unique; many other models which optimise the systems at the urban scale cannot be validated in this rigorous manner, including [TODO: list examples, e.g. Keirstead].
+A model's fidelity can be assessed in two ways. The first is practical; the model's results are validated against the results of real, historic data. However, the parameters in the Tat Hamlet case study (i.e. the $k$ coefficients) have actually been derived from the historic data, and so this test is not fair. In theory, one could keep all processes in the real-life Tat system the same, but change some of the demands, observing how the network of processes responds; one would then see if this could be replicated in the model by changing the same demands. However, this would be both impractical and unethical; and as pointed out earlier, practical and ethical limitations are what makes models useful [p.TODO: page reference, quoting @Williams1990]. A second reason is that for the purposes of developing the model, Tat Hamlet as been reimagined (with simplifications, adjustments and assumptions). The inability to validate the model in this way is not unique to this thesis; many other models which optimise the systems at the urban scale cannot be validated in this rigorous manner, including [TODO: list examples, e.g. Keirstead].
 
-This does not mean that nothing can be said about the fidelity of the three formulations: a second way to assess fidelity is theoretical. Throughout the derivations, it was demonstrated that the nonlinear formulate can model phenomena that linear models cannot (such as energy loss due to friction in pipes), however. In theory, there are other processes with nonlinearities that the nonlinear formulation can model with greater fidelity. However, the concern here is not necessarily the fidelity of the formulations relative to each other, but their fidelity relative to the purposes for which they are used. What is important with these sorts of models is that they are used for their intended purpose; that is for "insight, not numbers" [TODO: cite Hamming], to make explicit decisions that would otherwise be implicit, by adding some objectivity, by formalising the assumptions, relationships, and mathematics of the decision-making. Models such as these should be used to get an overall sense of how a system behaves. Does it choose to centralise or decentralise processes? Are their geographical features of the are which constrain the process choice in some locations, and what is the effect of this on the rest of the network? Which kinds of resources are cascaded? To that end, a general picture of system behaviour emerges from sensitivity analysis, comparing outcomes over a range of parameter values.
+This does not mean that nothing can be said about the fidelity of the three formulations: a second way to assess fidelity is theoretical. Throughout the derivations, it was demonstrated that the nonlinear formulate can model phenomena that linear models cannot (such as energy loss due to friction in pipes). In theory, there are other processes with nonlinearities that the nonlinear formulation can model with greater fidelity. However, the concern here is not necessarily the fidelity of the formulations relative to each other, but their fidelity relative to the purposes for which they are used. What is important with these sorts of models is that they are used for their intended purpose; that is for "insight, not numbers" [TODO: cite Hamming], to make explicit decisions that would otherwise be implicit, by adding some objectivity, by formalising the assumptions, relationships, and mathematics of the decision-making. Models such as these should be used to get an overall sense of how a system behaves. Does it choose to centralise or decentralise processes? Are their geographical features of the are which constrain the process choice in some locations, and what is the effect of this on the rest of the network? Which kinds of resources are cascaded? To that end, a general picture of system behaviour emerges from sensitivity analysis, comparing outcomes over a range of parameter values.
 
 A model's fidelity is one of how it represents the real-world, hence it is discussed here with generality, another model feature of this type. [TODO: note this insight is made earlier in the chapter]. While the nonlinear formulation might be, in mathematical terms, the most faithful, it is also the least general, because nonlinear processes need specially defined equations [TODO: spell out in more detail what this actually looks like, cross-ref to appropriate equations and examples], while the linear models can use the same format for any process type.
 
@@ -1506,3 +1351,152 @@ No.        & Added                                    & Abbrev.      & No. & Add
            &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\ \bottomrule
 \end{tabular}
 \end{sidewaystable}
+
+\begin{description}
+
+\item [Simplifications] help ensure the benchmark study is user-friendly:
+
+\begin{itemize}
+\item The commercial sector (i.e. the shops, which sells 'final goods') will be ignored. These goods are directly imported, and are thus not managed by processes, so add nothing to the benchmark study
+\item Amalgamate all livestock (chickens, dogs, buffalo, and cows) into a single 'livestock' category which produces all livestock products in the village (meat, dairy, and manure).
+\item Amalgamate all agricultural activities into a single 'agriculture' category which produces all agricultural produced in the village (firewood, swidden, green manure, vegetables)
+\end{itemize}
+
+\item [Assumptions] account for the fact that the literature does not resolve Tat's energy flows down to their final use:
+
+\begin{itemize}
+\item Tat's total electricity use are split equally between domestic, agriculture, and water pumping purposes.
+\item Tat's total heat output  = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
+\end{itemize}
+
+\item [Additions] give the benchmarking study greater ability to test different types of formulation:
+
+\begin{itemize}
+\item A dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
+\item Each household will include cooking, space heating, and hot water heating processes.
+\item The literature does not provide any spatial information regarding the point of demand and the location of processes. In order that the benchmarking can consider spatial disaggregation, Tat will be divided into four zones (each of which have equal demands for resources).
+\end{itemize}
+
+\end{description}
+
+<!--
+- literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
+- 105 households
+- Average size = 4.4 people
+- 69 hectares of farmland
+- Small river, to supply the paddy field
+- mainly agricultural community:
+	- Wet rice paddy fileds
+	- Swidden cultivation
+	- Livestock
+	- Collecting products from the forest, including non-timber forest products (NTFP) such as bamboo shoots, cassava roots and Canna, sold to visiting traders.
+- Electricity available since 2001
+- Dirt road (parallel to the river)
+- Houses use electricity, water
+- Other services: education and shops
+- Flows include (p.15):
+  	- paddy and swidden fields inputs
+  	- Livestock: feed, productions, livestock sold, bought and killed
+	  	- water (for feeding and washing)
+  	- NTFP
+	- firewood
+	- bamboo (for fire and construction)
+	- Household artefacts
+	- Lamp oil, batteries and candles
+	- gasoline for motorcycles
+- System components (p18)
+  	- Atmospohere
+	- Fishpond
+	- Forest
+	- Grasslands
+	- Ground
+	- Home/tree gardens
+	- Household
+	- Household assests
+	- Houses
+	- Human population
+	- Livestock
+	- Middleman
+	- External markets
+	- Public structures
+	- Paddy fields
+	  	- Need more water
+	- Swiden fields (forest areas on mountain slopes, can't be fertilised)
+	- Shop
+	- Storage of seeds etc.
+	- Swidden fields
+	- Water bodies
+	- Other
+
+- Paddy and Swidden fields both belong to 59% of the houses, though 26% only have pddy, and 5% only swidden
+- Average paddy size = 1160m2
+- Average swidden size = 1770m2
+- 78% engage in logging
+- Buffalo (56%), cows (51%), and pigs (47%) for meat (a few goats, and chickens)
+- Construction materials also present as stocks and flows
+- Annual rainfall 1840 mm/year
+- p.28
+  	- Biomass: rice, swidden, fruit and feg, fish from fish ponds, time and bamboo from forest, NLTP, livestock grazing (interal, external, or imports)
+	- Water: household, livestock washing and drinking
+	- Fuel and process foods and constructon materials (importes)
+	- Outputs (dispolas): fertilisers, fishpond feed
+	- Outputs (biomass): timber, NTFP, livestock products, live animals, harvests
+	- Wastes and emissons: feces, incinerated products, household and agricultural wasates, durables, fossil-fuel emissions, wastewater, water varpour from drying agricultural and forest products
+- biomass is dried, and unsed residue is thrown away
+- Fishponds belong to 80 hoseholds
+- pipes transport water to the home (p38)
+- 20 households use 696 l of water per day
+  	- 60 litres to wash 2 pigs, 10 l to feed 2 pigs
+- 530 tons of firewood per year
+- 95 tons per year of bamboo used for cooking fuel
+- 60 tons per year bamboo shoots (=food), 30 t are sold at market
+- Green manure (for paddy fileds and fishponds): 9.1 tons per year
+- plant roots (medicinal and food) = (2.3 + 0.9 tons per year)
+- 930 tons per year land products
+  	- 120 tons imported
+	- 810 land products from paddy, swidden, homes gardens and fish ponds
+- Domestic extraction of food (biomass) = 408 t/yr (of which rice is 97 t/yr). This corresps. to by products (e.g. leaves) of 405 t/yr (107 t/yr)
+- Household food imports = 81 t/yr (another 2 tons per year for seeds etc.)
+- Imported meat: 2.6 t/yr
+- Final goods: 46 t/year (e.g. appliances, herbicide etc.)
+- Fossil fules: 4 tons per year
+  	- 2.9 t/yr for motorbikes
+	- 0.87 t/yr for petroleum lighting
+	- 0.37 t/yr lamp oil
+	- 0.19 t/yr lubricant oils
+- Outputs:
+  	- Water: 2600 t/yr extracted and thrown away; 630 tons per year evaporated from biomass
+	- Wood: 230 t/yr, bamboo: 52 t/yr (cooking fuel)
+	- Fish fee (palm leaves and broom grass): 6.6 and 12 tons per year
+	- Lnad products: cassava leaves (270 t/yr), grass (46 t/yr), bran (30 t/yr) for fish feed
+	- Land products: cassava stems (49 t/yr) for fields
+	- H/hold biomass waste and food (49 t/yr) + rice straw (9.4 t/yr)
+	- Manure: 270 t/yr (fertilizer and fish feed)
+	- Final good wastes and emissions: 36 tons per year
+- Stocks (2001). Feed in brackets in t/yr (e.g. cassava leaves, rice bran, etc.)
+  	- Buffalo: 107 (7.8) 
+  	- Cow: 138 (85)
+  	- Pig: 214 (265)
+  	- Chicken: 1600 (43)
+  	- Dog: 46 (22)
+  	- Goat: 8
+  	- Duck: 65 (5.6)
+- Livestock products (t/yr):
+  	- Eggs: 0.038
+	- Manure: 270 (210 in fishonds, 55 on paddy fields, 2.5 for home gardens)
+	- Chicken meat: 0.26
+	- Duck meat: 0.0056
+	- Buffalo meat: 3.1
+	- Cow meat: 0.57
+	- Pig meat: 0.49
+	- Goat meat: 0.11
+	- Dog meat: 0.077
+- Livestock feed (t/yr):
+	- Chicken: 43
+	- Duck: 5.6
+	- Buffalo: 7.8
+	- Cow: 85
+	- Pig: 265
+	- Goat: -
+	- Dog: 22
+-->
