@@ -53,7 +53,7 @@
     \put(0.04179253,1.14675594){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Data}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{assemble-model.pdf}}%
     \put(0.23378248,0.40943286){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Models} (\texttt{GAMS})}}}%
-    \put(0.23284515,0.59314871){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{R code}}}}%
+    \put(0.29820343,0.59314871){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{R code}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{assemble-model.pdf}}%
     \put(0.04179253,1.08548253){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Libraries (\texttt{YAML})}}}%
     \put(0.04179253,1.05484583){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
