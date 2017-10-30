@@ -1027,11 +1027,11 @@ This is because nonlinear models are harder to solve than equivalently sized lin
 [TODO: note the nonconvexity and the need to find a guaranteed global optimum, rather than stopping at any optimum, especially when there are integer variables in a network problem, using branch and bound methods [@Williams, Chapter 8].
 
 
-```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed''} show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section [TODO:].) \\label{fig:comparison-formulations}"}
+```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed'' show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section [TODO:].) \\label{fig:comparison-formulations}"}
 
 setwd("05_model-development")
 
-source("process-results.R")
+source("process-results-updated.R")
 
 plot_conversion
 
