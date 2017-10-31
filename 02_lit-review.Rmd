@@ -190,7 +190,7 @@ Techniques:
 
 The literature review above surveyed UM research to outline the different ways UM contributed to understanding resource flows in cities. In doing so, it highlighted the need for better understanding of the 'inside' of a UM system generally, and the engineered system specifically -- in the case of this thesis, the role of resource management processes in affecting the overall flows of energy, water, and waste into and out of a city. This section seeks to move this idea forward by considering the role that modelling can play in UM by systematically researching the current state of affairs of UM modelling. Before this however, this section first pauses to introduce the idea of modelling generally. 
 
-### An introduction to modelling
+### An introduction to modelling {#sec:modelling-intro}
 
 Whenever models are used, it is important to justify their use, but it is especially important here specifically, when introducing a new model to the urban metabolism field. A model can be defined as:
 

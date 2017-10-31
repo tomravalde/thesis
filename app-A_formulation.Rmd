@@ -1,5 +1,191 @@
-# Model formulation
+# Model formulation {#sec:app-model-formulation}
 
 [TODO: complete]
 
 [TODO: Include code for linear and nonlinear versions of the model]
+
+\begin{description}
+
+\item [Simplifications] help ensure the benchmark study is user-friendly:
+
+\begin{itemize}
+\item The commercial sector (i.e. the shops, which sells 'final goods') will be ignored. These goods are directly imported, and are thus not managed by processes, so add nothing to the benchmark study
+\item Amalgamate all livestock (chickens, dogs, buffalo, and cows) into a single 'livestock' category which produces all livestock products in the village (meat, dairy, and manure).
+\item Amalgamate all agricultural activities into a single 'agriculture' category which produces all agricultural produced in the village (firewood, swidden, green manure, vegetables)
+\end{itemize}
+
+\item [Assumptions] account for the fact that the literature does not resolve Tat's energy flows down to their final use:
+
+\begin{itemize}
+\item Tat's total electricity use are split equally between domestic, agriculture, and water pumping purposes.
+\item Tat's total heat output  = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
+\end{itemize}
+
+\item [Additions] give the benchmarking study greater ability to test different types of formulation:
+
+\begin{itemize}
+\item A dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
+\item Each household will include cooking, space heating, and hot water heating processes.
+\item The literature does not provide any spatial information regarding the point of demand and the location of processes. In order that the benchmarking can consider spatial disaggregation, Tat will be divided into four zones (each of which have equal demands for resources).
+\end{itemize}
+
+\end{description}
+
+<!--
+- literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
+- 105 households
+- Average size = 4.4 people
+- 69 hectares of farmland
+- Small river, to supply the paddy field
+- mainly agricultural community:
+	- Wet rice paddy fileds
+	- Swidden cultivation
+	- Livestock
+	- Collecting products from the forest, including non-timber forest products (NTFP) such as bamboo shoots, cassava roots and Canna, sold to visiting traders.
+- Electricity available since 2001
+- Dirt road (parallel to the river)
+- Houses use electricity, water
+- Other services: education and shops
+- Flows include (p.15):
+  	- paddy and swidden fields inputs
+  	- Livestock: feed, productions, livestock sold, bought and killed
+	  	- water (for feeding and washing)
+  	- NTFP
+	- firewood
+	- bamboo (for fire and construction)
+	- Household artefacts
+	- Lamp oil, batteries and candles
+	- gasoline for motorcycles
+- System components (p18)
+  	- Atmospohere
+	- Fishpond
+	- Forest
+	- Grasslands
+	- Ground
+	- Home/tree gardens
+	- Household
+	- Household assests
+	- Houses
+	- Human population
+	- Livestock
+	- Middleman
+	- External markets
+	- Public structures
+	- Paddy fields
+	  	- Need more water
+	- Swiden fields (forest areas on mountain slopes, can't be fertilised)
+	- Shop
+	- Storage of seeds etc.
+	- Swidden fields
+	- Water bodies
+	- Other
+
+- Paddy and Swidden fields both belong to 59% of the houses, though 26% only have pddy, and 5% only swidden
+- Average paddy size = 1160m2
+- Average swidden size = 1770m2
+- 78% engage in logging
+- Buffalo (56%), cows (51%), and pigs (47%) for meat (a few goats, and chickens)
+- Construction materials also present as stocks and flows
+- Annual rainfall 1840 mm/year
+- p.28
+  	- Biomass: rice, swidden, fruit and feg, fish from fish ponds, time and bamboo from forest, NLTP, livestock grazing (interal, external, or imports)
+	- Water: household, livestock washing and drinking
+	- Fuel and process foods and constructon materials (importes)
+	- Outputs (dispolas): fertilisers, fishpond feed
+	- Outputs (biomass): timber, NTFP, livestock products, live animals, harvests
+	- Wastes and emissons: feces, incinerated products, household and agricultural wasates, durables, fossil-fuel emissions, wastewater, water varpour from drying agricultural and forest products
+- biomass is dried, and unsed residue is thrown away
+- Fishponds belong to 80 hoseholds
+- pipes transport water to the home (p38)
+- 20 households use 696 l of water per day
+  	- 60 litres to wash 2 pigs, 10 l to feed 2 pigs
+- 530 tons of firewood per year
+- 95 tons per year of bamboo used for cooking fuel
+- 60 tons per year bamboo shoots (=food), 30 t are sold at market
+- Green manure (for paddy fileds and fishponds): 9.1 tons per year
+- plant roots (medicinal and food) = (2.3 + 0.9 tons per year)
+- 930 tons per year land products
+  	- 120 tons imported
+	- 810 land products from paddy, swidden, homes gardens and fish ponds
+- Domestic extraction of food (biomass) = 408 t/yr (of which rice is 97 t/yr). This corresps. to by products (e.g. leaves) of 405 t/yr (107 t/yr)
+- Household food imports = 81 t/yr (another 2 tons per year for seeds etc.)
+- Imported meat: 2.6 t/yr
+- Final goods: 46 t/year (e.g. appliances, herbicide etc.)
+- Fossil fules: 4 tons per year
+  	- 2.9 t/yr for motorbikes
+	- 0.87 t/yr for petroleum lighting
+	- 0.37 t/yr lamp oil
+	- 0.19 t/yr lubricant oils
+- Outputs:
+  	- Water: 2600 t/yr extracted and thrown away; 630 tons per year evaporated from biomass
+	- Wood: 230 t/yr, bamboo: 52 t/yr (cooking fuel)
+	- Fish fee (palm leaves and broom grass): 6.6 and 12 tons per year
+	- Lnad products: cassava leaves (270 t/yr), grass (46 t/yr), bran (30 t/yr) for fish feed
+	- Land products: cassava stems (49 t/yr) for fields
+	- H/hold biomass waste and food (49 t/yr) + rice straw (9.4 t/yr)
+	- Manure: 270 t/yr (fertilizer and fish feed)
+	- Final good wastes and emissions: 36 tons per year
+- Stocks (2001). Feed in brackets in t/yr (e.g. cassava leaves, rice bran, etc.)
+  	- Buffalo: 107 (7.8) 
+  	- Cow: 138 (85)
+  	- Pig: 214 (265)
+  	- Chicken: 1600 (43)
+  	- Dog: 46 (22)
+  	- Goat: 8
+  	- Duck: 65 (5.6)
+- Livestock products (t/yr):
+  	- Eggs: 0.038
+	- Manure: 270 (210 in fishonds, 55 on paddy fields, 2.5 for home gardens)
+	- Chicken meat: 0.26
+	- Duck meat: 0.0056
+	- Buffalo meat: 3.1
+	- Cow meat: 0.57
+	- Pig meat: 0.49
+	- Goat meat: 0.11
+	- Dog meat: 0.077
+- Livestock feed (t/yr):
+	- Chicken: 43
+	- Duck: 5.6
+	- Buffalo: 7.8
+	- Cow: 85
+	- Pig: 265
+	- Goat: -
+	- Dog: 22
+-->
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{tab:tat-resources}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Resource                         & Demand & Number of import zones & Notes        &  &  \\ \midrule
+water\_source                    &        & 1                      & See appendix &  &  \\
+water\_generated                 &        & 0                      & See appendix &  &  \\
+water\_qualDomestic              &        & 0                      & See appendix &  &  \\
+water\_waste\_treatmentDomestic  &        & 0                      & See appendix &  &  \\
+water\_pumped                    & 111    & 0                      & See appendix &  &  \\
+\textit{elec}                    &        & 4                      & See appendix &  &  \\
+\textit{appUse}                  & 1585   & 0                      & See appendix &  &  \\
+water\_qualLivestock             &        & 0                      & See appendix &  &  \\
+water\_waste\_treatmentLivestock &        & 0                      & See appendix &  &  \\
+meat\_raw                        &        & 4                      & See appendix &  &  \\
+veg\_raw                         &        & 4                      & See appendix &  &  \\
+manure                           &        & 0                      & See appendix &  &  \\
+manure\_green                    &        & 0                      & See appendix &  &  \\
+fishFeed                         &        & 4                      & See appendix &  &  \\
+water\_irrigation                &        & 0                      & See appendix &  &  \\
+petrol                           &        & 4                      & See appendix &  &  \\
+biomassMedium                    &        & 4                      & See appendix &  &  \\
+firewood                         &        & 4                      & See appendix &  &  \\
+biomassWet                       &        & 0                      & See appendix &  &  \\
+fish\_raw                        &        & 4                      & See appendix &  &  \\
+\textit{heat\_domestic}          & 896000 & 0                      & See appendix &  &  \\
+\textit{heat\_stove}             &        & 0                      & See appendix &  &  \\
+hotWater\_domestic               & 111    & 0                      & See appendix &  &  \\
+meat\_cooked                     & 1.8    & 0                      & See appendix &  &  \\
+veg\_cooked                      & 117    & 0                      & See appendix &  &  \\
+fish\_cooked                     & 0.07   & 0                      & See appendix &  &  \\
+CO2                              &        & 0                      & See appendix &  &  \\ \bottomrule
+\end{tabular}
+\end{table}
