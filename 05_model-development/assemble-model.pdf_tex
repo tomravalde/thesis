@@ -59,8 +59,8 @@
     \put(0.04179253,1.05484583){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0.04179253,1.0752703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24509355\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{assemble-model.pdf}}%
-    \put(0.04150557,0.891889){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Definitional (\texttt{CSV})}}}%
-    \put(0.04150556,0.88167678){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24509355\unitlength}\raggedright \footnotesize{Data which defines the model layout}\end{minipage}}}%
+    \put(0.04150557,0.891889){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Site (\texttt{CSV})}}}%
+    \put(0.04150556,0.88167678){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.26580498\unitlength}\raggedright \footnotesize{Data which defines the site's geography, demands and import/export constraints}\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{assemble-model.pdf}}%
     \put(0.32947191,0.32080314){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Null}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{assemble-model.pdf}}%
@@ -77,7 +77,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=11]{assemble-model.pdf}}%
     \put(0.47174355,0.79172911){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Nonlinear}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{assemble-model.pdf}}%
-    \put(0.45258813,1.08764745){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Non-specific}}}%
+    \put(0.45258813,1.08764745){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Code common to all formulations}}}%
     \put(0.30731054,1.1978171){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.4901871\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{assemble-model.pdf}}%
   \end{picture}%
