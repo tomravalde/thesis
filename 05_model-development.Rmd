@@ -661,7 +661,7 @@ The other process coefficients are then defined relative to this electricity out
 \begin{lstlisting}[language=yaml,
 	frame=single,
 	caption = Production coefficients for the dam in the Null model.,
-	label = list:praq_dam,
+	label = list:null_dam,
 	float = [htbp]]
 dam source_hiHead_lowQual -12742
 dam lowHead_lowQual 12742
@@ -737,16 +737,6 @@ where $nb$ defines a set of neighbouring pairs of zones. For the final constrain
 \delta^{transp}_{tzz'} = \delta^{transp}_{tz'z} \label{eq:null_direction}
 \end{align}
 
-[TODO: Move this to a separate subsection?]
-
-There are a number of objectives that the model can meet (for example minimum emissions or minimum water footprint), but here we will minimise the cost of the overall system:
-
-\begin{align}
-cost = \min\left\{\sum_{rz} C^R_r I_{rz} + \sum_{pz} C^P_p N_{pz}\right\}
-\label{eq:null_obj}
-\end{align}
-
-
 ### Processes, resources and qualitites (PRaQ) formulation {#sec:PRaQ}
 
 The PRaQ model is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies, and so as before, there is an equation which balances the resource quantities in each zone (Equation \eqref{praq_balance_qty}:
@@ -756,7 +746,7 @@ I_{rz} + \sum_p^P G^{(qty)}_{prz} + \sum_{\tau} V^{(qty)}_{rz\tau} &= D^{(qty)}_
 \label{eq:praq_balance_qty}
 \end{align}
 
-In addition, PRaQ develops Keirstead's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. An example where this would be useful is a water pump, where the head to which the water input must be pumped needs to be matched by the electrical energy input (Figure \ref{fig:praq-water-pump}). To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
+In addition, PRaQ develops @Samsatli's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. An example where this would be useful is a water pump, where the head to which the water input must be pumped needs to be matched by the electrical energy input (Figure \ref{fig:praq-water-pump}). To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
 
 [^qual-param]: For example, 1 kg of water at a 10 m elevation would have an energy head of 98.1 J, thus, $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$. Therefore, if this body of water were being imported into zone $z$, $X_{\mbox{water}, q}I_{\mbox{water}, z}=$ 1 kg and 98.1 J, for $q=$ mass and energy, respectively.
 
@@ -869,7 +859,8 @@ F^{transp}_{tzz'} &\leq \delta^{transp}_{tzz'} F^{transp,max}_t \label{eq:praq_t
 The quantity of resource produced can then be determined by ensuring that the resource quality produced by each processes matches the resource quality produced in the system as a whole. The resource-quality pairs that exist (and hence need to be balanced) are defined by the boolean $\delta_{rq}$. The balance needs to take place on these resource-quality pairs for every process in the system (that is, where the boolean $\delta_{prq}=1$).
 -->
 
-\begin{lstlisting}[frame=single,
+\begin{lstlisting}[language = yaml,
+	frame=single,
 	caption = Production coefficients for the dam in the PRaQ model.,
 	label = list:praq_dam,
 	float = [htbp]]
@@ -890,7 +881,7 @@ The equations of null and PRaQ, and how their formulations are analogous to one 
 
 ### Nonlinear (NL) formulation {#sec:NL}
 
-The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. In the earlier discussion of model generality and fidelity, we discussed that we could achieve greater fidelity with a less general model. This derivation will show how a nonlinear model formulation can achieve greater fidelity to the way conversion and transport processes behave in reality (in contrast to our simple black-box representations). [TODO: Move this to the discussion?] 
+The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. The earlier discussion of model generality and fidelity discussed that greater fidelity could be achieved with a less general model. This derivation will show how a nonlinear model formulation can achieve closer correspondance between the model and reality for conversion and transport processes behave in reality (in contrast to the simple black-box representations).
 
 The equations of this model are largely based on those of the Null model, with the main balance equation, and the imports and exports defined in the same way:
 
@@ -1024,9 +1015,7 @@ The model is encoded using the specialist GAMS language[^GAMS], and uses the CPL
 [^CPLEX]: \url{https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/}
 [^GAMS]: General Algebraic Modelling System: \url{https://www.gams.com/}
 
-The data are separated into two types. *Library* data defines the properties of resources (i.e. their quality attributes) and processes (i.e. their $k$ coefficients and maximum processes rates $F$); this data is defined in YAML format. *Site* data defines everything else, including the site's spatial layout, the resource demands, and restrictions on imports and exports; this is all defined in CSV format. Both CSV and YAML data formats are chosen for their human-readability, their ease of editing, their ability to be read by programming languages, and the fact that as plain-text, they can be version-controlled.
-
-[TODO: cross-ref to library data example in a listing]
+The data are separated into two types. *Library* data defines the properties of resources (i.e. their quality attributes) and processes (i.e. their $k$ coefficients and maximum processes rates $F$); this data is defined in YAML format. *Site* data defines everything else, including the site's spatial layout, the resource demands, and restrictions on imports and exports; this is all defined in CSV format. Both CSV and YAML data formats are chosen for their human-readability, their ease of editing, their ability to be read by programming languages, and the fact that as plain-text, they can be version-controlled. Examples of library data for a dam include Listing \ref{list:null_dam} (for the null model) and Listing \ref{list:praq_dam} (for the PRaQ model).
 
 These two components of data and formulation are kept strictly separate. To build a model, the requisite sets of data needs to be combined with the correct aspects of the formulation in the correct order. For example, a case study may decide to consider just a limited set of conversion technologies, and might choose a minimum cost objective (rather than a minimum emissions objective, for example -- thus only requiring a subset of the library data). Combining the data and formulation, is performed by a  script (written using the R programming language), which can specify the data and formulation-elements required, and write the GAMS script. This architecture is visualised in Figure \ref{fig:assemble-model}.
 
@@ -1042,13 +1031,11 @@ This approach to implementation means its easy to build versions of a network fo
 
 ## Applying the formulations to Tat Hamlet
 
-Each formulation is applied to the Tat Hamlet case study, to compare how each model performs in relation to the tradeoffs in generality, fidelity, usability and tractability -- important concepts introduced in Section \ref(sec:model-concepts}. The approach takes is to build up the Tat network one conversion process at a time (beginning with the just the dam) -- introducing resources necessary for each set of processes, and transport processes used by these resources -- until the complete network of figure [TODO: cross-ref] is realised. Each network is modelled for each formulation, in each case recording data on the model's properties and performance (such as number of variables and runtime) are recorded. The order in which the network is built up is given in Table [TODO: cross-ref table]. The linear models where solved using the GLPK solver[^GLPK], whilst the nonlinear model was solved using the SNOPT solver[^SNOPT]. [TODO: check which solvers where used]. [TODO: Are we going to tabulate the results (i.e. objective function values, etc.) anywhere, and if so, should we indicate that here?]
+Each formulation is applied to the Tat Hamlet case study, to compare how each model performs in relation to the tradeoffs in generality, fidelity, usability and tractability -- important concepts introduced in Section \ref{sec:model-concepts}. The approach taken is to build up the Tat network one conversion process at a time (beginning with the just the dam, as shown in \ref{fig:network-1}) -- introducing resources necessary for each set of processes, and transport processes used by these resources -- until the complete network of Figure \ref{fig:Tat-16}  is realised. Each network is modelled for each formulation, in each case recording data on the model's properties and performance (such as number of variables and runtime) are recorded. The order in which the network is built up is given in Table \ref{tab:processes-and-resources}. The linear models where solved using the GLPK solver[^GLPK], whilst the nonlinear model was solved using the SNOPT solver[^SNOPT]. [TODO: check which solvers where used]. [TODO: Are we going to tabulate the results (i.e. objective function values, etc.) anywhere, and if so, should we indicate that here?]
 
 [^GLPK]: GNU Linear Programming Kit: \url{https://www.gnu.org/software/glpk/}
 
 [^SNOPT]: \url{http://www.sbsi-sol-optimize.com/asp/sol_products_snopt_desc.htm}
-
-[TODO: Apendicise the network bit by bit build up of the network diagrams.]
 
 \begin{figure}
 	\centering
