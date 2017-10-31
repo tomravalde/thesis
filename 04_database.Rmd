@@ -84,7 +84,7 @@ uniq sorted.out > uniqe.out
 
 [^WebOfScienceURL]: \url{http://science.thomsonreuters.com/cgi-bin/jrnlst/jlresults.cgi?PC=MASTER}
 
-### Data collection and database assembly (process mapping)
+### Data collection and database assembly (process mapping) {#sec:process-mapping}
 
 Having categorised the processes and resources, each category was manually searched for articles which refer to processes that manage energy, water or waste. For example, if an article referred to a fuel cell which treats landfill leachate, this would lead to a search for information to describe the leachate treatment process, first studying the original article, and then if necessary other literature. Information on each process was recorded using the YAML[^YAML] format. YAML uses mappings to relate a value to a key. Mappings can be nested like sub-points and sub-sub points (and so on) in a bullet-point list by using a mapping-of-mappings, thus multiple layers of information can be attributed to any mapping. Moreover, YAML uses very lightweight syntax and is therefore human-readable when compared to other similarly structured data storage formats (such as JSON and XML). Furthermore, YAML data can easily be converted into other formats. The main keys making up a process's YAML file are as follows:
 

@@ -11,29 +11,25 @@ library(extrafont)
 font_import(pattern="LinBiolinum")
 ```
 
-The systems of urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services. Upstream and downstream of these networks are the aggregate flows of inputs and wastes into and out of a city. Understanding what drives these aggregate flows is a key component of UM research, but -- as Chapter 2 argued -- the field has not yet produced a formal representation of how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies (as defined by Chapter [TODO: cross-ref]) which present opportunities for and challenges to efficient resource provision, yielding environmental and economic benefits. A model that seeks understanding at this level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this model from a concept to a formalised mathematical model.
+The systems of urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services. Upstream and downstream of these networks are the aggregate flows of inputs and wastes into and out of a city. Understanding what drives these aggregate flows is a key component of UM research, but -- as Chapter 2 argued -- the field has not yet produced a formal representation of how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies (introduced in Section \ref{sec:urbanOpps}) which present opportunities for and challenges to efficient resource provision, yielding environmental and economic benefits. A model that seeks understanding at this level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this model from a concept to a formalised mathematical model.
 
-Since modelling is a simplification of the real-world [TODO: cross-reference] , there will be inevitably be compromises in the performance of the model. This chapter explores these through three formulations (introduced in Section [TODO:]). The formulations are then applied to a case study which is followed by discussion on their performance given the compromises. This study leads to the selection of one of the models to be carried forward to a case study in Chapter [TODO: cross-ref chapter 6]. Given the novelty of this work, the case study is proposed as a 'benchmark' problem, with the formulations and data being made publicly available, so others can develop the model.
+Since modelling is a simplification of the real-world (Section \ref{sec:modelling-intro} , there will be inevitably be compromises in the performance of the model. This chapter explores these through three formulations (given in Section \ref{sec:derivations}). The formulations are then applied to a case study which is followed by discussion on their performance given the compromises. This study leads to the selection of one of the models to be carried forward to a case study in Chapter 6. Given the novelty of this work, the case study is proposed as a 'benchmark' problem (Section \ref{sec:benchmark}, with the formulations and data being made publicly available, so others can develop the model.
 
 ## Model performance and formulation {#sec:model-concepts}
 
-When introducing modelling in the literature review, care was taken to not overstate the capabilities of a model (Section [TODO: cross-ref]). Rather, it was noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising that simplifications are inevitable leads to the understanding that there will be compromises with respect to a model's performance features of the model. Four such features are *fidelity*, *generality*, *tractability*, and *usability*.
+When introducing modelling in the literature review, care was taken to not overstate the capabilities of a model (Section \ref{sec:modelling-intro}). Rather, it was noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising that simplifications are inevitable leads to the understanding that there will be compromises with respect to a model's performance features of the model. Four such features are *fidelity*, *generality*, *tractability*, and *usability*.
 
 Fidelity and generality are both functions of a model's representation of the real-world. The former measures how well a model describes reality [@McIntosh2012], and the latter corresponds to to the number of real world systems a model can be applied to @[Matthewson2008]. In relation to modelling undertaken here, fidelity would be a measure of how accurately the behaviour of a resource management process -- for example, a water pipe -- is represented by the model's mathematics[^pipe-flow]. Generality would measure to what extent the model's equations can be applied to multiple process types, for example both a water pipe, and an electrical cable. Tractability and usability refer to how the model is applied in practice: the former quantifies the amenability of the model to optimization techniques; while the latter measures the ease of model formulation for a particular case [@McIntosh2012].
 
-[^pipe-flow]: The example of pipe flow is developed in Section [TODO: cross-ref].
+[^pipe-flow]: The example of pipe flow is developed in Section \ref{sec:derivations}.
 
 These four features usually trade off against one another, which is the source of a model's compromise. Models that are more general will be lower fidelity, because they are not tailored to the specific details of a real-world [@McIntosh2012]. Models of higher fidelity are both less tractable and less usable because they encode real-world system in more detail, using more equations (to capture the detail), with more advanced mathematics; these models are more difficult to formalise, use, and solve. 
 
 Moving to consider an optimisation model's mathematics in greater depth, recall from Chapter 1 that the equations of optimisation models are comprised of parameters and variables, where the values of parameters are fixed, and the values of the variables are chosen during the optimisation procedure. There are different forms of equations, and these different forms require their own  methods to solve. There are two broad categories of formulation: *linear* and *nonlinear*.
 
-Linear programmes (LP) include many of the energy systems models (such as [TODO: cite examples]. In these models, variables are never multiplied or divided by one-another. A specific class of linear programmes are those where some variables must adopt integer values (which might be necessary to specify the number of resource management processes, for example); these are mixed-integer linear programmes (MILP). A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
+Linear programmes (LP) include many of the energy systems models (such as @Keirstead2013a). In these models, variables are never multiplied or divided by one-another. A specific class of linear programmes are those where some variables must adopt integer values (which might be necessary to specify the number of resource management processes, for example); these are mixed-integer linear programmes (MILP). A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
 
-<!--
- The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
--->
-
-*Nonlinear programmes* (NLP) have equations in which variables are multiplied by one another. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). For this reason, NLP are often used to model water management problems, because hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section [TODO:]), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation might be variables.} [TODO: list examples from the spreadsheet]. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] [TODO: list examples from the spreadsheet]. These problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity. However, usability may be hampered, for two reasons: first, the formulation is still detailed; and second, heuristic solutions usually require bespoke approaches.
+*Nonlinear programmes* (NLP) have equations in which variables are multiplied by one another. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). For this reason, NLP are often used to model water management problems, because hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section \ref{sec:derivations}), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation might be variables.}. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] (for example, @Moon2009). These problems can be solved using the nonlinear programming methods, but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [@Keedwell2005a]; and particle swarm optimisation, which mimic the flocking of birds [@Khor2012]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity.
 
 [^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)/(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
@@ -42,7 +38,7 @@ Linear programmes (LP) include many of the energy systems models (such as [TODO:
 These related considerations of performance features and formulations affect the extent of a model's application, the results returned, and the practicalities of its everyday use. Thus the rest of the chapter explores these, before proposing a formulation for a model new to the field of urban metabolism.
 -->
 
-## Benchmark problems
+## Benchmark problems {#sec:benchmark}
 
 There are many different ways to model urban resource management systems, and the considerations of linearity and performance features raised above suggest that there might well be different outcomes to such models, each with their own set of advantages and disadvantages. Because of this, this chapter will propose three different formulations (two linear, and one nonlinear) which vary in their fidelity, generality, tractability and usability.
 
@@ -142,15 +138,24 @@ The benchmarking study in this chapter will be the first application of a model 
 
 ## Tat Hamlet case study
 
-The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 led to reports on the village's material and energy flows and socioeconomic characteristics [@Schandl2006, @Heezen2004]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007], making Tat Hamlet a known case study within the UM literature. In this chapter, Tat will be used as a benchmarking study to test the three model formulations, using data from the material flow and energy flow studies.
+The case study chosen for the benchmarking problem is that of Tat Hamlet, a village in Vietnam. Fieldwork conducted in 2001 led to reports on the village's material and energy flows and socioeconomic characteristics [@Schandl2006, @Heezen2003]. Following this fieldwork, researchers have explored features of Tat's metabolism, including analysis of the village's livestock development strategies [@ThanhLam2010], and the socioeconomic organization and origins of the material flows [@TerryRambo2001, @Hobbes2007], making Tat Hamlet a known case study within the UM literature. In this chapter, Tat will be used as a benchmarking study to test the three model formulations, using data from the material flow and energy flow studies.
 
-Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. The village does have small shops and education functions, but its main activity is agriculture, with rice cultivation (where paddy fields are irrigated by a small river), swidden cultivation, and biomass (timber, bamboo shoots, cassava roots) collection from a forest. Some agricultural products are sold to external traders, though most remain in the village. About 80 of the households own their own livestock (including chickens, dogs, buffalo, and cows), and most households have their own ponds for aquaculture, such that the village produces most of its own meat, dairy products, animal manure and green manure. Water can be piped to homes for drinking, household use, and for washing livestock. Aggregate metabolic flows into the village comprise rainfall, electricity from the grid, construction materials, fossil fuels (such as gasoline for motorbikes, and petroleum lighting), and a small amount of vegetable and meat imports. Metabolic flows out of the village include household and agricultural wastes, incineration products, fossil-fuel emissions, and biomass which is sold.
+Tat has 105 households of an average size of 4.4 people, covering 69 acres of farmland. The village does have small shops and education functions, but its main activity is agriculture, with rice cultivation (where paddy fields are irrigated by a small river), swidden cultivation, and biomass (timber, bamboo shoots, cassava roots) collection from a forest. Some agricultural products are sold to external traders, though most remain in the village. About 80 of the households own their own livestock (including chickens, dogs, buffalo, and cows), and most households have their own ponds for aquaculture, such that the village produces most of its own meat, dairy products, animal manure and green manure. Water can be piped to homes for drinking, household use, and for washing livestock. Aggregate metabolic flows into the village comprise rainfall, electricity from the grid, construction materials, fossil fuels (such as gasoline for motorbikes, and petroleum lighting), and a small amount of vegetable and meat imports. Metabolic flows out of the village include household and agricultural wastes, incineration products, fossil-fuel emissions, and biomass which is sold. This is summarised in Figure \ref{fig:tat-overview}.
 
-[TODO: Summary diagram]
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
+	\includegraphics[width=\textwidth]{05_model-development/Tat-overview.pdf}
+%	\end{spacing}
+	\caption{A summary of the resources and processes in Tat's metabolism. The dotted line represents the boundary across which Tat imports and exports resources which are managed internally.}
+	\label{fig:tat-overview}
+\end{figure}
 
 The small size of Tat serves to make the benchmark problem user-friendly because the problem can conceptualised in a diagram on a single page of A4. The village's features described above will be used to define the village's demands for goods and services, and the network of resources and processes which will meet this demand. The models will compute how Tat can meet demands for goods and services at the lowest cost, using the village's resource management processes. Goods and services include food, water and energy, and resource management processes include everything from small domestic stoves to agricultural activities.
 
-To construct the problem, data from the literature will be used to derive resource demands, and to select and define the behaviour of the resource management processes. However, to define a benchmark problem that is both user-friendly, and at the same complicated enough to test the different formulations, various adjustments are made, in the form of simplifications, assumptions, and additions (outlined in Appendix [TODO: cross-reference]; these are justified on the basis that this the end-goal of the benchmarking is to identify the best formulation, rather than to improve Tat's metabolism. The adjustments achieve a both simplicity in understanding the model, and yet retain enough complexity in order to suitably test the formulations. This benchmarking also demonstrates how one can formulate a problem from real world data.
+To construct the problem, data from the literature will be used to derive resource demands, and to select and define the behaviour of the resource management processes. However, to define a benchmark problem that is both user-friendly, and at the same complicated enough to test the different formulations, various adjustments are made, in the form of simplifications, assumptions, and additions (outlined in Appendix \ref{sec:app-model-formulation}; these are justified on the basis that this the end-goal of the benchmarking is to identify the best formulation, rather than to improve Tat's metabolism. The adjustments achieve a both simplicity in understanding the model, and yet retain enough complexity in order to suitably test the formulations. This benchmarking also demonstrates how one can formulate a problem from real world data.
 <!--
 The studies in the literature do not comprehensively all the necessary information to do this, therefore we have consulted studies of other similar contexts, so we an create a plausible network of resources and processes[^tat-context].
 -->
@@ -166,17 +171,25 @@ The information from the literature and the adjustments provide a starting point
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
 	\includegraphics[width=\textwidth]{05_model-development/tat-network-full.pdf}
 %	\end{spacing}
-	\caption{Complete network of the resources and sixteen conversion processes in the Tat Hamlet case study. Resource demands are shown in \textbf{bold}, while resources which can be imported from outside of the system are indicated by a *. Details of transport processes are provided in Table [TODO:].}
+	\caption{Complete network of the resources and sixteen conversion processes in the Tat Hamlet case study. Resource demands are shown in \textbf{bold}, while resources which can be imported from outside of the system are indicated by a *.}
 	\label{fig:tat-16}
 \end{figure}
-
-[TODO: Check if there are limits on the numbers of certain processes, e.g. dam, and use another diagram to show zones and transport processes.]
 
 <!--
 and that if a resource can be imported, it can be imported to any zone, with the exception of water, which can only be imported into one zone (resources can be exported from any zone).
 -->
 
-The figure shows seven resource demands for goods and services: water, hot water, electrical appliance use, space heating, cooked meat, cooked fish and cooked vegetables. Demands for water depend upon treatment and pumping processes. Within a household, hot water space heating, and food demands are met by combustion and cooking processes, with food also depending on processes 'upstream' of a house, namely aquaculture, agriculture and livestock, which depend upon water treatment, irrigation, and machinery processes further upstream still. Electricity can only be imported from the grid. Exact demand quantitaties are given in Appendix [TODO: Table \ref{tab:tat-resources}].
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+	\includegraphics[width=\textwidth]{05_model-development/tat-zones.pdf}
+%	\end{spacing}
+	\caption{A representation of the four zones for the Tat Hamlet problem, and the transport connections that join them (indicated by arrows). More details regarding the transport processes are provided in Table \ref{tab:processes-and-resources}.}
+	\label{fig:tat-zones}
+\end{figure}
+
+Figure \ref{fig:tat-16} shows seven resource demands for goods and services: water, hot water, electrical appliance use, space heating, cooked meat, cooked fish and cooked vegetables. Exact demand quantities are given in Appendix \ref{sec:app-model-formulation}, Table \ref{tab:processes-and-resources}. Demands for water depend upon treatment and pumping processes. Within a household, hot water space heating, and food demands are met by combustion and cooking processes, with food also depending on processes 'upstream' of a house, namely aquaculture, agriculture and livestock, which depend upon water treatment, irrigation, and machinery processes further upstream still. Figure \ref{fig:tat-zones} represents that fact that this conceptualisation splits Tat into four zones. Regarding imports, water can be imported from the grid into only one zone, however electricity, food, petrol, biomass and firewood can be imported into any of the four zones; the figure shows the zones are connected such that resources can be transported from zone 1 to 2, and from 2 to 3, and from 3 to 4. The means of transport include vehicles (to transport biomass, manure, food and petrol), pipes (for water), and a cable (for electricity).
 
 <!--
 #### Water
@@ -487,9 +500,10 @@ We will add other processes which interact between the processes.
 
 As the conceptualisation above indicates, the highly integrated resource management model should be able to consider a city as comprised of a number of zones, for which can be specified resource demands, and which contain the conversion processes which manage resources. These zones will be connected to one another via transport processes. The model should also be able consider that resources will need to be imported into the village (either to meet a demand directly, or to feed a process), and resources which neither meet a demand nor feed a process (excess waste heat, perhaps), can be exported from the area. Added to this is also the need for a temporal component, such that resource demands can vary with time, along with the schedule of resource imports and exports, and process operations.
 
-An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
+An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Samsatli\footnote{Note that this reference contains the most comprehensive description of the urban energy systems optimisation model, but it is at present unpublished. However, modelling based on this formulation has been published, for example in \citet{Keirstead2013a}, though this paper doesn't include as much detail regarding the equations of the model.} applied in @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
 
-To model the processes which convert resources, @Keirstead2013a is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation); this makes the formulation extendable to other types of resources and processes. The urban energy systems model has two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
+
+To model the processes which convert resources, @Samsatli is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions, @Samsatli's model is categorised as having no system integration (see Section \ref{sec:optim-model-overview}, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation); this makes the formulation extendable to other types of resources and processes. The urban energy systems model has two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
 
 \begin{figure}
 	\centering
@@ -499,12 +513,15 @@ To model the processes which convert resources, @Keirstead2013a is based upon th
 \end{figure}
 
 \begin{figure}
-\input{05_model-development/BiomassRTN.tex}
-\caption{Example of an urban energy system optimised by the MILP model of [TODO: Keirstead reference], which shows resources (circles) and conversion processes (rectangles) -- note this diagram does not show transport processes.}
+	\centering
+	\resizebox{\columnwidth}{!}{
+		\input{05_model-development/BiomassRTN.tex}
+	}
+\caption{Example of an urban energy system optimised by the MILP model of \citet{Samsatli}, which shows resources (circles) and conversion processes (rectangles) -- note this diagram does not show transport processes.}
 \label{fig:Keirstead-RTN}
 \end{figure}
 
-A feature of @Keirstead2013a's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a balance of resources in each zone at any moment in time:
+A feature of @Samsatli's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a balance of resources in each zone at any moment in time:
 
 \begin{align}
 \begin{split}
@@ -514,13 +531,20 @@ A feature of @Keirstead2013a's model is that it is spatially and temporally disa
 \end{split}
 \end{align}
 
-[TODO: express this in our notation, then in next paragraph, use notation to highlight the difference between the models. Then possibly join the next two paragraphs]
+This resource balance is visualised for electricity in Figure \ref{fig:resource-balance-example}. Demand (for each resource, in each zone and each time period) is a parameter given to the model, with the other terms being variables whose values are selected by the optimisation process. The import and export variables can be limited using constraints, while the net inflow and net production variable are computed using equations which model the behaviour of conversion and transport technologies. The overall goal of the programme is then to choose variable values which minimise some objective (such as cost or emissions) which is formulated from the programme's parameters and variables.
 
-Demand (for each resource, in each zone and each time period) is a parameter given to the model, with the other terms being variables whose values are selected by the optimisation process. The import and export variables can be limited using constraints, while the net inflow and net production variable are computed using equations which model the behaviour of conversion and transport technologies. The overall goal of the programme is then to choose variable values which minimise some objective (such as cost or emissions) which is formulated from the programme's parameters and variables -- examples are given in Section [TODO: cross-reference to section on objectives].
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
+	\includegraphics[width=\textwidth]{05_model-development/resource-balance-example.pdf}
+%	\end{spacing}
+	\caption{An example of how Equation \eqref{eq:balance} might apply to electricity ('Elec.'). Italicised terms correspond to the terms of the equation. In words: the electricity imported into zone 1 from outside the system + the electricity produced by the power plant + electricity arriving from zone 2 = the electricity being exported outside the system and the electricity being consumed by the pump.}
+	\label{fig:resource-balance-example}
+\end{figure}
 
-[TODO: add illustrative diagrams, e.g. for the processes, and the zones]
-
-The next three subsections specify three different model formulations based on @Keirstead2013a. They are each based on the resource balance, however they differ in the way that they model the conversion [TODO: and transport?] processes (in other words, how the variable $G_{prz}$) is defined), varying in their fidelity, generality, tractability, and usability:
+The next three subsections specify three different model formulations built around this resource balance equation. The models differ in the way that they model the conversion and transport processes (in other words, how the second and third terms of Equation \ref{eq:balance} are defined), varying in their fidelity, generality, tractability, and usability:
 
 \begin{description}
 
@@ -529,7 +553,7 @@ The next three subsections specify three different model formulations based on @
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
-Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on] The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained in [TODO: cross-ref the tcolorbox]. For the purposes of simplification, the model formulations below have not been defined temporally. Model objective functions are also not defined with the model constraints -- instead, Section \ref{sec:model-objs} provides an overview of the sorts of objectives which could be used with any of the formulations.
+Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations (this is discussed further in Section \ref{sec:fid-and-gen}. The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained later in this Section. The constraints for the Nonlinear, PRaQ and Null formulations are given in Sections \ref{sec:Null}, \ref{sec:PRaQ} and \ref{sec:NL}, respectively. Examples of objective functions are given separately in Section \ref{sec:model-objs} -- there are any number of possible objectives which could be used with each of the models.
 
 \begin{figure}
 	\centering
@@ -538,7 +562,7 @@ Figure \ref{fig:evolution} shows how the three formulations are related both to 
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/model-family.pdf_tex}}
 	\includegraphics[width=0.7\columnwidth]{05_model-development/model-relationships.pdf}
 %	\end{spacing}
-	\caption{The relationship of this chapter's formulations to each other and the urban energy systems model of \citet{Keirstead2013a}.}
+	\caption{The relationship of this chapter's formulations to each other and the urban energy systems model of \citet{Samsatli}.}
 	\label{fig:evolution}
 \end{figure}
 
@@ -585,7 +609,7 @@ mgz_B = \eta^{dam} (\mbox{elec gen})
 
 \end{tcolorbox}
 
-### Null (N) formulation
+### Null (N) formulation {#sec:Null}
 
 The null model can be defined using similar base equations as for the @Keirstead2013a model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
 
@@ -594,7 +618,7 @@ I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \fo
 \label{eq:null_balance_qty}
 \end{align}
 
-$J$ and $G$ denote the variables of resource production and transport by conversion and transport processes $p$ and $\tau$, respectively (their equations are defined in [TODO: cross-reference equations], below). $D$ denotes the demand parameter. $I$ and $E$ denote the import and export variables respectively, and these are limited by constraints which specify which zones are allowed to import/export each resource and the maximum they are allowed to import/export:
+$J$ and $G$ denote the variables of resource production and transport by conversion and transport processes $p$ and $\tau$, respectively (their equations are defined in Equations \ref{eq:null_process} and \ref{eq:null_transp_rate}, below). $D$ denotes the demand parameter. $I$ and $E$ denote the import and export variables respectively, and these are limited by constraints which specify which zones are allowed to import/export each resource and the maximum they are allowed to import/export:
 
 \begin{align}
 I_{rz} &\geq \delta^I_{rz} I^{min}_r \label{eq:null_imp_min} \\
@@ -619,7 +643,7 @@ To calculate the production of a resource by a particular process $p$ in a zone,
 \label{eq:null_process}
 \end{align}
 
-where the $F$ variable defines the operation rate of a technology (for example, a dam may operate with a generating capacity of 3 MW). Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the output resource (in the dam example this would be electricity) always has a coefficient value, $k_{pr}=1$. The value of the $F_{pz}$ is defined from the number $N$ of any type of process in a zone, and their maximum operating capacities, $F^{max}$:
+where the $F$ variable defines the operation rate of a technology (for example, a dam may operate with a generating capacity of 3 MW). Carrying forward the principles of Section \ref{sec:process-mapping}, the output resource (in the dam example this would be electricity) always has a coefficient value, $k_{pr}=1$. The value of the $F_{pz}$ is defined from the number $N$ of any type of process in a zone, and their maximum operating capacities, $F^{max}$:
 
 \begin{align}
 	F_{pz} \leq N_{pz} F^{max}_{p} \qquad 
@@ -627,21 +651,22 @@ where the $F$ variable defines the operation rate of a technology (for example, 
 \end{align}
 
 \begin{tcolorbox}
-Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ [TODO: cross-reference back to the node-link diagram earlier]. Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the electricity is considered the dam's `main' output, and hence its output coefficient is set to  1 MJ\footnote{Recall that this means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
+Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ (Figure \ref{fig:pump-dam-RTN}. The electricity is considered the dam's `main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
 
 
-The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=10$ metres and efficiency $\eta^{dam}=$80 percent, there mass of water required to produce a megajoule of electricity is 8.15 kg, resulting in the coefficients indicated in Listing [TODO: check the calculations here, and update the listing, and cross-reference listing].
-
-\begin{tcblisting}[frame=single,
-	caption = Production coefficients for the dam in the null model.,
-	label = list:null_coeff_dam,
-	float=[htbp]]
-dam source_hiHead_lowQual -1
-dam lowHead_lowQual 1
-dam elec 98.1 
-\end{tcblisting}
+The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=10$ metres and efficiency $\eta^{dam}=$80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg, resulting in the coefficients in Listing \ref{list:praq_dam}.
 
 \end{tcolorbox}
+
+\begin{lstlisting}[language=yaml,
+	frame=single,
+	caption = Production coefficients for the dam in the Null model.,
+	label = list:null_dam,
+	float = [htbp]]
+dam source_hiHead_lowQual -12742
+dam lowHead_lowQual 12742
+dam elec 1
+\end{lstlisting}
 
 #### Transport processes
 
@@ -654,18 +679,38 @@ The net resource inflow variable $J$ is calculated from the difference between t
 \end{split}
 \end{align}
 
-The calculation of $J$ is somewhat analogous to the calculation of $G$, in that it constitutes a resource coefficient multiplied by a rate, but developed in three ways ways. First, it is defined for a transport technology $t$ between two zones, $z$ and $z'$, and thus considers each zone both as a source ($src$) from which resources leave, and as a destination ($dest$) into which resources arrive, and thus resource flows arriving in zone $z$ must be summed over all flows coming from all other zones $z'$, and resource flows leaving zone $z$ must be summed over all flows travelling to all other zones $z'$. Second, the amount of resource arriving in/leaving from a zone is a function both of the technology itself and the distance spanned by the technology. For example, [TODO: think up an example, e.g. the amount of electricity used to pump water through a pipe of particular lenght]. This is represented in the bracketed term, which is the multiplier of the transport technology's rate of operation $F^{transp}$ 's variable. Thirdly, it is possible (though not necessary) that several transport technologies can carry the same resource (for example biomass can be transported by both lorries or vans: these would have different rates, and require different amounts of petrol etc.), hence the summation over transport technologies $t$ [TODO: check this summation is required. It may already be considered in the main equation]. Table [TODO: cross-ref] below gives examples of the parameter values for the examples of electricity and biomass transport in Figure [TODO: cross-ref].
+The calculation of $J$ is somewhat analogous to the calculation of $G$, in that it constitutes a resource coefficient multiplied by a rate, but developed in three ways ways. First, it is defined for a transport technology $t$ between two zones, $z$ and $z'$, and thus considers each zone both as a source ($src$) from which resources leave, and as a destination ($dest$) into which resources arrive, and thus resource flows arriving in zone $z$ must be summed over all flows coming from all other zones $z'$, and resource flows leaving zone $z$ must be summed over all flows travelling to all other zones $z'$. Second, the amount of resource arriving in/leaving from a zone is a function both of the technology itself and the distance spanned by the technology. For example, the amount of petrol required to transport goods depends on the distance $l$ the goods will travel. This quantity is represented in the bracketed term, which is the multiplier of the transport technology's rate of operation $F^{transp}$ 's variable. Thirdly, it is possible (though not necessary) that several transport technologies can carry the same resource (for example biomass can be transported by both lorries or vans: these would have different rates, and require different amounts of petrol etc.), hence the summation over transport technologies $t$. Table \ref{tab:transp-coeffs} below gives examples of the parameter values for the examples of electricity and biomass transport in Figures \ref{fig:transp-elec} and \ref{fig:transp-biomass}, respectively.
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+	\includegraphics[width=\textwidth]{05_model-development/transp-example-elec.pdf}
+%	\end{spacing}
+	\caption{Representation of how electricity ('Elec.') transport is modelled. The quantity of electricity arriving in Zone 2 is the same as that leaving Zone 1 (this assumes negligible energy losses along the cable).}
+	\label{fig:transp-elec}
+\end{figure}
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+	\includegraphics[width=\textwidth]{05_model-development/transp-example-biomass.pdf}
+%	\end{spacing}
+	\caption{Representation of how biomass ('BM') transport is modelled. The quantity of biomass arriving in Zone 2 is the same as that leaving Zone 1; the requires petrol to be supplied in Zone 1 (this quantity is a function of the distance between the zones); the carbon dioximde emissions (also dependent on distance) are shared between Zones 1 and 2.}
+	\label{fig:transp-biomass}
+\end{figure}
 
 \begin{table}[]
 \centering
-\caption{Example parameter values to model transport processes.}
-\label{my-label}
+\caption{Example parameter values to model transport processes represented by Figures \ref{fig:transp-elec} and \ref{fig:transp-biomass}.}
+\label{tab:transp-coeffs}
 \begin{tabular}{@{}lllllll@{}}
 \toprule
 \multirow{2}{*}{$t$}  & \multirow{2}{*}{$r$} & \multicolumn{2}{l}{Source}               & \multicolumn{2}{l}{Dest}                  & \multirow{2}{*}{Comment}               \\ \cmidrule(lr){3-6}
                       &                      & $k^{qty,src}_{tr}$ & $k^{dist,src}_{tr}$ & $k^{qty,dest}_{tr}$ & $k^{qty,dest}_{tr}$ &                                        \\ 
 \midrule
-Cable                 & Electricity          & -1                 & 0                   & 1                   & \textless0          & Losses depend on distance              \\ \cmidrule(lr){1-2}
+Cable                 & Electricity          & -1                 & 0                   & 1                   & \textless0          & Negligible electricity losses              \\ \cmidrule(lr){1-2}
 \multirow{3}{*}{Road} & Biomass              & -1                 & 0                   & 1                   & 0                   & No losses                              \\
                       & Petrol               & 0                  & \textless0          & 0                   & 0                   & Petrol requirements depend on distance \\
                       & CO2                  & 0                  & \textgreater0       & 0                   & \textgreater0       & Emissions depend on distance           \\
@@ -680,7 +725,7 @@ F^{transp}_{tzz'} &\geq \delta^{transp}_{tzz'} F^{transp,min}_t \label{eq:null_t
 F^{transp}_{tzz'} &\leq \delta^{transp}_{tzz'} F^{transp,max}_t \label{eq:null_transp_max}
 \end{align}
 
-and transport technologies can only exist between zones which are defined as being neighbours [TODO: check this]:
+and transport technologies can only exist between zones which are defined as being neighbours:
 
 \begin{align}
 \delta^{transp}_{tzz'} = 0, \qquad \forall (z,z') \notin nb \label{eq:null_neighbs}
@@ -692,17 +737,7 @@ where $nb$ defines a set of neighbouring pairs of zones. For the final constrain
 \delta^{transp}_{tzz'} = \delta^{transp}_{tz'z} \label{eq:null_direction}
 \end{align}
 
-[TODO: Move this to a separate subsection?]
-
-There are a number of objectives that the model can meet (for example minimum emissions or minimum water footprint), but here we will minimise the cost of the overall system:
-
-\begin{align}
-cost = \min\left\{\sum_{rz} C^R_r I_{rz} + \sum_{pz} C^P_p N_{pz}\right\}
-\label{eq:null_obj}
-\end{align}
-
-
-### Processes, resources and qualitites (PRaQ) formulation
+### Processes, resources and qualitites (PRaQ) formulation {#sec:PRaQ}
 
 The PRaQ model is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies, and so as before, there is an equation which balances the resource quantities in each zone (Equation \eqref{praq_balance_qty}:
 
@@ -711,7 +746,7 @@ I_{rz} + \sum_p^P G^{(qty)}_{prz} + \sum_{\tau} V^{(qty)}_{rz\tau} &= D^{(qty)}_
 \label{eq:praq_balance_qty}
 \end{align}
 
-In addition, PRaQ develops Keirstead's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. An example where this would be useful is a water pump, where the head to which the water input must be pumped needs to be matched by the electrical energy input (Figure \ref{fig:praq-water-pump}). To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
+In addition, PRaQ develops @Samsatli's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. An example where this would be useful is a water pump, where the head to which the water input must be pumped needs to be matched by the electrical energy input (Figure \ref{fig:praq-water-pump}). To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
 
 [^qual-param]: For example, 1 kg of water at a 10 m elevation would have an energy head of 98.1 J, thus, $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$. Therefore, if this body of water were being imported into zone $z$, $X_{\mbox{water}, q}I_{\mbox{water}, z}=$ 1 kg and 98.1 J, for $q=$ mass and energy, respectively.
 
@@ -824,7 +859,8 @@ F^{transp}_{tzz'} &\leq \delta^{transp}_{tzz'} F^{transp,max}_t \label{eq:praq_t
 The quantity of resource produced can then be determined by ensuring that the resource quality produced by each processes matches the resource quality produced in the system as a whole. The resource-quality pairs that exist (and hence need to be balanced) are defined by the boolean $\delta_{rq}$. The balance needs to take place on these resource-quality pairs for every process in the system (that is, where the boolean $\delta_{prq}=1$).
 -->
 
-\begin{lstlisting}[frame=single,
+\begin{lstlisting}[language = yaml,
+	frame=single,
 	caption = Production coefficients for the dam in the PRaQ model.,
 	label = list:praq_dam,
 	float = [htbp]]
@@ -843,9 +879,9 @@ The equations of null and PRaQ, and how their formulations are analogous to one 
 \input{05_model-development/tabs/null_praq_equations.tex}
 -->
 
-### Nonlinear (NL) formulation
+### Nonlinear (NL) formulation {#sec:NL}
 
-The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. In the earlier discussion of model generality and fidelity, we discussed that we could achieve greater fidelity with a less general model. This derivation will show how a nonlinear model formulation can achieve greater fidelity to the way conversion and transport processes behave in reality (in contrast to our simple black-box representations). [TODO: Move this to the discussion?] 
+The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. The earlier discussion of model generality and fidelity discussed that greater fidelity could be achieved with a less general model. This derivation will show how a nonlinear model formulation can achieve closer correspondance between the model and reality for conversion and transport processes behave in reality (in contrast to the simple black-box representations).
 
 The equations of this model are largely based on those of the Null model, with the main balance equation, and the imports and exports defined in the same way:
 
@@ -974,14 +1010,13 @@ The three formulations use continuous variables (e.g. resource quantities and pr
 
 ## Implementation {#sec:implementation}
 
-The model is encoded using the specialist GAMS language[^GAMS], and uses the CPLEX[^CPLEX] solver to solve. The model has two components, namely the *formulation*, which includes the abstracted mathematics, and other GAMS-specific parameters (such as the length of time a model should run for); and the *data*, i.e. the parameter values (site layout, resource demands, process behaviour etc.).
+The models are encoded using the specialist GAMS language[^GAMS], and uses IBM's CPLEX[^CPLEX] solver to solve the nonlinear models, and the BARON solver to solve the nonlinear model. The model has two components, namely the *formulation*, which includes the abstracted mathematics, and other GAMS-specific parameters (such as the length of time a model should run for); and the *data*, i.e. the parameter values (site layout, resource demands, process behaviour etc.).
 
-[^CPLEX]: \url{https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/}
 [^GAMS]: General Algebraic Modelling System: \url{https://www.gams.com/}
+[^CPLEX]: \url{https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/}
+[^BARON]: \url{http://archimedes.cheme.cmu.edu/?q=baron}
 
-The data are separated into two types. *Library* data defines the properties of resources (i.e. their quality attributes) and processes (i.e. their $k$ coefficients and maximum processes rates $F$); this data is defined in YAML format. *Site* data defines everything else, including the site's spatial layout, the resource demands, and restrictions on imports and exports; this is all defined in CSV format. Both CSV and YAML data formats are chosen for their human-readability, their ease of editing, their ability to be read by programming languages, and the fact that as plain-text, they can be version-controlled.
-
-[TODO: cross-ref to library data example in a listing]
+The data are separated into two types. *Library* data defines the properties of resources (i.e. their quality attributes) and processes (i.e. their $k$ coefficients and maximum processes rates $F$); this data is defined in YAML format. *Site* data defines everything else, including the site's spatial layout, the resource demands, and restrictions on imports and exports; this is all defined in CSV format. Both CSV and YAML data formats are chosen for their human-readability, their ease of editing, their ability to be read by programming languages, and the fact that as plain-text, they can be version-controlled. Examples of library data for a dam include Listing \ref{list:null_dam} (for the null model) and Listing \ref{list:praq_dam} (for the PRaQ model).
 
 These two components of data and formulation are kept strictly separate. To build a model, the requisite sets of data needs to be combined with the correct aspects of the formulation in the correct order. For example, a case study may decide to consider just a limited set of conversion technologies, and might choose a minimum cost objective (rather than a minimum emissions objective, for example -- thus only requiring a subset of the library data). Combining the data and formulation, is performed by a  script (written using the R programming language), which can specify the data and formulation-elements required, and write the GAMS script. This architecture is visualised in Figure \ref{fig:assemble-model}.
 
@@ -997,25 +1032,49 @@ This approach to implementation means its easy to build versions of a network fo
 
 ## Applying the formulations to Tat Hamlet
 
-Each formulation is applied to the Tat Hamlet case study, to compare how each model performs in relation to the tradeoffs in generality, fidelity, usability and tractability -- important concepts introduced in Section \ref(sec:model-concepts}. The approach takes is to build up the Tat network one conversion process at a time (beginning with the just the dam) -- introducing resources necessary for each set of processes, and transport processes used by these resources -- until the complete network of figure [TODO: cross-ref] is realised. Each network is modelled for each formulation, in each case recording data on the model's properties and performance (such as number of variables and runtime) are recorded. The order in which the network is built up is given in Table [TODO: cross-ref table]. The linear models where solved using the GLPK solver[^GLPK], whilst the nonlinear model was solved using the SNOPT solver[^SNOPT]. [TODO: check which solvers where used]. [TODO: Are we going to tabulate the results (i.e. objective function values, etc.) anywhere, and if so, should we indicate that here?]
+Each formulation is applied to the Tat Hamlet case study, to compare how each model performs in relation to the tradeoffs in generality, fidelity, usability and tractability -- important concepts introduced in Section \ref{sec:model-concepts}. The approach taken is to build up the Tat network one conversion process at a time (beginning with the just the dam, as shown in \ref{fig:network-1}) -- introducing resources necessary for each set of processes, and transport processes used by these resources -- until the complete network of Figure \ref{fig:tat-network-full}  is realised. Each network is modelled for each formulation, in each case recording data on the model's properties and performance (such as number of variables and runtime) are recorded. The order in which the network is built up is given in Table \ref{tab:processes-and-resources}, along with the resources, conversion processes and transport processes used at each stage of building up the Tat network.
 
-[^GLPK]: GNU Linear Programming Kit: \url{https://www.gnu.org/software/glpk/}
-
-[^SNOPT]: \url{http://www.sbsi-sol-optimize.com/asp/sol_products_snopt_desc.htm}
-
-[TODO: Apendicise the network bit by bit build up of the network diagrams.]
+\begin{sidewaystable}[]
+\tiny
+\centering
+\caption{The resources, conversion processes, and transport processes used in each stage of building up the Tat network between Figures \ref{fig:network-1} and Figures \ref{fig:tat-network-full}. The number of processes corresponds to the numer network being modelled. The table also indicates the abbreviations used in Figures \ref{fig:network-1} and \ref{fig:tat-network-full} }
+\label{tab:processes-and-resources}
+\begin{tabular}{@{}lp{3cm}llp{3cm}p{3cm}lp{3cm}l@{}}
+\toprule
+\multicolumn{3}{l}{Conversion processes}                             & \multicolumn{3}{l}{Resources}                                                                     & \multicolumn{3}{l}{Transport processes}                                                                                           \\ \midrule
+No.        & Added                                    & Abbrev.      & No. & Added                                                                             & Abbrev. & No. & Added                                                                            & Abbrev.                                  \\
+\midrule
+1          & Dam                                      & Dam          & 3   & Water, Water (dam), Electricity                                             & W, W, El.    & 1   & Cable                                                                            & Cab.                                     \\
+2          & Water treatment (for livestock)          & WT (l/stock) & 5   & Water (livestock), Wastewater (livestock)                            & W, WW    & 2   & Pipe (livestock water)                                                           & P (l/stock)                              \\
+3          & Water treatment (for domestic use)       & WT (dom.)    & 7   & Water (domestic), Wastewater (domestic)                              & W, WW    & 2   &                                                                                  &                                          \\
+4          & Irrigation                               & Irrig.       & 8   & Water (irrigation)                                                                 & W    & 3   & Pipe (irrigation water)                                                          & P (irrig.)                               \\
+\textit{5} & Pump                                     & Pump         & 9   & Water (pumped)                                                                     & W    & 4   & Pipe (domestic water)                                                            & P (dom.)                                 \\
+\textit{6} & Agriculture                              & Agric.       & 17  & Vegetables, Manure, Green manure, Fish feed, Petrol, Biomass (medium moisture content), Biomass (wet), CO2 & Veg., Man., G. man., F. Feed, Pet., BM (med), BM (wet), CO2   & 8   & Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables) & V (man.), V (g/man.), V (pet.), V (veg.) \\
+7          & Livestock                                & L/stock      & 18  & Meat                                                                         & Meat    & 9   & Vehicle (meat)                                                                   & V (meat)                                 \\
+8          & Stove                                    & Stove        & 20  & Heat (stove), Firewood                                                             & H, F/wood    & 10  & Vehicle (firewood)                                                               & V (f/wood)                               \\
+9          & Biomass drying (medium moisture content) & BMD (med.)   & 20  &                                                                                   & & 10  &                                                                                  &                                          \\
+10         & Biomass drying (high moisture content)   & BMD (wet)    & 20  &                                                                                   & & 10  &                                                                                  &                                          \\
+11         & aquaculture                              & Aqua         & 21  & Fish                                                                         & Fish    & 12  & Vehicle (fish), Vehicle (fish feed)                                              & V (fish), V (f/feed)                     \\
+12         & Cooking                                  & Cook.        & 24  & Meat (cooked), Fish (cooked), Vegetables (cooked)                                           & Meat (c), Fish (c), Veg. (c)    & 12  &                                                                                  &                                          \\
+13         & Agricultural machinary                   & Agric. Mach. & 24  &                                                                                   &   & 12  &                                                                                  &                                          \\
+14         & Domestic appliances                      & App.         & 25  & Appliance use                                                                            & App. use 12  &                                                                                  &                                          \\
+15         & Heating                                  & Heat.        & 26  & Heat (domestic)                                                                    & H    & 12  &                                                                                  &                                          \\
+16         & Hot water                                & HW           & 27  & Hot water                                                                & HW    & 12  &                                                                                  &                                          \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}
 
 \begin{figure}
 	\centering
 	\begin{spacing}{1.0}
 	\sffamily
-	\resizebox{\columnwidth}{!}{\input{05_model-development/network-1.pdf_tex}}
+	\includegraphics[width=\textwidth]{05_model-development/tat-network-1.pdf}
 	\end{spacing}
-	\caption{The first network.}
+	\caption{The first network to which the three formulations are applied. In this network, Water and electricity can be imported in order to meet electricity demand.}
 	\label{fig:network-1}
 \end{figure}
 
-### Results
+### Results {#sec:tat-results}
 
 Figure \ref{fig:comparison-formulations} shows how the number of equations and variables, runtime, and objective function value changes with the number of processes in Tat's network. These plots show that as the number of conversion processes added to the network increases, then so do the number of equations and variables. However, when comparing between the formulations, these quantities all have the same order of magnitude. More interesting are two observations made by comparing objective function values and run times. First, unlike for the numbers of equations and variables, the objective function and the solution time do not monotonically increase with the number of processes (note in particular the spike in objective value for 8 conversion processes). This unpredictability is because the speed at which nonlinear optimisation algorithms arrive at an optimal solution is sensitive to the way the model is formulated, even being affected by the order in which equations, variables, and components are defined. Second, a difference in the order of magnitude of solution time opens up from the point at which the network contains 6 or more conversion processes. Note that these solution times are to achieve objective function values that are very similar to those produced by the linear formulations (this can be more clearly seen in the plots where outliers have been removed). These behaviours give insight into how the formulations behave with respect to fidelity, generality, tractability, and usability, which are discussed in the following sections.
 
@@ -1024,7 +1083,7 @@ Figure \ref{fig:comparison-formulations} shows how the number of equations and v
 -->
 
 
-```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed'' show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section [TODO:].) \\label{fig:comparison-formulations}"}
+```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed'' show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section \\ref{sec:tat-results}.) \\label{fig:comparison-formulations}"}
 
 setwd("05_model-development")
 
@@ -1034,18 +1093,17 @@ plot_conversion
 
 ```
 
-### How well do the formulations represent reality? Fidelity and generality
+### How well do the formulations represent reality? Fidelity and generality {#sec:fid-and-gen}
 
-A model's fidelity can be validated by verifying the model's results against real data. In theory, one could measure resource demands of Tat and the resource flows within the system, and then run the models using the measured demands to see if the model chooses a similar system and schedule of resource management. However, this would be both impractical (as pointed out earlier, practical limitations are part of the reason models are useful [p.TODO: page reference, quoting @Williams1990]. Moreover, even if this were practical, the this method would assume that the villagers of Tat are managing their resources optimally -- given that the point of this thesis is to argue that resource management is generally sub-optimal, this assumption would beg the question of why this thesis is even necessary! Furthermore, for the purposes of developing the model, Tat Hamlet as been reimagined with simplifications, adjustments and assumptions, and hence there are some ways that the modelled system and the real-world system are not comparable. The inability to validate the model with real data is not unique to this thesis; many other models which optimise the systems at the urban scale cannot be validated in this rigorous manner, including [TODO: list examples, e.g. Keirstead].
+A model's fidelity can be validated by verifying the model's results against real data. In theory, one could measure resource demands of Tat and the resource flows within the system, and then run the models using the measured demands to see if the model chooses a similar system and schedule of resource management. However, this would be both impractical (as pointed out earlier, practical limitations are part of the reason models are useful (Section \ref{sec:modelling-intro}. Moreover, even if this were practical, the this method would assume that the villagers of Tat are managing their resources optimally -- given that the point of this thesis is to argue that resource management is generally sub-optimal, this assumption would beg the question of why this thesis is even necessary! Furthermore, for the purposes of developing the model, Tat Hamlet as been reimagined with simplifications, adjustments and assumptions, and hence there are some ways that the modelled system and the real-world system are not comparable. The inability to validate the model with real data is not unique to this thesis; many other models which optimise the systems at the urban scale cannot be validated in this rigorous manner, including @Keirstead2013a.
 
 This means that assessing the fidelity of this chapter's formulations can only be done theoretically. The point has already been made in Section \ref{sec:derivations} that the Nonlinear formulations is the most faithful to reality (because it can model phenomena that linear models cannot, such as energy loss due to friction in pipes), followed by the PRaQ model (which defines resources in a nuances way), following by the Null model.
 
-A model's fidelity relates to how the model it represents the real-world; and so it is discussed here alongside generality -- another model feature of this type (as noted in Section \ref{sec:model-concepts}. While the nonlinear formulation might be, in mathematical terms, the most faithful, it is also the least general, because nonlinear processes need specially defined equations [TODO: spell out in more detail what this actually looks like, cross-ref to appropriate equations and examples], while the linear models can use the same equations for any process type.
+A model's fidelity relates to how the model it represents the real-world; and so it is discussed here alongside generality -- another model feature of this type (as noted in Section \ref{sec:model-concepts}. While the nonlinear formulation might be the most faithful to reality, it is also the least general, because nonlinear processes need specially defined equations, while the linear models can use the same equations for any process type.
 
-Given then, that the more general models are the most faithful, how then should it be decided which characteristic is most important? This choice is first and foremost guided by the model's purpose. The most important characteristic is generality -- the whole purpose of this thesis is to develop a method which considers the production, consumption and transport of energy, water and waste management together. In this way, it follows on from the work of @Keirstead in seeking a generic approach to urban resource modelling.
+Given then, that the more general models are the most faithful, how then should it be decided which characteristic is most important? This choice is first and foremost guided by the model's purpose. The most important characteristic is generality -- the whole purpose of this thesis is to develop a method which considers the production, consumption and transport of energy, water and waste management together. In this way, it follows on from the work of @Samsatli in seeking a generic approach to urban resource modelling.
 
 <!--
-this is not possible with the Tat Hamlet case study, whose resource-technology network and resource interconversions have largely been invented for this case study. Thus, it is not possible to verify the model results against any real, historic data. Thus the only way we can assess the performance of the models is to compare them against each other for similarity in the outputs, namely the objective function. [TODO: I'm not sure this is legit validation, partly becuase the formulation and parameters are fixed to achieve the same result] 
 
 As shown by the results in Table~\ref{tab:results}, the two three formulations generally return very similar objective function values linear models give identical results, both in the objective function value, and the resource import quantities. The nonlinear model results vary very slightly. This is perhaps a feature of the nonlinear solver, because the model has avoided outputting any exports of excess materials. Further work needs to be done on the nonlinear model to see if changes to the use of software will bring a result which is identical to those of the linear models.
 
@@ -1054,25 +1112,36 @@ Our final consideration when evaluating the model performance is the behaviour a
 
 ### How easily can the formulations be used in practice? Tractability and usability
 
-As well as the consideration regarding how well a model represents reality, above, the practicalities need to be considered when making a choice on which formulation to adopt. One practical concern is tractability, the most straightforward measure of which is computation time. On this metrics, the nonlinear model is the clear loser (see Table \ref{tab:results}), taking around 13 minutes to run the full network, while the linear formulations run in fractions of a second. Figure [TODO: cross-ref] shows that the driver of these times is the non-linearity: this is because the relationship between the number of conversion processes and the number of equations or variables is linear for both linear and nonlinear models of model, and furthermore, the nonlinear model never has the highest number of equations or variables, yet as the model grows through the addition of conversion processes, the solution time increases exponentially for the nonlinear model, but linearly for the linear models. Note that these times are for models with only 16 processes, yet the library assembled in Chapter 4 contains 263 processes; furthermore, these solution times are for models without temporal disaggregation, which would widen the runtime between linear and nonlinear formulations even more. In summary, nonlinear models are harder to solve than equivalently sized linear models as they require more computational effort.
+As well as the consideration regarding how well a model represents reality, above, the practicalities need to be considered when making a choice on which formulation to adopt. One practical concern is tractability, the most straightforward measure of which is computation time. On this metrics, the nonlinear model is the clear loser (see Table \ref{tab:results}), taking around 13 minutes to run the full network, while the linear formulations run in fractions of a second. Figure \ref{fig:comparison-formulations} shows that the driver of these times is the non-linearity: this is because the relationship between the number of conversion processes and the number of equations or variables is linear for both linear and nonlinear models of model, and furthermore, the nonlinear model never has the highest number of equations or variables, yet as the model grows through the addition of conversion processes, the solution time increases exponentially for the nonlinear model, but linearly for the linear models. Note that these times are for models with only 16 processes, yet the library assembled in Chapter 4 contains 202 processes; furthermore, these solution times are for models without temporal disaggregation, which would widen the runtime between linear and nonlinear formulations even more. In summary, nonlinear models are harder to solve than equivalently sized linear models as they require more computational effort.
 
 Usability is a more qualitative metric than tractability, and so harder to quantify precisely, but it can be measured buy the ease of model construction. The simplest model to build is the null model, followed by PRaQ, with NL being the slowest and most difficult to construct. The reason for the ease of construction for the linear models is that the equations which model the processes and the resource balances can be defined generically. Then only the production coefficients $k_{pr}$ and $k_{prq}$ need to be specified. The PRaQ model is in theory harder to construct because of the additional variables and the $q$ index ($X_{rq}$,  ${G^{(qual)}_{prqz}$, $V^{(qual)}}_{\tau rqzt}$, $\delta^{R}_{rq}$, $\delta^{P}_{prq}$, $\delta^{\tau}_{\tau rq}$, $k_{prq}$, $k^{\alpha}_{\tau rq}$, $k^{\beta}_{\tau rq}$, $k^{\alpha '}_{\tau rq}$, and $k^{\beta '}_{\tau rq}$). However, once $X_{rq}$, the R-script mentioned in Section \ref{#sec:implementation} will define the other variables just listed [TODO: check this for the input/output coefficients]. Thus in practice, with the build scripts supplied with the formulations, it is not too much extra effort do build the PRaQ model than it is to build the model from the same library of process definition YAML files.
 
-On the other hand, the NL model takes longer to construct, because it can't be defined generically, with the model equations requiring much more customisation. The activity of defining production coefficients in the null and PRaQ models becomes defining process equations in the NL model. The generic way in which the system resources are balanced in null and PRaQ gives way to a need to specify each resource balance individually in the NL model -- this is because the way a resource balance is defined depends on which processes exist in the network. In summary, the null model requires writing an average of about 18 lines of code per process, most of which is simply specifying a production coefficient. The PRaQ model requires about 58 lines of code per process. Most of this is either specifying a single number for production coefficients, or copy-and-pasting the process-resource-quality sets to define the quality coefficients $\delta^P_{prq}$ -- defining these coefficients is nearly 60\% of the model code. The NL model requires about 43 lines of code per resource, almost all of which are custom equations (rather than coefficients), which are specific to the resource-technology-network being considered. Thus, whilst smaller in length than the PRaQ model, the NL model is significantly more effort to formulate. [TODO: Update, because the new NL formulation might be a bit quicker.] 
+On the other hand, the NL model takes longer to construct, because it can't be defined generically, with the model equations requiring much more customisation. The activity of defining production coefficients in the null and PRaQ models becomes defining process equations in the NL model. The generic way in which the system resources are balanced in null and PRaQ gives way to a need to specify each resource balance individually in the NL model -- this is because the way a resource balance is defined depends on which processes exist in the network. In summary, the null model requires writing an average of about 18 lines of code per process, most of which is simply specifying a production coefficient. The PRaQ model requires about 58 lines of code per process. Most of this is either specifying a single number for production coefficients, or copy-and-pasting the process-resource-quality sets to define the quality coefficients $\delta^P_{prq}$ -- defining these coefficients is nearly 60\% of the model code. The NL model requires about 43 lines of code per resource, almost all of which are custom equations (rather than coefficients), which are specific to the resource-technology-network being considered. Thus, whilst smaller in length than the PRaQ model, the NL model is significantly more effort to formulate.
 
 In summary, the nonlinear model is the least practical, as defined by tractability and usability. As with fidelity and generality, the importance of tractability and usability should be prioritised by the model's purpose. In the case of this thesis, the purpose a high-level investigation into the metabolism of a city, rather than detailed design. Therefore, it is more important to be able to investigate possible systems quickly than it is to have a model which sacrifices run time and ease-of-construction for detailed design. (Further into a design process, it may become more justified to use slower, more theoretically-correct models.)
 
 ## Conclusion
 
-This chapter has established three methods to optimise an integrated urban resource network, and has discussed the relative merits of each method with respect to fidelity, generality, tractability and usability. The linear models were shown to be the most general, tractable and usable, whilst the nonlinear model is in theory the most faithful to the reality being modelled. The above discussion proposed that the importance given to these four characteristics should be determined by the model's purpose. Returning to ideas from Section [TODO: cross-ref to part of Chapter 1 and or 2], recall that models should be used for their intended purpose -- to make decisions explicit that would otherwise be implicit, by formalising the assumptions, relationships, and mathematics of the decision-making. In this thesis, the models' aims are to identify how systems of different can work together to manage resources in such a way as to improve and area's metabolism. Therefore, the model adopted should be used to get an overall sense of how a system behaves. Does it choose to centralise or decentralise processes? Are their geographical features of the are which constrain the process choice in some locations, and what is the effect of this on the rest of the network? Which kinds of resources are cascaded? To that end, a general picture of system behaviour emerges from sensitivity analysis, comparing outcomes over a range of parameter values. 
+This chapter has established three methods to optimise an integrated urban resource network, and has discussed the relative merits of each method with respect to fidelity, generality, tractability and usability. The linear models were shown to be the most general, tractable and usable, whilst the nonlinear model is in theory the most faithful to the reality being modelled. The above discussion proposed that the importance given to these four characteristics should be determined by the model's purpose. Importantly, models should be used for their intended purpose -- to make decisions explicit that would otherwise be implicit, by formalising the assumptions, relationships, and mathematics of the decision-making. In this thesis, the models' aims are to identify how systems of different can work together to manage resources in such a way as to improve and area's metabolism. Therefore, the model adopted should be used to get an overall sense of how a system behaves. Does it choose to centralise or decentralise processes? Are their geographical features of the are which constrain the process choice in some locations, and what is the effect of this on the rest of the network? Which kinds of resources are cascaded? To that end, a general picture of system behaviour emerges from sensitivity analysis, comparing outcomes over a range of parameter values. 
 
-Clarity regarding the model's purpose has led this chapter to rank fidelity below generality -- it is importante that processes from different types of system can be defined in similar ways, so that modellers can easily derive insights on how the systems should work together. Relatedly, usability is an important consideration -- if the model is to be able to consider different configurations of systems, it must be able to be easy to build the models which test these. The linear definitions of process behaviour help make this possible, avoiding the need for the modeller to go to the effort of writing bespoke equations of process behaviour. Recall that Chapter 4 assembled a database of 263 [TODO: check number] resource management processes which were linearly defined -- this task was itself arduous, and to write nonlinear equations for these would be considerably more so! The place of tractability is also important for similar reasons. If the model's purpose is to generate high-level networks of management processes, then it is important that the model runs quick enough for a modeller to be able to test numerous options. Furthermore, models which are more tractable and usable can be used more widely, requiring less specialist knowledge and software (such as nonlinear solvers).
+Clarity regarding the model's purpose has led this chapter to rank fidelity below generality -- it is important that processes from different types of system can be defined in similar ways, so that modellers can easily derive insights on how the systems should work together. Relatedly, usability is an important consideration -- if the model is to be able to consider different configurations of systems, it must be able to be easy to build the models which test these. The linear definitions of process behaviour help make this possible, avoiding the need for the modeller to go to the effort of writing bespoke equations of process behaviour. Recall that Chapter 4 assembled a database of 202 resource management processes which were linearly defined -- this task was itself arduous, and to write nonlinear equations for these would be considerably more so! The place of tractability is also important for similar reasons. If the model's purpose is to generate high-level networks of management processes, then it is important that the model runs quick enough for a modeller to be able to test numerous options. Furthermore, models which are more tractable and usable can be used more widely, requiring less specialist knowledge and software (such as nonlinear solvers).
 
 The above considerations mean that the greater theoretical fidelity of the nonlinear model relative to the linear models is not so important. Increasing fidelity reduces generality, usability and tractability, such that it becomes necessary to sacrifice fidelity for model characteristics prioritised in this thesis. For now, nonlinear process behaviour may be too much of a luxury for a more generic model, where the equations should apply to multiple real world systems which are being investigated at a high-level, especially given the solution time for nonlinear models.
 
-That is not to say that over the longterm, there is no hope for a nonlinear formulation. One approach is to adopt 'piecewise linear modelling'. In this approach, nonlinear functions are linearised by approximating them as being made up of several linear components [TODO: diagram]. Another approach is to use heuristic methods to solve nonlinear models (such as genetic algorithms). Finally, one could rely on the fact that computing speeds are becoming quicker all the time, which will make solving nonlinear quicker in the future. However, note that these approaches only solve the issues of tractability; the lack of generality remains, becuase of the need to define nonlinear equations of process behaviour. If a nonlinear version of the model is to be realised, it will likely require sector-specific expertise; perhaps dividing up the 263 [TODO: check numbers] current processes among several specialists in the fields who can write equations to model then. Moreover, this chapter has proposed Tat Hamlet as a benchmarking problem for optimising UM intersectoral synergies. Thus, updates to the formulations and/or new formulations are welcomed. Some of these may be made to the formulation (e.g. adding nonlinearity), while other changes may develop the nature of the model itself, for example applying it to lower-level processes [TODO: cross-ref to examples].
+That is not to say that over the longterm, there is no hope for a nonlinear formulation. One approach is to adopt 'piecewise linear modelling'. In this approach, nonlinear functions are linearised by approximating them as being made up of several linear components (Figure \ref{fig:piecewise-linear}). Another approach is to use heuristic methods to solve nonlinear models (such as genetic algorithms). Finally, one could rely on the fact that computing speeds are becoming quicker all the time, which will make solving nonlinear quicker in the future. However, note that these approaches only solve the issues of tractability; the lack of generality remains, becuase of the need to define nonlinear equations of process behaviour. If a nonlinear version of the model is to be realised, it will likely require sector-specific expertise; perhaps dividing up the 202 current processes among several specialists in the fields who can write equations to model then. Moreover, this chapter has proposed Tat Hamlet as a benchmarking problem for optimising UM intersectoral synergies. Thus, updates to the formulations and/or new formulations are welcomed. Some of these may be made to the formulation (e.g. adding nonlinearity), while other changes may develop the nature of the model itself, for example applying it to lower-level processes (specific ideas are given in Section \ref{sec:further-work-model}.
 
-Having ruled out the nonlinear formulation, the question remains as to whether the Null or the PRaQ model should be carried forward. At a surface level, it would seam that the PRaQ model is harder to write than the Null model -- it has more equations and variables. However, because of the model architecture described in Section [TODO: cross-ref], very little extra effort is required to gain the benefits of being able to attribute multiple qualities to a resource -- the R-script does the hard work of converting the library data into a form which can be used by the model.
+Having ruled out the nonlinear formulation, the question remains as to whether the Null or the PRaQ model should be carried forward. At a surface level, it would seam that the PRaQ model is harder to write than the Null model -- it has more equations and variables. However, because of the model architecture described in Section \ref{sec:implementation}, very little extra effort is required to gain the benefits of being able to attribute multiple qualities to a resource -- the R-script does the hard work of converting the library data into a form which can be used by the model.
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
+	\includegraphics[width=\textwidth]{05_model-development/Piecewise_linear_approximation.svg}
+%	\end{spacing}
+	\caption{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\footnote{Image available from Wikimedia Commons: \url{https://commons.wikimedia.org/wiki/File:Piecewise_linear_approximation.svg}.}}
+	\label{fig:piecewise-linear}
+\end{figure}
 
 In summary, this chapter proposes the PRaQ model to be carried forward for future use, but also accepts that improvements can be made to the formulations, and has thus published this work as a benchmarking study for the UM field. It is of course important that the considerations of this section inform how the model is used -- this thesis has chosen to prioritise generality, usability and tractability over fidelity, and so the PRaQ model should not be used for detailed design decisions. Rather, it provides high-level guidance on how systems might improve an area's urban metabolism. This shall now be the focus of the next chapter, where the PRaQ model is used in a case study, to help optimise the intersectoral synergies of a Chinese urban development.
 
@@ -1224,221 +1293,3 @@ For the Appendix?
 	- Details on Shann Gu specific parameters (e.g. groundwater pumping, surface water availability, rainfall)
 -->
 
-## Appendix
-
-\begin{table}[]
-\centering
-\caption{My caption}
-\label{tab:tat-resources}
-\begin{tabular}{@{}llllll@{}}
-\toprule
-Resource                         & Demand & Number of import zones & Notes        &  &  \\ \midrule
-water\_source                    &        & 1                      & See appendix &  &  \\
-water\_generated                 &        & 0                      & See appendix &  &  \\
-water\_qualDomestic              &        & 0                      & See appendix &  &  \\
-water\_waste\_treatmentDomestic  &        & 0                      & See appendix &  &  \\
-water\_pumped                    & 111    & 0                      & See appendix &  &  \\
-\textit{elec}                    &        & 4                      & See appendix &  &  \\
-\textit{appUse}                  & 1585   & 0                      & See appendix &  &  \\
-water\_qualLivestock             &        & 0                      & See appendix &  &  \\
-water\_waste\_treatmentLivestock &        & 0                      & See appendix &  &  \\
-meat\_raw                        &        & 4                      & See appendix &  &  \\
-veg\_raw                         &        & 4                      & See appendix &  &  \\
-manure                           &        & 0                      & See appendix &  &  \\
-manure\_green                    &        & 0                      & See appendix &  &  \\
-fishFeed                         &        & 4                      & See appendix &  &  \\
-water\_irrigation                &        & 0                      & See appendix &  &  \\
-petrol                           &        & 4                      & See appendix &  &  \\
-biomassMedium                    &        & 4                      & See appendix &  &  \\
-firewood                         &        & 4                      & See appendix &  &  \\
-biomassWet                       &        & 0                      & See appendix &  &  \\
-fish\_raw                        &        & 4                      & See appendix &  &  \\
-\textit{heat\_domestic}          & 896000 & 0                      & See appendix &  &  \\
-\textit{heat\_stove}             &        & 0                      & See appendix &  &  \\
-hotWater\_domestic               & 111    & 0                      & See appendix &  &  \\
-meat\_cooked                     & 1.8    & 0                      & See appendix &  &  \\
-veg\_cooked                      & 117    & 0                      & See appendix &  &  \\
-fish\_cooked                     & 0.07   & 0                      & See appendix &  &  \\
-CO2                              &        & 0                      & See appendix &  &  \\ \bottomrule
-\end{tabular}
-\end{table}
-
-\begin{sidewaystable}[]
-\tiny
-\centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{@{}lp{4cm}llp{4cm}llll@{}}
-\toprule
-\multicolumn{3}{l}{Conversion processes}                             & \multicolumn{3}{l}{Resources}                                                                     & \multicolumn{3}{l}{Transport processes}                                                                                           \\ \midrule
-No.        & Added                                    & Abbrev.      & No. & Added                                                                             & Abbrev. & No. & Added                                                                            & Abbrev.                                  \\
-1          & Dam                                      & Dam          & 3   & Water, Water (dam), Electricity                                             & TODO    & 1   & Cable                                                                            & Cab.                                     \\
-2          & Water treatment (for livestock)          & WT (l/stock) & 5   & Water (livestock), Wastewater (livestock)                            & TODO    & 2   & Pipe (livestock water)                                                           & P (l/stock)                              \\
-3          & Water treatment (for domestic use)       & WT (dom.)    & 7   & Water (domestic), Wastewater (domestic)                              & TODO    & 2   &                                                                                  &                                          \\
-4          & Irrigation                               & Irrig.       & 8   & Water (irrigation)                                                                 & TODO    & 3   & Pipe (irrigation water)                                                          & P (irrig.)                               \\
-\textit{5} & Pump                                     & Pump         & 9   & Water (pumped)                                                                     & TODO    & 4   & Pipe (domestic water)                                                            & P (dom.)                                 \\
-\textit{6} & Agriculture                              & Agric.       & 17  & Vegetables, Manure, Green manure, Fish feed, Petrol, Biomass (medium moisture content), Biomass (wet), CO2 & TODO    & 8   & Vehicle (manure), Vehicle (green manure), Vehicle (petrol), Vehicle (vegetables) & V (man.), V (g/man.), V (pet.), V (veg.) \\
-7          & Livestock                                & L/stock      & 18  & Meat                                                                         & TODO    & 9   & Vehicle (meat)                                                                   & V (meat)                                 \\
-8          & Stove                                    & Stove        & 20  & Heat (stove), Firewood                                                             & TODO    & 10  & Vehicle (firewood)                                                               & V (f/wood)                               \\
-9          & Biomass drying (medium moisture content) & BMD (med.)   & 20  &                                                                                   & TODO    & 10  &                                                                                  &                                          \\
-10         & Biomass drying (high moisture content)   & BMD (wet)    & 20  &                                                                                   & TODO    & 10  &                                                                                  &                                          \\
-11         & aquaculture                              & Aqua         & 21  & Fish                                                                         & TODO    & 12  & Vehicle (fish), Vehicle (fish feed)                                              & V (fish), V (f/feed)                     \\
-12         & Cooking                                  & Cook.        & 24  & Meat (cooked), Fish (cooked), Vegetables (cooked)                                           & TODO    & 12  &                                                                                  &                                          \\
-13         & Agricultural machinary                   & Agric. Mach. & 24  &                                                                                   & TODO    & 12  &                                                                                  &                                          \\
-14         & Domestic appliances                      & App.         & 25  & Appliance use                                                                            & TODO    & 12  &                                                                                  &                                          \\
-15         & Heating                                  & Heat.        & 26  & Heat (domestic)                                                                    & TODO    & 12  &                                                                                  &                                          \\
-16         & Hot water                                & HW           & 27  & Hot water                                                                & TODO    & 12  &                                                                                  &                                          \\
-           &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\
-           &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\
-           &                                          &              &     &                                                                                   &         &     &                                                                                  &                                          \\ \bottomrule
-\end{tabular}
-\end{sidewaystable}
-
-\begin{description}
-
-\item [Simplifications] help ensure the benchmark study is user-friendly:
-
-\begin{itemize}
-\item The commercial sector (i.e. the shops, which sells 'final goods') will be ignored. These goods are directly imported, and are thus not managed by processes, so add nothing to the benchmark study
-\item Amalgamate all livestock (chickens, dogs, buffalo, and cows) into a single 'livestock' category which produces all livestock products in the village (meat, dairy, and manure).
-\item Amalgamate all agricultural activities into a single 'agriculture' category which produces all agricultural produced in the village (firewood, swidden, green manure, vegetables)
-\end{itemize}
-
-\item [Assumptions] account for the fact that the literature does not resolve Tat's energy flows down to their final use:
-
-\begin{itemize}
-\item Tat's total electricity use are split equally between domestic, agriculture, and water pumping purposes.
-\item Tat's total heat output  = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
-\end{itemize}
-
-\item [Additions] give the benchmarking study greater ability to test different types of formulation:
-
-\begin{itemize}
-\item A dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
-\item Each household will include cooking, space heating, and hot water heating processes.
-\item The literature does not provide any spatial information regarding the point of demand and the location of processes. In order that the benchmarking can consider spatial disaggregation, Tat will be divided into four zones (each of which have equal demands for resources).
-\end{itemize}
-
-\end{description}
-
-<!--
-- literature seeks to understand the socio-environmental aspects of rural living, through a metabolism study of Tat Hamlet
-- 105 households
-- Average size = 4.4 people
-- 69 hectares of farmland
-- Small river, to supply the paddy field
-- mainly agricultural community:
-	- Wet rice paddy fileds
-	- Swidden cultivation
-	- Livestock
-	- Collecting products from the forest, including non-timber forest products (NTFP) such as bamboo shoots, cassava roots and Canna, sold to visiting traders.
-- Electricity available since 2001
-- Dirt road (parallel to the river)
-- Houses use electricity, water
-- Other services: education and shops
-- Flows include (p.15):
-  	- paddy and swidden fields inputs
-  	- Livestock: feed, productions, livestock sold, bought and killed
-	  	- water (for feeding and washing)
-  	- NTFP
-	- firewood
-	- bamboo (for fire and construction)
-	- Household artefacts
-	- Lamp oil, batteries and candles
-	- gasoline for motorcycles
-- System components (p18)
-  	- Atmospohere
-	- Fishpond
-	- Forest
-	- Grasslands
-	- Ground
-	- Home/tree gardens
-	- Household
-	- Household assests
-	- Houses
-	- Human population
-	- Livestock
-	- Middleman
-	- External markets
-	- Public structures
-	- Paddy fields
-	  	- Need more water
-	- Swiden fields (forest areas on mountain slopes, can't be fertilised)
-	- Shop
-	- Storage of seeds etc.
-	- Swidden fields
-	- Water bodies
-	- Other
-
-- Paddy and Swidden fields both belong to 59% of the houses, though 26% only have pddy, and 5% only swidden
-- Average paddy size = 1160m2
-- Average swidden size = 1770m2
-- 78% engage in logging
-- Buffalo (56%), cows (51%), and pigs (47%) for meat (a few goats, and chickens)
-- Construction materials also present as stocks and flows
-- Annual rainfall 1840 mm/year
-- p.28
-  	- Biomass: rice, swidden, fruit and feg, fish from fish ponds, time and bamboo from forest, NLTP, livestock grazing (interal, external, or imports)
-	- Water: household, livestock washing and drinking
-	- Fuel and process foods and constructon materials (importes)
-	- Outputs (dispolas): fertilisers, fishpond feed
-	- Outputs (biomass): timber, NTFP, livestock products, live animals, harvests
-	- Wastes and emissons: feces, incinerated products, household and agricultural wasates, durables, fossil-fuel emissions, wastewater, water varpour from drying agricultural and forest products
-- biomass is dried, and unsed residue is thrown away
-- Fishponds belong to 80 hoseholds
-- pipes transport water to the home (p38)
-- 20 households use 696 l of water per day
-  	- 60 litres to wash 2 pigs, 10 l to feed 2 pigs
-- 530 tons of firewood per year
-- 95 tons per year of bamboo used for cooking fuel
-- 60 tons per year bamboo shoots (=food), 30 t are sold at market
-- Green manure (for paddy fileds and fishponds): 9.1 tons per year
-- plant roots (medicinal and food) = (2.3 + 0.9 tons per year)
-- 930 tons per year land products
-  	- 120 tons imported
-	- 810 land products from paddy, swidden, homes gardens and fish ponds
-- Domestic extraction of food (biomass) = 408 t/yr (of which rice is 97 t/yr). This corresps. to by products (e.g. leaves) of 405 t/yr (107 t/yr)
-- Household food imports = 81 t/yr (another 2 tons per year for seeds etc.)
-- Imported meat: 2.6 t/yr
-- Final goods: 46 t/year (e.g. appliances, herbicide etc.)
-- Fossil fules: 4 tons per year
-  	- 2.9 t/yr for motorbikes
-	- 0.87 t/yr for petroleum lighting
-	- 0.37 t/yr lamp oil
-	- 0.19 t/yr lubricant oils
-- Outputs:
-  	- Water: 2600 t/yr extracted and thrown away; 630 tons per year evaporated from biomass
-	- Wood: 230 t/yr, bamboo: 52 t/yr (cooking fuel)
-	- Fish fee (palm leaves and broom grass): 6.6 and 12 tons per year
-	- Lnad products: cassava leaves (270 t/yr), grass (46 t/yr), bran (30 t/yr) for fish feed
-	- Land products: cassava stems (49 t/yr) for fields
-	- H/hold biomass waste and food (49 t/yr) + rice straw (9.4 t/yr)
-	- Manure: 270 t/yr (fertilizer and fish feed)
-	- Final good wastes and emissions: 36 tons per year
-- Stocks (2001). Feed in brackets in t/yr (e.g. cassava leaves, rice bran, etc.)
-  	- Buffalo: 107 (7.8) 
-  	- Cow: 138 (85)
-  	- Pig: 214 (265)
-  	- Chicken: 1600 (43)
-  	- Dog: 46 (22)
-  	- Goat: 8
-  	- Duck: 65 (5.6)
-- Livestock products (t/yr):
-  	- Eggs: 0.038
-	- Manure: 270 (210 in fishonds, 55 on paddy fields, 2.5 for home gardens)
-	- Chicken meat: 0.26
-	- Duck meat: 0.0056
-	- Buffalo meat: 3.1
-	- Cow meat: 0.57
-	- Pig meat: 0.49
-	- Goat meat: 0.11
-	- Dog meat: 0.077
-- Livestock feed (t/yr):
-	- Chicken: 43
-	- Duck: 5.6
-	- Buffalo: 7.8
-	- Cow: 85
-	- Pig: 265
-	- Goat: -
-	- Dog: 22
--->
