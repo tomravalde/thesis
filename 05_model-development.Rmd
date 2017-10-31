@@ -29,10 +29,6 @@ Moving to consider an optimisation model's mathematics in greater depth, recall 
 
 Linear programmes (LP) include many of the energy systems models (such as @Keirstead2013a). In these models, variables are never multiplied or divided by one-another. A specific class of linear programmes are those where some variables must adopt integer values (which might be necessary to specify the number of resource management processes, for example); these are mixed-integer linear programmes (MILP). A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
 
-<!--
- The case study in this chapter will test three different formulations, and their performance will be assessed according to these four features (with the results in Section [TODO:]).
--->
-
 *Nonlinear programmes* (NLP) have equations in which variables are multiplied by one another. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). For this reason, NLP are often used to model water management problems, because hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section \ref{sec:derivations}), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation might be variables.}. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] (for example, @Moon2009). These problems can be solved using the nonlinear programming methods, but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [@Keedwell2005a]; and particle swarm optimisation, which mimic the flocking of birds [@Khor2012]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity.
 
 [^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)/(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
@@ -504,11 +500,10 @@ We will add other processes which interact between the processes.
 
 As the conceptualisation above indicates, the highly integrated resource management model should be able to consider a city as comprised of a number of zones, for which can be specified resource demands, and which contain the conversion processes which manage resources. These zones will be connected to one another via transport processes. The model should also be able consider that resources will need to be imported into the village (either to meet a demand directly, or to feed a process), and resources which neither meet a demand nor feed a process (excess waste heat, perhaps), can be exported from the area. Added to this is also the need for a temporal component, such that resource demands can vary with time, along with the schedule of resource imports and exports, and process operations.
 
-An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Samsatli[^Samsatli] and applied in @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
+An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Samsatli\footnote{Note that this reference contains the most comprehensive description of the urban energy systems optimisation model, but it is at present unpublished. However, modelling based on this formulation has been published, for example in \citet{Keirstead2013a}, though this paper doesn't include as much detail regarding the equations of the model.} applied in @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
 
-[^Samsatli]: Note that this reference contains the most comprehensive description of the urban energy systems optimisation model, though it has not been published. However, modelling based on this formulation has been published, for example in @Keirstead2013a; note that this paper doesn't include as much detail regarding the equations of the model.
 
-To model the processes which convert resources, @Samsatli is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions (Chapter 2), Keirstead's [TODO: update] model is categorised as having no system integration, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation); this makes the formulation extendable to other types of resources and processes. The urban energy systems model has two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
+To model the processes which convert resources, @Samsatli is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions, @Samsatli's model is categorised as having no system integration (see Section \ref{sec:optim-model-overview}, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation); this makes the formulation extendable to other types of resources and processes. The urban energy systems model has two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
 
 \begin{figure}
 	\centering
@@ -536,13 +531,20 @@ A feature of @Samsatli's model is that it is spatially and temporally disaggrega
 \end{split}
 \end{align}
 
-[TODO: express this in our notation, then in next paragraph, use notation to highlight the difference between the models. Then possibly join the next two paragraphs]
+This resource balance is visualised for electricity in Figure \ref{fig:resource-balance-example}. Demand (for each resource, in each zone and each time period) is a parameter given to the model, with the other terms being variables whose values are selected by the optimisation process. The import and export variables can be limited using constraints, while the net inflow and net production variable are computed using equations which model the behaviour of conversion and transport technologies. The overall goal of the programme is then to choose variable values which minimise some objective (such as cost or emissions) which is formulated from the programme's parameters and variables.
 
-Demand (for each resource, in each zone and each time period) is a parameter given to the model, with the other terms being variables whose values are selected by the optimisation process. The import and export variables can be limited using constraints, while the net inflow and net production variable are computed using equations which model the behaviour of conversion and transport technologies. The overall goal of the programme is then to choose variable values which minimise some objective (such as cost or emissions) which is formulated from the programme's parameters and variables -- examples are given in Section [TODO: cross-reference to section on objectives].
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
+	\includegraphics[width=\textwidth]{05_model-development/resource-balance-example.pdf}
+%	\end{spacing}
+	\caption{An example of how Equation \eqref{eq:balance} might apply to electricity ('Elec.'). Italicised terms correspond to the terms of the equation. In words: the electricity imported into zone 1 from outside the system + the electricity produced by the power plant + electricity arriving from zone 2 = the electricity being exported outside the system and the electricity being consumed by the pump.}
+	\label{fig:resource-balance-example}
+\end{figure}
 
-[TODO: add illustrative diagrams, e.g. for the processes, and the zones]
-
-The next three subsections specify three different model formulations based on @Keirstead2013a. They are each based on the resource balance, however they differ in the way that they model the conversion [TODO: and transport?] processes (in other words, how the variable $G_{prz}$) is defined), varying in their fidelity, generality, tractability, and usability:
+The next three subsections specify three different model formulations built around this resource balance equation. The models differ in the way that they model the conversion and transport processes (in other words, how the second and third terms of Equation \ref{eq:balance} are defined), varying in their fidelity, generality, tractability, and usability:
 
 \begin{description}
 
@@ -551,7 +553,7 @@ The next three subsections specify three different model formulations based on @
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
-Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations. [TODO: Is this better in the discussion section? Add comments on] The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained in [TODO: cross-ref the tcolorbox]. For the purposes of simplification, the model formulations below have not been defined temporally. Model objective functions are also not defined with the model constraints -- instead, Section \ref{sec:model-objs} provides an overview of the sorts of objectives which could be used with any of the formulations.
+Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations (this is discussed further in Section \ref{sec:fid-and-gen}. The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained later in this Section. The constraints for the Nonlinear, PRaQ and Null formulations are given in Sections \ref{sec:Null}, \ref{sec:PRaQ} and \ref{sec:NL}, respectively. Examples of objective functions are given separately in Section \ref{sec:model-objs} -- there are any number of possible objectives which could be used with each of the models.
 
 \begin{figure}
 	\centering
@@ -560,7 +562,7 @@ Figure \ref{fig:evolution} shows how the three formulations are related both to 
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/model-family.pdf_tex}}
 	\includegraphics[width=0.7\columnwidth]{05_model-development/model-relationships.pdf}
 %	\end{spacing}
-	\caption{The relationship of this chapter's formulations to each other and the urban energy systems model of \citet{Keirstead2013a}.}
+	\caption{The relationship of this chapter's formulations to each other and the urban energy systems model of \citet{Samsatli}.}
 	\label{fig:evolution}
 \end{figure}
 
@@ -607,7 +609,7 @@ mgz_B = \eta^{dam} (\mbox{elec gen})
 
 \end{tcolorbox}
 
-### Null (N) formulation
+### Null (N) formulation {#sec:Null}
 
 The null model can be defined using similar base equations as for the @Keirstead2013a model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
 
@@ -616,7 +618,7 @@ I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \fo
 \label{eq:null_balance_qty}
 \end{align}
 
-$J$ and $G$ denote the variables of resource production and transport by conversion and transport processes $p$ and $\tau$, respectively (their equations are defined in [TODO: cross-reference equations], below). $D$ denotes the demand parameter. $I$ and $E$ denote the import and export variables respectively, and these are limited by constraints which specify which zones are allowed to import/export each resource and the maximum they are allowed to import/export:
+$J$ and $G$ denote the variables of resource production and transport by conversion and transport processes $p$ and $\tau$, respectively (their equations are defined in Equations \ref{eq:null_process} and \ref{eq:null_transp_rate}, below). $D$ denotes the demand parameter. $I$ and $E$ denote the import and export variables respectively, and these are limited by constraints which specify which zones are allowed to import/export each resource and the maximum they are allowed to import/export:
 
 \begin{align}
 I_{rz} &\geq \delta^I_{rz} I^{min}_r \label{eq:null_imp_min} \\
@@ -641,7 +643,7 @@ To calculate the production of a resource by a particular process $p$ in a zone,
 \label{eq:null_process}
 \end{align}
 
-where the $F$ variable defines the operation rate of a technology (for example, a dam may operate with a generating capacity of 3 MW). Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the output resource (in the dam example this would be electricity) always has a coefficient value, $k_{pr}=1$. The value of the $F_{pz}$ is defined from the number $N$ of any type of process in a zone, and their maximum operating capacities, $F^{max}$:
+where the $F$ variable defines the operation rate of a technology (for example, a dam may operate with a generating capacity of 3 MW). Carrying forward the principles of Section \ref{sec:process-mapping}, the output resource (in the dam example this would be electricity) always has a coefficient value, $k_{pr}=1$. The value of the $F_{pz}$ is defined from the number $N$ of any type of process in a zone, and their maximum operating capacities, $F^{max}$:
 
 \begin{align}
 	F_{pz} \leq N_{pz} F^{max}_{p} \qquad 
@@ -649,21 +651,22 @@ where the $F$ variable defines the operation rate of a technology (for example, 
 \end{align}
 
 \begin{tcolorbox}
-Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ [TODO: cross-reference back to the node-link diagram earlier]. Carrying forward the principles of [TODO: cross-reference relevant section of Chapter 4], the electricity is considered the dam's `main' output, and hence its output coefficient is set to  1 MJ\footnote{Recall that this means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
+Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ (Figure \ref{fig:pump-dam-RTN}. The electricity is considered the dam's `main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
 
 
-The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=10$ metres and efficiency $\eta^{dam}=$80 percent, there mass of water required to produce a megajoule of electricity is 8.15 kg, resulting in the coefficients indicated in Listing [TODO: check the calculations here, and update the listing, and cross-reference listing].
-
-\begin{tcblisting}[frame=single,
-	caption = Production coefficients for the dam in the null model.,
-	label = list:null_coeff_dam,
-	float=[htbp]]
-dam source_hiHead_lowQual -1
-dam lowHead_lowQual 1
-dam elec 98.1 
-\end{tcblisting}
+The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=10$ metres and efficiency $\eta^{dam}=$80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg, resulting in the coefficients in Listing \ref{list:praq_dam}.
 
 \end{tcolorbox}
+
+\begin{lstlisting}[language=yaml,
+	frame=single,
+	caption = Production coefficients for the dam in the Null model.,
+	label = list:praq_dam,
+	float = [htbp]]
+dam source_hiHead_lowQual -12742
+dam lowHead_lowQual 12742
+dam elec 1
+\end{lstlisting}
 
 #### Transport processes
 
@@ -676,18 +679,38 @@ The net resource inflow variable $J$ is calculated from the difference between t
 \end{split}
 \end{align}
 
-The calculation of $J$ is somewhat analogous to the calculation of $G$, in that it constitutes a resource coefficient multiplied by a rate, but developed in three ways ways. First, it is defined for a transport technology $t$ between two zones, $z$ and $z'$, and thus considers each zone both as a source ($src$) from which resources leave, and as a destination ($dest$) into which resources arrive, and thus resource flows arriving in zone $z$ must be summed over all flows coming from all other zones $z'$, and resource flows leaving zone $z$ must be summed over all flows travelling to all other zones $z'$. Second, the amount of resource arriving in/leaving from a zone is a function both of the technology itself and the distance spanned by the technology. For example, [TODO: think up an example, e.g. the amount of electricity used to pump water through a pipe of particular lenght]. This is represented in the bracketed term, which is the multiplier of the transport technology's rate of operation $F^{transp}$ 's variable. Thirdly, it is possible (though not necessary) that several transport technologies can carry the same resource (for example biomass can be transported by both lorries or vans: these would have different rates, and require different amounts of petrol etc.), hence the summation over transport technologies $t$ [TODO: check this summation is required. It may already be considered in the main equation]. Table [TODO: cross-ref] below gives examples of the parameter values for the examples of electricity and biomass transport in Figure [TODO: cross-ref].
+The calculation of $J$ is somewhat analogous to the calculation of $G$, in that it constitutes a resource coefficient multiplied by a rate, but developed in three ways ways. First, it is defined for a transport technology $t$ between two zones, $z$ and $z'$, and thus considers each zone both as a source ($src$) from which resources leave, and as a destination ($dest$) into which resources arrive, and thus resource flows arriving in zone $z$ must be summed over all flows coming from all other zones $z'$, and resource flows leaving zone $z$ must be summed over all flows travelling to all other zones $z'$. Second, the amount of resource arriving in/leaving from a zone is a function both of the technology itself and the distance spanned by the technology. For example, the amount of petrol required to transport goods depends on the distance $l$ the goods will travel. This quantity is represented in the bracketed term, which is the multiplier of the transport technology's rate of operation $F^{transp}$ 's variable. Thirdly, it is possible (though not necessary) that several transport technologies can carry the same resource (for example biomass can be transported by both lorries or vans: these would have different rates, and require different amounts of petrol etc.), hence the summation over transport technologies $t$. Table \ref{tab:transp-coeffs} below gives examples of the parameter values for the examples of electricity and biomass transport in Figures \ref{fig:transp-elec} and \ref{fig:transp-biomass}, respectively.
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+	\includegraphics[width=\textwidth]{05_model-development/transp-example-elec.pdf}
+%	\end{spacing}
+	\caption{Representation of how electricity ('Elec.') transport is modelled. The quantity of electricity arriving in Zone 2 is the same as that leaving Zone 1 (this assumes negligible energy losses along the cable).}
+	\label{fig:transp-elec}
+\end{figure}
+
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+	\includegraphics[width=\textwidth]{05_model-development/transp-example-biomass.pdf}
+%	\end{spacing}
+	\caption{Representation of how biomass ('BM') transport is modelled. The quantity of biomass arriving in Zone 2 is the same as that leaving Zone 1; the requires petrol to be supplied in Zone 1 (this quantity is a function of the distance between the zones); the carbon dioximde emissions (also dependent on distance) are shared between Zones 1 and 2.}
+	\label{fig:transp-biomass}
+\end{figure}
 
 \begin{table}[]
 \centering
-\caption{Example parameter values to model transport processes.}
-\label{my-label}
+\caption{Example parameter values to model transport processes represented by Figures \ref{fig:transp-elec} and \ref{fig:transp-biomass}.}
+\label{tab:transp-coeffs}
 \begin{tabular}{@{}lllllll@{}}
 \toprule
 \multirow{2}{*}{$t$}  & \multirow{2}{*}{$r$} & \multicolumn{2}{l}{Source}               & \multicolumn{2}{l}{Dest}                  & \multirow{2}{*}{Comment}               \\ \cmidrule(lr){3-6}
                       &                      & $k^{qty,src}_{tr}$ & $k^{dist,src}_{tr}$ & $k^{qty,dest}_{tr}$ & $k^{qty,dest}_{tr}$ &                                        \\ 
 \midrule
-Cable                 & Electricity          & -1                 & 0                   & 1                   & \textless0          & Losses depend on distance              \\ \cmidrule(lr){1-2}
+Cable                 & Electricity          & -1                 & 0                   & 1                   & \textless0          & Negligible electricity losses              \\ \cmidrule(lr){1-2}
 \multirow{3}{*}{Road} & Biomass              & -1                 & 0                   & 1                   & 0                   & No losses                              \\
                       & Petrol               & 0                  & \textless0          & 0                   & 0                   & Petrol requirements depend on distance \\
                       & CO2                  & 0                  & \textgreater0       & 0                   & \textgreater0       & Emissions depend on distance           \\
@@ -724,7 +747,7 @@ cost = \min\left\{\sum_{rz} C^R_r I_{rz} + \sum_{pz} C^P_p N_{pz}\right\}
 \end{align}
 
 
-### Processes, resources and qualitites (PRaQ) formulation
+### Processes, resources and qualitites (PRaQ) formulation {#sec:PRaQ}
 
 The PRaQ model is based on the same equations as the null model, also following a black-box approach to modelling the conversion processes and transport technologies, and so as before, there is an equation which balances the resource quantities in each zone (Equation \eqref{praq_balance_qty}:
 
@@ -865,7 +888,7 @@ The equations of null and PRaQ, and how their formulations are analogous to one 
 \input{05_model-development/tabs/null_praq_equations.tex}
 -->
 
-### Nonlinear (NL) formulation
+### Nonlinear (NL) formulation {#sec:NL}
 
 The two model formulations we have derived thus far (null and PRaQ) are both as generic as it is possible to be. That is to say that all resources, conversion processes and transport technologies can be defined in the same way, and only the data (the values of each index/subscript) will change. In the earlier discussion of model generality and fidelity, we discussed that we could achieve greater fidelity with a less general model. This derivation will show how a nonlinear model formulation can achieve greater fidelity to the way conversion and transport processes behave in reality (in contrast to our simple black-box representations). [TODO: Move this to the discussion?] 
 
@@ -1056,7 +1079,7 @@ plot_conversion
 
 ```
 
-### How well do the formulations represent reality? Fidelity and generality
+### How well do the formulations represent reality? Fidelity and generality {#sec:fid-and-gen}
 
 A model's fidelity can be validated by verifying the model's results against real data. In theory, one could measure resource demands of Tat and the resource flows within the system, and then run the models using the measured demands to see if the model chooses a similar system and schedule of resource management. However, this would be both impractical (as pointed out earlier, practical limitations are part of the reason models are useful [p.TODO: page reference, quoting @Williams1990]. Moreover, even if this were practical, the this method would assume that the villagers of Tat are managing their resources optimally -- given that the point of this thesis is to argue that resource management is generally sub-optimal, this assumption would beg the question of why this thesis is even necessary! Furthermore, for the purposes of developing the model, Tat Hamlet as been reimagined with simplifications, adjustments and assumptions, and hence there are some ways that the modelled system and the real-world system are not comparable. The inability to validate the model with real data is not unique to this thesis; many other models which optimise the systems at the urban scale cannot be validated in this rigorous manner, including [TODO: list examples, e.g. Keirstead].
 
