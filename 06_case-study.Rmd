@@ -339,9 +339,9 @@ headlines <- transform(headlines,
 
 An idea important to this thesis is that the metabolic flows into and out of a city are governed in part by the middle of the system -- the network of resource management processes. The metabolic inputs and outputs for each scenario are displayed in Figure \ref{fig:metabolic-flows}. Note that in general, making more processes available to a system makes possible a more diverse the schedule of resource inputs and outputs: [TODO: could put numbers here, perhaps tabulate: scenario, inputs, outputs, total] this means both a greater number and variety of resource types, and seasonal variation within resource types (such as for electricity output in the design case).
 
-```{r metabolic_flows, fig.height=7, fig.cap="fig:Metabolic flows into and out of the SPC site.\\label{fig:metabolic-flows}", fig.width=6.5, results="asis"}
+```{r metabolic_flows, fig.height=7, fig.width=7.5, fig.cap="Metabolic flows into and out of the SPC site.\\label{fig:metabolic-flows}"}
 
-## Another arbitrary edit
+## Metabolic flows
 
 metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
 
@@ -377,6 +377,7 @@ plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
   facet_wrap(~Flow, ncol=1) +
   theme_bw() +
   theme(axis.text.x=element_text(hjust=1, angle=30),
+  	axis.text.y=element_text(hjust=1, angle=30),
 	axis.title=element_blank())
 plot_metabolic_flows
 
@@ -672,7 +673,7 @@ where $Ex_{j \or i}$ represent the exergy value of a resource (for example the c
 
 ```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
 
-## Arbitrary edit
+## Exergy analysis
 
 library(xtable)
 exergy <- read.csv("06_case-study/exergy.csv")
