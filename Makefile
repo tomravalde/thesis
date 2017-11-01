@@ -91,7 +91,6 @@ update:
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/component-costs.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/metabolic_flows.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/process_mix.csv 06_case-study ; \
-	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/exergy.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/ENA.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/ena-matrices.csv 06_case-study ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/designCase_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_designCase_minCost.pdf ; \
@@ -103,7 +102,7 @@ update:
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_long_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_long_minCost.pdf ; \
 
 #	cp /home/tr608/.pandoc/templates/chapter.xelatex . ; \
-
+#	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/exergy.csv 06_case-study ; \
 ## Knit Rmarkdown to markdown
 %.md: %.Rmd
 	./knit.R $<
