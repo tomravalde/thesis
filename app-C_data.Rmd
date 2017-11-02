@@ -57,7 +57,7 @@ Our case study's time steps (along with their lengths in seconds) are defined in
 
 We have assumed a 360 day year, with the winter, summer and shoulder seasons taking lengths of 90 days, 90 days, and 180 days, respectively. So for example, the length of the `shoulder` season is calculated as $180~\mbox{days} \times 24~\mbox{hours} \times 3,600~\mbox{seconds} = 1.5552 \times 10^7~\mbox{seconds}$.
 
-### Resource demands
+### Resource demands {#sec:app-case-study-resources}
 
 Summary of adjustments:
 
