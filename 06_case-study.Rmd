@@ -112,25 +112,91 @@ With the sets in place, the parameters can be defined. First the distance betwee
 
 The following subsections outline how the sets and parameters are defined from the SPC documentation (with further details provided in Appendix \ref{sec:app-case-study}). The explanations are deliberately comprehensive, reflecting on why certain choices and assumptions regarding data are made, to justify the modelling decisions taken here -- recall that Section \ref{sec:modelling-intro} noted that the value of modelling found not only in the results, but in making *explicit* assumptions and methods which would have otherwise been unstated in the decision-making processes. This walks the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions. The details are given in the recommended order of how a user might construct a particular case study model.
 
-```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SPC site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
+```{r resource-demands, fig.height=5, fig.width = 7, fig.cap="Resource management demands for the SPC site's regions (indicated by \\textbf{bold} axis labels) and functions (indicated by plain axis labels), according to zone and season. Posibitve values indicate the resource is consumed by the end-users; negative values (i.e., for wastes and wastewater) indicate the resource is produced by the end-users.\\label{fig:site-demands}"}
 demands <- read.csv("06_case-study/resource-demands.csv")
 demands <- demands[complete.cases(demands$value.conv), ]
 
-#library("dplyr")
-#filter(demands, value.conv!=0)
+demands$headings <- "placeholder"
 
-plot_demand <- ggplot(demands, aes(zone, value.conv)) +
-#  geom_dotplot(aes(fill=season), binaxis="y", position=position_dodge(width=0.6)) +
-  geom_point(aes(colour=season), binaxis="y", position=position_dodge(width=0.6)) +
-  facet_wrap(~resource, scales="free_y") +
-  xlab("Zone") +
-  labs(fill="Season") +
+demands[demands$resource=="heat", "headings"] <- "Heating [MW]"
+demands[demands$resource=="cool", "headings"] <- "Cooling [MW]"
+demands[demands$resource=="elec", "headings"] <- "Electricity [MW]"
+demands[demands$resource=="waterPotable", "headings"] <- "Potable water [kg/s]"
+demands[demands$resource=="wastewater", "headings"] <- "Wastewater [kg/s]"
+demands[demands$resource=="waste", "headings"] <- "Waste [kg/s]"
+demands[demands$resource=="waste_organic", "headings"] <- "Organic waste [kg/s]"
+demands[demands$resource=="water_reclaimed", "headings"] <- "Reclaimed water [kg/s]"
+
+demands$zoneLabels <- "placeholder"
+demands[demands$zone=="general", "zoneLabels"] <- "General"
+demands[demands$zone=="factory", "zoneLabels"] <- "Factory (south)"
+demands[demands$zone=="factory_assembly", "zoneLabels"] <- "Factory (assembly)"
+demands[demands$zone=="northDistrict", "zoneLabels"] <- "Factory (north)"
+demands[demands$zone=="multifunction", "zoneLabels"] <- "Factory (multi-function facility)"
+demands[demands$zone=="factory_blades", "zoneLabels"] <- "Factory (blade production)"
+demands[demands$zone=="tech", "zoneLabels"] <- "Factory (technology building)"
+demands[demands$zone=="quality", "zoneLabels"] <- "Factory (quality control)"
+demands[demands$zone=="dormitories", "zoneLabels"] <- "Factory (dormitories)"
+demands[demands$zone=="residential", "zoneLabels"] <- "Residential"
+demands[demands$zone=="hospital", "zoneLabels"] <- "Hospital"
+demands[demands$zone=="school", "zoneLabels"] <- "School"
+demands[demands$zone=="energyIsland", "zoneLabels"] <- "Energy Island"
+demands[demands$zone=="reserved", "zoneLabels"] <- "Reserved"
+
+demands$seasonLabels <- "placeholder"
+demands[demands$season=="sum", "seasonLabels"] <- "Summer"
+demands[demands$season=="wint", "seasonLabels"] <- "Winter"
+demands[demands$season=="shoulder", "seasonLabels"] <- "Shoulder"
+
+demands_alt <- filter(demands, season=="sum")
+
+demands$zoneLabels <- factor(demands$zoneLabels, levels=c("General",
+							  "Factory (south)",
+							  "Factory (assembly)",
+							  "Factory (north)",
+							  "Factory (multi-function facility)",
+							  "Factory (blade production)",
+							  "Factory (technology building)",
+							  "Factory (quality control)",
+							  "Factory (dormitories)",
+							  "Residential",
+							  "Hospital",
+							  "School",
+							  "Energy Island",
+							  "Reserved"))
+
+demands$zone<- factor(demands$zone, levels=c("general",
+							  "factory",
+							  "factory_assembly",
+							  "northDistrict",
+							  "multifunction",
+							  "factory_blades",
+							  "tech",
+							  "quality",
+							  "dormitories",
+							  "residential",
+							  "hospital",
+							  "school",
+							  "energyIsland",
+							  "reserved"))
+
+
+plot_demand <- ggplot(demands, aes(zoneLabels, value.conv)) +
+  geom_point(aes(colour=seasonLabels), binaxis="y", position=position_dodge(width=0.6)) +
+  facet_wrap(~headings, scales="free_y", ncol=2) +
+  labs(colour="Season") +
   theme_bw() +
-  theme(axis.text.x = element_text(hjust=1, angle=30),
+  theme(axis.text.x = element_text(hjust=1,
+				   angle=30,
+				   size=6.5,
+				   face=ifelse(levels(demands$zone) %in% c("factory", "northDistrict", "residential"),"bold", "plain")
+				   ),
+	axis.title.x = element_blank(),
 	axis.title.y = element_blank())
 plot_demand
 
 ```
+
 ### Site layout
 
 Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $|Z|=12$. The information to define site layout, namely the pairs of neighbouring zones, $nb(z,z')$, and the distances between zones in these pairs,
