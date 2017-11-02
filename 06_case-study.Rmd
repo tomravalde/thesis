@@ -673,30 +673,30 @@ where $Ex_{j \or i}$ represent the exergy value of a resource (for example the c
 
 ```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
 
-## Exergy analysis
+## Exergy efficiency analysis
 
 library(xtable)
 exergy <- read.csv("06_case-study/exergy.csv")
 
-ex_prod <- exergy$prod[1]
+#ex_prod <- exergy$prod[1]
+#
+### Presentation scenario names
+#exergy$scenario <- as.character(exergy$scenario)
+#exergy[exergy$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
+#exergy[exergy$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
+#exergy[exergy$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
+#exergy[exergy$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
+#exergy[exergy$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
+#exergy[exergy$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
+#exergy[exergy$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
+#exergy[exergy$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
 
-## Presentation scenario names
-exergy$scenario <- as.character(exergy$scenario)
-exergy[exergy$scenario=="gridCase_minCost", "scenario"] <- "Grid case (min. cost)"
-exergy[exergy$scenario=="designCase_minCost", "scenario"] <- "Design case (min. cost)"
-exergy[exergy$scenario=="designCase_minEmissions", "scenario"] <- "Design case (min. emissions)"
-exergy[exergy$scenario=="designCase_minWaste", "scenario"] <- "Design case (min. waste)"
-exergy[exergy$scenario=="designCase_minWater", "scenario"] <- "Design case (min. water)"
-exergy[exergy$scenario=="wildcard_current_minCost", "scenario"] <- "Wildcard case (current)"
-exergy[exergy$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medium)"
-exergy[exergy$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
-
-exergy <- select(exergy, scenario, in., waste, irrev, eff)
-names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\alpha^{waste}_{ex}$", "$\\alpha^{irrev}_{ex}$", "$\\eta_{ex}$ [per cent]")
+#exergy <- select(exergy, scenario, in., waste, irrev, eff)
+#names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\alpha^{waste}_{ex}$", "$\\alpha^{irrev}_{ex}$", "$\\eta_{ex}$ [per cent]")
 
 tab.exergy.tex <- xtable(exergy,
 			  caption="Results of exergy analysis for SPC scenarios. All $\\alpha^*_{ex}$ values in MW. \\label{tab:SPC-exergy}",
-			  align="llllll")
+			  align="lllll")
 
 print(tab.exergy.tex,
 ##      size='\\small',
@@ -707,7 +707,7 @@ print(tab.exergy.tex,
 ```
 
 
-The results of exergy analysis for each scenario are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]). (Each scenario has the same set of demands, thus $\alpha_{ex}^{prod}=$ `r ex_prod` for all scenarios.)
+The results of exergy analysis for each scenario are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]). 
 
 The results show that [TODO: describe results]
 
