@@ -37,13 +37,13 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. The architecture of the model is structured to separate code and data, for further ease of use. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter 4, and using some of the metrics of Chapter 3 to assess the systems designed by the model.
 
-This chapter first introduces the case study (Section [TODO:]), before outlining the data (for example defining zones, interzonal links, and resource demands) (Section [TODO:]). Following this, Section [TODO: subsection number] introduces several scenarios for the case study to which PRaQ is applied. These scenarios will all use the same demand patterns, but vary in their objectives, and the set of processes available to manage resources. This will allow investigation of both currently proposed system designs, as well as other more ambitious ideas. Finally, this model will present and discuss the modelling results, and thus provide insight to planners and decision makers developing SPC site plans further (Section [TODO:]).
+This chapter first introduces the case study (Section \ref{sec:case-study-intro}), before outlining the data (for example defining zones, interzonal links, and resource demands) (Section \ref{sec:SPC-data}). Following this, Section \ref{sec:SPC-scenarios} introduces several scenarios for the case study to which PRaQ is applied. These scenarios will all use the same demand patterns, but vary in their objectives, and the set of processes available to manage resources. This will allow investigation of both currently proposed system designs, as well as other more speculative ideas. This section will present and discuss the results of modelling each scenario, in view of the UM-related concepts introduced in Chapters 1-3 of this thesis. In summary, this chapter's aim is to use a case study to provide insight to planners and decision makers developing SPC site plans further.
 
-## The case study
+## The case study {#sec:case-study-intro}
 
 The case study is an ongoing Chinese urban development led by the Xi'an Shann Gu Power Company (hereafter, SPC), who historically have provided turbo-machinary services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [@SPC2014]. The SPC are implementing plans to redevelop one of their industrial sites and the surrounding region. The wider site is in the Xi'an province of China with an area of 51.03 km$^2$, which includes a short-term construction region of 13 km$^2$ which can accommodate 133,000 people. This short-term construction area has residential, commercial, industrial and recreational functions, roughly represented by Figure \ref{fig:site} [^confidential]. The homes, businesses and industrial functions will all have energy, water and waste management needs.
 
-[^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SPC [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'sewage' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
+[^confidential]:The documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here. There are six SPC documents (reports and PowerPoint presentations) from which this chapter draws information. In this thesis, these will be cited as 'SPC [X]', where X refers to one of the six papers, namely: 'energy' (details on energy needs and provision), 'water' (details on water needs and provision), 'wastewater' (details on wastewater management needs and provision), 'intro' (general details about the SPC site redevelopment), 'site' (specific details about the site), 'demand' (demand data).
 
 \begin{figure}
 	\centering
@@ -51,13 +51,22 @@ The case study is an ongoing Chinese urban development led by the Xi'an Shann Gu
 	\sffamily
 	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site.pdf_tex}}
 	\end{spacing}
-	\caption{A conceptual representation of the SPC redevelopment site, adapted from a figure in the SPC documentation. The outer dashed rectangle encloses the full 13 km$^2$ site; the solid rectangles and their bold text labels represent broad regions within the site (e.g. region nine is \textbf{residential}; the unbolded text labels denote zones more specifically (e.g. a hospital within the residential region).}
+	\caption{A conceptual representation of the SPC redevelopment site, adapted from a figure in the SPC documentation. The outer dashed rectangle encloses the full 13 km$^2$ site; the solid rectangles and their bold text labels represent broad regions within the site (e.g. the \textbf{residential} region; the unbolded text labels denote zones more specifically (e.g. a hospital within the residential region).}
 	\label{fig:site}
 \end{figure}
 
-A stated ambition of the SPC site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Proposals to that end include using heat stored within wastewater within a water source sewage pump, and generating biogas from wastewater fermentation. Another specific need of interest is in the recreational area, which includes an artificial lake, which the planners hope to source via a water reuse project [SPC-water]. These, and other intersectoral integration possibilities [TODO: better word?] are summarised in Figure [TODO:], which shows part of the resource management infrastructure proposed for the SPC site, indicating the type of intersectoral integration considered by the planners and decision makers involved with the SPC site redevelopment project.
+A stated ambition of the SPC site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Proposals to that end include using heat stored within wastewater within a water source heat pump, and generating biogas from wastewater fermentation. Another specific need of interest is in the recreational area, which includes an artificial lake, which the planners hope to source via a water reuse project [@SPC_water]. These, and other intersectoral possible intersectoral synergies are summarised in Figure \ref{fig:shanngu-network}, which shows part of the resource management infrastructure proposed by the SPC for the site's redevelopment.
 
-[TODO: adapt Figure below, to show all connections.]
+\begin{figure}
+	\centering
+%	\begin{spacing}{1.0}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
+	\includegraphics[width=\textwidth]{06_model-development/shanngu-network.pdf}
+%	\end{spacing}
+	\caption{A summary of SPC's proposed interactions between energy, water and waste management. Resources in \textbf{bold} represent resources either demanded or produced by the end-users in the regions of Figure \ref{fig:site-connections}; and * indicates a resource can be imported from outside the system boundary (indicated by the dashed line).}
+	\label{fig:shanngu-network}
+\end{figure}
 
 \begin{figure}
 	\centering
@@ -66,10 +75,10 @@ A stated ambition of the SPC site redevelopment is to integrate the energy, wate
 	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site-dimensions.pdf_tex}}
 	\end{spacing}
 	\caption{A re-representation of the SPC redevelopment site, indicating connections defined for set $nb(z,z')$. All distances are in kilometers. Each region centre connects to the other zones in the region (e.g. \textbf{Factory (south)} $\leftrightarrow$ Assembly) with a connection assumed to be 0.5 km in length.}
-	\label{fig:site-connectionss}
+	\label{fig:site-connections}
 \end{figure}
 
-Some aspects of the proposed system design have been simulated (for example using the TRNSYS[^trnsys] to simulate the energy, system), however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
+The proposed energy system has been simulated [@SPC_intro] using the TRNSYS[^trnsys] to simulate the energy, system, however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
 
 [^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. TRNSYS allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
 
@@ -84,7 +93,7 @@ Some aspects of the proposed system design have been simulated (for example usin
 - [SPC-4, slide 27: Within that, the "Combined water supply and treatment system" has WSHP, rainwater collection, fermentation to produce biogas, sewage plant, water treatment, and water reclamation]
 -->
 
-## Model data
+## Model data {#sec:SPC-data}
 <!--
 - Data
   	- resources
@@ -97,11 +106,11 @@ Some aspects of the proposed system design have been simulated (for example usin
 		- dummy processes (e.g. MSW splitting, waste generalising)
 -->
 
-When applying the model to a case study, the first step is to specify the zones and time steps [TODO: better word? slices?] used in the model, which are defined by sets $z \in Z$ and $t \in T$, respectively. With the zones determined, another a set specifies whether any pair of zones $(z,z')$ are neighbours, by defining them as part of the set, $nb(z,z')$. Following this, the sets of processes and resources available to the model can be specified ($p \in P$ and $r \in R$, respectively). Once the resources have been specified, there is enough information to define the two final sets: first, quality attributes which should be defined ($q \in Q$); and second, the transport technologies, $\tau \in \Tau$ which can transport the resources between zones.
+When applying the model to a case study, the first step is to specify the zones and time periods used in the model, defined by sets $z \in Z$ and $t \in T$, respectively. With the zones determined, another a set specifies whether any pair of zones $(z,z')$ are neighbours, by defining them as part of the set, $nb(z,z')$. Following this, the sets of processes and resources available to the model can be listed ($p \in P$ and $r \in R$, respectively). At this point, there is enough information to define the two final sets: first, the qualities to be attributed to resources ($q \in Q$); and second, the transport technologies, $\tau \in \Tau$ which transfer the resources between zones.
 
-With the sets defined, the parameters can be specified. First the distance between between two any two neighbouring zones defines the $l_{zz'}$ parameter (km), while the $span_t$ [TODO: better notation] parameter defines the length of time, in days, of each time step, $t$. The resource demands can then be specified for each time and location with the $D^{(qty}_{rzt})$ parameter. The $D^{(qual)}_{qzt}$ is then defined, which (as mentioned in Chapter 5), can be automatically defined by the R script which combines the formulation and data from the $D^{(qty}_{rzt})$ parameter, and a resource definition.) Other parameters will include the limits on imports and exporting resources to particular zones, and the costs of resources and processes [TODO: TBC].
+With the sets in place, the parameters can be defined. First the distance between between two any two neighbouring zones defines the interzonal distances $l_{zz'}$ (kilometers), while $\mathbb{S}_t$ defines the length of time of each time period, $t$ (days). Resource management needs can then be assigned to each time and location with $D^{(qty}_{rzt})$. (The $D^{(qual)}_{qzt}$ can then be automatically defined by running the R script which builds the model from the formulation and the data (Section \ref{sec:implementation})). Other parameters to define include the limits on imports and exporting resources to particular zones, and the costs of resources and processes.
 
-The following subsections outline how the sets and parameters are defined from the SPC documentation (with further details provided in Appendix [TODO: cross-ref]). The explanations are deliberately comprehensive, reflecting on why certain choices and assumptions regarding data are made, to justify the modelling decisions taken here -- recall that Section \ref{sec:modelling-intro} noted that the value of modelling found not only in the results, but in making *explicit* assumptions and methods which would have otherwise been unstated in the decision-making processes. This walks the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions. The details are given in the recommended order of how a user might construct a particular case study model, and thus each subsection describes how different components of the formulation (e.g. sets and parameters) relate to each other [TODO: tidy this last part of explanation].
+The following subsections outline how the sets and parameters are defined from the SPC documentation (with further details provided in Appendix \ref{sec:app-case-study}). The explanations are deliberately comprehensive, reflecting on why certain choices and assumptions regarding data are made, to justify the modelling decisions taken here -- recall that Section \ref{sec:modelling-intro} noted that the value of modelling found not only in the results, but in making *explicit* assumptions and methods which would have otherwise been unstated in the decision-making processes. This walks the reader through how one might design a model for a particular case study, and when it would be appropriate to take different decisions. The details are given in the recommended order of how a user might construct a particular case study model.
 
 ```{r resource-demands, fig.height=5, fig.cap="Resource management demands for the SPC site, according to zone and season. Negative values for (i.e., for wastes and wastewaters) indicate the production of a resource.\\label{fig:site-demands}"}
 demands <- read.csv("06_case-study/resource-demands.csv")
@@ -122,9 +131,6 @@ plot_demand <- ggplot(demands, aes(zone, value.conv)) +
 plot_demand
 
 ```
-
-[TODO: adapt Appendix from supplementary information (shann-gu-case-study/paper/supInf.Rmd)]
-
 ### Site layout
 
 Each of the twelve zones shown in Figure \ref{fig:site} (both the three larger, and the nine functions they encompass) will be modelled in this case study, and thus each are encoded in the model as zones $z \in Z$, where $|Z|=12$. The information to define site layout, namely the pairs of neighbouring zones, $nb(z,z')$, and the distances between zones in these pairs,
@@ -264,7 +270,7 @@ As with the conversion processes, transport processes each need to have an assoc
 
 This section has introduced the sources, assumptions, and calculations used to define the model's parameters. By showing how various parts of the model relate to each other, it has provided a guide on how one might construct the PRaQ model for a particular case study. 
 
-## Application to model scenarios
+## Application to model scenarios {#sec:SPC-scenarios}
 
 PRaQ is applied to [TODO: number] scenarios to suggest how different networks of processes can satisfy SPC demand (following the methodology of @Keirstead2012 [TODO: What did I mean here?]) using different sets of available processes and objective functions:
 

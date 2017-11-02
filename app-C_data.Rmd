@@ -1,4 +1,7 @@
-# Case study data
+# Case study data {#sec:app-case-study}
+
+[TODO: adapt Appendix from supplementary information (shann-gu-case-study/paper/supInf.Rmd)]
+
 
 [TODO: complete]
 
