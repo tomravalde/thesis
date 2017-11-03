@@ -316,23 +316,23 @@ As with the conversion processes, transport processes each need to have an assoc
 
 ## Application to model scenarios {#sec:SPC-scenarios}
 
-Having detailed the data sources, assumptions, and calculations used to determine the model's parameters, PRaQ is now applied to eight scenarios (\ref{itm:base}--\ref{itm:wild-long}) to suggest how to satisfy SPC demand using different sets of available processes and objective functions:
+Having detailed the data sources, assumptions, and calculations used to determine the model's parameters, PRaQ is now applied to eight scenarios (\ref{itm:base}--\ref{itm:wild-long}, below) to suggest how to satisfy SPC demand using different sets of available processes and objective functions:
 
 1. *Base case.* \label{itm:base} This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results to which other results can be compared.
 
-2. *Design case.* The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. This scenario has four sub-scenarios to test how the process mix changes, with different objectives:
-	a. Minimise cost
-	b. Minimise emissions
-	c. Minimise waste
-	d. Minimise freshwater consumption
-3. *Wildcard case.* This scenario finds the minimum-cost process mix, when the processes of the @Ravalde2016 database are made available, using three time horizons of process-availability:
-   	a. Currently available processes
-   	b. Medium-term available technologies
+2. *Design case.* \label{itm:design} The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. This scenario has four sub-scenarios to test how the process mix changes, with different objectives:
+	a. \label{itm:design-cost} Minimise cost
+	b. \label{itm:design-emissions} Minimise emissions
+	c. \label{itm:design-waste} Minimise waste
+	d. \label{itm:design-water} Minimise freshwater consumption
+3. *Wildcard case.* \label{itm:wild} This scenario finds the minimum-cost process mix, when the processes of the @Ravalde2016 database are made available, using three time horizons of process-availability:
+   	a. \label{itm:wild-short} Currently available processes
+   	b. \label{itm:wild-medium} Medium-term available technologies
    	c. \label{itm:wild-long} Long-term available technologies
 
-Scenario 3c [TODO: update if necessary] is the largest, and thus indicates the computational effort required to solve the problems, having [TODO: number] single variables, [TODO: number] discrete variables, [TODO: number] binary variables, [TODO: number] equations [TODO: etc.].
+Scenario \ref{itm:wild-long} is the largest, and thus indicates the computational effort required to solve the problems, having 1,220,809 single variables, 7,670 discrete variables, and 1,248,035 equations.
 
-These scenarios are fairly simple, and enable testing of a network's sensitivity to fairly broad design considerations (technology availability, and objectives). Detailed design problems should be more narrowly focussed, by applying sensitivity analysis to understand how a system design responds to changes in efficiency (reducing demand), market value of imported and exported goods, and other factors. [TODO: reproduce Saltelli et al. citation from @Keirstead2012??]. These detailed considerations are beyond the scope of this study [TODO: provide a reason].
+These scenarios enable testing of a network's sensitivity to fairly broad design considerations (such technology availability and objective functions). More detailed design problems should be more narrowly focussed, by applying sensitivity analysis to understand how a system design responds to other factors such as changing demand, resource and technology prices, and other factors. [@Keirstead2012, after @Saltelli2008]. These detailed considerations are beyond the scope of this study due to the nature of the model itself \ref{sec:fid-and-gen}, and -- more importantly -- the aims of this thesis, namely to understand the possible benefits of intersectoral synergies in improving urban metabolism.
 <!--
 OTHER SCENARIO VARIATIONS
 - DSM
@@ -348,12 +348,9 @@ OTHER SCENARIO VARIATIONS
 - min cost/targets of individual sectors (energy, water, waste), or differently weight them?
 -->
 
-When GAMS runs a scenario, it outputs the results into a set of CSV files, which are then analysed and plotted using R[^case-study-runs]. The following subsections visualise and describe the results, before the next section discusses their implications in view of this chapter's aims. With some systems so large (over [TODO: number]) process types, space limitations prevent the display of all information that may be of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
+When GAMS runs a scenario[^case-study-runs], it outputs the results into a set of CSV files, which are passed into an R script for processing so the output data can easily be used to describe the system designs (namely the resource flows and network of processes), and compute quantities such as cost, emissions, water footprint, exergy efficiency, measures from ENA. The following subsections visualise and describe the results, before the next section discusses their implications in view of this chapter's aims. With some systems so large process types, space limitations prevent the display of all results that may be of interest, however, Appendix \ref{sec:app-case-study} provides links to all results in CSV format.
 
-- metabolic flows and system designs
-- what this means for other metrics: headline (cost, emissions, water footprint), exergy, ENA
-
-[^case-study-runs]: As with the benchmark study (Chapter [TODO: cross-reference]), architecture of the code separates the data and formulation, to support easy running, reproducibility, modification, and development of the scenario tests. Also to that end, the data and formulation are available at [TODO: provide GitHub link], along with the results of the modelling.
+[^case-study-runs]: As with the benchmark study (Chapter 5), the project architecture separates the data and formulation, to facilitate running, reproducibility, modification, and development of the scenario models. Also to that end, the data and formulation are available at \url{https://github.com/tomravalde/shann-gu-case-study}, along with the results of the modelling.
 
 ```{r headlines, fig.height=5, fig.cap="fig:headlines", results="asis"}
 
