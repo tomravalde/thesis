@@ -196,11 +196,11 @@ plot_demand
 
 ```
 
-### Site layout
+### Site layout {#sec:case-study-site}
 
-Each of the twelve zones shown in Figure \ref{fig:site} (both the three regions and the nine functions) will be represented in the model, and thus each belong to the set of zones $z \in Z$, where $|Z|=12$. It is assumed that the three regions will be linked via a connection running north-south through the site, and also that the functions within a region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $|nb|=12$. The connection distances have been estimated from the site's dimensions. Assuming that the region-to-region connections join the regional centroids, distances can be estimated by scaling distances from the site plans in the SPC documentation. The region-to-function distances will be assumed as 0.5 km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}. The transport processes used for these connections are detailed in Section \ref{sec:case-study-transport-processes}, but briefly, roads are assumed to exist along any connection. Additionally, these roads have the option to run underground pipes and overhead cables along their length[^road-cost].
+Each of the twelve zones shown in Figure \ref{fig:site} (both the three regions and the nine functions) will be represented in the model, and thus each belong to the set of zones $z \in Z$, where $|Z|=12$. It is assumed that the three regions will be linked via a connection running north-south through the site, and also that the functions within a region are equidistant from the region's centre (with the exception of the energy island which does not belong to a region). This makes the size of set $nb(z,z')$ as $|nb|=12$. The connection distances have been estimated from the site's dimensions. Assuming that the region-to-region connections join the regional centroids, distances can be estimated by scaling distances from the site plans in the SPC documentation. The region-to-function distances will be assumed as 0.5 km. In total, there are twelve two-way connections defined, which are given in Table \ref{tab:zonal-connections}. The transport processes used for these connections are detailed in Section \ref{sec:case-study-transport-processes}, but briefly, roads are assumed to exist along any connection. Additionally, these roads have the option to run underground pipes and overhead cables along their length[^road-cost]. The GAMS code for site layout data is listed in Appendix \ref{sec:app-case-study-site}.
 
-[^road-cost]: As discussed in Section \\ref{sec:case-study-transport-processes}, this means that roads have no financial cost in the model, whereas pipes and cables will.
+[^road-cost]: As discussed in Section \ref{sec:case-study-transport-processes}, this means that roads have no financial cost in the model, whereas pipes and cables will.
 
 \begin{table}[]
 \centering
@@ -209,7 +209,7 @@ Each of the twelve zones shown in Figure \ref{fig:site} (both the three regions 
 
 \begin{tabular}{@{}llll@{}}
 \toprule
-$z$                      & $z'$                     & Dimension on plan {[}cm{]} & Site dimension, $\l_{zz'}$ {[}km{]} \\ \midrule
+$z$                      & $z'$                     & Dimension on plan {[}cm{]} & Site dimension, $l_{zz'}$ {[}km{]} \\ \midrule
 \textbf{Factory (south)} & \textbf{Factory (north)} & 3.4                        & 0.9                     \\
 \textbf{Factory (south)} & Assembly                 & NA                         & 0.5                     \\
 \textbf{Factory (south)} & Multifunction district   & NA                         & 0.5                     \\
@@ -225,7 +225,6 @@ $z$                      & $z'$                     & Dimension on plan {[}cm{]}
 \end{tabular}
 \end{table}
 
-The GAMS code for this data is listed in Appendix [TODO:]. 
 
 <!--
 Assembly,Factory (south)
@@ -244,7 +243,7 @@ school,reserved
 
 ### Times
 
-The SPC [demand] provides values of energy demands for winter, summer and year round. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons, having spans, $span(T)$, of 90 days, 90 days, and 180 days respectively. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream of the district heating network. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the network of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
+The SPC documentation provides values of energy demands for winter, summer and year round [@SPC_demand]. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons, having spans, $span(T)$, of 90 days, 90 days, and 180 days respectively. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream of the district heating network. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the network of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
 
 Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $|T|=3 \mbox{ seasons} \times 2 \mbox{ day types}= 6$), which could further be divided into hourly demands (thus $T=3 \mbox{ seasons} \times 2 \mbox{ day types} \times 24 \mbox{ hours} = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns.
 
@@ -272,61 +271,54 @@ The contents of the process set $P$ will vary for each scenario, and will draw f
 
 In addition to these parameters, each process needs a cost for use in the objective function. This work attempts to estimate process costs. This is not without its difficulties. First, there is the shear number of processes in the database (202in total). Second, the process database includes processes which have not yet penetrated into the market or are still to be developed, thus there are no values which can be easily lifted from the literature. Third, currency exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, costing is approximate.
 
-The broad approach to estimating process costs is to assemble a number of 'process categories' ($\mbox{PC}$), to which processes from the database -- 'database processes' ($\mbox{DP}$) -- are assigned. As an example, *'biogas-fuelled CHP'* is defined as a $\mbox{PT}$, which includes [TODO: find data, and list examples]. For each $\mbox{PT}$, unit costs (USD/MW or USD/kg/s) are obtained from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given in Appendix [TODO:]). A guiding principle of these estimations is that process costs exhibit economies of scale [^scale-economy]. For this to be captured in the model, each $\mbox{PT}$ has both lowerbound and upperbound unit costs (obtained from the literature, and adjusted according to appropriate assumptions). Thus, the total cost of any particular $\mbox{DP}$ with a given capacity (MW or kgs/s) can be calculated from:
+The broad approach to estimating process costs is to assemble a number of 'process categories' ($\mbox{PC}$), to which processes from the database -- 'database processes' ($\mbox{DP}$) -- are assigned. As an example, *'biogas-fuelled CHP'* is defined as a $\mbox{PC}$, which includes four types of biogas-fuelled CHP conversion processes in the database. For each $\mbox{PT}$, unit costs (USD/MW or USD/kg/s) are obtained from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given in Appendix \ref{sec:app-case-study-processes}). A guiding principle of these estimations is that process costs exhibit economies of scale [^scale-economy]. For this to be captured in the model, each $\mbox{PC}$ has both lowerbound and upperbound unit costs. Thus, the total cost of any particular $\mbox{DP}$ with a given capacity (MW or kgs/s) can be calculated from:
 
 [^scale-economy]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW power plants than ten 1 MW power plants.
 
 $$
 \begin{align}
-\mbox{DP Total Cost} = \mbox{PT Unit Cost}^* \times \mbox{DP capacity},
+\mbox{DP Total Cost} = \mbox{PC Unit Cost}^* \times \mbox{DP capacity},
 \end{align}
 $$
 
-where $^*$ is wildcard notion to indicate either a lowerbound or an upperbound cost ($\mbox{Cost}^{LB}$ and $\mbox{Cost}^{UB}$, respectively). In this way, lowerbound costs are applied to larger instances of a process, and upperbound costs applied to smaller instances.
+where $^*$ stands for notation indicating either a lowerbound or an upperbound cost ($\mbox{Cost}^{LB}$ and $\mbox{Cost}^{UB}$, respectively). In this way, lowerbound costs are applied to larger instances of a process, and upperbound costs applied to smaller instances.
 
 For the conversion processes which do not yet exist in the market, costs are estimated by basing them on existing processes which have the same main resource[^main]. This method is conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lower cost than a more traditional means of conversion[^cost-estimation].
 
-[^main]: Recall from Chapter [TODO: chapter and section reference] the idea of a 'main' resource being the (e.g. electricity output for a powerplant, or wastewater input to a treatment facility), and always has a value of $k_{pr}=\pm 1$.
+[^main]: Recall from Chapter \ref{sec:process-mapping} the idea of a 'main' resource being the (e.g. electricity output for a powerplant, or wastewater input to a treatment facility), and always has a value of $k_{pr}=\pm 1$.
 
-[^cost-estimation]: Though this economic conservatism may be countered by the fact that a novel process may be more expensive than older methods due to other benefits (e.g environmental benefits). However, this thesis can only hope to be approximate with the cost of conversion processes, and indeed, such estimations warrant their own separate research focus [@Merrow1979, @Roy2005].
+[^cost-estimation]: Though one may argue against this principle on the basis that a novel process may be more expensive than older methods due to other benefits (e.g environmental benefits). However, this thesis can only hope to be approximate with the cost of conversion processes, and indeed, such estimations warrant their own separate research focus [@Merrow1979, @Roy2005].
 
-In summary, the conversion processes in this case study come from both the SPC documentation, and the database assembled in Chapter [TODO:], with each scenario using a subset of these processes (as outlined in Section [TODO:], below). Cost estimates have been provided for these processes, which enable PRaQ to take into account economies of scale, and the cost of processes which do not yet exist in the market. The result is that the SPC modelling has up to [TODO:] conversion processes from which to design an integrated resource management system, for which a rough overall system cost can be computed.
+In summary, the conversion processes in this case study are drawn from both the SPC documentation (18 in total), and the database assembled in Chapter 4 (202 unique process types, 363 when including processes of different capacities), with each scenario using a subset of these processes (as outlined in Section \ref{sec:SPC-scenarios}, below). Cost estimates have been provided for these processes, which enable PRaQ to take into account economies of scale, and the cost of processes which do not yet exist in the market. The result is that the SPC modelling has up to 381 conversion processes from which to design an integrated resource management system, for which a rough overall system cost can be computed.
 
-### Transport processes {#sec:case-study-transport-processes}
+### Transport processes {#:case-study-transport-processes}
 
-Many of the resources (with some exceptions such as heat[^heat-transport]) can be transported between zones, via three types of transport infrastucuture: roads, alongwhich vehicles can transport everything from municipal solid waste, to gases and liquids carried by tankers; pipes, which transport water and gases; and cables, to carry electricity. As explained in the Section [TODO:], the roads are assumed to already exist to connect neighbouring zones ($nb(z,z')$), whilst underground pipes and overhead cables can be optionally added by PRaQ, if and where necessary.
+Many of the resources (with some exceptions such as heat[^heat-transport]) can be transported between zones, via three types of transport infrastucuture: roads, along which vehicles can transport everything from municipal solid waste, to gases and liquids carried by tankers; pipes, which transport water and gases; and cables, to carry electricity. As explained in the Section \ref{sec:case-study-site}, the roads are assumed to already exist to connect neighbouring zones ($nb(z,z')$), whilst underground pipes and overhead cables can be optionally added by PRaQ, if and where necessary.
 
-[^heat-transport]: Though whilst heat itself cannot be transported, it can be carried by water, e.g. in a district heating network.
+[^heat-transport]: Though whilst heat itself cannot be transported, it can be carried by water, e.g. in a district heating pipe network.
 
-Transport processes are defined by the origin-to-destination resource input and output coefficients, $k^*_{\tau rq}$, should obviously include the resource carried (e.g. water through a pipe). In addition to this, transport processes may require 'auxiliary' resources, namely the source of the energy used to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. Where as the main resource typically leaves the origin zone and arrives in the destination (perhaps minus some losses, such as electricity along a cable), the consumption and production of auxiliary resources should be appropriately shared shared between the origin and destination. The specifics of transport process coefficients are outlined below, for the three main types of transport technologies, with example values of $k^*_{\tau rq}$ given in Table \ref{tab:transp-coeffs}. 
+Transport processes are defined by the origin-to-destination resource input and output coefficients, $k^*_{\tau rq}$ (Section \ref{sec:PRaQ}, and should include the resource carried (e.g. water through a pipe), as well as the energy resources required to carry that resource along the length of a connection (e.g. electrical energy to pump water along a pipe), as well as any by-products, wastes, and emissions from the process. Where as the main resource typically leaves the origin zone and arrives in the destination (perhaps minus some losses, such as electricity along a cable), the consumption and production of auxiliary resources should be appropriately shared shared between the origin and destination. The specifics of transport process coefficients are outlined below, for the three main types of transport technologies, with example values of $k^*_{\tau rq}$ given in Table \ref{tab:transp-coeffs}. 
 
 \begin{description}
 
-\item[Cables] This is the simplest transport process type, with no auxiliary resources, thus only a single $r$ value is necessary here. Electricity transported via cables do incurr losses at rates of between 3--7\% over 1,000 km distances \citep{@IEA2016}, however, given the interzonal distances for the SPC site are all under 3 [TODO: update with final number] km, losses are considered negligable. Thus cables can be defined simply with $k^{\alpha}_{\tau rq}=1$, $k^{\alpha'}_{\tau rq}=-1$, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq}=0$ when $\tau=\mbox{cable}$, $r=\mbox{elec.}$ (and $q=\mbox{energy}$). 
+\item[Cables] This is the simplest transport process type, with no auxiliary resources, thus only a single resource ($r=\mbox{electricity}$) value is necessary here. Electricity transported via cables do incurr losses at rates of between 3--7\% over 1,000 km distances \citep{@IEA2016}, however, given the whole site is only 13 km\textsuperscript{2}, these losses are considered negligable. Thus cables can be defined simply with $k^{\alpha}_{\tau rq}=1$, $k^{\alpha'}_{\tau rq}=-1$, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq}=0$ when $\tau=\mbox{cable}$, $r=\mbox{electricity}$ (and $q=\mbox{energy}$). 
 
-\item[Pipes] These transport water or gas, and also require the auxilliary resource of electricity to provide pumping energy. As hydraulic calculations given in Appendix [TODO:] show, for water in a pipe of zero slope, this can be roughly calculated as $0.0054l_{zz'}$ to overcome friction between the water and the pipe, on the assumption that the volume flowrate is around $1~m^3/s$\footnote{At this value, the nonlinearities in the relationship between transport mass and volume can be ignored [TODO: better phrasing and move to appendix?]}. It is assumed that all this electricity is provided in the zone of the water's origin. For gases it is assumed that friction is low enough so as to make the energy requirements negligable for the distances in the SPC site.
+\item[Pipes] These transport $r=\mbox{water}$ or $r=\mbox{gas}$, and also require the auxilliary resource of electricity to provide pumping energy. As hydraulic calculations given in Appendix \ref{sec:case-study-site} show, for water in a pipe of zero slope, this can be roughly calculated as $0.0054l_{zz'}$ to overcome friction between the water and the pipe\footnote{This is on the assumption the nonlinearities in the relationship between transport mass and volume can be ignored -- further explanation is given in Appendix \ref{sec:case-study-site}}. It is assumed that all this electricity is provided in the zone of the water's origin. For gases it is assumed that friction is low enough so as to make the energy requirements negligable for the distances in the SPC site.
 
-\item[Vehicles] Other resources are carried by vehicles. As well as the carried resource (e.g. $r=\mbox{biomass}$, vehicles require gasoline as an auxilliary resource. It is assumed this is provided entirely by the source zone. As well as this, \CO2 emissions are emitted, with these being shared equally between the origin and destination zones. The $k_{\tau rq}^*$ values are derived in Appendix.
+\item[Vehicles] Other resources are carried by vehicles. As well as the carried resource (e.g. $r=\mbox{biomass}$), vehicles require gasoline as an auxilliary resource. It is assumed this is provided entirely by the source zone. As well as this, \COtwo emissions are emitted, with these being shared equally between the origin and destination zones. The $k_{\tau rq}^*$ values are derived in Appendix.
 
 \end{description}
 
 \input{06_case-study/tab-transp-coeffs.tex}
 
-As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in the model, as their total cost would be that same, whatever the system designed by the model. The cost for the pipes and roads are defined per kilometer, and the values and sources for these calculations are provided in Appendix [TODO:] .
+As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in the model, as their total cost would be the same, whatever the system designed by the model. The cost for the pipes and roads are defined per kilometer, and the values and sources for these calculations are provided in Appendix \ref{sec:app-case-study-processes}.
 
-[TODO: clarify if it's possible for the model to charge per vehicle, for the road transport infrastructure]
-
-### Summary
-
-[TODO: Extend or cut]
-
-This section has introduced the sources, assumptions, and calculations used to define the model's parameters. By showing how various parts of the model relate to each other, it has provided a guide on how one might construct the PRaQ model for a particular case study. 
 
 ## Application to model scenarios {#sec:SPC-scenarios}
 
-PRaQ is applied to [TODO: number] scenarios to suggest how different networks of processes can satisfy SPC demand (following the methodology of @Keirstead2012 [TODO: What did I mean here?]) using different sets of available processes and objective functions:
+Having detailed the data sources, assumptions, and calculations used to determine the model's parameters, PRaQ is now applied to eight scenarios (\ref{itm:base}--\ref{itm:wild-long}) to suggest how to satisfy SPC demand using different sets of available processes and objective functions:
 
-1. *Base case.* This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results to which other results can be compared.
+1. *Base case.* \label{itm:base} This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results to which other results can be compared.
 
 2. *Design case.* The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. This scenario has four sub-scenarios to test how the process mix changes, with different objectives:
 	a. Minimise cost
@@ -336,7 +328,7 @@ PRaQ is applied to [TODO: number] scenarios to suggest how different networks of
 3. *Wildcard case.* This scenario finds the minimum-cost process mix, when the processes of the @Ravalde2016 database are made available, using three time horizons of process-availability:
    	a. Currently available processes
    	b. Medium-term available technologies
-   	c. Long-term available technologies
+   	c. \label{itm:wild-long} Long-term available technologies
 
 Scenario 3c [TODO: update if necessary] is the largest, and thus indicates the computational effort required to solve the problems, having [TODO: number] single variables, [TODO: number] discrete variables, [TODO: number] binary variables, [TODO: number] equations [TODO: etc.].
 
