@@ -384,7 +384,7 @@ headlines <- transform(headlines,
 
 ### Metabolic flows and system designs
 
-An idea important to this thesis is that the metabolic flows into and out of a city are governed in part by the middle of the system -- the network of resource management processes. The metabolic inputs and outputs for each scenario are displayed in Figure \ref{fig:metabolic-flows}. Note that in general, making more processes available to a system makes possible a more diverse the schedule of resource inputs and outputs: [TODO: could put numbers here, perhaps tabulate: scenario, inputs, outputs, total] this means both a greater number and variety of resource types, and seasonal variation within resource types (such as for electricity output in the design case).
+The idea central to this thesis is that the aggregate metabolic flows into and out of a city are governed to a significant extent by the middle of the system, i.e. the network of resource management processes. These metabolic inputs and outputs are displayed for each scenario in Figure \ref{fig:metabolic-flows}. Note that, making more processes available to a system results (generally) in a greater number of resource inputs and outputs (Figure \ref{fig:metabolism_summary}) and a greater of conversion processes [TODO: make a figure for this].
 
 ```{r metabolic_flows, fig.height=7, fig.width=7.5, fig.cap="Metabolic flows into and out of the SPC site.\\label{fig:metabolic-flows}"}
 
@@ -395,9 +395,30 @@ metabolic_flows <- read.csv("06_case-study/metabolic_flows.csv")
 ## Reshape imports and exports into the same column
 metabolic_flows <- melt(metabolic_flows, variable.name="Flow")
 
+## Remove the non-real outflows
+					      
+metabolic_flows[metabolic_flows$scenario=="Design case (min. water)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="elec", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Design case (min. waste)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="elec", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Design case (min. water)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="heat", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Design case (min. waste)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="heat", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Design case (min. water)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="gasNatural", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Design case (min. emissions)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="gasNatural", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Wildcard case (short)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="waterNonPotable", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Wildcard case (medium)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="waterNonPotable", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Wildcard case (long)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="waterNonPotable", "value"] <- 0
+
+metabolic_flows[metabolic_flows$scenario=="Design case (min. emissions)" & metabolic_flows$Flow=="exports" & metabolic_flows$resource=="water", "value"] <- 0
+
 ## Remove zero-valued entries
 metabolic_flows <- filter(metabolic_flows, value!=0)
-
 
 ## Order the scenario names
 metabolic_flows <- transform(metabolic_flows,
@@ -412,34 +433,72 @@ metabolic_flows <- transform(metabolic_flows,
 			    "Wildcard case (long)"),
 		    ordered=TRUE))
 
-## Rename the flows
-metabolic_flows$Flow <- as.character(metabolic_flows$Flow)
-metabolic_flows[metabolic_flows$Flow=="imports", "Flow"] <- "Inputs"
-metabolic_flows[metabolic_flows$Flow=="exports", "Flow"] <- "Outputs"
 
-## TODO: RENAME AND REORDER THE RESOURCES
+## Rename the aggregate flows
+metabolic_flows$Flow <- as.character(metabolic_flows$Flow)
+metabolic_flows[metabolic_flows$Flow=="imports", "Flow"] <- "Aggregate metabolic inputs to the SPC site"
+metabolic_flows[metabolic_flows$Flow=="exports", "Flow"] <- "Aggregate metabolic outputs from the SPC site"
+
+## Rename the resources
+metabolic_flows$resource <- as.character(metabolic_flows$resource)
+metabolic_flows[metabolic_flows$resource=="algaeDry", "resource"] <- "Algae [kg/s]"
+metabolic_flows[metabolic_flows$resource=="ash", "resource"] <- "Ash [kg/s]"
+metabolic_flows[metabolic_flows$resource=="biomass", "resource"] <- "Biomass [kg/s]"
+metabolic_flows[metabolic_flows$resource=="CO2", "resource"] <- "CO2 [kg/s]"
+metabolic_flows[metabolic_flows$resource=="coal", "resource"] <- "Coal [kg/s]"
+metabolic_flows[metabolic_flows$resource=="cool", "resource"] <- "Cooling [MW]"
+metabolic_flows[metabolic_flows$resource=="digestate", "resource"] <- "Digestate [kg/s]"
+metabolic_flows[metabolic_flows$resource=="elec", "resource"] <- "Electricity [MW]"
+metabolic_flows[metabolic_flows$resource=="gasNatural", "resource"] <- "Natural gas [kg/s]"
+metabolic_flows[metabolic_flows$resource=="gasoline", "resource"] <- "Gasoline [kg/s]"
+metabolic_flows[metabolic_flows$resource=="groundWater", "resource"] <- "Groundwater [kg/s]"
+metabolic_flows[metabolic_flows$resource=="heat", "resource"] <- "Heat [MW]"
+metabolic_flows[metabolic_flows$resource=="methane", "resource"] <- "Methane [kg/s]"
+metabolic_flows[metabolic_flows$resource=="waste", "resource"] <- "Solid waste [kg/s]"
+metabolic_flows[metabolic_flows$resource=="wastewater", "resource"] <- "Wastewater [kg/s]"
+metabolic_flows[metabolic_flows$resource=="water", "resource"] <- "Water [kg/s]"
+metabolic_flows[metabolic_flows$resource=="water_pure", "resource"] <- "Water (purified) [kg/s]"
+metabolic_flows[metabolic_flows$resource=="waterNonPotable", "resource"] <- "Water (non-potable) [kg/s]"
+metabolic_flows[metabolic_flows$resource=="waterPotable", "resource"] <- "Water (potable) [kg/s]"
+
+## Rename the seasons
+metabolic_flows$season <- as.character(metabolic_flows$season)
+metabolic_flows[metabolic_flows$season=="sum", "season"] <- "Summer"
+metabolic_flows[metabolic_flows$season=="wint", "season"] <- "Winter"
+metabolic_flows[metabolic_flows$season=="shoulder", "season"] <- "Shoulder"
 
 plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
   geom_point(aes(colour=season, size=value), position=position_dodge(width=0.6)) +
   facet_wrap(~Flow, ncol=1) +
+  labs(colour="Season") +
+  labs(size="Flow rate value") +
   theme_bw() +
-  theme(axis.text.x=element_text(hjust=1, angle=30),
-  	axis.text.y=element_text(hjust=1, angle=30),
+  theme(axis.text.x=element_text(hjust=1, angle=30, size=6.5),
+  	axis.text.y=element_text(hjust=1, angle=30, size=6.5),
 	axis.title=element_blank())
 plot_metabolic_flows
+```
 
-### Give exports a negative value
-#metabolic_flows[metabolic_flows$Flow=="exports", "value"] <- -1 * metabolic_flows[metabolic_flows$Flow=="exports", "value"]
 
-#plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
-#  geom_point(aes(colour=season), position=position_dodge(width=0.6), stat="identity") +
-#  facet_wrap(~scenario, ncol=1) +
-#  theme_bw() +
-#  theme(axis.text.x=element_text(hjust=1, angle=30),
-#	axis.title=element_blank())
-#plot_metabolic_flows
+```{r summarise_metabolisms, fig.height=7, fig.width=7.5, fig.cap="Counting the resources in metabolic flows into and out of the SPC site suggests that making more processes available to the model results in a more diverse mix of aggregate metabolic flows.\\label{fig:metabolism_summary}"}
+## Summarise numbers of processes
+
+flows_summary <- metabolic_flows %>% distinct(scenario, season, resource) %>% select(scenario, season, resource) %>% group_by(scenario, season) %>% summarise(Resources = n())
+
+plot_flows_summary <- ggplot(flows_summary, aes(Resources, scenario)) +
+  geom_point(aes(colour=season), position=position_dodge(width=0.6)) +
+#  facet_wrap(~Flow, ncol=1) +
+  labs(colour="Season") +
+  xlab("Number of resources in aggregate metabolic flows into or out of SPC site") +
+  theme_bw() +
+  theme(axis.text.x=element_text(hjust=1, angle=30, size=6.5),
+	axis.title.y=element_blank())
+plot_flows_summary
+
+
 
 ```
+
 <!--
 ```{r process_mix, fig.height=7, fig.width=6.5, results="asis"}
 
@@ -479,11 +538,11 @@ plot_process_mix
 ```
 -->
 
-The network of processes for each scenario are visualised in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long}. These are SNA-style node-link graphs (undirected) in which processes that transfer resources one to another are connected by lines. The proximity of any pair of linked processes is proportional to the quantities of resources transferred. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes dependent on this. The processes have been coloured according to the management sector to which they belong[^sna-process-type]; this helps visualise the intersectoral interactions and synergies. Inputs, outputs and demands are also represented; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports).
+The network of processes for each scenario are visualised in Figures \ref{fig:designCase_minCost} to \ref{fig:wildcard_long}. These are SNA-style node-link graphs (undirected) in which processes that transfer resources one to another are connected by lines. The proximity of any pair of linked processes is proportional to the quantities of resources transferred. From this, it follows that the more central a process is to the plot, the more its integrated into the network because it tends to be linked to more other processes. Conversely, the closer a process is to the fringe of a plot, the less other processes are dependent on it. The processes have been coloured according to the management sector to which they belong[^sna-process-type]; this helps visualise the intersectoral interactions and synergies. Inputs, outputs and demands are also represented; thus if an imported resource is used in any particular process, then there will be a line connecting imports and said process (likewise for exports).
 
-[^sna-process-type]: This is determined by the 'main' output of each process, as discussed in Section [TODO: cross-ref Chapter 4].
+[^sna-process-type]: This is determined by the 'main' output of each process.
 
-In all scenarios, energy conversion processes are dominant, but there are nevertheless intersectoral interactions, such as the energy demands in water and wastewater treatment, and synergies, such as heat generated by the watersource heatpump [TODO: cite Design case scenarios]. Note also that in general, that the more processes available to a scenario, the more that tend to be chosen by PRaQ [TODO: quantify any proportionality here]. Clearly, in each scenario, the system middle and metabolic flows differ, according to the design objective and available processes.
+In all scenarios, energy conversion processes are dominant, but there are nevertheless intersectoral interactions, such as the energy demands in water and wastewater treatment, and synergies, such as heat generated by the watersource heatpump in the Design case scenarios (Figures \ref{fig:designCase_minCost} and \ref{fig:designCase_minWater}). In each scenario, the system middle (i.e. the network of conversion processes and resource flows) differ, according to the design objective and available processes.
 
 \begin{figure}[h!]
 	\centering
@@ -529,9 +588,9 @@ In all scenarios, energy conversion processes are dominant, but there are nevert
 
 #### Design case scenarios
 
-The design case scenarios have up to twelve unique processes available to use. Each scenario uses common set of seven processes: water and wastewater treatment plants, an anaerobic digestion facility (which generates gas from the organic fraction of waste), ground-source and water-source heatpumps, and absorption chilling and heating facilities (which are connected to energy conversion technologies, and deliver [TODO: better word] hot and cold water through a pipe network (which also includes heat exchangers). Overall, the schedule of imports exhibit only one minor difference between the subscenarios, namely no summer import of electricity in the min waste scenario, due to [TODO: identify reason].
+The design case scenarios have up to twelve unique processes available to use. Each scenario has chosen a common set of seven processes: (1) water treatment plants, (2) wastewater treatment plants, (3) an anaerobic digestion facility (which generates gas from the organic fraction of waste), (4) ground-source heat pumps, (5) water-source heatpumps, and (6) absorption chillers, and (7) heat exchanges (to deliver hot and cold water through a district heating network). Overall, the schedule of imports exhibit only one minor difference between the subscenarios, namely no summer import of electricity in the minimum waste scenario, due to [TODO: identify reason].
 
-The sub-scenario differences in outputs and processes are greater, according to their objective. For example, the minimum emissions scenario does not include CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), and as such, there are zero emissions (Figure [TODO: cross-ref]). All other scenarios use the CHP to provide much of the heat. However, the minimum-cost scenario joins the emissions scenario in avoiding the gas-fuelled boilers, but this time as a cost-saving measure (though with the side effect of lowering imports of natural gas). However, the waste-minimisation scenario does use gas-fuelled boilers to reduce the need for CHP use which produces fly-ash produced by the CHP, and the water-minimisation scenario [TODO: check these results, complete explanation, rerun models with corrected data if necessary!].
+As well as processes in common, there are differences in the mix of conversion processes (which also explain why the aggregate metabolic outputs vary between the sub-scenarios). For example, the minimum emissions scenario does not include CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), which enables this scenario to achieve zero emissions (Figure \ref{fig:metabolic-flows}). All other scenarios use the CHP to provide much of the heat. However, the minimum-cost scenario joins the emissions scenario in avoiding the gas-fuelled boilers, but this time as a cost-saving measure (though with the side effect of lowering imports of natural gas). However, the waste-minimisation scenario does use gas-fuelled boilers to reduce the need for CHP use which produces fly-ash produced by the CHP, and the water-minimisation scenario [TODO: check these results, complete explanation, rerun models with corrected data if necessary!].
 
 Note also that minimum waste and minimum water design the same system, though they operate slightly differently, for example, AD plays a greater role in the former case (resulting in exports of natural gas from the site). It also exports greater amounts of treated water, because it has not had constraints on how much untreated water can be imported.
 
