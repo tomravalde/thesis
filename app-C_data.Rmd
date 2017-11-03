@@ -26,7 +26,7 @@ Other sources will be referenced by links.
 
 ## Input data
 
-### Site layout
+### Site layout {#sec:app-case-study-site}
 
 Any size used in the model needs to be defined as a number of zones. For the Shann Gu model we use the thirteen zones listed on slide 20 of [6]. Each zone belongs to a region. 
 
@@ -162,7 +162,7 @@ params <- read.csv("../modelling/data/resource-params.csv")
 head(params)
 ```
 
-### Process options
+### Process options {#sec:app-case-study-processes}
 
 We also use YAML files to define the characteristics of the processes which convert and transport resources, as outlined below.
 
@@ -197,7 +197,7 @@ We also define each process's cost in [process-costs.csv](../modelling/data/proc
 
 [^process-costs]: Considerable effort is required to research the costs of each process, especially given that some technologies are still under research -- economic forecasting is beyond our scope. Even apart from these unknowns, there are other complicating factors, including variations in purchasing power parities and exchange rates, as well as the different environmental constraints/conditions into which a process is built.
 
-Our approach is to build a database of general processes ($GP$) for which we can have a unit cost (USD/MW or USD/kg/s) for each process. We can then assign each model process ($MP$) with a $GP$ (indicated by the [TODO: relevant column] column in process-costs.csv). For processes which do not yet exist [TODO: e.g. <example>], we use a GP which produces/consumes a similar main resource. Once each MP has an associated GP Unit Cost, we can estimate the an MP Total Cost (USD) by calculating:
+Our approach is to assemble a list of general processes ($PC$) for which we can have a unit cost (USD/MW or USD/kg/s) for each process. We can then assign each model process ($MP$) to a $PC$ (indicated by the [TODO: relevant column] column in process-costs.csv). For processes which do not yet exist [TODO: e.g. <example>], we use a GP which produces/consumes a similar main resource. Once each MP has an associated GP Unit Cost, we can estimate the an MP Total Cost (USD) by calculating:
 
 $$
 \begin{align}
