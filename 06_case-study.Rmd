@@ -291,7 +291,7 @@ For the conversion processes which do not yet exist in the market, costs are est
 
 In summary, the conversion processes in this case study are drawn from both the SPC documentation (18 in total), and the database assembled in Chapter 4 (202 unique process types, 363 when including processes of different capacities), with each scenario using a subset of these processes (as outlined in Section \ref{sec:SPC-scenarios}, below). Cost estimates have been provided for these processes, which enable PRaQ to take into account economies of scale, and the cost of processes which do not yet exist in the market. The result is that the SPC modelling has up to 381 conversion processes from which to design an integrated resource management system, for which a rough overall system cost can be computed.
 
-### Transport processes {#:case-study-transport-processes}
+### Transport processes {#sec:case-study-transport-processes}
 
 Many of the resources (with some exceptions such as heat[^heat-transport]) can be transported between zones, via three types of transport infrastucuture: roads, along which vehicles can transport everything from municipal solid waste, to gases and liquids carried by tankers; pipes, which transport water and gases; and cables, to carry electricity. As explained in the Section \ref{sec:case-study-site}, the roads are assumed to already exist to connect neighbouring zones ($nb(z,z')$), whilst underground pipes and overhead cables can be optionally added by PRaQ, if and where necessary.
 
