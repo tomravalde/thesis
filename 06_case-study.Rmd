@@ -660,21 +660,22 @@ Note also that minimum waste and minimum water design the same system, though th
 
 #### Wildcard scenarios
 
-The wildcard scenarios each have the same objective of cost minimisation, and share 11 processes types in common[^wildcard-common]. Broadly, the networks are based around distributed energy systems adopting a diverse mix of technologies. The networks exhibit intersectoral links, such as waste gasification (waste-energy synergy), wastewater reuse projects (waste-water synergy), and groundwater pumping (energy-waste trade-off).
+The wildcard scenarios each have the same objective of cost minimisation, and share 11 processes types in common[^wildcard-common]. Broadly, the networks are based around distributed energy systems adopting a diverse mix of technologies. The networks exhibit intersectoral links, such as waste gasification (waste-energy synergy), wastewater reuse projects (waste-water synergy), and groundwater pumping (energy-waste trade-off). As well as processes in common¸ there is variation in both the overall metabolic flows, and the process mix. The systems are more complicated than the Design cases, so not everything can be explained here, but some examples make the point that the system's metabolism relates to its process mix.
 
-[^wildcard-common]: The number 11 partly depends on how processes are categorised into types. The types in common are: central heating, CHP (gas-, biomass- and hydrogen-fuelled), air conditioning, evaporative cooling, absorption cooling, hydrogen generation¸ waste gasification, groundwater pumping, heat excahgner networks, water treatment, and wastewater reuse treatment.
+[^wildcard-common]: The number 11 partly depends on how processes are categorised into types. The types in common are: central heating, CHP (gas-, biomass- and hydrogen-fuelled), air conditioning, evaporative cooling, absorption cooling, hydrogen generation¸ waste gasification, groundwater pumping, heat exchanger networks, water treatment, and wastewater reuse treatment.
 
-As well as processes in common¸ there is variation in both the overall metabolic flows, and the process mix. With regards to the inflows, inputs of fossil fuels (coal and gasoline) are a notable variation: the current scenario imports them in all three seasons, whereas the medium-term scenario imports them in the winter only, and the longterm scenario imports them in winter and summer.
+With regards to the aggregate inflows, inputs of fossil fuels (coal and gasoline) are a notable variation: the current scenario imports them in all three seasons, whereas the medium-term scenario imports them in the winter only, and the longterm scenario imports them in winter and summer. All three scenarios use coal to fuel the process which converts water to hydrogen; this hydrogen and the imported gasoline are used in heat-producing processes which then meet heating demand and cooling demand (via heat exchangers). But the mix of processes which can provide heat is such that they do not all need gasoline or hydrogen, hence there are times when gasoline and coal imports can be reduced.
 
+Another difference in aggregate inflows is for non-potable water which is greater in the Medium-term long-term scenario (in the shoulder and summer seasons) than for the other two scenarios. The medium-term scenario has more processes which can treat water for recreational use, so can meet this demand via greater import quantities of non-potable water. This results in lower imports of recreational water in the current scenario, when compared to the medium-term scenario. However, the quantities of recreational water the long-term scenario imports compared to the medium is about the same. This is because the long-term scenario needs to import more water to feed the hydrogen-generating process (mentioned above).
 
+Other differences include the longterm scenario's summer inflow of algae to feed a biodiesel generation process. Studying the aggregate outflows, there are further variations, in both the type and quantity of resources, such as the outflow of ash and methane in the longterm scenario, due to the presence of a coal-fuelled powerplant (producing ash as a waste) and the biodiesel generation mentioned above (producing methane as a by-product). Finally, there are differences at a seasonal level, where solid waste output is reduced to zero in medium-term summer, and the longterm summer and shoulder. 
 
-The longterm scenario also has a summer inflow of algae. [TODO: explain these differences with reference to the networks.] 
+To summarise the, the wildcard scenarios take advantage of the availability of more conversion processes in order to meet the objective of cost minimisation and result in systems -- which while complex -- still shows the that aggregate metabolic flows into and out of an area are sensitive to the process mix in the middle of a system, where there are all sorts of knock-on effects, between resource management sectors.
 
-Studying the outflows, there are further variations, in both the type and quantity of resources, such as the outflow of ash and methane (in the longterm only), and digestate (medium and longterm), and electricity (current only). [TODO: explain these differences with reference to the networks.] 
+<!--
+and digestate (medium and longterm), and electricity (current only). [TODO: explain these differences with reference to the networks.] 
+-->
 
-The differences can be seen on a seasonal level, where solid waste output is reduced to zero in medium-term summer, and the longterm summer and shoulder.  [TODO: explain these differences with reference to the networks.] 
-
-To summarise the, the wildcard scenarios take advantage of the availability of more conversion processes in order to meet the objective of cost minimisation as best as possible [TODO: check that a greater number are actually used.] [TODO: move to summary and conclusions section] 
 
 ### Other measures
 
