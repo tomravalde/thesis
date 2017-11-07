@@ -316,15 +316,17 @@ As with the conversion processes, transport processes each need to have an assoc
 
 ## Application to model scenarios {#sec:SPC-scenarios}
 
-Having detailed the data sources, assumptions, and calculations used to determine the model's parameters, PRaQ is now applied to eight scenarios (\ref{itm:base}--\ref{itm:wild-long}, below) to suggest how to satisfy SPC demand using different sets of available processes and objective functions:
+Having detailed the data sources, assumptions, and calculations used to determine the model's parameters, PRaQ is now applied to seven scenarios (\ref{itm:base}--\ref{itm:wild-long}, below) to suggest how to satisfy SPC demand using different sets of available processes and objective functions:
 
 1. *Base case.* \label{itm:base} This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results to which other results can be compared.
 
-2. *Design case.* \label{itm:design} The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. This scenario has four sub-scenarios to test how the process mix changes, with different objectives:
+2. *Design case.* \label{itm:design} The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. This scenario has three sub-scenarios to test how the process mix changes, with different objectives:
 	a. \label{itm:design-cost} Minimise cost
 	b. \label{itm:design-emissions} Minimise emissions
 	c. \label{itm:design-waste} Minimise waste
+	<!--
 	d. \label{itm:design-water} Minimise freshwater consumption
+	-->
 3. *Wildcard case.* \label{itm:wild} This scenario finds the minimum-cost process mix, when the processes of the @Ravalde2016 database are made available, using three time horizons of process-availability:
    	a. \label{itm:wild-short} Currently available processes
    	b. \label{itm:wild-medium} Medium-term available technologies
@@ -467,6 +469,9 @@ metabolic_flows[metabolic_flows$season=="sum", "season"] <- "Summer"
 metabolic_flows[metabolic_flows$season=="wint", "season"] <- "Winter"
 metabolic_flows[metabolic_flows$season=="shoulder", "season"] <- "Shoulder"
 
+## Remove the minimum water scenario
+metabolic_flows <- filter(metabolic_flows, scenario!="Design case (min. water)")
+
 plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
   geom_point(aes(colour=season, size=value), position=position_dodge(width=0.6)) +
   facet_wrap(~Flow, ncol=1) +
@@ -483,30 +488,37 @@ plot_metabolic_flows
 ```{r summarise_metabolisms, fig.height=7, fig.width=7.5, fig.cap="Making more processes available results in the model choosing more management processes and a more diverse mix of aggregate metabolic flows into and out of the SPC site.\\label{fig:metabolism_summary}"}
 ## Summarise numbers of aggregate metabolic flows
 
-flows_summary <- metabolic_flows %>% distinct(scenario, season, resource) %>% select(scenario, season, resource) %>% group_by(scenario, season) %>% summarise(Value = n())
+flows_summary <- metabolic_flows %>% distinct(scenario, resource) %>% select(scenario, resource) %>% group_by(scenario) %>% summarise(Value = n())
 flows_summary$variable <- "Number of resources in aggregate metabolic flows"
 
 ## Summarise numbers of processes
 process_mix <- read.csv("06_case-study/process_mix.csv")
+process_mix <- filter(process_mix, number>0 & rate>0)
 
 process_mix$season <- as.character(process_mix$season)
 process_mix[process_mix$season=="sum", "season"] <- "Summer"
 process_mix[process_mix$season=="wint", "season"] <- "Winter"
 process_mix[process_mix$season=="shoulder", "season"] <- "Shoulder"
 
-process_summary <- process_mix %>% distinct(scenario, season, process) %>% select(scenario, season, process) %>% group_by(scenario, season) %>% summarise(Value = n())
+processes_by_scenario <- process_mix %>% distinct(scenario, process) %>% select(scenario, process) %>% group_by(scenario) 
+
+process_summary <- processes_by_scenario %>% summarise(Value = n())
+
 process_summary$variable <- "Number of resource management processes used"
+
 
 ## Combine data
 count_summary <- rbind(flows_summary, process_summary)
 
 plot_count_summary <- ggplot(count_summary, aes(Value, scenario)) +
-  geom_point(aes(colour=season), position=position_dodge(width=0.6)) +
+  geom_point() +
   facet_wrap(~variable, ncol=1, scales="free") +
-  labs(colour="Season") +
   theme_bw() +
   theme(axis.title=element_blank())
 plot_count_summary
+
+## Processes common to each wildcard scenario
+wildcard_common <- processes_by_scenario %>% group_by(process) %>% summarise(count = n()) %>% filter(count==3)
 
 
 
@@ -575,11 +587,13 @@ In all scenarios, energy conversion processes are dominant, but there are nevert
 	\caption{Process network for the Design case (minimum waste) scenario.} \label{fig:designCase_minWaste}
 \end{figure}
 
+<!--
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{06_case-study/SNA_designCase_minWater.pdf} 
 	\caption{Process network for the Design case (minimum water) scenario.} \label{fig:designCase_minWater}
 \end{figure}
+-->
 
 \begin{figure}[h!]
 	\centering
@@ -600,29 +614,61 @@ In all scenarios, energy conversion processes are dominant, but there are nevert
 \end{figure}
 
 #### Design case scenarios
+<!--
+Relative to the Grid Case, the import requirements of the design scenarios are generally lower (slightly lower electricity and gas in general, and much lower summer electricity because of the use of absorption cooling rather than electrically-powered HVAC systems). There is also a different set of water imports, i.e. water for treatment on site, rather than water to arrive on site pretreated.
+-->
+ 
+The Design Case scenarios have up to twelve unique processes available to use. Each scenario has chosen a common set of seven processes: (1) water treatment plants, (2) wastewater treatment plants, (3) an anaerobic digestion facility (which generates gas from the organic fraction of waste), (4) ground-source heat pumps, (5) water-source heatpumps, and (6) absorption chillers, (7) heat exchangers (to deliver hot and cold water through a district heating network), and (8) electrically-powered HVAC systems (to provide cooling).
 
-The Design Case scenarios have up to twelve unique processes available to use. Each scenario has chosen a common set of seven processes: (1) water treatment plants, (2) wastewater treatment plants, (3) an anaerobic digestion facility (which generates gas from the organic fraction of waste), (4) ground-source heat pumps, (5) water-source heatpumps, and (6) absorption chillers, and (7) heat exchangers (to deliver hot and cold water through a district heating network). Overall, the schedule of imports exhibit only one minor difference between the subscenarios, namely no summer import of electricity in the minimum waste scenario. 
+As well as the scenarios having processes in common, their different objectives drive differences in the mix of conversion processes PRaQ selects for the system's middle, affecting the aggregate metabolic flows into and out of the site at the top of the system. These differences are summarised in Table \label{tab:design-case-differences}, and further explained below.
 
-- minimises waste by sending organic waste to the anaerobic digestion
-- the resulting gas goes to the CHP to generate heat and electricity
-	- the heat then goes to the district heating network (via the heat exchangers) to generate cooling and heating as necessary
-	- the electricity goes to HVAC systems for cooling, supplemented by electrical imports
-- but shoulder season requires minimum electricity for heating and cooling (zero cooling, and less heating than the winter -- see plot of Demands)
-- which means that the CHP generates sufficient electricity to supply the HVAC in shoulder, without the need for imports
+\begin{table}[]
+\centering
+\caption{A summary of differences in conversion process mix and aggregate metabolic flows between the Design Case scenarios.}
+\label{tab:design-case-differences}
+\begin{tabular}{lllllp{4cm}}
+\toprule
+\multirow{2}{*}{Scenario} & \multicolumn{4}{c}{Conversion processes not common to all Design Case scenarios}                        & \multirow{2}{*}{Comment on site's \\ aggregate metabolic flows}                       \\
+\cmidrule{2-5}
+                          & CHP        & Boiler     & HVAC (cooling) & Absorption heating &                                                                                    \\
+\midrule
+Minimum cost              & \checkmark &            & \checkmark     & \checkmark         & Removes need for electricity imports, lowers gas imports, and lowers water imports \\
+Minimum emissions         &            &            &                &                    & Greater electricity imports than the minimum cost scenario                         \\
+Minimum waste             & \checkmark & \checkmark & \checkmark     & \checkmark         & No output of organic waste or wastewater                                          \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-As well as processes in common, there are differences in the mix of conversion processes (which also explain why the aggregate metabolic outputs vary between the sub-scenarios). For example, the minimum emissions scenario does not include CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), which enables this scenario to achieve zero emissions (Figure \ref{fig:metabolic-flows}). All other scenarios use the CHP to provide much of the heat. However, the minimum-cost scenario joins the emissions scenario in avoiding the gas-fuelled boilers, but this time as a cost-saving measure (though with the side effect of lowering imports of natural gas). However, the waste-minimisation scenario does use gas-fuelled boilers to reduce the need for CHP use which produces fly-ash produced by the CHP, and the water-minimisation scenario [TODO: check these results, complete explanation, rerun models with corrected data if necessary!].
+The minimum cost scenario keeps costs down by importing less electricity, natural gas and water than some of the other scenarios. Importing no electricity means the site generates its own through CHP. Importing less gas means that PRaQ does not pick any gas-fuelled boilers, which means that heating is generated by electrically-powered HVAC systems, rather than district heating networks (which require water, hence the reduction in water imports).
 
+For the Minimum Emissions scenario, PRaQ does not choose CHP or domestic gas-fuelled boilers (both of which burn fossil fuels), which means this scenario achieves zero 'Scope 1' emissions. Instead, the system opts to import electricity to meet demand, and also to power heat pumps (for heating and cooling) and HVAC technologies (for cooling), given that -- unlike in the other scenarios -- CHP cannot be used to provide heat.
+
+The Minimum Waste scenario minimises the site's waste output by sending organic waste to feed anaerobic fermentation. This generates natural gas which supplies the both CHP and boiler (unlike for the above two scenarios). In addition, all the wastewater generated by the site is treated (hence more potable water than the site needs is produced). This scenario also gives an opportunity to investigate seasonal variation, because while the system imports electricity for most of the year, it does not in the summer. This ultimately relates the demand for heating and cooling, which is met via: heat entering the district heating network, and electricity powering HVAC systems. The heat is produced by the CHP, and the electricity is generated by the CHP and supplemented from imports. But these supplementary imports are not required in the shoulder season, which has a lower overall total demand for heating and cooling than the rest of the year (as Figure \ref{fig:site-demands} shows, there is zero cooling demand, and less heating demand than the winter). Thus, in summer, the additional use of anaerobic fermentation compared to the other Design case scenarios produces enough electricity to meet cooling demand.
+
+These results demonstrate that:
+
+- aggregate metabolic flows are indeed governed by the system middle
+- intersectoral interactions and synergies
+- and hence objectives to change the aggregate metabolic flows will affect the optimal system middle
+- the place of modelling in determining this
+
+
+<!--
 Note also that minimum waste and minimum water design the same system, though they operate slightly differently, for example, AD plays a greater role in the former case (resulting in exports of natural gas from the site). It also exports greater amounts of treated water, because it has not had constraints on how much untreated water can be imported.
+-->
 
-Relative to the grid case, the import requirements of the design scenarios are lower (slightly lower electricity and gas in general, and much lower summer electricity because of the use of absorption cooling rather than electrically-powered HVAC systems). There is also a different set of water imports, i.e. water for treatment on site, rather than water to arrive on site pretreated.
-
-[Note on scope 1/2/3 emissions << add to further work.]
 
 #### Wildcard scenarios
 
-The wildcard scenarios each have the same objective of cost minimisation, and share [TODO: N] processes in common. Broadly, the networks are based around distributed energy systems with a diverse range of technologies, nevertheless, there are still intersectoral links, with both interactions and synergies [TODO: provide examples].
+The wildcard scenarios each have the same objective of cost minimisation, and share 11 processes types in common[^wildcard-common]. Broadly, the networks are based around distributed energy systems adopting a diverse mix of technologies. The networks exhibit intersectoral links, such as waste gasification (waste-energy synergy), wastewater reuse projects (waste-water synergy), and groundwater pumping (energy-waste trade-off).
 
-However, there is some small variation in both the overall metabolic flows, and the process mix. With regards to the inflows, inputs of fossil fuels (coal and gasoline) are a notable variation: the current scenario imports them in all three seasons, whereas the medium-term scenario imports them in the winter only, and the longterm scenario imports them in winter and summer. The longterm scenario also has a summer inflow of algae. [TODO: explain these differences with reference to the networks.] 
+[^wildcard-common]: The number 11 partly depends on how processes are categorised into types. The types in common are: central heating, CHP (gas-, biomass- and hydrogen-fuelled), air conditioning, evaporative cooling, absorption cooling, hydrogen generation¸ waste gasification, groundwater pumping, heat excahgner networks, water treatment, and wastewater reuse treatment.
+
+As well as processes in common¸ there is variation in both the overall metabolic flows, and the process mix. With regards to the inflows, inputs of fossil fuels (coal and gasoline) are a notable variation: the current scenario imports them in all three seasons, whereas the medium-term scenario imports them in the winter only, and the longterm scenario imports them in winter and summer.
+
+
+
+The longterm scenario also has a summer inflow of algae. [TODO: explain these differences with reference to the networks.] 
 
 Studying the outflows, there are further variations, in both the type and quantity of resources, such as the outflow of ash and methane (in the longterm only), and digestate (medium and longterm), and electricity (current only). [TODO: explain these differences with reference to the networks.] 
 
