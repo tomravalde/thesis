@@ -766,7 +766,7 @@ p.plot <- ggplot(corr.all, aes(correlation, p)) +
 ggsave("p.plot.pdf", p.plot)
 ```
 
-### Grey-box metrics
+### Grey-box metrics {#sec:methods-grey-box}
 
 As additional data are required to calculate the grey-box metrics, they have only been applied to three cities: Beijing, London and Sao Paulo (for 2006). In addition to the energy, water and waste related flows common to most cities, the dataset records steel and cement manufacturing flows for Beijing and Sao Paulo, but not for London. Thus discussion of how grey-box analysis relates to the MRTP (Section 5) can take place in the context of both comparable and contrasting cities. Apart from seeking areas with similarities and differences, the selection of these cities was otherwise arbitrary for the sake of convenience. 
 
@@ -1596,7 +1596,7 @@ This section has applied black-box and grey-box analysis to UM data, so that tho
 
 The aim of this chapter is to show how one can evaluate the resource performance of an urban area, specifically with regard to decision makers who are faced with a number of pathways (chains of resource management processes) to convert resource inputs $r_i$ into products and services $r_j$. This is important, because foundational to this thesis is a conceptual model of UM in which a mixture of resource management processes are organised to operate in a way which has a particular impact on an area's metabolism. There are various possible configurations in which these processes realise intersectoral synergies, and these will have different impacts on the overall metabolic flows of a city. The analysis here shows that a process-oriented conceptualisation of UM cannot be fully appreciated by black-box metrics. This leads to the conclusion that grey-box metrics are preferable to black-box metrics, because of the need to understand the effect on resource flows of variations in process organisation and detail. This section discusses some of the ways in which grey-box analysis could provide useful information to stakeholders, before highlighting its limitations.
 
-### Applications for grey-box metrics
+### Applications for grey-box metrics {#sec:app-grey-box-metrics}
 
 By looking inside an urban resource management system, this chapter has shown that exergy analysis and ENA make it possible to observe the interactions of resource conversion processes and their associated management sectors. These can be used by stakeholders to bring about real-world benefits. For example, exergy analysis brings a process-based 'engineering' perspective to the MRTP, meaning a decision maker can:
 
