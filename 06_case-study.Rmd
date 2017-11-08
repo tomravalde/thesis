@@ -384,7 +384,7 @@ headlines <- transform(headlines,
 
 ```
 
-### Metabolic flows and system designs
+### System designs and etabolic flows
 
 The idea central to this thesis is that the aggregate metabolic flows into and out of a city are governed to a significant extent by the middle of the system, i.e. the network of resource management processes. These metabolic inputs and outputs are displayed for each scenario in Figure \ref{fig:metabolic-flows}. The first broad observation is that, making more processes available to a system tends to result result in system designs which use a larger number of resource management processes and have a greater number of aggregate metabolic inputs and outputs to and from the site (Figure \ref{fig:metabolism_summary}). Thus PRaQ suggests that a site's resource-management objective is best met by a diverse mix of management processes working with a broad set of resources.
 
@@ -485,7 +485,7 @@ plot_metabolic_flows
 ```
 
 
-```{r summarise_metabolisms, fig.height=7, fig.width=7.5, fig.cap="Making more processes available results in the model choosing more management processes and a more diverse mix of aggregate metabolic flows into and out of the SPC site.\\label{fig:metabolism_summary}"}
+```{r summarise_metabolisms, fig.height=7, fig.width=5.5, fig.cap="Making more processes available results in the model choosing more management processes and a more diverse mix of aggregate metabolic flows into and out of the SPC site.\\label{fig:metabolism_summary}"}
 ## Summarise numbers of aggregate metabolic flows
 
 flows_summary <- metabolic_flows %>% distinct(scenario, resource) %>% select(scenario, resource) %>% group_by(scenario) %>% summarise(Value = n())
@@ -626,7 +626,7 @@ As well as the scenarios having processes in common, their different objectives 
 \centering
 \caption{A summary of differences in conversion process mix and aggregate metabolic flows between the Design Case scenarios.}
 \label{tab:design-case-differences}
-\begin{tabular}{lllllp{4cm}}
+\begin{tabular}{lccccp{4cm}}
 \toprule
 \multirow{2}{*}{Scenario} & \multicolumn{4}{c}{Conversion processes not common to all Design Case scenarios}                        & \multirow{2}{*}{Comment on site's \\ aggregate metabolic flows}                       \\
 \cmidrule{2-5}
@@ -677,6 +677,7 @@ and digestate (medium and longterm), and electricity (current only). [TODO: expl
 -->
 
 
+<!--
 ### Other measures
 
 It follows from this that an area's optimal networks are sensitive to the objective, seen also when different objectives are applied to the same process mix (e.g. 2a and 2b [TODO: update if necessary]). However, what is the effect of PRaQ's optimisation on other metrics?
@@ -764,8 +765,15 @@ component_costs <- filter(component_costs, Scenario %in% c("Grid case (min. cost
 						  "Wildcard case (medium)",
 						  "Wildcard case (long)"))
 
-plot_component_costs <- ggplot(component_costs, aes(Scenario, value/1e6, fill=Component)) +
+component_costs_outlierRemoved <- filter(component_costs, Scenario!="Grid case (min. cost)")
+component_costs$chart <- "System costs"
+component_costs_outlierRemoved$chart <- "System costs (Grid case removed)"
+component_costs <- rbind(component_costs, component_costs_outlierRemoved)
+
+plot_component_costs <- ggplot(component_costs, aes(Scenario, value/1e6, fill=Component, order=Component)) +
   geom_bar(stat="identity") +
+  facet_wrap(~ chart, scales="free") +
+  labs(fill = "System component") +
   xlab("Scenario") +
   ylab("Annualised cost [millions USD]") +
   theme_bw() +
@@ -819,30 +827,32 @@ plot_headlines
 ```
 -->
 
-### Grey-box metrics
+### System designs and grey-box metrics
 
-The aggregate metabolic flows and costs considered above are black-box metrics \ref{sec:black-grey-box}. The results show how these metrics or metabolic flows are affected by the mix of management processes (as hypothesised throughout this thesis). However, Chapter [TODO: cross-ref] showed that the so-called grey-box metrics of exergy analysis and ENA can further understanding an area's use of resources, by delving into the details of process mixes and their organising governance structures [TODO: better phrasing].
+The aggregate metabolic flows and costs considered above are black-box metrics \ref{sec:black-grey-box}. The results show how these metrics or metabolic flows are affected by the mix of management processes (as hypothesised throughout this thesis). However, Chapter 3 showed that the so-called grey-box metrics of exergy analysis and ENA can further understanding an area's use of resources, by delving into the details of process mixes and their governance.
 
 #### Exergy analysis
 
-Exergy analysis was shown to provide a process-based engineering perspective on urban resource efficiency in response to the challenge of the MRTP, namely the fact that a city sustains its populations using multiple resource types. It does this in three particular ways: going to the process level (rather than the system level) to understand process efficiency; understanding how resources are deployed among the processes; and highlighting where there should be contextual allowances.
+Exergy analysis was shown to provide a process-based engineering perspective on urban resource efficiency in response to the challenge of the MRTP (namely, the fact that a city sustains its populations using multiple resource types). It does this in three particular ways: going to the process level (rather than the system level) to understand process efficiency; understanding how resources are deployed among the processes; and highlighting where contextual allowances should be made when analysing urban resource efficiency \ref{sec:app-grey-box-metrics}.
 
-Here, exergy analysis is carried out for each scenario, using a simplified version of the method described Section [TODO: cite Grey-box metrics subsection of Chapter 3]. In this version, there is no need to distribute the flows between the processes within the city (the second step), on the understanding that PRaQ's mathematics accounts any process products unused by other processes to become system outputs (exports). Thus exergy analysis can be performed on a whole-system level on a black box, with the internal grey box analysis implicit to it. Thus exergy efficiency $\eta_{ex}=\alpha^{prod}_{ex}/\alpha^{in}_{ex}$ (equation [TODO: cross-ref]) can be calculated using where $Ex^{prod}$ are any demands (PRaQ's input), and $Ex^{waste}$ are any resources which find themselves amongst the exports (PRaQ's output), and have thus, not become inputs to any processes before crossing out of the urban boundary\footnote{These calculations can be formalised by the following equations [TODO: sort out equation numbering here]: 
+Here, exergy analysis is carried out for each scenario, using a simplified version of the method described in Section \ref{sec:methods-grey-box}. In this simplification, there is no need to distribute the flows between the processes within the city (the second step), on the understanding that the PRaQ method accounts any process products unused by other processes to become system outputs (exports). This means system exergy efficiency can be calculated at the whole-system level (rather than deriving system-level efficiency from the bottom up, process by process). Thus exergy efficiency $\eta_{ex}=\alpha^{prod}_{ex}/\alpha^{in}_{ex}$ (Equation \eqref{eq:ex-eff}) can be calculated without using Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod}, where $\alpha^{prod}_{ex}$ are the system demands, and $\alpha^{in}_{ex}$ are the site's aggregate metabolic in flows. The results of exergy analysis for each scenario are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]). 
+
+\footnote{The simplification of Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod} can be formalised as:
 
 \begin{align}
+\begin{split}
 \alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
 &= \sum_{i \in R^i} Ex_i 
 \label{eq:SPC-ex-in}
+\end{split}
 \end{align}
 
 \begin{align}
-\alpha^{prod}_{ex}&= \sum_{j \in R^j} Ex_j
+\alpha^{prod}_{ex}&= \sum_{j \in D^j} Ex_j
 \label{eq:SPC-ex-out}
 \end{align}
 
-where $Ex_{j \or i}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating, recalling that the reference environmental exergy is considered in this).
-
-}
+where $D^j$ is the set of a site's resource demands, and $Ex_{*}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating).}
 
 ```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
 
@@ -850,6 +860,7 @@ where $Ex_{j \or i}$ represent the exergy value of a resource (for example the c
 
 library(xtable)
 exergy <- read.csv("06_case-study/exergy.csv")
+exergy <- exergy[ ,-2]
 
 #ex_prod <- exergy$prod[1]
 #
@@ -865,11 +876,11 @@ exergy <- read.csv("06_case-study/exergy.csv")
 #exergy[exergy$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
 
 #exergy <- select(exergy, scenario, in., waste, irrev, eff)
-#names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\alpha^{waste}_{ex}$", "$\\alpha^{irrev}_{ex}$", "$\\eta_{ex}$ [per cent]")
+names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\eta_{ex}$ [per cent]")
 
 tab.exergy.tex <- xtable(exergy,
-			  caption="Results of exergy analysis for SPC scenarios. All $\\alpha^*_{ex}$ values in MW. \\label{tab:SPC-exergy}",
-			  align="lllll")
+			  caption="Results of exergy analysis for SPC scenarios. All $\\alpha^{in}_{ex}$ values in MW; $\\alpha^{in}_{ex} = 47$ MW for each scenario.\\label{tab:SPC-exergy}",
+			  align="llll")
 
 print(tab.exergy.tex,
 ##      size='\\small',
@@ -880,26 +891,29 @@ print(tab.exergy.tex,
 ```
 
 
-The results of exergy analysis for each scenario are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix [TODO: cross-ref]). 
-
 The results show that [TODO: describe results]
 
 - The Grid case has no waste exergy, because there are no processes on site:
 	- i.e. all exergy losses would be accounted for offsite 
 	- there is a small exergy loss in terms of wastewater generated by the site, however the exergy value of this is negligable [TODO: recalculate with physical exergy] 
-- Results would suggest that optimising for some objectives may not result in the most efficient system, as defined by exergy
 - Exergy wastes could be considered products rather than wastes if they were sold (e.g. the large electricity and heating exports from the design case). Hence the in efficiency of these cases.
 - Should focus on non-water exports or selling other exports to increase exergy efficiency
 - While water itself has negligable effects on exergy, the type of water imported may have indirect exergy impacts, due to treatment processes, etc.
 
+- shows that exergy efficiency changes with system mix
+- and possibly increases with more processes
+- note the import quantities are much lower, so exergy efficiency greater
+- Design case results suggest that optimising for some objectives may not result in the most exergy-efficient system:
+	- there is a sacrifice -- when minimising emisisons/waste, there has to be lots of waste-age in other areas! Trade-off!
+  	- suggests system cost efficiency correlates with exergy efficiency
+
 #### Ecological network analysis
 
-The other grey-box metric considered in this thesis is ecological network analysis (ENA). Chapter 3 also showed this approach could reveal how well a city's sectors work together. The results of this type of analysis are important, because they indicate to planners the extent to which the different *management* parties need to cooperate to implement such a system, as well as where there are risks/vulnerabilities in the system if there is no high-level integrated view of how sectors depend on one another.
+The other grey-box metric considered in this thesis is ecological network analysis (ENA). Chapter 3 showed this approach could reveal how city's economic sectors work together. The results of this type of analysis are important, because they indicate to planners the extent to which the different management parties rely on one another, and hence where they need to cooperate, and where there are risks/vulnerabilities if there is no high-level understanding of intersectoral dependency (Section \ref{sec:app-grey-box-metrics}). Again, using the method outlined in Section \ref{sec:methods-grey-box}, the interdependencies of management sectors can be quantified in the integral utility matrix, whose elements quantify the combined direct and indirect exergy contributions between any pair of compartments.
 
-Again, using the method outlined in Section [TODO: cross-ref Grey-box metrics subsection of Chapter 3], the interdependencies of management sectors can be quantified [TODO: complete method].
-
-
-[TODO: Work the below into this subsection, or delete]
+- From this, the overall degree of system integration 
+- More processes = more integration
+- Comment on implications
 
 
 ```{r ena, fig.height=5, fig.cap="fig:ena", results="asis"}
@@ -918,6 +932,8 @@ ena[ena$scenario=="wildcard_medium_minCost", "scenario"] <- "Wildcard case (medi
 ena[ena$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
 
 names(ena) <- c("Scenario", "Direct", "Utility")
+
+ena <- filter(ena, Scenario!="Design case (min. water)")
 
 tab.ena.tex <- xtable(ena,
 			  caption="Results of ENA for SPC scenarios. \\label{tab:SPC-ENA}",
