@@ -2,35 +2,30 @@
 
 \epigraph{``...when you close your eyes and imagine an epidemic spreading, or any other social dynamic, you are running some model or other. It is just an implicit model that you haven't written down...\par At least I can write mine down so that it can, in principle, be calibrated to data...\par The choice, then, is not whether to build models; it's whether to build explicit ones. In explicit models, assumptions are laid out in detail, so we can study exactly what they entail. On these assumptions, this sort of thing happens. When you alter the assumptions that is what happens. By writing explicit models, you let others replicate your results.''}{\citet{Epstein2008}}
 
-[TODO: Intriguing opening paragraph]
-
-[TODO: Refer to notions of interactions and synergies]
-
-Optimisation modelling in general, and synergy-exploiting optimisation modelling is not far away from UM, and has been successfully applied in Industrial Ecology, especially as a means to integrate the operations of multiple facilities within Eco-Industrial Parks. This thesis has brought optimisation into the broader field
+In view of the growing urban populations
+confronting environmental and economic challenges posed by the (otherwise desirable) phenomenon of urbanisation, 
 
 To provide goods and services, cities are places of both great challenge and opportunities. In sustaining ever-growing populations in search of an improving quality of life, urban resource management needs are confronted by economic and environmental challenges. 
 
 Our introduction showed that the energy, water and waste sectors interact, 
 but in urban areas it is possible for these interactions to become synergies, by harnessing the co-location of infrastructure for 
 
+Which gave rise to the research question
+
 Reflecting upon the proximity of urban resource management processes in urban areas gave rise the idea of using the principles of industrial ecology at the urban level to improve UM as a whole. Looking to the ideas systems optimisation modelling in other sectors could proved a method to make this possible.
-
-If the co-location of energy, water and waste management infrastructure is harnessed a
-
 in adopting these principles of industrial ecology
 
-In view of the growing urban populations
-confronting environmental and economic challenges posed by the (otherwise desirable) phenomenon of urbanisation, 
+The practical way forward for this:
+- model - there complexity of identifying optimal process-mixes and operation schedules will increasingly require computational solutions.
+- database
 
-brgining together
+Optimisation modelling in general, and synergy-exploiting optimisation modelling is not far away from UM, and has been successfully applied in Industrial Ecology, especially as a means to integrate the operations of multiple facilities within Eco-Industrial Parks. This thesis has brought optimisation into the broader field
+
 
 brought together urban metabolism, industrial ecology and optimisation modelling,
 
-formalised
-
 People have been using models to address complicated problems; to simplify complicated systems into ;
 
-there complexity of identifying optimal process-mixes and operation schedules will increasingly require computational solutions.
 
 address the complexity of the problem with computational methods which use in effect quite easily understood equations, and datasets.
 
@@ -49,42 +44,60 @@ However, a mere mathematical description of the middle of a system is not suffic
 
 ## Summary
 
-Following an introduction to important motivations and themes, the research question posed at the end of Chapter 1 was:
+Chapter 1 highlighted the importance of cities, together with the challenges they face in resource management, but also identified the opportunities they have to exploit the co-location of infrastructure in order to harness synergies between the energy, water and waste management sectors using principles of industrial ecology. This introduction to themes came alongside an introduction to the concept which would govern much of the thinking behind this thesis, namely, the concept of urban metabolism -- a metaphor which provides the ideas and language to think through various aspects to urban sustainability. These motivations and themes led to the research question posed at the end of Chapter 1:
 
 > *By how much can an area's metabolism be quantifiably improved by an optimisation model which integrates the planning of energy, water and waste systems?*
 
-Thus the challenge and opportunity can be summarised thus: increasing popultations, environmental and economic challenges, interactions and synergies, co-location
-and led us to propose the following research question:
+The first aim to answer this research questions was to *"Investigate the opportunity and methodology"*. Chapter 2 began this by proposing that urban metabolism could be considered from the perspective of an engineered-system, which seeks to understand a city's aggregate metabolic flows as a function of the network of processes that manage and transport energy, water and waste. This was an extension to the conceptualisation of urban metabolism, which would subsequently enable the formulation of a mathematical model which could optimise flows of multiple resource types between management processes so that energy, water and waste systems could be considered in a highly integrated manner.
 
-The first aim of the thesis was to *"Investigate the opportunity and methodology"*. Chapter 2 began this aim by proposing an engineered-system perspective of urban metabolism, which seeks to understand a city's aggregate metabolic flows as a function of the network of processes that manage and transport energy, water and waste. Formalising this concept would enable the formulation of a model which could optimise flows of multiple resource types at a low (i.e. management process) level in an attempt to consider energy, water and waste systems in a highly integrated manner.
+With a new conceptual model proposed, Chapters 3 showed how metabolism could be quantified by different metrics. Chapter 4 assembled a publically-available dataset of energy, water and waste management processes which could be used to support the process-oriented UM studies (subsequently to provide data to the model). The content of both these chapters would subsequently to be useful in the modelling: the former would give methods which could quantify the extent to which the model could improve an area's metabolism; the latter would provide data to be used by the model.
 
-With a new conceptual model proposed, Chapters 3 and 4 showed how this could be used. The first of these chapters showed how metabolism could be quantified by using different types of metrics (subsequently to be applied to systems designed by the model). The second assembled a dataset of energy, water and waste management processes which could be used to support the process-oriented UM studies (subsequently to provide data to the model).
+With the groundwork laid, the second aim was to *"Develop a model which computes the optimal mix of resources to meet demand for goods and services"*. To that end, Chapter 5 extended an existing formulation for an urban energy systems model, to incorporate energy, water and waste resources and processes. A particular requirement of the model was *generality*, so that the model could deal multiple resource types in a usable and tractable way: Of three test formulations, the PRaQ method best achieved this, though the test case study has been made public as a benchmarking study, to facilitate future improvements of the formulation.
 
-With the groundwork laid, the second aim was to *"Develop a model which computes the optimal mix of resources to meet demand for goods and services"*. To that end, Chapter 5 developed an existing formulation for an urban energy systems model, extending it to incorporate energy, water and waste models, even taking into account the different attributes of resource types. Of three formulations, a benchmarking study showed that the PRaQ method achieved the best balance of model fidelity, size, computational cost, constructability, flexibility, and generality.
+Finally, the third aim was to *"Assess how well the models improve urban metabolism"*. This was addressed in Chapter 6 by applying the PRaQ model to the ShannGu Power Company case study of an urban development in China. This demonstrated that a city's metabolism was indeed goverend by the engineered-systems at work in an area, by showing that optimal process mixes, and schedules of resource imports/exports, varied according to different design objectives and process availability.
 
-Finally, the third aim was to *"Assess how well the models improve urban metabolism"*. This was addressed in Chapter 6 by applying the PRaQ model to the SPC case study, and showing how optimal process mixes, and schedules of process operation, resource imports/exports, and performance metrics varied according to different design objectives and process availability.
-
-
+[TODO: Add reference to https://metabolismofcities.org/page/about to chapter 4]
 
 ## Implications for urban metabolism [or Contributions the field of urban metabolism]
 
-Since the first conceptual model of UM as a black-box was proposed by @Wolman1965, others have been developing the idea, to increase its explanatory power, for example with @Newmann1999 adding 'liveability' to the idea of resource flows. Other additions were proposed by @Giradet1990, who modelled the re-use of a city's outputs as inputs, to show how a city's overall resource throughput could be reduced. Finally, @Zhang2009a suggested that inside the black-box was a network of economic sectors between which resources would be transferred. The main theoretical contribution of this thesis is to extend Zhang's network concept to include the engineered processes which convert and transport resources. 
+\begin{table}[]
+\centering
+\caption{Summary of how this thesis answers the call for systems integration.}
+\label{tab:summary-contributions-furtherWork}
+\begin{tabular}{llp{3cm}p{4cm}}
+\toprule
+Chapter & Thesis aim & Contribution to field                                                                                                                                                                                & Further work                                                                                                                                                                                                                                                                                                                          \\
+\midrule
+2       & 1          & Conceptual model                                                                                                                                                                                     &                                                                                                                                                                                                                                                                                                                                       \\
+3       & 1          & Assessed the ability of various ways to evaluate the efficiency of multi-resource systems (such as cities), to provide metrics which can be used to quantify the efficiency of an area's metabolism. & From Section \ref{sec:metrics-conclusions}: Confirm our conclusions regarding metrics with other UM datasets; perform grey-box analysis at a higher resolution, to quantify the trade-off between insights obtained and data required to obtain them; explore additional metrics; and apply this analysis to other types of multi-resource system. \\
+4       & 1          & Open-source database providing quantitive information on behaviour of processes which manage energy, water and waste.                                                                                & From Section \ref{sec:database-conclusions}: Continuous improvement of the database (new processes, more information such as process costs, extend to other processes important to metabolism such as steel manufacture); developing the eco-system in which the database lives, so it can link to other opensource UM data.                        \\
+5       & 2          & The PRaQ model formulation and benchmarking study which can be used to help further develop the formulation                                                                                          & From Section \ref{sec:model-dev-conclusion}: Continuous improvement of formulation and solutions, including piecewise linear and nonlinear formulations (requiring nonlinear models of the database processes), and heuristic-based solution methods such as genetic algorithms.                                                                    \\
+6       & 3          & Demonstration that model can quantifiably improve UM                                                                                                                                                 & Case study: make input data more accurate and sophisticasted (e.g. demands); apply model at an operational level; investigate other objectives; further sensitivity analysis                                                                                                                                                             
+\bottomrule
+\end{tabular}
+\end{table}
 
-The power of conceptual models is that they provide the concepts (and the associated language), to start relating parts of the modelled reality in ways that can further understanding of how that reality works. In this case¸ UM can now use the new framework to conceptualise how energy, waste and waste management processes in the 'middle' of a system affects the aggregate metabolic flows at the top of a system, as they are driven by demands at the bottom. 
+This thesis set out to respond to calls in the literature for cities to become more sustainable through more circular metabolism, achieved by using the wastes of one sector as the inputs to another -- in other words, developing highly integrated urban energy, water and waste systems. The contributions this thesis have made are summarised in Table \ref{tab:summary-contributions-furtherWork} and described in more detail below.
 
-In thinking more about the middle of a system, as made up of energy, water, and waste management processes, it becomes of interest to start mapping the real-world challenge -- namely, the possibility of using wastes and by-products of one sector as inputs to another -- to the model. This gave rise to the idea of having 'highly integrated' systems optimisation at the urban scale to simulataneously meet the demands of more than one system. This second theoretical contribution means that part of the discussion in how to improve urban metabolism can now more easily incorporate the idea that different sectors should work together.
+Since the first conceptual model of UM as a black-box was proposed by @Wolman1965, others have been developing the idea, to increase its explanatory power, for example with @Newmann1999 adding 'liveability' to the idea of resource flows. Other additions were proposed by @Giradet1990, who modelled the re-use of a city's outputs as inputs, to show how a city's overall resource throughput could be reduced. @Zhang2009a took the concept beyond the black box, by suggesting that  inside it was a network of economic sectors between which resources would be transferred. The main theoretical contribution of this thesis is to extend Zhang's network concept to include the *engineered processes* which convert and transport resources -- this model proposed the terms 'top', 'middle', and 'bottom' of a system to refer to an area's resource-management demands, the network of processes and resource flows which meet those demands, and the resulting aggregate metabolic flows into and out of an area, respectively.
 
-It was assistance of that cause that wrought the main methodological contribution of this thesis. This was the formalisation of the relationships between the engineered processes of the middle, and between the middle as a whole in connection to the top and the bottom. These were mathematically formalised in the energy and mass balances, and other constraints that make up the PRaQ model. Thus field of urban metabolism now has its own optimisation model, something previously only enjoyed by individual sectors, and thus arguably did not do much to in the way of metabolism as a whole. 
+The power of conceptual models is that they provide the ideas and language to relate parts of real-world systems to one another in ways that allow people to think through the effects on a system when one or more parts change, whether that thinking stays at the conceptual level or is formalised mathematically. This thesis contributes a new way to conceptualise and mathematically represent how energy, waste and waste management processes in the middle of a system affects the aggregate metabolic flows at the top of a system, as they are driven by demands at the bottom. 
+
+This theoretical contribution then became practical, through the thesis' main methodological contribution -- the PRaQ model, which formalises the conceptual model mathematically, so it can be applied to real-world problems to perform highly integrated systems optimisation, simultaneously meeting the demands of more than one system. Thus field of urban metabolism now has its own optimisation model, something previously only enjoyed by individual sectors, and thus arguably did not do much to in the way of metabolism as a whole. As such, this work adds another voice to the discussion on urban sustainability, by providing a tool which helps planners and policy makers take calls for systems integration and circular metabolism from idea to reality.
+
+If the above two 
+
+Segue into next section:
+- Contribution of Chapter 3
+- Contribution of Chapter 4
 
 The idea of highly integrated urban resource management systems did raise questions about how the performance of multi-resource systems should be best quantified. Chapter 4's answer to this provides another theoretical contribution to advocate for grey-box metrics to understand what's going on inside a UM system. The grey-box method of ENA also provides a point of contact between Zhang's conceptual model, and this one, via ENA. The engineered system's processes in PRaQ each belong to different economic sectors, and so it is possible to see how integrated systems (before or after optimisation) perform as a set of economic sectors.
 
-Turning to consider some specific way this research informs the future development of UM systems, the SPC case study offers a very early view of the way UM systems may develop in the future, as UM continues to become part of the sustainability discussion, and is therefore evermore incorporated into urban design [TODO: link to Kennedy's paper, and that blogpost]. The model opens up several avenues of exploration:
+Turning to consider some specific ways this research may inform the future development of urban areas, the SPC case study offers a very early view of the way UM systems may develop in the future, as UM continues to become part of the sustainability discussion, and is therefore evermore incorporated into urban design [TODO: link to Kennedy's paper, and that blogpost]. The model opens up several avenues of exploration:
 
 - the use of systems with more process types (particularly of a smaller capacity), in decentralised networks, rather than the more traditional centralised systems. Decentralisation is already happening within individual sectors (e.g. energy supply and water supply), so the SPC modelling results suggest that this can be coupled with advances in intersectoral synergies, with waste- and by-products cascading through a system [TODO: provide reference].
 - The use of wildcard type modelling might inform best what new technologies are particularly worthy of further R&D, in order to fit best into existing systems. Research could.
 - Furthermore, a city with a greater variety of processes could well be more flexible in responding to changing demands in resource-efficient ways.
-
- [TODO: Note later, that it would be worth conducting studies into the flexibility of decentralised highly integrated urban resource management systems]
 
 - Hidden savings: don't forget that (unlike energy optimisation models), the water and waste flows for energy processes are considered!
 
@@ -105,29 +118,23 @@ By-products: literature review methods:
 
 ## Shortcomings and further work
 
+<!--
 Development of the PRaQ model can be seen as the coming together of four ideas: urban metabolism, industrial ecology, systems optimisation modelling, and open-source development. This thesis has focussed on introducing this collocation of ideas and how they might be applied. However, the focus has been upon introducing the idea, and thus some detail has been sacrificed for the sake of introducing a new idea to UM. Thus the early nature of this work means there is much more value to be squeezed out from the contributions of this thesis towards using PRaQ to improve urban metabolism.
+-->
 
-Some specifics have already been proposed in earlier chapters
-[TODO: summarise already-proposed further work]
+Some specific proposes for further work have been given in the concluding sections of Chapters 3, 4, 5 and 6. These have been summarised in Table \ref{tab:summary-contributions-furtherWork}; some of these suggestions are expanded below, along with suggestions for broader uses of PRaQ.
 
-### The concept
+### The formulation of PRaQ {#sec:further-work-model}
 
-- work on the metrics
+The PRaQ formulation can be made more sophisticated in a number of ways. Three such developments are inspired by the urban energy systems model on which PRaQ was originally based [@Keirstead2013].
 
-	1. confirm findings with other datasets
-	2. higher resolution for grey-box analysis
-	3. additional metrics (e.g. decomposition analysis)
-	4. application to other MR systems
+- *Enable PRaQ to distinguish between domestic and non-domestic conversion processes, and identify resources which must be provided at a household (rather than commercial or municipal) level.* For processes and resources belonging to the domestic set, constraints could ensure that (i) a household has a maximum of one type of domestic technology; (ii) households have a minimum of one technology that can provide domestic resources; (iii) domestic technologies do not provide more than a household requires; and (iv) domestic production must equal domestic demand. These four constraints are formulated mathematically in Equations (9) to (12) of [TODO: cite Keirstead's unpublished paper].
 
-### The model {#sec:further-work-model}
+- *Introduce storage processes.* such as biomass stores and heat stores. The formulation could be similar to that of transport processes in that it considers resources required to keep a resource in storage (for example heat required to keep biomass dry), and losses over time (for example, in the case of stored heat). The mathematics of storage is given in Equations 9.3--9.10 of @Keirstead2013 (pp166--170).
 
-The PRaQ formulation can be made more sophisticated in a number of ways. Three such developments can be taken from the urban energy systems model on which PRaQ was originally based [@Keirstead2013]. The first develpoment is to enable PRaQ to distinguish between domestic and non-domestic conversion processes, and identify resources which must be provided at a household (rather than commercial or municipal) level. For processes and resources belonging to the domestic set, constraints could ensure that (i) a household has a maximum of one type of domestic technology; (ii) households have a minimum of one technology that can provide domestic resources; (iii) domestic technologies do not provide more than a household requires; and (iv) domestic production must equal domestic demand. These four constraints are formulated mathematically in Equations (9) to (12) of [TODO: cite Keirstead's unpublished paper].
+- *Take greater advantage of PRaQ's geographical aspects.*, by adding to its concept of zones by defining their size. Processes could then be attributed with a spatial footprint parameter, and a constraint could restrict a zone's process selection to those that fit inside it. This constraint is formulated in Equation (37) of [TODO: cite Keirstead's unpublished paper].
 
-A second development is to introduce storage processes such as biomass stores and heat stores. The formulation could be similar to that of transport processes in that it considers resources required to keep a resource in storage (for example heat required to keep biomass dry), and losses over time (for example, in the case of stored heat). The mathematics of storage is given in Equations 9.3--9.10 of @Keirstead2013 (pp166--170).
-
-Thirdy, PRaQ's geographical considerations can be improved, by adding to its concept of zones by defining their size. Processes could then be attributed with a spatial footprint parameter, and a constraint could restrict a zone's process selection to those that fit inside it. This constraint is formulated in Equation (37) of [TODO: cite Keirstead's unpublished paper].
-
-Fourthly, PRaQ could incorporate 'hierarchical non-uniform time discretization' as a way to consider demand variation over hourly, daily¸ weekly, and seasonal periods, in a computationally efficient way [@Keirstead2013, p161] [^time-discretisation].
+- * Incorporate 'hierarchical non-uniform time discretization' as a way to consider demand variation over hourly, daily¸ weekly, and seasonal periods, in a computationally efficient way.* [@Keirstead2013, p161] [^time-discretisation].
 
 [^time-discretisation]: In theory, the PRaQ formulation can be used at the lowest granularity desired. In practice though, the computational cost of using low time slices may become prohibitive as it multiplies the number of decision variables. Hierarchical non-uniform time discretisation decomposes time inter different levels (e.g. yearly, daily, hourly, etc.) Each level can have different intervals of varying times. The demand profile is then made up by sticking together these intervals. For example a week can be made up of two day types, weekday and weekend, which repeat five and two times, respectively. These two day types are each assembled from their own concatenations of hour types, for example, morning peak, evening peak and rest-of-day average. In this way, a 90 day season modelled at hourly granularity (for example) need only by represented by $3 \mbox{ hour types} \times 2 \mbox{ day types} = 6$ intervals rather than by $90 \mbox{ days} \times 24 \mbox{ hours} = 8,760$ intervals.
 
@@ -135,32 +142,50 @@ Fourthly, PRaQ could incorporate 'hierarchical non-uniform time discretization' 
 
 However, one thing that the developments above cannot do is deal with nonlinear process behaviour. This thesis has chosen to not to pursue such considerations; as the benchmarking study (Chapter 5) showed, this is computationally expensive, and user-unfriendly. However, there are methods less expensive than NLP, which could be explored. One approach is to develop a piecewise linear formulation, in which nonlinear process behaviours are approximated to a set of linear functions, as shown in Figure [TODO: cross-reference]. This would require processes input and output coefficients to be defined for each portion of the input-to-output relationship, and would thereby require changing the structure of the process database.
 
-[TODO: cite an example of piecewise linear approximation in similar fields]
-
-[TODO: show side be side plot of nonlinear function which relates inputs to outputs approximated by piecewise linear functions.]
-
 A more radical alternative is to write a fully nonlinear formulation, but to use heuristic methods to find a solution. Such methods do not necessarily result in the mathematically optimal solution, but they do get close to it, often in less time, and carry the added advantage that they do not get trapped in the 'local minima' which can exist in certain nonlinear problems. Example heuristics include genetic algorithms (GAs) which start from a population of solutions (i.e. a process mix and operation schedule), and applying random mutations to population members, and breed them with one another to generate new solutions; the solutions which perform the poorest with respect to the objective (e.g. system cost) are killed off, leaving the 'fittest' to bread a new generation. Over time, this method converges to a near-optimal solution. Other population-based heuristics include particle swarm optimsiation, leapfrog algorithsm, and [TODO: continue list, and check that they are indeed population-based solutions, and comment on their success w.r.t. solution quality and time.]. Any nonlinear formulations -- however they are solved -- would require process database to be replaced by a set of equations which represent process behaviour.
 
 [TODO: Put something on user-interface here?]
 
 All of the above developments (both the additions to PRaQ, and the heuristic solutions to a nonlinear formulation), are enabled by the opersource contributions of this thesis (the Tat Hamlet benchmarking study, and the process database), thus making it easy for the research community to develop and test formulation developments. In time, through incremental contributions, there will hopefully be a model and database that it predicated on the process-oriented UM framework, that includes all the sophistications desired by users, that represents the process behaviour with sufficient accuracy, and is tractable in suitable time-scales.
 
-### The application
+### The application of PRaQ
 
 In addition to the suggestions at the end of Chapter 6 (modifications to the set of input processes, refinements to process and resource costs, operational activity (more timesteps), alternative objectives, and sensitivity analysis, there are a number of different ways PRaQ could be applied.
 
+<!--
 One consideration absent thus far is that of model validation, in other words, the question of how closely the model represents reality in practise. For many models, validation is a simple matter of comparing model results to experimental results. However, validation is not so easy for modelling at the urban scale. One possible way to validate PRaQ could be to apply it to existing urban areas for which sufficient information is known.
 
 Not only would the area's demand profile need to be known (as is typical in PRaQ case studies), so would its process mix and layout -- the values of these variables [TODO: list them] would then be fixed, and the model run, to return a schedule of resource flows (both the aggregate metabolic exchanges into and out of the city, and the inter-process flows). It would then be possible to quantify how closely the modelled schedule matches that of real-life. This would be a major piece of work, and the first step would be to assemble the dataset for a real city.
+-->
+
+1. *Application to real cities.*
 
 Another use of real-city datasets would be to run models which inform how an existing city should change its processes over a given time horizon in view of constraints (e.g. budget and geography), changing demand patterns (e.g. electrification), and particular design objectives (e.g. minimising emissions). In these cases, some of the variables (some process choices and their operation schedule) would be fixed, while others are free to change (i.e. to represent the removal, replacement, or addition of new processes).
 
+2. *Application at different time scales.*
 Other more simple applications of PRaQ could be to investigations at different temporal resolution. In going to greater time interval granularity, planners can investigate the effect of process operation on metabolism [TODO: clarify this]. In using larger time intervals (e.g. monthly, in which demands change each month over several years, perhaps increasing with population), planners can assess the long-term investment decisions which might improve an area's metabolism. Another investigation (briefly introduced earlier) is that of seeing how resilient a metabolic system is to changing demand patterns. One way to do this is to see by how much a process mix needs to change in order to accommodate the new demand profile; ideally, the new demands could be met with the same process mix operating to a different schedule.
 
+3. *Application at different spacial scales.*
 The PRaQ methodology can also be adapted to different scales. Scaling down would enable PRaQ to consider the resource flows into and out of and within a buildings. This would require its own database of conversion and transport processes (such as sinks, water pipes, toilets, centralised heating, etc.). Such modelling could be used to show how buildings can invest to reduce their overall consumption and waste. On the other hand, PRaQ could be scaled up to regional and national levels to investigate the movements and conversion of resources over larger parts of an economy, to reduce the consumption and waste in regional resource transfers. Again, this type of modelling would require its own set of processes, perhaps including agriculture, livestock farming, forestry, power generation, etc.
+
+4. *Extended focus.*
 
 - Extended focus, i.e. range of demands (e.g. iron and steel manufacture, which can be significant components of an urban metabolism). This would have a corresponding extended range of 
 - Supported by a other databases
+
+
+### The place of PRaQ within broader considerations
+
+Other further work concerns a zoomed-out view
+
+Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
+
+[TODO: In some ways, this is an extension of other hard/soft-linking of models]
+
+- Socioeconomics: Perhaps one reason for the lack of multi-resource synergy optimisation problems (as shown by our literature review) are the economic/market limitations. For example, typically, energy, water and waste are managed separately [TODO: cite specifics from around the world].
+	- Perhaps this work can inform the debate surround market/planned economies
+	- Perhaps it can help different (private/public) non-competative companies to work together (as in EIPs),
+	- Alternatviely, ABM can be used
 
 Finally, PRaQ can be used in conjunction with other models[^link-type]. For example, there already exist models which optimise process use at a household level [TODO: cite example]. These could be used to define household demands, which could then be fed into PRaQ, to optimise resource flows at the urban scale. In the other direction, the overall metabolic exchange outputs of PRaQ could be used in regional or national input-output economic models [TODO: cite examples, e.g. Leontieff], or environmental models [TODO: cite examples]. In aniticipation of this, the GitHub repository includes a page which lists models which could be used in conjunction with PRaQ [TODO: make page and footnote the link]. 
 
@@ -174,22 +199,10 @@ Finally, PRaQ can be used in conjunction with other models[^link-type]. For exam
 - Whether applied to real or theoretical cities, 
 - data
 
-### Locating the concept within a broader set of considerations
-
-Other further work concerns a zoomed-out view
-
-Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
-
-[TODO: In some ways, this is an extension of other hard/soft-linking of models]
-
-- Socioeconomics: Perhaps one reason for the lack of multi-resource synergy optimisation problems (as shown by our literature review) are the economic/market limitations. For example, typically, energy, water and waste are managed separately [TODO: cite specifics from around the world].
-	- Perhaps this work can inform the debate surround market/planned economies
-	- Perhaps it can help different (private/public) non-competative companies to work together (as in EIPs),
-	- Alternatviely, ABM can be used
-
-
 
 ### The UM modelling community and platform
+
+Facilitates the changes mentioned above:
 
 This section has made several mentions the opensource contributions of this work, and indeed, the database has already been added to an online repository of opensource tools for industrial ecology and urban metabolism [TODO: Cite Chris Davis' GitHub repository] . This is such an opportunity for research and development, that it is worth devoting a subsection to how this aspect of the research can be developed, with a view to maximising enhancements to the formulation and application in useful research.
 
