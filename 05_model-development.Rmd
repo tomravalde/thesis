@@ -2,8 +2,6 @@
 
 \epigraph{``Everything must be made as simple as possible. But not simpler.''}{Albert Einstein}
 
-
-
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
@@ -29,7 +27,7 @@ Moving to consider an optimisation model's mathematics in greater depth, recall 
 
 Linear programmes (LP) include many of the energy systems models (such as @Keirstead2013a). In these models, variables are never multiplied or divided by one-another. A specific class of linear programmes are those where some variables must adopt integer values (which might be necessary to specify the number of resource management processes, for example); these are mixed-integer linear programmes (MILP). A reason that linear models are often lower fidelity is that very often, they are formulated with the express purpose of simplifying nonlinear realities.
 
-*Nonlinear programmes* (NLP) have equations in which variables are multiplied by one another. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). For this reason, NLP are often used to model water management problems, because hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section \ref{sec:derivations}), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation might be variables.}. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] (for example, @Moon2009). These problems can be solved using the nonlinear programming methods, but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [@Keedwell2005a]; and particle swarm optimisation, which mimic the flocking of birds [@Khor2012]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity.
+Nonlinear programmes (NLP) have equations in which variables are multiplied by one another. Again, these models can also have integer variables and are known as *mixed-integer non-linear programmes* (MINLP). For this reason, NLP are often used to model water management problems, because hydraulic equations which include the product of two or more variables\footnote{To take one example (which is considered in more detail in Section \ref{sec:derivations}), the potential energy of a mass of water due to its elevation is given by $\mbox{mass} \times \mbox{gravity} \times \mbox{elevation}$, where both mass and elevation might be variables.}. Nonlinearity may also exist in water management problems in order to model water contamination levels[^contamination-model] (for example, @Moon2009). These problems can be solved using the nonlinear programming methods, but these are computationally expensive, so heuristics are sometimes used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [@Keedwell2005a]; and particle swarm optimisation, which mimic the flocking of birds [@Khor2012]. Such heuristic approaches are an attempt to get around issues of tractability, without sacrificing fidelity.
 
 [^contamination-model]: Consider two bodies of water, $x$ and $y$, with volumes $V_x$ and $V_y$ (L) respectively, and contamination levels of $c_x$ and $c_y$ (mg/L) respectively. If these two bodies mix, the new contaminant concentration is given by $(V_x c_x + V_y c_y)/(V_x + V_y)$. If both volume and contaminant concentration are variables, then this model is nonlinear.
 
@@ -521,7 +519,7 @@ To model the processes which convert resources, @Samsatli is based upon the engi
 \label{fig:Keirstead-RTN}
 \end{figure}
 
-A feature of @Samsatli's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. (For 'negative' demands, i.e. the demand for wastes to be removed, these means become (i) exports, (ii) consumption, and transport from the zone.) These are brought together in the model's main equation, which is a balance of resources in each zone at any moment in time:
+A feature of @Samsatli's model is that it is spatially and temporally disaggregated. The urban area is divided up into zones which can each have their own energy demands and set of technologies. Moreover, these demands can be different for each timestep (perhaps representing broad differences such as seasonality, or smaller differences on an hour-by-hour basis). Demand in a zone can be met by a combination of three means: (i) being imported from outside the urban area; (ii) being produced in the zone by a conversion process; (iii) being transported into the zone from another by a transport process. Note that demands can also be negative, for example to represent the demand for a certain quantity of waste to be removed from a zone. These are brought together in the model's main equation, which is a balance of resources in each zone at any moment in time:
 
 \begin{align}
 \begin{split}
@@ -540,7 +538,7 @@ This resource balance is visualised for electricity in Figure \ref{fig:resource-
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
 	\includegraphics[width=\textwidth]{05_model-development/resource-balance-example.pdf}
 %	\end{spacing}
-	\caption{An example of how Equation \eqref{eq:balance} might apply to electricity ('Elec.'). Italicised terms correspond to the terms of the equation. In words: the electricity imported into zone 1 from outside the system + the electricity produced by the power plant + electricity arriving from zone 2 = the electricity being exported outside the system and the electricity being consumed by the pump.}
+	\caption{An example of how Equation \eqref{eq:balance} might apply to electricity (`Elec.'). Italicised terms correspond to the terms of the equation. In words: the electricity imported into Zone 1 from outside the system + the electricity produced by the power plant + electricity arriving from Zone 2 = the electricity being exported outside the system and the electricity being consumed by the pump.}
 	\label{fig:resource-balance-example}
 \end{figure}
 
@@ -549,11 +547,11 @@ The next three subsections specify three different model formulations built arou
 \begin{description}
 
 \item [Null model] This formulation is very similar to the MILP urban energy systems model, only it is applied to a broader set of resources and processes, to incorporate the water and waste sectors. The purpose of this model is to investigate what can be achieved for as little computational effort as possible. 
-\item [Processes resources and qualities model (PRaQ)] This formulation also linear, and is in many ways similar to the null model, but it develops it to use a more sophisticated definition of resources, in which a resource can have multiple properties ('qualities') attributed to it. For example, water can have both a mass and an energy head. This means that processes can be defined to require (and produce) resources of particular qualities, e.g. a dam needs not just a sufficient mass of water, but a sufficient mass of water at a required energy head. This more detailed representation of resources can more accurately characterise the properties of a system's resource, and the transformations it undergoes during a process (e.g. as water passes through a dam, its mass remains the same, but its quantity changes). In practice, this requires defining extra parameters and variables in the model, and inserting some additional equations. 
+\item [Processes resources and qualities model (PRaQ)] This formulation is also linear, and is in many ways similar to the null model, but it develops it to use a more sophisticated definition of resources, in which a resource can have multiple properties (`qualities') attributed to it. For example, water can have both a mass and an energy head. This means that processes can be defined to require (and produce) resources of particular qualities, e.g. a dam needs not just a sufficient mass of water, but a sufficient mass of water at a required energy head. This more detailed representation of resources can more accurately characterise the properties of a system's resource, and the transformations it undergoes during a process (e.g. as water passes through a dam, its mass remains the same, but its quantity changes). In practice, this requires defining extra parameters and variables in the model, and inserting some additional equations. 
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
-Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations (this is discussed further in Section \ref{sec:fid-and-gen}. The differences between the formulations can be illustrated with reference to the example of the pipe and dam system show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained later in this Section. The constraints for the Nonlinear, PRaQ and Null formulations are given in Sections \ref{sec:Null}, \ref{sec:PRaQ} and \ref{sec:NL}, respectively. Examples of objective functions are given separately in Section \ref{sec:model-objs} -- there are any number of possible objectives which could be used with each of the models.
+Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations (this is discussed further in Section \ref{sec:fid-and-gen}. The differences between the formulations can be illustrated with reference to an example of the pipe, pump and dam system in Appendix \ref{sec:pipe-pump-damn}. The constraints for the three formulations are given in Sections \ref{sec:Null}, \ref{sec:PRaQ} and \ref{sec:NL}, respectively. Examples of objective functions are given separately in Section \ref{sec:model-objs}.
 
 \begin{figure}
 	\centering
@@ -566,55 +564,13 @@ Figure \ref{fig:evolution} shows how the three formulations are related both to 
 	\label{fig:evolution}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{05_model-development/pipe-dam-example.pdf_tex}}
-	\end{spacing}
-	\caption{An example to illustrate the difference between model formulations. There are two zones. Zone 2 has an electricity demand which can be met by a dam (a conversion process), also in zone 1. However, the water must first be pumped (via the pump -- a conversion process in zone 1) and transported to zone 2 via a pipe (transport process).}
-	\label{fig:pump-dam-example}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{05_model-development/pipe-dam-network.pdf}
-	\caption{An RTN representation of Figure \ref{fig:pump-dam-example}. The electricity (E) required by the pump can be imported from outside the system; the amount required depends on the mass of water (W) to be pumped, and the elevation to which it needs pumping. The dashed arrow indicates that the electricity in Zone 2 is a demand.}
-	\label{fig:pump-dam-RTN}
-\end{figure}
-
-\clearpage
-\begin{tcolorbox}
-For the pipe-dam example of Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}, the models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
-
-\begin{align}
-\frac{P}{\rho g} + z + \frac{v^2}{2g} = \mbox{constant}
-\end{align}
-
-where at a chosen point $P$ is the water's pressure, $z$ is it's elevation with respect to a reference, and $v$ is it's velocity ($g$ is the constant of acceleration due to gravity).
-
-First, consider the water flow from A (zone 1) to B (zone two) via the combination of a pump and a pipe. The pump provides the energy to raise the water's elevation and has an electrical efficiency of $\eta^{pump}$. This energy includes that which is required to overcome the energy loss due to friction. Typically this friction loss is defined as a function of the pipe's length $l$ and diameter $D$ as $\mbox{friction loss} = f_D(l/D)(v^2/2g)$ (where $f_D$ is the Darcy Friction Factor). It is also assumed that $P_1=P_2$ and that $v_1=v_2=v$, and that the datum is measured from A and C (which are at equal height), thus $z_A=z_B=0$. Finally, the models formulated later work with mass ($m$) and energy balances, thus it is convenient to multiply each term by $mg$. The resulting equation gives the water's energy at points A and B expressed in terms of mass:
-
-\begin{align}
-%z_A  + \eta^{pump} \frac{\mbox{pump energy}}{\rho V g}  = z_B + F \frac{l}{D} \frac{v^2}{2g}
-\eta^{pump} (\mbox{pump energy})  = m \left( gz_B + F \frac{l}{D} \frac{v^2}{2} \right) 
-\end{align}
-
-Second, consider the flow across the dam, between $B$ and $C$. Using the same assumptions as above, and defining the dam with an electrical generation efficiency, $\eta^{dam}$, and again multiplying through by $mg$, the relationship of water input attributes to the dam's electrical output is:
-
-\begin{align}
-mgz_B = \eta^{dam} (\mbox{elec gen})
-\label{eq:damEnergy}
-\end{align}
-
-\end{tcolorbox}
 
 ### Null (N) formulation {#sec:Null}
 
 The null model can be defined using similar base equations as for the @Keirstead2013a model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
 
 \begin{align}
-I_{rz} + \sum_t^TJ_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \forall r,z
+I_{rz} + \sum_{\tau}^{\mathcal{T}}J_{\tau rz} + \sum_{p}^{P}G_{prz} &= D_{rz} + E_{rz} \qquad \forall r,z
 \label{eq:null_balance_qty}
 \end{align}
 
@@ -630,8 +586,8 @@ E_{rz} &\leq \delta^E_{rz} E^{max}_r \label{eq:null_exp_max}
 where $I_r^{min}$, $I_r^{max}$, $E_r^{min}$ and $E_r^{max}$ are parameters which limit the quantity of how much of any resource can be imported or exported. $\delta^I$ and $\delta^E$ are binary variables which equal 1 if a zone is allowed to import or export a resource, respectively, or 0 if it is not; these binary variables values are subject to limits on the total number of zones that are allowed to import or export a particular resource, defined by the parameters $N^I_r$ or $N^E_r$, and must satisfy:
 
 \begin{align}
-	\sum_z \delta^I_{rz} &\leq N^I_r \qquad \label{eq:null_imp_allowed} \\
-	\sum_z \delta^E_{rz} &\leq N^E_r \qquad \label{eq:null_exp_allowed}
+	\sum_z^Z \delta^I_{rz} &\leq N^I_r \qquad \label{eq:null_imp_allowed} \\
+	\sum_z^Z \delta^E_{rz} &\leq N^E_r \qquad \label{eq:null_exp_allowed}
 \end{align}
 
 #### Conversion processes
@@ -650,23 +606,6 @@ where the $F$ variable defines the operation rate of a technology (for example, 
 \label{eq:null_process_rate}
 \end{align}
 
-\begin{tcolorbox}
-Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ (Figure \ref{fig:pump-dam-RTN}. The electricity is considered the dam's `main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
-
-
-The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=10$ metres and efficiency $\eta^{dam}=$80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg, resulting in the coefficients in Listing \ref{list:praq_dam}.
-
-\end{tcolorbox}
-
-\begin{lstlisting}[language=yaml,
-	frame=single,
-	caption = Production coefficients for the dam in the Null model.,
-	label = list:null_dam,
-	float = [htbp]]
-dam source_hiHead_lowQual -12742
-dam lowHead_lowQual 12742
-dam elec 1
-\end{lstlisting}
 
 #### Transport processes
 
@@ -815,11 +754,6 @@ The constraint on the number of allowable processes is defined as for the Null m
 This equation only needs to be applied in the case where a process $p$ produces or consumes resource $r$ with qualities $q$, hence the condition based on the $\delta_{prq}$.
 -->
 
-\begin{tcolorbox}
-The dam example has two 'water' resources (one high-head, the other low-head); other water resources could include water at different temperatures or contamination levels. 
-
-However, the derivation of the PRaQ formulation evolves Keirstead's formulation, by defining resource flows in terms of their \emph{quality}, such that a resource can be attributed with both an energy and a mass. This is useful when considering the interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- this means the PRaQ model needs to know both its mass, and its energy head due to elevation. Thus the formulation specifies a Equation \eqref{eq:praq_balance_qty} which is analogous to \eqref{eq:null_balance_qty} to balancethe quality for each resource (adopting the $^{(qual)}$ superscript notation):
-\end{tcolorbox}
 
 #### Transport processes
 
@@ -902,7 +836,7 @@ The change that the NL model makes is in the way conversion processes are modell
 \label{eq:nl_process}
 \end{align}
 
-In \eqref{eq:nl_process}, the $k_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These variables can then be defined in a bespoke way. For a linear process, $\kappa^{*}_{pr}$ is defined by a number, which essentially reduces \eqref{eq:nl_process} to the null formulation \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance and a mass balance:
+In \eqref{eq:nl_process}, the $k_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These variables can then be defined in a bespoke way. For a linear process, $\kappa^{*}_{pr}$ is defined by a number, which essentially reduces \eqref{eq:nl_process} to the null formulation \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance \eqref{eq:nl_process_dam_energy} and a mass balance \eqref{eq:nl_process_dam_mass}, based on the equation $E=mgh$:
 
 \begin{align}
 \kappa^{I}_{\mbox{dam},\mbox{water}} g H_I &=  \kappa^{O}_{\mbox{dam},\mbox{water}} g H_O + \kappa^{O}_{\mbox{dam},\mbox{elec}} \label{eq:nl_process_dam_energy} \\
