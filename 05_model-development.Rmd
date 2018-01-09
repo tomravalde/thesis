@@ -15,7 +15,7 @@ Since modelling is a simplification of the real-world (Section \ref{sec:modellin
 
 ## Model performance and formulation {#sec:model-concepts}
 
-When introducing modelling in the literature review, care was taken to not overstate the capabilities of a model (Section \ref{sec:modelling-intro}). Rather, it was noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising that simplifications are inevitable leads to the understanding that there will be compromises with respect to a model's performance features of the model. Four such features are *fidelity*, *generality*, *tractability*, and *usability*.
+When introducing modelling in the literature review, Section \ref{sec:modelling-intro} took care not to overstate the capabilities of a model. Rather, it was noted that modelling provides an honest, scientific tool to help decision makers explore the realms of possibility concerning a complicated problem. Recognising that simplifications are inevitable leads to the understanding that there will be compromises with respect to a model's performance features of the model. Four such features are *fidelity*, *generality*, *tractability*, and *usability*.
 
 Fidelity and generality are both functions of a model's representation of the real-world. The former measures how well a model describes reality, and the latter corresponds to to the number of real world systems a model can be applied to [@Matthewson2008]. In relation to modelling undertaken here, fidelity would be a measure of how accurately the behaviour of a resource management process -- for example, a water pipe -- is represented by the model's mathematics[^pipe-flow]. Generality would measure to what extent the model's equations can be applied to multiple process types, for example both a water pipe, and an electrical cable. Tractability and usability refer to how the model is applied in practice: the former quantifies the amenability of the model to optimization techniques; while the latter measures the ease of model formulation for a particular case [@McIntosh2012].
 
@@ -1033,6 +1033,19 @@ plot_conversion
 ```
 
 ### Discussion: which formulation should be used? {#sec:tat-discussion}
+
+
+[TODO: Move to intro of chapter?] A chapter of this nature is important, because we cannot validate the model with real numbers!
+
+This chapter has developed three formulations of a model which can optimise urban resource consumptions, with varying degrees of fidelity, generality, tractability and usability (\ref{sec:model-concepts}). This section discusses two questions:
+
+1. How well do the Null, PRaQ and Nonlinear formulations perform according to 
+
+Based on the work of this chapter thus far, this section quantifies how well the model performs according to each feature of a model in order to recommend which model should be carried forward for use in a case study.
+
+This question interacts which the one about which of the features are the most important?
+
+Section  identified four features of models. The first two, fidelity and generality, correspond to the way a model represents the real world.
 
 How well do the formulations represent reality? Fidelity and generality?
 
