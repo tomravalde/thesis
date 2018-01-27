@@ -1,9 +1,5 @@
 \pagenumbering{arabic}
 
-\nomenclature{$\delta_{rq}$}{Binary variable attributing a quality to a resource}
-\nomenclature{$k_{prq$}}{Coefficient of resource production}
-\nomenclature{$g$}{Acceleration due to gravity}
-
 # Introduction
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}

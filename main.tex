@@ -14,6 +14,17 @@
 %\setcounter{secnumdepth}{5}
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Abbreviations}{%
+  \ifstrequal{#1}{S}{Model sets}{%
+  \ifstrequal{#1}{M}{Model variables and parameters, defined over the sets}{%
+  \ifstrequal{#1}{O}{Other}
+  {}}}}%
+]}
+ 
+
 \begin{document}
 \onecolumn
 
@@ -33,6 +44,7 @@
 \listoftables
 \printnomenclature[0.8in]
 
+\input{nomenclature.tex}
 \input{01_introduction.tex}
 \input{02_lit-review.tex}
 \input{03_metrics.tex}
