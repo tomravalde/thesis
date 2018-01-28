@@ -760,10 +760,10 @@ This equation only needs to be applied in the case where a process $p$ produces 
 
 #### Transport processes
 
-The transport processes are defined similarly, following the same logic as the Null model formulation to quantify the net inflow of resource quality, $V^{(qual)}_{\tau rqz}$, into a zone, according to the rate at which the transport technologies can operate, and losses, and other resources involved:
+The transport processes are defined similarly, following the same logic as the Null model formulation to quantify the net inflow of resource quality, $J^{(qual)}_{\tau rqz}$, into a zone, according to the rate at which the transport technologies can operate, and losses, and other resources involved:
 
 \begin{align}
-V^{(qual)}_{\tau rqzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{\mathcal{T}}_{\tau zz'} \\
+J^{(qual)}_{\tau rqz} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{\mathcal{T}}_{\tau zz'} \\
 + &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{\mathcal{T}}_{\tau z'zt}
 \label{eq:praq_transp_qual}
 \end{align}
@@ -771,7 +771,7 @@ V^{(qual)}_{\tau rqzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} 
 Coefficients and process rates are defined for transport technology $\tau$, both for the zone of origin $z$, and the zone of destination $z'$ (where the $'$ notation indicates the destination zone). Furthermore, the quantity of input resources can be defined by the linear sum of two coefficients, denoted by $\alpha$ and $\beta$. For example to transport 1 kg of coal from $z$ to $z'$ (defined by $k_{\tau rq}^{\alpha}=-1$, $k_{\tau rq}^{\alpha'}=1$) will require a quantity of petrol dependent on the distance between the zones $l_{zz'}$, thus defined by $k_{\tau rq}^{\beta}$ and $k_{\tau rq}^{\beta'}$. In the case where transport losses occur (such as electricity transported via a cable), $k^{\alpha}_{\tau rq} > k^{\alpha'}_{\tau rq}$. To calculate the quantity flows, we once again use the $X_{rq}$ parameter:
 -->
 
-Again, this balance is also defined in terms of net inflow of quantities, $V^{(qty)}_{\tau rz}$, by using the $X_{rq}$ parameter, and the binary parameter, $\delta^{R}_{rq}=1, \mbox{where } \delta^{\mathcal{T}}_{\tau rq}=1$ (these parameters are defined according to a similar logic to that used for the conversion processes[^binary-transp]):
+Again, this balance is also defined in terms of net inflow of quantities, $J^{(qty)}_{\tau rz}$, by using the $X_{rq}$ parameter, and the binary parameter, $\delta^{R}_{rq}=1, \mbox{where } \delta^{\mathcal{T}}_{\tau rq}=1$ (these parameters are defined according to a similar logic to that used for the conversion processes[^binary-transp]):
 
 \begin{align}
 X_{rq}V^{(qty)}_{\tau rz} &= \Big[ \sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{\mathcal{T}}_{\tau zz'} \\
@@ -916,7 +916,7 @@ The three models will minimise some objective. The are numerous possibilities wi
 \begin{align}
 C^R &= \sum_{rz} c_r I_{rz} \\
 C^P &= \sum_{pz} c_p N_{pz} \\
-C^{\tau} &= \sum_{\tau zz'} c_\tau \delta^{transp}_{\tau zz'} l_{zz'}
+C^{\mathcal{T}} &= \sum_{\tau zz'} c_\tau \delta^{\mathcal{T}}_{\tau zz'} l_{zz'}
 \end{align}
 
 where the parameters $c_r$, $c_p$, $c_{\tau}$ defines the cost of an item per unit (e.g. a kilogram of water, a joule of energy, or a single process). These costs can be combined into a single objective function:
