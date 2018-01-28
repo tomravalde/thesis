@@ -25,15 +25,30 @@
 \nomenclatureentry{M$F^{\mathcal{T},min}_\tau$@[{$F^{\mathcal{T},min}_\tau$}]\begingroup Minimum allowable operation rate of transport process $\tau$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$F^{\mathcal{T},max}_\tau$@[{$F^{\mathcal{T},max}_\tau$}]\begingroup Maximum allowable operation rate of transport process $\tau$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$J^{(qty)}_{\tau rz}$@[{$J^{(qty)}_{\tau rz}$}]\begingroup Net transfer of resource quantity $r$ into zone $z$ by transport technology $\tau$\nomeqref {0.0}|nompageref}{1}
-\nomenclatureentry{M$G^{(qty)}_{p rz}$@[{$G^{(qty)}_{p rz}$}]\begingroup Net production of resource quantity $r$ in zone $z$ by process technology $p$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$J^{(qual)}_{\tau rqz}$@[{$J^{(qual)}_{\tau rqz}$}]\begingroup Net transfer of resource quality $q$ attributed to resource $r$ into zone $z$ by transport technology $\tau$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$G^{(qty)}_{p rz}$@[{$G^{(qty)}_{p rz}$}]\begingroup Net production of resource quantity $r$ in zone $z$ by process technology $p$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$G^{(qual)}_{prqz}$@[{$G^{(qual)}_{prqz}$}]\begingroup Net production of quality $q$ attributed to resource $r$ in zone $z$ by process technology $p$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$D^{(qual)}_{rqz}$@[{$D^{(qual)}_{rqz}$}]\begingroup Demand for resource quality $q$ attributed to resource $r$ in zone $z$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$X_{rq}$@[{$X_{rq}$}]\begingroup Defines the quantities of all qualities $q$ attributed to a unit of resource $r$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$k^P_{prq}$@[{$k^P_{prq}$}]\begingroup Net production of quality $q$ attributed to resource $r$ from conversion process $p$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$\delta^R_{rq}$@[{$\delta^R_{rq}$}]\begingroup Binary variable defining whether quality $q$ is attributed to resource $r$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{M$\delta^P_{prq}$@[{$\delta^P_{prq}$}]\begingroup Binary variable defining whether quality $q$ is attributed to resource $r$ and can be converted by process $p$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\delta^{\tau}_{\tau rq}$@[{$\delta^{\tau}_{\tau rq}$}]\begingroup Binary variable defining whether quality $q$ is attributed to resource $r$ and can be transported by transport process $\tau$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\kappa^{O}_{pr}$@[{$\kappa^{O}_{pr}$}]\begingroup Output of resource $r$ from conversion process $p$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\kappa^{I}_{pr}$@[{$\kappa^{I}_{pr}$}]\begingroup Input of resource $r$ to conversion process $p$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$C^R$@[{$C^R$}]\begingroup Cost of all resources used by a system\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$c^r$@[{$c^r$}]\begingroup Cost of resource $r$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$C^P$@[{$C^P$}]\begingroup Cost of all conversion processes used by a system\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$c^p$@[{$c^p$}]\begingroup Cost of conversion process $r$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$C^\mathcal{T}$@[{$C^\mathcal{T}$}]\begingroup Cost of all tranport processes used by a system\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$c^{\tau}$@[{$c^{\tau}$}]\begingroup Cost of transport process $t$\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$C$@[{$C$}]\begingroup Overall system cost\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\gamma^R$@[{$\gamma^R$}]\begingroup Weighting factor assigned to system resource costs\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\gamma^P$@[{$\gamma^P$}]\begingroup Weighting factor assigned to system conversion process costs\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\gamma^{\mathcal{T}}$@[{$\gamma^{\mathcal{T}}$}]\begingroup Weighting factor assigned to system transport process costs\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{M$\epsilon_r$@[{$\epsilon_r$}]\begingroup Emissions factor for resource $r$\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{S$r \in R$@[{$r \in R$}]\begingroup Resources\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{S$t \in T$@[{$t \in T$}]\begingroup Time periods\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{S$p \in P$@[{$p \in P$}]\begingroup Conversion processes\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{S$q \in Q$@[{$q \in Q$}]\begingroup Qualities attributed to resources (PRaQ model only)\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{S$\tau \in \mathcal{T}$@[{$\tau \in \mathcal{T}$}]\begingroup Transport processes\nomeqref {0.0}|nompageref}{1}
@@ -43,3 +58,17 @@
 \nomenclatureentry{ANL@[{NL}]\begingroup The Nonlinear model\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{AUM@[{UM}]\begingroup Urban metabolism\nomeqref {0.0}|nompageref}{1}
 \nomenclatureentry{AIE@[{IE}]\begingroup Industrial Ecology\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{AYAML@[{YAML}]\begingroup Yaml Ain't Markup Language\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{ACSV@[{CSV}]\begingroup Comma Separated Variable\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{AGAMS@[{GAMS}]\begingroup General Algebraic Modelling System\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAWT (l/stock)@[{WT (l/stock)}]\begingroup Water treatment (for livestock)\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAWT (dom.)@[{WT (dom.)}]\begingroup Water treatment (for domestic use)\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAIrrig.@[{Irrig.}]\begingroup Irrigation\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAPump@[{Pump}]\begingroup Pump\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAAgric.@[{Agric.}]\begingroup Agriculture\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAL/stock@[{L/stock}]\begingroup Livestock\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MAStove@[{Stove}]\begingroup Stove\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{MABMD (med.)@[{BMD (med.)}]\begingroup Biomass drying (medium moisture content\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{Og@[{g}]\begingroup Acceleration due to gravity\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{Oh@[{h}]\begingroup Height\nomeqref {0.0}|nompageref}{1}
+\nomenclatureentry{OM@[{M}]\begingroup Mass\nomeqref {0.0}|nompageref}{1}
