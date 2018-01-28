@@ -1,9 +1,5 @@
 \pagenumbering{arabic}
 
-\nomenclature{$\delta_{rq}$}{Binary variable attributing a quality to a resource}
-\nomenclature{$k_{prq$}}{Coefficient of resource production}
-\nomenclature{$g$}{Acceleration due to gravity}
-
 # Introduction
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
@@ -560,7 +556,7 @@ This thesis makes five novel contributions to research:
 
 ### Thesis structure
 
-The above contributions will be realised over the seven chapters of this thesis. A diagram of how the chapters build upon one another is given in Figure \ref{fig:thesis-structure}, and a summary of each chapter's objectives and contribution, and how they relate to each other, are given in Table \ref{tab:outline}.
+The above contributions will be realised over the seven chapters of this thesis. A summary of each chapter's objectives and contribution, and how they relate to each other, are given in Table \ref{tab:outline}.
 
 This chapter has argued that urbanisation is both a socioeconomically desirable phenomenon, and yet also a source of environmental and economic problems stemming from resource overconsumption, but that cities possess the solution to their own problem, if only they were to take full advantage of the resource integration opportunities inherent in them. Chapter 2 examines the literature to show how this work advances the urban metabolism concept, and develops existing models which optimise resource management.
 
@@ -591,6 +587,7 @@ print(tab.tex,
 
 \end{landscape}
 
+<!--
 \begin{figure}
 	\centering
 %	\begin{spacing}{1.0}
@@ -600,6 +597,7 @@ print(tab.tex,
 	\caption{Thesis outline and the relationship between chapters.}
 	\label{fig:thesis-structure}
 \end{figure}
+-->
 
 <!--
 \subsection{Report structure}
