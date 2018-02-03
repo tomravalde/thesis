@@ -1104,7 +1104,7 @@ This chapter has established three methods to optimise an integrated urban resou
 
 In summary, this chapter proposes the PRaQ model to be carried forward for future use, but also accepts that improvements can be made to the formulations, and has thus published this work as a benchmarking study for the UM field. It is of course important that the considerations of this section inform how the model is used -- this thesis has chosen to prioritise generality, usability and tractability over fidelity, and so the PRaQ model should not be used for detailed design decisions. Rather, it provides high-level guidance on how systems might improve an area's urban metabolism. This shall now be the focus of the next chapter, where the PRaQ model is used in a case study, to help optimise the intersectoral synergies of a Chinese urban development.
 
-### Developments to the optimisation model
+### Developments to the optimisation model {#sec:formulation-developments}
 
 The methods in this chapter can be made more sophisticated in a number of ways. Four such developments are inspired by the urban energy systems model on which PRaQ was originally based [@Keirstead2013, @Samsatli]:
 
