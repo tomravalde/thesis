@@ -243,7 +243,7 @@ school,reserved
 
 ### Times {#sec:case-study-times}
 
-The SPC documentation provides values of energy demands for winter, summer and year round [@SPC_demand]. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons, having spans, $span(T)$, of 90 days, 90 days, and 180 days respectively. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream of the district heating network. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the network of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
+The SPC documentation provides values of energy demands for winter, summer and year round [@SPC_demand]. This model therefore uses three timesteps, specified by $t \in T$, where $|T|=3$, representing the winter, summer, and shoulder seasons, having spans, $\mathbb{S}_t$, of 90 days, 90 days, and 180 days respectively. This means that the infrastructure selected by the model would be in place all year round, but could operate differently in each season. Consider the provision of domestic heating provided by district heating as an example: in the winter, the district heating would be delivering heat to homes, and this would have an impact on the operation of heat-generating processes upstream of the district heating network. However, these upstream impacts would not occur in the summer, when district heating does not run. As this phenomenon is applied in relation to other resource demands, the network of processes emerging from the system interactions could operate differently according to season, in order to optimise the site's metabolism.
 
 Of course, operation might not just vary by season, but could vary for smaller time slices. For example each season could have alternative weekday and weekend resource demand (thus $|T|=3 \mbox{ seasons} \times 2 \mbox{ day types}= 6$), which could further be divided into hourly demands (thus $T=3 \mbox{ seasons} \times 2 \mbox{ day types} \times 24 \mbox{ hours} = 144$). The temporal resolution could become finer still, using minute-by-minute and second-by-second demand patterns.
 
@@ -384,7 +384,7 @@ headlines <- transform(headlines,
 
 ```
 
-### System designs and etabolic flows
+### System designs and metabolic flows
 
 The idea central to this thesis is that the aggregate metabolic flows into and out of a city are governed to a significant extent by the middle of the system, i.e. the network of resource management processes. These metabolic inputs and outputs are displayed for each scenario in Figure \ref{fig:metabolic-flows}. The first broad observation is that, making more processes available to a system tends to result result in system designs which use a larger number of resource management processes and have a greater number of aggregate metabolic inputs and outputs to and from the site (Figure \ref{fig:metabolism_summary}). Thus PRaQ suggests that a site's resource-management objective is best met by a diverse mix of management processes working with a broad set of resources.
 
