@@ -1037,9 +1037,6 @@ plot_conversion
 
 ### Discussion: which formulation should be used? {#sec:tat-discussion}
 
-
-[TODO: Move to intro of chapter?] A chapter of this nature is important, because we cannot validate the model with real numbers!
-
 There are two important questions, the interaction of which will determine which formulation should be carried forward:
 
 1. How well do the Null, PRaQ and Nonlinear formulations perform according to the characteristics of fidelity, generality, tractability, and usability (Section \ref{sec:model-concepts})?
@@ -1057,9 +1054,26 @@ Most of this is either specifying a single number for production coefficients, o
 -->
 
 
-In summary, the Nonlinear formulation has the highest fidelity, but as a consequence has lowest generality, usability and tractability. The Null and PRaQ models have lower fidelity, but are more general, tractable and usable. PRaQ has a very slightly lower generality, usability and tractability than Null, but it has a higher fidelity. These performance features are represented in Figure [TODO: cross-ref to curves of generality, fidelity, tractability, usability] 
+In summary, the Nonlinear formulation has the highest fidelity, but as a consequence has lowest generality, usability and tractability. The Null and PRaQ models have lower fidelity, but are more general, tractable and usable. PRaQ has a very slightly lower generality, usability and tractability than Null, but it has a higher fidelity. These performance features are represented in Figures \ref{fig:curve-fid-gen} and \ref{fig:curve-fid-use}.
 
-[TODO: to curves of generality, fidelity, tractability, usability]
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+  \includegraphics[width=\textwidth]{05_model-development/curve-fidelity-generality.pdf}
+  \caption{The trade-off between fidelity and generality.}
+  \label{fig:curve-fid-gen}
+  \end{subfigure}
+
+  \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+  \includegraphics[width=\textwidth]{05_model-development/curve-fidelity-usability.pdf}
+  \caption{The trade-off between fidelity, tractability, and usability.}
+  \label{fig:curve-fid-use}
+  \end{subfigure}
+
+\caption{The trade-off between model formulations.}
+\label{fig:formulation-trade-offs}
+\end{figure}
 
 The discussion so far demonstrates a claim which opened this chapter, namely that the four modelling features "trade off against one another" (Section \ref{sec:model-features}, page \pageref{sec:model-features}). Therefore, to decide which formulation to carry forward requires determining which features are most important for the purposes of this thesis. It is argued here that generality is the most important characteristic -- the whole purpose of this thesis is to develop a method which considers the production, consumption and transport of energy, water and waste management together. It is therefore important that processes from different types of system can be defined in similar ways, so that modellers can easily derive insights on how the systems should work together.
 
@@ -1098,7 +1112,7 @@ The methods in this chapter can be made more sophisticated in a number of ways. 
 
 - *Introduce processes which store resources.* Such storage processes might hold biomass, heat and other resources over a period of time. The formulation could be similar to that of transport processes in that it considers resources required to keep a resource in storage (for example heat required to keep biomass dry), and losses over time (for example, in the case of stored heat). Such constraints are formulated in Equations 9.3--9.10 of @Keirstead2013 (pp166--170).
 
-- *Take greater advantage of PRaQ's geographical representation.*. Each zone, $z$, could have spatial area $A^Z_z$ defined for it. Processes $p$ could also be defined with a spatial area (i.e. its 'footprint'), $A^P_p$, and then a constraint which means it could only fit the processes which could restrict a zone's process selection to those that fit inside it. This constraint is formulated in Equation (37) of [@Samsatli].
+- *Take greater advantage of PRaQ's geographical representation.*. Each zone, $z$, could have spatial area $A^Z_z$ defined for it. Processes $p$ could also be defined with a spatial area (i.e. its 'footprint'), $A^P_p$, and then a constraint which means it could only fit the processes which could restrict a zone's process selection to those that fit inside it. This constraint is formulated in Equation (37) of @Samsatli.
 
 - *Model demand variation over hourly, daily¸ weekly, and seasonal periods, in a computationally efficient way.* This could be achieved by 'hierarchical non-uniform time discretization', proposed in Equations [TODO:] @Keirstead2013. In practice though, the computational cost of using small time steps may become prohibitive as it multiplies the number of decision variables. Hierarchical non-uniform time discretisation decomposes time into different levels (e.g. yearly, daily, hourly, etc.) Each level can have different intervals of varying times. The demand profile is then made up assembling these intervals in appropriate proportions. For example a week can be made up of two day types (weekday and weekend), which repeat five times and two times, respectively. These two day types are each assembled from types of hour (e.g. morning peak, evening peak and rest-of-day average). In this way, a 90 day season modelled at hourly granularity (for example) need only by represented by $3 \mbox{ hour types} \times 2 \mbox{ day types} = 6$ intervals rather than by $90 \mbox{ days} \times 24 \mbox{ hours} = 8,760$ intervals.
 
@@ -1106,7 +1120,7 @@ However, one thing that the developments above cannot do is deal with nonlinear 
 
 - One approach is to adopt 'piecewise linear modelling'. In this approach, nonlinear functions are linearised by approximating them as being made up of several linear components (Figure \ref{fig:piecewise-linear}). 
 
-- A more radical alternative is to write a fully nonlinear formulation, but to use heuristic methods to find a solution. Such methods do not necessarily result in the mathematically optimal solution, but they do get close to it, often in less time, and carry the added advantage that they do not get trapped in the 'local minima' which can exist in certain nonlinear problems. Example heuristics include genetic algorithms (GAs) which start from a population of solutions (i.e. a process mix and operation schedule), and applying random mutations to population members, and breed them with one another to generate new solutions; the solutions which perform the poorest with respect to the objective (e.g. system cost) are killed off, leaving the 'fittest' to bread a new generation. Over time, this method converges to a near-optimal solution. Other population-based heuristics include particle swarm optimsiation, leapfrog algorithsm, and. 
+- A more radical alternative is to write a fully nonlinear formulation, but to use heuristic methods to find a solution. Such methods do not necessarily result in the mathematically optimal solution, but they do get close to it, often in less time, and carry the added advantage that they do not get trapped in the 'local minima' which can exist in certain nonlinear problems. Example heuristics include genetic algorithms (GAs) which start from a population of solutions (i.e. a process mix and operation schedule), and applying random mutations to population members, and breed them with one another to generate new solutions; the solutions which perform the poorest with respect to the objective (e.g. system cost) are killed off, leaving the 'fittest' to bread a new generation. Over time, this method converges to a near-optimal solution. Other population-based heuristics include particle swarm optimsiation, leapfrog algorithm, and. 
 
 Note that these approaches only solve the issues of tractability, and the lack of generality remains because of the need to define nonlinear process behaviour. Any nonlinear formulations -- however they are solved -- would require process database to be replaced by a set of equations which represent process behaviour. This will likely require sector-specific expertise; perhaps dividing up the 202 current processes among several specialists in the fields who can write equations to model them.
 
@@ -1117,7 +1131,7 @@ Note that these approaches only solve the issues of tractability, and the lack o
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
 	\includegraphics[width=0.5\textwidth]{05_model-development/512px-Piecewise_linear_approximation.png}
 %	\end{spacing}
-	\caption{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\footnote{Image available from Wikimedia Commons: \url{https://commons.wikimedia.org/wiki/File:Piecewise_linear_approximation.svg}.}}
+	\caption{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\footnote{Image available from Wikimedia Commons: \url{https://commons.wikimedia.org/wiki/File:Piecewise_linear_approximation.svg}.}.}
 	\label{fig:piecewise-linear}
 \end{figure}
 <!--
