@@ -507,7 +507,7 @@ This thesis is built on the case that the urbanisation patterns seen around the 
 
 ### Definition of thesis title and research boundaries {#sec:title-def}
 
-Urban resource consumption is connected to many different issues, and so to provide a focussed area of research with clear novel contributions, requires defining by posing a precise research question. One way to arrive at this point is to clearly define the thesis title, which avoids the vague, unbounded meanings of words in everyday use (such as 'resources' and 'sector', amongst others):
+Urban resource consumption is connected to many different issues, and so to provide a focussed area of research with clear novel contributions, requires posing a precise research question. One way to arrive at this point is to clearly define the thesis title, to avoid the vague, unbounded meanings which many words can have in everyday use (such as 'resources' and 'sector'):
 
 \begin{description}
 
