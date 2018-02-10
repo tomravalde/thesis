@@ -79,6 +79,10 @@ A stated ambition of the SPC site redevelopment is to integrate the energy, wate
 
 The proposed energy system has been simulated [@SPC_intro] using the TRNSYS[^trnsys] to simulate the energy, system, however this does not include detailed consideration of the water and waste systems. Furthermore, the system design has not been subjected to optimisation modelling. Thus, this case study presents an opportunity to (i) model water and waste systems, alongside the energy system; (ii) to go beyond simulations by applying optimisation modelling; and (iii) to consider not just the current proposed system designs, but also those made possible when the database of Chapter 4 is considered.
 
+<!--
+Slide 20
+--->
+
 [^trnsys]: \url{http://sel.me.wisc.edu/trnsys/index.html}. TRNSYS allows users to lay out the components of an energy system (drawn from a library of thermal and electrical energy components), linking them together in a modular fashion, in order to simulate the behaviour of an overall energy system.
 
 
