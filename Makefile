@@ -101,7 +101,8 @@ update:
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_medium_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_medium_minCost.pdf ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_long_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_long_minCost.pdf ; \
 	cp /home/tr608/ImpCol/PhD/shann-gu-case-study/modelling/model/results/cluster-results/wildcard_long_minCost/plots/plot_RTN_SNA.pdf 06_case-study/SNA_wildcard_long_minCost.pdf ; \
-	cp -rf /home/tr608/ImpCol/PhD/shann-gu-case-study .
+	
+#cp -rf /home/tr608/ImpCol/PhD/shann-gu-case-study .
 
 #cp /home/tr608/ImpCol/PhD/shann-gu-case-study/paper/supInf.Rmd app-C_data.Rmd ; \
 #cat SPC-appendix-web-prefix.txt app-C_data.Rmd SPC-appendix-web-suffix.txt > app-C_data-webVersion.Rmd ; \

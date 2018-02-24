@@ -1,8 +1,23 @@
-This appendix provides further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including, summaries of the data, links to the full data sets (recorded in CSV and YAML formats), and notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement). The following sections outline the data in the order in which it was presented it in Section \ref{sec:SPC-data}. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
-<!--
-All of the above can be found from this webpage, which was written using the [Rmarkdown](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html) format before its conversion to HTML. This means R code used to summarise and manipulate the data is embedded in the [Rmarkdown source (.Rmd) of this page](supInf.Rmd). This maybe useful for those who want to study the data for themselves.
--->
+# Shann Gu Power Company cast study: data, assumptions, and calculations
 
+```{r Setup, include=FALSE, results="markup", warning=FALSE}
+library(knitr)
+
+opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, message=FALSE, warning=FALSE)
+
+library(extrafont)
+font_import(pattern="LinBiolinum")
+
+library(ggplot2)
+```
+
+This appendix provides further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including, summaries of the data, links to the full data sets (recorded in CSV and YAML formats), and notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement). The following sections outline the data in the order in which it was presented it in Section \ref{sec:SPC-data}. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
+
+The data discussed in this appendix can all be found online at the GitHub repository for this thesis[^thesis-github]. Morever, because this thesis has been written using the R-markdown format, the R code used to summarise and manipulate the data is embedded in the source of this page[^appendix-source], which maybe useful for those who want to study the data for themselves.
+
+[^thesis-github]: \url{https://github.com/tomravalde/thesis}
+
+[^appendix-source]: \url{https://github.com/tomravalde/thesis/blob/master/app-C_data.Rmd}
 
 ## Site layout
 
@@ -20,9 +35,9 @@ The case study's time steps $\mathbb{s}_t$ (seconds) given in Section 2.6.2 are 
 
 The SPC site's demands for resource management $D^{(qty)}_{rzt}$ introduced in Section [TODO:] are derived from the Shann Gu documentation, which gives demands for the following regions and time-periods:
 
-```{r data-summary, echo="FALSE"}
+```{r demands-summary}
 library("dplyr")
-demands <- read.csv("resource-demands.csv")
+demands <- read.csv("shann-gu-case-study/paper/resource-demands.csv")
 
 demands_summary <- demands %>%
   filter(value.doc!=0) %>%
