@@ -1,0 +1,8 @@
+process: CHP-steam-large_liquidFuel-500
+resources:
+     liquidFuel: -2.5
+     elec: 1
+     heat: 1
+     CO2: 0.17325
+rate: 500500
+notes:

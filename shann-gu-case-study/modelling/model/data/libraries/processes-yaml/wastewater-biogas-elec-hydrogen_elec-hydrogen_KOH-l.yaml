@@ -1,0 +1,10 @@
+process: wastewater-biogas-elec-hydrogen_elec-hydrogen_KOH-l
+resources:
+     elec: -0.3100623
+     water: -4.82109
+     hydrogen: 1
+rate:
+        wint: 2.32e-07
+        sum: 2.32e-07
+        shoulder: 2.32e-07
+notes:

@@ -1,0 +1,16 @@
+process: pipe_cold_primary_return
+inputs:
+        cold_primary_return: -1
+        elec: 0
+outputs:
+        cold_primary_return: 1
+        elec: 0
+dist_source:
+        cold_primary_return: 0
+        elec: -0.0054
+dist_dest:
+        cold_primary_return: 0
+        elec: 0
+rate: 1000
+notes:
+

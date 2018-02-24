@@ -1,0 +1,18 @@
+process: cofiring-biomass-coal-1131
+flow: 
+     coal:
+          value: -0.07714286
+     biomass:
+          value: -0.06857143
+     elec:
+          value: 1
+     heat:
+          value: 1.857143
+     water:
+          value: -0.8571429
+     CO2:
+          value: 0.185
+     ash:
+          value: 0.015
+capacity:  
+     value: 1131

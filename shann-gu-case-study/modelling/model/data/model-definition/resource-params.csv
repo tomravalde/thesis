@@ -1,0 +1,57 @@
+"resource","cost","winter_import_min","winter_import_max","winter_export_min","winter_export_max","summer_import_min","summer_import_max","summer_export_min","summer_export_max","shoulder_import_min","shoulder_import_max","shoulder_export_min","shoulder_export_max","emissions","num_zones_imports","num_zones_exports","notes","cost","currency","notes","converstion notes","cost.converted","unit.flow","exergy","emissions.random","emissions.scope.two.three"
+"heat",0.0002191057,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.6077173688,0
+"cool",0.0006951543,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.9222645951,0
+"hot_primary_feed",0.0007898364,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.8911855537,0
+"hot_primary_return",0.000162906,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.1109193994,0
+"hot_secondary_feed",0.0005705336,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.801170113,0
+"hot_secondary_return",0.0002538971,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.6286372847,0
+"cold_primary_feed",0.0008632851,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.4165789688,0
+"cold_primary_return",0.0007869988,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.280425922,0
+"cold_secondary_feed",0.0008890993,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.174941093,0
+"cold_secondary_return",0.0002921841,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.3764860397,0
+"gasNatural",0.0007296636,0,100,0,"1000",0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","5 cents/kWh","Estimated from http://shrinkthatfootprint.com/average-natural-gas-prices-compare","55.5 MJ/kg",0.78,"per kg",,0.3876714087,
+"elec",0.0007658117,0,100,0,"1000",0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","10 cents/kWh","Estimated from http://www.npr.org/sections/money/2011/10/27/141766341/the-price-of-electricity-in-your-state",,0.028,"per MJ",,0.4644957075,
+"wastewater",0.0006655962,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.4459190248,
+"waste_organic",0.0009032526,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.2853973417,
+"water",0.0006383517,0,100,0,"1000",0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","0.1 cents/gallon","http://www.nrdc.org/water/drinking/bw/chap2.asp","1 gallon = 3.79 kg of water",0.0003,"per kg",,0.5464939508,
+"waterPotable",0.0009160569,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.0370612224,
+"water_pure",0.0005168247,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.6742411433,
+"rain",0.000949519,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.2344462324,
+"waste",0.0004487641,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.1117896924,
+"gasoline",3.519907E-005,0,100,0,"1000",0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","2 USD/gallon","Estimated from http://energy.gov/eere/vehicles/fact-915-march-7-2016-average-historical-annual-gasoline-pump-price-1929-2015","3.78 L/gal, 0.75 kg/L",0.98,"per kg",,0.8472327783,
+"CO2",0.0007676893,0,0,0,"1000",0,0,0,"1000",0,0,0,"1000",,0,13,,"NA",,,,,,,0.7238466528,
+"algaeDry",0.0001256939,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",,,,,,,0.2422946212,
+"ash",0.0008912943,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.6185664386,
+"biodiesel",0.0003840543,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","2.4 USD/gallon","Estimated from http://www.afdc.energy.gov/fuels/prices.html","0.9 kg/m3 (https://www.biofuelsystems.com/specification.htm)",0.71,"per kg",,0.4254488079,
+"biomassAgriWaste",0.0001442481,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.9455941035,
+"biomass",0.0009118874,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","166 USD/tonne","https://www.irena.org/DocumentDownloads/Publications/RE_Technologies_Cost_Analysis-BIOMASS.pdf, table 5.1",,0.17,"per kg",,0.1161105859,
+"biooil",0.0008425903,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","1.03 USD/gallon","http://www.nrbp.org/pdfs/pub34.pdf, Page 3 gives 2001 price as 77 cents/gallon. Applied cumulative inflation of 34%","1.2 kg/L",0.23,"per kg",,0.3682020796,
+"butanol",8.188671E-005,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","1.03 USD/gallon","assume same as biooil","1.2 kg/L",0.23,"per kg",,0.5234634329,
+"coal",0.0002034442,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","45 USD/short ton","Estimated from https://www.quandl.com/collections/markets/coal",,0.05,"per kg",,0.541428895,
+"coke",0.0002496669,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","157 USD/tonne","http://www.eia.gov/Energyexplained/index.cfm?page=coal_prices (2013 price)",,0.157,"per kg",,0.4446773969,
+"diesel",0.0003410226,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","2.1 USD/gallon","https://www.eia.gov/petroleum/gasdiesel/","0.832 kg/L (https://en.wikipedia.org/wiki/Diesel_fuel)",0.67,"per kg",,0.5613121544,
+"digestate",0.0007575245,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"NA",,,,,,,0.3504607631,
+"DME",0.0006471866,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","1.8 USD/gallon","https://www.fuelfreedom.org/dme-poses-a-challenge-to-cng/ States DME could be cheaper than CNG, which is costs at 2 USD/gallon","1.97 kg/L",0.24,"per kg",,0.069425296,
+"ethanol",0.0006579346,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","1.46 USD/gallon","http://www.neo.ne.gov/statshtml/66.html","0.79 g/cm3 (https://pubchem.ncbi.nlm.nih.gov/compound/ethanol#section=Solubility)",0.49,"per kg",,0.4680810892,
+"fertilizer",0.0008970843,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","500 USD/ton","Estimated from http://ageconomists.com/2015/10/19/are-lower-fertilizer-prices-in-the-cards-for-2016/",,0.55,"per kg",,0.9906770883,
+"foodWaste",0.0007659365,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"NA",,,,,,,0.091214471,
+"fuelOil",0.0001072139,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","2 USD/gallon","https://www.eia.gov/petroleum/heatingoilpropane/","900 kg/m3 (https://en.wikipedia.org/wiki/Fuel_oil)",0.59,"per kg",,0.8662637174,
+"gasLandfill",0.0001336858,0,0,0,1000,0,0,0,"1000",0,0,0,"1000",,1,13,,"NA",,,,,,,0.6156138235,
+"groundWater",0.0008496436,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"Assume free",,0,,,0.5458138282,
+"hydrogen",0.0005502517,0,0,0,1000,0,0,0,"1000",0,0,0,"1000",,1,13,,"TODO","3.10 USD/kg","Asusming wind-based water electrolysis, from http://www.nrel.gov/hydrogen/production_cost_analysis.html",,3.1,"per kg",,0.1932584727,
+"liquidFuel",0.0003593956,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","2 USD/gallon","Assume gasoline","Estimated from http://energy.gov/eere/vehicles/fact-915-march-7-2016-average-historical-annual-gasoline-pump-price-1929-2015",0.98,"per kg",,0.1422161746,
+"LPG",0.0008341467,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","2.02 USD/gal","Estimated from https://www.eia.gov/dnav/pet/pet_pri_wfr_dcus_nus_w.htm",,1,"per kg",,0.1918046612,
+"manure",0.0001982855,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.4189816955,
+"metal",0.000716366,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.1687370443,
+"methane",0.0002062654,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","5 cents/kWh","assume same as natural gas","55.5 MJ/kg",0.78,"per kg",,0.6385266066,
+"methanol",0.0005600954,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","0.75 USD/gallon","https://www.methanex.com/our-business/pricing","0.79 kg/L (from http://www.sigmaaldrich.com/chemistry/solvents/methanol-center.html)",0.25,"per kg",,0.0347816807,
+"MSW",0.0005709255,0,0,0,1000,0,0,0,"1000",0,0,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.3500893256,
+"nuclearFuelSpent",0.0002596283,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"NA",,,,,,,0.1233654625,
+"oilUsed",0.0009839466,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.0923245861,
+"recyclables",0.0002478174,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.0820741048,
+"slag",0.0004831378,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.9629435248,
+"sludge",0.000697619,0,0,0,1000,0,0,0,"1000",0,0,0,"1000",,1,13,,"TODO",0,"assume waste resources are free",,0,,,0.7289460257,
+"uranium",0.0004002379,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","35 USD/lb","Estimated from http://www.indexmundi.com/commodities/?commodity=uranium&months=60",,77.78,"per kg",,0.2333657686,
+"vegWaste",0.0007079993,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"NA",,,,,,,0.5918931197,
+"waterNonPotable",0.0005528559,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO",0,"Assume free",,0,,,0.7308208274,
+"wood",0.0005494261,0,100,0,1000,0,100,0,"1000",0,100,0,"1000",,1,13,,"TODO","166 USD/tonne","https://www.irena.org/DocumentDownloads/Publications/RE_Technologies_Cost_Analysis-BIOMASS.pdf, table 5.1",,0.166,"per kg",,0.2408265451,

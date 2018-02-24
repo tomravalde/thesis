@@ -1,0 +1,10 @@
+process: CHP-decentralised-fuelCell_biomass-3
+flow: 
+     biomass:
+          value: -0.1781077
+     elec:
+          value: 1
+     heat:
+          value: 0.8449782
+capacity:  
+     value: 3

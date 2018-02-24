@@ -1,0 +1,18 @@
+process: combustion-sludgeRaw-0.00935
+flow: 
+     sludge:
+          value: -1.962081
+     gasNatural:
+          value: -0.04305109
+     elec:
+          value: 1
+     heat:
+          value: 5.069489
+     water:
+          value: -0.6983025
+     CO2:
+          value: 0.1179409
+     ash:
+          value: 0.1984127
+capacity:  
+     value: 0.00935

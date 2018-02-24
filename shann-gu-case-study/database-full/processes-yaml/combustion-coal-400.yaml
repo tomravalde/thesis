@@ -1,0 +1,10 @@
+process: combustion-coal-400
+resources:
+     coal: -0.1212121
+     elec: 1
+     heat: 2.030303
+     water: -0.8666667
+     CO2: 0.280303
+     ash: 0.01212121
+rate: 400
+notes:

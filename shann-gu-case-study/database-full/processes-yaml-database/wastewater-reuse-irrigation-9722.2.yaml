@@ -1,0 +1,11 @@
+process: wastewater-reuse-irrigation-9722.2
+flow: 
+     wastewater:
+          value: -1
+     elec:
+          value: -0.01044
+
+     waterIrrigation:
+          value: -1
+capacity:  
+     value: 9722.2

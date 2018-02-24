@@ -1,0 +1,16 @@
+process: biogas-MSW-4.439
+flow: 
+     MSW:
+          value: -1
+     methane:
+          value: 0.222
+     heat:
+          value: -0.288
+     elec:
+          value: -0.144
+     CO2:
+          value: 0.339
+     digestate:
+          value: 0.3
+capacity:  
+     value: 4.439

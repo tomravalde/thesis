@@ -1,0 +1,6 @@
+process: heatPump-GSHP-ground-radAndDHW-13
+resources:
+     elec: -0.4166667
+     heat: 1
+rate: 13
+notes:

@@ -1,0 +1,8 @@
+process: nuclear-directUseSpentFuel-7900
+resources:
+     uranium: -5.213611e-06
+     elec: 1
+     nuclearFuelSpent: 6.858333e-07
+     water: -0.8486111
+rate: 7900
+notes:

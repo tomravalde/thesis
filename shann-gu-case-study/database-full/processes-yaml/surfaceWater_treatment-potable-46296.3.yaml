@@ -1,0 +1,7 @@
+process: surfaceWater_treatment-potable-46296.3
+resources:
+     surfaceWater: -1
+     elec: -9e-04
+     waterPotable: 1
+rate: 46296.3
+notes:

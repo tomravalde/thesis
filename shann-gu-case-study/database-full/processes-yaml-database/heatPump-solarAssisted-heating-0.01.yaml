@@ -1,0 +1,10 @@
+process: heatPump-solarAssisted-heating-0.01
+flow: 
+     solar:
+          value: -0.0006209524
+     elec:
+          value: -7.857619e-06
+     heat:
+          value: 1
+capacity:  
+     value: 0.01

@@ -1,0 +1,12 @@
+Shann Gu case study
+
+ShannGu-0.2.0 (XX XX XX)
+================================
+
+* Added data, formulation and code to build the GAMS script and to process results.
+* Added databases of literature, and code to analyse the literature contents
+
+ShannGu-0.1.0 (16 November 2015)
+================================
+
+* Initial version of the repository.

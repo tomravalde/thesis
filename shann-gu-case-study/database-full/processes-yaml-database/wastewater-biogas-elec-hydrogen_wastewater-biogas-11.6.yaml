@@ -1,0 +1,12 @@
+process: wastewater-biogas-elec-hydrogen_wastewater-biogas-11.6
+flow: 
+     wastewater:
+          value: -1
+     heat:
+          value: -0.03301724
+     elec:
+          value: -0.05965517
+     biogas:
+          value: 0.007433621
+capacity:  
+     value: 11.6

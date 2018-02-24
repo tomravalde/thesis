@@ -1,0 +1,14 @@
+process: microalgae-biodiesel-l
+resources:
+     algaeDry: -5.617978
+     elec: -22.92135
+     heat: -26.51685
+     biodiesel: 1
+     digestate: 1.741573
+     CO2: 2.292135
+     methane: 4.511236
+rate:
+        wint: 3.17
+        sum: 3.17
+        shoulder: 3.17
+notes:

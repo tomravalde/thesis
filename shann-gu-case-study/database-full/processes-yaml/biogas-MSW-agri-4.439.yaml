@@ -1,0 +1,10 @@
+process: biogas-MSW-agri-4.439
+resources:
+     biomassAgriWaste: -1
+     heat: -0.288
+     elec: -0.144
+     methane: 0.29
+     CO2: 0.4356
+     digestate: 0.3
+rate: 4.439
+notes:

@@ -1,0 +1,10 @@
+process: desalination-ReverseOsmosis-2.3148
+flow: 
+     seawater:
+          value: 3
+     water:
+          value: 1
+     elec:
+          value: 0.0144
+capacity:  
+     value: 2.3148

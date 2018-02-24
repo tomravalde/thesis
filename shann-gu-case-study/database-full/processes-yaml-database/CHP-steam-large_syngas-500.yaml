@@ -1,0 +1,12 @@
+process: CHP-steam-large_syngas-500
+flow: 
+     syngas:
+          value: -0.09325
+     elec:
+          value: 1
+     heat:
+          value: 1
+     CO2:
+          value: 0.170825
+capacity:  
+     value: 500500

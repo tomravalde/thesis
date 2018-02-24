@@ -1,0 +1,10 @@
+process: elecplant-coal-10
+resources:
+     coal: -0.1012658
+     elec: 1
+     heat: 1.56962
+     water: -0.8670886
+     CO2: 0.2341772
+     ash: 0.01012658
+rate: 10
+notes:

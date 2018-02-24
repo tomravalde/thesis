@@ -1,0 +1,7 @@
+process: leachateTreatment-electrodyalysis-13.89
+resources:
+     leachate: -1
+     elec: 0.162
+     effluent: 1
+rate: 13.89
+notes:

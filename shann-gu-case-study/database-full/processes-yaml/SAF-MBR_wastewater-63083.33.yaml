@@ -1,0 +1,8 @@
+process: SAF-MBR_wastewater-63083.33
+resources:
+     wastewater: -1
+     elec: -0.0001692
+     methane: 1.59e-05
+     effluent: 1
+rate: 63083.33
+notes:

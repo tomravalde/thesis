@@ -1,0 +1,8 @@
+process: gasification-biomass-methanol-backPressure-0.52
+resources:
+     biomass: -3.089996
+     water: -1.544998
+     methanol: 1
+     elec: 3.167246
+rate: 0.52
+notes:

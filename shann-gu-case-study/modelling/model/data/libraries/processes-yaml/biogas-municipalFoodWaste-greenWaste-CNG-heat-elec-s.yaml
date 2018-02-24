@@ -1,0 +1,13 @@
+process: biogas-municipalFoodWaste-greenWaste-CNG-heat-elec-s
+resources:
+     elec: 0
+     heat: 0.07826087
+     biogas: 0.0001289565
+     CNG: 0.1509565
+     MSW: -1
+     digestate: 0.3
+rate:
+        wint: 0.254
+        sum: 0.254
+        shoulder: 0.254
+notes:

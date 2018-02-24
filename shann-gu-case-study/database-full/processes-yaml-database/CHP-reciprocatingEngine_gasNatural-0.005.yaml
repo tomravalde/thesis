@@ -1,0 +1,12 @@
+process: CHP-reciprocatingEngine_gasNatural-0.005
+flow: 
+     gasNatural:
+          value: -0.05488235
+     elec:
+          value: 1
+     heat:
+          value: 1.308824
+     CO2:
+          value: 0.1502941
+capacity:  
+     value: 0.005

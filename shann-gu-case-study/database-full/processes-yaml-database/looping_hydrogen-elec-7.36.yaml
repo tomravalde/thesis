@@ -1,0 +1,16 @@
+process: looping_hydrogen-elec-7.36
+flow: 
+     coal:
+          value: -0.1429544
+     water:
+          value: -0.4695772
+     elec:
+          value: 1
+     hydrogen:
+          value: 0.00599437
+     CO2:
+          value: 1.37803e-05
+     ash:
+          value: 0.01429476
+capacity:  
+     value: 7.36

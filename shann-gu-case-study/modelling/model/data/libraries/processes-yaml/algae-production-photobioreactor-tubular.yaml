@@ -1,0 +1,11 @@
+process: algae-production-photobioreactor-tubular
+resources:
+     algae: 1
+     water: -178.485
+     elec: -158.958
+     CO2: -1.8
+rate:
+        wint: 2.95e-06
+        sum: 2.95e-06
+        shoulder: 2.95e-06
+notes:

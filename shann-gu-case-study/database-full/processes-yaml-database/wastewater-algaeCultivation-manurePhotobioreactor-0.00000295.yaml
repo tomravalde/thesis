@@ -1,0 +1,14 @@
+process: wastewater-algaeCultivation-manurePhotobioreactor-0.00000295
+flow: 
+     manure:
+          value: -242.4242
+     fuel:
+          value: -27.27273
+     algae:
+          value: 1
+     CO2:
+          value: -15.15152
+     wastewater:
+          value: -121.2121
+capacity:  
+     value: 0.00000295

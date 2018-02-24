@@ -1,0 +1,9 @@
+process: biomass-hydrogen-electrochemically-assisted-process-0.2913
+resources:
+     biomass: -90.56
+     elec: 23.112
+     hydrogen: 1
+     CO2: 12.39
+     methane: 0.54
+rate: 0.2913
+notes:

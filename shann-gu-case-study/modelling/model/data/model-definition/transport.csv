@@ -1,0 +1,53 @@
+"process","resource","rate_min","rate_max","cost_rand","cost_rand_alt","cost_rand_alt_freeRoad","cost_rand_alt_freeRoad_high","reference","cost.note","cost.per.km","currency","USD.per.km"
+"pipe_gas","gasNatural",0,1000,12.2931119986,0.4669705614,46.69705614,0.4669705614,"http://ac.els-cdn.com/S0961953412000232/1-s2.0-S0961953412000232-main.pdf?_tid=19a3fdae-ec2c-11e5-aada-00000aab0f01&acdnat=1458211165_1cd3eeac4d5e1e81de20487f5e419c79, Table 5","Gas network cost",150000,"GBP",215198
+"pipe_hot_primary_feed","hot_primary_feed",0,1000,94.5647880901,8.5798589468,857.98589468,8.5798589468,,"District heat network cost",350000,"GBP",502128
+"pipe_hot_primary_return","hot_primary_return",0,1000,47.9876654223,4.7836280646,478.36280646,4.7836280646,,"District heat network cost",350000,"GBP",502128
+"pipe_hot_secondary_feed","hot_secondary_feed",0,1000,43.2418200187,1.979020125,197.9020125,1.979020125,,"District heat network cost",350000,"GBP",502128
+"pipe_hot_secondary_return","hot_secondary_return",0,1000,61.5167094162,9.9559701466,995.59701466,9.9559701466,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_primary_feed","cold_primary_feed",0,1000,51.3716623187,2.1903100186,219.03100186,2.1903100186,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_primary_return","cold_primary_return",0,1000,18.5151274083,4.5283716827,452.83716827,4.5283716827,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_secondary_feed","cold_secondary_feed",0,1000,42.850135779,6.1714090929,617.14090929,6.1714090929,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_secondary_return","cold_secondary_return",0,1000,23.2434052508,2.2253505506,222.53505506,2.2253505506,,"District heat network cost",350000,"GBP",502128
+"cable","elec",0,5000,36.6244084435,5.8550346244,585.50346244,5.8550346244,"http://ac.els-cdn.com/S0961953412000232/1-s2.0-S0961953412000232-main.pdf?_tid=19a3fdae-ec2c-11e5-aada-00000aab0f01&acdnat=1458211165_1cd3eeac4d5e1e81de20487f5e419c79, Table 5","Electricity network cost",80000,"GBP",114772
+"pipe_wastewater","wastewater",0,1000,57.8673576238,4.3806979377,438.06979377,4.3806979377,,"Gas network cost",150000,"GBP",215198
+"pipe_water","water_reclaimed",0,1000,76.5017149271,4.8967610136,489.67610136,4.8967610136,,"Gas network cost",150000,"GBP",215198
+"pipe_waterPotable","waterPotable",0,1000,63.1538615795,8.9940525105,899.40525105,8.9940525105,,"Gas network cost",150000,"GBP",215198
+"pipe_water_pure","water_pure",0,1000,28.7837609649,2.9018742142,290.18742142,2.9018742142,,"Gas network cost",150000,"GBP",215198
+"road_wasteOrganic","waste_organic",0,1000,0,3.3099518824,0,0,,,,,0
+"road_algaeDry","algaeDry",0,1000,0,1.3795617507,0,0,,,,,0
+"road_ash","ash",0,1000,0,9.2077639049,0,0,,,,,0
+"road_biodiesel","biodiesel",0,1000,0,9.7152213581,0,0,,,,,0
+"road_biomassAgriWaste","biomassAgriWaste",0,1000,0,6.6695911528,0,0,,,,,0
+"road_biomass","biomass",0,1000,0,5.4359559648,0,0,,,,,0
+"road_biooil","biooil",0,1000,0,4.5634250536,0,0,,,,,0
+"road_butanol","butanol",0,1000,0,2.8470463474,0,0,,,,,0
+"road_coal","coal",0,1000,0,5.9189318961,0,0,,,,,0
+"road_coke","coke",0,1000,0,9.2467987658,0,0,,,,,0
+"road_diesel","diesel",0,1000,0,4.8363833973,0,0,,,,,0
+"road_digestate","digestate",0,1000,0,4.5250769168,0,0,,,,,0
+"road_DME","DME",0,1000,0,7.8116364377,0,0,,,,,0
+"road_ethanol","ethanol",0,1000,0,6.9713181221,0,0,,,,,0
+"road_fertilizer","fertilizer",0,1000,0,4.1695269211,0,0,,,,,0
+"road_foodWaste","foodWaste",0,1000,0,2.692067799,0,0,,,,,0
+"road_fuelOil","fuelOil",0,1000,0,3.3549231927,0,0,,,,,0
+"pipe_gasLandfill","gasLandfill",0,1000,63.0889909342,2.0771504421,207.71504421,2.0771504421,,"Gas network cost",150000,"GBP",215198
+"road_gasoline","gasoline",0,1000,0,7.2827562494,0,0,,,,,0
+"pipe_groundWater","groundWater",0,1000,69.2378748208,3.0563154225,305.63154225,3.0563154225,,"Gas network cost",150000,"GBP",215198
+"road_hydrogen","hydrogen",0,1000,0,2.7285039443,0,0,,,,,0
+"road_liquidFuel","liquidFuel",0,1000,0,8.8053015134,0,0,,,,,0
+"road_LPG","LPG",0,1000,0,4.1287295794,0,0,,,,,0
+"road_manure","manure",0,1000,0,7.2712509904,0,0,,,,,0
+"road_metal","metal",0,1000,0,8.4927021384,0,0,,,,,0
+"pipe_methane","methane",0,1000,14.254412055,7.1143290952,711.43290952,7.1143290952,,"Gas network cost",150000,"GBP",215198
+"road_methanol","methanol",0,1000,0,2.7999434253,0,0,,,,,0
+"road_MSW","MSW",0,1000,0,5.0540198432,0,0,,,,,0
+"road_nuclearFuelSpent","nuclearFuelSpent",0,1000,0,5.5884815418,0,0,,,,,0
+"road_oilUsed","oilUsed",0,1000,0,5.9458982631,0,0,,,,,0
+"road_recyclables","recyclables",0,1000,0,9.9876039531,0,0,,,,,0
+"road_slag","slag",0,1000,0,4.7871599943,0,0,,,,,0
+"road_sludge","sludge",0,1000,0,7.1195526493,0,0,,,,,0
+"road_uranium","uranium",0,1000,0,8.1186503792,0,0,,,,,0
+"road_vegWaste","vegWaste",0,1000,0,8.0659936093,0,0,,,,,0
+"road_waste","waste",0,1000,0,9.3479795162,0,0,,,,,0
+"pipe_waterNonPotable","waterNonPotable",0,1000,77.3188705323,6.5457808884,654.57808884,6.5457808884,,"Gas network cost",150000,"GBP",215198
+"road_wood","wood",0,1000,0,2.9605267579,0,0,,,,,0

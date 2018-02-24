@@ -1,0 +1,14 @@
+process: district-cogen-heating-230
+flow: 
+     fuel:
+          value: -1.666667
+     elec:
+          value: 0.4166667
+     water:
+          value: -0.1956667
+     heat:
+          value: 1
+     CO2:
+          value: 0.1576667
+capacity:  
+     value: 230

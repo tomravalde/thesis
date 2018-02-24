@@ -1,0 +1,10 @@
+process: landfill_ShannGu
+resources:
+     waste: -1
+     CO2: 0.3
+     gasLandfill: 0.0013
+rate:
+        wint: 0
+        sum: 1
+        shoulder: 1
+notes: "EMISSIONS -- http://www.afvalzorg.nl/Libraries/Publications_Methane_emissions/Paper_accounting_of_greenhouse_gases_from_landfills.sflb.ashx -- 300 kg of CO2eq from conventional landfilling. LEACHATE -- http://www.worldbank.org/urban/solid_wm/erm/CWG%20folder/uwp5.pdfi -- Use simple model, that leachate = rainfall - evapotranspiration, and for now, assume evapotranspiration = 50% of the rainfall; for calculations requiring density of waste: http://www.uic.edu/classes/cemm/cemmlab/29-2-2009.pdf. GASLANDFILL (METHANE) https://www.clarke-energy.com/landfill-gas/, "

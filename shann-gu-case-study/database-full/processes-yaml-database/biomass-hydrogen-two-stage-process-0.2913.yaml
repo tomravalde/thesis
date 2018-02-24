@@ -1,0 +1,14 @@
+process: biomass-hydrogen-two-stage-process-0.2913
+flow: 
+     biomass:
+          value: -93.09
+     elec:
+          value: -13.752
+     hydrogen:
+          value: 1
+     CO2:
+          value: 13.04
+     methane:
+          value: 0.45
+capacity:  
+     value: 0.2913

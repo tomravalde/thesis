@@ -1,0 +1,12 @@
+process: distributed-fuelCells-cogen-0.05
+flow: 
+     hydrogen:
+          value: -0.0175
+     elec:
+          value: 1
+     heat:
+          value: 1.125
+     waterHot:
+          value: 0.139
+capacity:  
+     value: 0.05

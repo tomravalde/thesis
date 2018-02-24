@@ -1,0 +1,6 @@
+process: heatPump-ASHP-twoStage-screedFloor-13
+resources:
+     elec: -0.4347826
+     heat: 1
+rate: 13
+notes:

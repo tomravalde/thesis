@@ -1,0 +1,12 @@
+process: gasification_sludge-l
+resources:
+     sludge: -0.6880952
+     heat: 0.002380952
+     elec: 1
+     water: -0.4761905
+     slag: 0.0006904762
+rate:
+        wint: 2.85
+        sum: 2.85
+        shoulder: 2.85
+notes:

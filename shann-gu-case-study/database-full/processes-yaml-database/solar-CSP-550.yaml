@@ -1,0 +1,10 @@
+process: solar-CSP-550
+flow: 
+     solar:
+          value: -7.042254
+     elec:
+          value: 1
+     water:
+          value: -0.06566901
+capacity:  
+     value: 550

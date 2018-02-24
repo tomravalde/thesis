@@ -1,0 +1,9 @@
+process: solar-to-hydrogen_thermochemical
+resources:
+     solar: -315.4574
+     hydrogen: 1
+     water: -1.786751
+rate:
+        sum: 41
+        shoulder: 41
+notes:

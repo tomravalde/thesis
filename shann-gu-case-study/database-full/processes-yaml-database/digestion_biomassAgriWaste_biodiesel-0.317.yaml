@@ -1,0 +1,12 @@
+process: digestion_biomassAgriWaste_biodiesel-0.317
+flow: 
+     biomassAgriWaste:
+          value: -25.78306
+     biodiesel:
+          value: 1
+     elec:
+          value: 10.07723
+     heat:
+          value: 13.26684
+capacity:  
+     value: 0.317

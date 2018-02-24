@@ -1,0 +1,7 @@
+process: desalination-ReverseOsmosis-9259.259
+resources:
+     seawater: 3
+     water: 1
+     elec: 0.0144
+rate: 9259.259
+notes:

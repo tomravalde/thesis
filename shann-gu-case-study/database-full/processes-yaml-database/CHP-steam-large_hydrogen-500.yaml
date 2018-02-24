@@ -1,0 +1,12 @@
+process: CHP-steam-large_hydrogen-500
+flow: 
+     hydrogen:
+          value: -0.0176
+     elec:
+          value: 1
+     heat:
+          value: 1
+     waterNonPotable:
+          value: 0.3475
+capacity:  
+     value: 500500

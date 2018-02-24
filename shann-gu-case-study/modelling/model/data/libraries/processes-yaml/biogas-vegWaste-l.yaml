@@ -1,0 +1,11 @@
+process: biogas-vegWaste-l
+resources:
+     vegWaste: -5.075884
+     methane: 1
+     CO2: 1.624131
+     digestate: 1.522765
+rate:
+        wint: 0.254
+        sum: 0.254
+        shoulder: 0.254
+notes:

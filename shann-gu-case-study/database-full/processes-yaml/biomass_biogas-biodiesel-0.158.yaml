@@ -1,0 +1,10 @@
+process: biomass_biogas-biodiesel-0.158
+resources:
+     biomass: -2.018464
+     water: -0.2112154
+     wastewater: 0.2112154
+     biodiesel: 1
+     ethanol: 0.2434058
+     heat: -5.037983
+rate: 0.158
+notes:

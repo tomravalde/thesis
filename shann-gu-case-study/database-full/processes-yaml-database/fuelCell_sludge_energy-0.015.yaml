@@ -1,0 +1,10 @@
+process: fuelCell_sludge_energy-0.015
+flow: 
+     sludge:
+          value: -160.5652
+     elec:
+          value: 1
+     methane:
+          value: 0.2231856
+capacity:  
+     value: 0.015

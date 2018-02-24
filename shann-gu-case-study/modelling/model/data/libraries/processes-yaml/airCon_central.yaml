@@ -1,0 +1,9 @@
+process: airCon_central
+resources:
+        elec: -23.9
+        cool: 1
+rate:
+        sum: 0.025
+        wint: 0
+        shoulder: 0
+notes:

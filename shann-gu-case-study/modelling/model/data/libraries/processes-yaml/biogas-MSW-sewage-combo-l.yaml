@@ -1,0 +1,14 @@
+process: biogas-MSW-sewage-combo-l
+resources:
+     MSW: -1
+     wastewater: -1
+     methane: 0.09524138
+     heat: -0.576
+     elec: -0.288
+     CO2: 0.1453103
+     digestate: 0.6
+rate:
+        wint: 4.439
+        sum: 4.439
+        shoulder: 4.439
+notes:

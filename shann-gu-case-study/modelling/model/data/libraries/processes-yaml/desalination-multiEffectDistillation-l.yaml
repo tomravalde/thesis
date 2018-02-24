@@ -1,0 +1,11 @@
+process: desalination-multiEffectDistillation-l
+resources:
+     seawater: -3
+     water: 1
+     elec: 0.0072
+     heat: 0.32
+rate:
+        wint: 9259.259
+        sum: 9259.259
+        shoulder: 9259.259
+notes:

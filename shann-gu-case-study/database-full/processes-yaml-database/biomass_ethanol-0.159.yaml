@@ -1,0 +1,16 @@
+process: biomass_ethanol-0.159
+flow: 
+     biomass:
+          value: -4.157161
+     ethanol:
+          value: 1
+     heat:
+          value: -2.95057
+     elec:
+          value: -0.7376426
+     water:
+          value: -0.7338403
+     wastewater:
+          value: 0.7338403
+capacity:  
+     value: 0.159

@@ -1,0 +1,12 @@
+process: review-methanogenic-digestion-0.122
+flow: 
+     biomass:
+          value: -3.861153
+     methane:
+          value: 1
+     heat:
+          value: -1.112012
+     digestate:
+          value: 1.158346
+capacity:  
+     value: 0.122

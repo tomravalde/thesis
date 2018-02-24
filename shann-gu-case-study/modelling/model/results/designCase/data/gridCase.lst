@@ -1,0 +1,1783 @@
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 1
+Fast RTN
+C o m p i l a t i o n
+
+
+   2   
+      This model calculates the optimal provision of
+      resource conversion technologies and
+      networks in order to meet a pattern of demands.
+       
+      This version optimises across two steady
+      state periods: summer and winter
+      	
+      Version 0.1
+      27 Feb 2014 
+      (Based on RTN 0.4.0 by Dr Nouri Samsatli, Dr James Keirstead, Prof Nilay Shah
+      Urban Energy Systems Project
+      Imperial College London
+      www.imperial.ac.uk/urbanenergysystems
+  18   
+  19  * Options
+  26  SETS
+  27  T times
+  28  /
+  29  wint
+  30  sum
+  31  shoulder
+  32  /;
+  33  SETS
+  34  R resources
+  35  /
+  36  algae
+  37  algaeDry
+  38  ash
+  39  biodiesel
+  40  biogas
+  41  biomass
+  42  biomassAgriWaste
+  43  biooil
+  44  butanol
+  45  CNG
+  46  CO2
+  47  coal
+  48  coke
+  49  cold_primary_feed
+  50  cold_primary_return
+  51  cold_secondary_feed
+  52  cold_secondary_return
+  53  cool
+  54  diesel
+  55  digestate
+  56  DME
+  57  elec
+  58  ethanol
+  59  fertilizer
+  60  foodWaste
+  61  fuel
+  62  fuelOil
+  63  gasLandfill
+  64  gasNatural
+  65  gasoline
+  66  groundWater
+  67  heat
+  68  hot_primary_feed
+  69  hot_primary_return
+  70  hot_secondary_feed
+  71  hot_secondary_return
+  72  hydrogen
+  73  leachate
+  74  liquidFuel
+  75  LPG
+  76  manure
+  77  metal
+  78  methane
+  79  methanol
+  80  MSW
+  81  nuclearFuelSpent
+  82  oilUsed
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 2
+Fast RTN
+C o m p i l a t i o n
+
+
+  83  ozone
+  84  propane
+  85  rain
+  86  recyclables
+  87  seawater
+  88  slag
+  89  sludge
+  90  solar
+  91  uranium
+  92  vegWaste
+  93  waste_organic
+  94  waste
+  95  wastewater
+  96  water_pure
+  97  water
+  98  waterBrackish
+  99  waterIrrigation
+ 100  waterNonPotable
+ 101  waterPotable
+ 102  wind
+ 103  wood
+ 104  /;
+ 105  SETS
+ 106  Q qualities
+ 107  /
+ 108  mass
+ 109  energy
+ 110  /;
+ 111  SETS
+ 112  P processes
+ 113  /
+ 114  airCon_central
+ 115  airCon_split
+ 116  boiler_domestic
+ 117  /;
+ 118  SETS
+ 119  Z zones
+ 120  /
+ 121  dormitories
+ 122  energyIsland
+ 123  factory
+ 124  factory_assembly
+ 125  factory_blades
+ 126  hospital
+ 127  multifunction
+ 128  northDistrict
+ 129  quality
+ 130  reserved
+ 131  residential
+ 132  school
+ 133  tech
+ 134  /;
+ 135  ALIAS(Z,ZZ);
+ 136  SETS
+ 137  nb(Z,ZZ);
+ 138  nb('factory_assembly','factory') = yes;
+ 139  nb('northDistrict','factory') = yes;
+ 140  nb('multifunction','northDistrict') = yes;
+ 141  nb('factory_blades','northDistrict') = yes;
+ 142  nb('tech','northDistrict') = yes;
+ 143  nb('quality','northDistrict') = yes;
+ 144  nb('dormitories','northDistrict') = yes;
+ 145  nb('residential','northDistrict') = yes;
+ 146  nb('energyIsland','northDistrict') = yes;
+ 147  nb('hospital','residential') = yes;
+ 148  nb('school','residential') = yes;
+ 149  nb('reserved','residential') = yes;
+ 150  nb(Z,ZZ)$nb(ZZ,Z) = yes;
+ 151  SETS
+ 152  TT transport technologies
+ 153  /
+ 154  pipe_gas
+ 155  cable
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 3
+Fast RTN
+C o m p i l a t i o n
+
+
+ 156  pipe_wastewater
+ 157  pipe_waterPotable
+ 158  road_coal
+ 159  /;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/options-long.gms
+ 161  option limrow = 0;
+ 162  option limcol = 0;
+ 163  option solprint = off;
+ 164  option decimals = 8;
+ 165  option optcr = 0.3;
+ 166  option reslim = 1000;
+ 167   
+ 168  PARAMETER
+ 169  demand_quality(R,Q,T,Z)
+ 170  /
+ 171  heat .energy .wint .factory 6
+ 172  heat .energy .shoulder .factory 3
+ 173  elec .energy .wint .factory 12.75
+ 174  elec .energy .sum .factory 12.75
+ 175  elec .energy .shoulder .factory 12.75
+ 176  waterPotable .mass .wint .factory 4.44
+ 177  waterPotable .mass .sum .factory 4.44
+ 178  waterPotable .mass .shoulder .factory 4.44
+ 179  wastewater .mass .wint .factory -4.63
+ 180  wastewater .mass .sum .factory -4.63
+ 181  wastewater .mass .shoulder .factory -4.63
+ 182  waste .mass .wint .factory -0.003
+ 183  waste .mass .sum .factory -0.003
+ 184  waste .mass .shoulder .factory -0.003
+ 185  waste_organic .mass .wint .factory -0.004
+ 186  waste_organic .mass .sum .factory -0.004
+ 187  waste_organic .mass .shoulder .factory -0.004
+ 188  waterNonPotable .mass .wint .factory 2.31
+ 189  waterNonPotable .mass .sum .factory 2.31
+ 190  waterNonPotable .mass .shoulder .factory 2.31
+ 191  heat .energy .wint .factory_assembly 5.6
+ 192  heat .energy .shoulder .factory_assembly 2.8
+ 193  cool .energy .sum .factory_assembly 1.985
+ 194  waterPotable .mass .wint .northDistrict 5.07
+ 195  waterPotable .mass .sum .northDistrict 5.07
+ 196  waterPotable .mass .shoulder .northDistrict 5.07
+ 197  wastewater .mass .wint .northDistrict -4.63
+ 198  wastewater .mass .sum .northDistrict -4.63
+ 199  wastewater .mass .shoulder .northDistrict -4.63
+ 200  waste .mass .wint .northDistrict -0.003
+ 201  waste .mass .sum .northDistrict -0.003
+ 202  waste .mass .shoulder .northDistrict -0.003
+ 203  waste_organic .mass .wint .northDistrict -0.004
+ 204  waste_organic .mass .sum .northDistrict -0.004
+ 205  waste_organic .mass .shoulder .northDistrict -0.004
+ 206  waterNonPotable .mass .wint .northDistrict 2.31
+ 207  waterNonPotable .mass .sum .northDistrict 2.31
+ 208  waterNonPotable .mass .shoulder .northDistrict 2.31
+ 209  cool .energy .sum .multifunction 0.304
+ 210  cool .energy .sum .factory_blades 0.4
+ 211  cool .energy .sum .tech 0.4
+ 212  cool .energy .sum .quality 0.288
+ 213  cool .energy .sum .dormitories 0.94
+ 214  heat .energy .wint .residential 13.22
+ 215  cool .energy .sum .residential 17.28
+ 216  elec .energy .wint .residential 6.85
+ 217  elec .energy .sum .residential 6.85
+ 218  elec .energy .shoulder .residential 6.85
+ 219  waterPotable .mass .wint .residential 10.6
+ 220  waterPotable .mass .sum .residential 10.6
+ 221  waterPotable .mass .shoulder .residential 10.6
+ 222  wastewater .mass .wint .residential -4.63
+ 223  wastewater .mass .sum .residential -4.63
+ 224  wastewater .mass .shoulder .residential -4.63
+ 225  waste .mass .wint .residential -0.003
+ 226  waste .mass .sum .residential -0.003
+ 227  waste .mass .shoulder .residential -0.003
+ 228  waste_organic .mass .wint .residential -0.004
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 4
+Fast RTN
+C o m p i l a t i o n
+
+
+ 229  waste_organic .mass .sum .residential -0.004
+ 230  waste_organic .mass .shoulder .residential -0.004
+ 231  waterNonPotable .mass .wint .residential 2.31
+ 232  waterNonPotable .mass .sum .residential 2.31
+ 233  waterNonPotable .mass .shoulder .residential 2.31
+ 234  heat .energy .shoulder .hospital 6.61
+ 235  cool .energy .sum .hospital 0.272
+ 236  cool .energy .sum .school 0.73
+ 237  heat .energy .wint .energyIsland 0.05
+ 238  heat .energy .shoulder .energyIsland 0.025
+ 239  cool .energy .sum .energyIsland 0.1
+ 240  heat .energy .wint .reserved 2.4
+ 241  heat .energy .shoulder .reserved 1.2
+ 242  /;
+ 243  PARAMETER
+ 244  demand_quantity(R,T,Z)
+ 245  /
+ 246  heat .wint .factory 6
+ 247  heat .shoulder .factory 3
+ 248  elec .wint .factory 12.75
+ 249  elec .sum .factory 12.75
+ 250  elec .shoulder .factory 12.75
+ 251  waterPotable .wint .factory 4.44
+ 252  waterPotable .sum .factory 4.44
+ 253  waterPotable .shoulder .factory 4.44
+ 254  wastewater .wint .factory -4.63
+ 255  wastewater .sum .factory -4.63
+ 256  wastewater .shoulder .factory -4.63
+ 257  waste .wint .factory -0.003
+ 258  waste .sum .factory -0.003
+ 259  waste .shoulder .factory -0.003
+ 260  waste_organic .wint .factory -0.004
+ 261  waste_organic .sum .factory -0.004
+ 262  waste_organic .shoulder .factory -0.004
+ 263  waterNonPotable .wint .factory 2.31
+ 264  waterNonPotable .sum .factory 2.31
+ 265  waterNonPotable .shoulder .factory 2.31
+ 266  heat .wint .factory_assembly 5.6
+ 267  heat .shoulder .factory_assembly 2.8
+ 268  cool .sum .factory_assembly 1.985
+ 269  waterPotable .wint .northDistrict 5.07
+ 270  waterPotable .sum .northDistrict 5.07
+ 271  waterPotable .shoulder .northDistrict 5.07
+ 272  wastewater .wint .northDistrict -4.63
+ 273  wastewater .sum .northDistrict -4.63
+ 274  wastewater .shoulder .northDistrict -4.63
+ 275  waste .wint .northDistrict -0.003
+ 276  waste .sum .northDistrict -0.003
+ 277  waste .shoulder .northDistrict -0.003
+ 278  waste_organic .wint .northDistrict -0.004
+ 279  waste_organic .sum .northDistrict -0.004
+ 280  waste_organic .shoulder .northDistrict -0.004
+ 281  waterNonPotable .wint .northDistrict 2.31
+ 282  waterNonPotable .sum .northDistrict 2.31
+ 283  waterNonPotable .shoulder .northDistrict 2.31
+ 284  cool .sum .multifunction 0.304
+ 285  cool .sum .factory_blades 0.4
+ 286  cool .sum .tech 0.4
+ 287  cool .sum .quality 0.288
+ 288  cool .sum .dormitories 0.94
+ 289  heat .wint .residential 13.22
+ 290  cool .sum .residential 17.28
+ 291  elec .wint .residential 6.85
+ 292  elec .sum .residential 6.85
+ 293  elec .shoulder .residential 6.85
+ 294  waterPotable .wint .residential 10.6
+ 295  waterPotable .sum .residential 10.6
+ 296  waterPotable .shoulder .residential 10.6
+ 297  wastewater .wint .residential -4.63
+ 298  wastewater .sum .residential -4.63
+ 299  wastewater .shoulder .residential -4.63
+ 300  waste .wint .residential -0.003
+ 301  waste .sum .residential -0.003
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 5
+Fast RTN
+C o m p i l a t i o n
+
+
+ 302  waste .shoulder .residential -0.003
+ 303  waste_organic .wint .residential -0.004
+ 304  waste_organic .sum .residential -0.004
+ 305  waste_organic .shoulder .residential -0.004
+ 306  waterNonPotable .wint .residential 2.31
+ 307  waterNonPotable .sum .residential 2.31
+ 308  waterNonPotable .shoulder .residential 2.31
+ 309  heat .shoulder .hospital 6.61
+ 310  cool .sum .hospital 0.272
+ 311  cool .sum .school 0.73
+ 312  heat .wint .energyIsland 0.05
+ 313  heat .shoulder .energyIsland 0.025
+ 314  cool .sum .energyIsland 0.1
+ 315  heat .wint .reserved 2.4
+ 316  heat .shoulder .reserved 1.2
+ 317  /;
+ 318  PARAMETER
+ 319  span(T)
+ 320  /
+ 321  wint 7776000
+ 322  sum 7776000
+ 323  shoulder 15552000
+ 324  /;
+ 325  PARAMETER
+ 326  length(Z,ZZ);
+ 327  length('factory_assembly', 'factory') = 0.5;
+ 328  length('factory', 'factory_assembly') = 0.5;
+ 329  length('northDistrict', 'factory') = 0.9;
+ 330  length('factory', 'northDistrict') = 0.9;
+ 331  length('multifunction', 'northDistrict') = 0.5;
+ 332  length('northDistrict', 'multifunction') = 0.5;
+ 333  length('factory_blades', 'northDistrict') = 0.5;
+ 334  length('northDistrict', 'factory_blades') = 0.5;
+ 335  length('tech', 'northDistrict') = 0.5;
+ 336  length('northDistrict', 'tech') = 0.5;
+ 337  length('quality', 'northDistrict') = 0.5;
+ 338  length('northDistrict', 'quality') = 0.5;
+ 339  length('dormitories', 'northDistrict') = 0.5;
+ 340  length('northDistrict', 'dormitories') = 0.5;
+ 341  length('residential', 'northDistrict') = 2.2;
+ 342  length('northDistrict', 'residential') = 2.2;
+ 343  length('energyIsland', 'northDistrict') = 1.7;
+ 344  length('northDistrict', 'energyIsland') = 1.7;
+ 345  length('hospital', 'residential') = 0.5;
+ 346  length('residential', 'hospital') = 0.5;
+ 347  length('school', 'residential') = 0.5;
+ 348  length('residential', 'school') = 0.5;
+ 349  length('reserved', 'residential') = 1;
+ 350  length('residential', 'reserved') = 1;
+ 351  PARAMETER
+ 352  imports_min(R,T)
+ 353  /
+ 354  water .wint 0
+ 355  heat .wint 0
+ 356  cool .wint 0
+ 357  gasNatural .wint 0
+ 358  elec .wint 0
+ 359  wastewater .wint 0
+ 360  waste_organic .wint 0
+ 361  waterPotable .wint 0
+ 362  waterNonPotable .wint 0
+ 363  gasoline .wint 0
+ 364  CO2 .wint 0
+ 365  waste .wint 0
+ 366  coal .wint 0
+ 367  water .sum 0
+ 368  heat .sum 0
+ 369  cool .sum 0
+ 370  gasNatural .sum 0
+ 371  elec .sum 0
+ 372  wastewater .sum 0
+ 373  waste_organic .sum 0
+ 374  waterPotable .sum 0
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 6
+Fast RTN
+C o m p i l a t i o n
+
+
+ 375  waterNonPotable .sum 0
+ 376  gasoline .sum 0
+ 377  CO2 .sum 0
+ 378  waste .sum 0
+ 379  coal .sum 0
+ 380  water .shoulder 0
+ 381  heat .shoulder 0
+ 382  cool .shoulder 0
+ 383  gasNatural .shoulder 0
+ 384  elec .shoulder 0
+ 385  wastewater .shoulder 0
+ 386  waste_organic .shoulder 0
+ 387  waterPotable .shoulder 0
+ 388  waterNonPotable .shoulder 0
+ 389  gasoline .shoulder 0
+ 390  CO2 .shoulder 0
+ 391  waste .shoulder 0
+ 392  coal .shoulder 0
+ 393  /;
+ 394  PARAMETER
+ 395  imports_max(R,T)
+ 396  /
+ 397  water .wint 0
+ 398  heat .wint 0
+ 399  cool .wint 0
+ 400  gasNatural .wint 100
+ 401  elec .wint 10000
+ 402  wastewater .wint 0
+ 403  waste_organic .wint 0
+ 404  waterPotable .wint 100
+ 405  waterNonPotable .wint 100
+ 406  gasoline .wint 100
+ 407  CO2 .wint 0
+ 408  waste .wint 0
+ 409  coal .wint 100
+ 410  water .sum 0
+ 411  heat .sum 0
+ 412  cool .sum 0
+ 413  gasNatural .sum 100
+ 414  elec .sum 10000
+ 415  wastewater .sum 0
+ 416  waste_organic .sum 0
+ 417  waterPotable .sum 100
+ 418  waterNonPotable .sum 100
+ 419  gasoline .sum 100
+ 420  CO2 .sum 0
+ 421  waste .sum 0
+ 422  coal .sum 100
+ 423  water .shoulder 0
+ 424  heat .shoulder 0
+ 425  cool .shoulder 0
+ 426  gasNatural .shoulder 100
+ 427  elec .shoulder 10000
+ 428  wastewater .shoulder 0
+ 429  waste_organic .shoulder 0
+ 430  waterPotable .shoulder 100
+ 431  waterNonPotable .shoulder 100
+ 432  gasoline .shoulder 100
+ 433  CO2 .shoulder 0
+ 434  waste .shoulder 0
+ 435  coal .shoulder 100
+ 436  /;
+ 437  PARAMETER
+ 438  exports_min(R,T)
+ 439  /
+ 440  water .wint 0
+ 441  heat .wint 0
+ 442  cool .wint 0
+ 443  gasNatural .wint 0
+ 444  elec .wint 0
+ 445  wastewater .wint 0
+ 446  waste_organic .wint 0
+ 447  waterPotable .wint 0
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 7
+Fast RTN
+C o m p i l a t i o n
+
+
+ 448  waterNonPotable .wint 0
+ 449  gasoline .wint 0
+ 450  CO2 .wint 0
+ 451  waste .wint 0
+ 452  coal .wint 0
+ 453  water .sum 0
+ 454  heat .sum 0
+ 455  cool .sum 0
+ 456  gasNatural .sum 0
+ 457  elec .sum 0
+ 458  wastewater .sum 0
+ 459  waste_organic .sum 0
+ 460  waterPotable .sum 0
+ 461  waterNonPotable .sum 0
+ 462  gasoline .sum 0
+ 463  CO2 .sum 0
+ 464  waste .sum 0
+ 465  coal .sum 0
+ 466  water .shoulder 0
+ 467  heat .shoulder 0
+ 468  cool .shoulder 0
+ 469  gasNatural .shoulder 0
+ 470  elec .shoulder 0
+ 471  wastewater .shoulder 0
+ 472  waste_organic .shoulder 0
+ 473  waterPotable .shoulder 0
+ 474  waterNonPotable .shoulder 0
+ 475  gasoline .shoulder 0
+ 476  CO2 .shoulder 0
+ 477  waste .shoulder 0
+ 478  coal .shoulder 0
+ 479  /;
+ 480  PARAMETER
+ 481  exports_max(R,T)
+ 482  /
+ 483  water .wint 1000
+ 484  heat .wint 1000
+ 485  cool .wint 1000
+ 486  gasNatural .wint 1000
+ 487  elec .wint 1000
+ 488  wastewater .wint 1000
+ 489  waste_organic .wint 1000
+ 490  waterPotable .wint 1000
+ 491  waterNonPotable .wint 1000
+ 492  gasoline .wint 1000
+ 493  CO2 .wint 1000
+ 494  waste .wint 1000
+ 495  coal .wint 1000
+ 496  water .sum 1000
+ 497  heat .sum 1000
+ 498  cool .sum 1000
+ 499  gasNatural .sum 1000
+ 500  elec .sum 1000
+ 501  wastewater .sum 1000
+ 502  waste_organic .sum 1000
+ 503  waterPotable .sum 1000
+ 504  waterNonPotable .sum 1000
+ 505  gasoline .sum 1000
+ 506  CO2 .sum 1000
+ 507  waste .sum 1000
+ 508  coal .sum 1000
+ 509  water .shoulder 1000
+ 510  heat .shoulder 1000
+ 511  cool .shoulder 1000
+ 512  gasNatural .shoulder 1000
+ 513  elec .shoulder 1000
+ 514  wastewater .shoulder 1000
+ 515  waste_organic .shoulder 1000
+ 516  waterPotable .shoulder 1000
+ 517  waterNonPotable .shoulder 1000
+ 518  gasoline .shoulder 1000
+ 519  CO2 .shoulder 1000
+ 520  waste .shoulder 1000
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 8
+Fast RTN
+C o m p i l a t i o n
+
+
+ 521  coal .shoulder 1000
+ 522  /;
+ 523  PARAMETER
+ 524  num_zones_imports(R)
+ 525  /
+ 526  water 0
+ 527  heat 0
+ 528  cool 0
+ 529  gasNatural 1
+ 530  elec 1
+ 531  wastewater 0
+ 532  waste_organic 0
+ 533  waterPotable 1
+ 534  waterNonPotable 13
+ 535  gasoline 1
+ 536  CO2 0
+ 537  waste 0
+ 538  coal 1
+ 539  /;
+ 540  PARAMETER
+ 541  num_zones_exports(R)
+ 542  /
+ 543  water 13
+ 544  heat 13
+ 545  cool 13
+ 546  gasNatural 13
+ 547  elec 13
+ 548  wastewater 13
+ 549  waste_organic 13
+ 550  waterPotable 13
+ 551  waterNonPotable 13
+ 552  gasoline 13
+ 553  CO2 13
+ 554  waste 13
+ 555  coal 13
+ 556  /;
+ 557  PARAMETER
+ 558  cost_resource(R)
+ 559  /
+ 560  water 0
+ 561  heat 0
+ 562  cool 0
+ 563  gasNatural 0.78
+ 564  elec 0.028
+ 565  wastewater 0
+ 566  waste_organic 0
+ 567  waterPotable 0
+ 568  waterNonPotable 0
+ 569  gasoline 0.98
+ 570  CO2 0
+ 571  waste 0
+ 572  coal 0.05
+ 573  /;
+ 574  PARAMETER
+ 575  emissions_resource(R)
+ 576  /
+ 577  water 0
+ 578  heat 0.6077173688
+ 579  cool 0.9222645951
+ 580  gasNatural 0.3876714087
+ 581  elec 0.4644957075
+ 582  wastewater 0.4459190248
+ 583  waste_organic 0.2853973417
+ 584  waterPotable 0.0370612224
+ 585  waterNonPotable 0
+ 586  gasoline 0.8472327783
+ 587  CO2 0.7238466528
+ 588  waste 0.1117896924
+ 589  coal 0.541428895
+ 590  /;
+ 591  PARAMETER
+ 592  cost_process_cap(P)
+ 593  /
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                          07/28/16 17:13:19 Page 9
+Fast RTN
+C o m p i l a t i o n
+
+
+ 594  airCon_central 1202.875
+ 595  airCon_split 1202.875
+ 596  boiler_domestic 2362.5
+ 597  /;
+ 598  PARAMETER
+ 599  max_num(P)
+ 600  /
+ 601  airCon_central 1000000
+ 602  airCon_split 1000000
+ 603  boiler_domestic 1000000
+ 604  /;
+ 605  PARAMETER
+ 606  cost_transp_cap(TT)
+ 607  /
+ 608  pipe_gas 215198
+ 609  cable 114772
+ 610  pipe_wastewater 215198
+ 611  pipe_waterPotable 215198
+ 612  road_coal 0
+ 613  /;
+ 614  PARAMETER
+ 615  rate_transp_min(TT,T)
+ 616  /
+ 617  pipe_gas .wint 0
+ 618  cable .wint 0
+ 619  pipe_wastewater .wint 0
+ 620  pipe_waterPotable .wint 0
+ 621  road_coal .wint 0
+ 622  pipe_gas .sum 0
+ 623  cable .sum 0
+ 624  pipe_wastewater .sum 0
+ 625  pipe_waterPotable .sum 0
+ 626  road_coal .sum 0
+ 627  pipe_gas .shoulder 0
+ 628  cable .shoulder 0
+ 629  pipe_wastewater .shoulder 0
+ 630  pipe_waterPotable .shoulder 0
+ 631  road_coal .shoulder 0
+ 632  /;
+ 633  PARAMETER
+ 634  rate_transp_max(TT,T)
+ 635  /
+ 636  pipe_gas .wint 1000
+ 637  cable .wint 5000
+ 638  pipe_wastewater .wint 1000
+ 639  pipe_waterPotable .wint 1000
+ 640  road_coal .wint 1000
+ 641  pipe_gas .sum 1000
+ 642  cable .sum 5000
+ 643  pipe_wastewater .sum 1000
+ 644  pipe_waterPotable .sum 1000
+ 645  road_coal .sum 1000
+ 646  pipe_gas .shoulder 1000
+ 647  cable .shoulder 5000
+ 648  pipe_wastewater .shoulder 1000
+ 649  pipe_waterPotable .shoulder 1000
+ 650  road_coal .shoulder 1000
+ 651  /;
+ 652  PARAMETER
+ 653  resource_quality(R,Q)
+ 654  /
+ 655  water .mass 1
+ 656  heat .energy 1
+ 657  cool .energy 1
+ 658  gasNatural .mass 1
+ 659  elec .energy 1
+ 660  wastewater .mass 1
+ 661  waste_organic .mass 1
+ 662  waterPotable .mass 1
+ 663  waterNonPotable .mass 1
+ 664  gasoline .mass 1
+ 665  CO2 .mass 1
+ 666  waste .mass 1
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 10
+Fast RTN
+C o m p i l a t i o n
+
+
+ 667  coal .mass 1
+ 668  /;
+ 669  PARAMETER
+ 670  binary_resource(R,Q);
+ 671  binary_resource(R,Q)$resource_quality(R,Q) = 1;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/processes-praq-gams/airCon_central.gms
+ 673  * airCon_central
+ 674  PARAMETER
+ 675  rate_process_max(P,T);
+ 676  rate_process_max('airCon_central', 'sum') = 0.025;
+ 677  rate_process_max('airCon_central', 'wint') = 0;
+ 678  rate_process_max('airCon_central', 'shoulder') = 0;
+ 679  PARAMETER
+ 680  coeff_process_praq(P,R,Q);
+ 681  coeff_process_praq('airCon_central', 'elec', 'energy') = -23.9;
+ 682  coeff_process_praq('airCon_central', 'cool', 'energy') = 1;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/processes-praq-gams/airCon_split.gms
+ 684  * airCon_split
+ 685  PARAMETER
+ 686  rate_process_max(P,T);
+ 687  rate_process_max('airCon_split', 'sum') = 0.025;
+ 688  PARAMETER
+ 689  coeff_process_praq(P,R,Q);
+ 690  coeff_process_praq('airCon_split', 'elec', 'energy') = -23.9;
+ 691  coeff_process_praq('airCon_split', 'cool', 'energy') = 1;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/processes-praq-gams/boiler_domestic.gms
+ 693  * boiler_domestic
+ 694  PARAMETER
+ 695  rate_process_max(P,T);
+ 696  rate_process_max('boiler_domestic', 'wint') = 0.025;
+ 697  rate_process_max('boiler_domestic', 'sum') = 0.025;
+ 698  rate_process_max('boiler_domestic', 'shoulder') = 0.025;
+ 699  PARAMETER
+ 700  coeff_process_praq(P,R,Q);
+ 701  coeff_process_praq('boiler_domestic', 'gasNatural', 'mass') = -2.631;
+ 702  coeff_process_praq('boiler_domestic', 'heat', 'energy') = 1;
+ 703  PARAMETER
+ 704  binary_process(P,R,Q);
+ 705  binary_process(P,R,Q)$(binary_resource(R,Q)=1) = 1;
+ 706  PARAMETER
+ 707  binary_transport(TT,R,Q);
+ 708  binary_transport(TT,R,Q)$(binary_resource(R,Q)=1) = 1;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/pipe_gas.gms
+ 710  PARAMETER
+ 711  coeff_transp_qty_src_praq(TT,R,Q);
+ 712  coeff_transp_qty_src_praq('pipe_gas', 'gasNatural', 'mass') = -1;
+ 713  PARAMETER
+ 714  coeff_transp_qty_dest_praq(TT,R,Q);
+ 715  coeff_transp_qty_dest_praq('pipe_gas', 'gasNatural', 'mass') = 1;
+ 716  PARAMETER
+ 717  coeff_transp_dist_src_praq(R,Q,TT);
+ 718  coeff_transp_dist_src_praq('gasNatural', 'mass', 'pipe_gas') = 0;
+ 719  PARAMETER
+ 720  coeff_transp_dist_dest_praq(R,Q,TT);
+ 721  coeff_transp_dist_dest_praq('gasNatural', 'mass', 'pipe_gas') = 0;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/cable.gms
+ 723  PARAMETER
+ 724  coeff_transp_qty_src_praq(TT,R,Q);
+ 725  coeff_transp_qty_src_praq('cable', 'elec', 'energy') = -1;
+ 726  PARAMETER
+ 727  coeff_transp_qty_dest_praq(TT,R,Q);
+ 728  coeff_transp_qty_dest_praq('cable', 'elec', 'energy') = 1;
+ 729  PARAMETER
+ 730  coeff_transp_dist_src_praq(R,Q,TT);
+ 731  coeff_transp_dist_src_praq('elec', 'energy', 'cable') = 0;
+ 732  PARAMETER
+ 733  coeff_transp_dist_dest_praq(R,Q,TT);
+ 734  coeff_transp_dist_dest_praq('elec', 'energy', 'cable') = 0;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/pipe_wastewater.gms
+ 736  PARAMETER
+ 737  coeff_transp_qty_src_praq(TT,R,Q);
+ 738  coeff_transp_qty_src_praq('pipe_wastewater', 'wastewater', 'mass') = -1;
+ 739  coeff_transp_qty_src_praq('pipe_wastewater', 'elec', 'energy') = 0;
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 11
+Fast RTN
+C o m p i l a t i o n
+
+
+ 740  PARAMETER
+ 741  coeff_transp_qty_dest_praq(TT,R,Q);
+ 742  coeff_transp_qty_dest_praq('pipe_wastewater', 'wastewater', 'mass') = 1;
+ 743  coeff_transp_qty_dest_praq('pipe_wastewater', 'elec', 'energy') = 0;
+ 744  PARAMETER
+ 745  coeff_transp_dist_src_praq(R,Q,TT);
+ 746  coeff_transp_dist_src_praq('wastewater', 'mass', 'pipe_wastewater') = 0;
+ 747  coeff_transp_dist_src_praq('elec', 'energy', 'pipe_wastewater') = -0.0054;
+ 748  PARAMETER
+ 749  coeff_transp_dist_dest_praq(R,Q,TT);
+ 750  coeff_transp_dist_dest_praq('wastewater', 'mass', 'pipe_wastewater') = 0;
+ 751  coeff_transp_dist_dest_praq('elec', 'energy', 'pipe_wastewater') = 0;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/pipe_waterPotable.gms
+ 753  PARAMETER
+ 754  coeff_transp_qty_src_praq(TT,R,Q);
+ 755  coeff_transp_qty_src_praq('pipe_waterPotable', 'waterPotable', 'mass') = -1;
+ 756  coeff_transp_qty_src_praq('pipe_waterPotable', 'elec', 'energy') = 0;
+ 757  PARAMETER
+ 758  coeff_transp_qty_dest_praq(TT,R,Q);
+ 759  coeff_transp_qty_dest_praq('pipe_waterPotable', 'waterPotable', 'mass') = 1;
+ 760  coeff_transp_qty_dest_praq('pipe_waterPotable', 'elec', 'energy') = 0;
+ 761  PARAMETER
+ 762  coeff_transp_dist_src_praq(R,Q,TT);
+ 763  coeff_transp_dist_src_praq('waterPotable', 'mass', 'pipe_waterPotable') = 0;
+ 764  coeff_transp_dist_src_praq('elec', 'energy', 'pipe_waterPotable') = -0.0054;
+ 765  PARAMETER
+ 766  coeff_transp_dist_dest_praq(R,Q,TT);
+ 767  coeff_transp_dist_dest_praq('waterPotable', 'mass', 'pipe_waterPotable') = 0;
+ 768  coeff_transp_dist_dest_praq('elec', 'energy', 'pipe_waterPotable') = 0;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/road_coal.gms
+ 770  PARAMETER
+ 771  coeff_transp_qty_src_praq(TT,R,Q);
+ 772  coeff_transp_qty_src_praq('road_coal', 'coal', 'mass') = -1;
+ 773  coeff_transp_qty_src_praq('road_coal', 'gasoline', 'mass') = 0;
+ 774  coeff_transp_qty_src_praq('road_coal', 'CO2', 'mass') = 0;
+ 775  PARAMETER
+ 776  coeff_transp_qty_dest_praq(TT,R,Q);
+ 777  coeff_transp_qty_dest_praq('road_coal', 'coal', 'mass') = 1;
+ 778  coeff_transp_qty_dest_praq('road_coal', 'gasoline', 'mass') = 0;
+ 779  coeff_transp_qty_dest_praq('road_coal', 'CO2', 'mass') = 0;
+ 780  PARAMETER
+ 781  coeff_transp_dist_src_praq(R,Q,TT);
+ 782  coeff_transp_dist_src_praq('coal', 'mass', 'road_coal') = 0;
+ 783  coeff_transp_dist_src_praq('gasoline', 'mass', 'road_coal') = -0.18;
+ 784  coeff_transp_dist_src_praq('CO2', 'mass', 'road_coal') = 0.3;
+ 785  PARAMETER
+ 786  coeff_transp_dist_dest_praq(R,Q,TT);
+ 787  coeff_transp_dist_dest_praq('coal', 'mass', 'road_coal') = 0;
+ 788  coeff_transp_dist_dest_praq('gasoline', 'mass', 'road_coal') = 0;
+ 789  coeff_transp_dist_dest_praq('CO2', 'mass', 'road_coal') = 0.3;
+ 790  SCALAR pareto_lim /1e8/;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/variables-space-time.gms
+ 792  VARIABLES
+ 793          cost_prod
+ 794          cost_transp
+ 795          cost_res
+ 796          cost_total
+ 797          pareto_var
+ 798          MFI_limit
+ 799          MFI
+ 800          zoneflow_quality(R,Q,Z,T)
+ 801          zoneflow_quantity(TT,R,Z,T)
+ 802          production_quantity(P,R,Z,T)
+ 803          production_quality(R,Q,Z,T)
+ 804          num_process(P,Z)
+ 805  POSITIVE VARIABLES
+ 806          imports(R,Z,T)
+ 807          exports(R,Z,T)
+ 808          rate_process(P,Z,T)
+ 809          rate_transp(TT,Z,ZZ,T)
+ 810  INTEGER VARIABLE
+ 811          num_process(P,Z)
+ 812  BINARY VARIABLES
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 12
+Fast RTN
+C o m p i l a t i o n
+
+
+ 813          binary_import(R,Z)
+ 814          binary_export(R,Z)
+ 815          binary_transp(TT,Z,ZZ);
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/equations-space-time.gms
+ 817  EQUATIONS
+ 818          BALANCE_QUANTITY(R,Z,T)
+ 819          BALANCE_QUALITY(Q,Z,T)
+ 820          PROCESS_QUALITY(R,Q,Z,T)
+ 821          PROCESS_QUANTITY_PRAQ(P,R,Q,Z,T)
+ 822          MINIMUM_IMPORTS(R,Z,T)
+ 823          MAXIMUM_IMPORTS(R,Z,T)
+ 824          MAXIMUM_ZONES_IMPORT(R)
+ 825          MINIMUM_EXPORTS(R,Z,T)
+ 826          MAXIMUM_EXPORTS(R,Z,T)
+ 827          MAXIMUM_ZONES_EXPORT(R)
+ 828          MAXIMUM_PROCESS_RATE(P,Z,T)
+ 829  *       IMP_EXP(R,Z)
+ 830          MAXIMUM_TRANSPORT_RATE(TT,Z,ZZ,T)
+ 831          MINIMUM_TRANSPORT_RATE(TT,Z,ZZ,T)
+ 832          TRANSPORT_BIDIRECTION(TT,Z,ZZ)
+ 833          TRANSPORT_QUALITY(R,Q,Z,T)
+ 834          TRANSPORT_QUANTITY_PRAQ(TT,R,Q,Z,T)
+ 835  *       MFI_VALUE
+ 836  *       MFI_CONSTRAINT
+ 837          COST_PROCESS_PRODUCTION
+ 838          COST_PROCESS_TRANSPORT
+ 839          COST_IMPORTS
+ 840          PARETO_CONDITION
+ 841          PARETO_VARIABLE
+ 842          OBJECTIVE_FUNCTION;
+ 843   
+ 844  BALANCE_QUANTITY(R,Z,T)..
+ 845          sum(TT, zoneflow_quantity(TT,R,Z,T)) +
+ 846          imports(R,Z,T) +
+ 847          sum(P, production_quantity(P,R,Z,T)) =e=
+ 848          demand_quantity(R,T,Z) +
+ 849          exports(R,Z,T);
+ 850   
+ 851  BALANCE_QUALITY(Q,Z,T)..
+ 852          sum(R,
+ 853          zoneflow_quality(R,Q,Z,T) +
+ 854          resource_quality(R,Q) * imports(R,Z,T) +
+ 855          production_quality(R,Q,Z,T)
+ 856          ) =e=
+ 857          sum(R,
+ 858          demand_quality(R,Q,T,Z) +
+ 859          resource_quality(R,Q) * exports(R,Z,T)
+ 860          );
+ 861   
+ 862  PROCESS_QUANTITY_PRAQ(P,R,Q,Z,T)$(binary_process(P,R,Q)=1)..
+ 863          production_quantity(P,R,Z,T) * resource_quality(R,Q) =e= coeff_process_praq(P,R,Q)*rate_process(P,Z,T) * bina
+      ry_resource(R,Q);
+ 864   
+ 865  PROCESS_QUALITY(R,Q,Z,T)..
+ 866          production_quality(R,Q,Z,T) =e= sum(P, coeff_process_praq(P,R,Q) * rate_process(P,Z,T));
+ 867   
+ 868  MAXIMUM_PROCESS_RATE(P,Z,T)..
+ 869          rate_process(P,Z,T) =l= num_process(P,Z) * rate_process_max(P,T);
+ 870   
+ 871  MAXIMUM_TRANSPORT_RATE(TT,Z,ZZ,T)..
+ 872          rate_transp(TT,Z,ZZ,T) =l= binary_transp(TT,Z,ZZ) * rate_transp_max(TT,T);
+ 873   
+ 874  MINIMUM_TRANSPORT_RATE(TT,Z,ZZ,T)..
+ 875          rate_transp(TT,Z,ZZ,T) =g= binary_transp(TT,Z,ZZ) * rate_transp_min(TT,T);
+ 876   
+ 877  TRANSPORT_BIDIRECTION(TT,Z,ZZ)..
+ 878          binary_transp(TT,Z,ZZ) =e= binary_transp(TT,ZZ,Z);
+ 879   
+ 880  * Limit transfers only to neighbouring cells
+ 881          binary_transp.FX(TT,Z,ZZ)$(not nb(Z,ZZ)) = 0;
+ 882   
+ 883  MINIMUM_IMPORTS(R,Z,T)..
+ 884          binary_import(R,Z) * imports_min(R,T) =l= imports(R,Z,T);
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 13
+Fast RTN
+C o m p i l a t i o n
+
+
+ 885   
+ 886  MAXIMUM_IMPORTS(R,Z,T)..
+ 887          imports(R,Z,T) =l= binary_import(R,Z) * imports_max(R,T);
+ 888   
+ 889  MAXIMUM_ZONES_IMPORT(R)..
+ 890          sum(Z, binary_import(R,Z)) =l= num_zones_imports(R);
+ 891   
+ 892  MINIMUM_EXPORTS(R,Z,T)..
+ 893          binary_export(R,Z) * exports_min(R,T) =l= exports(R,Z,T);
+ 894   
+ 895  MAXIMUM_EXPORTS(R,Z,T)..
+ 896          exports(R,Z,T) =l= binary_export(R,Z) * exports_max(R,T);
+ 897   
+ 898  MAXIMUM_ZONES_EXPORT(R)..
+ 899          sum(Z, binary_export(R,Z)) =l= num_zones_exports(R);
+ 900   
+ 901  *IMP_EXP(R,Z)..
+ 902  *       binary_import(R,Z) + binary_export(R,Z) =l= 1;
+ 903   
+ 904  TRANSPORT_QUANTITY_PRAQ(TT,R,Q,Z,T)$(binary_transport(TT,R,Q)=1)..
+ 905          zoneflow_quantity(TT,R,Z,T) * resource_quality(R,Q) =e=
+ 906          (
+ 907          sum(ZZ, (coeff_transp_qty_src_praq(TT,R,Q) + coeff_transp_dist_src_praq(R,Q,TT)*length(Z,ZZ)) * rate_transp(T
+      T,Z,ZZ,T)) +
+ 908          sum(ZZ, (coeff_transp_qty_dest_praq(TT,R,Q) + coeff_transp_dist_dest_praq(R,Q,TT)*length(ZZ,Z)) * rate_transp
+      (TT,ZZ,Z,T))
+ 909          ) * binary_resource(R,Q);
+ 910   
+ 911  TRANSPORT_QUALITY(R,Q,Z,T)..
+ 912          zoneflow_quality(R,Q,Z,T) =e=
+ 913          sum((TT,ZZ), (coeff_transp_qty_src_praq(TT,R,Q) + coeff_transp_dist_src_praq(R,Q,TT)*length(Z,ZZ)) * rate_tra
+      nsp(TT,Z,ZZ,T)) +
+ 914          sum((TT,ZZ), (coeff_transp_qty_dest_praq(TT,R,Q) + coeff_transp_dist_dest_praq(R,Q,TT)*length(ZZ,Z)) * rate_t
+      ransp(TT,ZZ,Z,T));
+ 915   
+ 916  *MFI_VALUE..
+ 917  **      GHGs
+ 918  *       MFI =e=  sum((R,Z,T), imports(R,Z,T) * emissions_resource(R));
+ 919   
+ 920  *MFI_CONSTRAINT..
+ 921  *       MFI =l= 1e+2;
+ 922   
+ 923  * Annual cost, assuming a 10 year lifespan
+ 924  COST_PROCESS_PRODUCTION..
+ 925          cost_prod =e= sum((P,Z), cost_process_cap(P) * num_process(P,Z));
+ 926  *       cost_prod =e= 0;
+ 927   
+ 928  COST_PROCESS_TRANSPORT..
+ 929  *       cost_transp =e= sum((TT,Z,ZZ), cost_transp_cap(TT) * binary_transp(TT,Z,ZZ));
+ 930          cost_transp =e= sum((TT,Z,ZZ), cost_transp_cap(TT) * binary_transp(TT,Z,ZZ) * length(Z,ZZ));
+ 931   
+ 932  PARETO_CONDITION..
+ 933          pareto_var =l= pareto_lim;
+ 934   
+ 935  COST_IMPORTS..
+ 936          cost_res =e= sum((R,Z,T), cost_resource(R) * imports(R,Z,T) * span(T));
+ 937  *       cost_res =e= sum((R,Z,T), cost_resource(R) * imports(R,Z,T));
+ 938  *       cost_res =e= sum((R,Z,T), cost_resource(R) * imports(R,Z,T) * 365 * 24 * 3600);
+ 939  *       cost_res =e= sum((R,Z,T), cost_resource(R) * imports(R,Z,T) * span(T));
+ 940  *       cost_res =e= sum((R,Z,T), cost_resource(R) * imports(R,Z,T) * 20 * 365 * 24 * 3600);
+ 941   
+ 942  *PARETO_CONDITION..
+ 943  *        sum((R,Z,T), cost_resource(R) * imports(R,Z,T) * span(T)) =l= 1e14;
+ 944  *        cost_res =l= 1.4e9;
+ 945   
+ 946  *OBJECTIVE_FUNCTION..
+ 947  *       cost_total =e= cost_res;
+ 948  *       cost_total =e= 0.1 * cost_prod + 0.1 * cost_transp + cost_res;
+ 949  *       cost_total =e= cost_prod + cost_res;
+ 950  *       cost_total =e= cost_prod + cost_transp;
+ 951   
+ 952  *       cost_total =e=  sum((Z,R,T), cost_resource(R) * imports(R,Z,T)) +
+ 953  *                       sum((P,Z), 0.05 * cost_process_cap(P) * num_process(P,Z)) +
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 14
+Fast RTN
+C o m p i l a t i o n
+
+
+ 954  **                      sum((P,Z), cost_process_maint(P) * num_process(P,Z)) +
+ 955  **                      sum((P,Z,T), cost_process_op(P) * rate_process(P,Z,T)) +
+ 956  **                      sum((TT,Z,ZZ,T), cost_transp_cap(TT) * length(Z,ZZ) * rate_transp(TT,Z,ZZ,T) * span(T) * 20);
+ 957  **                      sum((TT,Z,ZZ,T), cost_transp_cap(TT) * length(Z,ZZ) * rate_transp(TT,Z,ZZ,T));
+ 958  *                       sum((TT,Z,ZZ), 0.05 * binary_transp(TT,Z,ZZ) * cost_transp_cap(TT) * length(Z,ZZ) * 0.5);
+ 959   
+ 960  * cost resource imports ($/kg or $/MJ)
+ 961  * cost process
+ 962  *       capital ($)
+ 963  *       maintainance ($)
+ 964  *       operation ($/rate) where rate = X/day
+ 965  * cost transport process
+ 966  *       capital ($/km)
+ 967  *       maintainance ($/km)
+ 968  *       operation ($/km/rate)
+ 969  PARETO_VARIABLE..
+ 970  pareto_var =e= sum(Z, exports('gasNatural',Z,'wint'));
+ 971  OBJECTIVE_FUNCTION..
+ 972  cost_total =e= 0.1 * cost_prod + 0.1 * cost_transp + cost_res;
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/custom.gms
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/solve-spatial.gms
+ 975  Model PRAQ
+ 976          /
+ 977          BALANCE_QUANTITY,
+ 978          BALANCE_QUALITY,
+ 979          PROCESS_QUALITY,
+ 980          PROCESS_QUANTITY_PRAQ,
+ 981          MINIMUM_IMPORTS,
+ 982          MAXIMUM_IMPORTS,
+ 983          MAXIMUM_ZONES_IMPORT,
+ 984          MINIMUM_EXPORTS,
+ 985          MAXIMUM_EXPORTS,
+ 986  *        MAXIMUM_ZONES_EXPORT,
+ 987  *       IMP_EXP
+ 988          MAXIMUM_PROCESS_RATE,
+ 989          MAXIMUM_TRANSPORT_RATE,
+ 990          MINIMUM_TRANSPORT_RATE,
+ 991          TRANSPORT_BIDIRECTION,
+ 992          TRANSPORT_QUALITY,
+ 993          TRANSPORT_QUANTITY_PRAQ
+ 994  *       MFI_VALUE,
+ 995  *       MFI_CONSTRAINT,
+ 996          COST_PROCESS_PRODUCTION,
+ 997          COST_PROCESS_TRANSPORT,
+ 998          COST_IMPORTS,
+ 999          PARETO_VARIABLE,
+1000          PARETO_CONDITION,
+1001          OBJECTIVE_FUNCTION
+1002                  /;
+1003   
+1004  num_process.up(P,Z) = max_num(P);
+1005   
+1006   
+1007  solve PRAQ min cost_total using mip;
+1008  * BEWARE: In the case of infeasible OF, the previous correct result will be printed!
+1009   
+1010  DISPLAY production_quantity.L
+1011  DISPLAY production_quality.L
+1012  DISPLAY zoneflow_quantity.L
+1013  DISPLAY zoneflow_quality.L
+1014  DISPLAY binary_transp.L
+1015  DISPLAY exports.L
+1016  DISPLAY imports.L
+1017  DISPLAY binary_import.L
+1018  DISPLAY binary_export.L
+1019  DISPLAY rate_process.L
+1020  DISPLAY rate_transp.L
+1021  DISPLAY num_process.L
+1022  DISPLAY cost_prod.L
+1023  DISPLAY cost_transp.L
+1024  DISPLAY cost_res.L
+1025  DISPLAY cost_total.L
+1026  DISPLAY pareto_var.L
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 15
+Fast RTN
+C o m p i l a t i o n
+
+
+1027  *DISPLAY MFI.L
+1028   
+1029  ** OUTPUT RESULTS TO CSV
+1030  file Headlines /"headlines.csv"/;
+1031  put Headlines; Headlines.pc=5;
+1032  put "pareto_lim", "pareto_var", "cost_prod", "cost_transp", "cost_res", "cost_total";
+1033  put / pareto_lim, pareto_var.L, cost_prod.L, cost_transp.L, cost_res.L, cost_total.L;
+1034   
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-production-spatial.gms
+1036  file results_praq_production /"results-praq-production.csv"/;
+1037  put results_praq_production; results_praq_production.pc=5;
+1038  put "process", "resource", "season", "zone", "value";
+1039  put results_praq_production;
+1040  LOOP(P,
+1041    LOOP(R,
+1042      LOOP(Z,
+1043        LOOP(T,
+1044          put / P.tl; put R.tl; put T.tl; put Z.tl; put production_quantity.L(P,R,Z,T)
+1045        );
+1046      );
+1047    );
+1048  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-quality-spatial.gms
+1050  file results_praq_quality /"results-praq-quality.csv"/;
+1051  put results_praq_quality; results_praq_quality.pc=5;
+1052  put "resource", "quality", "season", "zone", "value";
+1053  put results_praq_quality;
+1054  LOOP(R,
+1055    LOOP(Q,
+1056      LOOP(Z,
+1057        LOOP(T,
+1058          put / R.tl; put Q.tl; put T.tl, put Z.tl; put production_quality.L(R,Q,Z,T)
+1059        );
+1060      );
+1061    );
+1062  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-resources-spatial.gms
+1064  file results_praq_resources /"results-praq-resources.csv"/;
+1065  put results_praq_resources; results_praq_resources.pc=5;
+1066  put "resource", "season", "zone", "imports", "exports";
+1067  put results_praq_resources;
+1068  LOOP(R,
+1069    LOOP(Z,
+1070      LOOP(T,
+1071        put / R.tl; put T.tl; put Z.tl; put imports.L(R,Z,T); put exports.L(R,Z,T)
+1072      );
+1073    );
+1074  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-processes-spatial.gms
+1076  file results_praq_processes /"results-praq-processes.csv"/;
+1077  put results_praq_processes; results_praq_processes.pc=5;
+1078  put "process", "season", "zone", "rate", "number";
+1079  put results_praq_processes;
+1080  LOOP(P,
+1081    LOOP(T,
+1082      LOOP(Z,
+1083        put / P.tl; put T.tl put Z.tl; put rate_process.L(P,Z,T); put num_process.L(P,Z)
+1084      );
+1085    );
+1086  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-zoneflow-spatial.gms
+1088  file results_praq_zoneflow /"results-praq-zoneflow.csv"/;
+1089  put results_praq_zoneflow; results_praq_zoneflow.pc=5;
+1090  put "transp_tech", "resource", "season", "zone", "value";
+1091  put results_praq_zoneflow;
+1092  LOOP(TT,
+1093    LOOP(R,
+1094      LOOP(Z,
+1095        LOOP(T,
+1096          put / TT.tl; put R.tl; put T.tl; put Z.tl; put zoneflow_quantity.L(TT,R,Z,T)
+1097        );
+1098      );
+1099    );
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 16
+Fast RTN
+C o m p i l a t i o n
+
+
+1100  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-zoneflowQuality-spatial.gms
+1102  file results_praq_zoneflowQuality /"results-praq-zoneflowQuality.csv"/;
+1103  put results_praq_zoneflowQuality; results_praq_zoneflowQuality.pc=5;
+1104  put "resource", "quality", "season", "zone", "value";
+1105  put results_praq_zoneflowQuality;
+1106  LOOP(R,
+1107    LOOP(Q,
+1108      LOOP(Z,
+1109        LOOP(T,
+1110          put / R.tl; put Q.tl; put T.tl; put Z.tl; put zoneflow_quality.L(R,Q,Z,T)
+1111        );
+1112      );
+1113    );
+1114  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-transp-spatial.gms
+1116  file results_praq_transp /"results-praq-transp.csv"/;
+1117  put results_praq_transp; results_praq_transp.pc=5;
+1118  put "transp_tech", "season", "zone_start", "zone_end", "rate";
+1119  put results_praq_transp;
+1120  LOOP(TT,
+1121    LOOP(Z,
+1122      LOOP(ZZ,
+1123        LOOP(T,
+1124          put / TT.tl; put T.tl; put Z.tl; put ZZ.tl; put rate_transp.L(TT,Z,ZZ,T)
+1125        );
+1126      );
+1127    );
+1128  );
+INCLUDE    /home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-IsTransp-spatial.gms
+1130  file results_praq_IsTransp /"results-praq-IsTransp.csv"/;
+1131  put results_praq_IsTransp; results_praq_IsTransp.pc=5;
+1132  put "transp_tech", "zone_start", "zone_end", "isTransp";
+1133  put results_praq_IsTransp;
+1134  LOOP(TT,
+1135    LOOP(Z,
+1136      LOOP(ZZ,
+1137        put / put TT.tl; put Z.tl; put ZZ.tl; put binary_transp.L(TT,Z,ZZ)
+1138      );
+1139    );
+1140  );
+1141  *** OUTPUT METADATA TO CSV
+1142  *$include formulation/model-praq-stats.gms
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 17
+Fast RTN
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  /home/ps/ce-fs1/tr608/ShannGu/model/gridCase.gms
+     2      160 INCLUDE        1     160  ./home/ps/ce-fs1/tr608/ShannGu/model/code/options-long.gms
+     3      672 INCLUDE        1     666  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/processes-praq-gams/airCon_ce
+                                           ntral.gms
+     4      683 INCLUDE        1     667  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/processes-praq-gams/airCon_sp
+                                           lit.gms
+     5      692 INCLUDE        1     668  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/processes-praq-gams/boiler_do
+                                           mestic.gms
+     6      709 INCLUDE        1     675  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/pipe_gas.
+                                           gms
+     7      722 INCLUDE        1     676  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/cable.gms
+     8      735 INCLUDE        1     677  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/pipe_wast
+                                           ewater.gms
+     9      752 INCLUDE        1     678  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/pipe_wate
+                                           rPotable.gms
+    10      769 INCLUDE        1     679  ./home/ps/ce-fs1/tr608/ShannGu/model/data/libraries/transport-praq-gams/road_coal
+                                           .gms
+    11      791 INCLUDE        1     681  ./home/ps/ce-fs1/tr608/ShannGu/model/code/variables-space-time.gms
+    12      816 INCLUDE        1     682  ./home/ps/ce-fs1/tr608/ShannGu/model/code/equations-space-time.gms
+    13      973 INCLUDE        1     683  ./home/ps/ce-fs1/tr608/ShannGu/model/code/custom.gms
+    14      974 INCLUDE        1     684  ./home/ps/ce-fs1/tr608/ShannGu/model/code/solve-spatial.gms
+    15     1035 INCLUDE       14      61  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-production-spatial.gms
+    16     1049 INCLUDE       14      62  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-quality-spatial.gms
+    17     1063 INCLUDE       14      63  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-resources-spatial.gms
+    18     1075 INCLUDE       14      64  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-processes-spatial.gms
+    19     1087 INCLUDE       14      65  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-zoneflow-spatial.gms
+    20     1101 INCLUDE       14      66  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-zoneflowQuality-spatial.g
+                                            ms
+    21     1115 INCLUDE       14      67  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-transp-spatial.gms
+    22     1129 INCLUDE       14      68  ../home/ps/ce-fs1/tr608/ShannGu/model/code/results-praq-IsTransp-spatial.gms
+
+
+COMPILATION TIME     =        0.023 SECONDS      3 Mb  LEX233-233 Dec 15, 2009
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 18
+Fast RTN
+Model Statistics    SOLVE PRAQ Using MIP From line 1007
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          21     SINGLE EQUATIONS       34,043
+BLOCKS OF VARIABLES          17     SINGLE VARIABLES       41,722
+NON ZERO ELEMENTS        85,247     DISCRETE VARIABLES      1,212
+
+
+GENERATION TIME      =        0.439 SECONDS     13 Mb  LEX233-233 Dec 15, 2009
+
+
+EXECUTION TIME       =        0.440 SECONDS     13 Mb  LEX233-233 Dec 15, 2009
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 19
+Fast RTN
+Solution Report     SOLVE PRAQ Using MIP From line 1007
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   PRAQ                OBJECTIVE  cost_total
+     TYPE    MIP                 DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  1007
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      8 Integer Solution          
+**** OBJECTIVE VALUE       1006699755.4082
+
+ RESOURCE USAGE, LIMIT          0.420      1000.000
+ ITERATION COUNT, LIMIT       640    2000000000
+
+ILOG CPLEX       Nov  1, 2009 23.3.3 LEX 13908.15043 LEI x86_64/Linux
+Cplex 12.1.0, GAMS Link 34 
+Cplex licensed for 10 uses of parallel lp, qp, mip and barrier.
+
+Cplex MIP uses 1 of 48 parallel threads. Change default with option THREADS.
+MIP status(102): integer optimal, tolerance
+Fixed MIP status(1): optimal
+Solution satisfies tolerances.
+
+MIP Solution:   1006699755.408162    (575 iterations, 10 nodes)
+Final Solve:    1006699755.408166    (65 iterations)
+
+Best possible:  1006409027.308298
+Absolute gap:       290728.099864
+Relative gap:            0.000289
+
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 20
+Fast RTN
+E x e c u t i o n
+
+
+----   1010 VARIABLE production_quantity.L  
+
+INDEX 1 = airCon_central
+
+                                               sum
+
+cool                 .dormitories       0.94000000
+cool                 .energyIsland      0.10000000
+cool                 .factory_assembly  1.98500000
+cool                 .factory_blades    0.40000000
+cool                 .hospital          0.24700000
+cool                 .residential       0.02500000
+cool                 .tech              0.40000000
+elec                 .dormitories      -2.24660E+1
+elec                 .energyIsland     -2.39000000
+elec                 .factory_assembly -4.74415E+1
+elec                 .factory_blades   -9.56000000
+elec                 .hospital         -5.90330000
+elec                 .residential      -0.59750000
+elec                 .tech             -9.56000000
+
+INDEX 1 = airCon_split
+
+                                               sum
+
+cool                 .hospital          0.02500000
+cool                 .multifunction     0.30400000
+cool                 .quality           0.28800000
+cool                 .residential      17.25500000
+cool                 .school            0.73000000
+elec                 .hospital         -0.59750000
+elec                 .multifunction    -7.26560000
+elec                 .quality          -6.88320000
+elec                 .residential      -4.12395E+2
+elec                 .school           -1.74470E+1
+
+INDEX 1 = boiler_domestic
+
+                                              wint    shoulder
+
+gasNatural           .energyIsland     -0.13155000 -0.06577500
+gasNatural           .factory          -1.57860E+1 -7.89300000
+gasNatural           .factory_assembly -1.47336E+1 -7.36680000
+gasNatural           .hospital                     -1.73909E+1
+gasNatural           .reserved         -6.31440000 -3.15720000
+gasNatural           .residential      -3.47818E+1
+heat                 .energyIsland      0.05000000  0.02500000
+heat                 .factory           6.00000000  3.00000000
+heat                 .factory_assembly  5.60000000  2.80000000
+heat                 .hospital                      6.61000000
+heat                 .reserved          2.40000000  1.20000000
+heat                 .residential      13.22000000
+
+
+----   1011 VARIABLE production_quality.L  
+
+INDEX 1 = cool
+
+                                sum
+
+energy.dormitories       0.94000000
+energy.energyIsland      0.10000000
+energy.factory_assembly  1.98500000
+energy.factory_blades    0.40000000
+energy.hospital          0.27200000
+energy.multifunction     0.30400000
+energy.quality           0.28800000
+energy.residential      17.28000000
+energy.school            0.73000000
+energy.tech              0.40000000
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 21
+Fast RTN
+E x e c u t i o n
+
+
+       1011 VARIABLE production_quality.L  
+
+INDEX 1 = elec
+
+                                sum
+
+energy.dormitories      -2.24660E+1
+energy.energyIsland     -2.39000000
+energy.factory_assembly -4.74415E+1
+energy.factory_blades   -9.56000000
+energy.hospital         -6.50080000
+energy.multifunction    -7.26560000
+energy.quality          -6.88320000
+energy.residential      -4.12992E+2
+energy.school           -1.74470E+1
+energy.tech             -9.56000000
+
+INDEX 1 = gasNatural
+
+                               wint    shoulder
+
+mass  .energyIsland     -0.13155000 -0.06577500
+mass  .factory          -1.57860E+1 -7.89300000
+mass  .factory_assembly -1.47336E+1 -7.36680000
+mass  .hospital                     -1.73909E+1
+mass  .reserved         -6.31440000 -3.15720000
+mass  .residential      -3.47818E+1
+
+INDEX 1 = heat
+
+                               wint    shoulder
+
+energy.energyIsland      0.05000000  0.02500000
+energy.factory           6.00000000  3.00000000
+energy.factory_assembly  5.60000000  2.80000000
+energy.hospital                      6.61000000
+energy.reserved          2.40000000  1.20000000
+energy.residential      13.22000000
+
+
+----   1012 VARIABLE zoneflow_quantity.L  
+
+INDEX 1 = pipe_gas
+
+                                              wint    shoulder
+
+gasNatural           .energyIsland      0.13155000  0.06577500
+gasNatural           .factory          15.78600000  7.89300000
+gasNatural           .factory_assembly 14.73360000  7.36680000
+gasNatural           .hospital         -7.17474E+1 -1.84828E+1
+gasNatural           .reserved          6.31440000  3.15720000
+gasNatural           .residential      34.78182000
+
+INDEX 1 = cable
+
+                                              wint         sum    shoulder
+
+elec                 .dormitories                  22.46600000
+elec                 .energyIsland     -1.97346E+1 -5.59851E+2 -1.97346E+1
+elec                 .factory          12.75000000 12.75000000 12.75000000
+elec                 .factory_assembly             47.44150000
+elec                 .factory_blades                9.56000000
+elec                 .hospital                      6.50080000
+elec                 .multifunction                 7.26560000
+elec                 .northDistrict     0.02157840  0.02157840  0.02157840
+elec                 .quality                       6.88320000
+elec                 .residential       6.96297880 4.199550E+2  6.96297880
+elec                 .school                       17.44700000
+elec                 .tech                          9.56000000
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 22
+Fast RTN
+E x e c u t i o n
+
+
+       1012 VARIABLE zoneflow_quantity.L  
+
+INDEX 1 = pipe_waterPotable
+
+                                              wint         sum    shoulder
+
+elec                 .northDistrict    -0.02157840 -0.02157840 -0.02157840
+elec                 .residential      -0.11297880 -0.11297880 -0.11297880
+waterPotable         .factory           4.44000000  4.44000000  4.44000000
+waterPotable         .northDistrict     5.07000000  5.07000000  5.07000000
+waterPotable         .residential      -9.51000000 -9.51000000 -9.51000000
+
+
+----   1013 VARIABLE zoneflow_quality.L  
+
+INDEX 1 = elec
+
+                               wint         sum    shoulder
+
+energy.dormitories                  22.46600000
+energy.energyIsland     -1.97346E+1 -5.59851E+2 -1.97346E+1
+energy.factory          12.75000000 12.75000000 12.75000000
+energy.factory_assembly             47.44150000
+energy.factory_blades                9.56000000
+energy.hospital                      6.50080000
+energy.multifunction                 7.26560000
+energy.quality                       6.88320000
+energy.residential       6.85000000 4.198420E+2  6.85000000
+energy.school                       17.44700000
+energy.tech                          9.56000000
+
+INDEX 1 = gasNatural
+
+                               wint    shoulder
+
+mass  .energyIsland      0.13155000  0.06577500
+mass  .factory          15.78600000  7.89300000
+mass  .factory_assembly 14.73360000  7.36680000
+mass  .hospital         -7.17474E+1 -1.84828E+1
+mass  .reserved          6.31440000  3.15720000
+mass  .residential      34.78182000
+
+INDEX 1 = waterPotable
+
+                               wint         sum    shoulder
+
+mass  .factory           4.44000000  4.44000000  4.44000000
+mass  .northDistrict     5.07000000  5.07000000  5.07000000
+mass  .residential      -9.51000000 -9.51000000 -9.51000000
+
+
+----   1014 VARIABLE binary_transp.L  
+
+                                    dormitori~  energyIsl~     factory  factory_a~  factory_b~    hospital  multifunc~
+
+pipe_gas         .factory                                               1.00000000
+pipe_gas         .factory_assembly                          1.00000000
+pipe_gas         .northDistrict                 1.00000000  1.00000000
+pipe_gas         .residential                                                                   1.00000000
+cable            .factory                                               1.00000000
+cable            .factory_assembly                          1.00000000
+cable            .northDistrict     1.00000000  1.00000000  1.00000000              1.00000000              1.00000000
+cable            .residential                                                                   1.00000000
+pipe_waterPotable.northDistrict                             1.00000000
+road_coal        .factory                                               1.00000000
+road_coal        .factory_assembly                          1.00000000
+road_coal        .northDistrict     1.00000000  1.00000000  1.00000000              1.00000000              1.00000000
+road_coal        .residential                                                                   1.00000000
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 23
+Fast RTN
+E x e c u t i o n
+
+
+       1014 VARIABLE binary_transp.L  
+
+                                 +  northDist~     quality    reserved  residenti~      school        tech
+
+pipe_gas         .energyIsland      1.00000000
+pipe_gas         .factory           1.00000000
+pipe_gas         .hospital                                              1.00000000
+pipe_gas         .northDistrict                                         1.00000000
+pipe_gas         .reserved                                              1.00000000
+pipe_gas         .residential       1.00000000              1.00000000
+cable            .dormitories       1.00000000
+cable            .energyIsland      1.00000000
+cable            .factory           1.00000000
+cable            .factory_blades    1.00000000
+cable            .hospital                                              1.00000000
+cable            .multifunction     1.00000000
+cable            .northDistrict                 1.00000000              1.00000000              1.00000000
+cable            .quality           1.00000000
+cable            .residential       1.00000000                                      1.00000000
+cable            .school                                                1.00000000
+cable            .tech              1.00000000
+pipe_waterPotable.factory           1.00000000
+pipe_waterPotable.northDistrict                                         1.00000000
+pipe_waterPotable.residential       1.00000000
+road_coal        .dormitories       1.00000000
+road_coal        .energyIsland      1.00000000
+road_coal        .factory           1.00000000
+road_coal        .factory_blades    1.00000000
+road_coal        .hospital                                              1.00000000
+road_coal        .multifunction     1.00000000
+road_coal        .northDistrict                 1.00000000              1.00000000              1.00000000
+road_coal        .quality           1.00000000
+road_coal        .reserved                                              1.00000000
+road_coal        .residential       1.00000000              1.00000000              1.00000000
+road_coal        .school                                                1.00000000
+road_coal        .tech              1.00000000
+
+
+----   1015 VARIABLE exports.L  
+
+                                              wint         sum    shoulder
+
+waste_organic        .factory           0.00400000  0.00400000  0.00400000
+waste_organic        .northDistrict     0.00400000  0.00400000  0.00400000
+waste_organic        .residential       0.00400000  0.00400000  0.00400000
+waste                .factory           0.00300000  0.00300000  0.00300000
+waste                .northDistrict     0.00300000  0.00300000  0.00300000
+waste                .residential       0.00300000  0.00300000  0.00300000
+wastewater           .factory           4.63000000  4.63000000  4.63000000
+wastewater           .northDistrict     4.63000000  4.63000000  4.63000000
+wastewater           .residential       4.63000000  4.63000000  4.63000000
+
+
+----   1016 VARIABLE imports.L  
+
+                                              wint         sum    shoulder
+
+elec                 .energyIsland     19.73455720 5.622407E+2 19.73455720
+gasNatural           .hospital         71.74737000             35.87368500
+waterNonPotable      .factory           2.31000000  2.31000000  2.31000000
+waterNonPotable      .northDistrict     2.31000000  2.31000000  2.31000000
+waterNonPotable      .residential       2.31000000  2.31000000  2.31000000
+waterPotable         .residential      20.11000000 20.11000000 20.11000000
+
+
+----   1017 VARIABLE binary_import.L  
+
+                       dormitori~  energyIsl~     factory  factory_a~  factory_b~    hospital  multifunc~  northDist~
+
+coal                   1.00000000
+elec                               1.00000000
+gasNatural                                                                         1.00000000
+gasoline               1.00000000
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 24
+Fast RTN
+E x e c u t i o n
+
+
+       1017 VARIABLE binary_import.L  
+
+                       dormitori~  energyIsl~     factory  factory_a~  factory_b~    hospital  multifunc~  northDist~
+
+waterNonPotable        1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+
+                    +     quality    reserved  residenti~      school        tech
+
+waterNonPotable        1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+waterPotable                                   1.00000000
+
+
+----   1018 VARIABLE binary_export.L  
+
+                 dormitori~  energyIsl~     factory  factory_a~  factory_b~    hospital  multifunc~  northDist~     quality
+
+CO2              1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+coal             1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+cool             1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+elec             1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+gasNatural       1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+gasoline         1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+heat             1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+waste_organic    1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+waste            1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+wastewater       1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+water            1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+waterNonPotable  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+waterPotable     1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000  1.00000000
+
+              +    reserved  residenti~      school        tech
+
+CO2              1.00000000  1.00000000  1.00000000  1.00000000
+coal             1.00000000  1.00000000  1.00000000  1.00000000
+cool             1.00000000  1.00000000  1.00000000  1.00000000
+elec             1.00000000  1.00000000  1.00000000  1.00000000
+gasNatural       1.00000000  1.00000000  1.00000000  1.00000000
+gasoline         1.00000000  1.00000000  1.00000000  1.00000000
+heat             1.00000000  1.00000000  1.00000000  1.00000000
+waste_organic    1.00000000  1.00000000  1.00000000  1.00000000
+waste            1.00000000  1.00000000  1.00000000  1.00000000
+wastewater       1.00000000  1.00000000  1.00000000  1.00000000
+water            1.00000000  1.00000000  1.00000000  1.00000000
+waterNonPotable  1.00000000  1.00000000  1.00000000  1.00000000
+waterPotable     1.00000000  1.00000000  1.00000000  1.00000000
+
+
+----   1019 VARIABLE rate_process.L  
+
+                                        wint         sum    shoulder
+
+airCon_central .dormitories                   0.94000000
+airCon_central .energyIsland                  0.10000000
+airCon_central .factory_assembly              1.98500000
+airCon_central .factory_blades                0.40000000
+airCon_central .hospital                      0.24700000
+airCon_central .residential                   0.02500000
+airCon_central .tech                          0.40000000
+airCon_split   .hospital                      0.02500000
+airCon_split   .multifunction                 0.30400000
+airCon_split   .quality                       0.28800000
+airCon_split   .residential                  17.25500000
+airCon_split   .school                        0.73000000
+boiler_domestic.energyIsland      0.05000000              0.02500000
+boiler_domestic.factory           6.00000000              3.00000000
+boiler_domestic.factory_assembly  5.60000000              2.80000000
+boiler_domestic.hospital                                  6.61000000
+boiler_domestic.reserved          2.40000000              1.20000000
+boiler_domestic.residential      13.22000000
+
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 25
+Fast RTN
+E x e c u t i o n
+
+
+----   1020 VARIABLE rate_transp.L  
+
+INDEX 1 = pipe_gas
+
+                                         wint    shoulder
+
+factory         .factory_assembly 14.73360000  7.36680000
+hospital        .residential      71.74737000 18.48277500
+northDistrict   .energyIsland      0.13155000  0.06577500
+northDistrict   .factory          30.51960000 15.25980000
+residential     .northDistrict    30.65115000 15.32557500
+residential     .reserved          6.31440000  3.15720000
+
+INDEX 1 = cable
+
+                                         wint         sum    shoulder
+
+energyIsland    .northDistrict    19.73455720 5.598507E+2 19.73455720
+factory         .factory_assembly             47.44150000
+northDistrict   .dormitories                  22.46600000
+northDistrict   .factory          12.75000000 60.19150000 12.75000000
+northDistrict   .factory_blades                9.56000000
+northDistrict   .multifunction                 7.26560000
+northDistrict   .quality                       6.88320000
+northDistrict   .residential       6.96297880 4.439028E+2  6.96297880
+northDistrict   .tech                          9.56000000
+residential     .hospital                      6.50080000
+residential     .school                       17.44700000
+
+INDEX 1 = pipe_waterPotable
+
+                                         wint         sum    shoulder
+
+northDistrict   .factory           4.44000000  4.44000000  4.44000000
+residential     .northDistrict     9.51000000  9.51000000  9.51000000
+
+
+----   1021 VARIABLE num_process.L  
+
+                 dormitori~  energyIsl~     factory  factory_a~  factory_b~    hospital  multifunc~     quality    reserved
+
+airCon_central  38.00000000  4.00000000             80.00000000 16.00000000 10.00000000
+airCon_split                                                                 1.00000000 13.00000000 12.00000000
+boiler_domestic              2.00000000 2.400000E+2 2.240000E+2             2.650000E+2                         96.00000000
+
+              +  residenti~      school        tech
+
+airCon_central   1.00000000             16.00000000
+airCon_split    6.910000E+2 30.00000000
+boiler_domestic 5.290000E+2
+
+
+----   1022 VARIABLE cost_prod.L           =  4.300572E+6  
+
+----   1023 VARIABLE cost_transp.L         =  6.280908E+6  
+
+----   1024 VARIABLE cost_res.L            =  1.005642E+9  
+
+----   1025 VARIABLE cost_total.L          =  1.006700E+9  
+
+----   1026 VARIABLE pareto_var.L          =   0.00000000  
+
+**** REPORT FILE SUMMARY
+
+Headlines /home/ps/ce-fs1/tr608/ShannGu/model/headlines.csv
+results_praq_production /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-production.csv
+results_praq_quality /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-quality.csv
+results_praq_resources /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-resources.csv
+results_praq_processes /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-processes.csv
+results_praq_zoneflow /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-zoneflow.csv
+results_praq_zoneflowQuality /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-zoneflowQuality.csv
+results_praq_transp /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-transp.csv
+results_praq_IsTransp /home/ps/ce-fs1/tr608/ShannGu/model/results-praq-IsTransp.csv
+GAMS Rev 233  LEX-LEI 23.3.3 x86_64/Linux                                                         07/28/16 17:13:19 Page 26
+Fast RTN
+E x e c u t i o n
+
+
+EXECUTION TIME       =        0.354 SECONDS      9 Mb  LEX233-233 Dec 15, 2009
+
+
+USER: Centre for Process Systems Engineering         S090430:0504AN-LNX
+      Imperial College                                            DC621
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      /home/ps/ce-fs1/tr608/ShannGu/model/gridCase.gms
+Output     /home/ps/ce-fs1/tr608/ShannGu/model/gridCase.lst

@@ -1,0 +1,10 @@
+process: wastewater-biogas-elec-hydrogen_biogas-elec
+resources:
+     biogas: -0.03496683
+     heat: 0.2578773
+     elec: 1
+rate:
+        wint: 1.206
+        sum: 1.206
+        shoulder: 1.206
+notes:

@@ -1,0 +1,10 @@
+process: biomass_ethanol-0.159
+resources:
+     biomass: -4.157161
+     ethanol: 1
+     heat: -2.95057
+     elec: -0.7376426
+     water: -0.7338403
+     wastewater: 0.7338403
+rate: 0.159
+notes:

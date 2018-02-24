@@ -1,0 +1,10 @@
+process: distributed-fuelCells-elec-s
+resources:
+     hydrogen: -0.0175
+     elec: 1
+     water: 0.139
+rate:
+        wint: 0.05
+        sum: 0.05
+        shoulder: 0.05
+notes:

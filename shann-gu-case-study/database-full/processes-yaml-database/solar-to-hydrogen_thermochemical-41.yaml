@@ -1,0 +1,10 @@
+process: solar-to-hydrogen_thermochemical-41
+flow: 
+     solar:
+          value: -315.4574
+     hydrogen:
+          value: 1
+     water:
+          value: -1.786751
+capacity:  
+     value: 41

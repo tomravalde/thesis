@@ -1,0 +1,8 @@
+process: biogas-UPGRADE-methane-HPWS-0.254
+resources:
+     elec: -2.234994
+     water: 0
+     biogas: -3.065715
+     methane: 1
+rate: 0.254
+notes:

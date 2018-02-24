@@ -1,0 +1,14 @@
+process: leachateTreatment_comboBiological-solarFenton-9.26
+flow: 
+     leachate:
+          value: -1
+     elec:
+          value: 0.036
+     methanol:
+          value: -0.003
+     sludge:
+          value: 0.00135
+     effluent:
+          value: 1
+capacity:  
+     value: 9.26

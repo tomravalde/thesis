@@ -1,0 +1,8 @@
+process: CHP-microTurbine_liquidFuel-0.03
+resources:
+     gasoline: -0.1008
+     elec: 1
+     heat: 1.66
+     CO2: 0.2772
+rate: 0.03
+notes:

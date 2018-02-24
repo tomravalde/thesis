@@ -1,0 +1,11 @@
+process: algae-production-photobioreactor-flatPlat
+resources:
+     algae: 1
+     water: -370.3655
+     elec: 6.9894
+     CO2: -1.8
+rate:
+        wint: 2.95e-06
+        sum: 2.95e-06
+        shoulder: 2.95e-06
+notes:

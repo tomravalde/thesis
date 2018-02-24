@@ -1,0 +1,11 @@
+process: review-ethanol-fermentation-l
+resources:
+     biomass: -0.001785714
+     ethanol: 1
+     heat: -0.5339286
+     digestate: 0.5357143
+rate:
+        wint: 1.27
+        sum: 1.27
+        shoulder: 1.27
+notes:

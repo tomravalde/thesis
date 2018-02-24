@@ -1,0 +1,9 @@
+process: heatPump-transcriticalCO2-radAndDHW-l
+resources:
+     elec: -0.3333333
+     heat: 1
+rate:
+        wint: 13
+        sum: 13
+        shoulder: 13
+notes:

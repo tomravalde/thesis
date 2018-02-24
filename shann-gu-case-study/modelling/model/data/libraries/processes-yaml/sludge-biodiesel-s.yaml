@@ -1,0 +1,15 @@
+process: sludge-biodiesel-s
+resources:
+     sludge: -26.3
+     heat: -2.84
+     methanol: -0.10381
+     elec: -2.1024
+     water: -0.505
+     biodiesel: 1
+     waste: 0.00455
+     fertilizer: 0.00497
+rate:
+        wint: 0.00317
+        sum: 0.00317
+        shoulder: 0.00317
+notes:

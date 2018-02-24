@@ -1,0 +1,7 @@
+process: solar-CSP-550
+resources:
+     solar: -7.042254
+     elec: 1
+     water: -0.06566901
+rate: 550
+notes:

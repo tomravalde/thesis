@@ -1,0 +1,13 @@
+process: anaerobicDigestion_sludge-l
+resources:
+     wastewater: -1
+     water: 0.7905
+     digestate: 0.0009663982
+     methane: 0.001665283
+     CO2: 1.519739e-05
+     elec: -0.0008116965
+rate:
+        wint: 1796.361
+        sum: 1796.361
+        shoulder: 1796.361
+notes:

@@ -1,0 +1,10 @@
+process: CHP-steam-small_biogas-0.5
+flow: 
+     biogas:
+          value: -0.569152
+     elec:
+          value: 1
+     heat:
+          value: 15
+capacity:  
+     value: 0.5

@@ -1,0 +1,12 @@
+process: gasification-biomass-methanol-condensingTurbine-noDrying-adjusted-30.17
+flow: 
+     biomass:
+          value: -3.587444
+     methanol:
+          value: 1
+     elec:
+          value: 1.03139
+     water:
+          value: -0.4484305
+capacity:  
+     value: 30.17

@@ -1,0 +1,10 @@
+process: groundWater-pumping-DEFINE-ACCORDING-TO-LOCAL-CONSTRAINTS
+flow: 
+     groundWater:
+          value: -1
+     elec:
+          value: -0.00799
+     groundWaterPumped:
+          value: 1
+capacity:  
+     value: DEFINE-ACCORDING-TO-LOCAL-CONSTRAINTS

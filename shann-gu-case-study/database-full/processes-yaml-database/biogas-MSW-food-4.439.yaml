@@ -1,0 +1,16 @@
+process: biogas-MSW-food-4.439
+flow: 
+     foodWaste:
+          value: 6.923098
+     methane:
+          value: -1.453851
+     heat:
+          value: 1.993852
+     elec:
+          value: 1
+     CO2:
+          value: -2.250007
+     digestate:
+          value: -2.076929
+capacity:  
+     value: 4.439

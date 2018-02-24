@@ -1,0 +1,7 @@
+resource: water
+quality:
+        mass: 1
+        energy: 0
+        contam: 0.004
+cost: 0
+notes:

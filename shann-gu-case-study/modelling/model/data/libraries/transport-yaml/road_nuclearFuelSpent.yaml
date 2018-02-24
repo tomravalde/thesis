@@ -1,0 +1,20 @@
+process: road_nuclearFuelSpent
+inputs:
+        nuclearFuelSpent: -1
+        gasoline: 0
+        CO2: 0
+outputs:
+        nuclearFuelSpent: 1
+        gasoline: 0
+        CO2: 0
+dist_source:
+        nuclearFuelSpent: 0
+        gasoline: -0.18
+        CO2: 0.3
+dist_dest:
+        nuclearFuelSpent: 0
+        gasoline: 0
+        CO2: 0.3
+rate: 100
+notes:
+

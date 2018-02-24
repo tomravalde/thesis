@@ -1,0 +1,9 @@
+process: boilerRoom
+resources:
+        coal: -0.0413
+        heat: 1
+        CO2: 0.044
+rate:
+        wint: 560
+        shoulder: 560
+notes:

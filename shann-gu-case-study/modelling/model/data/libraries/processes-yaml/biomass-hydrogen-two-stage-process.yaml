@@ -1,0 +1,12 @@
+process: biomass-hydrogen-two-stage-process
+resources:
+     biomass: -93.09
+     elec: -13.752
+     hydrogen: 1
+     CO2: 13.04
+     methane: 0.45
+rate:
+        wint: 0.2913
+        sum: 0.2913
+        shoulder: 0.2913
+notes:

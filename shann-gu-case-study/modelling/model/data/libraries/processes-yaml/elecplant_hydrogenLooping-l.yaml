@@ -1,0 +1,12 @@
+process: elecplant_hydrogenLooping-l
+resources:
+     coal: -0.08534684
+     elec: 1
+     CO2: 0.0108106
+     waterNonPotable: -0.6819619
+     ash: 0.008534684
+rate:
+        wint: 12
+        sum: 12
+        shoulder: 12
+notes:

@@ -1,0 +1,7 @@
+process: solar-to-hydrogen_photoelectrolysis-41
+resources:
+     solar: -909.0909
+     hydrogen: 1
+     water: -1.830909
+rate: 41
+notes:

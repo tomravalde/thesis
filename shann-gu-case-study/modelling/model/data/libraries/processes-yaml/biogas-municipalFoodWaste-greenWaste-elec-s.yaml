@@ -1,0 +1,12 @@
+process: biogas-municipalFoodWaste-greenWaste-elec-s
+resources:
+     elec: 0.8514783
+     heat: 1.051826
+     biogas: 0.0001449304
+     MSW: -1
+     digestate: 0.3
+rate:
+        wint: 0.254
+        sum: 0.254
+        shoulder: 0.254
+notes:

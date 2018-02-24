@@ -1,0 +1,10 @@
+process: desalination-mechanicalVapourCompression-2.3148
+flow: 
+     seawater:
+          value: 3
+     water:
+          value: 1
+     elec:
+          value: 0.01764
+capacity:  
+     value: 2.3148

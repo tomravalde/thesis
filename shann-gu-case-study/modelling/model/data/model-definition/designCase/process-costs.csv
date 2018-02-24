@@ -1,0 +1,14 @@
+"process","capital.test","capital.test.update","recosted.process","recosted.cost","max_num",
+"anaerobicFermentation",17878704480,17878704480,"anaerobicFermentation",5865309684,100
+"boiler_gas",27082388,260400000,"boiler_gas",52920000,100
+"centralCooling",9623,9623,"centralCooling",1202.875,10000
+"centralHeating",9623,9623,"centralHeating",3608.625,10000
+"CHP",5310000,5310000,"CHP",7500000,100
+"heatEx_cold",0,0,"heatEx_cold",0,100000
+"heatEx_hot",0,0,"heatEx_hot",0,100000
+"heatPump_ground",10023000,10023000,"heatPump_ground",12210000,100
+"heatPump_water",10023000,10023000,"heatPump_water",22333500,100
+"LiBr_chill",2144644,2144644,"LiBr_chill",33801.522975,100
+"LiBr_heat",2144644,2144644,"LiBr_heat",20216.221875,100
+"sewageTreatment",119520007.983016,119520007.98,"sewageTreatment",39985920,100
+"waterTreatment",63273600,63273600,"waterTreatment",31636800,100

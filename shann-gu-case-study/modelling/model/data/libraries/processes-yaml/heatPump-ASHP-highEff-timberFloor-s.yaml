@@ -1,0 +1,9 @@
+process: heatPump-ASHP-highEff-timberFloor-s
+resources:
+     elec: -0.4545455
+     heat: 1
+rate:
+        wint: 0.005
+        sum: 0.005
+        shoulder: 0.005
+notes:

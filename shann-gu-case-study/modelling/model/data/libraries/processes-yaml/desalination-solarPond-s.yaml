@@ -1,0 +1,10 @@
+process: desalination-solarPond-s
+resources:
+     waterBrackish: -3
+     water: 1
+     elec: -1.095
+rate:
+        wint: 0.0266
+        sum: 0.0266
+        shoulder: 0.0266
+notes:

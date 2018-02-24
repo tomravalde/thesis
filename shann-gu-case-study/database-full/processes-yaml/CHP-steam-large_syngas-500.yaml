@@ -1,0 +1,8 @@
+process: CHP-steam-large_syngas-500
+resources:
+     syngas: -0.09325
+     elec: 1
+     heat: 1
+     CO2: 0.170825
+rate: 500500
+notes:

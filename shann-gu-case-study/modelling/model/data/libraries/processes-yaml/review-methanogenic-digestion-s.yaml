@@ -1,0 +1,11 @@
+process: review-methanogenic-digestion-s
+resources:
+     biomass: -3.861153
+     methane: 1
+     heat: -1.112012
+     digestate: 1.158346
+rate:
+        wint: 0.122
+        sum: 0.122
+        shoulder: 0.122
+notes:

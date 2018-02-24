@@ -1,0 +1,9 @@
+process: combustion-coal-combined-cycle-2400
+resources:
+     coal: -0.07843137
+     elec: 1
+     heat: 0.9607843
+     water: -0.8627451
+     ash: 0.007843137
+rate: 2400
+notes:

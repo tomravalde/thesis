@@ -1,0 +1,9 @@
+process: LiBr_heat
+resources:
+        heat: -0.25
+        hot_primary_feed: 1
+        hot_primary_return: -1
+rate:
+        wint: 6.723
+        shoulder: 6.723
+notes:

@@ -1,0 +1,10 @@
+process: gasification-biomass-methane
+resources:
+     biomass: -21.87557
+     water: -4.35359
+     methane: 1
+rate:
+        sum: 0.0001319
+        wint: 0.0001319
+        shoulder: 0.0001319
+notes:

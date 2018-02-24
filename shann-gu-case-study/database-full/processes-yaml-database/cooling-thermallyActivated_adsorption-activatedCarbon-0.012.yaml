@@ -1,0 +1,8 @@
+process: cooling-thermallyActivated_adsorption-activatedCarbon-0.012
+flow: 
+     heat:
+          value: -4
+     cooling:
+          value: 1
+capacity:  
+     value: 0.012

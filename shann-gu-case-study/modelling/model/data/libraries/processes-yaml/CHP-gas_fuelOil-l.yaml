@@ -1,0 +1,11 @@
+process: CHP-gas_fuelOil-l
+resources:
+     fuelOil: -0.06943333
+     elec: 1
+     heat: 1.2
+     CO2: 0.247
+rate:
+        wint: 300
+        sum: 300
+        shoulder: 300
+notes:

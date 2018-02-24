@@ -1,0 +1,20 @@
+process: gasification-MSW-elec-50
+flow: 
+     MSW:
+          value: -0.680828
+     coke:
+          value: -0.03056918
+     gasNatural:
+          value: -0.001992733
+     slag:
+          value: 0.1177832
+     metal:
+          value: 0.01838235
+     ash:
+          value: 0.02246732
+     elec:
+          value: 1
+     water:
+          value: -191.6667
+capacity:  
+     value: 50

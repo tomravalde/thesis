@@ -1,0 +1,7 @@
+process: solar-to-hydrogen_thermochemical-41
+resources:
+     solar: -315.4574
+     hydrogen: 1
+     water: -1.786751
+rate: 41
+notes:

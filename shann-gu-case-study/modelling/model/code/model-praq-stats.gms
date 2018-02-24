@@ -1,0 +1,10 @@
+file model_praq_stats /"model-praq-stats.csv"/;
+put model_praq_stats; model_praq_stats.pc=5;
+put "obj_est", PRAQ.objEst/;
+put "obj_val", PRAQ.objVal/;
+put "variables_single", PRAQ.numVar/;
+put "variables_discrete", PRAQ.numDVar/;
+put "equations_single", PRAQ.numEqu/;
+put "elements_nonzero", PRAQ.numNZ/;
+put "time_toGenerate", PRAQ.resGen/;
+put "time_toSolve", PRAQ.resUsd/;

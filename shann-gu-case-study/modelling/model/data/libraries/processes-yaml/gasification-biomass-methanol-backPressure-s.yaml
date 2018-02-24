@@ -1,0 +1,11 @@
+process: gasification-biomass-methanol-backPressure-s
+resources:
+     biomass: -3.089996
+     water: -1.544998
+     methanol: 1
+     elec: 3.167246
+rate:
+        wint: 0.52
+        sum: 0.52
+        shoulder: 0.52
+notes:

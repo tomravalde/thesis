@@ -1,0 +1,12 @@
+#!/bin/bash
+
+./process-cluster-results gridCase_minCost
+./process-cluster-results designCase_minCost
+./process-cluster-results designCase_minEmissions
+./process-cluster-results designCase_minWaste
+./process-cluster-results designCase_minWater
+./process-cluster-results wildcard_current_minCost
+./process-cluster-results wildcard_medium_minCost
+./process-cluster-results wildcard_long_minCost
+
+Rscript merge_cluster_results.R

@@ -1,0 +1,11 @@
+process: review-butanol-fermentation-s
+resources:
+     biomass: -5.555556
+     butanol: 1
+     heat: -1.6
+     digestate: 1.666667
+rate:
+        wint: 0.5996
+        sum: 0.5996
+        shoulder: 0.5996
+notes:

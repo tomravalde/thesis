@@ -1,0 +1,12 @@
+process: biogas-vegWaste-0.24
+flow: 
+     vegWaste:
+          value: -5.075884
+     methane:
+          value: 1
+     CO2:
+          value: 1.624131
+     digestate:
+          value: 1.522765
+capacity:  
+     value: 0.24

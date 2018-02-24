@@ -1,0 +1,8 @@
+process: desalination-Cu-Cl-combo-2.3148
+resources:
+     heat: -0.02777778
+     seawater: -2.999339
+     hydrogen: 0.1102293
+     water: 1
+rate: 2.3148
+notes:

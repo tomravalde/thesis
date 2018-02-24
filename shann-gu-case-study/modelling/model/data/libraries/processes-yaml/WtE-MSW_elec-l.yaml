@@ -1,0 +1,12 @@
+process: WtE-MSW_elec-l
+resources:
+     MSW: -0.02412
+     elec: 1
+     water: 0.868
+     ash: 0.0608
+     CO2: 0.1708
+rate:
+        wint: 86
+        sum: 86
+        shoulder: 86
+notes:

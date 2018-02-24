@@ -1,0 +1,18 @@
+scenario: wildcard_long_minCost
+resources: data/model-definition/wildcard_long/resource-params.csv # resource-params.csv
+demands: data/model-definition/wildcard_long/demands-nonzero.csv ## Remains the same?
+conversion: data/model-definition/wildcard_long/process-costs.csv # process-costs.csv
+transport: data/model-definition/wildcard_long/transport.csv
+objective: "0.1 * cost_prod + 0.1 * cost_transp + cost_res"
+pareto:
+    condition: "sum(Z, exports('gasNatural',Z,'wint'))"
+    limit: "1e8"
+options:
+    filename: "options-long.gms"
+    limrow: 0
+    limcol: 0
+    solprint: "off"
+    decimals: 8
+    optcr: 0.3
+    reslim: 40000
+notes: 

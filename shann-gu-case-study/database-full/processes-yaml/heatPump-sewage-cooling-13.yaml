@@ -1,0 +1,7 @@
+process: heatPump-sewage-cooling-13
+resources:
+     elec: -0.2857143
+     heat: 1
+     wastewater: -17.14286
+rate: 13
+notes:

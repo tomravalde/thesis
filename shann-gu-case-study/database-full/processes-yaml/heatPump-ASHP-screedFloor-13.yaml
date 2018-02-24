@@ -1,0 +1,6 @@
+process: heatPump-ASHP-screedFloor-13
+resources:
+     elec: -0.4761905
+     heat: 1
+rate: 13
+notes:

@@ -1,0 +1,11 @@
+process: desalination-Cu-Cl-combo-l
+resources:
+     heat: -0.02777778
+     seawater: -2.999339
+     hydrogen: 0.1102293
+     water: 1
+rate:
+        wint: 9259.259
+        sum: 9259.259
+        shoulder: 9259.259
+notes:

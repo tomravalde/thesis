@@ -1,0 +1,12 @@
+process: anaerobicDigestion_wastewater-s
+resources:
+     wastewater: -1
+     methane: 3.9e-05
+     elec: -0.0001692
+     CO2: 0.01
+     digestate: 0.01
+rate:
+        wint: 0.0116
+        sum: 0.0116
+        shoulder: 0.0116
+notes:

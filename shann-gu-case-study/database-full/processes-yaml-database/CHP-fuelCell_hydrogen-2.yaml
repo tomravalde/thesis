@@ -1,0 +1,12 @@
+process: CHP-fuelCell_hydrogen-2
+flow: 
+     hydrogen:
+          value: -0.01505376
+     elec:
+          value: 1
+     heat:
+          value: 0.4623656
+     waterNonPotable:
+          value: 0.2987097
+capacity:  
+     value: 2

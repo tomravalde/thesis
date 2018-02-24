@@ -1,0 +1,14 @@
+process: looping_hydrogen-elec-3.78
+flow: 
+     coal:
+          value: -0.2707533
+     elec:
+          value: 1
+     water:
+          value: -0.4697334
+     hydrogen:
+          value: 0.01676623
+     ash:
+          value: 0.02782137
+capacity:  
+     value: 3.78

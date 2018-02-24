@@ -1,0 +1,7 @@
+process: fuelCell_ethanol-3e-06
+resources:
+     ethanol: -0.08813953
+     elec: 1
+     CO2: 0.1545116
+rate: 3e-06
+notes:

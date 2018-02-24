@@ -1,0 +1,8 @@
+process: CHP-fuelCell_hydrogen-2
+resources:
+     hydrogen: -0.01505376
+     elec: 1
+     heat: 0.4623656
+     waterNonPotable: 0.2987097
+rate: 2
+notes:

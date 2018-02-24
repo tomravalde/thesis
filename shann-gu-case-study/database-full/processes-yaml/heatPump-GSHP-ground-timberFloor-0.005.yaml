@@ -1,0 +1,6 @@
+process: heatPump-GSHP-ground-timberFloor-0.005
+resources:
+     elec: -0.2702703
+     heat: 1
+rate: 0.005
+notes:

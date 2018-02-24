@@ -1,0 +1,11 @@
+process: CHP-steam-large_wasteGas
+resources:
+     gasLandfill: -0.09
+     elec: 1
+     heat: 1
+     CO2: 0.1485
+rate:
+        wint: 500
+        sum: 500
+        shoulder: 500
+notes:

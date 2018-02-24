@@ -1,0 +1,14 @@
+process: biomass-pyrolysis-l
+resources:
+     biooil: 1
+     biomass: -2.797203
+     water: -251.7483
+     elec: -2.517483
+     gasNatural: -2.84965e-05
+     CO2: 0.3003497
+     slag: 0.6993007
+rate:
+        wint: 4
+        sum: 4
+        shoulder: 4
+notes:

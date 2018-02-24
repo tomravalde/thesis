@@ -1,0 +1,12 @@
+process: biomass-hydrogen-photo-fermentation
+resources:
+     biomass: -99.68
+     elec: -14.004
+     hydrogen: 1
+     CO2: 13.44
+     methane: 0.67
+rate:
+        wint: 0.2913
+        sum: 0.2913
+        shoulder: 0.2913
+notes:

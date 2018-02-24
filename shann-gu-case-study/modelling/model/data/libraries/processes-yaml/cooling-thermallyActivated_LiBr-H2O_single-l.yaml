@@ -1,0 +1,9 @@
+process: cooling-thermallyActivated_LiBr-H2O_single-l
+resources:
+     heat: -1.666667
+     cool: 1
+rate:
+        wint: 7
+        sum: 7
+        shoulder: 7
+notes:

@@ -1,0 +1,8 @@
+process: distributed-engine-cogen-1
+resources:
+     diesel: -0.052075
+     elec: 1
+     heat: 1
+     CO2: 0.18525
+rate: 1
+notes:

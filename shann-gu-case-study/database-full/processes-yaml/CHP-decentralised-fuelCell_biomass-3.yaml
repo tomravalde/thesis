@@ -1,0 +1,7 @@
+process: CHP-decentralised-fuelCell_biomass-3
+resources:
+     biomass: -0.1781077
+     elec: 1
+     heat: 0.8449782
+rate: 3
+notes:

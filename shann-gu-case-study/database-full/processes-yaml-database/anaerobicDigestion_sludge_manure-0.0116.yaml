@@ -1,0 +1,20 @@
+process: anaerobicDigestion_sludge_manure-0.0116
+flow: 
+     wastewater:
+          value: -1
+     manurePoultry:
+          value: -0.4285714
+     effluent:
+          value: 1.113362
+     water:
+          value: 0.01646662
+     digestate:
+          value: 0.001380569
+     methane:
+          value: 6.429109e-05
+     CO2:
+          value: 3.284418e-05
+     elec:
+          value: -0.001159566
+capacity:  
+     value: 0.0116

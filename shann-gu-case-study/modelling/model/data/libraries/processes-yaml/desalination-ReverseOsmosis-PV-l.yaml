@@ -1,0 +1,10 @@
+process: desalination-ReverseOsmosis-PV-l
+resources:
+     seawater: -3
+     water: 1
+     solar: -0.4146
+rate:
+        wint: 0.002583
+        sum: 0.002583
+        shoulder: 0.002583
+notes:

@@ -1,0 +1,7 @@
+process: heatPump-solarAssisted-cooling-0.01
+resources:
+     solar: 0.07324159
+     elec: -7.597859e-08
+     heat: 1
+rate: 0.01
+notes:

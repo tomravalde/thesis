@@ -1,0 +1,7 @@
+resource: DME
+quality:
+        mass: 1
+        energy: 1
+        contam: 1
+cost: 0
+notes:

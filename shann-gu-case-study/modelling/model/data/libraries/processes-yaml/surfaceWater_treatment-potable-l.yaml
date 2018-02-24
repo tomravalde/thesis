@@ -1,0 +1,10 @@
+process: surfaceWater_treatment-potable-l
+resources:
+     water: -1
+     elec: -9e-4
+     waterPotable: 1
+rate:
+        wint: 46296.3
+        sum: 46296.3
+        shoulder: 46296.3
+notes:

@@ -1,0 +1,16 @@
+process: combustion-coal-400
+flow: 
+     coal:
+          value: -0.1212121
+     elec:
+          value: 1
+     heat:
+          value: 2.030303
+     water:
+          value: -0.8666667
+     CO2:
+          value: 0.280303
+     ash:
+          value: 0.01212121
+capacity:  
+     value: 400

@@ -1,0 +1,6 @@
+process: district-cogen-absorptionChiller-100
+resources:
+     heat: -1.492537
+     cooling: 1
+rate: 100
+notes:

@@ -1,0 +1,8 @@
+process: CHP-steam-large_fuelOil-500
+resources:
+     oil: -0.052075
+     elec: 1
+     heat: 1
+     CO2: 0.18525
+rate: 500500
+notes:

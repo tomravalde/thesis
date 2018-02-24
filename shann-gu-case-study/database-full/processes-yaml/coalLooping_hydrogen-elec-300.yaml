@@ -1,0 +1,11 @@
+process: coalLooping_hydrogen-elec-300
+resources:
+     coal: -0.09347222
+     water: -0.1393333
+     elec: 1
+     CO2: 0.002316667
+     ash: 0.03966111
+     wastewater: 0.1491694
+     heat: 1.01
+rate: 300
+notes:

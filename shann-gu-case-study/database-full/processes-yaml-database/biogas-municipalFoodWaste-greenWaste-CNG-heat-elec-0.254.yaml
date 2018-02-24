@@ -1,0 +1,16 @@
+process: biogas-municipalFoodWaste-greenWaste-CNG-heat-elec-0.254
+flow: 
+     elec:
+          value: 0
+     heat:
+          value: 0.07826087
+     biogas:
+          value: 0.0001289565
+     CNG:
+          value: 0.1509565
+     MSW:
+          value: -1
+     digestate:
+          value: 0.3
+capacity:  
+     value: 0.254

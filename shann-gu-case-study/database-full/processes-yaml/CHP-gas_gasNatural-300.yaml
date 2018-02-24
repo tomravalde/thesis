@@ -1,0 +1,8 @@
+process: CHP-gas_gasNatural-300
+resources:
+     gasNatural: -0.0622
+     elec: 1
+     heat: 1.2
+     CO2: 0.1703333
+rate: 300
+notes:

@@ -1,0 +1,8 @@
+process: distributed-fuelCells-cogen-0.05
+resources:
+     hydrogen: -0.0175
+     elec: 1
+     heat: 1.125
+     waterHot: 0.139
+rate: 0.05
+notes:

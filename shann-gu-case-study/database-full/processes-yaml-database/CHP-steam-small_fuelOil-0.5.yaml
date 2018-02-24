@@ -1,0 +1,12 @@
+process: CHP-steam-small_fuelOil-0.5
+flow: 
+     fuelOil:
+          value: -20
+     elec:
+          value: 1
+     heat:
+          value: 15
+     CO2:
+          value: 1.482
+capacity:  
+     value: 0.5

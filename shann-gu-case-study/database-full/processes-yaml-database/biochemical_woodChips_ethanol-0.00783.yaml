@@ -1,0 +1,16 @@
+process: biochemical_woodChips_ethanol-0.00783
+flow: 
+     biomass:
+          value: -2.36895
+     water:
+          value: -1.807496
+     CO2:
+          value: 1.586629
+     ethanol:
+          value: 0.3224513
+     elec:
+          value: 1
+     waste:
+          value: 0.07878638
+capacity:  
+     value: 0.00783
