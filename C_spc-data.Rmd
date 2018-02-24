@@ -23,13 +23,13 @@ The data discussed in this appendix can all be found online at the GitHub reposi
 
 The zones $z$ and their interzonal-distances $l_{zz'}$ (km) given in Section 2.6.1 (Table 6.1) are defined in the zone-matrix[^zone-matrix]. Any origin-destination pairs which are not neighbours are denoted by `NA` (e.g. `factory-northDistrict`). This matrix is lower-triangular, so there is no need to define a distance in both directions (because they are assumed to be equal).
 
-[^zone-matrix]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/zone-matrix.csv}
+[^zone-matrix]:\url{https://github.com/tomravalde/thesis/blob/develop/shann-gu-case-study/modelling/model/data/model-definition/zone-matrix.csv}
 
 ## Times
 
 The case study's time steps $\mathbb{s}_t$ (seconds) given in Section 2.6.2 are defined in the times table file[^times] . They are calculated assuming a 360 day year, with the winter, summer and shoulder seasons taking lengths of 90 days, 90 days, and 180 days, respectively. So for example, the length of the `shoulder` season is calculated as $180~\mbox{days} \times 24~\mbox{hours} \times 3,600~\mbox{seconds} = 1.5552 \times 10^7~\mbox{seconds}$.
 
-[^times]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/times.csv}
+[^times]:\url{https://github.com/tomravalde/thesis/blob/develop/shann-gu-case-study/modelling/model/data/model-definition/times.csv}
 
 ## Resource demands
 
@@ -54,9 +54,9 @@ These demands need to be distributed to appropriate zones $z$, and converted to 
 - When the Shann Gu documentation gives little detail about the spatial disaggregation of the demand (i.e. demand is only attributed to a region, rather than a zone), the demands need to be divided this demand up between zones. Similarly, when the documentation has not provided a value for a particular season, assumptions need to be made (e.g. that the shoulder heat demand is half the winter heat demand). These assumptions are recorded in `assump.redist`, with the new values listed in `value.redist` (and units given in `units.redist`)
 - Finally, `notes.conv` notes any necessary changes in units, such that `value.conv` and `units.conv` contain resource demands in a consistent set of units.
 
-In summary, the reasoning for every demand value which appears in the case study can be justified by the chain of sources, assumptions, and calculations embedded in the table. Below are a few rows from this dataset.
+In summary, the reasoning for every demand value which appears in the case study can be justified by the chain of sources, assumptions, and calculations embedded in the table. Below are a few rows randomly sampled from this dataset.
 
-```{r data-head, echo="TRUE"}
+```{r data-head}
 demands_display <- demands %>% 
   filter(value.doc!=0) %>%
   arrange(zone.region, zone, resource, season)
@@ -82,8 +82,6 @@ $$
 6e7 \times 3.6/(365 \times 24 \times 3600) &= 6.85
 \end{align}
 -->
-
-
 
 ### A note on waste and wastewater generatoin
 
