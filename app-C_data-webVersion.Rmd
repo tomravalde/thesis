@@ -1,3 +1,25 @@
+---
+title: "Shann Gu Power Company case study: data, assumptions, and calculations
+author:
+- name: Tom Ravalde
+  email: thomas.ravalde08@imperial.ac.uk
+  affiliation: Imperial College London
+- name: James Keirstead
+  email: jkeirstead@imperial.ac.uk
+  affiliation: Principle data scientist at Cambridge Assessments (formally of Imperial College London)
+date: February 2018
+css: /home/tr608/.pandoc/marked/kultiad-serif.css
+---
+
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+library(knitr)
+library(ggplot2)
+library(dplyr)
+
+opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=TRUE, par=TRUE, echo=FALSE, message=FALSE, warning=FALSE)
+
+```
+
 These pages provide further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including:
 
 - summaries of the data
@@ -343,3 +365,9 @@ These emissions are assumed to be split equally between the sources and destinat
 ## Summary
 
 Summary text.
+
+# Acknowledgements {.unnumbered}
+
+The data was obtained from documentation provided by Dr [TODO: Yingru's details], of the Xiamen University.
+
+# References {.unnumbered}

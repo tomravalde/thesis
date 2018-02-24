@@ -1,3 +1,11 @@
+# Shann Gu Power Company cast study: data, assumptions, and calculations
+
+\begin{tcolorbox}
+
+This is a reformatted version of webpage available at [TODO: Link to webpage]. The text is the same, however, the webpage shows some of the tables of data (which this appendix can only provide links to).
+
+\end{tcolorbox}
+
 These pages provide further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including:
 
 - summaries of the data
