@@ -20,15 +20,11 @@ opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.wi
 
 ```
 
-These pages provide further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including:
-
-- summaries of the data
-- links to the full data sets (recorded in CSV and YAML formats)
-- notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement)
-
+This appendix provides further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including, summaries of the data, links to the full data sets (recorded in CSV and YAML formats), and notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement). The following sections outline the data in the order in which it was presented it in Sections 6.1 and 6.2 [TODO: Update this if necessary] of the thesis. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
+<!--
 All of the above can be found from this webpage, which was written using the [Rmarkdown](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html) format before its conversion to HTML. This means R code used to summarise and manipulate the data is embedded in the [Rmarkdown source (.Rmd) of this page](supInf.Rmd). This maybe useful for those who want to study the data for themselves.
+-->
 
-The next section outlines the data in the order in which it was presented it in Sections 6.1 and 6.2 [TODO: Update this if necessary] of the thesis. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
 
 ## Site layout
 
