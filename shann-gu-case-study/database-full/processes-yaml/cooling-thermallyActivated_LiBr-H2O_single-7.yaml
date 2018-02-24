@@ -1,0 +1,6 @@
+process: cooling-thermallyActivated_LiBr-H2O_single-7
+resources:
+     heat: -1.666667
+     cooling: 1
+rate: 7
+notes:

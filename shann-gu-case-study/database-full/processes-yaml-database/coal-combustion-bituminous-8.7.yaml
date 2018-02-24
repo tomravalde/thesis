@@ -1,0 +1,16 @@
+process: coal-combustion-bituminous-8.7
+flow: 
+     coal:
+          value: -0.1333333
+     elec:
+          value: 1
+     heat:
+          value: 2.333333
+     water:
+          value: -0.8666667
+     CO2:
+          value: 0.3083333
+     ash:
+          value: 0.01333333
+capacity:  
+     value: 8.7

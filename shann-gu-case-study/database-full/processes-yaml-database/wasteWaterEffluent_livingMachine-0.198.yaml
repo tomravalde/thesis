@@ -1,0 +1,10 @@
+process: wasteWaterEffluent_livingMachine-0.198
+flow: 
+     effluent:
+          value: -1
+     elec:
+          value: -0.005544
+     waterNonPotable:
+          value: 1
+capacity:  
+     value: 0.198

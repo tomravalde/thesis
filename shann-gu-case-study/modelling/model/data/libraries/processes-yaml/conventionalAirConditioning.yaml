@@ -1,0 +1,9 @@
+process: conventionalAirConditioning
+resources:
+     elec: -1.248223
+     cool: 1
+rate:
+        wint: 0.003517
+        sum: 0.003517
+        shoulder: 0.003517
+notes:

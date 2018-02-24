@@ -1,0 +1,12 @@
+process: gasification_coal_elec-hydrogen-noSupplementaryFiring-2.7
+flow: 
+     coal:
+          value: -0.003865424
+     elec:
+          value: 1
+     water:
+          value: -0.4712136
+     hydrogen:
+          value: 3.386848e-05
+capacity:  
+     value: 2.7

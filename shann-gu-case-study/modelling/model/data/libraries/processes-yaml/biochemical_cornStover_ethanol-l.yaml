@@ -1,0 +1,13 @@
+process: biochemical_cornStover_ethanol-l
+resources:
+     biomass: -1.493435
+     water: -2.841672
+     CO2: 1.305745
+     ethanol: 0.3486149
+     elec: 1
+     waste: 0.1036497
+rate:
+        wint: 18.248
+        sum: 18.248
+        shoulder: 18.248
+notes:

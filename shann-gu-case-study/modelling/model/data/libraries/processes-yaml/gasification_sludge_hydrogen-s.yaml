@@ -1,0 +1,14 @@
+process: gasification_sludge_hydrogen-s
+resources:
+     sludge: -0.4548736
+     water: -0.9205776
+     elec: -1
+     slag: 0.1046931
+     heat: 0.6389892
+     hydrogen: 0.001805054
+     CO2: 0.0007220217
+rate:
+        wint: 0.62
+        sum: 0.62
+        shoulder: 0.62
+notes:

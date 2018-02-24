@@ -1,0 +1,16 @@
+"process","resource","rate_min","rate_max","cost_rand","cost_rand_alt","cost_rand_alt_freeRoad","cost_rand_alt_freeRoad_high","reference","cost.note","cost.per.km","currency","USD.per.km"
+"pipe_gas","gasNatural",0,1000,12.2931119986,0.4669705614,46.69705614,0.4669705614,"http://ac.els-cdn.com/S0961953412000232/1-s2.0-S0961953412000232-main.pdf?_tid=19a3fdae-ec2c-11e5-aada-00000aab0f01&acdnat=1458211165_1cd3eeac4d5e1e81de20487f5e419c79, Table 5","Gas network cost",150000,"GBP",215198
+"pipe_hot_primary_feed","hot_primary_feed",0,1000,94.5647880901,8.5798589468,857.98589468,8.5798589468,,"District heat network cost",350000,"GBP",502128
+"pipe_hot_primary_return","hot_primary_return",0,1000,47.9876654223,4.7836280646,478.36280646,4.7836280646,,"District heat network cost",350000,"GBP",502128
+"pipe_hot_secondary_feed","hot_secondary_feed",0,1000,43.2418200187,1.979020125,197.9020125,1.979020125,,"District heat network cost",350000,"GBP",502128
+"pipe_hot_secondary_return","hot_secondary_return",0,1000,61.5167094162,9.9559701466,995.59701466,9.9559701466,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_primary_feed","cold_primary_feed",0,1000,51.3716623187,2.1903100186,219.03100186,2.1903100186,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_primary_return","cold_primary_return",0,1000,18.5151274083,4.5283716827,452.83716827,4.5283716827,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_secondary_feed","cold_secondary_feed",0,1000,42.850135779,6.1714090929,617.14090929,6.1714090929,,"District heat network cost",350000,"GBP",502128
+"pipe_cold_secondary_return","cold_secondary_return",0,1000,23.2434052508,2.2253505506,222.53505506,2.2253505506,,"District heat network cost",350000,"GBP",502128
+"cable","elec",0,5000,36.6244084435,5.8550346244,585.50346244,5.8550346244,"http://ac.els-cdn.com/S0961953412000232/1-s2.0-S0961953412000232-main.pdf?_tid=19a3fdae-ec2c-11e5-aada-00000aab0f01&acdnat=1458211165_1cd3eeac4d5e1e81de20487f5e419c79, Table 5","Electricity network cost",80000,"GBP",114772
+"pipe_wastewater","wastewater",0,1000,57.8673576238,4.3806979377,438.06979377,4.3806979377,,"Gas network cost",150000,"GBP",215198
+"pipe_water","water_reclaimed",0,1000,76.5017149271,4.8967610136,489.67610136,4.8967610136,,"Gas network cost",150000,"GBP",215198
+"pipe_waterPotable","waterPotable",0,1000,63.1538615795,8.9940525105,899.40525105,8.9940525105,,"Gas network cost",150000,"GBP",215198
+"pipe_water_pure","water_pure",0,1000,28.7837609649,2.9018742142,290.18742142,2.9018742142,,"Gas network cost",150000,"GBP",215198
+"road_wasteOrganic","waste_organic",0,1000,0,3.3099518824,0,0,,,,,0

@@ -1,0 +1,20 @@
+process: sludge-biodiesel-0.00317
+flow: 
+     sludge:
+          value: -26.3
+     heat:
+          value: -2.84
+     methanol:
+          value: -0.10381
+     elec:
+          value: -2.1024
+     water:
+          value: -0.505
+     biodiesel:
+          value: 1
+     waste:
+          value: 0.00455
+     fertilizer:
+          value: 0.00497
+capacity:  
+     value: 0.00317

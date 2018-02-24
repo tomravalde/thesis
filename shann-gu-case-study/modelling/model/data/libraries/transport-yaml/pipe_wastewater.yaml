@@ -1,0 +1,16 @@
+process: pipe_wastewater
+inputs:
+        wastewater: -1
+        elec: 0
+outputs:
+        wastewater: 1
+        elec: 0
+dist_source:
+        wastewater: 0
+        elec: -0.0054
+dist_dest:
+        wastewater: 0
+        elec: 0
+rate: 1000
+notes:
+

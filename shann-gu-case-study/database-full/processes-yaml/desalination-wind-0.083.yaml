@@ -1,0 +1,7 @@
+process: desalination-wind-0.083
+resources:
+     waterBrackish: 3
+     water: 1
+     elec: 0.0648
+rate: 0.083
+notes:

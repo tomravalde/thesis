@@ -1,0 +1,7 @@
+process: wastewater-biogas-elec-hydrogen_elec-hydrogen_KOH-2.32e-07
+resources:
+     elec: -310.0623
+     water: -4821.09
+     hydrogen: 1
+rate: 2.32e-07
+notes:

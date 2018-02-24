@@ -1,0 +1,11 @@
+process: review-biomass-MFC-elec-butanol-s
+resources:
+     biomass: -0.7142857
+     elec: 1
+     heat: -0.2057143
+     digestate: 0.2142857
+rate:
+        wint: 0.122
+        sum: 0.122
+        shoulder: 0.122
+notes:

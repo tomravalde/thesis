@@ -1,0 +1,19 @@
+scenario: designCase_minWater
+resources: data/model-definition/designCase/resource-params.csv # resource-params.csv
+demands: data/model-definition/designCase/demands-nonzero.csv ## Remains the same?
+conversion: data/model-definition/designCase/process-costs.csv # process-costs.csv
+transport: data/model-definition/designCase/transport.csv
+objective: "sum((Z,T), imports('water',Z,T)) +
+            sum((Z,T), imports('groundWater',Z,T))"
+pareto:
+    condition: "sum(Z, exports('gasNatural',Z,'wint'))"
+    limit: "1e8"
+options:
+    filename: "options-short.gms"
+    limrow: 0
+    limcol: 0
+    solprint: "off"
+    decimals: 8
+    optcr: 0.3
+    reslim: 1000
+notes: 

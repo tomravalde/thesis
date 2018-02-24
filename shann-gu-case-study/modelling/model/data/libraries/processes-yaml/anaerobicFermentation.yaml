@@ -1,0 +1,9 @@
+process: anaerobicFermentation
+resources:
+        waste_organic: -1
+        gasNatural: 1.25
+rate:
+        wint: 1157
+        sum: 1157
+        shoulder: 1157
+notes:

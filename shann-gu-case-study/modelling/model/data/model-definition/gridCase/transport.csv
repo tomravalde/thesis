@@ -1,0 +1,6 @@
+"process","resource","rate_min","rate_max","cost_rand","cost_rand_alt","cost_rand_alt_freeRoad","cost_rand_alt_freeRoad_high","reference","cost.note","cost.per.km","currency","USD.per.km"
+"pipe_gas","gasNatural",0,1000,12.2931119986,0.4669705614,46.69705614,0.4669705614,"http://ac.els-cdn.com/S0961953412000232/1-s2.0-S0961953412000232-main.pdf?_tid=19a3fdae-ec2c-11e5-aada-00000aab0f01&acdnat=1458211165_1cd3eeac4d5e1e81de20487f5e419c79, Table 5","Gas network cost",150000,"GBP",215198
+"cable","elec",0,5000,36.6244084435,5.8550346244,585.50346244,5.8550346244,"http://ac.els-cdn.com/S0961953412000232/1-s2.0-S0961953412000232-main.pdf?_tid=19a3fdae-ec2c-11e5-aada-00000aab0f01&acdnat=1458211165_1cd3eeac4d5e1e81de20487f5e419c79, Table 5","Electricity network cost",80000,"GBP",114772
+"pipe_wastewater","wastewater",0,1000,57.8673576238,4.3806979377,438.06979377,4.3806979377,,"Gas network cost",150000,"GBP",215198
+"pipe_waterPotable","waterPotable",0,1000,63.1538615795,8.9940525105,899.40525105,8.9940525105,,"Gas network cost",150000,"GBP",215198
+"road_coal","coal",0,1000,0,5.9189318961,0,0,,,,,0

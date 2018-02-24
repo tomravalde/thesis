@@ -1,0 +1,8 @@
+process: cooling-thermallyActivated_solidDessicant-0.005
+flow: 
+     heat:
+          value: -1.538462
+     cooling:
+          value: 1
+capacity:  
+     value: 0.005

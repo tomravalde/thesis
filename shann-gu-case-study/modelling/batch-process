@@ -1,0 +1,70 @@
+#!/bin/bash
+
+###--------------------------------------------------
+### T. Ravalde
+### Last edited: 2016/05/13
+###--------------------------------------------------
+
+# This script will multiple models, copying results into unique subdirectories
+
+# USAGE:
+## - Using the format below, write code to run the model and store results for desired models
+## - Copy this script to the cluster, with the relevant models (this will happen automatically whenever ./copy-to-cluster is run)
+## - If necessary, delete any existing results/ directory (rm -rf results/)
+## - Run the script: ./batch-proc
+## - uses the gams_time.sh script which runs and times the gams code, and calls the script for pushover (push notifications)
+
+# Results can then been copied back to a local machine for processing and analysis
+
+###--------------------------------------------------
+### Code
+###--------------------------------------------------
+
+## Setup
+mkdir cluster-results
+
+## (1) gridCase
+./gams_time.sh gridCase_minCost.gms
+mkdir cluster-results/gridCase_minCost
+mv *.csv cluster-results/gridCase_minCost
+
+## (2) designCase
+
+### (a) Min cost
+./gams_time.sh designCase_minCost.gms
+mkdir cluster-results/designCase_minCost
+mv *.csv cluster-results/designCase_minCost
+
+### (b) Min emissions
+./gams_time.sh designCase_minEmissions.gms
+mkdir cluster-results/designCase_minEmissions
+mv *.csv cluster-results/designCase_minEmissions
+
+### (c) Min waste
+./gams_time.sh designCase_minWaste.gms
+mkdir cluster-results/designCase_minWaste
+mv *.csv cluster-results/designCase_minWaste
+
+### (d) Min water
+./gams_time.sh designCase_minWater.gms
+mkdir cluster-results/designCase_minWater
+mv *.csv cluster-results/designCase_minWater
+
+## (3) wildcard
+
+### (a) current (min cost)
+./gams_time.sh wildcard_current_minCost.gms
+mkdir cluster-results/wildcard_current_minCost
+mv *.csv cluster-results/wildcard_current_minCost
+
+### (b) medium (min cost)
+./gams_time.sh wildcard_medium_minCost.gms
+mkdir cluster-results/wildcard_medium_minCost
+mv *.csv cluster-results/wildcard_medium_minCost
+
+### (c) long (min cost)
+./gams_time.sh wildcard_long_minCost.gms
+mkdir cluster-results/wildcard_long_minCost
+mv *.csv cluster-results/wildcard_long_minCost
+
+## Repeat as necessary

@@ -1,0 +1,9 @@
+process: leachateTreatment_anaerobicMembraneBioreactor-9.26
+resources:
+     leachate: -1
+     elec: -0.0001692
+     methane: 0.000468
+     CO2: 0.00071
+     effluent: 1
+rate: 9.26
+notes:

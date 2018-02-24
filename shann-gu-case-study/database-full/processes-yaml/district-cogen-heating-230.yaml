@@ -1,0 +1,9 @@
+process: district-cogen-heating-230
+resources:
+     fuel: -1.666667
+     elec: 0.4166667
+     water: -0.1956667
+     heat: 1
+     CO2: 0.1576667
+rate: 230
+notes:

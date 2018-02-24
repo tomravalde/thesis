@@ -1,0 +1,12 @@
+process: gasification-coal-biomass_elec
+resources:
+     coal: -0.09338967
+     biomass: -0.02334742
+     elec: 1
+     water: -0.0001242685
+     CO2: 0.01838889
+rate:
+        wint: 422.59
+        sum: 422.59
+        shoulder: 422.59
+notes:

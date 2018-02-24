@@ -1,0 +1,7 @@
+process: desalination-ReverseOsmosis-PV-0.002583
+resources:
+     seawater: -3
+     water: 1
+     solar: -0.4146
+rate: 0.002583
+notes:

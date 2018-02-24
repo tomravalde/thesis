@@ -1,0 +1,11 @@
+process: biomass-to-DME-3.63
+resources:
+     wood: -6.228506
+     water: -1.764157
+     elec: 2.363592
+     heat: 0.7260527
+     DME: 1
+     wastewater: 2.475659
+     ash: 0.4801681
+rate: 3.63
+notes:

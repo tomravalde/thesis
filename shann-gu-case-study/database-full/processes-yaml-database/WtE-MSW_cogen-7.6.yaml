@@ -1,0 +1,16 @@
+process: WtE-MSW_cogen-7.6
+flow: 
+     MSW:
+          value: -0.244
+     elec:
+          value: 1
+     water:
+          value: 0.868
+     heat:
+          value: 2.2
+     ash:
+          value: 0.0608
+     CO2:
+          value: 0.1708
+capacity:  
+     value: 7.6

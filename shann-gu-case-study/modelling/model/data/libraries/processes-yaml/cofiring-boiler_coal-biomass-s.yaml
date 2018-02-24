@@ -1,0 +1,14 @@
+process: cofiring-boiler_coal-biomass-s
+resources:
+     coal: -0.08640035
+     biomass: -0.01006873
+     heat: 1.162791
+     elec: 1
+     water: -0.8672778
+     CO2: 0.09249366
+     ash: 0.09647067
+rate:
+        wint: 10
+        sum: 10
+        shoulder: 10
+notes:

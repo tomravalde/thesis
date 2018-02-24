@@ -1,0 +1,18 @@
+process: combustion-sludgeDigested-0.00935
+flow: 
+     digestate:
+          value: -4.644097
+     gasNatural:
+          value: -0.2361241
+     elec:
+          value: 1
+     heat:
+          value: 11.25781
+     ash:
+          value: 0.78125
+     water:
+          value: -40.53819
+     CO2:
+          value: 0.646875
+capacity:  
+     value: 0.00935

@@ -1,0 +1,7 @@
+process: wasteWaterEffluent_livingMachine-0.198
+resources:
+     effluent: -1
+     elec: -0.005544
+     waterNonPotable: 1
+rate: 0.198
+notes:

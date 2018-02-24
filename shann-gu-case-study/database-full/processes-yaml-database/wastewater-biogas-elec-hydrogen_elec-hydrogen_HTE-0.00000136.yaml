@@ -1,0 +1,10 @@
+process: wastewater-biogas-elec-hydrogen_elec-hydrogen_HTE-0.00000136
+flow: 
+     elec:
+          value: -483.7758
+     water:
+          value: -7522.124
+     hydrogen:
+          value: 1
+capacity:  
+     value: 0.00000136

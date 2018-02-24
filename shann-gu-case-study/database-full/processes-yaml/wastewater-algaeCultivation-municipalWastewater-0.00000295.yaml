@@ -1,0 +1,9 @@
+process: wastewater-algaeCultivation-municipalWastewater-0.00000295
+resources:
+     wastewater: -60.60606
+     fuel: -36.36364
+     algae: 1
+     CO2: -15.15152
+     effluent: 30.30303
+rate: 2.95e-06
+notes:

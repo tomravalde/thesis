@@ -1,0 +1,10 @@
+process: fuelCell_leachate-0.015
+flow: 
+     leachate:
+          value: -2906977
+     elec:
+          value: 1
+     wastewater:
+          value: 2906977
+capacity:  
+     value: 0.015

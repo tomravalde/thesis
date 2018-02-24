@@ -1,0 +1,14 @@
+process: combustion-biomass-350
+flow: 
+     biomass:
+          value: -0.2666667
+     elec:
+          value: 1
+     heat:
+          value: 2.333333
+     water:
+          value: -0.7
+     ash:
+          value: 0.02666667
+capacity:  
+     value: 350

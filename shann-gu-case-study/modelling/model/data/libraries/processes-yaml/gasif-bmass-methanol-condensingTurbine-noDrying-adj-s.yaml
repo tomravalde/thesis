@@ -1,0 +1,11 @@
+process: gasif-bmass-methanol-condensingTurbine-noDrying-adj-s
+resources:
+     biomass: -3.587444
+     methanol: 1
+     elec: 1.03139
+     water: -0.4484305
+rate:
+        wint: 0.447
+        sum: 0.447
+        shoulder: 0.447
+notes:

@@ -1,0 +1,20 @@
+process: road_ash
+inputs:
+        ash: -1
+        gasoline: 0
+        CO2: 0
+outputs:
+        ash: 1
+        gasoline: 0
+        CO2: 0
+dist_source:
+        ash: 0
+        gasoline: -0.18
+        CO2: 0.3
+dist_dest:
+        ash: 0
+        gasoline: 0
+        CO2: 0.3
+rate: 100
+notes:
+

@@ -1,0 +1,10 @@
+process: CHP-biomass-s
+resources:
+     biomass: -0.6153846
+     elec: 1
+     heat: 6.692308
+rate:
+        wint: 0.005
+        sum: 0.005
+        shoulder: 0.005
+notes:

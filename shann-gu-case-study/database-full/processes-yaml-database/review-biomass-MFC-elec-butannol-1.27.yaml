@@ -1,0 +1,12 @@
+process: review-biomass-MFC-elec-butannol-1.27
+flow: 
+     biomass:
+          value: -0.7142857
+     elec:
+          value: 1
+     heat:
+          value: -0.2057143
+     digestate:
+          value: 0.2142857
+capacity:  
+     value: 1.27

@@ -1,0 +1,10 @@
+process: nuclear-fastReactorRecycling-pyroprocess-7900
+flow: 
+     uranium:
+          value: -3.428333e-06
+     elec:
+          value: 1
+     water:
+          value: -0.8486111
+capacity:  
+     value: 7900

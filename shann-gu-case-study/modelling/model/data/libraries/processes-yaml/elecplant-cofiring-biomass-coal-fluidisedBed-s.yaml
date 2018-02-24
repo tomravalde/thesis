@@ -1,0 +1,14 @@
+process: elecplant-cofiring-biomass-coal-fluidisedBed-s
+resources:
+     coal: -0.88
+     biomass: -0.032
+     elec: 1
+     heat: 1.666667
+     water: -0.8666667
+     CO2: 0.2096667
+     ash: 0.01210667
+rate:
+        wint: 10
+        sum: 10
+        shoulder: 10
+notes:

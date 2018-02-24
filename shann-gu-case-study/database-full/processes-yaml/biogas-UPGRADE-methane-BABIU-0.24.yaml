@@ -1,0 +1,9 @@
+process: biogas-UPGRADE-methane-BABIU-0.24
+resources:
+     elec: -0.9184509
+     water: 0
+     biogas: -3.065696
+     methane: 1
+     ash: 0
+rate: 0.24
+notes:

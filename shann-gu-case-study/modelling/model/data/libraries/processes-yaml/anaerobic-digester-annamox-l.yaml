@@ -1,0 +1,13 @@
+process: anaerobic-digester-annamox-l
+resources:
+     wastewater: -1
+     heat: -0.2961026
+     elec: -0.1543716
+     methane: 0.09341281
+     CO2: 0.08321619
+     digestate: 0.7314249
+rate:
+        wint: 0.149
+        sum: 0.149
+        shoulder: 0.149
+notes:

@@ -1,0 +1,8 @@
+process: CHP-reciprocatingEngine_gasNatural-0.005
+resources:
+     gasNatural: -0.05488235
+     elec: 1
+     heat: 1.308824
+     CO2: 0.1502941
+rate: 0.005
+notes:

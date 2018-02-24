@@ -1,0 +1,7 @@
+process: airCon_split
+resources:
+        elec: -23.9
+        cool: 1
+rate:
+        sum: 0.025
+notes:        

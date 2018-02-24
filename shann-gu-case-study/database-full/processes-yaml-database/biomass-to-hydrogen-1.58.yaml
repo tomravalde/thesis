@@ -1,0 +1,18 @@
+process: biomass-to-hydrogen-1.58
+flow: 
+     wood:
+          value: -31.57691
+     water:
+          value: -9.460287
+     elec:
+          value: -6.570941
+     heat:
+          value: 26.82495
+     hydrogen:
+          value: 1
+     wastewater:
+          value: 8.563348
+     ash:
+          value: 2.434328
+capacity:  
+     value: 1.58

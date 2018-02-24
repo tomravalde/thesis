@@ -1,0 +1,11 @@
+process: CHP-steam-small_fuelOil
+resources:
+     fuelOil: -0.4166
+     elec: 1
+     heat: 15
+     CO2: 1.482
+rate:
+        wint: 0.5
+        sum: 0.5
+        shoulder: 0.5
+notes:

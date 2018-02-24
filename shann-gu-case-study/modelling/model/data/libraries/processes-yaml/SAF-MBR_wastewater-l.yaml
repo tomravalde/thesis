@@ -1,0 +1,11 @@
+process: SAF-MBR_wastewater-l
+resources:
+     wastewater: -1
+     elec: -0.0001692
+     methane: 1.59e-05
+     water: 1
+rate:
+        wint: 63083.33
+        sum: 63083.33
+        shoulder: 63083.33
+notes:

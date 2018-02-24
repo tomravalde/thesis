@@ -1,0 +1,5 @@
+resource: cold_primary_feed
+quality:
+        mass: 1
+cost: 0
+notes:

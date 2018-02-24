@@ -1,0 +1,8 @@
+process: algae-production-pond-4.05e-09
+resources:
+     algae: 1
+     water: -2857.184
+     elec: -3.7845
+     CO2: -1.8
+rate: 4.05e-09
+notes:

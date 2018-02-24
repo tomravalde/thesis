@@ -1,0 +1,6 @@
+process: constructed-wetland-nonPotable-1.75
+resources:
+     effluent: -1
+     waterNonPotable: 0.95
+rate: 1.75
+notes:

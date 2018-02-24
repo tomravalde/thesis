@@ -1,0 +1,16 @@
+process: road_gasoline
+inputs:
+        gasoline: -1.2
+        CO2: 0
+outputs:
+        gasoline: 1
+        CO2: 0
+dist_source:
+        gasoline: -0
+        CO2: 0.3
+dist_dest:
+        gasoline: 0
+        CO2: 0.3
+rate: 100
+notes:
+

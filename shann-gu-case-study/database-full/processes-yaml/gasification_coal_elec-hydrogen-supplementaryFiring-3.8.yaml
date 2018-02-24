@@ -1,0 +1,9 @@
+process: gasification_coal_elec-hydrogen-supplementaryFiring-3.8
+resources:
+     coal: -0.2731281
+     elec: 1
+     water: -468.2196
+     hydrogen: 0.002133
+     CO2: 0.06763172
+rate: 3.8
+notes:

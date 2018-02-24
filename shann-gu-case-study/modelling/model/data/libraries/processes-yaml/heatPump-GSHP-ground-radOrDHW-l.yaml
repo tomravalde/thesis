@@ -1,0 +1,9 @@
+process: heatPump-GSHP-ground-radOrDHW-l
+resources:
+     elec: -0.3448276
+     heat: 1
+rate:
+        wint: 13
+        sum: 13
+        shoulder: 13
+notes:

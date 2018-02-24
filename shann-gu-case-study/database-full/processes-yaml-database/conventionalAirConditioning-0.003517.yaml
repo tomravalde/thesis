@@ -1,0 +1,8 @@
+process: conventionalAirConditioning-0.003517
+flow: 
+     elec:
+          value: 1.248223
+     cooling:
+          value: 1
+capacity:  
+     value: 0.003517

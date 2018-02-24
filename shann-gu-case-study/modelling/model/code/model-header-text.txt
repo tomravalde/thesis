@@ -1,0 +1,25 @@
+$TITLE Fast RTN
+
+$ONTEXT
+This model calculates the optimal provision of
+resource conversion technologies and
+networks in order to meet a pattern of demands.
+
+This version optimises across two steady
+state periods: summer and winter
+	
+Version 0.1
+27 Feb 2014 
+(Based on RTN 0.4.0 by Dr Nouri Samsatli, Dr James Keirstead, Prof Nilay Shah
+Urban Energy Systems Project
+Imperial College London
+www.imperial.ac.uk/urbanenergysystems
+$OFFTEXT
+
+* Options
+$EOLCOM //
+$ONINLINE
+$OFFSYMXREF
+$OFFSYMLIST
+$OFFDIGIT
+$ONEMPTY

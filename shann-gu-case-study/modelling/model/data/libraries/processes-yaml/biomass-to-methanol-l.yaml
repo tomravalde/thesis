@@ -1,0 +1,14 @@
+process: biomass-to-methanol-l
+resources:
+     wood: -4.468937
+     water: -1.265778
+     elec: -2.39013
+     heat: 4.501727
+     methanol: 1
+     wastewater: 1.493776
+     ash: 0.3445194
+rate:
+        wint: 5.06
+        sum: 5.06
+        shoulder: 5.06
+notes:

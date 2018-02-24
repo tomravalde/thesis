@@ -1,0 +1,10 @@
+process: fuelCell_ethanol-3e-06
+flow: 
+     ethanol:
+          value: -0.08813953
+     elec:
+          value: 1
+     CO2:
+          value: 0.1545116
+capacity:  
+     value: 0.000003

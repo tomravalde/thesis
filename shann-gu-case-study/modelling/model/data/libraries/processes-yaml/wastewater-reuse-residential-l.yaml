@@ -1,0 +1,10 @@
+process: wastewater-reuse-residential-l
+resources:
+     wastewater: -1
+     elec: 0.002646
+     waterPotable: 1
+rate:
+        wint: 6944.4
+        sum: 6944.4
+        shoulder: 6944.4
+notes:

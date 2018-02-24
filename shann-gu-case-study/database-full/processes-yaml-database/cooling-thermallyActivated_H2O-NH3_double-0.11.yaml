@@ -1,0 +1,8 @@
+process: cooling-thermallyActivated_H2O-NH3_double-0.11
+flow: 
+     heat:
+          value: -1
+     cooling:
+          value: 1
+capacity:  
+     value: 0.11

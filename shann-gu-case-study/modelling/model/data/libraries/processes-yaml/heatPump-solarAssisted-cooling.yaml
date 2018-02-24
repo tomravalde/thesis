@@ -1,0 +1,10 @@
+process: heatPump-solarAssisted-cooling
+resources:
+     solar: 0.07324159
+     elec: -7.597859e-08
+     heat: 1
+rate:
+        wint: 0.01
+        sum: 0.01
+        shoulder: 0.01
+notes:

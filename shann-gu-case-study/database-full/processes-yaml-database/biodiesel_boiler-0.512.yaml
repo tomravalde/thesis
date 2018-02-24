@@ -1,0 +1,8 @@
+process: biodiesel_boiler-0.512
+flow: 
+     biodiesel:
+          value: -0.03443333
+     heat:
+          value: 1
+capacity:  
+     value: 0.512

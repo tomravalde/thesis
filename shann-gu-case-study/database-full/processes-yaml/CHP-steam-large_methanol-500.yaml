@@ -1,0 +1,8 @@
+process: CHP-steam-large_methanol-500
+resources:
+     methanol: -0.127
+     elec: 1
+     heat: 1
+     CO2: 0.17425
+rate: 500500
+notes:

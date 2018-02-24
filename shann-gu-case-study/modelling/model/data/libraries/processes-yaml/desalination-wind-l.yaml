@@ -1,0 +1,10 @@
+process: desalination-wind-l
+resources:
+     waterBrackish: -3
+     water: 1
+     elec: 0.0648
+rate:
+        wint: 4.167
+        sum: 4.167
+        shoulder: 4.167
+notes:

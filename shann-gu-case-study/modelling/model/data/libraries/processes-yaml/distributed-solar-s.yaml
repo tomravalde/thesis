@@ -1,0 +1,8 @@
+process: distributed-solar-s
+resources:
+     solar: -5.882353
+     elec: 1
+rate:
+        sum: 1
+        shoulder: 1
+notes:

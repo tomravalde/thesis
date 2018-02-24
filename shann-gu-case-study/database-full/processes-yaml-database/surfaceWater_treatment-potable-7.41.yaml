@@ -1,0 +1,10 @@
+process: surfaceWater_treatment-potable-7.41
+flow: 
+     surfaceWater:
+          value: -1
+     elec:
+          value: -9e-04
+     waterPotable:
+          value: 1
+capacity:  
+     value: 7.41

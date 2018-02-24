@@ -1,0 +1,11 @@
+process: wastewater-reuse-residential-0.0116
+flow: 
+     wastewater:
+          value: -1
+     elec:
+          value: 0.002646
+
+     waterPotable:
+          value: 1
+capacity:  
+     value: 0.0116

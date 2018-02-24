@@ -1,0 +1,13 @@
+process: coal-combustion-bituminous-s
+resources:
+     coal: -0.1333333
+     elec: 1
+     heat: 2.333333
+     water: -0.8666667
+     CO2: 0.3083333
+     ash: 0.01333333
+rate:
+        wint: 8.7
+        sum: 8.7
+        shoulder: 8.7
+notes:

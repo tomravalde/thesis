@@ -1,0 +1,16 @@
+process: biochemical_cornStover_ethanol-18.248
+flow: 
+     biomass:
+          value: -1.493435
+     water:
+          value: -2.841672
+     CO2:
+          value: 1.305745
+     ethanol:
+          value: 0.3486149
+     elec:
+          value: 1
+     waste:
+          value: 0.1036497
+capacity:  
+     value: 18.248

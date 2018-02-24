@@ -1,0 +1,9 @@
+process: solar-CSP-dryCooling-l
+resources:
+     solar: -5.524862
+     elec: 1
+     water: -0.07486188
+rate:
+        sum: 50
+        shoulder: 50
+notes:

@@ -1,0 +1,9 @@
+process: constructed-wetland-irrigation-s
+resources:
+     wastewater: -1
+     waterNonPotable: 0.95
+rate:
+        wint: 1.75
+        sum: 1.75
+        shoulder: 1.75
+notes:

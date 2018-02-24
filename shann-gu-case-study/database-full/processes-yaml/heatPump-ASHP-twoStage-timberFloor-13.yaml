@@ -1,0 +1,6 @@
+process: heatPump-ASHP-twoStage-timberFloor-13
+resources:
+     elec: -0.5263158
+     heat: 1
+rate: 13
+notes:

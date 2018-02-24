@@ -1,0 +1,10 @@
+process: biogas-MSW-food-4.439
+resources:
+     foodWaste: 6.923098
+     methane: -1.453851
+     heat: 1.993852
+     elec: 1
+     CO2: -2.250007
+     digestate: -2.076929
+rate: 4.439
+notes:

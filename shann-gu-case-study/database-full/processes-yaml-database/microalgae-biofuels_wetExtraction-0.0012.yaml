@@ -1,0 +1,16 @@
+process: microalgae-biofuels_wetExtraction-0.0012
+flow: 
+     algae:
+          value: -5.042966
+     elec:
+          value: -1.803102
+     heat:
+          value: -17.1713
+     biodiesel:
+          value: 1
+     CO2:
+          value: 0.0141203
+     methane:
+          value: 0.02783717
+capacity:  
+     value: 0.0012

@@ -1,0 +1,11 @@
+process: CHP-steam-small_wasteGas
+resources:
+     gasLandfill: -0.7208
+     elec: 1
+     heat: 15
+     CO2: 1.188
+rate:
+        wint: 0.5
+        sum: 0.5
+        shoulder: 0.5
+notes:

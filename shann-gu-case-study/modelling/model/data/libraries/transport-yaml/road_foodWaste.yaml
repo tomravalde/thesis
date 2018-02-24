@@ -1,0 +1,20 @@
+process: road_foodWaste
+inputs:
+        foodWaste: -1
+        gasoline: 0
+        CO2: 0
+outputs:
+        foodWaste: 1
+        gasoline: 0
+        CO2: 0
+dist_source:
+        foodWaste: 0
+        gasoline: -0.18
+        CO2: 0.3
+dist_dest:
+        foodWaste: 0
+        gasoline: 0
+        CO2: 0.3
+rate: 100
+notes:
+

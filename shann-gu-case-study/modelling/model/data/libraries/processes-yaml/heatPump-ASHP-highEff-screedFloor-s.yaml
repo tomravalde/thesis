@@ -1,0 +1,9 @@
+process: heatPump-ASHP-highEff-screedFloor-s
+resources:
+     elec: -0.3030303
+     heat: 1
+rate:
+        wint: 0.005
+        sum: 0.005
+        shoulder: 0.005
+notes:

@@ -1,0 +1,9 @@
+process: WtE-MSW_elec-86
+resources:
+     MSW: -0.02412
+     elec: 1
+     water: 0.868
+     ash: 0.0608
+     CO2: 0.1708
+rate: 86
+notes:

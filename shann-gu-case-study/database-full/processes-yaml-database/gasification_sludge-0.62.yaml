@@ -1,0 +1,14 @@
+process: gasification_sludge-0.62
+flow: 
+     sludge:
+          value: -0.6880952
+     heat:
+          value: 0.002380952
+     elec:
+          value: 1
+     water:
+          value: -0.4761905
+     slag:
+          value: 0.0006904762
+capacity:  
+     value: 0.62

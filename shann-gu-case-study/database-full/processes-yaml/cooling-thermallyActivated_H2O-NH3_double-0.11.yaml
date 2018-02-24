@@ -1,0 +1,6 @@
+process: cooling-thermallyActivated_H2O-NH3_double-0.11
+resources:
+     heat: -1
+     cooling: 1
+rate: 0.11
+notes:

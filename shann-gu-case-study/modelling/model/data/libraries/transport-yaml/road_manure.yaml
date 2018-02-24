@@ -1,0 +1,20 @@
+process: road_manure
+inputs:
+        manure: -1
+        gasoline: 0
+        CO2: 0
+outputs:
+        manure: 1
+        gasoline: 0
+        CO2: 0
+dist_source:
+        manure: 0
+        gasoline: -0.18
+        CO2: 0.3
+dist_dest:
+        manure: 0
+        gasoline: 0
+        CO2: 0.3
+rate: 100
+notes:
+

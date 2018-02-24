@@ -1,0 +1,9 @@
+process: gasification-waste-plama-ICE-steam-CC-7.92
+resources:
+     waste: -0.219151
+     heat: -3.957552
+     elec: 1
+     water: -0.06910168
+     CO2: 0.3445212
+rate: 7.92
+notes:

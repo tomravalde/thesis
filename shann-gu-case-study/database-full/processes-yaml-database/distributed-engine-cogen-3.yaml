@@ -1,0 +1,12 @@
+process: distributed-engine-cogen-3
+flow: 
+     diesel:
+          value: -0.052075
+     elec:
+          value: 1
+     heat:
+          value: 1
+     CO2:
+          value: 0.18525
+capacity:  
+     value: 3

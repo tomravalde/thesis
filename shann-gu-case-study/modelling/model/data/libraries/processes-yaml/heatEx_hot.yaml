@@ -1,0 +1,10 @@
+process: heatEx_hot
+resources:
+        hot_primary_feed: -1
+        hot_primary_return: 1
+        hot_secondary_feed: 1
+        hot_secondary_return: -1
+rate:
+        wint: 6.723
+        shoulder: 6.723
+notes:

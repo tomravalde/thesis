@@ -1,0 +1,12 @@
+process: elecplant-biomass-l
+resources:
+     biomass: -0.32
+     elec: 1
+     water: -0.68
+     heat: 3
+     ash: 0.032
+rate:
+        wint: 740
+        sum: 740
+        shoulder: 740
+notes:

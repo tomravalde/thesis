@@ -1,0 +1,6 @@
+process: heatPump-GSHP-ground-screedFloor-13
+resources:
+     elec: -0.1639344
+     heat: 1
+rate: 13
+notes:

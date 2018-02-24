@@ -1,0 +1,10 @@
+process: gasification-biomass-methane-0.0001319
+flow: 
+     biomass:
+          value: -21.87557
+     water:
+          value: -4.35359
+     methane:
+          value: 1
+capacity:  
+     value: 0.0001319

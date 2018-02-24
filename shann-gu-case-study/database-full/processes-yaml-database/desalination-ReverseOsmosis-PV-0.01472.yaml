@@ -1,0 +1,10 @@
+process: desalination-ReverseOsmosis-PV-0.01472
+flow: 
+     seawater:
+          value: -3
+     water:
+          value: 1
+     solar:
+          value: -0.4146
+capacity:  
+     value: 0.01472

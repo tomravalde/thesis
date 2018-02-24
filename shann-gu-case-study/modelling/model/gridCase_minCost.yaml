@@ -1,0 +1,18 @@
+scenario: gridCase_minCost
+resources: data/model-definition/gridCase/resource-params.csv # resource-params.csv
+demands: data/model-definition/gridCase/demands-nonzero.csv ## Remains the same?
+conversion: data/model-definition/gridCase/process-costs.csv # process-costs.csv
+transport: data/model-definition/gridCase/transport.csv
+objective: "0.1 * cost_prod + 0.1 * cost_transp + cost_res"
+pareto:
+    condition: "sum(Z, exports('gasNatural',Z,'wint'))"
+    limit: "1e8"
+options:
+    filename: "options-short.gms"
+    limrow: 0
+    limcol: 0
+    solprint: "off"
+    decimals: 8
+    optcr: 0.3
+    reslim: 1000
+notes: 

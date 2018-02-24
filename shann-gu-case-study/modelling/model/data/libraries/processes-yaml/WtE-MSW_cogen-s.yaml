@@ -1,0 +1,13 @@
+process: WtE-MSW_cogen-s
+resources:
+     MSW: -0.244
+     elec: 1
+     water: 0.868
+     heat: 2.2
+     ash: 0.0608
+     CO2: 0.1708
+rate:
+        wint: 7.6
+        sum: 7.6
+        shoulder: 7.6
+notes:

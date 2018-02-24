@@ -1,0 +1,10 @@
+process: leachateTreatment-electrodyalysis
+resources:
+     leachate: -1
+     elec: 0.162
+     water: 1
+rate:
+        wint: 13.89
+        sum: 13.89
+        shoulder: 13.89
+notes:

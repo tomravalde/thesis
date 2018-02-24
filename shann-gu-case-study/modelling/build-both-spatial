@@ -1,0 +1,467 @@
+#!/usr/bin/env Rscript
+
+###--------------------------------------------------
+### T. Ravalde
+### Last edited: 2016/28/07
+###--------------------------------------------------
+
+library(yaml)
+library(reshape2)
+
+# This 'build script' uses CSV and YAML data and GAMS code to build the <scenario-name>.gms GAMS file which contains the code to run the PRaQ model for the SPC case study.
+
+# CSV data contains demands and other information pertaining to resources defined by the use.
+
+# YAML data forms two libraries: resources-yaml defines the behaviour of processes; processes-yaml defines the properties of resources.
+
+# First we define some useful functions, then we open the GAMS file to print everything to, load in introductory text, and print scalars, sets, parameters, variables, equations, output and other GAMS files.
+
+###--------------------------------------------------
+### Select which network to build, by uncommenting appropriate YAML file
+###--------------------------------------------------
+
+## YAML files contain the filepaths to the CSV data used to define a model
+#config_file <- "gridCase_minCost.yaml"
+#config_file <- "designCase_minCost.yaml"
+#config_file <- "designCase_minEmissions.yaml"
+#config_file <- "designCase_minWaste.yaml"
+#config_file <- "designCase_minWater.yaml"
+#config_file <- "wildcard_current_minCost.yaml"
+#config_file <- "wildcard_medium_minCost.yaml"
+config_file <- "wildcard_long_minCost.yaml"
+
+
+###--------------------------------------------------
+### Load information from *.yaml which specifies a scenario's data and objective function
+###--------------------------------------------------
+
+model_paste <- function(path){
+  ## Function prepends any path with "model/"
+
+  paste("model/", path, sep="")
+}
+
+## Load specified YAML file
+config <- yaml.load_file(model_paste(config_file))
+
+## Define R objects to be used later in the code
+scenario_name <- config$scenario
+resource_data <- model_paste(config$resources) ## data/resource-params.csv (doesn't include demands) TODO: rename path
+resource_demands <- model_paste(config$demands) ## TODO: rename path
+
+process_data <- model_paste(config$conversion)
+transport_data <- model_paste(config$transport)
+
+resource_params <- read.csv(resource_data)
+R <- nrow(resource_params)
+process_params <- read.csv(process_data)
+transp_params <- read.csv(transport_data)
+
+demand_nonzero <- read.csv(resource_demands)
+demand_nonzero <- filter(demand_nonzero, units.conv!="TODO")
+
+#resource_list <- config$resources$definitions
+#resource_params <- config$resources$params
+#processes <- config$processes$conversion$definitions
+#transp_processes <- config$processes$transport$list
+#transp_techs_gams <- config$processes$transport$list_gams
+#demand_nonzero <- config$demands
+#emissions <- config$resources$emissions
+#process_costs <- config$processes$conversion$cost_data
+#process_params <- config$processes$conversion$params
+#cost_define <- config$processes$conversion$cost_define
+#transp_techs <- config$processes$transport$params
+
+###--------------------------------------------------
+### Load functions and data
+###--------------------------------------------------
+
+## Load functions written for use in this build-script
+source("functions.R")
+
+
+###--------------------------------------------------
+### Start printing to GAMS file
+###--------------------------------------------------
+
+sink(paste("model/", scenario_name, ".gms", sep=""))
+
+cat(readChar("model/code/model-header-text.txt", 2e5))
+
+###--------------------------------------------------
+### Manipulate and write the SETS information 
+###--------------------------------------------------
+
+## Times (seasons)
+times <- read.csv("model/data/model-definition/times.csv")
+seasons <- as.character(times$season)
+print_all_set_items("times", "T", seasons)
+
+## Resources
+#resources <- as.character(resource_params$resource)
+#print_all_set_items("resources", "R", resources)
+resource_defns <- gsub(".yaml", "", list.files("model/data/libraries/resources-yaml")) ## TODO: may need nuancing
+print_all_set_items("resources", "R", resource_defns)
+
+## Qualities
+qualities <- c("mass", "energy") ## TODO: automate this line if time
+print_all_set_items("qualities", "Q", qualities)
+
+## Processes
+processes <- as.character(process_params$process)
+print_all_set_items("processes", "P", processes)
+
+## Zones
+
+zone_matrix <- read.csv("model/data/model-definition/zone-matrix.csv", ## TODO: update to mode/data/model-definition/zone-matrix.csv
+			header=TRUE,
+			check.names=FALSE)
+zone_df <- melt(zone_matrix)
+zone_df <- select(zone_df, c(zone, variable, value))
+names(zone_df) <- c("Z", "ZZ", "dist")
+zone_df <- na.omit(zone_df)
+
+origins <- as.character(zone_df$Z)
+dests <- as.character(zone_df$ZZ)
+zones <- sort(unique(c(origins, dests))) # Alphabetical order (important for applying functions which build write into the script)
+print_all_set_items("zones", "Z", zones)
+cat("ALIAS(Z,ZZ);") # Defines matching set ZZ which 
+cat("\n")
+
+## Neighbouring zones
+neighbour <- function(zone_i, zone_ii){
+  ## Defines zone_i and zone_ii (inputted as strings) as neighbours
+
+  cat("nb('", zone_i, "','", zone_ii, "') = yes;", sep="")
+  cat("\n")
+}
+
+cat("SETS", "\n")
+cat("nb(Z,ZZ);", "\n")
+N <- nrow(zone_df)
+for(n in 1:N){
+  origin <- origins[n]
+  dest <- dests[n]
+  neighbour(origin, dest)
+}
+
+cat("nb(Z,ZZ)$nb(ZZ,Z) = yes;") ## Defines neighbouring zones in the opposite direction
+cat("\n")
+
+## Transport technologies
+transp_techs <- read.csv(transport_data)
+transp_processes <- as.character(transp_techs$process)
+print_all_set_items("transport technologies", "TT", transp_processes)
+
+
+## Load the name of the GAMS file which will store this model's options (e.g. 'reslim=1000'), and print line to include this
+optionsFilename <- paste("code/", config$options$filename, sep="")
+cat("$include ", optionsFilename, sep="")
+cat("\n")
+cat("\n")
+
+## SCALARS
+## TODO: Print scalar, i.e. number of years (scalars.gms)
+
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- DEMAND
+###--------------------------------------------------
+
+## Demand quality
+
+parameter_head("demand_quality(R,Q,T,Z)")
+
+resource_names <- as.character(demand_nonzero$resource)
+
+R <- length(resource_names)
+for(r in 1:R){
+  filename <- paste("model/data/libraries/resources-yaml", "/", resource_names[r], ".yaml", sep="") #TODO: fix error from this line
+  RESOURCE <- yaml.load_file(filename)
+
+  resource <- as.character(resource_names[r])
+  season <- as.character(demand_nonzero$season[r])
+  zone <- as.character(demand_nonzero$zone[r])
+  demand <- as.numeric(as.character(demand_nonzero$value.conv[r]))
+
+  Q <- length(RESOURCE$quality)
+  for(q in 1:Q){
+
+    quality <- names(RESOURCE$quality[q])
+    qual_value <- RESOURCE$quality[[q]]
+
+    cat(resource, " .", quality, " .", season, " .", zone, " ", qual_value*demand, sep="")
+    cat("\n")
+  }
+}
+cat("/;", "\n")
+
+## Demand quantity
+
+parameter_head("demand_quantity(R,T,Z)")
+
+R <- length(resource_names)
+for(r in 1:R){
+
+  resource <- as.character(resource_names[r])
+  season <- as.character(demand_nonzero$season[r])
+  zone <- as.character(demand_nonzero$zone[r])
+  demand <- as.numeric(as.character(demand_nonzero$value.conv[r]))
+
+  cat(resource, " .", season, " .", zone, " ", demand, sep="")
+  cat("\n")
+}
+cat("/;", "\n")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- times
+###--------------------------------------------------
+
+## Length of temporal spans (seasons)
+parameter_head("span(T)")
+parameter_value(times, "season", "span")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- interzonal distances
+###--------------------------------------------------
+
+## Zonal distances (using zone_df from earlier)
+cat("PARAMETER", "\n")
+cat("length(Z,ZZ);", "\n")
+Z <- nrow(zone_df)
+for(z in 1:Z){
+  start <- as.character(zone_df[z, "Z"])
+  end <- as.character(zone_df[z, "ZZ"])
+  dist <- as.character(zone_df[z, "dist"])
+  cat("length('", start, "', '", end, "') = ", dist, ";", sep="")
+  cat("\n")
+  cat("length('", end, "', '", start, "') = ", dist, ";", sep="")
+  cat("\n")
+}
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- IMPORTS/EXPORTS
+###--------------------------------------------------
+
+## Minimum imports
+parameter_head("imports_min(R,T)")
+parameter_value_temporal(resource_params, "resource", "wint", "winter_import_min")
+parameter_value_temporal(resource_params, "resource", "sum", "summer_import_min")
+parameter_value_temporal(resource_params, "resource", "shoulder", "shoulder_import_min")
+cat("/;", "\n")
+
+## Maximum imports
+parameter_head("imports_max(R,T)")
+parameter_value_temporal(resource_params, "resource", "wint", "winter_import_max")
+parameter_value_temporal(resource_params, "resource", "sum", "summer_import_max")
+parameter_value_temporal(resource_params, "resource", "shoulder", "shoulder_import_max")
+cat("/;", "\n")
+
+## Minimum exports
+parameter_head("exports_min(R,T)")
+parameter_value_temporal(resource_params, "resource", "wint", "winter_export_min")
+parameter_value_temporal(resource_params, "resource", "sum", "summer_export_min")
+parameter_value_temporal(resource_params, "resource", "shoulder", "shoulder_export_min")
+cat("/;", "\n")
+
+## Maximum exports
+parameter_head("exports_max(R,T)")
+parameter_value_temporal(resource_params, "resource", "wint", "winter_export_max")
+parameter_value_temporal(resource_params, "resource", "sum", "summer_export_max")
+parameter_value_temporal(resource_params, "resource", "shoulder", "shoulder_export_max")
+cat("/;", "\n")
+
+## Number of import zones
+parameter_head("num_zones_imports(R)")
+parameter_value(resource_params, "resource", "num_zones_imports")
+## TODO: for feasibility, some of these resource may require 0 values here
+
+## Number of export zones
+parameter_head("num_zones_exports(R)")
+parameter_value(resource_params, "resource", "num_zones_exports")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- RESOURCE INFO
+###--------------------------------------------------
+
+### Resource costs
+parameter_head("cost_resource(R)")
+resource_params$cost.converted[is.na(resource_params$cost.converted)] <- 0
+parameter_value(resource_params, "resource", "cost.converted")
+
+## Resource emissions
+parameter_head("emissions_resource(R)")
+parameter_value(resource_params, "resource", "emissions.random")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- PROCESS INFO
+###--------------------------------------------------
+
+parameter_head("cost_process_cap(P)")
+parameter_value(process_params, "process", "recosted.cost")
+
+## Process costs (maintainence)
+parameter_head("max_num(P)")
+parameter_value(process_params, "process", "max_num")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- TRANSPORT PROCESS INFO
+###--------------------------------------------------
+
+#transp_techs <- read.csv(transp_params)
+
+## Transport costs (capital)
+parameter_head("cost_transp_cap(TT)")
+parameter_value(transp_params, "process", "USD.per.km")
+
+## Minimum transport rate (operation)
+parameter_head("rate_transp_min(TT,T)")
+parameter_value_temporal(transp_params, "process", "wint", "rate_min")
+parameter_value_temporal(transp_params, "process", "sum", "rate_min")
+parameter_value_temporal(transp_params, "process", "shoulder", "rate_min")
+cat("/;", "\n")
+
+## Maximum transport rate (operation)
+parameter_head("rate_transp_max(TT,T)")
+parameter_value_temporal(transp_params, "process", "wint", "rate_max")
+parameter_value_temporal(transp_params, "process", "sum", "rate_max")
+parameter_value_temporal(transp_params, "process", "shoulder", "rate_max")
+cat("/;", "\n")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- RESOURCE QUALITY INFO
+###--------------------------------------------------
+
+## Resource quality
+parameter_head("resource_quality(R,Q)")
+
+resource_list <- resource_params$resource
+R <- length(resource_list)
+
+for(r in 1:R){
+  ## TODO: can this loop be lapplied?
+  filename <- paste("model/data/libraries/resources-yaml", "/", resource_list[r], ".yaml", sep="")
+  RESOURCE <- yaml.load_file(filename)
+  resource_quality(RESOURCE)
+}
+cat("/;")
+cat("\n")
+
+## Binary resources
+cat("PARAMETER", "\n")
+cat("binary_resource(R,Q);", "\n")
+cat("binary_resource(R,Q)$resource_quality(R,Q) = 1;", "\n")
+
+###--------------------------------------------------
+### Manipulate and write the PARAMETERS information -- PROCESS INFO (Conversion and transport)
+###--------------------------------------------------
+
+## Import processes from library
+### PRaQ
+process_list <- paste(processes, ".gms", sep="")
+P <- length(process_list)
+for(p in 1:P){
+  load_process("praq", process_list[p])
+}
+## TODO: for some reason [l/s]apply(process_list, load_process) prints additional text
+
+## Binary process
+cat("PARAMETER", "\n")
+cat("binary_process(P,R,Q);", "\n")
+cat("binary_process(P,R,Q)$(binary_resource(R,Q)=1) = 1;", "\n")
+
+## Binary transport
+cat("PARAMETER", "\n")
+cat("binary_transport(TT,R,Q);", "\n")
+cat("binary_transport(TT,R,Q)$(binary_resource(R,Q)=1) = 1;", "\n")
+
+## Import transport processes from library
+
+load_transport <- function(model_type, process_file){
+  ## Prints the include command to import <process_file>.gms from model_type
+  ## TODO: may need generalising
+  
+  print_line <- paste("$include data/libraries/transport-", model_type, "-gams/", process_file, sep="")
+  cat(print_line, "\n")
+
+}
+
+#transport_list <- list.files(transp_techs_gams)
+transport_list <- paste(transp_processes, ".gms", sep="")
+P <- length(transport_list)
+for(p in 1:P){
+  load_transport("praq", transport_list[p])
+}
+
+## Moving frontier SET and PARAMETERs
+## TODO: see parameters_MFI.gms
+
+## Print Pareto limits, and specify code used to solve the model...
+pareto_curve <- grepl(".csv", config$pareto$limit)
+
+if (pareto_curve==TRUE) {
+  
+  ## ...if plotting a Pareto curve
+  pareto_lim_data <- read.csv(config$pareto$limit, header=FALSE)$V1
+  pareto_lim_num <- length(pareto_lim_data)
+  
+  cat("SET runs /1*", pareto_lim_num, "/;\n", sep="")
+  cat("PARAMETER\n")
+  cat("pareto_lim /0/;\n") ## Initialises parameter value. This is replaced in solve-spatial-loop.gms.
+  cat("PARAMETER\n")
+  cat("pareto_lim_options(runs)\n")
+  cat("/\n")
+  for(n in 1:pareto_lim_num){
+    cat(n, " ", pareto_lim_data[n], "\n", sep="")
+  }
+  cat("/;\n")
+
+  solve_script <- "code/solve-spatial-loop.gms"
+
+} else {
+
+  ## ...if plotting a single limit
+  cat("SCALAR pareto_lim /", config$pareto$limit, "/;\n", sep="")
+
+  solve_script <- "code/solve-spatial.gms"
+
+}
+
+###--------------------------------------------------
+### Print other components for model: VARIABLES, EQUATIONS, OUTPUT, AND OTHER GAMS FILES
+###--------------------------------------------------
+
+## Create the name of the file (and path) where the equations are defined for a sceanrio
+equations_file <- paste("equations-space-time-", scenario_name, ".gms", sep="")
+equations_path <- paste("code/", equations_file, sep="")
+
+cat("$include code/variables-space-time.gms", "\n")
+cat("$include", equations_path, "\n")
+cat("$include code/custom.gms", "\n")
+#cat("$include formulation/solve-spatial.gms", "\n") # Include DISPLAY and put statements (to write results to CSV)
+cat("$include", solve_script, "\n") # Include DISPLAY and put statements (to write results to CSV)
+
+###--------------------------------------------------
+### Close the GAMS file to print to, load in introductory text
+###--------------------------------------------------
+
+sink()
+
+## Write <optionsFilename>.gms from config.yaml options definitions
+cat("option limrow = ", config$options$limrow, ";\n",
+    "option limcol = ", config$options$limcol, ";\n",
+    "option solprint = ", config$options$solprint, ";\n",
+    "option decimals = ", config$options$decimals, ";\n",
+    "option optcr = ", config$options$optcr, ";\n",
+    "option reslim = ", config$options$reslim, ";\n",
+    sep="",
+    file = paste("model/", optionsFilename, sep=""))
+#    file = "formulation/options.gms")
+
+## Append PARETO_CONDITION and OBJECTIVE_FUNCTION to an appropriately specified equations file
+cat(readChar("model/code/equations-space-time.unspecified", 1e6),
+    "PARETO_VARIABLE..", "\n",
+    "pareto_var =e= ", config$pareto$condition, ";\n",
+    "OBJECTIVE_FUNCTION..", "\n",
+    "cost_total =e= ", config$objective, ";\n", sep="",
+    file=paste("model/", equations_path, sep=""))

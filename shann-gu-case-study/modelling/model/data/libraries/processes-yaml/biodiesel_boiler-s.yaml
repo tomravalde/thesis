@@ -1,0 +1,9 @@
+process: biodiesel_boiler-s
+resources:
+     biodiesel: -0.03443333
+     heat: 1
+rate:
+        wint: 0.025
+        sum: 0.025
+        shoulder: 0.025
+notes:

@@ -1,0 +1,9 @@
+process: heatPump_water
+resources:
+        heat: 1
+        elec: -0.3
+rate:
+        wint: 6
+        sum: 6
+        shoulder: 6
+notes: "requires a body of water"

@@ -1,0 +1,7 @@
+process: surfaceWater_treatment-potable-7.41
+resources:
+     surfaceWater: -1
+     elec: -9e-04
+     waterPotable: 1
+rate: 7.41
+notes:

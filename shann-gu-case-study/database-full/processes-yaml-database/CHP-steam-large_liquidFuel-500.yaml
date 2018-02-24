@@ -1,0 +1,12 @@
+process: CHP-steam-large_liquidFuel-500
+flow: 
+     liquidFuel:
+          value: -2.5
+     elec:
+          value: 1
+     heat:
+          value: 1
+     CO2:
+          value: 0.17325
+capacity:  
+     value: 500500

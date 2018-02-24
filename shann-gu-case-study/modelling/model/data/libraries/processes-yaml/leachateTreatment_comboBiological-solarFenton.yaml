@@ -1,0 +1,12 @@
+process: leachateTreatment_comboBiological-solarFenton
+resources:
+     leachate: -1
+     elec: 0.036
+     methanol: -0.003
+     sludge: 0.00135
+     water: 1
+rate:
+        wint: 9.26
+        sum: 9.26
+        shoulder: 9.26
+notes:

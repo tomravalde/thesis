@@ -1,0 +1,11 @@
+process: sewageTreatment
+resources:
+        waterNonPotable: 0.7
+        sludge: 0.3
+        wastewater: -1
+        elec: -0.05
+rate:
+        wint: 1157
+        sum: 1157
+        shoulder: 1157
+notes:

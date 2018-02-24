@@ -1,0 +1,8 @@
+process: cooling-thermallyActivated_adsorption-activatedCarbon
+resources:
+     heat: -4
+     cool: 1
+rate:
+        sum: 0.012
+        shoulder: 0.012
+notes:

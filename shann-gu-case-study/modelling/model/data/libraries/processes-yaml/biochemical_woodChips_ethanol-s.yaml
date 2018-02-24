@@ -1,0 +1,13 @@
+process: biochemical_woodChips_ethanol-s
+resources:
+     biomass: -2.36895
+     water: -1.807496
+     CO2: 1.586629
+     ethanol: 0.3224513
+     elec: 1
+     waste: 0.07878638
+rate:
+        wint: 0.00783
+        sum: 0.00783
+        shoulder: 0.00783
+notes:

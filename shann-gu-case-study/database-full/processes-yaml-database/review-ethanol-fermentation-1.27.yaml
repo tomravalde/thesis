@@ -1,0 +1,12 @@
+process: review-ethanol-fermentation-1.27
+flow: 
+     biomass:
+          value: -0.001785714
+     ethanol:
+          value: 1
+     heat:
+          value: -0.5339286
+     digestate:
+          value: 0.5357143
+capacity:  
+     value: 1.27

@@ -1,0 +1,8 @@
+process: review-hydrogen-fermentation-3.56
+resources:
+     biomass: -118.3432
+     hydrogen: 1
+     heat: -34.08284
+     digestate: 35.50296
+rate: 3.56
+notes:

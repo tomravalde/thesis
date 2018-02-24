@@ -1,0 +1,8 @@
+process: centralCooling
+resources:
+        cool: 1
+        cold_secondary_feed: -23.9
+        cold_secondary_return: 23.9
+rate:
+        sum: 0.025
+notes:

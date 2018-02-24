@@ -1,0 +1,10 @@
+process: wasteWaterEffluent_wetlands-l
+resources:
+     wastewater: -1
+     elec: -0.000594
+     waterNonPotable: 1
+rate:
+        wint: 43.9
+        sum: 43.9
+        shoulder: 43.9
+notes:

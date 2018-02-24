@@ -1,0 +1,9 @@
+process: elecplant_hydrogenLooping-10
+resources:
+     coal: -0.08534684
+     elec: 1
+     CO2: 0.0108106
+     waterPotable: -0.6819619
+     ash: 0.008534684
+rate: 10
+notes:

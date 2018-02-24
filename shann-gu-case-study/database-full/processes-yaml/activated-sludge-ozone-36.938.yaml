@@ -1,0 +1,11 @@
+process: activated-sludge-ozone-36.938
+resources:
+     wastewater: 1.06383
+     elec: 0.003255319
+     ozone: 3.191489e-05
+     activatedSludge: 0.03297872
+     sludge: -0.03297872
+     effluent: -1
+     CO2: -0.0006223404
+rate: 36.938
+notes:

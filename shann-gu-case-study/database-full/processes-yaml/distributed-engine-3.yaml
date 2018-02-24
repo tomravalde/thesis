@@ -1,0 +1,7 @@
+process: distributed-engine-3
+resources:
+     diesel: -0.052075
+     elec: 1
+     CO2: 0.18525
+rate: 3
+notes:

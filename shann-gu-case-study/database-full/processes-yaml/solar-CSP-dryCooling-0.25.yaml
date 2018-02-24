@@ -1,0 +1,7 @@
+process: solar-CSP-dryCooling-0.25
+resources:
+     solar: -5.524862
+     elec: 1
+     water: -0.07486188
+rate: 0.25
+notes:

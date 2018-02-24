@@ -1,0 +1,10 @@
+process: wasteWaterEffluent_wetlands-43.9
+flow: 
+     effluent:
+          value: -1
+     elec:
+          value: -0.000594
+     waterNonPotable:
+          value: 1
+capacity:  
+     value: 43.9

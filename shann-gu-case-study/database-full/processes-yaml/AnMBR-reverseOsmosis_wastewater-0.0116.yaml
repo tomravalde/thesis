@@ -1,0 +1,9 @@
+process: AnMBR-reverseOsmosis_wastewater-0.0116
+resources:
+     wastewater: -1
+     elec: -0.0216
+     methane: 4.4e-05
+     CO2: 2.26e-05
+     effluent: 1
+rate: 0.0116
+notes:

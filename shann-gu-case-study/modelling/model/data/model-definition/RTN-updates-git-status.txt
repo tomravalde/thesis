@@ -1,0 +1,98 @@
+On branch tidy-RTN
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   process-costs.csv
+	modified:   processes-yaml/AnMBR-reverseOsmosis_wastewater-l.yaml
+	modified:   processes-yaml/AnMBR-reverseOsmosis_wastewater-s.yaml
+	modified:   processes-yaml/CHP-reciprocatingEngine_wasteGas-l.yaml
+	modified:   processes-yaml/CHP-reciprocatingEngine_wasteGas-s.yaml
+	modified:   processes-yaml/CHP-steam-large_liquidFuel.yaml
+	deleted:    processes-yaml/CHP-steam-large_syngas.yaml
+	modified:   processes-yaml/CHP-steam-small_liquidFuel.yaml
+	deleted:    processes-yaml/CHP-steam-small_syngas.yaml
+	modified:   processes-yaml/CHP.yaml
+	modified:   processes-yaml/LiBr_heat.yaml
+	modified:   processes-yaml/MSW-splitter.yaml
+	modified:   processes-yaml/SAF-MBR_wastewater-l.yaml
+	modified:   processes-yaml/SAF-MBR_wastewater-s.yaml
+	modified:   processes-yaml/activated-sludge-l.yaml
+	modified:   processes-yaml/activated-sludge-ozone-l.yaml
+	modified:   processes-yaml/activated-sludge-ozone-s.yaml
+	modified:   processes-yaml/activated-sludge-s.yaml
+	modified:   processes-yaml/anaerobicDigestion_sludge-l.yaml
+	modified:   processes-yaml/anaerobicDigestion_sludge-s.yaml
+	modified:   processes-yaml/anaerobicDigestion_sludge_manure-l.yaml
+	modified:   processes-yaml/anaerobicDigestion_sludge_manure-s.yaml
+	modified:   processes-yaml/anaerobicDigestion_sludge_usedOil-l.yaml
+	modified:   processes-yaml/anaerobicDigestion_sludge_usedOil-s.yaml
+	modified:   processes-yaml/constructed-wetland-irrigation-l.yaml
+	modified:   processes-yaml/constructed-wetland-irrigation-s.yaml
+	modified:   processes-yaml/distributed-fuelCells-cogen-l.yaml
+	modified:   processes-yaml/distributed-fuelCells-cogen-s.yaml
+	modified:   processes-yaml/district-cogen-heating.yaml
+	modified:   processes-yaml/elecplant-biomass-l.yaml
+	modified:   processes-yaml/elecplant-biomass-s.yaml
+	modified:   processes-yaml/gasification-coal-sludge_elec-l.yaml
+	modified:   processes-yaml/gasification-coal-sludge_elec-s.yaml
+	deleted:    processes-yaml/gasification-syngas-elec-l.yaml
+	deleted:    processes-yaml/gasification-syngas-elec-s.yaml
+	modified:   processes-yaml/gasification_sludge_hydrogen-l.yaml
+	modified:   processes-yaml/gasification_sludge_hydrogen-s.yaml
+	modified:   processes-yaml/heatPump_water.yaml
+	deleted:    processes-yaml/landfill_ShannGu_sum.yaml
+	deleted:    processes-yaml/landfill_ShannGu_wint.yaml
+	modified:   processes-yaml/leachateTreatment-electrodyalysis.yaml
+	modified:   processes-yaml/leachateTreatment_anaerobicMembraneBioreactor.yaml
+	modified:   processes-yaml/leachateTreatment_comboBiological-solarFenton.yaml
+	modified:   processes-yaml/sewageTreatment.yaml
+	modified:   processes-yaml/surfaceWater_treatment-potable-l.yaml
+	modified:   processes-yaml/surfaceWater_treatment-potable-s.yaml
+	modified:   processes-yaml/treatment_wastewater.yaml
+	modified:   processes-yaml/wastewater-algaeCultivation-manurePhotobioreactor.yaml
+	modified:   processes-yaml/wastewater-algaeCultivation-municipalWastewater.yaml
+	modified:   processes-yaml/wastewater-algaeCultivation-openPond-l.yaml
+	modified:   processes-yaml/wastewater-algaeCultivation-openPond-s.yaml
+	modified:   processes-yaml/wastewater-reuse-irrigation-l.yaml
+	modified:   processes-yaml/wastewater-reuse-irrigation-s.yaml
+	modified:   processes-yaml/wastewater-reuse-potable-l.yaml
+	modified:   processes-yaml/wastewater-reuse-potable-s.yaml
+	modified:   processes-yaml/wastewater_anaerobicMembraneBioreactor-l.yaml
+	modified:   processes-yaml/wastewater_anaerobicMembraneBioreactor-s.yaml
+	modified:   resource-params.csv
+	deleted:    resources-yaml/activatedSludge.yaml
+	deleted:    resources-yaml/cooling.yaml
+	deleted:    resources-yaml/effluent.yaml
+	deleted:    resources-yaml/gasWaste.yaml
+	deleted:    resources-yaml/heat_boiler.yaml
+	deleted:    resources-yaml/manurePoultry.yaml
+	deleted:    resources-yaml/surfaceWater.yaml
+	deleted:    resources-yaml/syngas.yaml
+	deleted:    resources-yaml/waterHot.yaml
+	deleted:    resources-yaml/water_reclaimed.yaml
+	deleted:    resources-yaml/water_reclaimed_cold.yaml
+	deleted:    transport-yaml/pipe_effluent.yaml
+	deleted:    transport-yaml/pipe_gasWaste.yaml
+	deleted:    transport-yaml/pipe_surfaceWater.yaml
+	deleted:    transport-yaml/pipe_waterHot.yaml
+	deleted:    transport-yaml/pipe_water_reclaimed.yaml
+	deleted:    transport-yaml/pipe_water_reclaimed_cold.yaml
+	deleted:    transport-yaml/road_manurePoultry.yaml
+	modified:   transport.csv
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	RTN-updates.md
+	processes-yaml/landfill_ShannGu.yaml
+	processes-yaml/waste-generaliser-MSW.yaml
+	processes-yaml/waste-generaliser-biomassAgri.yaml
+	processes-yaml/waste-generaliser-digestate.yaml
+	processes-yaml/waste-generaliser-foodWaste.yaml
+	processes-yaml/waste-generaliser-vegWaste.yaml
+	processes-yaml/wasteOrganic-generaliser-vegwaste.yaml
+	processes-yaml/water-generaliser-NonPotable.yaml
+	tmp.tmp
+
+no changes added to commit (use "git add" and/or "git commit -a")

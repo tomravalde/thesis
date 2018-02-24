@@ -1,0 +1,10 @@
+process: cooling-evaporative-cooling-0.00000108
+flow: 
+     heat:
+          value: -2.558816
+     cooling:
+          value: 1
+     water:
+          value: -10914.38
+capacity:  
+     value: 0.00000108

@@ -1,0 +1,12 @@
+process: wastewater-algaeCultivation-municipalWastewater
+resources:
+     wastewater: -60.60606
+     elec: -36.36364
+     algae: 1
+     CO2: -15.15152
+     water: 30.30303
+rate:
+        wint: 2.95e-06
+        sum: 2.95e-06
+        shoulder: 2.95e-06
+notes:

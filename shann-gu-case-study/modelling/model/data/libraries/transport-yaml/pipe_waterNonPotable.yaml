@@ -1,0 +1,16 @@
+process: pipe_waterNonPotable
+inputs:
+        waterNonPotable: -1
+        elec: 0
+outputs:
+        waterNonPotable: 1
+        elec: 0
+dist_source:
+        waterNonPotable: 0
+        elec: -0.0054
+dist_dest:
+        waterNonPotable: 0
+        elec: 0
+rate: 1000
+notes:
+

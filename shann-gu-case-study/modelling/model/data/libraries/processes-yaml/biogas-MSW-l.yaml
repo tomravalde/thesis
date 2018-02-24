@@ -1,0 +1,13 @@
+process: biogas-MSW-l
+resources:
+     MSW: -1
+     methane: 0.222
+     heat: -0.288
+     elec: -0.144
+     CO2: 0.339
+     digestate: 0.3
+rate:
+        wint: 4.439
+        sum: 4.439
+        shoulder: 4.439
+notes:

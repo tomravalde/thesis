@@ -1,0 +1,14 @@
+process: mixedRawSludge_biogas-0.0116
+flow: 
+     sludge:
+          value: -2.409607
+     biogas:
+          value: 1
+     heat:
+          value: -6.009691
+     elec:
+          value: -0.3469834
+     digestate:
+          value: 1.54128
+capacity:  
+     value: 0.0116

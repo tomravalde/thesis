@@ -1,0 +1,10 @@
+process: leachateTreatment-electrodyalysis-13.89
+flow: 
+     leachate:
+          value: -1
+     elec:
+          value: 0.162
+     effluent:
+          value: 1
+capacity:  
+     value: 13.89

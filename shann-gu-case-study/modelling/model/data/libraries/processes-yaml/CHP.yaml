@@ -1,0 +1,11 @@
+process: CHP
+resources:
+        elec: 1
+        heat: 0.956
+        gasNatural: -0.0474
+        CO2: 0.134
+rate:
+        wint: 6
+        sum: 6
+        shoulder: 6
+notes:

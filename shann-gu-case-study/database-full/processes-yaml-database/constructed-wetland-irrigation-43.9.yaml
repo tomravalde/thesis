@@ -1,0 +1,8 @@
+process: constructed-wetland-irrigation-43.9
+flow: 
+     effluent:
+          value: -1
+     waterIrrigation:
+          value: 0.95
+capacity:  
+     value: 43.9

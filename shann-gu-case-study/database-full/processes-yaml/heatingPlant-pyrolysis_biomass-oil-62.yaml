@@ -1,0 +1,10 @@
+process: heatingPlant-pyrolysis_biomass-oil-62
+resources:
+     biomass: -0.2516129
+     elec: 0.2967742
+     heat: 1
+     biooil: 0.0003709677
+     CO2: 2.693548e-05
+     slag: 0.06290323
+rate: 62
+notes:

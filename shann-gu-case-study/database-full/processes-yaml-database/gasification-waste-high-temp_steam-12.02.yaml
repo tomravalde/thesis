@@ -1,0 +1,14 @@
+process: gasification-waste-high-temp_steam-12.02
+flow: 
+     waste:
+          value: -0.296173
+     heat:
+          value: -5.357737
+     elec:
+          value: 1
+     water:
+          value: -0.9151414
+     CO2:
+          value: 0.4658902
+capacity:  
+     value: 12.02

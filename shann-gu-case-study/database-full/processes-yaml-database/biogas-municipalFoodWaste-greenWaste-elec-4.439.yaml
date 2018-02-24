@@ -1,0 +1,14 @@
+process: biogas-municipalFoodWaste-greenWaste-elec-4.439
+flow: 
+     elec:
+          value: 0.8514783
+     heat:
+          value: 1.051826
+     biogas:
+          value: 0.0001449304
+     MSW:
+          value: -1
+     digestate:
+          value: 0.3
+capacity:  
+     value: 4.439

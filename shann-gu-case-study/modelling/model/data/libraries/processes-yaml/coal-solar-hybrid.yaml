@@ -1,0 +1,13 @@
+process: coal-solar-hybrid
+resources:
+     coal: -0.02309396
+     solar: -2.221083
+     elec: 1
+     water: -0.009921848
+     CO2: 0.05371483
+     ash: 0.002283736
+rate:
+        wint: 116.9137
+        sum: 116.9137
+        shoulder: 116.9137
+notes:

@@ -1,0 +1,14 @@
+process: gasification-coal-sludge_elec-500
+flow: 
+     coal:
+          value: -0.1014183
+     sludge:
+          value: 0.02535457
+     elec:
+          value: 1
+     water:
+          value: -0.4682672
+     CO2:
+          value: 0.01896944
+capacity:  
+     value: 500

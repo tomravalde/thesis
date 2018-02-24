@@ -1,0 +1,9 @@
+process: heatPump-ASHP-twoStage-screedFloor-l
+resources:
+     elec: -0.4347826
+     heat: 1
+rate:
+        wint: 13
+        sum: 13
+        shoulder: 13
+notes:

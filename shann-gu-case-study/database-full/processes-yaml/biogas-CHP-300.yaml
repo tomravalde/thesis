@@ -1,0 +1,8 @@
+process: biogas-CHP-300
+resources:
+     biogas: -0.0003123362
+     elec: 1
+     heat: 1.032583
+     CO2: 0
+rate: 300
+notes:

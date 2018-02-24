@@ -1,0 +1,12 @@
+process: biogas-UPGRADE-methane-BABIU-l
+resources:
+     elec: -0.9184509
+     water: 0
+     biogas: -3.065696
+     methane: 1
+     ash: 0
+rate:
+        wint: 0.254
+        sum: 0.254
+        shoulder: 0.254
+notes:

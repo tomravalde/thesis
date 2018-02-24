@@ -1,0 +1,11 @@
+process: algae-cultivation-s
+resources:
+     elec: -9.785714
+     water: -982.1429
+     algae: 1
+     CO2: -1.8
+rate:
+        wint: 4.05e-09
+        sum: 4.05e-09
+        shoulder: 4.05e-09
+notes:

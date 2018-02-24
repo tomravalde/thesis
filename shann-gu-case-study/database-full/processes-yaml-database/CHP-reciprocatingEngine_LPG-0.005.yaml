@@ -1,0 +1,12 @@
+process: CHP-reciprocatingEngine_LPG-0.005
+flow: 
+     LPG:
+          value: -0.06338235
+     elec:
+          value: 1
+     heat:
+          value: 1.308824
+     CO2:
+          value: 0.1855882
+capacity:  
+     value: 0.005

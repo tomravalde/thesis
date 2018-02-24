@@ -1,0 +1,8 @@
+process: cooling-thermallyActivated_LiBr-H2O_double-0.02
+flow: 
+     heat:
+          value: -0.9090909
+     cooling:
+          value: 1
+capacity:  
+     value: 0.02

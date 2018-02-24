@@ -1,0 +1,9 @@
+process: mixedRawSludge_biogas-0.0116
+resources:
+     sludge: -2.409607
+     biogas: 1
+     heat: -6.009691
+     elec: -0.3469834
+     digestate: 1.54128
+rate: 0.0116
+notes:

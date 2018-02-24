@@ -1,0 +1,20 @@
+process: road_fertilizer
+inputs:
+        fertilizer: -1
+        gasoline: 0
+        CO2: 0
+outputs:
+        fertilizer: 1
+        gasoline: 0
+        CO2: 0
+dist_source:
+        fertilizer: 0
+        gasoline: -0.18
+        CO2: 0.3
+dist_dest:
+        fertilizer: 0
+        gasoline: 0
+        CO2: 0.3
+rate: 100
+notes:
+

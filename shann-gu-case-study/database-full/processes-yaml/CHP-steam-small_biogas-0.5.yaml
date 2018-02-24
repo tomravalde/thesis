@@ -1,0 +1,7 @@
+process: CHP-steam-small_biogas-0.5
+resources:
+     biogas: -0.569152
+     elec: 1
+     heat: 15
+rate: 0.5
+notes:

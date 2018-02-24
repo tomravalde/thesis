@@ -1,0 +1,10 @@
+process: looping_hydrogen-elec-7.36
+resources:
+     coal: -0.1429544
+     water: -0.4695772
+     elec: 1
+     hydrogen: 0.00599437
+     CO2: 1.37803e-05
+     ash: 0.01429476
+rate: 7.36
+notes:

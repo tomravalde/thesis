@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rm -rf results
+
+$2
+prepend="results-"
+append="-plots"
+extension=".yaml"
+
+mkdir $prepend$2
+mkdir $prepend$2$append
+
+scp tr608@ps-lfe01.ps.ic.ac.uk:~/ShannGu/results/$1/*.csv $prepend$2
+scp tr608@ps-lfe01.ps.ic.ac.uk:~/ShannGu/results/$1/*.lst $prepend$2
+
+Rscript results-processing.R $prepend$2
+
+cp $2$extension $prepend$2

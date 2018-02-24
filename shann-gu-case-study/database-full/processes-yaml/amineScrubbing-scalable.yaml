@@ -1,0 +1,7 @@
+process: amineScrubbing-scalable
+resources:
+     elec: -1.332
+     CO2: -1
+     water: -0.0303
+rate: -727379968
+notes:

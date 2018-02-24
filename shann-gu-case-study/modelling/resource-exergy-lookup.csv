@@ -1,0 +1,75 @@
+"resource","exergy.unconv","units","reference","conv.factor","units.conv","exergy.conv.MjperX"
+"algae",17,"MJ/kg","Estimate from http://www.sciencedirect.com/science/article/pii/S1364032111003212, p1219",1,"MJ/kg",17
+"algaeDry",17,"MJ/kg","Estimate from http://www.sciencedirect.com/science/article/pii/S1364032111003212, p1219",1,"MJ/kg",17
+"ash",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"biodiesel",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"biogas",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"biomass",17,"MJ/kg","Estimate from http://www.sciencedirect.com/science/article/pii/S1364032111003212, p1219",1,"MJ/kg",17
+"biomassAgriWaste",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"biooil",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"butanol",1.4,"MJ/mol","http://web.mit.edu/2.813/www/readings/APPENDIX.pdf (assume as for ethanol), converting by 0.074 kg/mol",13.5135135135,"MJ/kg",18.9189189189
+"CNG",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"CO2",0.01948,"MJ/mol","http://web.mit.edu/2.813/www/readings/APPENDIX.pdf, converting by 0.044 kg/mol",22.7272727273,,0.4427272727
+"coal",20,"MJ/kg","http://link.springer.com/article/10.1007/s10973-013-3323-9, estimate from Table 2",1,"MJ/kg",20
+"coke",20,"MJ/kg","http://link.springer.com/article/10.1007/s10973-013-3323-9, estimate from Table 2 (assume as for coal)",1,"MJ/kg",20
+"cold_primary_feed",0,,"assume",1,"MJ/kg",0
+"cold_primary_return",0,,"assume",1,"MJ/kg",0
+"cold_secondary_feed",0,,"assume",1,"MJ/kg",0
+"cold_secondary_return",0,,"assume",1,"MJ/kg",0
+"cool",0.1,"J/J","assume as for heat",1,"MJ/MJ",0.1
+"cooling",0.1,"J/J","assume as for heat",1,"MJ/MJ",0.1
+"diesel",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"digestate",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"DME",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"effluent",0.0004022719,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1.2e-5, c0=6e-6",0.001,"MJ/kg",4.022719E-007
+"elec",1,"J/J","by definition",1,"MJ/MJ",1
+"electricity",1,"J/J","by definition",1,"MJ/MJ",1
+"ethanol",1.4,"MJ/mol","http://web.mit.edu/2.813/www/readings/APPENDIX.pdf, converting by 0.074 kg/mol",13.5135135135,"MJ/kg",18.9189189189
+"fertilizer",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"food waste",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"fuel",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"fuelOil",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"gas",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"gasLandfill",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"gasNatural",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"gasoline",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"groundWater",0,,"assume",1,"MJ/kg",0
+"heat",0.1,"J/J","from (1-T0/T1), T0=298 K, t1 = 323 K",1,"MJ/MJ",0.1
+"hot_primary_feed",135,"kJ/kg","www.eea.europa.eu/about-us/tenders/...water.../physical_hydronomics.pdf, Eq. 1, cp=4.19, Tp=80, T0=20",0.001,"MJ/kg",0.135
+"hot_primary_return",135,"kJ/kg","www.eea.europa.eu/about-us/tenders/...water.../physical_hydronomics.pdf, Eq. 1, cp=4.19, Tp=80, T0=20",0.001,"MJ/kg",0.135
+"hot_secondary_feed",135,"kJ/kg","www.eea.europa.eu/about-us/tenders/...water.../physical_hydronomics.pdf, Eq. 1, cp=4.19, Tp=80, T0=20",0.001,"MJ/kg",0.135
+"hot_secondary_return",135,"kJ/kg","www.eea.europa.eu/about-us/tenders/...water.../physical_hydronomics.pdf, Eq. 1, cp=4.19, Tp=80, T0=20",0.001,"MJ/kg",0.135
+"hydrogen",116,"MJ/kg","http://www.ccsenet.org/journal/index.php/jsd/article/viewFile/9257/6816",1,"MJ/kg",116
+"leachate",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"liquidFuel",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"LPG",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"manure",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"metal",5.0735,"MJ/kg","Chapter 3 calculations (assume as for waste)",1,"MJ/kg",5.0735
+"methane",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"methanol",831862,"kJ/kmol","link.springer.com/article/10.1007/s10973-013-3323-9, p18",0.0000625,"MJ/kg",51.991375
+"MSW",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"nuclearFuelSpent",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"oilUsed",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"ozone",0,,"assume",1,"MJ/kg",0
+"oil",45,"MJ/kg","link.springer.com/article/10.1007/s10973-013-3323-9, Figure 3",1,"MJ/kg",45
+"propane",2.2,"MJ/mol","http://web.mit.edu/2.813/www/readings/APPENDIX.pdf, converting by 0.044 kg/mol",22.7272727273,"MJ/kg",50
+"rain",0,,"assume",1,"MJ/kg",0
+"recyclables",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"seawater",0.0004022719,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1.2e-5, c0=6e-6",0.001,"MJ/kg",4.022719E-007
+"slag",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"sludge",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"solar",1,"J/J","by definition",1,"MJ/MJ",1
+"spent fuel",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"uranium",77,"TJ/kg","http://large.stanford.edu/courses/2014/ph241/regalbuto1/",1000000,"MJ/kg",77000000
+"vegWaste",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"waste",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"waste_organic",5.0735,"MJ/kg","Chapter 3 calculations",1,"MJ/kg",5.0735
+"wastewater",0.0004022719,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1.2e-5, c0=6e-6",0.001,"MJ/kg",4.022719E-007
+"water",0,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=6e-6, c0=6e-6",0.001,"MJ/kg",0
+"water_pure",-0.0003638192,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=5e-7, c0=6e-6",0.001,"MJ/kg",-3.638192E-007
+"waterBrackish",0.0004022719,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1.2e-5, c0=6e-6",0.001,"MJ/kg",4.022719E-007
+"waterIrrigation",0.0004022719,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1.2e-5, c0=6e-6",0.001,"MJ/kg",4.022719E-007
+"waterNonPotable",0.0004022719,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1.2e-5, c0=6e-6",0.001,"MJ/kg",4.022719E-007
+"waterPotable",-0.0003317222,"MJ/m3","Chapter 3 calculations, 1/T0 * (c1-c0)(18.25 + 0.077 ln(c1/c0) * 1e3, T0=273, c1=1e-6, c0=6e-6",0.001,"MJ/kg",-3.317222E-007
+"wind",1,"J/J","by definition",1,"MJ/MJ",1
+"wood",17,"MJ/kg","Estimate from http://www.sciencedirect.com/science/article/pii/S1364032111003212, p1219",1,"MJ/kg",17

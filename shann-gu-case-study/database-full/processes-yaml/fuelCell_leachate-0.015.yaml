@@ -1,0 +1,7 @@
+process: fuelCell_leachate-0.015
+resources:
+     leachate: -2906977
+     elec: 1
+     wastewater: 2906977
+rate: 0.015
+notes:

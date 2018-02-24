@@ -1,0 +1,11 @@
+process: combustion-sludgeDigested-0.00935
+resources:
+     digestate: -4.644097
+     gasNatural: -0.2361241
+     elec: 1
+     heat: 11.25781
+     ash: 0.78125
+     water: -40.53819
+     CO2: 0.646875
+rate: 0.00935
+notes:

@@ -1,0 +1,12 @@
+process: CHP-steam-large_wasteGas-500
+flow: 
+     gasLandfill:
+          value: -0.09
+     elec:
+          value: 1
+     heat:
+          value: 1
+     CO2:
+          value: 0.1485
+capacity:  
+     value: 500

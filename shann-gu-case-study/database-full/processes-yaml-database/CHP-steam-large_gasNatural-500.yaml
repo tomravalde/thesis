@@ -1,0 +1,12 @@
+process: CHP-steam-large_gasNatural-500
+flow: 
+     gasNatural:
+          value: -0.04665
+     elec:
+          value: 1
+     heat:
+          value: 1
+     CO2:
+          value: 0.12775
+capacity:  
+     value: 500500

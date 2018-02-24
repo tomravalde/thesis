@@ -1,0 +1,11 @@
+process: desalination-multiStageFlash-s
+resources:
+     seawater: -3
+     water: 1
+     elec: 0.018
+     heat: 0.25
+rate:
+        wint: 2.3148
+        sum: 2.3148
+        shoulder: 2.3148
+notes:

@@ -1,0 +1,8 @@
+process: CHP-microTurbine_gasNatural-1
+resources:
+     gasNatural: -0.07464
+     elec: 1
+     heat: 1.66
+     CO2: 0.2044
+rate: 1
+notes:

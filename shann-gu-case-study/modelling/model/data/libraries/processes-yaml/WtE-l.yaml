@@ -1,0 +1,13 @@
+process: WtE-l
+resources:
+     waste: -0.2384106
+     heat: -4.264901
+     elec: 1
+     water: -0.4701987
+     CO2: 0.3708609
+     ash: 0.02384106
+rate:
+        wint: 86
+        sum: 86
+        shoulder: 86
+notes:

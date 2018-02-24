@@ -1,0 +1,8 @@
+process: distributed-solar-1
+flow: 
+     solar:
+          value: -5.882353
+     elec:
+          value: 1
+capacity:  
+     value: 1

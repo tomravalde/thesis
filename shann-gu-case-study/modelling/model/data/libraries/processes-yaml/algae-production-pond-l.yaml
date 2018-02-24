@@ -1,0 +1,11 @@
+process: algae-production-pond-l
+resources:
+     algae: 1
+     water: -2857.184
+     elec: -3.7845
+     CO2: -1.8
+rate:
+        wint: 0.00405
+        sum: 0.00405
+        shoulder: 0.00405
+notes:

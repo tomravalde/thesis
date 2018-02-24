@@ -1,0 +1,8 @@
+process: CHP-gas_fuelOil-0.5
+resources:
+     oil: -0.06943333
+     elec: 1
+     heat: 1.2
+     CO2: 0.247
+rate: 0.5
+notes:

@@ -1,0 +1,10 @@
+process: fuelCell_sludge_energy-l
+resources:
+     sludge: -160.5652
+     elec: 1
+     methane: 0.2231856
+rate:
+        wint: 0.015
+        sum: 0.015
+        shoulder: 0.015
+notes:

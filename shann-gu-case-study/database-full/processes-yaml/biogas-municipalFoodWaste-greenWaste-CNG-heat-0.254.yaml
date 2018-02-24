@@ -1,0 +1,10 @@
+process: biogas-municipalFoodWaste-greenWaste-CNG-heat-0.254
+resources:
+     elec: -0.2191304
+     heat: 0
+     biogas: 0.0001470174
+     CNG: 0.1197609
+     MSW: -1
+     digestate: 0.3
+rate: 0.254
+notes:

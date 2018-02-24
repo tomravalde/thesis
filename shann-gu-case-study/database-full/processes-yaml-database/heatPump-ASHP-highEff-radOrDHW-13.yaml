@@ -1,0 +1,8 @@
+process: heatPump-ASHP-highEff-radOrDHW-13
+flow: 
+     elec:
+          value: -0.5
+     heat:
+          value: 1
+capacity:  
+     value: 13

@@ -1,0 +1,968 @@
+---
+title: 'A generic model to optimise urban metabolism'
+journal: "TBC"
+author:
+- name: 'Tom Ravalde\corref{cor1}'
+  email: thomas.ravalde08@imperial.ac.uk
+  group:
+  address:
+- name: James Keirstead
+  email: j.keirstead@imperial.ac.uk
+  group:
+  address:
+address-general: "Department of Civil and Environmental Engineering, Imperial College London"
+biblio-files: "my-refs"
+topline: (Draft.)
+options: "review, authoryear"
+date: \VCDateISO
+css: /home/tr608/.pandoc/marked/kultiad-serif.css
+abstract:
+  "Cities have proved successful at increasing the quality of life enjoyed by a growing global population. However, they have not yet realised their potential to meet the needs or a population with more effecient resource management. Specifically, the dense nature of cities should enable the wastes and by-products of one process to be used as inputs to another, thus a level of demand for goods and services can be met, but with reduced resource consumption and waste output.\\
+
+  One way that planners help to design resource management systems is to use optimisation modelling, which can help choose the processes, infrastructure, and operation schedules which meet demand subject to some minimum cost (financial, environmental, or other). While many models exist within individual resource sectors (e.g. energy supply or water distribution), our systematic and detailed survey of the literature shows that there are no models which consider multiple sectors in combination. In this paper, we formulate a model which simultaneously considers energy, water and waste management, such that cities may realise the resource-saving benefits of synergies in integrated resource management. We demonstrate the model via application to a new Chinese urban development. Our results show that..."
+
+keywords: "TODO, TODO, TODO, TODO, TODO, TODO"
+---
+
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+opts_chunk$set(fig.path = "figures/", dev=c("pdf", "png"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=TRUE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
+
+#library(extrafont)
+#font_import(pattern="LinBiolinum")
+
+```
+
+\begin{footnotesize}
+\wordcount
+\end{footnotesize}
+
+# Scratchpad {-}
+
+- New version: based on James' unpublished 'A Generic MILP Model for the Design of Urban Energy Systems'
+- use: scenario analysis includes sensitivity analysis
+- use: strategic planning can include policy, decision-making support
+- use: system improvements can include problem identification (troubleshooting)
+- TODO: try generating separate PNG and PDF figures, for HTML and PDF document outputs, respectively (another time!)
+
+# Introduction
+
+Cities have proved key to humanity's success, by making a high quality of life possible for billions of people through the efficient provision of goods and services [@WorldBank2009]. However, to sustain their populations, cities consume large quantities of energy and water, and generate significant waste. This leads to environmental challenges such as water stress, global warming and land-use constraints [TODO: references]. As such, efforts are being devoted to reducing a city's resource consumption and waste output, in order to improve urban sustainability.
+
+The management of urban resources requires networks of infrastructure to convert and transport resources to and thus efforts to improve sustainability often involve improving the design and operation of these infrastructure networks. One approach taken to such improvements is that of optimisation modelling, in which a resource allocation problem is represented by sets of equations which are then solved to select an optimal mix, layout, and operation schedule for resource management infrastructure [TODO: reference], such as water pipes [TODO: reference], waste transportation [TODO: reference], and power plants [TODO: reference].
+
+However, as our literature review will show, urban resource optimisation modelling usually considers only one resource sector in isolation (e.g. an urban energy system). This approach fails to take advantage of the co-location of various resource management infrastructure, which makes possible synergies between different systems [TODO: reference], where the wastes and by-products of one process become the inputs to another (as seen in an energy-from-waste plant, for example). Thus current approaches to designing urban resource management systems impose a ceiling on potential material and energy savings.
+
+Considering sustainable urban resource management from another angle, we turn to the urban metabolism (UM) framework, which was introduced by @Wolman1965 as "all the material and commodities needed to sustain a city's inhabitants at home, at work and at play" (p156). This concept has given rise to numerous studies which seek to understand the scale and origins of urban consumption/waste, and its relationship to an area's form, geography, and other characteristics. Consequently, the UM concept has provided tools which help planners and policy makers improve urban sustainability (see for example the report for the UK Government by @Clift2015).
+
+In this paper, we formulate an optimisation model which meets demands for energy, water and waste management in such a way that it considers the potential synergies between these sectors, and thereby provide another UM-based tool which can help to improve the metabolism of a city. We proceed by reviewing current modelling approaches within UM and resource optimisation more generally, before formulating the model and demonstrating it on a Chinese urban development.
+
+# Literature review
+
+The first part of our literature review attempts to locate our intersectoral optimisation model within the existing set or UM modelling and thus demonstrate its contribution advancing the field. In the second part of our review, we research resource optimisation models to identify a method for our own model.
+
+## UM review
+
+[TODO: Introductory paragraph (e.g. Kennedy definition?)]
+Urban metaboilsm is a broad area of study, and includes 
+
+its basic function is to highlight how cities can sustain their developing forms and socioeconomic functions, but with less harmful resource (forms, functions and flows). @Zhang2013's review mainly focuses on the flows ("research on urban metabolism therefore focuses on the sources and consumption of resources, and on their cycling within the system plus the emission, treatment, and recycling of wastes"). 
+
+<!--
+Studies of an area's metabolism can take a number of forms, focussing on the different elements of an urban system summarized by @Ravalde2016's hierarchical representation illustrated in Figure \ref{fig:metab}. Resource demand and waste generation at the bottom drives aggregate resource exchanges between a city and the environment at the top. In the middle, are the processes which convert and transport resources. We can use this representation, along with the 'top', 'middle' and 'bottom' terminology to outline the types of UM modelling that exist.
+
+- Some work provides **top of system understanding** in the form of **accounting** exercises to quantify a city's resource flows at the top. The results of these can be used to to compare between cities(these results can also be used to calculate carbon footprint, ecological footprint and other metrics). [TODO: as in REFERENCE]. Or they can be used to related to other variables of interest [TODO: reference: e.g. water levels in Toronto]
+- Elsewhere, UM studies seek to provide **top-bottom system understanding**, by relating such resource flows (or stocks) at the top to aspects of a city, building from the bottom up.
+  	- @Ye2011: deterministically relates household construction characteristics to greenhouse gas emissions.
+	- @Kellet2013 builds up emissions from building, transport, human, and vegetation sources.
+	- @Baynes2012a: sectoral energy demand and upstream energy consumption
+- Elsewhere, UM studies seek to provide **top-city system understanding**, by relating such resource flows (or stocks) at the top to aspects of a city such as resource flows at the top to socioecnomics, geography, urban form, etc. [TODO: add reference]. These could then be used to carry out scenario analysis, strategic planning
+  	- @Liang214: statistically relates a city's quantity of steel stock with levels of nightime lighting
+  	- @Fischer-Kowalski2004: society size and transport volume
+	- @Fung2005: relates sustainability to instituational activities
+	- @Hung2005: relates energy flows to urban development
+  	- @Newman1999a: (theoretically) relates resource flows to urban form and 'livability'. 
+- Elsewhere, UM studies seek to provide more **top-middle system understanding**, by relating such resource flows (or stocks) at the networks of processes in the middle (e.g. ENA) [TODO: add reference]. These could then be used to inform interventions, scenario analysis, strategic planning
+  	- @Zhang2010: ENA to related resource flows of a city's 17 economic sectors to each other
+- **middle-bottom system understanding**
+  	- @Zeng2014: simulate water flows between the processes (e.g. water reclamation) and demands in an urban system, to show how demands under changing population scenarios
+	- Similarly @Liang2011 resource consumption and waste emission objectives -- [TODO: leave, for now]
+- Other (e.g. theory)
+
+In coming to an understanding of **-middle** systems, some models choose to unite all resource flows under a single measures, such as @HUang2005 who use emergy. Others 
+-->
+
+The evolution of UM research has been summarised by @Zhang2013. Starting with Wolman's seminal study, a city was understood as a system into and out of which resources flowed in a linear fashion. On this view, sustainability efforts are focussed on minimising the inputs and outputs. This representation was refined by @Giradet1990, who suggested that in addition to minimising resource inputs (e.g. by using solar energy and more efficient energy processes such as CHP), cities should be adopting circular metabolisms, whereby outputs could be reused as inputs through waste recycling. Both of these are black-box representations, where there is no consideration of mechanisms at play within the city. Thus @Zhang2009 proposed a network-process model in which research considers how resources move within a system. Specifically that work (and its offspring, such as @Li2011) considers the economic sectors (nodes) within a system, and the degree to which they are dependent upon one another by resource flows (links). Such information is useful to help identify potential problems for an urban system (e.g. due to sectors competing for a limited resource).
+
+[TODO: reproduce @Zhang2013's figure]
+
+The idea of looking at the mechanisms within a city has been extended by @Ravalde2016, who note that as well as understanding a city as a mix of economic sectors, it can also be understood as an engineered system. On this view, the system's nodes are resource management processes (e.g. powerplants and water treatment units), while the links are the flows between them. @Ravalde2016 argues that this enables the study of how a city's process mix, layout and scheduling can be optimised to maximise synergies, and thereby minimise a city's overall resource consumption and waste generation.
+- Note @Procter2015
+
+Another dimension to @Zhang's summary of UM research is to identify the purpose of UM studies under four methodologies: process analysis, which provides the theoretical basis (linear, circular and network, as discussed above); accounting and assessment, to quantify stocks and flows (perhaps using them to calculate performance indicators); simulation models, used to study dynamics, perhaps to see how a metabolism might change under various scenarios; and optimization and regulation, which seeks to improve a metabolism in relation to some objective through management interventions in the nodes and paths of a metabolic network. It is this last area which @Zhang identifies as a need for future research. 
+
+
+Our introduction to UM thus far has been focussed on the resource flows into, out of and within urban areas. However, other studies attempt to integrate such studies of *flows* with the studies of cities spatial and material *forms* and/or their socioeconomic *functions*. 
+- (urban political ecology, the central focus of https://www.bartlett.ucl.ac.uk/dpu/latest/publications/dpu-working-papers/WP168.pdf), 
+- relationships with hinterlands and wider/global markets
+- form ("such as distribution and density of housing, infrastructure etc.) influence MFA... who has access and who benefits from them..."
+  	- @Barles2010a
+- socioeconomic functions: @Newmann1999
+
+@Ravalde2016 has argued for one step further, pointing out that
+- or they only focus on one resource, they are not intersectoral. Indeed, as @Fernandez-Mena2016 states the issue, UM models [TODO: note this was originally written in relation to nutrient recycling loops]
+
+> "... may seldom consider a whole mass balance since some flows are sometimes not quantified and do not always follow elements  along their whole cycle... The poor mechanistic basis underlying urban metabolism may prevent their use for exploring and simulating options for more efficient recycling loops within social ecological systems."
+
+In summary, UM can be considered as the study of how a cities flows, forms and functions relate. While there is work to be done to study each of these areas (both individually, and how they relate), within the study of flows, the arguments of @Ravalde2016 (developing those of @Zhang2013) highlight a need to study how the processes within a city relate to each other, as an engineered system. Furthermore, @Zhang2013 points out the need for optimisation studies. Thus our work in this paper (to formulate an optimisation model to take advantage of synergies between different resource management infrastructure) helps to meet this gap. In this way our work meets calls for IE perspectives on UM [@Clift2015] which (for example) identify future sustainable urban technologies.
+
+## Optimisation modelling review
+
+As we have just argued, the field of UM modelling has space for a resource management process-based optimisation model. However if we narrow down our focus from a whole-metabolism perspective, to a single type of resource, there do exist optimisation models which plan the management of resources, usually in the form of a 'minimum cost flow problem', which is a type of network problem [@Williams1999, p81]. This type of model aims to minimise or maximise some quantity (e.g. profit from product manufacture), and is modelled by a set of linear and/or nonlinear equations whose variables represent choices (e.g. the presence and/or location of some process, or the quantity of a given product to be produced by a particular process, etc.), which can themselves by bounded by other equations representing real-world constraints (e.g. maximum daily machine output). Mathematical routines operate on the equations to choose the variable values which maximise a quantity of interest.
+
+Optimisation models  models Scales: component to national/global
+
+- MARKAL
+- Domestic
+- @Keedwell2006 (e.g. decision variables include water pipe dimensions)
+
+Of most interest to use however, are the models formulated for the urban scale. One example from urban resource management is the urban energy system of @Keirstead2012. In one application, the model evaluates energy supply for a UK eco-town, focussing on the potential benefits of biomass-based systems[^Keirstead-other-applications]. A set of linear equations represent the resource quantities (e.g. biomass, heat, electricity, etc.) supplied to and removed from zones within the town at any given time. Parameters represent the zonal resource demands, resource availability, and technology behaviour. Variables represent whether a technology is present in a given zone, and at what rate is operates, as well as a schedule of resource movements within and without the city.
+
+[^Keirstead-other-applications]: Other applications of this model include [TODO: complete...]
+
+Optimisation models also are used for water supply networks. For example @Zanganeh2010's model optimises the performance of an area's existing water network, choosing reservoir heights, pump sizes. @Lejano2006 applies optimisation modelling to a network design, starting with the spatial distribution of customer demands, it selects appropriate locations for the pipes. Some water optimisation models have ambitions greater than merely meeting demand, but also seek to minimise freshwater consumption through employing water reclamation processes, water saving technologies. Examples of these can be found in @Lim2010 and @Makropoulos2008.
+
+The idea that optimisation models can go beyond merely designing a minimum cost system, but also consider resource saving measures (as with some of the water models discussed above) is the idea behind our own model. Such considerations are also made in waste management planning optimisation models. For example, @Guo2009 optimises the allocation of waste flows from their point of generation to management facilities, to inform longterm investment decisions. (e.g. @Li2006).
+
+The models above vary in their formulations, according to their different purposes. Moving from these specific examples, to consider the resource optimisation modelling more generally, we now conduct a quasi-systematic literature review to identify some of these characteristics in order to highlight both precedents and gaps for our model. We start by using Scopus to search for relevant literature, using the search term **energy AND water AND waste AND optimization model**, and excluding irrelevant subject areas (such as psychology) from the search [^search-res-models]. 
+
+[^search-res-models]: The full search term is available at \\url{http://www.scopus.com/results/results.uri?sort=r-f&src=s&sid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&sot=a&sdt=cl&cluster=scosubjabbr%2c%22CHEM%22%2cf%2bscosubtype%2c%22ar%22%2ct%2bscosubjabbr%2c%22BIOC%22%2cf%2c%22MATE%22%2cf%2c%22PHYS%22%2cf%2c%22MEDI%22%2cf%2c%22IMMU%22%2cf%2c%22MATH%22%2cf%2c%22SOCI%22%2cf%2c%22ECON%22%2cf%2c%22PHAR%22%2cf%2c%22NURS%22%2cf%2c%22VETE%22%2cf%2c%22ARTS%22%2cf%2c%22HEAL%22%2cf%2c%22NEUR%22%2cf%2c%22PSYC%22%2cf%2c%22Undefined%22%2cf&sessionSearchId=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a100&origin=savedSearchNewOnly&txGid=492559A18BFC5EDC7C12FF9547004CF1.fM4vPBipdL1BpirDq5Cw%3a10}.
+
+```{r model-lit-review-load, results="asis"}
+
+## Packages required by our analysis of the literature
+library(tm)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+
+## Load in all titles
+lit <- read.csv("lit-resource-modelling.csv")
+titles <- as.character(lit$Title) # The unedited paper titles
+
+## Save number of files in original list (for output into document)
+uncut_list_size <- dim(lit)[1]
+uncut_list_size <- prettyNum(uncut_list_size, big.mark=",") # Insert a 1,000s comma separator
+```
+
+```{r model-lit-review-tm, results="asis"}
+
+## Merge titles into single block of text
+text_full <- paste(titles, collapse=" ")
+
+## Edit the text for mining
+text_source <- VectorSource(text_full)
+corpus <- Corpus(text_source)
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, stripWhitespace)
+corpus <- tm_map(corpus, removeWords, stopwords("english"))
+
+## Create the document-term matrix, and count word frequency
+dtm <- DocumentTermMatrix(corpus)
+dtm2 <- as.matrix(dtm)
+frequency <- colSums(dtm2)
+frequency <- sort(frequency, decreasing=TRUE)
+
+## Create dataframe of word frequency
+words <- names(frequency)
+freq <- as.data.frame(frequency)$frequency
+word_freq <- data.frame(words, freq) # 11,967 unique words in total
+
+## Save word-frequency list for manual editing
+write.csv(word_freq, "words-pre-cut.csv", row.names=FALSE)
+```
+
+```{r model-lit-review-listReduction, results="asis"}
+
+###--------------------------------------------------
+### Manually reduce the list of words (removing those which don't refer to resources, e.g. 'network')
+##### Original list: words-pre-cut.csv (11,967 unique words)
+##### Reduced list: words-post-cut.csv (366 unique words)
+### Manually categorise remaining words (e.g. "electricity" --> "energy"), and store in word-cats.csv
+### Apply word-frequency analysis to identify:
+##### (A) the number of word matches for each title
+##### (B) the number of category matches for each title
+### Plot and save results
+###--------------------------------------------------
+
+## Load manually-reduced database of word frequencies
+word_freq_cut <- read.csv("words-post-cut.csv")
+
+```
+[^unique-words]: This list of resources and their categories is supplied at [TODO: add URL].
+
+```{r model-lit-review-categs, results="asis"}
+
+## Load in categorisation of words
+word_cats <- read.csv("word-cats.csv") ## TODO: Remove the 'nonresource category'
+```
+
+```{r model-lit-review-categMatches, results="asis"}
+
+## List of words to match
+text_cut <- read.csv("text_cut.csv")$word
+
+## Set up vectors to store the results of the word-frequency analysis
+T <- length(titles)
+word_matches <- length(T)
+cat_matches <- length(T)
+cat_matches_list <- length(T)
+optim <- rep(1, T)
+
+## Loop over all titles, to identify the number of matching words
+for(i in 1:T){
+
+  ## Convert title into a vector where each word is a unique element
+  title <- titles[i]
+  title <- tolower(title) # Convert to lowercase
+  title <- gsub("[[:punct:]]", " ", title) # Replace punctuation with spaces
+  title <- unlist(strsplit(title, split=" ")) # Convert to vector
+
+  ## For each title, count the number of words matching those in our list
+  intersections <- intersect(title, text_cut)
+  word_matches[i] <- length(intersections) ## a vector of how many matching words
+
+  ## For each title, identify the number of unique categories containing the matched words
+  categs <- filter(word_cats, words %in% intersections)
+
+  ## For each title, count the number of unique categories containing the matched words
+  cat_matches[i] <- length(unique(categs$category))
+
+  ## For each title, list the unique categories containing the matched words
+  categs_list <- as.character(sort(unique(categs$category)))
+  categs_list <- paste(categs_list, sep="", collapse=", ")
+  cat_matches_list[i] <- categs_list
+
+  ## Identify the titles with 'optimi[s/z]ation', or similar
+  optims <- match(c("optimization",
+	  	 "optimisation",
+	  	 "optimized",
+	  	 "optimised",
+	  	 "optimal"), title)
+
+  if(all(is.na(optims)) == TRUE){
+    optim[i] <- 0
+  }
+
+}
+
+## Store results for each title in dataframe
+title_matches <- data.frame(titles, word_matches, cat_matches, cat_matches_list, optim)
+```
+
+```{r model-lit-review-plot, results="asis"}
+## Save titles and category matches (in original order)
+write.csv(title_matches, "title-matches-original-order.csv", row.names=FALSE)
+```
+
+```{r model-lit-review-optimReduction, results="asis"}
+
+## As above, but just the titles containing 'optimization' and similar words
+title_matches_optim <- filter(title_matches, optim==1)
+write.csv(title_matches_optim, "title-matches-optim-original-order.csv", row.names=FALSE)
+
+## Save titles and category matches (sorted according to the frequency of category matches)
+title_matches <- arrange(title_matches, desc(cat_matches))
+write.csv(title_matches, "title-matches.csv", row.names=FALSE)
+```
+
+```{r model-lit-review-categMatchFreq, results="asis"}
+
+###--------------------------------------------------
+### Make dot plot of category combinations in the literature
+###--------------------------------------------------
+
+## Get frequency of each combination of categories
+combo_freqs <- data.frame(count(title_matches, cat_matches_list))
+names(combo_freqs) <- c("Combinations", "CatFreq")
+
+## Get frequency of 'optimization' within each category
+optim_freqs <- title_matches %>% group_by(cat_matches_list) %>% summarize(sum(optim))
+optim_freqs <- data.frame(optim_freqs)
+names(optim_freqs) <- c("Combinations", "OptimFreq")
+
+combo_freqs <- merge(combo_freqs, optim_freqs)
+
+## Incorporate the number of categories for each combination (so plot can be faceted according to this)
+tmp <- title_matches[!duplicated(title_matches$cat_matches_list), ]
+tmp <- select(tmp, c(cat_matches_list, cat_matches))
+names(tmp) <- c("Combinations", "n")
+combo_freqs <- merge(combo_freqs, tmp)
+
+## Create a column of titles (to be printed as facet_wrap strip titles)
+combo_freqs$NumCats <- combo_freqs$n
+combo_freqs[combo_freqs$n==0, ]$NumCats <- "Zero category matches"
+combo_freqs[combo_freqs$n==1, ]$NumCats <- "One category match"
+combo_freqs[combo_freqs$n==2, ]$NumCats <- "Two category matches"
+combo_freqs[combo_freqs$n==3, ]$NumCats <- "Three category matches"
+combo_freqs[combo_freqs$n==4, ]$NumCats <- "Four category matches"
+combo_freqs[combo_freqs$n==5, ]$NumCats <- "Five category matches"
+
+## Sort so number of categories will be faceted in ascending order
+combo_freqs$NumCats <- factor(combo_freqs$NumCats,
+			  levels= combo_freqs$NumCats[order(combo_freqs$n)])
+
+## Sort so combination frequencies will be plotted in ascending order
+combo_freqs$Combinations <- factor(combo_freqs$Combinations,
+			  levels= combo_freqs$Combinations[order(combo_freqs$CatFreq)])
+
+## Reshape so that CatFreq and OptimFreq can both be plotted as points
+combo_freqs <- select(combo_freqs, -c(n))
+combo_freqs <- melt(combo_freqs, id.vars=c("Combinations", "NumCats"), value.name="Frequency")
+```
+
+```{r model-lit-review-reduction, results="asis"}
+
+###--------------------------------------------------
+### POST-PROCESSING
+### Copy title-matches-optim-original-order.csv --> title-matches-optim-original-order-edit.csv,
+### (A) manually identify irrelevent papers with 'CUT'
+### (B) assign a scale (e.g. 'domestic', 'regional' etc.) to each model
+### (C) assign a level of integration ('none', 'integrated', or 'highly integrated') to each model
+### This is so we can analyse the content of the remaining papers
+###--------------------------------------------------
+
+title_matches_edit <- read.csv("title-matches-optim-original-order-edit-demands.csv")
+lit <- title_matches_edit
+
+## Only keep the relevant literature
+lit <- filter(lit, notes.1!="CUT") ## 135 models remain
+
+## Save number of files in reduced list (for output into document)
+cut_list_size <- dim(lit)[1]
+cut_list_size <- prettyNum(cut_list_size, big.mark=",") # Insert a 1,000s comma separator
+```
+
+This step returned `r uncut_list_size` results, which we filtered using R code to automatically remove titles not containing words related to 'optimization' [TODO: add footnote with URL], and titles unrelated to resource management[^filter-words]; before manually removing other irrelevant titles. This left `r cut_list_size` documents, which describe models at various scales (from optimising some component in a powerplant [TODO: example], to planning strategies at a regional level [TODO: example].
+
+[^filter-words]: We started by removing common words (e.g. 'the') using the functionality of the textmining package `tm` in R, before identifying 11,967 unique words. From this automatically generated list, we manually removed words which did not refer to resources (e.g. 'network'), leaving 366 unique words. Only titles containing words from this list remained in our review. [TODO: add note on ]
+
+Across the different models, with their varying purposes, we could identify their various traits in order to highlight the need for our intersectoral synergy urban model, as well identify a suitable methodology to use. (Such excercises have been used elsewhere to identify modelling challenges and opportunities -- see for example the review of urban energy systems models in @Keirstead2012b.) There are many aspects we could consider (e.g. spatial and temporal resolution, time horizon, incorporation of endogenous resource demands, integration capabilities with other models, etc.), but here, we focus on three characteristics most relevant to our model, namely: the **detail** to which models make infrastructure design decisions; the **methods** used to solve the models; and the degree to which they integrate different resource management systems in order investigate synergies (**integration level**).
+
+The most detailed models make 'low-level' decisions, optimising variables such as pipe dimensions and their precise location [TODO: water example], biomass moisture content in gasification [TODO: cite Synthesis and thermo-economic design optimization of wood-gasifier-SOFC systems for small scale applications]. At the high-level, the design is focussed on a system's superstructure, representing a system as a network of resource sinks and sources, and their connections between them. Often, their job is to identify optimal resource transfers between sinks and sources, to meet some goal. They may optimise a spatial layout (the location of, and distance between sinks and sources), but they do not go into the precision of detailed design. Examples include @Keirstead2012's urban energy system, the urban water system models of @Lim2010 and @Makropoulos2008, whose models maximise opportunities for wastewater reuse, by identifying urban sinks and sources of waters of various different contamination levels, and optimising how they might be connected. These high-level models are more likely to be used in research, or the early exploratory stages of a system design, whereas the low-level models are more likely to be used to generate precision needed to design and operate a system in the real world. Other characteristics which split across these 'design purposes', are the temporal horizon (not considered further in this paper), and the spatial scale (discussed below).
+
+[TODO: note the biomass superstructure models for high-level.]
+[TODO: note 'in-between' (medium-level) models?]
+[TODO: note a difference between detail, and scale]
+
+On solution methods to solve the optimisation which vary according to the formulation, of which there are two broad categories: linear and nonlinear. Linear models include many of the energy systems models (including @Keirstead2012), whic are based on mass or energy balances which can be linearly formulated [TODO: list examples from the spreadsheet]. There are subsets of linear problems, for example, some variables must take integer values (e.g. defining the number of a particular process in a location), and thus employ mixed-integer linear programming (MILP). Linear models can also have uncertain parameters, by defining them as probability distributions. This is especially true of waste management models, where long-term waste generation rates are uncertain. These stochastic linear models require multiple-stage methods to solve [TODO: list examples from the spreadsheet]. Nonlinear formulations are likely to be found in water management models. The first reason for this is that they many are based upon hydraulic equations which include the product of two or more variables[^hydraulic-vars], especially the case for the low-level modles [TODO: list examples from the spreadsheet]. But nonlinearity in the high-level superstructure models, in order to model water contamination levels, when different water/wastewater streams mix [TODO: list examples from the spreadsheet]. Nonlinear problems can be solved using the nonlinear programming methods [TODO: examples of NLP and MINLP], but these are computationally expensive, so heuristics are often used to obtain near-optimal solutions with less effort. These heuristics often start with a possible set of variable values, and the imitate processes in nature to modify these solutions until a near-optimal solution is found. Examples include genetic algorithms which follow evolutionary procedures [TODO: example]; and particle swarm optimisation, which mimic the flocking of birds [TODO: example].
+
+[^hydraulic-vars]: For example, the potential energy of a mass of water due to its elevation is given by $Energy head=mass \times gravity \times elevation$, and both mass and elevation can might be variables in a problem.
+
+Thirdly, we consider the extent to which models integrate different resource management systems, defining three levels. Each level indicates to what extent a model optimises intersectoral synergies, and are diagramatically represented in Figures [TODO: figure cross-refs].
+
+\begin{description}
+\item[None] These models consider just one resource system, such as the urban energy systems model of \citet{Keirstead2012}, or the urban water network model of \citet{@Keedwell2006}.
+\item[Integrated] These models will optimise for one resource, but while considering other systems [TODO: examples]. While these models may identify synergetic opportunities, this is not their main purpose.
+\item[Highly integrated] These models try to simultaneously meet the demands for more than one resource management system [TODO: for example]. These models have as their main purpose, the optimisation of synergies between different resource management systems.
+\end{description}
+
+Figure \ref{fig:model-integration}, shows which level of systems integration applies to each of the models in our review, for models at various scales.
+
+```{r model-lit-review-categMatchPlot, fig.height=5, fig.cap="Model integration levels.\\label{fig:model-integration}"}
+
+###--------------------------------------------------
+### Plot overview of literature
+###--------------------------------------------------
+
+
+unique_levels <- unique(lit$level)
+unique_cats <- unique(lit$cat_matches_list)
+unique_optimised.systems <- unique(lit$optimised.system.s.)
+
+## Sort so levels are plotted in ascending order
+lit <- transform(lit,
+		 scale=factor(scale,
+		   levels=c("component",
+			    "domestic", 
+			    "plant",
+			    "plant (multiple components)",
+			    "plant (couple)",
+			    "refinery/chem. plant",
+			    "EIP",
+			    "city",
+			    "region",
+			    "agricultural area",
+			    "global",
+			    "various"),
+		    ordered=TRUE),
+		 integration=factor(integration,
+		    levels=c("none",
+			    "integrated",
+			    "highly integrated"),
+		    ordered=TRUE),
+		 cat_matches_list=factor(cat_matches_list,
+		   levels=c("various, waste",
+			   "various, water",
+			   "waste, water",
+			   "energy, various",
+			   "energy, waste",
+			   "energy, water",
+			   "energy, various, waste",
+			   "energy, various, water",
+			   "energy, waste, water",
+			   "energy, water, waste",
+			   "various, waste, water",
+			   "energy, various, waste, water"),
+		    ordered=TRUE))
+
+## Add column to colour the points within the site and the city regions
+lit$colour <- "noColour"
+lit[lit$Scale=="region", "colour"]  <- "colour"
+lit[lit$Scale=="city", "colour"]  <- "colour"
+lit[lit$Scale=="EIP", "colour"]  <- "colour"
+lit[lit$Scale=="refinery/chem. plant", "colour"]  <- "colour"
+
+## Plot as dot plot: integration vs. scale
+plot_lit_int.scale <- ggplot(lit, aes(scale, integration)) +
+#  geom_jitter(aes(colour=optimised.system.s.)) +
+  geom_jitter(aes(colour=opt.systems.summary)) +
+  xlab("Scale") +
+  ylab("System integration") +
+  theme_bw() +
+  theme(axis.text.x = element_text(hjust=1, angle=30),
+	legend.position = "bottom",
+	legend.direction = "vertical") +
+  guides(col=guide_legend(ncol=2))
+plot_lit_int.scale
+
+### Plot as dot plot: focus vs. methods
+#plot_lit_focus.methods <- ggplot(lit, aes(optimised.system.s., methods)) +
+#  geom_jitter(aes(colour=opt.systems.summary)) +
+#  xlab("Optimised systems") +
+#  ylab("Methods") +
+#  theme_bw() +
+#  theme(axis.text.x = element_text(hjust=1, angle=30),
+#	legend.position = "bottom",
+#	legend.direction = "vertical") +
+#  guides(col=guide_legend(ncol=2))
+#plot_lit_focus.methods
+
+```
+
+[TODO: note this reference "Optimization methods applied to the design of eco-industrial parks: A literature review" (review of literature (methods) where EIP's engage in the exchange of energy/materials/water (similar to our paper). Conclusions could be interesting).]
+
+The focus of this research are the highly integrated models -- which presently -- are rare, though they do exist, particularly for refineiries and eco-industrial parks, to simultaneously optimze the management of multiple resource types exchanged between the processes in these entities [TODO: cite examples]. Examining these titles, it is clear that there are no models which address the opportunity to simultaneously plan energy, water, and waste management in order to improve an area's metabolism. The models to most closely meet these ambitions are for eco-industrial parks (**EIP**s), where models try to realise maximum benefit from IE possibilities, to identify the most beneficial energy and material exchanges between processes [TODO: cite an example?]. However, as the review article by @Boix2015 notes, these models emphasize "...either the water network, or the energy links or waste disposal facilities but never the whole networking" (p.314). Similarly at the city-scale, even dropping down a level to integrated models the focus tends to be on the integration of energy with some other system or integrating water networks into existing systems.
+
+Considering how the dimensions of detail fit into our modelling aims, when considering multiple resource system types, it seems prudent to start with a simple representation of the various systems, before delving into the intricacies of the detail design and operation of the system, which require specialist expertise regarding the systems being modelled. This means looking to high-level model. In regards to the formulation, MILP methods provide control of the management processes used, the resource flows between them, and their corresponding transport links.
+
+[NOTE: for thesis, methodology is still and open question at this point, hence thesis chapter on method.]
+
+## Summary
+
+As the UM framework is used to study urban sustainability, in relation to its resource flows, forms, and function, one developing area is consider the processes occurring inside a city more closely. One step towards this end, is to consider a city as an engineered-system, made up of a network of resource management processes, through which resources from beyond the city boundary are converted, in order to meet demand for energy, and water (similarly, the network manages wastes, and returns them to the wider environment). Such a network representation of a city's resource management leaves opens up the possibility of using optimisation modelling to design a model which can help researchers, planners and policy makers plan resource management to take advantages of the synergies between systems. If implemented, this model would minimise drawing from, and returning wastes to, the environment, and thereby improve an area's overall metabolism. Such a model would be high-level (rather than detailed), and its novelty lies in its highly-integrated consideration of energy, water, and waste resource management systems. The rest of this paper introduces the model, starting with its mathematical formulation, followed by an application to a case study.
+
+[TODO: Bringing together the fields of urban metabolism, and resource optimisation modelling...]
+
+[TODO: Advancing the frontier of optimisation modelling within IE from EIPs to urban areas as a whole...]
+
+[TODO: given our aims are mainly focussed on UM, rather than detailed infrastructure design, then a highly integrated model is appropriate.]
+
+<!--
+In summary, optimisation modelling is used for many purposes to help plan resource management. However, our exhaustive search of the literature how shown that no models are appropriate to consider urban energy, water and waste management simultaneously, to realise synergistic benefits. Nevertheless, they do model multiple resource optimisation at suitable scales, to make the idea of such a model plausible (at least from an engineering point of view, if not one of free-market economics.
+
+Lit review structure from JK's MILP paper.
+
+- General decisions (discrete, continuous), linear, nonlienar, algorithms etc.
+- Existing models (continue paragraph on small scale)
+- Existing models (moving up the scale)
+- Existing models (highest level)
+- Example of a generic model
+- Another example of a generic model
+- Another example of a generic model
+- Another example of a generic model
+- Specific examples
+- Summary of existing models
+- Models with the most potential
+- "The model presented in this paper has been developed to..." continue to understand the inside of the blackbox
+-->
+
+
+# Model structure, formulation and implementation
+<!--
+Sections from JK's MILP paper
+
+# Model structure, formulation, and implementation
+
+In our model, the urban region under study is
+
+- Zones/demands/imports/exports
+- Resources (demands)
+- Conversion technologies (STN)
+- RTN
+- Interzonal connections
+- Storage
+
+# Mathematical formulation
+
+- Key equation
+
+## Imports and exports
+## Resource conversion technologies
+### Domestic technologies
+### Part-Load operation
+### Further extensions
+## Units of measurement
+## Transport technologies
+## Storage technologies
+### Detailed storage constraints
+### Aggregate storage constraints
+## Footprint constraint
+## Performance metrics and objective function
+
+# Implementation
+
+- Ontology database
+- GAMS
+- Java app
+-->
+
+<!--
+- [TODO: ref metric paper] showed that so-called 'grey-box' metrics (i.e. exergy-based and ENA-based) provide particularly helpful insights on urban resource efficiency.
+	- Background section on precedent modelling: justify chosen metrics (e.g. exergy) with respect to Ravalde and Keirstead (2015), and justify omission of cost (one reason, is that our data included future technologies, i.e. as yet uncosted. Futhermore, 'costable' processes still vary around the world, due to exchange rates and differences in purchasing power, and furthermore, will change as a f(time)).
+-->
+
+Our model will consider a city as divided into a number of zones, for which can be specified demands for resource management, and which can contain the processes which convert resources. These zones also possess connections to other zones for resource transportation, and to outside the city for importing and exporting. To this end, our models will be based on the model by @Keirstead2013a which we introduced earlier as a high-level MILP model to plan urban energy resource systems.
+
+To model the processes which convert resources, @Keirstead2013a looks to the engineering State-Task Network model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another. Keirstead's model applies the same principles to urban energy systems in a so-called Resource-Technology Network (RTN), developing a model which chooses the mix of processes that uses available resources to meet demand for heat and electricity. While @Keirstead's model is categorised as having no system integration, the State-Task network representation is highly generalised (i.e. all conversion processes are represented by the same type of equation), thus the formulation can be easily extended to consider resources and processes from multiple sectors.
+
+Like Keirstead's model, processes are separated into conversion processes (such as a wastewater treatment plant) and transport processes (such as a pipeline). The transport processes will connect the different zones into which an urban area is divided, allowing resources to be transported to and from different parts of the city. The main equation is a resource balance,
+
+\begin{align}
+I_{rzt} + \sum_p^P G^{(qty)}_{przt} + \sum_{\tau} V^{(qty)}_{rzt\tau} &= D^{(qty)}_{rzt} + E_{rzt},
+\label{eq:bal_qty}
+\end{align}
+
+which specifies the amount of a particular resource $r$ at any given time $t$ in zone $z$. The demand $D^{(qty)}$ parameter is specified by the user, and the model will choose the resource quantity imported into the city $I$, exported from the city $E$, generated by conversion processes $G$, and net inflow from other zones $V$ (referred to as 'variables'). Like Keirstead's model, the resources are expressed in terms of quantities (such as MW of electricity or kg/s of solid waste), which in our equations is denoted by the $^{(qty)}$ superscript. However, here we evolve Keirstead's formulation, by defining resource flows in terms of their *quality*, such that a resource can be attributed with both an energy and a mass. This is useful as we consider interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- in our model we would need to know both its mass, and its energy head due to elevation. Thus the formulation specifies an equation analogous to \eqref{eq:bal_qty} which defines flows in terms of their quality (using the $^{(qual)}$ superscript notation):
+
+\begin{align}
+X_{rq} I_{rzt} + \sum_p^P G^{(qual)}_{prqzt} + \sum_{\tau}^T V^{(qual)}_{\tau rqzt} &= D^{(qual)}_{rqzt} + X_{rq} E_{rzt} \qquad \forall q,
+\label{eq:bal_qual}
+\end{align}
+
+This introduces the quality index $q$, and the parameter $X$ which defines a resource's quality[^qual-param] which is a multiplier of any resource quantity value, such that it separates a quantity into its qualities.
+
+[^qual-param]: For example, 1 kg of static water at a 10 m elevation would have an energy head of 98.1 J. Thus $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$.
+
+The variable $G$ denotes the net quality of resource produced by a conversion process in a zone at a particular time. Conversion processes are modelled as black boxes with resource inputs and outputs, defined by the coefficients $k^{proc}_{prq}$:
+
+\begin{align}
+G^{(qual)}_{prqzt} &= k_{prq} F_p,
+\label{eq:conv_qual}
+\end{align}
+
+The variable $F_p$ defines the operation rate of a process $p$ which can run between a range of values (e.g. a power plant's maximum operating capacity). Using the $X_{rq}$ parameter, we can formulate the quantity version of \eqref{eq:conv_qual}:
+
+\begin{align}
+X_{rq}G^{(qty)}_{przt} &= k_{prq} F_{pzt},
+\label{eq:conv_qty}
+\end{align}
+
+<!--
+This equation only needs to be applied in the case where a process $p$ produces or consumes resource $r$ with qualities $q$, hence the condition based on the $\delta_{prq}$.
+-->
+Transport processes are defined similarly to conversion processes, using coefficients to represent the relative quantities of resources involved in the transfer from one zone to another, to calculate the variable $V$ for each zone, as the net inflow of a resource ($\mbox{summed inflow from all other zones} - \mbox{summed outflow to all other zones}$):
+
+\begin{align}
+V^{(qual)}_{\tau rqzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{transp}_{\tau zz't} + \\
++ &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{transp}_{\tau z'zt}
+\label{eq:transp_qual}
+\end{align}
+
+Coefficients and process rates are defined for transport technology $\tau$, both for the zone of origin $z$, and the zone of destination $z'$ (where the $'$ notation indicates the destination zone). Furthermore, the quantity of input resources can be defined by the linear sum of two coefficients, denoted by $\alpha$ and $\beta$. For example to transport 1 kg of coal from $z$ to $z'$ (defined by $k_{\tau rq}^{\alpha}=-1$, $k_{\tau rq}^{\alpha'}=1$) will require a quantity of petrol dependent on the distance between the zones $l_{zz'}$, thus defined by $k_{\tau rq}^{\beta}$ and $k_{\tau rq}^{\beta'}$. In the case where transport losses occur (such as electricity transported via a cable), $k^{\alpha}_{\tau rq} > k^{\alpha'}_{\tau rq}$. To calculate the quantity flows, we once again use the $X_{rq}$ parameter:
+
+\begin{align}
+X_{rq}V^{(qty)}_{\tau rzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{transp}_{\tau zz't} + \\
++ &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{transp}_{\tau z'zt}
+\label{eq:transp_qty}
+\end{align}
+
+Finally, the model will minimise some objective, for example, the cost of resource imports:
+
+\begin{align}
+\min\left\{\sum_{rzt} \mbox{cost}_r I_{rzt}\right\}
+\label{eq:ob}
+\end{align}
+
+Equations \eqref{eq:bal_qty}--\eqref{eq:ob} form the programme's main constraints. For a full description, see Appendix [TODO: cross-ref to appropriate appendix] which lists other constraints (such as upper limits imposed on resource imports). The formulation includes continuous variables (such as resource quantities and process rates), integer variables (the number of conversion processes in a zone), and binary variables (for the existence of a transport process between two zones). All equations are linear, resulting in a mixed-integer linear programme (MILP).
+
+As for implementation, our model requires both its equations to be encoded in a programming language which can be solved using MILP solvers (such as CPLEX or Gurobi), and the parameter data which defines the demands, process-behaviour and other constraints. These two elements are kept separate, making it convenient to generate different models for convenience. The data are stored in CSV and YAML text files, both of which are chosen for their human-readability and their ease of editing:
+
+- CSV files specify any data with a spatial element, including the layout, the demands, import/export limits, etc. These have the advantage of being editable using spreadsheet software.
+- YAML[^yaml] files define both resources and processes [TODO: further detail] in a human-readable format. This format allows data to be stored heirarchichally (i.e. nested like sub-items and sub-sub items in an itemized list).
+
+[^yaml]: "YAML ain't a markup language". This format is more human-readable than other heirarchical data storage formats approaches such as XML and JSON.
+
+To define a particular model instance, a configuration YAML specifies which YAML and CSV files), and R code then writes a GAMS script which combines the data with the code.
+
+# Case study (results and discussion, although discussion might be separate)
+
+<!--
+Sections in JK's MILP paper
+
+# Case study
+
+- proposed eco-town development (ambitions)
+- site characteristics
+- zonal demands
+- timings
+- figrues with data
+
+## Resources and technologies
+## Objective function
+## Results
+-->
+
+To demonstrate the model we have formulated above, we will use a new Chinese urban development as a case study. The development is led by the Shann GU company[^confidential], and concerns a 13 km$^2$ site accommodating 133,000 people, with residential, commercial, industrial and recreational functions. For the case study take the predicted resource demands for the site, and run the model for several scenarios (outlined below) to optimise the development's metabolism. Note that a strict definition of 'optimise' is not considered here (though this question has been explored elsewhere, e.g. @Ravalde2015a); our primary purpose is to introduce our new model. As such we will apply various environmental and economic objectives which may interest stakeholders.
+
+[^confidential]:More detailed information regarding its location is confidential.]
+
+[TODO: idealised representation figure]
+
+
+## Input data
+<!--
+- Data
+  	- resources
+  		- generic
+  		- specific, due to the site, e.g. exergy of heat
+  	- processes
+  		- generic, from the database
+	  	- specfic, due to the site, e.g. rain, leachate = f(rain, evaporation, landfill area)
+		- real processes, heat exchangers (and associated water flows)
+		- dummy processes (e.g. MSW splitting, waste generalising)
+-->
+
+This section introduces the data used as parameters in the model. Further details regarding sources and assumptions are given in the Appendix. The actual data is available from the supplementary information at [TODO-link-to-supplementary-information](../shann-gu-documentation/data.html).
+
+
+[^process-data]: \\url{https://github.com/tomravalde/urban-metabolism-process-database}
+
+### Site layout
+
+This data defines the set of zones $Z$, and the distances between any pair of zones ($l_{zz'}$), and whether any pair of zones are neighbouring (and hence if they can be connected by transport processes from set $T$). We have estimated this information from the Shann Gu documentation, with 13 zones defined within the 13 km^2^ construction region.
+
+### Site layout -- Appendix
+
+According to the Shann Gu documentation, the site's construction region is 13 km^2^, with industry in the north, residential and commercial use in the centre, and recreational functions in the south.
+
+Neighbouring zones belong to set $nb(z,z')$.
+[Complete]
+
+### Times
+
+The times set $T$ defines the times considered, with their lengths given by $span(T)$ [TODO: re-notate]. In our case we've defined seasons for `winter`, `summer` and `shoulder`, with spans of 90 days, 90 days, and 180 days, respectively. 
+
+### Resource demands
+
+The Shann Gu documentation specifies demands ($D^{(qty)}_{rzt}$) for electricity, heating, water consumption. We also derive quantities for wastewater and waste generation, which can be defined using negative values. Demand is defined on a per-second basis (MW for energy demands, kg/s for the others).
+
+
+### Resource demands -- Appendix
+
+- The code is set up, such that only $D^{(qty)}_{rzt}$ need be defined, with $D^{(qual)}_{rqzt}$ defined automatically.
+- Summary table?
+
+### Resource options
+
+As well as the resource demands, our case studies consider another [TODO: number] resources in set $R$ which can be used as part of the conversion chain to meet demand. These include [TODO: list examples]. For each resource why can apply a conta
+
+Each resource has at least one associated quality $q$, which are defined in the $Q$ set. For our purposes we use `mass` and `energy` qualities, which are attributed to each resource with the $X_{rq}$ parameter.
+
+For each resource, we need to define the minimum and maximum allowable imports and exports (again, on a per-second basis), and the number of zones allowed to import or export any particular resource. We also define a cost to import each resource [TODO: source information].
+
+### Process options
+
+Our modelling considers up to [TODO: number] processes $p$ which convert resources (depending on the scenario). [TODO: add details on scenarios here, or elsewhere?] These processes are taken from the open-source database of urban metabolism processes outlined in @Ravalde2015b[^process-data], or the Shann Gu documentation. Each process definition also includes its capacity (i.e. the maximum MJ/s or kg/s which can be converted).
+
+For each process, we also provide an estimated cost (in USD). Apart from the shear number of processes in our database (over 300), several factors make this tricky: first and foremost, our process database considers future processes which have not yet penetrated into the market. In addition, exchange rates and purchasing power parities around the world make it difficult to cost a process with any degree of certainty. For this reason, our costing is approximate. Nevertheless, this is important to get plausible results. (See the supplementary information for references, assumptions, calculations, and other details.)
+). 
+
+Similarly, up to [TODO: number] transport processes are also defined (using the $k$ coefficients), and maximum transport rates (MW or kg/s).
+
+- pipes (costed)
+- roads (free)
+
+## Model scenarios
+
+We study [TODO: number] scenarios using different subsets of the processes, to suggest how different networks of processes can satisfy demand under varying circumstances (following the methodology of @Keirstead2012). For some scenarios, we model sub-scenarios, where we use different objective functions, or introduce an additional constraint to illustrate Pareto optimality. The scenarios are:
+
+1. *Base case.* This assumes that electricity, fuels and water are imported to the site as needed (with wastewater treated on site), thus there is no attempt to take advantage of synergies. As such, this scenario provides baseline results.
+2. *Design case.* The Shann Gu site developers intend to take advantage of intersectoral synergies to minimise resource consumption. This scenario considers the processes suggested in the Shann Gu documentation, including combined heat and power (CHP), a wastewater source heatpump combined with a district heating network. We consider how the process choice changes, with different objecitves:
+	a. Minimise cost
+	b. Minimise emissions
+	c. Minimise waste
+	d. Minimise freshwater consumption
+3. *Wildcard case.* This scenario allows any process from the database compiled by @Ravalde2016 to be incorporated into the site's resource management network. This database includes both existing and still-to-be-implemented management processes, so we consider the following sub-scenarios, at minimum cost:
+   	a. Currently available processes
+   	b. Medium-term available technologies
+   	c. Long-term available technologies
+
+Scenario 3a [TODO: update if necessary] is the largest, and thus indicates the computational effort required to solve the problems, having [TODO: number] single variables, [TODO: number] discrete variables, [TODO: number] binary variables, [TODO: number] equations [TODO: etc.].
+
+These scenarios are fairly simple, and illustrate the sensitivity of a network to fairly broad considerations (technology availability, and simple objective functions). Detailed design problems should be more narrowly focussed, by applying sensitivity analysis to understand how a system design responds to changes in efficiency (reducing demand), market value of imported and exported goods, and other factors. [TODO: reproduce Saltelli et al. citation from @Keirstead2012??].
+<!--
+OTHER SCENARIO VARIATIONS
+- DSM
+- min-cost
+- min emissions
+- cost/emissions pareto
+- export revenue (e.g. hydrogen economy)
+- Exergy verses other objectives (cost, carbon footprint, water footprint, waste output)
+- min cost -- DSM
+- min cost -- phased planning
+- min water
+- min landfill
+- min cost/targets of individual sectors (energy, water, waste), or differently weight them?
+-->
+
+## Results (and discussion)
+
+We present the results of each scenario in a number of ways (summarised in Table [TODO: cross-ref]. First, the annual costs (including conversion and transport capital costs, as well as resource import costs), are calculated (Figure [TODO: cross-ref]). Second, we consider each system's emissions from the processes (though it is beyond the scope of this study to trace emissions up the supply chain) (Figure [TODO: cross-ref]). Third, we consider the metabolic inputs and outputs to each system (Figure [TODO: cross-ref]). Fourth, we consider the network of conversion processes which makeup each system (Figure [TODO: cross-ref]).
+
+[TODO: SNA (or triangular grid) figures for each scenario]
+
+
+```{r network-plot}
+
+## Inter-sectoral plot for whole network stored separately, so it's easy to suppress from paper compilation (to save time)
+#base::source("resource-network.R")
+#
+#resource_sectors <- read.csv("resources-sector.csv")
+#sectors_lookup <- rbind(c("energy", "blue"),
+#			c("water", "red"),
+#			c("waste", "black"),
+#			c("other", "green"))
+#sectors_lookup <- data.frame(sectors_lookup)
+#colnames(sectors_lookup) <- c("sector", "node_vector")
+#resources_sectors_node <- inner_join(resource_sectors, sectors_lookup)
+#node_vector <- c(resources_sectors_node$node_vector)
+#
+### Network plot (using SNA package)
+#layout <-  c("fruchtermanreingold", "kamadakawai", "spring", "circle", "eigen", "hall", "mds", "princoord", "target")
+#
+##library(sna) # Code to plot figure for saving (and subsequent manual editing)
+##gplot(link_matrix,
+##      mode=layout[1],
+##      gmode="graph",
+##      label = resources,
+##      label.pos = 1,
+##      jitter=FALSE,
+###      arrowhead = FALSE,
+##      thresh=0,
+###      vertex.sides = 0,
+##      vertex.col = node_vector,
+##      edge.col = rgb(220, 217, 217, maxColorValue=255),
+##      displaylabels = TRUE)
+```
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+%	\includegraphics[width=\columnwidth]{final-network.pdf}
+	\end{spacing}
+	\caption{The process network used in the design case. Processes are colourd according to the main resource they process. Graph is plotted using the R package from \citet{SNA2005}. A colour version of this plot is available in the electronic version of this paper.}
+	\label{fig:sna_interactions}
+\end{figure}
+
+
+[TODO: Dot plot of scenario costs (import, transport, conversion, etc.)].
+
+[TODO: Dot plot of imports and exports. All scenarios on same figure, faceted by resource and scenario].
+
+With some systems so large (over [TODO: number]) process types, space limitations prevent us from display all information of interest (e.g. the quantity of any particular technology). However however, the Supplementary Information includes all results in CSV format.
+
+The number of technologies used by a scenario increases as more are available, showing that systems take advantage of the full range of available conversion processes, with more being used to minimise the objective as much as possible. When different objectives are applied to the same technology choice (e.g. 2a and 2b [TODO: update if necessary]), we observe the sensitivity of the technology mix in the network [TODO: can this be quantified by some metric?].
+
+[TODO: comment on the mix of technology sizes in various scenarios.]
+[TODO: comment on which technogies are most relied upon in each system.]
+[TODO: comment on transportation reliance (e.g. central import + distribution, or central import and conversion, etc.?]
+[TODO: comment on coversion/transportation mix effect on (capital) costs?]
+
+There are limitations to what the results show. We have already noted the approximate nature of process costs. Furthermore [TODO: comment on part-load operation], for the sake of simplicity, our model has aggregated yearly demand to a single per-second value (rather than considering peak and average demand). Thus, we are unable to quantify the degree to which conversion processes within our systems are oversized, without running models with a finer temporal resolution which accounts for variations within a single day.
+
+### Costs
+
+Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. capital costs and imports).
+
+### Emissions
+
+Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
+
+### Metabolic inputs and outputs
+
+Comment on (percentage) differences between scenarios, and suggest reasons for differences (e.g. synergies).
+
+# (Discussion and) Conclusions
+<!--
+Paragraph ideas from JK's MILP paper
+# Conclusions
+
+- "There have been many models developed...however..."
+- "In this paper we..."
+- "Another feature of the model..."
+- "The model was illustrated using..."
+- "There are a number of future directions for the model..."
+-->
+
+There is no doubt that modelling has helped planners and policy makers design systems to manage resources to optimal performance in cities. However, to date, energy, water and waste resources have been managed with their own separate modelling tools. But by neglecting the synergies between different resource types, these approaches limit the resource savings a city can make. Thus we have adapted @Keirstead2013a's urban energy systems model to introduce a new model which optimises an urban area's resource-technology management, by choosing an appropriate technology mix and a corresponding schedule of resource imports and exports. Using the database of @Ravalde2016, we have applied the model to a Chinese urban development case study, for [TODO: number] scenarios.
+
+[TODO: discuss the middle of the system]
+<!--
+Despite a gallimaufry of urban metabolism models and resource optimisation models, there is still need for an integrated model, to meet ambitions for intersectoral urban synergies. We have begun this processes, developing @Keirstead2013a's model to create a generically defined [TODO: complete...]
+
+In this paper, we have adapted the urban energy systems model of [TODO: cite Keirstead et al.] to formulate a new model which simultaneously optimises the management of energy, water and waste, to improve the metabolism of an area, and applied it to a new urban development in China, using data collected for @Ravalde2015b.
+-->
+
+In addition to contributing a model for use in research, planning and policy, our results have showed that for the Shann Gu site, an objective (e.g. minimising cost, emissions, or some other quantity) is more readily met by taking advantage of more process types (particularly of a smaller capacity), in a decentralised network, rather than the more traditional centralised systems. This fits with findings from individual sectors (e.g. energy supply and water supply) where decentralised are increasingly encourages, with waste- and by-products cascading down through a system [TODO: provide reference].
+
+[TODO: summarise and explain other key findings]
+
+Having contributed this new tool, we recognise that given the early nature of this work, there is further work which can help make this tool more usable in the real world. Firstly, more data can be contributed to the @Ravalde2016 database (e.g. process costs, appropriate to specific locations and currencies). Secondly, the model formulation can be made more sophisticated, perhaps introducing separate categories of technologies which distinguish between domestic and non-domestic technologies, and introducing storage technologies [@Keirstead2013, equations 9.3--9.10, pp166--170]. It could also incorporate 'hierarchical non-uniform time discretization' which is a sophisticated way to consider the variation in resource demand over hourly, daily¸ weekly, and seasonal periods, at lower computational cost than considering continuous profile over a long period [@Keirstead2013, p161]. Another addition to the formulation could be a device's spatial footprint. [TODO -- Note to James: domestic techs, and spatial footprint are considered in the unpublished paper, but not the book chapter.]
+
+Moving from considering the metabolic **flows**, and turning our attention to the socioeconomic **functions**, work should consider how our model can be applied within the broader socioeconomic systems. In our case study, the modeller has complete control over energy, water, and waste management sectors. While the operator of a single system (such as an energy supplier) might have such control, different resources are often managed by different actors, each seeking to maximise their own profits and incentives [TODO: reference]. Plausibly therefore, this modelling work could contribute to arguments which favour planned utilities management over free-market management, a debate ongoing anyway with the increasing interest in Smart cities [TODO: reference].
+
+In conclusion, in an increasingly resource-constrained world which faces the combined challenges of population growth, global warming, water scarcity, and shrinking landfill capacity, cities are being hailed as the most efficient means to provide goods and services. However, to take full advantage of this, cities should exploit their co-location of processes to benefit from synergies between energy, water and waste management systems. Our model is one step further along the journey to that end.
+
+# Acknowledgements {.unnumbered}
+
+Tom Ravalde is supported by the EPSRC Doctoral Training Partnership at Imperial College London. The [TODO: details] data was provided by [TODO: Yingru/Xiamen/Shann Gu].
+
+# Appendix {.unnumbered}
+
+- Full mathematical formulation. I.e., in the main body, we only need to include the essential balance and process equations. Other constraints (e.g. limits on imports/exports can go in the Appendix).
+- Demands
+- Tabulate resource data (exergy, emissions, CF, WF Cost Revenue)
+- Example black box process models
+- Identify dummy processes (waste splitter, and waste generaliser, water splitter (recognising that higher quality waters can be used in lower quality applications)
+- Example network configuration results
+- Links to data, code and results on GitHub
+- Summarised version of the demand data
+- Link to GitHub/website of supplementary information
+  	- CSV master table
+	- R-script to produce data summaries, based on the master table's 'tidy' form.
+	- Details on model formulation (comparison of performance, etc.)
+	- Details on Shann Gu specific parameters (e.g. groundwater pumping, surface water availability, rainfall)
+
+# Appendix -- data [TODO: move to the appendix, and retitle]
+
+- Assume documentation gives peak values
+	- Assume peak values at all times?
+	- Calculate daily averages based on peaks?
+	- Compartmentalise into peaks and averages?
+
+# Appendix -- formulation {.unnumbered}
+
+The maximum rate at which a conversion process can operate is given as:
+
+\begin{align}
+F_{pz} \le N_{pz} F^{max}_p,
+\end{align}
+
+where the variable $N_{pz}$ is the number of process type $p$ in zone $z$, and the parameter $F^{max}_p$ is process $p$'s maximum operating rate.
+
+The maximum rate between zones $z$ and $z'$ at which a transport process can operate is given as:
+
+\begin{align}
+F^{transp}_{\tau zz'} \le \delta^{transp}_{\tau zz'} F^{transp, max}_\tau,
+\end{align}
+
+where the integer variable $\delta_{\tau zz'}=1$ when transport process $\tau$ exists between zones $z$ and $z'$, and the parameter $F^{transp,max}_p$ is process $\tau$'s maximum operating rate (e.g. the maximum water flow rate of a pipe). Having defined the existence of a transport link between two zones, we assume that a link in one direction ($z \rightarrow z'$) necessarily defines a link in the opposite direction, thus:
+
+\begin{align}
+\delta^{transp}_{\tau zz'} = \delta^{transp}_{\tau z'z}
+\end{align}
+
+Further, we define a set $nb$ which specifies whether any two zones are neighbours. Only connections within this set can be linked by transport infrastructure. This not only models reality, but also reduces the model size:
+
+\begin{align}
+\delta^{transp}_{\tau zz'} = 0 \qquad \forall (z,z') \notin nb
+\end{align}
+
+The imports and export quantities must lie between $I^{min}$ and $I^{max}$ parameters, and thus can be expressed with the following constraint:
+
+\begin{align}
+\delta^{I}_{rz'} I^{min}_{rt} \leq I_{rzt} \leq \delta^{I}_{rz'} I^{max}_{rt}
+\end{align}
+
+where $\delta^I_{rz}$ is a binary variable which equals 1 if conversion process $r$ exists in zone $z$. This variable is itself subject to the constraint that only a $N^I_r$ zones can be used to import any given resource $r$:
+
+\begin{align}
+\sum_z \delta^{I}_{rz'} \leq N^I_r
+\end{align}
+
+Analogous constrains apply to exports:
+
+\begin{align}
+\delta^{E}_{rz'} E^{min}_{rt} &\leq E_{rzt} \leq \delta^{E}_{rz'} E^{max}_{rt} \\
+\sum_z \delta^{E}_{rz'} &\leq N^E_r
+\end{align}
+
+Finally we consider possible objective functions, which could be a combination of costs ($C^*$) and environmental impacts. Resource costs could be defined, thus:
+
+\begin{align}
+C^R &= \sum_{rzt} c_r I_{rzt} \\
+C^P &= \sum_{pz} c_p N_{pz} \\
+C^{\tau} &= \sum_{\tau zz'} c_\tau \delta^{transp}_{\tau zz'} l_{zz'}
+\end{align}
+
+where the parameter $l_{zz'}$ defines the distance (length) between two zones. The costs above can be combined into a single objective function.
+
+\begin{align}
+C = \gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}
+\end{align}
+
+where coefficients $\gamma^*$ could weight the component costs according to time span (e.g. a 20 year investment period), or their relative importance to a particular stakeholder.
+
+Other types of objective function could include the carbon footprint $(CF)$ of an area, using the emissions factor of a resource $(ef)_r$:
+
+\begin{align}
+CF &= \sum_{rzt} (ef)_r I_{rzt}
+\end{align}
+
+More simple objective function might simply be to minimise the imports of a particular resource (e.g. water imports).
+
+Objectives can be traded-off against each other, using so-called 'Pareto optimisation'. One equation is used as the objective function (for example cost), while another is defined as an inequality constraint (for example emissons):
+
+\begin{align}
+\sum_{rzt} (ef)_r I_{rzt} \leq lim
+\end{align}
+
+The user runs the model multiple times, changing the value of $lim$, such that one can plot a curve of emissions against cost.
+
+# Useful files and folders {.unnumbered}
+
+- Daiwang-case-study/data-notes.md
+- code (copy) << (GMS files only)
+- workshop-june-2014-shann-gu/shann-gu-parameters.gnumeric << assumptions for the pre-China trip version of the Shann Gu model
+- workshop-june-2014-shann-gu/table-resource.csv << references for resource costs and emissions factors (for the pre-China trip version of the Shann Gu model)
+- workshop-june-2014-shann-gu/table-process.csv << references for the process size and costs (for the pre-China trip version of the Shann Gu model)
+- workshop-june-2014-shann-gu/paper/Shann-gu-paper_T-Ravalde.pdf << Appendix contains calculations, assumptions, and links for process and resource parameter values (for the pre-China trip version of the Shann Gu model)
+- conf-paper << contains paper and presentation, giving zones etc. (for the post-China trip version of the model, i.e. more zones)
+- shann-gu-documentation << various presentations and papers, and shann-gu_lingtong.gnumeric spreadsheet of data and assumptions
+
+# References {.unnumbered}
+
+<!--
+```{r PowerPoint-figure-conversions}
+#library('ReporteRs')
+#
+### Open data research
+#doc <- pptx()
+#doc <- addSlide(doc, "Two Content")
+#doc <- addPlot(doc, function() print(plot_open_data), vector.graphic = TRUE)
+#doc <- addPlot(doc, function() print(plot_open_data), vector.graphic = FALSE)
+#writeDoc(doc, file = "word-figures/open-data.pptx")
+#
+```
+-->

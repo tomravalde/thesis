@@ -1,0 +1,10 @@
+process: distributed-engine-s
+resources:
+     diesel: -0.052075
+     elec: 1
+     CO2: 0.18525
+rate:
+        wint: 1
+        sum: 1
+        shoulder: 1
+notes:

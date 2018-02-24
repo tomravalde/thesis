@@ -1,0 +1,13 @@
+process: biochemical_wastePaper_ethanol-s
+resources:
+     biomass: -1.194811
+     water: -2.792652
+     CO2: 0.9495725
+     ethanol: 0.2971107
+     elec: 1
+     waste: 0.08226156
+rate:
+        wint: 0.0084985
+        sum: 0.0084985
+        shoulder: 0.0084985
+notes:

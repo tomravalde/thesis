@@ -1,0 +1,11 @@
+process: gasif-bmass-methanol-condensingTurbine-hPump-twoSteamLevels-s
+resources:
+     biomass: -3.088803
+     water: -0.1158301
+     methanol: 1
+     elec: 0.2316602
+rate:
+        wint: 0.52
+        sum: 0.52
+        shoulder: 0.52
+notes:

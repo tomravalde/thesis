@@ -1,0 +1,10 @@
+process: heatPump-sewage-cooling-0.005
+flow: 
+     elec:
+          value: -0.2857143
+     heat:
+          value: 1
+     wastewater:
+          value: -17.14286
+capacity:  
+     value: 0.005

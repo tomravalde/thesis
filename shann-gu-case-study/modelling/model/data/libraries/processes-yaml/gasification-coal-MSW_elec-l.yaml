@@ -1,0 +1,12 @@
+process: gasification-coal-MSW_elec-l
+resources:
+     coal: -0.09868819
+     MSW: -0.02467205
+     elec: 1
+     water: -0.4692166
+     CO2: 0.019775
+rate:
+        wint: 500
+        sum: 500
+        shoulder: 500
+notes:

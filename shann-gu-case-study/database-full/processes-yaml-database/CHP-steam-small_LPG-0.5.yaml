@@ -1,0 +1,12 @@
+process: CHP-steam-small_LPG-0.5
+flow: 
+     LPG:
+          value: -0.431
+     elec:
+          value: 1
+     heat:
+          value: 15
+     CO2:
+          value: 1.262
+capacity:  
+     value: 0.5
