@@ -11,33 +11,33 @@ font_import(pattern="LinBiolinum")
 library(ggplot2)
 ```
 
-This appendix provides further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6 of *Highly integrated urban energy, water and waste resources*, including, summaries of the data, links to the full data sets (recorded in CSV and YAML formats), and notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement). The following sections outline the data in the order in which it was presented it in Section \ref{sec:SPC-data}. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
+This appendix provides further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6, including, summaries of the data, links to the full data sets (recorded in CSV and YAML formats), and notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement). The following sections outline the data in the order in which it was presented it in Section \ref{sec:SPC-data}. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
 
-The data discussed in this appendix can all be found online at the GitHub repository for this thesis[^thesis-github]. Morever, because this thesis has been written using the R-markdown format, the R code used to summarise and manipulate the data is embedded in the source of this page[^appendix-source], which maybe useful for those who want to study the data for themselves.
+The data discussed in this appendix can all be found online at the GitHub repository for the cast study [^case-study-github]. Morever, because this thesis has been written using the R-markdown format, the R code used to summarise and manipulate the data is embedded in the source of this page[^appendix-source], which maybe useful for those who want to study the data for themselves.
 
-[^thesis-github]: \url{https://github.com/tomravalde/thesis}
+[^case-study-github]: \url{https://github.com/tomravalde/shann-gu-case-study}
 
-[^appendix-source]: \url{https://github.com/tomravalde/thesis/blob/master/app-C_data.Rmd}
+[^appendix-source]: \url{https://github.com/tomravalde/thesis/blob/master/C_spc-data.Rmd}
 
 ## Site layout
 
 The zones $z$ and their interzonal-distances $l_{zz'}$ (km) given in Section 2.6.1 (Table 6.1) are defined in the zone-matrix[^zone-matrix]. Any origin-destination pairs which are not neighbours are denoted by `NA` (e.g. `factory-northDistrict`). This matrix is lower-triangular, so there is no need to define a distance in both directions (because they are assumed to be equal).
 
-[^zone-matrix]:\url{https://github.com/tomravalde/thesis/blob/develop/shann-gu-case-study/modelling/model/data/model-definition/zone-matrix.csv}
+[^zone-matrix]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/zone-matrix.csv}
 
 ## Times
 
 The case study's time steps $\mathbb{s}_t$ (seconds) given in Section 2.6.2 are defined in the times table file[^times] . They are calculated assuming a 360 day year, with the winter, summer and shoulder seasons taking lengths of 90 days, 90 days, and 180 days, respectively. So for example, the length of the `shoulder` season is calculated as $180~\mbox{days} \times 24~\mbox{hours} \times 3,600~\mbox{seconds} = 1.5552 \times 10^7~\mbox{seconds}$.
 
-[^times]:\url{https://github.com/tomravalde/thesis/blob/develop/shann-gu-case-study/modelling/model/data/model-definition/times.csv}
+[^times]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/times.csv}
 
 ## Resource demands
 
-The SPC site's demands for resource management $D^{(qty)}_{rzt}$ introduced in Section [TODO:] are derived from the Shann Gu documentation, which gives demands for the following regions and time-periods:
+The SPC site's demands for resource management $D^{(qty)}_{rzt}$ introduced in Section \ref{sec:demand-parameters} are derived from the SPC documentation, which gives demands for the following regions and time-periods:
 
 ```{r demands-summary}
 library("dplyr")
-demands <- read.csv("shann-gu-case-study/paper/resource-demands.csv")
+demands <- read.csv("C_spc-data/resource-demands.csv")
 
 demands_summary <- demands %>%
   filter(value.doc!=0) %>%
@@ -47,24 +47,16 @@ demands_summary
 ```
 
 
-These demands need to be distributed to appropriate zones $z$, and converted to a consistent set of units (MW for energy, kg/s otherwise). The table [resource-demands.csv](resource-demands.csv) shows how the demands are allocated to zones, and the assumptions and calculations used to determine this. The table's columns (denoted by `monospace text` carry the following information:
+These demands need to be distributed to appropriate zones $z$, and converted to a consistent set of units (MW for energy, kg/s otherwise). The resource-demands table[^resource-demands] shows how the demands are allocated to zones, and the assumptions and calculations used to determine this. The table's columns (denoted by `monospace text` carry the following information:
 
-- `zone.region` and `zone` are those regions and zones referred to in Section 6.2.1
-- The SPC documentation for a resource demand in any given season is denoted using the `resource`, `season`, and `value.doc` columns, with the units and reference given in `units.doc` and `reference`.
+[^resource-demands]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/resource-demands.csv}
+
+- `zone.region` and `zone` are those regions and zones referred to in Section \ref{sec:case-study-site}
+- The SPC documentation for a resource demand in any given season is cited using the `resource`, `season`, and `value.doc` columns, with the units and reference given in `units.doc` and `reference`.
 - When the Shann Gu documentation gives little detail about the spatial disaggregation of the demand (i.e. demand is only attributed to a region, rather than a zone), the demands need to be divided this demand up between zones. Similarly, when the documentation has not provided a value for a particular season, assumptions need to be made (e.g. that the shoulder heat demand is half the winter heat demand). These assumptions are recorded in `assump.redist`, with the new values listed in `value.redist` (and units given in `units.redist`)
 - Finally, `notes.conv` notes any necessary changes in units, such that `value.conv` and `units.conv` contain resource demands in a consistent set of units.
 
-In summary, the reasoning for every demand value which appears in the case study can be justified by the chain of sources, assumptions, and calculations embedded in the table. Below are a few rows randomly sampled from this dataset.
-
-```{r data-head}
-demands_display <- demands %>% 
-  filter(value.doc!=0) %>%
-  arrange(zone.region, zone, resource, season)
-
-sample_n(demands_display, 10)
-
-```
-
+In summary, the reasoning for every demand value which appears in the case study can be justified by the chain of sources, assumptions, and calculations embedded in the table.
 
 <!--
 - Slide 20 of [6]: `heat` (winter), `cool` (summer) and `elec` (year-round).
@@ -77,50 +69,53 @@ sample_n(demands_display, 10)
 
 Example of how to convert documented electricity demand (kWh/year) to units required by the model (MW):
 $$
-\begin{align}
+\begin{align*}
 111700000 \times 3.6/(365 \times 24 \times 3600) &= 12.75 \\
 6e7 \times 3.6/(365 \times 24 \times 3600) &= 6.85
-\end{align}
+\end{align*}
 -->
 
-### A note on waste and wastewater generatoin
+### A note on waste and wastewater generation
 
 Waste and wastewater generation rates are defined as negative demands.
 
-The waste generation figures from the SPC documentation are not provided in the same units (total solid waste = 8m3/day, organic waste = 360,000 kg/year), so the following calculations separate the documented values into quantities of `waste` and `waste_organic`, on the assumption that solid waste has a density $\rho=217.5~\mbox{kg/m3}$[^waste-density]:
+The waste generation figures from the SPC documentation are not provided in the same units (total solid waste is given as 8m$^3$/day, organic waste is given as 360,000 kg/year), so the following calculations separate the documented values into quantities of `waste` and `waste_organic`, on the assumption that solid waste has a density $\rho=217.5~\mbox{kg/m$^3$}$[^waste-density]:
 
-[^waste-density]: Table 2.2 from [Solid Waste Management by Chandrappa and Das](http://www.springer.com/cda/content/document/cda_downloaddocument/9783642286803-c2.pdf?SGWID=0-0-45-1336211-p174308664) gives a density range of 87--348 kg/m3. This thesis uses the median value of 217.5 kg/m3.
+[^waste-density]: From @Chandrappa2012, Table 2.2 gives a density range of 87--348 kg/m3. This thesis uses the median value of 217.5 kg/m3.
 
 $$
-\begin{align}
+\begin{align*}
 \mbox{Total solid waste} &= 8~\mbox{m3/day} \\
  		  &= 1,740~\mbox{kg/day} \\
  		  &= 635,100~\mbox{kg/year}
-\end{align}
+\end{align*}
 $$
 
 Subtracting the organic waste fraction: 
 
 $$
-\begin{align}
-\mbox{Non-organic waste} &= 635,100 - 360,000~\mbox{tons/year} \\
+\begin{align*}
+\mbox{Non-organic waste} &= 635,100 - 360,000~\mbox{kg/year} \\
  		  &= 275,100~\mbox{kg/year}
-\end{align}
+\end{align*}
 $$
-
 
 ## Resource parameters
 
-As well as the resource management demands specified above, the case study considers other resources which can play a part in the conversion chain of processes which meet demand (e.g. coal can be used in a power plant which also requires cooling water, and emits carbon dioxide). The properties of all the resources are defined using the YAML format ([here](../modelling/data/resources-yaml)), which specify a resource's name, and it's quality attributes $X_{rq}$, for example:
+As well as the resource management demands specified above, the case study considers other resources which can play a part in the conversion chain of processes which meet demand (e.g. coal can be used in a power plant which also requires cooling water, and emits carbon dioxide). Each resource has its own YAML file which defines it properties[^resource-yaml], specifying a resource's name and it's quality attributes $X_{rq}$, for example:
 
-```yaml
-resource: coal
-quality:
-        mass: 1
-notes:
-```
+\begin{figure}
+\lstinputlisting[language=yaml]{C_spc-data/coal.yaml}
+\caption{An example YAML record for a coal.}
+\label{fig:yaml-resource}
+\end{figure}
 
-Each resource must also be associated several parameters, recorded in the [resource parameters table](TODO: link to resource-params.csv) (a sample of which is given below):
+
+[^resource-yaml]:\url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/data/libraries/resources-yaml}
+
+The YAML files define resource properties in and of themselves. But each resource must also be associated with several parameters which a specific to the case study. These are recorded in the resource parameters table[^resource-params], which records the following information:
+
+[^resource-params]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/resource-params.csv}
 
 - Limits on resource import and export quantities ($I^{min}_{rt}$, $I^{max}_{rt}$, $E^{min}_{rt}$, $E^{max}_{rt}$)
 - Limits on the number of zones which can import and export a resource ($N^I_r$ and $N^E_r$)
@@ -130,58 +125,33 @@ Each resource must also be associated several parameters, recorded in the [resou
 	- `conversion notes` contains notes on the calculation required to convert costs into appropriate units 
 	- `cost.converted` is the cost of the resource in USD used in the model
 	- `unit.flow` is the units which the `cost.converted` values are given in (per MJ for energy resources; per kg otherwise)
- <!--
-- Emissions associated with a resource ($\epsilon_r$)
- -->
-
-```{r data-params-head, echo="TRUE"}
-params <- read.csv("../modelling/data/resource-params.csv")
-
-sample_n(params, 10)
-```
 
 ## Conversion process parameters
 
-Each process needs to be associated with resource conversion parameters ($k^{P}_{prq}$) and maximum process rates ($F^{P,max}_{p}$). These are defined in YAML files [here](TODO: link) -- an example of a coal-fuelled power plant is given below. Note how the process's main output (`elec` in this case) is set to a value of `1`, such that the `rate` multiplied by any resource flow will give the maximum input or output of any resource. A few of the processes have been defined using information from the Shann Gu literature, but most of them are adapted from the publicly available [database of urban metabolism processes](https://github.com/tomravalde/urban-metabolism-process-database) introduced in Chapter 4 of the thesis.
+Each process needs to be associated with resource conversion parameters ($k^{P}_{prq}$) and maximum process rates ($F^{P,max}_{p}$). These are defined in YAML files[^processes-yaml] -- an example of a coal-fuelled power plant was given in Figure \ref{fig:yaml}. A few of the processes have been defined using information from the Shann Gu literature, but most of them are adapted from the publicly available database introduced in Chapter \ref{sec:database}[^database].
 
-```yaml
-process: elecplant-coal-l
-resources:
-     coal: -0.1012658
-     elec: 1
-     heat: 1.56962
-     water: -0.8670886
-     CO2: 0.2341772
-     ash: 0.01012658
-rate:
-        wint: 5400
-        sum: 5400
-        shoulder: 5400
-notes:
-```
+[^processes-yaml]:\url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/data/libraries/processes-yaml}
+
+[^database]:\url{https://github.com/tomravalde/urban-metabolism-process-database}
 
 
-The cost of each process are defined in [process-costs.csv](../modelling/data/process-costs.csv), using the procedure described in Section [TODO:], which can be summarised by the following steps:
+Each process's costs are defined in [process-costs.csv](../modelling/data/process-costs.csv), using the procedure described in Section \ref{sec:conversion-processes}, which can be summarised by the following steps:
+
+[^process-costs]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/process-costs.csv}
 
 1. Define 'process categories' ($\mbox{PC}$) (e.g. *'biogas-fuelled CHP'*)
 2. Assign the processes from the database -- 'database processes' ($\mbox{DP}$) -- to each PC. The *'biogas-fuelled CHP'* $\mbox{PC}$ includes four types of biogas-fuelled CHP conversion processes in the database.
-3. For each $\mbox{PC}$, obtain unit costs (USD/MW or USD/kg/s) from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given. A guiding principle of cost estimations is that process costs exhibit economies of scale:
+3. For each $\mbox{PC}$, obtain unit costs (USD/MW or USD/kg/s) from the literature (this may require some assumptions and adjustments to numbers from the literature, of which details are given. A guiding principle of cost estimations is that process costs exhibit economies of scale[^econs-of-scale]:
 	a. For each $\mbox{PC}$, obtain upperbound and lowerbound costs,  $\mbox{Cost}^{LB}$ and $\mbox{Cost}^{UB}$.
-	b. Calculate the total cost of any particular $\mbox{DP}$ with a given capacity (MW or kgs/s) from:
-
-$$
-\begin{align}
-\mbox{DP Total Cost} = \mbox{PC Unit Cost}^* \times \mbox{DP capacity},
-\end{align}
-$$
+	b. Calculate the total cost of any particular $\mbox{DP}$ with a given capacity (MW or kgs/s) using $\mbox{DP Total Cost} = \mbox{PC Unit Cost}^* \times \mbox{DP capacity}$
 
 where $^*$ can indicate either a $LB$ or $UB$. The lowerbound costs are applied to larger instances of a process, and upperbound costs are applied to smaller instances, and thus $\mbox{DPs}$ become cheaper as they get larger.
 
-in Appendix \ref{sec:app-case-study-processes}). A guiding principle of these estimations is that process costs exhibit economies of scale [^scale-economy]. For this to be captured in the model, each $\mbox{PC}$ has both lowerbound and upperbound unit costs. 
-
 4. For the conversion processes which do not yet exist in the market, costs are estimated by basing them on existing processes which have the same main resource. This method is conservative in its approach, on the assumption that new processes will not penetrate the market unless they deliver a particular service at lower cost than a more traditional means of conversion.
 
-Steps 1--4 above will involve making various assumptions and adjustments to the numbers -- the details of these for each process are given in [process-cost-calcs-kgyr.ods](../modelling/data/process-cost-calcs-kgyr.ods), where `monospaced font` refers to the columns of the spreadsheet:
+Steps 1--4 above will involve making various assumptions and adjustments to the numbers -- the details of these for each process are given in the process-cost calculation table[^process-cost-calcs], where `monospaced font` refers to the columns of the table:
+
+[^process-cost-calcs]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/process-cost-calcs-kgyr.ods}
 
 - The $\mbox{PCs}$ are listed in the `process-type` column. Each GP has lowerbound and upperbound versions, appending `_l` and `_u` to the process names, respectively (e.g. `CHP-biogas_l` and `CHP-biogas_u`).
 - The costs for each $\mbox{PC}$ are recorded in the `ref.cost` column, with the currency indicted in the  `ref.currency` column.
@@ -195,33 +165,11 @@ Steps 1--4 above will involve making various assumptions and adjustments to the 
 In addition to these parameters, each process needs a cost for use in the objective function. This work attempts to estimate process costs. This is not without its difficulties. First, there is the shear number of processes in the database (202in total). Second, the process database includes processes which have not yet penetrated into the market or are still to be developed, thus there are no values which can be easily lifted from the literature. Third, currency exchange rates and purchasing power parities around the world make it difficult to attribute a cost to a process with any degree of certainty. For this reason, costing is approximate.
 -->
 
-[^scale-economy]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW power plants than ten 1 MW power plants.
+[^econs-of-scale]: For example, if a system demand requires 10 MW, then it should be cheaper to meet that demand with two 5 MW power plants than ten 1 MW power plants.
 
 ## Transport processes parameters
 
-Each transport needs to be associated with resource conversion parameters ($k^{\alpha}_{\tau rq}$, $k^{\beta}_{\tau rq}$, $k^{\alpha'}_{\tau rq}$, and $k^{\beta'}_{\tau rq}$) and maximum process rates ($F^{\mathcal{T},max}_{\tau}$). These are defined in YAML files [here](../modelling/data/transport-yaml). -- an example of coal carried by road is given below:
-
-```yaml
-process: road_coal
-inputs:
-        coal: -1
-        gasoline: 0
-        CO2: 0
-outputs:
-        coal: 1
-        gasoline: 0
-        CO2: 0
-dist_source:
-        coal: 0
-        gasoline: -0.18
-        CO2: 0.3
-dist_dest:
-        coal: 0
-        gasoline: 0
-        CO2: 0.3
-rate: 100
-notes:
-```
+Each transport needs to be associated with resource conversion parameters ($k^{\alpha}_{\tau rq}$, $k^{\beta}_{\tau rq}$, $k^{\alpha'}_{\tau rq}$, and $k^{\beta'}_{\tau rq}$) and maximum process rates ($F^{\mathcal{T},max}_{\tau}$). These are defined in transport process YAML files [^transport-yamls]. An example of coal carried by road is given below, where:
 
 - `inputs` corresponds to $k^{\alpha}_{\tau rq}$
 - `outputs` corresponds to $k^{\beta'}_{\tau rq}$
@@ -229,18 +177,33 @@ notes:
 - `dist_dest` corresponds to $k^{\alpha'}_{\tau rq}$
 - `rate` corresponds to $F^{\mathcal{T},max}_{\tau}$
 
-Note, as per the assumptions stated in Section [TODO:]:
+[^transport-yamls]:\url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/data/libraries/transport-yaml}
+
+
+\begin{figure}
+\lstinputlisting[language=yaml]{C_spc-data/road_coal.yaml}
+\caption{An example YAML record for a vehicle which transports coal.}
+\label{fig:yaml-transport}
+\end{figure}
+
+
+Note, as per the assumptions stated in Section \ref{sec:case-study-transport-processes}:
+
 - All the coal which leaves the source zone arrives in the destination zone
 - The quantity of gasoline depends on the distance travelled, as it is provided entirely by the source zone
 - The quantity of \COtwo emitted depends on the distance travelled, as it is split equally between the source and destination zones
 
-The transport costs are defined per kilometer in [transport.csv](../modelling/data/transport.csv), which also gives references.
+The transport costs (and their sources) are defined on a per-kilometer basis in the transport costs table[^transport-costs].
 
-Section [TODO:] noted there were three types of transport processes used in the case study: cables, pipes, and vehicles. The assumptions and calculations from which the parameters values were derived are given below.
+[^transport-costs]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/transport.csv}
+
+Section \ref{sec:case-study-transport-processes} noted there were three types of transport processes used in the case study: cables, pipes, and vehicles. The assumptions and calculations from which the parameters values were derived are given below.
 
 ### Cables
 
-Electrical energy is lost as electricity travels along a cable, typically at a rate of about 3--7% over 1,000 km (according to [ETSAP](http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf)). In the SPC case study, cable lengths are around 10 km, and thus losses will be assumed to be negligable, meaning that there is only a need to define parameters of -1 and 1 for $k^{\alpha}_{\tau rq}$ and $k^{\alpha'}_{\tau rq}$, respectively, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0$.
+Electrical energy is lost as electricity travels along a cable, typically at a rate of about 3--7% over 1,000 km[^elec-locss]. In the SPC case study, cable lengths are around 10 km, and thus losses will be assumed to be negligible, meaning that there is only a need to define parameters of -1 and 1 for $k^{\alpha}_{\tau rq}$ and $k^{\alpha'}_{\tau rq}$, respectively, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0$.
+
+[^elec-loss]:According to The Energy Technology Systems Analysis Program: \url{http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf}
 
 ### Pipes
 <!--
@@ -265,94 +228,88 @@ For pipes carrying gas, it is assumed that the distances involved make the pumpi
 
 For pipes carrying water, it is assumed that pipes are horizontal, which means the only energy required is that pipe flow to overcome the head loss due to friction, $h_f$, quantified according to the so-called hydraulic slope $S$ of a pipe of length $L$:
 
-$$
-\begin{align}
+\begin{align*}
 h_f = SL
-\end{align}
-$$
+\end{align*}
 
 For turbulent flow, $S$ is given by the Darcy-Weisbach equation:
 
-$$
-\begin{align}
+\begin{align*}
 S = f_D \frac{1}{2g} \frac{V^2}{D}
-\end{align}
-$$
+\end{align*}
 
 where $f_D$ is the Darcy Friction factor, $V$ is the flow velocity, and $D$ is the pipe diameter.
 
 The linear black-box representation of a pipe requires expressing $h_f$ as a function $h_f=f(Q, L)$, where $Q$ is the mass flow rate ($m^3/s$), calculated from the product of the cross-sectional pipe area ($A$) and flow velocity:
 
-$$
-\begin{align}
+\begin{align*}
 Q = AV
-\end{align}
-$$
+\end{align*}
 
 Re-arranging yields:
 
-$$
-\begin{align}
+\begin{align*}
 V^2 &= Q^2/A^2 \\
 &= \frac{16Q^2}{\pi^4 D^4}
-\end{align}
-$$
+\end{align*}
 
-Thus, using [TODO: equation numbering]:
+Thus:
 
-$$
-\begin{align}
-h_f=\frac{8 f_D}{g \pi^4 D^3} Q^2 L \\
+\begin{align*}
+h_f&=\frac{8 f_D}{g \pi^4 D^3} Q^2 L \\
 &= \frac{16Q^2}{\pi^4 D^4}
-\end{align}
-$$
+\end{align*}
 
 For the black-box representation, by definition, the volume flow rate is $1 m^3/s$, such that $Q^2=Q$. It is also assumed that $D = 0.5 m^3$, and $f_D = 0.04$, thus the energy required for pumping is given as:
 
-$$
-\begin{align}
+\begin{align*}
 k^{\beta}_{\tau rq} &= h_f \\
 &= 0.0054 L
-\end{align}
-$$
+\end{align*}
 
 ### Vehicle transport
 
 For vehicles, it is assumed that the resources being transported (e.g. biomass, coal, etc.) leave the source zone and arrive at their destination with no losses, i.e. $k^{\alpha}_{\tau rq}=-1$ and $k^{\alpha'}_{\tau rq}=1$, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0$. However, vehicles require gasoline, and emit carbon dioxide. The assumptions and calculations for the parameters which define these quantities are given below.
 
-In calculating the mass of gasoline required to transport goods a given distance, it is assumed
-- that a heavy goods vehicle has a fuel efficiency of $11.3~miles/gallon$ (adopting a conservative value from [UK Government statistics](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjkjpH2_pDLAhVHQhQKHU6HB8YQFggjMAE&url=https%3A%2F%2Fwww.gov.uk%2Fgovernment%2Fuploads%2Fsystem%2Fuploads%2Fattachment_data%2Ffile%2F482687%2Fenv0104.xls&usg=AFQjCNFai70_xX0QHHQ4t-Cz4Rv3spEGyw&sig2=lmbjqJAbEvGICzxidEHX-Q)). This converts to $0.25~l/km$
-- gasoline's density is $0.737~kg/l$ (as given by [SI metric](http://www.simetric.co.uk/si_liquids.htm))
+In calculating the mass of gasoline required to transport goods a given distance, it is assumed:
+- that a heavy goods vehicle has a fuel efficiency of 11.3 miles/gallon[^fuel-efficiency], which is equivalent to 0.25 l/km
+- gasoline's density is $0.737~kg/l$[^gasoline]
 - All gasoline is provided by the source zone.
+
+
+[^fuel-efficiency]: Adopting a conservative value from UK Government statistics: \url{https://www.gov.uk/government/statistical-data-sets/env01-fuel-consumption}
+
+[^gasoline]:As given by \url{http://www.simetric.co.uk/si_liquids.htm}
 
 Thus:
 
-$$
-\begin{align}
-k^{\beta}_{\tau rq} &= 0.737 \times 0.25
+\begin{align*}
+k^{\beta}_{\tau rq} &= 0.737 \times 0.25 \\
 &= 0.18~kg/km
-\end{align}
-$$
+\end{align*}
 
-In calculating emissions quantities, it is assumed that the specific $CO_2$ emissions for petrol (gasoline) is $3.3 kg_{CO_2}/kg_{fuel}$ (from [Engineering ToolBox](http://www.engineeringtoolbox.com/co2-emission-fuels-d_1085.html)). Therefore, per $km$ travelled by a vehicle, the emissions are given as:
+In calculating emissions quantities, it is assumed that the specific $CO_2$ emissions for petrol (gasoline) is $3.3 kg_{CO_2}/kg_{fuel}$[^gasoline-emissions] . Therefore, per $km$ travelled by a vehicle, the emissions are given as:
 
-$$
-\begin{align}
+[^gasoline-emissions]:From \url{http://www.engineeringtoolbox.com/co2-emission-fuels-d_1085.html}
+
+\begin{align*}
 0.18 \times 3.3 = 0.6~kg/km
-\end{align}
-$$
+\end{align*}
 
 These emissions are assumed to be split equally between the sources and destination zone, such that $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0.6 / 2 = 0.3~kg/km$
 
 
 ## Model scenarios
 
-- All the above data can be subsetted according to appropriate scenarios
-- YAML configuration files define which subset of data to be used
-- Our R script then turns this into a model instance
+The data described above is used in the three scenarios described in Section \ref{{sec:SPC-scenarios}. The GitHub repository possesses directories for each scenario which contain their own versions of the resource- and process- parameter files. These function to list the subset of resources and processes used in a scenario, and define some of the parameters (i.e. the costs, import limits, etc.)[^param-subset]. A YAML file then lists the files and parameters used for a scenario (Figure \ref{fig:yaml-scenario}) -- this provides an R-script with the information it needs to be able to assemble the GAMS code for a scenario, by pulling the costs and other parameters from the aforementioned files, and using the listed resource and processes to pull in the remaining parameters from the YAML files (i.e. resource definitions and process behaviours). With the GAMS code for a scenario defined, the model can be run on a machine with the GAMS software[^results]. 
 
-## List the YAML files for each scenario in our paper
+\begin{figure}
+\lstinputlisting[language=yaml]{C_spc-data/designCase_minCost.yaml}
+\caption{An example YAML record for a coal.}
+\label{fig:yaml-scenario}
+\end{figure}
 
-## Summary
 
-Summary text.
+[^param-subset]: An example for the Design Case scenario is available at \url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/data/model-definition/designCase}.
+
+[^results]: The results are exported to \url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/results/cluster-results}. These can then be interrogated (see for example the R-code embedded in Chapter 6).
