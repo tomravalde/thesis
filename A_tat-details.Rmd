@@ -1,8 +1,10 @@
-# Model formulation {#sec:app-model-formulation}
+# Tat Hamlet details {#sec:tat-details}
 
-[TODO: complete]
+This Appendix contains further details about the Tat Hamlet benchmarking study which was used to develop the PRaQ formulation in Chapter \ref{sec:model-dev}. The code to run the benchmarking models is available at \url{https://github.com/tomravalde/model-development-code/tree/develop}, which contains instructions on how the run the benchmarking study with the Null, PRaQ and Nonlinear formulations.
 
-[TODO: Include code for linear and nonlinear versions of the model]
+## Changes made to Tat Hamlet data for the benchmarking study {#sec:tat-changes}
+
+Section \ref{sec:tat-case-study} noted that for the purposes of the benchmarking study, some simplifications, assumptions and additions were made. These are listed below.
 
 \begin{description}
 
@@ -153,6 +155,7 @@
 	- Dog: 22
 -->
 
+<!--
 \begin{table}[]
 \centering
 \caption{My caption}
@@ -189,11 +192,11 @@ fish\_cooked                     & 0.07   & 0                      & See appendi
 CO2                              &        & 0                      & See appendix &  &  \\ \bottomrule
 \end{tabular}
 \end{table}
+-->
 
 ## Explaining the difference between the models with reference to a pipe, pump and dam system {#sec:pipe-pump-damn}
 
-show in Figure \ref{fig:pump-dam-example} which represents conversion and transport processes, and further explained later in this Section. 
-
+Section \ref{sec:derivations} developed both linear and nonlinear models. This section uses the example of a pipe-pump-dam system (Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}) to explain the differences in how they might differently model some phenomena. The models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
 
 \begin{figure}
 	\centering
@@ -213,7 +216,6 @@ show in Figure \ref{fig:pump-dam-example} which represents conversion and transp
 	\label{fig:pump-dam-RTN}
 \end{figure}
 
-For the pipe-dam example of Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}, the models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
 
 \begin{align}
 \frac{P}{\rho g} + z + \frac{v^2}{2g} = \mbox{constant}
@@ -225,31 +227,16 @@ First, consider the water flow from A (zone 1) to B (zone two) via the combinati
 
 \begin{align}
 %z_A  + \eta^{pump} \frac{\mbox{pump energy}}{\rho V g}  = z_B + F \frac{l}{D} \frac{v^2}{2g}
-\eta^{pump} (\mbox{pump energy})  = m \left( gz_B + F \frac{l}{D} \frac{v^2}{2} \right) 
+\eta^{pump} \cdot (\mbox{pump energy})  = m \left( gz_B + F \frac{l}{D} \frac{v^2}{2} \right) 
 \end{align}
 
 Second, consider the flow across the dam, between $B$ and $C$. Using the same assumptions as above, and defining the dam with an electrical generation efficiency, $\eta^{dam}$, and again multiplying through by $mg$, the relationship of water input attributes to the dam's electrical output is:
 
 \begin{align}
-mgz_B = \eta^{dam} (\mbox{elec gen})
+mgz_B = \eta^{dam} \cdot (\mbox{electricity generated})
 \label{eq:damEnergy}
 \end{align}
 
-Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated $e^{dam}$ (Figure \ref{fig:pump-dam-RTN}. The electricity is considered the dam's 'main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
+Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated ($e^{dam}$. The electricity is considered the dam's 'main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
 
-
-The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=11$ metres and efficiency $\eta^{dam}=$80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg, resulting in the coefficients in Listing \ref{list:praq_dam}.
-
-\begin{lstlisting}[language=yaml,
-	frame=single,
-	caption = Production coefficients for the dam in the Null model.,
-	label = list:null_dam,
-	float = [htbp]]
-dam source_hiHead_lowQual -12742
-dam lowHead_lowQual 12742
-dam elec 1
-\end{lstlisting}
-
-The dam example has two 'water' resources (one high-head, the other low-head); other water resources could include water at different temperatures or contamination levels. 
-
-However, the derivation of the PRaQ formulation evolves Keirstead's formulation, by defining resource flows in terms of their \emph{quality}, such that a resource can be attributed with both an energy and a mass. This is useful when considering the interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- this means the PRaQ model needs to know both its mass, and its energy head due to elevation. Thus the formulation specifies a Equation \eqref{eq:praq_balance_qty} which is analogous to \eqref{eq:null_balance_qty} to balancethe quality for each resource (adopting the $^{(qual)}$ superscript notation):
+The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. For the model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, thus the model requires a dam to be defined with fixed height. Therefore, assuming a dam of height $z_B=11$ metres and efficiency $\eta^{dam}=$ 80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg. The dam example has two 'water' resources (one high-head, the other low-head); other water resources could include water at different temperatures or contamination levels. 
