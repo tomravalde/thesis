@@ -1,9 +1,0 @@
-process: gasification-waste-high-temp-8.62
-resources:
-     waste: -0.4141531
-     heat: -7.470998
-     elec: 1
-     water: -5.916473
-     CO2: 0.649652
-rate: 8.62
-notes:

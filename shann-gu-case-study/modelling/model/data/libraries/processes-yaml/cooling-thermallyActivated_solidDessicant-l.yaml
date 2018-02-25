@@ -1,9 +1,0 @@
-process: cooling-thermallyActivated_solidDessicant-l
-resources:
-     heat: -1.538462
-     cool: 1
-rate:
-        wint: 0.05
-        sum: 0.05
-        shoulder: 0.05
-notes:

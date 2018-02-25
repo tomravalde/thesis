@@ -1,8 +1,0 @@
-process: district-cogen-absorptionChiller-100
-flow: 
-     heat:
-          value: -1.492537
-     cooling:
-          value: 1
-capacity:  
-     value: 100

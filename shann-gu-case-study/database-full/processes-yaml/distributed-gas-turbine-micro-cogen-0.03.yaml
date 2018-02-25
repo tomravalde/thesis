@@ -1,8 +1,0 @@
-process: distributed-gas-turbine-micro-cogen-0.03
-resources:
-     gasNatural: -0.05331429
-     elec: 1
-     heat: 1.285714
-     CO2: 0.1602857
-rate: 0.03
-notes:

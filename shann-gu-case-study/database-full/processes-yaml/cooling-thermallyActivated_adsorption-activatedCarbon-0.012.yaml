@@ -1,6 +1,0 @@
-process: cooling-thermallyActivated_adsorption-activatedCarbon-0.012
-resources:
-     heat: -4
-     cooling: 1
-rate: 0.012
-notes:

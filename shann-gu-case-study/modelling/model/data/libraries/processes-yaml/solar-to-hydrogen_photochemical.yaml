@@ -1,9 +1,0 @@
-process: solar-to-hydrogen_photochemical
-resources:
-     solar: 1428.571
-     hydrogen: 1
-     water: 1.798571
-rate:
-        sum: 41
-        shoulder: 41
-notes:

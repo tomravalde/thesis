@@ -1,9 +1,0 @@
-process: gasification-waste-high-temp_steam-0.04
-resources:
-     waste: -0.296173
-     heat: -5.357737
-     elec: 1
-     water: -0.9151414
-     CO2: 0.4658902
-rate: 0.04
-notes:

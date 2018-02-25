@@ -1,8 +1,0 @@
-process: biogas-UPGRADE-methane-AwR-0.24
-resources:
-     elec: -0.4743552
-     water: -21.37563
-     biogas: -3.018974
-     methane: 1
-rate: 0.24
-notes:

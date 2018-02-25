@@ -1,6 +1,0 @@
-process: heatPump-transcriticalCO2-radOrDHW-13
-resources:
-     elec: -0.2380952
-     heat: 1
-rate: 13
-notes:

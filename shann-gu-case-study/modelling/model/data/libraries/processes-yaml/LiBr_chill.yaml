@@ -1,9 +1,0 @@
-process: LiBr_chill
-resources:
-        heat: -0.0418
-        cold_primary_feed: -1
-        cold_primary_return: 1
-rate:
-        sum: 6.723
-        shoulder: 6.723
-notes:

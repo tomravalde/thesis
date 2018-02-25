@@ -1,7 +1,0 @@
-process: distributed-fuelCells-elec-0.05
-resources:
-     hydrogen: -0.0175
-     elec: 1
-     water: 0.139
-rate: 0.05
-notes:

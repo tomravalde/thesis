@@ -1,7 +1,0 @@
-process: desalination-mechanicalVapourCompression-2.3148
-resources:
-     seawater: 3
-     water: 1
-     elec: 0.01764
-rate: 2.3148
-notes:

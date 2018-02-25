@@ -1,7 +1,0 @@
-process: wasteWaterEffluent_wetlands-43.9
-resources:
-     effluent: -1
-     elec: -0.000594
-     waterNonPotable: 1
-rate: 43.9
-notes:

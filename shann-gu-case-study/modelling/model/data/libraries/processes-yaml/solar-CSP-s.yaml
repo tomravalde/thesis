@@ -1,9 +1,0 @@
-process: solar-CSP-s
-resources:
-     solar: -7.042254
-     elec: 1
-     water: -0.06566901
-rate:
-        sum: 0.25
-        shoulder: 0.25
-notes:

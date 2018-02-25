@@ -1,9 +1,0 @@
-process: treatment_wastewater
-resources:
-        wastewater: -1
-        water: 1
-rate:
-        wint: 1157
-        sum: 1157
-        shoulder: 1157
-notes:

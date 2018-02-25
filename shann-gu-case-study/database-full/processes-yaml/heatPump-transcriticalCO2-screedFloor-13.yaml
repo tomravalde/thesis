@@ -1,6 +1,0 @@
-process: heatPump-transcriticalCO2-screedFloor-13
-resources:
-     elec: -0.3030303
-     heat: 1
-rate: 13
-notes:

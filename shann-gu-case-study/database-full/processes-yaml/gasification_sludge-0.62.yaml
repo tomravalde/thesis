@@ -1,9 +1,0 @@
-process: gasification_sludge-0.62
-resources:
-     sludge: -0.6880952
-     heat: 0.002380952
-     elec: 1
-     water: -0.4761905
-     slag: 0.0006904762
-rate: 0.62
-notes:

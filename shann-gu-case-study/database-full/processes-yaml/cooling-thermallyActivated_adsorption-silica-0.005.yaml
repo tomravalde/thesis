@@ -1,6 +1,0 @@
-process: cooling-thermallyActivated_adsorption-silica-0.005
-resources:
-     heat: -2.5
-     cooling: 1
-rate: 0.005
-notes:

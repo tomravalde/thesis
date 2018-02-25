@@ -1,6 +1,0 @@
-process: cooling-evaporative-heating-0.00382
-resources:
-     heat: -0.3289474
-     cooling: 1
-rate: 0.00382
-notes:

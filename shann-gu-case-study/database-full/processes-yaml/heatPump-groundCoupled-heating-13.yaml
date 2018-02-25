@@ -1,6 +1,0 @@
-process: heatPump-groundCoupled-heating-13
-resources:
-     elec: -0.2439024
-     heat: 1
-rate: 13
-notes:

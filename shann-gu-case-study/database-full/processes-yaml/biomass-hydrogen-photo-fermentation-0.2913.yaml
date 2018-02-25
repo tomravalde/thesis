@@ -1,9 +1,0 @@
-process: biomass-hydrogen-photo-fermentation-0.2913
-resources:
-     biomass: -99.68
-     elec: -14.004
-     hydrogen: 1
-     CO2: 13.44
-     methane: 0.67
-rate: 0.2913
-notes:

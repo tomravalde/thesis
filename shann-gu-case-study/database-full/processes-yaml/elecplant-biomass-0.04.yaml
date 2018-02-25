@@ -1,9 +1,0 @@
-process: elecplant-biomass-0.04
-resources:
-     biomass: -0.32
-     elec: 1
-     waterPotable: -0.68
-     heat: 3
-     ash: 0.032
-rate: 0.04
-notes:

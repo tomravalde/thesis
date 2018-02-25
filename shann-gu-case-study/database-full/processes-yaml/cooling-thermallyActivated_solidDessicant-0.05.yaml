@@ -1,6 +1,0 @@
-process: cooling-thermallyActivated_solidDessicant-0.05
-resources:
-     heat: -1.538462
-     cooling: 1
-rate: 0.05
-notes:

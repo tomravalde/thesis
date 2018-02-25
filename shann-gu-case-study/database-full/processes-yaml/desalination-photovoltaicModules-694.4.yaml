@@ -1,7 +1,0 @@
-process: desalination-photovoltaicModules-694.4
-resources:
-     waterBrackish: -3
-     water: 1
-     elec: -0.0126
-rate: 694.4
-notes:

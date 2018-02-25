@@ -1,8 +1,0 @@
-process: CHP-reciprocatingEngine_wasteGas-0.005
-resources:
-     gasWaste: -2.941176
-     elec: 1
-     heat: 1.308824
-     CO2: 0.1747059
-rate: 0.005
-notes:

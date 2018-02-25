@@ -1,8 +1,0 @@
-process: cooling-thermallyActivated_LiBr-H2O_single-7
-flow: 
-     heat:
-          value: -1.666667
-     cooling:
-          value: 1
-capacity:  
-     value: 7

@@ -1,8 +1,0 @@
-process: CHP-steam-small_methanol-0.5
-resources:
-     methanol: -1.016
-     elec: 1
-     heat: 15
-     CO2: 1.394
-rate: 0.5
-notes:

@@ -1,9 +1,0 @@
-process: fossilHydrogen_intrinsicCO2capture-1.56
-resources:
-     coal: -0.1592
-     water: -19.8
-     hydrogen: 1
-     waste: 0.2016
-     CO2: 8.889
-rate: 1.56
-notes:

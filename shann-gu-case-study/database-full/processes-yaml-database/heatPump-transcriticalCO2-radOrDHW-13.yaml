@@ -1,8 +1,0 @@
-process: heatPump-transcriticalCO2-radOrDHW-13
-flow: 
-     elec:
-          value: -0.2380952
-     heat:
-          value: 1
-capacity:  
-     value: 13

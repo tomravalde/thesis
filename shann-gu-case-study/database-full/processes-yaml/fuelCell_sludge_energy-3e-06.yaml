@@ -1,7 +1,0 @@
-process: fuelCell_sludge_energy-3e-06
-resources:
-     sludge: -160.5652
-     elec: 1
-     methane: 0.2231856
-rate: 3e-06
-notes:

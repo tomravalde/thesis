@@ -1,8 +1,0 @@
-process: CHP-steam-large_hydrogen-500
-resources:
-     hydrogen: -0.0176
-     elec: 1
-     heat: 1
-     waterNonPotable: 0.3475
-rate: 500500
-notes:

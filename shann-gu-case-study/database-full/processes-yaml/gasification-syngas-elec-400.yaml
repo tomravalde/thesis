@@ -1,8 +1,0 @@
-process: gasification-syngas-elec-400
-resources:
-     syngas: -1.729323
-     water: -20.31907
-     elec: 1
-     CO2: 0.2059722
-rate: 400
-notes:

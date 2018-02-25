@@ -1,8 +1,0 @@
-process: distributed-wind-0.006
-flow: 
-     wind:
-          value: -3.333333
-     elec:
-          value: 1
-capacity:  
-     value: 0.006

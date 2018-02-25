@@ -253,7 +253,7 @@ Of course, operation might not just vary by season, but could vary for smaller t
 
 In summary, seasonal timesteps are appropriate to the exploratory early-stage planning purposes of this model. Further along the planning process when detailed designs are being examined, it is justifiable to expend more effort, thus a finer temporal resolution may be warranted. Further more, at the more detailed design stages, some decisions will have been made (for example, the location of a particular conversion process), thus reducing the number of variables in the model, and thereby speeding up computation.
 
-### Resource demands
+### Resource demands {#sec:demand-parameters}
 
 Having determined the seasons and the time steps in the model, it is now possible to define the resource demand parameter $D^{(qty)}_{rzt}$ for each resource $r$. (As mentioned in Section \ref{sec:implementation}, the code which assembles the model is designed such that $D^{(qual)}_{rqzt}$ can be defined automatically once $D^{(qty)}_{rzt}$ is known.) The SPC documentation provides values which can be used in the modelling. However, these values do not necessarily cover all resources $r$, and may not be disaggregated to each zone $z$ and season $t$. Thus, sometimes, assumptions and calculations need to be applied in order to translate a documented value into a set of values which can be used in the modelling. The details of these adjustments are provided in Appendix \ref{sec:app-case-study-resources}.
 
@@ -265,7 +265,7 @@ The resource demands used here are summarised in Figure \ref{fig:site-demands}, 
 
 The resource demands discussed above will define some of the $r$ items in set $R$, but to complete this set requires the resources which used in the network of conversion processes to meet demand. In total, there are 68 resources, including everything from algae to wood. Each resource has at least one associated quality $q$, which is attributed to the resource using the $X_{rq}$ and $\delta^R_{rq}$ parameters. The qualities used in this case study are *mass* and *energy*. Most resources are only attributed with one of these (e.g. algae possesses mass, and heat possesses energy), though some resources are attributed with both (e.g. ground water has both a mass and an energy head). Each resource is also given a cost, based on values from the literature. The full list of resources along with their associated qualities and costs is given in Appendix \ref{sec:app-case-study-resources}. With the resources, zones and times determined, the remaining resource-related parameters can be defined, namely: limits on how many zones can import and export particular resources ($N^I_r$, $N^E_r$), the maximum allowable imports of a resource in a season ($I^{max}_{rt}$, $E^{max}_{rt}$), and the cost and emissions factors of resources ($c^R_r$ and $\epsilon^R_r$).
 
-### Conversion processes
+### Conversion processes {#sec:conversion-processes}
 
 The contents of the process set $P$ will vary for each scenario, and will draw from both the SPC proposals, and the database of urban metabolism processes outlined in Chapter 4. The information needed to define the processes are the coefficients which define the input and output resource quantities with $k^P_{prq}$, and maximum process rates $F^{P,max}_p$. For the database processes this information already exists, but for the SPC proposals, this information needs to be derived from the SPC documentation.
 

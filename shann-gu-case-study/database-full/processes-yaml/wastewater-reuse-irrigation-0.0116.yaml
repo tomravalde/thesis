@@ -1,7 +1,0 @@
-process: wastewater-reuse-irrigation-0.0116
-resources:
-     wastewater: -1
-     elec: -0.01044
-     waterIrrigation: -1
-rate: 0.0116
-notes:

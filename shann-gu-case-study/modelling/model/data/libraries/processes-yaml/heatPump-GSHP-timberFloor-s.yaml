@@ -1,9 +1,0 @@
-process: heatPump-GSHP-timberFloor-s
-resources:
-     elec: -0.3448276
-     heat: 1
-rate:
-        wint: 0.005
-        sum: 0.005
-        shoulder: 0.005
-notes:
