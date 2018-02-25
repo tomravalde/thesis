@@ -1,4 +1,4 @@
-# Case study: a Chinese urban development
+# Case study: a Chinese urban development {#sec:case-study}
 
 [TODO: Add epigraph]
 

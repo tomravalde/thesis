@@ -503,7 +503,6 @@ As the conceptualisation above indicates, the highly integrated resource managem
 
 An existing model which can accomplish these things -- specifically for that energy sector -- has been developed by @Samsatli\footnote{Note that this reference contains the most comprehensive description of the urban energy systems optimisation model, but it is at present unpublished. However, modelling based on this formulation has been published, for example in @Keirstead2013a, though this paper doesn't include as much detail regarding the equations of the model.} applied in @Keirstead2013a. This is a MILP model which chooses the optimal mix of processes, and schedule of process operations and resource imports and exports to meet spatially and temporally defined demands for heating, cooling and electricity. Using the terminology of Section \ref{sec:optim-model-overview}, this is a city-scale model, not integrated (because it only optimises the energy sector), and high-level (because it does not compute detailed design of the optimised energy system, but rather focusses on allocating resources to the right place, at the right time, in their right quantities).
 
-
 To model the processes which convert resources, @Samsatli is based upon the engineering State-Task Network (STN) model of @Kondili1993, in which processes ('tasks') convert materials from one 'state' to another (Figure \ref{fig:STN}). Keirstead's model applies this model's principles to urban energy systems using what they term a Resource-Technology Network (RTN), developing a model which chooses the mix of processes using available resources to meet demand for heat and electricity -- an example is given in Figure \ref{fig:Keirstead-RTN}. While, on this thesis' definitions, @Samsatli's model is categorised as having no system integration (see Section \ref{sec:optim-model-overview}, the STN representation is highly generalised (i.e. all conversion processes are represented by the same type of equation); this makes the formulation extendable to other types of resources and processes. The urban energy systems model has two types of processes: those that convert resources (such as a wastewater treatment plant), and those that transport them (such as a pipeline). 
 
 \begin{figure}
@@ -688,7 +687,7 @@ I_{rz} + \sum_{\tau}^{\mathcal{T}} J^{(qty)}_{\tau rz} + \sum_{p}^{P}G^{(qty)}_{
 \label{eq:praq_balance_qty}
 \end{align}
 
-In addition, PRaQ develops @Samsatli's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. An example where this would be useful is a water pump, where the head to which the water input must be pumped needs to be matched by the electrical energy input (Figure \ref{fig:praq-water-pump}). To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
+In addition, PRaQ develops @Samsatli's formulation, to incorporate a more sophisticated definition of a resource, in which it possesses not just a quantity, but also the qualities, mentioned earlier. This is useful when considering the interaction between different sectors. Consider a body of water: this can supply (for example) both cooling for industrial processes, and hydroelectric electricity -- this means the PRaQ model needs to know both its mass, and its energy head due to elevation. To model this, PRaQ uses an equation analogous to the quantity balance, which balances the resource qualities, $q$, within each zone $z$. The PRaQ formulation relates a resource's quantity to its quality by way of the parameter $X_{rq}$: this is multiplied by a resource quantity value to separate a quantity into its qualities[^qual-param].
 
 [^qual-param]: For example, 1 kg of water at a 10 m elevation would have an energy head of 98.1 J, thus, $X_{rq}$ would be defined as $X_{\mbox{water, mass}} = 1$, $X_{\mbox{water, energy}} = 98.1$. Therefore, if this body of water were being imported into zone $z$, $X_{\mbox{water}, q}I_{\mbox{water}, z}=$ 1 kg and 98.1 J, for $q=$ mass and energy, respectively.
 
@@ -764,7 +763,7 @@ The transport processes are defined similarly, following the same logic as the N
 
 \begin{align}
 J^{(qual)}_{\tau rqz} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{\mathcal{T}}_{\tau zz'} \\
-+ &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{\mathcal{T}}_{\tau z'zt}
++ &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{\mathcal{T}}_{\tau z'z}
 \label{eq:praq_transp_qual}
 \end{align}
 <!--
