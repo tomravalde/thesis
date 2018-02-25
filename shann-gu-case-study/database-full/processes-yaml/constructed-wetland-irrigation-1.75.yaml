@@ -1,6 +1,0 @@
-process: constructed-wetland-irrigation-1.75
-resources:
-     effluent: -1
-     waterIrrigation: 0.95
-rate: 1.75
-notes:

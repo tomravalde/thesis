@@ -1,7 +1,0 @@
-process: groundWater-pumping-DEFINE-ACCORDING-TO-LOCAL-CONSTRAINTS
-resources:
-     groundWater: -1
-     elec: -0.00799
-     groundWaterPumped: 1
-rate: DEFINE-ACCORDING-TO-LOCAL-CONSTRAINTS
-notes:

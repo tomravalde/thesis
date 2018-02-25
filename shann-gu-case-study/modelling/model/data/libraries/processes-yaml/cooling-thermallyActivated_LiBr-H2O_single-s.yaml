@@ -1,9 +1,0 @@
-process: cooling-thermallyActivated_LiBr-H2O_single-s
-resources:
-     heat: -1.666667
-     cool: 1
-rate:
-        wint: 0.005
-        sum: 0.005
-        shoulder: 0.005
-notes:

@@ -1,9 +1,0 @@
-scenario,cost,emissions,waste,water
-gridCase_minCost,1.0e9,,
-designCase_minCost,4.78e7,,
-designCase_minEmissions,Calculate,,
-designCase_minWaste,Calculate,,
-designCase_minWater,Calculate,,
-wildcard_current_minCost,3.35e6,,
-wildcard_medium_minCost,2.835e6,,
-wildcard_long_minCost,2.81e6,,

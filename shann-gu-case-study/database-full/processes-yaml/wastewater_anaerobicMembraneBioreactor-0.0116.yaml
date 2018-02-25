@@ -1,8 +1,0 @@
-process: wastewater_anaerobicMembraneBioreactor-0.0116
-resources:
-     wastewater: -1
-     elec: -0.0002088
-     biogas: 4.159e-05
-     effluent: 1
-rate: 0.0116
-notes:

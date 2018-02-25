@@ -1,7 +1,0 @@
-process: gasification-biomass-methane-0.0001319
-resources:
-     biomass: -21.87557
-     water: -4.35359
-     methane: 1
-rate: 0.0001319
-notes:

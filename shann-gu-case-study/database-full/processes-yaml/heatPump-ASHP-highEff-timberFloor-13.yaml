@@ -1,6 +1,0 @@
-process: heatPump-ASHP-highEff-timberFloor-13
-resources:
-     elec: -0.4545455
-     heat: 1
-rate: 13
-notes:

@@ -1,6 +1,0 @@
-process: cooling-thermallyActivated_H2O-NH3_single-small-0.01
-resources:
-     heat: -1.818182
-     cooling: 1
-rate: 0.01
-notes:

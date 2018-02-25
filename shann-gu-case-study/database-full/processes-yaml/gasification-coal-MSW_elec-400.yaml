@@ -1,9 +1,0 @@
-process: gasification-coal-MSW_elec-400
-resources:
-     coal: -0.09868819
-     MSW: -0.02467205
-     elec: 1
-     water: -0.4692166
-     CO2: 0.019775
-rate: 400
-notes:

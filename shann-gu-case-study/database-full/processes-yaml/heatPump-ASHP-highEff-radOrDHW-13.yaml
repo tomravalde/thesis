@@ -1,6 +1,0 @@
-process: heatPump-ASHP-highEff-radOrDHW-13
-resources:
-     elec: -0.5
-     heat: 1
-rate: 13
-notes:

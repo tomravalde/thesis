@@ -1,8 +1,0 @@
-process: distributed-solar-l
-resources:
-     solar: -5.882353
-     elec: 1
-rate:
-        wint: 3
-        shoulder: 3
-notes:

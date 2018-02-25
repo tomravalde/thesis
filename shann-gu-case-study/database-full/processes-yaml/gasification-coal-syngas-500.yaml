@@ -1,8 +1,0 @@
-process: gasification-coal-syngas-500
-resources:
-     coal: -0.08426184
-     elec: 1
-     water: -0.5399946
-     CO2: 0.2058369
-rate: 500
-notes:

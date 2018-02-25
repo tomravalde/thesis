@@ -1,9 +1,0 @@
-process: constructed-wetland-nonPotable-l
-resources:
-     wastewater: -1
-     waterNonPotable: 0.95
-rate:
-        wint: 43.9
-        sum: 43.9
-        shoulder: 43.9
-notes:

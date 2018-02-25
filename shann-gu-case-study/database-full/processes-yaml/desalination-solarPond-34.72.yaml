@@ -1,7 +1,0 @@
-process: desalination-solarPond-34.72
-resources:
-     waterBrackish: -3
-     water: 1
-     elec: -1.095
-rate: 34.72
-notes:

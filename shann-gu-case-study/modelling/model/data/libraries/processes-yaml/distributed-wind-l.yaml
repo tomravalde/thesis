@@ -1,9 +1,0 @@
-process: distributed-wind-l
-resources:
-     wind: -3.333333
-     elec: 1
-rate:
-        wint: 0.006
-        sum: 0.006
-        shoulder: 0.006
-notes:

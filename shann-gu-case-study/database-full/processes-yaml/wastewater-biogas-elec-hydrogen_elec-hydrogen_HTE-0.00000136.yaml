@@ -1,7 +1,0 @@
-process: wastewater-biogas-elec-hydrogen_elec-hydrogen_HTE-0.00000136
-resources:
-     elec: -483.7758
-     water: -7522.124
-     hydrogen: 1
-rate: 1.36e-06
-notes:

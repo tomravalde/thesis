@@ -1,9 +1,0 @@
-process: centralHeating
-resources:
-        heat: 1
-        hot_secondary_feed: -4
-        hot_secondary_return: 4
-rate:
-        wint: 0.025
-        shoulder: 0.025
-notes:

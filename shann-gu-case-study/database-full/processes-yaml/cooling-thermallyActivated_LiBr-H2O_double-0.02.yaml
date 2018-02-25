@@ -1,6 +1,0 @@
-process: cooling-thermallyActivated_LiBr-H2O_double-0.02
-resources:
-     heat: -0.9090909
-     cooling: 1
-rate: 0.02
-notes:

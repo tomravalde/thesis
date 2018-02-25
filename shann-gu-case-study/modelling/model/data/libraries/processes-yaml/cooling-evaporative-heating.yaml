@@ -1,9 +1,0 @@
-process: cooling-evaporative-heating
-resources:
-     heat: -0.3289474
-     cool: 1
-rate:
-        wint: 0.00382
-        sum: 0.00382
-        shoulder: 0.00382
-notes:

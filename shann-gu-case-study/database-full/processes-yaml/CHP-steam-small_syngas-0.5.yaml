@@ -1,8 +1,0 @@
-process: CHP-steam-small_syngas-0.5
-resources:
-     syngas: -0.746
-     elec: 1
-     heat: 15
-     CO2: 1.3666
-rate: 0.5
-notes:

@@ -1,9 +1,0 @@
-process: biomass-hydrogen-dark-fermentation-0.2913
-resources:
-     biomass: -218.45
-     elec: -20.88
-     hydrogen: 1
-     CO2: 24.59
-     methane: 6.75
-rate: 0.2913
-notes:

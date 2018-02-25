@@ -1,8 +1,0 @@
-process: desalination-multiStageFlash-2.3148
-resources:
-     seawater: 3
-     water: 1
-     elec: 0.018
-     heat: 0.25
-rate: 2.3148
-notes:

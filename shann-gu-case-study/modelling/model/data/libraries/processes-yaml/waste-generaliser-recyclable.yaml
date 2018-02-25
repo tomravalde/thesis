@@ -1,9 +1,0 @@
-process: waste-generaliser-recyclable
-resources:
-     recyclables: -1
-     waste: 1
-rate:
-        wint: 1000
-        sum: 1000
-        shoulder: 1000
-notes:

@@ -1,7 +1,0 @@
-process: wastewater-biogas-elec-hydrogen_elec-hydrogen_PEM-2.74e-07
-resources:
-     elec: -287.7193
-     water: -4473.684
-     hydrogen: 1
-rate: 2.74e-07
-notes:

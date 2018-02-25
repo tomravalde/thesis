@@ -1,8 +1,0 @@
-"scenario","Direct","Utility"
-"designCase_minCost",1.85714285714286,0.565217391304348
-"designCase_minEmissions",2.2,0.666666666666667
-"designCase_minWaste",1.85714285714286,0.565217391304348
-"designCase_minWater",1.85714285714286,0.565217391304348
-"wildcard_current_minCost",1.5,0.8
-"wildcard_medium_minCost",1.2,0.8
-"wildcard_long_minCost",1.4,1

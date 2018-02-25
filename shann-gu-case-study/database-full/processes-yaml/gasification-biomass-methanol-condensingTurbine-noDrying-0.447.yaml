@@ -1,9 +1,0 @@
-process: gasification-biomass-methanol-condensingTurbine-noDrying-0.447
-resources:
-     biomass: -3.587444
-     water: -0.2690583
-     methanol: 1
-     elec: 0.5829596
-     heat: 2.690583
-rate: 0.447
-notes:

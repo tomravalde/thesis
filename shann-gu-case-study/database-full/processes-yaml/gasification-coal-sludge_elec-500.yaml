@@ -1,9 +1,0 @@
-process: gasification-coal-sludge_elec-500
-resources:
-     coal: -0.1014183
-     sludge: 0.02535457
-     elec: 1
-     water: -0.4682672
-     CO2: 0.01896944
-rate: 500
-notes:

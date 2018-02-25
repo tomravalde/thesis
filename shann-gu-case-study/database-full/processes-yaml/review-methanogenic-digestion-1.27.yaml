@@ -1,8 +1,0 @@
-process: review-methanogenic-digestion-1.27
-resources:
-     biomass: -3.861153
-     methane: 1
-     heat: -1.112012
-     digestate: 1.158346
-rate: 1.27
-notes:

@@ -1,6 +1,0 @@
-process: waste-CO2toAtmosphere-scalable
-resources:
-     waste: -1
-     CO2: 0.06375
-rate: 1000000000
-notes:

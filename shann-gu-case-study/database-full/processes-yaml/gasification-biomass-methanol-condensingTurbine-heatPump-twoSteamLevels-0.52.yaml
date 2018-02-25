@@ -1,8 +1,0 @@
-process: gasification-biomass-methanol-condensingTurbine-heatPump-twoSteamLevels-0.52
-resources:
-     biomass: -3.088803
-     water: -0.1158301
-     methanol: 1
-     elec: 0.2316602
-rate: 0.52
-notes:

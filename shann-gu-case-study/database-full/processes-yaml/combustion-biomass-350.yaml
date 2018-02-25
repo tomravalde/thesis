@@ -1,9 +1,0 @@
-process: combustion-biomass-350
-resources:
-     biomass: -0.2666667
-     elec: 1
-     heat: 2.333333
-     water: -0.7
-     ash: 0.02666667
-rate: 350
-notes:

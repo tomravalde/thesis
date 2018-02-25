@@ -1,9 +1,0 @@
-process: district-cogen-absorptionChiller
-resources:
-     heat: -1.492537
-     cool: 1
-rate:
-        wint: 100
-        sum: 100
-        shoulder: 100
-notes:

@@ -1,8 +1,0 @@
-process: CHP-steam-small_propane-0.5
-resources:
-     propane: -0.4032
-     elec: 1
-     heat: 15
-     CO2: 1.18
-rate: 0.5
-notes:

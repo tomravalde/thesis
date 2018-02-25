@@ -1,8 +1,0 @@
-process: constructed-wetland-nonPotable-43.9
-flow: 
-     effluent:
-          value: -1
-     waterNonPotable:
-          value: 0.95
-capacity:  
-     value: 43.9

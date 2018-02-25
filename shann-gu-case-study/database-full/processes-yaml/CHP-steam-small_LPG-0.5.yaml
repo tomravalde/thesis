@@ -1,8 +1,0 @@
-process: CHP-steam-small_LPG-0.5
-resources:
-     LPG: -0.431
-     elec: 1
-     heat: 15
-     CO2: 1.262
-rate: 0.5
-notes:

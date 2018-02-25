@@ -1,8 +1,0 @@
-process: heatPump-GSHP-screedFloor-13
-flow: 
-     elec:
-          value: -0.2298851
-     heat:
-          value: 1
-capacity:  
-     value: 13

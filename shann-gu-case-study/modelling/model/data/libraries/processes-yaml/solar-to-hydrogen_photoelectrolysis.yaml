@@ -1,9 +1,0 @@
-process: solar-to-hydrogen_photoelectrolysis
-resources:
-     solar: -909.0909
-     hydrogen: 1
-     water: -1.830909
-rate:
-        sum: 41
-        shoulder: 41
-notes:

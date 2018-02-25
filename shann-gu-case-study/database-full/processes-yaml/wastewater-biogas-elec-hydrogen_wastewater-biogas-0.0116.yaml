@@ -1,8 +1,0 @@
-process: wastewater-biogas-elec-hydrogen_wastewater-biogas-0.0116
-resources:
-     wastewater: -1
-     heat: -0.03301724
-     elec: -0.05965517
-     biogas: 0.007433621
-rate: 0.0116
-notes:

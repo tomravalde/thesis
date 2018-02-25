@@ -1,8 +1,0 @@
-process: CHP-reciprocatingEngine_LPG-10
-resources:
-     LPG: -0.06338235
-     elec: 1
-     heat: 1.308824
-     CO2: 0.1855882
-rate: 10
-notes:

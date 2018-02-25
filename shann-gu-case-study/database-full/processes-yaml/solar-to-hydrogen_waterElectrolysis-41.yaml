@@ -1,7 +1,0 @@
-process: solar-to-hydrogen_waterElectrolysis-41
-resources:
-     solar: -473.9336
-     hydrogen: 1
-     water: -1.789573
-rate: 41
-notes:

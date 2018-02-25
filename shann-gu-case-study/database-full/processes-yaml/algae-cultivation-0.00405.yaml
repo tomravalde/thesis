@@ -1,8 +1,0 @@
-process: algae-cultivation-0.00405
-resources:
-     elec: -9.785714
-     water: -982.1429
-     algae: 1
-     CO2: -1.8
-rate: 0.00405
-notes:

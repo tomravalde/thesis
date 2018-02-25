@@ -1,7 +1,0 @@
-process: CHP-steam-large_biogas-500
-resources:
-     biogas: -0.07119
-     elec: 1
-     heat: 1
-rate: 500500
-notes:

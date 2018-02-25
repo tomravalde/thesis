@@ -1,9 +1,0 @@
-process: biodiesel-cookingOil-0.12
-resources:
-     oilUsed: -1.054545
-     elec: -0.05318182
-     methanol: -0.0967375
-     biodiesel: 1
-     water: 0.01136364
-rate: 0.12
-notes:

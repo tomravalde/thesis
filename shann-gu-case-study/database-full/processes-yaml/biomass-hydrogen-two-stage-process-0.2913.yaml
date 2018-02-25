@@ -1,9 +1,0 @@
-process: biomass-hydrogen-two-stage-process-0.2913
-resources:
-     biomass: -93.09
-     elec: -13.752
-     hydrogen: 1
-     CO2: 13.04
-     methane: 0.45
-rate: 0.2913
-notes:

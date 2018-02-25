@@ -1,8 +1,0 @@
-process: heatPump-GSHP-radOrDHW-0.005
-flow: 
-     elec:
-          value: -0.4166667
-     heat:
-          value: 1
-capacity:  
-     value: 0.005

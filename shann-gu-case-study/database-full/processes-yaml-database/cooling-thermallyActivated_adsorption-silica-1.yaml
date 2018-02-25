@@ -1,8 +1,0 @@
-process: cooling-thermallyActivated_adsorption-silica-1
-flow: 
-     heat:
-          value: -2.5
-     cooling:
-          value: 1
-capacity:  
-     value: 1

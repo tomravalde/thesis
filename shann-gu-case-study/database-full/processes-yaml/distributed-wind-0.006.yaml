@@ -1,6 +1,0 @@
-process: distributed-wind-0.006
-resources:
-     wind: -3.333333
-     elec: 1
-rate: 0.006
-notes:

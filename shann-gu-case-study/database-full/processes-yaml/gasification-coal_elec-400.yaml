@@ -1,8 +1,0 @@
-process: gasification-coal_elec-400
-resources:
-     coal: -0.1172323
-     elec: 1
-     water: -0.4941042
-     CO2: 0.02114444
-rate: 400
-notes:
