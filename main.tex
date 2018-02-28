@@ -26,28 +26,83 @@
   \ifstrequal{#1}{O}{Other}
   {}}}}}}}%
 ]}
+
+ 
+\renewcommand{\nomname}{Abbreviations, accronyms, symbols, and other notation}
+ 
+%\renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document}
  
 
 \begin{document}
+
 \onecolumn
+
+\pagenumbering{gobble}
+\begin{scriptsize}
+\wordcount
+\end{scriptsize}
 
 \setromanfont[Mapping=tex-text]{Gentium Basic}
 %\setmathsfont[Mapping=tex-text]{Linux Libertine}
 
 \input{title.tex}
-\pagenumbering{roman}
 
-\wordcount
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 
 \input{abstract.tex}
+\pagenumbering{roman}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\input{publications.tex}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\input{about.tex}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \input{acknowledgements.tex}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
  
 \tableofcontents
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \listoffigures
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \listoftables
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
 \printnomenclature[0.8in]
 
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \input{nomenclature.tex}
+
 \input{01_introduction.tex}
 \input{02_lit-review.tex}
 \input{03_metrics.tex}

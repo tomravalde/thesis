@@ -1,0 +1,13 @@
+# Resources arising from this work {.unnumbered}
+
+Where possible, I have made this work publicly available as opensource, in the spirit of helping others use, and build-upon the findings here. This thesis has provided two tools to the urban metabolism research community:
+
+- The first is a database of processes which manage energy, water and waste in urban areas, recording the relative quantities of energy, water and waste resources these processes consume and produce. This is introduced in Chapter \ref{sec:database} and @Ravalde2016. The database is available at \url{https://github.com/tomravalde/urban-metabolism-process-database}.
+- The second tool is a 'benchmark problem', which was used to test various possible formulations of the model this thesis develops. This is introduced in Chapter \ref{sec:model-dev} and is available at \url{https://github.com/tomravalde/model-development-code}. This enables others to test their own developments of the model on the same test problem which was used to develop the model in this thesis.
+
+For the sake of transparency, I have also made available:
+
+- The code for the case study to which the model was applied in Chapter \ref{sec:case-study}. This can be found at \url{https://github.com/tomravalde/shann-gu-case-study}.
+- The source of the thesis itself. This thesis has been written using R-markdown[^R-markdown], which means that embedded within the text of the thesis is all the R-code used to manipulate and/or visualise any data which forms part of this thesis. The thesis source is available at \url{https://github.com/tomravalde/thesis}.
+
+[^R-markdown]: An The knitr R-package [@Yihui2018] converts the R-markdown source (i.e. an `*.Rmd` file) into a markdown file (i.e. `*.md`, @Gruber2018). A programme called pandoc -- see @MacFarlane2017 then converts this to a \TeX file (`*.tex`), which is converted into this PDF via the \LaTeX document preparation system. Keiran Healy has made a well-argued justification for this type of workflow, as well as a helpful explanation of how to set it up [@Healy2017].
