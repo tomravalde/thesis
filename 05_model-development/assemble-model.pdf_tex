@@ -77,8 +77,8 @@
     \put(0,0){\includegraphics[width=\unitlength,page=11]{assemble-model.pdf}}%
     \put(0.47174355,0.79172911){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Nonlinear}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{assemble-model.pdf}}%
-    \put(0.45258813,1.08764745){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Code common to all formulations}}}%
     \put(0.30731054,1.1978171){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.4901871\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{assemble-model.pdf}}%
+    \put(0.41964508,1.12633149){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.26551801\unitlength}\raggedright Code common to all formulations\end{minipage}}}%
   \end{picture}%
 \endgroup%

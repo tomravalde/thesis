@@ -28,7 +28,6 @@ data <- filter(data, !stat_unordered %in% c("instructions_nonlinear",
 					    "obj_est",
 					    "time_toGenerate",
 					    "elements_nonzero"))
-
 ###--------------------------------------------------
 ### Repeat the obj_est and time_toGenerate data, removing the outlying values at 6 and 8 conversion processes
 ###--------------------------------------------------
@@ -54,14 +53,14 @@ data <- rbind(data, outliersRemoved_objVal, outliersRemoved_solTime, lin_solTime
 eq <- c("equations_single", "Equations")
 vars_sgl <- c("variables_single", "Variables (single)")
 vars_disc <- c("variables_discrete", "Variables (discrete)")
-obj <- c("obj_val", "Objective value [USD]")
+obj <- c("obj_val", "Objective value [USD (millions)]")
 time <- c("time_toSolve", "Solution time [s]")
 obj_reduced <- c("obj_val_reduced", "Objective value (outliers removed) [USD]")
 time_reduced <- c("time_toSolve_reduced", "Solution time (outliers removed) [s]")
 time_lin <- c("time_toSolve_lin", "Solution time (linear models) [s]")
 
 ## Combine display names into a dataframe
-facet_names <- rbind(eq, vars_sgl, vars_disc, obj, time, obj_reduced, time_reduced)
+facet_names <- rbind(eq, vars_sgl, vars_disc, obj, time, obj_reduced, time_reduced, time_lin)
 colnames(facet_names) <- c("stat_unordered", "stat_name")
 
 ## Merge display names to the data dataframe
@@ -69,10 +68,13 @@ data <- merge(data, facet_names)
 
 ## Order the factors for plotting order
 data$stat <- factor(data$stat_name,
-				 levels=c("Equations", "Variables (single)", "Variables (discrete)", "Objective value [USD]", "Objective value (outliers removed) [USD]", "Solution time [s]", "Solution time (outliers removed) [s]", "Solution time (linear models) [s]"))
+				 levels=c("Equations", "Variables (single)", "Variables (discrete)", "Objective value [USD (millions)]", "Objective value (outliers removed) [USD]", "Solution time [s]", "Solution time (outliers removed) [s]", "Solution time (linear models) [s]"))
 
 data$Formulation <- factor(data$formulation_unordered,
 				 levels=c("Null", "PRaQ", "Nonlinear"))
+
+## Divide objVal by 1,000,000 so the plot looks neater
+data$value[data$stat_unordered=="obj_val"] <- data$value[data$stat_unordered=="obj_val"] / 1e6
 
 ###--------------------------------------------------
 ### Plot
