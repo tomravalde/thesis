@@ -51,7 +51,7 @@
   \begin{picture}(1,0.24540293)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{power-network.pdf}}%
     \put(-0.00227134,0.18884181){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Coal}}}%
-    \put(0.14154922,0.18884181){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Power plant}}}%
+    \put(0.19548193,0.18884181){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Power plant}}}%
     \put(0.45795445,0.18884181){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Cable}}}%
     \put(0.77795513,0.18884181){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Demand}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{power-network.pdf}}%

@@ -88,7 +88,7 @@ Objective function for minimum emissions:
 Objective function for minimum waste:
 
 \begin{align}
-\min\Big\{\sum_{rtz} I_{rzt}\ for r \in R^{\mbox{waste}}\Big\}
+\min\Big\{\sum_{rtz} I_{rzt}\ \qquad r \in R^{\mbox{waste}}\Big\}
 \label{eq:spc_objective_waste}
 \end{align}
 

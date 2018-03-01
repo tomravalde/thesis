@@ -75,7 +75,7 @@ Before considering the economic and environmental challenges of urban resource m
 [^urban-def]: See for example @DepartmentforCommunitiesandLocalGovernment2006. This point is considered in Section \ref{sec:title-def} later in this chapter.
 
 
-```{r pop_data, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
+```{r pop_data, fig.height=1.8, fig.width=5, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
 
 ## Raw data from https://esa.un.org/unpd/wup/CD-ROM/ (Files 3 and 5)
 pop_data <- read.csv("01_introduction/UN-population-forecasts.csv")
