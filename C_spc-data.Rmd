@@ -79,14 +79,14 @@ $$
 
 Waste and wastewater generation rates are defined as negative demands.
 
-The waste generation figures from the SPC documentation are not provided in the same units (total solid waste is given as 8 m^3/day, organic waste is given as 360,000 kg/year), so the following calculations separate the documented values into quantities of `waste` and `waste_organic`, on the assumption that solid waste has a density $\rho=217.5~\mbox{kg/m$^3$}$[^waste-density]:
+The waste generation figures from the SPC documentation are not provided in the same units (total solid waste is given as 8 m$^3$/day, organic waste is given as 360,000 kg/year), so the following calculations separate the documented values into quantities of `waste` and `waste_organic`, on the assumption that solid waste has a density $\rho=217.5~\mbox{kg/m$^3$}$[^waste-density]:
 
 
 [^waste-density]: From @Chandrappa2012, Table 2.2 gives a density range of 87--348 kg/m3. This thesis uses the median value of 217.5 kg/m3.
 
 $$
 \begin{align*}
-\mbox{Total solid waste} &= 8 \mbox{m^3/day} \\
+\mbox{Total solid waste} &= 8 \mbox{m$^3$/day} \\
  		  &= 1,740~\mbox{kg/day} \\
  		  &= 635,100~\mbox{kg/year}
 \end{align*}
