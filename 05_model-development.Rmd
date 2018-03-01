@@ -514,9 +514,8 @@ To model the processes which convert resources, @Samsatli is based upon the engi
 
 \begin{figure}
 	\centering
-	\resizebox{\columnwidth}{!}{
-		\input{05_model-development/BiomassRTN.tex}
-	}
+%	\resizebox{\columnwidth}{!}{\input{05_model-development/BiomassRTN.tex}}
+	\includegraphics[width=0.8\textwidth]{05_model-development/RTN-Keirstead.png}
 \caption{Example of an urban energy system optimised by the MILP model of \citet{Samsatli}, which shows resources (circles) and conversion processes (rectangles) -- note this diagram does not show transport processes.}
 \label{fig:Keirstead-RTN}
 \end{figure}
@@ -1024,11 +1023,85 @@ Figure \ref{fig:comparison-formulations} shows how the number of equations and v
 -->
 
 
-```{r compare-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed'' show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section \\ref{sec:tat-results}.) \\label{fig:comparison-formulations}"}
+```{r compare-model-formulations, fig.height=8, fig.cap="Comparison of model formulations. The plots headed with ``outliers removed'' show the same information as their counterparts, however with the data for 6 and 8 conversion processes removed. (The explanation for these outliers is given in Section \\ref{sec:tat-results}.) \\label{fig:comparison-formulations}"}
 
 setwd("05_model-development")
 
-source("process-results-updated.R")
+## Run code
+#source("process-results-updated.R")
+
+network <- read.csv("network-summary.csv")
+stats <- read.csv("benchmark-results.csv")
+
+## Merge with data which describes the network (i.e. number of processes, resource, transport etc.)
+data <- merge(network, stats)
+
+## Remove some statistics
+data <- filter(data, !stat_unordered %in% c("instructions_nonlinear",
+					    "iterations",
+					    "nodes",
+					    "nonzeros_nonlinear",
+					    "obj_est",
+					    "time_toGenerate",
+					    "elements_nonzero"))
+###--------------------------------------------------
+### Repeat the obj_est and time_toGenerate data, removing the outlying values at 6 and 8 conversion processes
+###--------------------------------------------------
+
+data_reduced <- filter(data, !conversion %in% c(6,8))
+
+outliersRemoved_objVal <- filter(data_reduced, stat_unordered=="obj_val")
+outliersRemoved_objVal$stat_unordered <- "obj_val_reduced"
+
+outliersRemoved_solTime <- filter(data_reduced, stat_unordered=="time_toSolve")
+outliersRemoved_solTime$stat_unordered <- "time_toSolve_reduced"
+
+lin_solTime <- filter(data, stat_unordered=="time_toSolve" & formulation_unordered!="Nonlinear")
+lin_solTime$stat_unordered <- "time_toSolve_lin"
+
+data <- rbind(data, outliersRemoved_objVal, outliersRemoved_solTime, lin_solTime)
+
+###--------------------------------------------------
+### Prepare data for plotting
+###--------------------------------------------------
+
+## Create display names for the model statistics
+eq <- c("equations_single", "Equations")
+vars_sgl <- c("variables_single", "Variables (single)")
+vars_disc <- c("variables_discrete", "Variables (discrete)")
+obj <- c("obj_val", "Objective value [USD (millions)]")
+time <- c("time_toSolve", "Solution time [s]")
+obj_reduced <- c("obj_val_reduced", "Objective value (outliers removed) [USD]")
+time_reduced <- c("time_toSolve_reduced", "Solution time (outliers removed) [s]")
+time_lin <- c("time_toSolve_lin", "Solution time (linear models) [s]")
+
+## Combine display names into a dataframe
+facet_names <- rbind(eq, vars_sgl, vars_disc, obj, time, obj_reduced, time_reduced, time_lin)
+colnames(facet_names) <- c("stat_unordered", "stat_name")
+
+## Merge display names to the data dataframe
+data <- merge(data, facet_names)
+
+## Order the factors for plotting order
+data$stat <- factor(data$stat_name,
+				 levels=c("Equations", "Variables (single)", "Variables (discrete)", "Objective value [USD (millions)]", "Objective value (outliers removed) [USD]", "Solution time [s]", "Solution time (outliers removed) [s]", "Solution time (linear models) [s]"))
+
+data$Formulation <- factor(data$formulation_unordered,
+				 levels=c("Null", "PRaQ", "Nonlinear"))
+
+## Divide objVal by 1,000,000 so the plot looks neater
+data$value[data$stat_unordered=="obj_val"] <- data$value[data$stat_unordered=="obj_val"] / 1e6
+
+###--------------------------------------------------
+### Plot
+###--------------------------------------------------
+
+plot_conversion <- ggplot(data, aes(conversion, value)) +
+  geom_line(aes(colour=Formulation)) +
+  facet_wrap(~stat, scales="free_y", ncol=1) +
+  theme_bw() +
+  theme(axis.title.y=element_blank()) +
+  xlab("Number of conversion processes")
 
 plot_conversion
 

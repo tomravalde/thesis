@@ -1,6 +1,7 @@
 # Case study: a Chinese urban development {#sec:case-study}
 
-[TODO: Add epigraph]
+
+\epigraph{``I don't like novels that end happily. They depress me so much''}{Cecily Cardew in \emph{The importance of Being Earnest} by Oscar Wilde}
 
 \begin{tcolorbox}
 

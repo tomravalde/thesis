@@ -135,8 +135,9 @@ The meeting point of the above issues is climate change, which is arguably the g
 \begin{figure}
 	\centering
 %	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{01_introduction/intersectoral-interactions.pdf_tex}}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{01_introduction/intersectoral-interactions.pdf_tex}}
+	\includegraphics[width=0.75\textwidth]{01_introduction/intersectoral-interactions-ch1.pdf} 
 %	\end{spacing}
 	\caption{Summary of some environmental challenges arising from intersecoral interactions (GHGs = greenhouse gases).}
 	\label{fig:intersectoral-interactions}
@@ -354,8 +355,9 @@ Between the **energy and water** sectors, synergies include hydroelectric power 
 \begin{figure}
 	\centering
 %	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{01_introduction/intersectoral-synergies.pdf_tex}}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{01_introduction/intersectoral-synergies.pdf_tex}}
+	\includegraphics[width=0.75\textwidth]{01_introduction/intersectoral-synergies-ch1.pdf} 
 %	\end{spacing}
 	\caption{Some intersectoral synergies made possible by the co-location of infrastructure.}
 	\label{fig:intersectoral-synergies}
@@ -414,10 +416,11 @@ To help navigate the complexity of resource management that integrates energy, w
 \begin{figure}
 	\centering
 %	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network-system.pdf_tex}}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network-system.pdf_tex}}
+	\includegraphics[width=\textwidth]{01_introduction/elec-system-node-link.pdf} 
 %	\end{spacing}
-	\caption{A node-link conceptualisation of the urban electricity system of Figure \ref{fig:elec}. A solid double-ended arrow represents an import of coal from outside the system; a solid single-ended arrow represents the transfer of resources between processes; and a dashed arrow represents a demand in the system.}
+	\caption{A node-link conceptualisation of the urban electricity system of Figure \ref{fig:elec}.}
 	\label{fig:elec-system}
 \end{figure}
 
@@ -425,8 +428,9 @@ To help navigate the complexity of resource management that integrates energy, w
 \begin{figure}
 	\centering
 %	\begin{spacing}{1.0}
-	\sffamily
-	\resizebox{\columnwidth}{!}{\input{01_introduction/broader-network-system.pdf_tex}}
+%	\sffamily
+%	\resizebox{\columnwidth}{!}{\input{01_introduction/broader-network-system.pdf_tex}}
+	\includegraphics[width=\textwidth]{01_introduction/elec-water-waste-system-node-link.pdf} 
 %	\end{spacing}
 	\caption{A node-link conceptualisation of how an urban electricity system interacts with the water and waste sectors.}
 	\label{fig:broader-system}
