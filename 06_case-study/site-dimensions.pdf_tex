@@ -50,15 +50,15 @@
   \makeatother%
   \begin{picture}(1,1.43034732)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{site-dimensions.pdf}}%
-    \put(0.32935022,1.19669055){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Residential}}}}%
+    \put(0.32935022,1.25324494){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Residential}}}}%
     \put(0.32785521,0.55947734){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Factory (north)}}}}%
-    \put(0.10324568,0.9101376){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Energy island}}}%
+    \put(0.01437448,0.9101376){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Energy island}}}%
     \put(0.3305687,0.18802981){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Factory (south)}}}}%
     \put(-0.72438292,0.70119545){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{site-dimensions.pdf}}%
     \put(0.46632985,0.37597796){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0.9}}}%
     \put(0.46632985,0.76377953){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1.3}}}%
-    \put(0.46632985,1.03039312){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0.9}}}%
+    \put(0.46632985,1.00615552){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0.9}}}%
     \put(0.37745866,0.85265073){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0.4}}}%
   \end{picture}%
 \endgroup%

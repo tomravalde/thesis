@@ -1,4 +1,4 @@
-# Shann Gu Power Company cast study: data, assumptions, and calculations
+# Shann Gu Power Company cast study: data, assumptions, and calculations {#sec:app-spc}
 
 ```{r Setup, include=FALSE, results="markup", warning=FALSE}
 library(knitr)
@@ -19,7 +19,7 @@ The data discussed in this appendix can all be found online at the GitHub reposi
 
 [^appendix-source]: \url{https://github.com/tomravalde/thesis/blob/master/C_spc-data.Rmd}
 
-## Site layout
+## Site layout {#sec:app-spc-site}
 
 The zones $z$ and their interzonal-distances $l_{zz'}$ (km) given in Section 2.6.1 (Table 6.1) are defined in the zone-matrix[^zone-matrix]. Any origin-destination pairs which are not neighbours are denoted by `NA` (e.g. `factory-northDistrict`). This matrix is lower-triangular, so there is no need to define a distance in both directions (because they are assumed to be equal).
 
@@ -31,7 +31,7 @@ The case study's time steps $\mathbb{s}_t$ (seconds) given in Section 2.6.2 are 
 
 [^times]:\url{https://github.com/tomravalde/shann-gu-case-study/blob/develop/modelling/model/data/model-definition/times.csv}
 
-## Resource demands
+## Resource demands {#sec:app-spc-demands}
 
 The SPC site's demands for resource management $D^{(qty)}_{rzt}$ introduced in Section \ref{sec:demand-parameters} are derived from the SPC documentation, which gives demands for the following regions and time-periods:
 
@@ -101,7 +101,7 @@ $$
 \end{align*}
 $$
 
-## Resource parameters
+## Resource parameters {#sec:app-spc-res-params}
 
 As well as the resource management demands specified above, the case study considers other resources which can play a part in the conversion chain of processes which meet demand (e.g. coal can be used in a power plant which also requires cooling water, and emits carbon dioxide). Each resource has its own YAML file which defines it properties[^resource-yaml], specifying a resource's name and it's quality attributes $X_{rq}$, for example:
 
@@ -127,7 +127,7 @@ The YAML files define resource properties in and of themselves. But each resourc
 	- `cost.converted` is the cost of the resource in USD used in the model
 	- `unit.flow` is the units which the `cost.converted` values are given in (per MJ for energy resources; per kg otherwise)
 
-## Conversion process parameters
+## Conversion process parameters {#sec:app-spc-conversion}
 
 Each process needs to be associated with resource conversion parameters ($k^{P}_{prq}$) and maximum process rates ($F^{P,max}_{p}$). These are defined in YAML files[^processes-yaml] -- an example of a coal-fuelled power plant was given in Figure \ref{fig:yaml}. A few of the processes have been defined using information from the Shann Gu literature, but most of them are adapted from the publicly available database introduced in Chapter \ref{sec:database}[^database].
 
@@ -206,7 +206,7 @@ Electrical energy is lost as electricity travels along a cable, typically at a r
 
 [^elec-loss]:According to The Energy Technology Systems Analysis Program: \url{http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf}
 
-### Pipes
+### Pipes {#sec:app-spc-pipes}
 <!--
 The value of parameters for pipe flow
 
@@ -265,10 +265,10 @@ For the black-box representation, by definition, the volume flow rate is $1 m^3/
 
 \begin{align*}
 k^{\beta}_{\tau rq} &= h_f \\
-&= 0.0054 L
+&= 0.0054 \mbox{L}
 \end{align*}
 
-### Vehicle transport
+### Vehicle transport {#sec:app-spc-vehicles}
 
 For vehicles, it is assumed that the resources being transported (e.g. biomass, coal, etc.) leave the source zone and arrive at their destination with no losses, i.e. $k^{\alpha}_{\tau rq}=-1$ and $k^{\alpha'}_{\tau rq}=1$, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0$. However, vehicles require gasoline, and emit carbon dioxide. The assumptions and calculations for the parameters which define these quantities are given below.
 
@@ -286,15 +286,15 @@ Thus:
 
 \begin{align*}
 k^{\beta}_{\tau rq} &= 0.737 \times 0.25 \\
-&= 0.18~kg/km
+&= 0.18~\mbox{kg/km}
 \end{align*}
 
-In calculating emissions quantities, it is assumed that the specific $CO_2$ emissions for petrol (gasoline) is $3.3 kg_{CO_2}/kg_{fuel}$[^gasoline-emissions] . Therefore, per $km$ travelled by a vehicle, the emissions are given as:
+In calculating emissions quantities, it is assumed that the specific $CO_2$ emissions for petrol (gasoline) is $3.3 \mbox{kg_{CO_2}/kg_{fuel}}$[^gasoline-emissions] . Therefore, per $km$ travelled by a vehicle, the emissions are given as:
 
 [^gasoline-emissions]:From \url{http://www.engineeringtoolbox.com/co2-emission-fuels-d_1085.html}
 
 \begin{align*}
-0.18 \times 3.3 = 0.6~kg/km
+0.18 \times 3.3 = 0.6~\mbox{kg/km}
 \end{align*}
 
 These emissions are assumed to be split equally between the sources and destination zone, such that $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0.6 / 2 = 0.3~kg/km$
