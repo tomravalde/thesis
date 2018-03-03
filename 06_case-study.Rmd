@@ -396,8 +396,8 @@ A key premise of this thesis is that the aggregate metabolic flows into and out 
 ```{r metabolic_flows, fig.height=5.5, fig.width=9.5, fig.cap="Metabolic flows into and out of the SPC site.\\label{fig:metabolic-flows}"}
 
 ## Metabolic flows
-# Change, so code runs
 
+# Load data (copied from the GAMS output from the cluster)
 metabolic_flows <- read.csv("06_case-study/metabolic_flows_thesis.csv")
 
 ## Reshape imports and exports into the same column
@@ -491,7 +491,7 @@ plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, scenario)) +
 	axis.ticks.x = element_blank(),
 	panel.grid.minor = element_blank()) +
   geom_vline(xintercept=seq(1.5, length(unique(metabolic_flows$resource))-0.5, 1), lwd=0.25, colour="grey")
-#plot_metabolic_flows
+plot_metabolic_flows
 
 ```
 
@@ -679,7 +679,7 @@ Note also that minimum waste and minimum water design the same system, though th
 
 #### Wildcard scenarios
 
-The wildcard scenarios each have the same objective of cost minimisation, and their optimised networks share 11 processes types in common[^wildcard-common] as well as processes unique to each scenario. The resulting networks exhibit intersectoral interactions and synergies, for example: waste gasification (a synergy between the waste and energy sectors), wastewater reuse (a synergy between the waste and water sectors), and groundwater pumping (an interaction between the energy and water sectors). As with the different process mixes drive variations in the overall metabolic flows. The systems are more complicated than the design cases, so not all the differences can be explained here; the following examples, however, show how the middle of the system affects site's aggregate metabolic flows.
+The wildcard scenarios each have the same objective of cost minimisation, and their optimised networks share 11 processes types in common[^wildcard-common] as well as processes unique to each scenario. The resulting networks exhibit intersectoral interactions and synergies, for example: waste gasification (a synergy between the waste and energy sectors), wastewater reuse (a synergy between the waste and water sectors), and groundwater pumping (an interaction between the energy and water sectors). As with the different process mixes drive variations in the overall metabolic flows -- in particular, these scenarios are less reliant on imports of electricity and natural gas than the design-case scenarios. The systems are more complicated than the design cases, so not all the differences can be explained here; the following examples, however, show how the middle of the system affects site's aggregate metabolic flows.
 
 [^wildcard-common]: This 11 partly depends on how processes are categorised into types. The types in common are: central heating, CHP (gas-, biomass- and hydrogen-fuelled), air conditioning, evaporative cooling, absorption cooling, hydrogen generation¸ waste gasification, groundwater pumping, heat exchanger networks, water treatment, and wastewater reuse treatment.
 
@@ -850,32 +850,14 @@ plot_headlines
 ```
 -->
 
-### System designs and grey-box metrics
+### System designs and grey-box metrics {#sec:spc-grey}
 
 The aggregate metabolic flows and costs considered above are black-box metrics \ref{sec:black-grey-box}. The results show how these metrics or metabolic flows are affected by the mix of management processes (as hypothesised throughout this thesis). However, Chapter 3 showed that the so-called grey-box metrics of exergy analysis and ENA can further understanding an area's use of resources, by delving into the details of process mixes and their governance.
 
 #### Exergy analysis
 
-Exergy analysis was shown to provide a process-based engineering perspective on urban resource efficiency in response to the challenge of the MRTP (namely, the fact that a city sustains its populations using multiple resource types). It does this in three particular ways: going to the process level (rather than the system level) to understand process efficiency; understanding how resources are deployed among the processes; and highlighting where contextual allowances should be made when analysing urban resource efficiency \ref{sec:app-grey-box-metrics}.
+Chapter \ref{sec:metrics} showed exergy analysis to be useful because it did not disqualify any type of resource from it's study, and made therefore made it possible to quantify the efficiency of any type of processes, and hence a system as a whole (Section\ref{sec:app-grey-box-metrics}). Here, exergy analysis is carried out for each scenario, using a simplified version of the method described in Section \ref{sec:methods-grey-box} in which system exergy efficiency is calculated as $\eta_{ex}=\alpha^{prod}_{ex}/\alpha^{in}_{ex}$ (Equation \eqref{eq:ex-eff}), where $\alpha^{prod}_{ex}$ are the system demands, and $\alpha^{in}_{ex}$ are the site's aggregate metabolic inflows. The results of exergy analysis for each minimum-cost scenario are given in Table \ref{tab:SPC-exergy}. Further details are provided in Appendix \ref{sec:spc-app-exergy}.
 
-Here, exergy analysis is carried out for each scenario, using a simplified version of the method described in Section \ref{sec:methods-grey-box}. In this simplification, there is no need to distribute the flows between the processes within the city (the second step), on the understanding that the PRaQ method accounts any process products unused by other processes to become system outputs (exports). This means system exergy efficiency can be calculated at the whole-system level (rather than deriving system-level efficiency from the bottom up, process by process). Thus exergy efficiency $\eta_{ex}=\alpha^{prod}_{ex}/\alpha^{in}_{ex}$ (Equation \eqref{eq:ex-eff}) can be calculated without using Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod}, where $\alpha^{prod}_{ex}$ are the system demands, and $\alpha^{in}_{ex}$ are the site's aggregate metabolic in flows. The results of exergy analysis for each scenario are given in Table \ref{tab:SPC-exergy} (data and calculations provided in Appendix \ref{sec:app-case-study}
-
-\footnote{The simplification of Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod} can be formalised as:
-
-\begin{align}
-\begin{split}
-\alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
-&= \sum_{i \in R^i} Ex_i 
-\label{eq:SPC-ex-in}
-\end{split}
-\end{align}
-
-\begin{align}
-\alpha^{prod}_{ex}&= \sum_{j \in D^j} Ex_j
-\label{eq:SPC-ex-out}
-\end{align}
-
-where $D^j$ is the set of a site's resource demands, and $Ex_{*}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating).}
 
 ```{r exergy, fig.height=5, fig.cap="fig:exergy", results="asis"}
 
@@ -883,7 +865,8 @@ where $D^j$ is the set of a site's resource demands, and $Ex_{*}$ represent the 
 
 library(xtable)
 exergy <- read.csv("06_case-study/exergy.csv")
-exergy <- exergy[ ,-2]
+exergy <- exergy[-c(3,4) ,-2]
+exergy[, 3] <- round(exergy[, 3], 0)
 
 #ex_prod <- exergy$prod[1]
 #
@@ -899,10 +882,10 @@ exergy <- exergy[ ,-2]
 #exergy[exergy$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
 
 #exergy <- select(exergy, scenario, in., waste, irrev, eff)
-names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$", "$\\eta_{ex}$ [per cent]")
+names(exergy) <- c("Scenario", "$\\alpha^{in}_{ex}$ [MW]", "$\\eta_{ex}$ [per cent]")
 
 tab.exergy.tex <- xtable(exergy,
-			  caption="Results of exergy analysis for SPC scenarios. All $\\alpha^{in}_{ex}$ values in MW; $\\alpha^{in}_{ex} = 47$ MW for each scenario.\\label{tab:SPC-exergy}",
+			  caption="Results of exergy analysis for SPC scenarios; $\\alpha^{prod}_{ex} = 47$ MW for each scenario.\\label{tab:SPC-exergy}", digits=c(0,0,0,0),
 			  align="llll")
 
 print(tab.exergy.tex,
@@ -914,16 +897,19 @@ print(tab.exergy.tex,
 ```
 
 
-Broadly, the results show that exergy efficiency is sensitive to system mix. In general, the scenarios with lower resource imports (indicated by smaller bubbles in Figure ), have lower exergy efficiency. A case in point is the Grid Case, whose low efficiency is mainly driven by the high electricity imports required to meet demand for electricity for end-use and to power air conditioning systems -- these demands cannot be met by the by-products of other processes, and hence result in low efficiency for the system. The Design Cases which minimise emissions and waste are also low exergy efficiency -- this is because in order to minimise these quantities requires using processes which consume other inputs. In other words, there is a trade-off between minimising some quantities and system exergy efficiency.
-
-However, the Minimum Cost scenarios (Design case and Wildcard cases) suggest that high exergy efficiencies can be achieved. This is to be expected if exergy corresponds to the effort required to extract useful work from an energy source, and 'effort' roughly corresponds to cost. Moreover, exergy efficiency seems to increase with a greater number of processes in the system which means there are more places for process by-products to go, to become useful.
+The results show that exergy efficiency is sensitive to the designed network. The baseline case, has the lowest efficiency, which is mainly driven by the high electricity imports required to meet demand for electricity (both for end-use, and to power HVAC systems). The grid case does not allow these demands to be met by the by-products of other processes, and hence the system's exergy efficiency is low. The design case and wildcard cases benefit from synergies (such as CHP, which allows both electricity and heating to be derived from coal imports, and gasification, which generates energy from waste). This enables these cases to achieve higher exergy efficiencies.
 
 #### Ecological network analysis
 
+Section \ref{sec:app-grey-box-metrics} showed how ecological network analysis (ENA) reveals how city's resource-management sectors work together. The results of ENA will quantify the extent to which a system exhibits intersectoral synergies and interactions by computing the degree of network mutualism. The results of this analysis is given in Table \ref{tab:SPC-ENA} the minimum cost scenarios (with the exception of the baseline scenario, which, by design, has no network mutualism). This shows that network mutualism exists in all cases, but is higher in the wildcard cases -- networks with more processes tend to have more intersectoral interactions. This result is in line with this thesis' hypothesis -- namely that intersectoral synergies bring metabolic efficiency. However, it also shows the need for the agents who manage each sector to work together, and also highlights the risk of system vulnerability -- if one sub-system (e.g. the energy sector) fails, then the rest of the system may go down with it.
 
-The other grey-box metric considered by this thesis is ecological network analysis (ENA). Chapter 3 showed this approach could reveal how city's economic sectors work together. The results of this type of analysis are important, because they indicate to planners the extent to which the different management parties rely on one another, and hence where they need to cooperate, and where there are risks/vulnerabilities if there is no high-level understanding of intersectoral dependency (Section \ref{sec:app-grey-box-metrics}). Again, using the method outlined in Section \ref{sec:methods-grey-box}, the interdependencies of management sectors can be quantified in the integral utility matrix, whose elements quantify the combined direct and indirect exergy contributions between any pair of compartments. From this matrix, an overall mutualism index can be computed which quantifies the overall degree of network mutualism [@Zhang2009b]\footnote{$\mbox{Network mutualism} = \frac{\sum \max(\sign(u_{ij}), 0)}{\sum \min(- \sign (u_{ij}), 0)}$} -- the results of this analysis in Table \ref{tab:SPC-ENA} show that network mutualism is higher in the Wildcard cases than the design cases, and highest for the long-term case. This suggest that networks with more processes will ehibit more intersecygtoral synergies -- a result which agrees with intuition. This result taken together with the exergy-analysis and metabolic flow quantities confirms this thesis' hypothesis -- namely that intersectoral synergies bring metabolic efficiency. However, this result also shows the need for the agents who manage each sector to work together, and also highlights the risk of system vulnerability -- if one sub-system (e.g. the energy sector) fails, then the rest of the system may go down with it.
+<!--
+(). Using the method outlined in Section \ref{sec:methods-grey-box},give an overall mutualism index can be computed which quantifies the overall degree of network mutualism [@Zhang2009b]\footnote{$\mbox{Network mutualism} = \frac{\sum \max(\sign(u_{ij}), 0)}{\sum \min(- \sign (u_{ij}), 0)}$} -- 
 
+ computations on the integral utility matrix (whose elements quantify the combined direct and indirect exergy contributions between any pair of compartments) 
 
+The results of this type of analysis are important, because they indicate to planners the extent to which the different management parties rely on one another, and hence where they need to cooperate, and where there are risks/vulnerabilities if there is no high-level understanding of intersectoral dependency 
+-->
 
 
 ```{r ena, fig.height=5, fig.cap="fig:ena", results="asis"}
@@ -944,7 +930,7 @@ ena[ena$scenario=="wildcard_long_minCost", "scenario"] <- "Wildcard case (long)"
 names(ena) <- c("Scenario", "Direct network mutualism", "Network mutualism")
 
 ena <- filter(ena, Scenario!="Design case (min. water)")
-ena <- ena[, -2]
+ena <- ena[-c(3,4), -2]
 
 tab.ena.tex <- xtable(ena,
 			  caption="Network mutualism for SPC scenarios calculated from the Indirect utility matrix. \\label{tab:SPC-ENA}",
@@ -988,24 +974,21 @@ plot_ENA <- ggplot(ena_matrices, aes(From, To)) +
 
 ### Summary and conclusions
 
-This chapter has demonstrated how to apply the PRaQ model to a site using its seasonally and spatially disaggregated demands to plan highly integrated urban resource management systems. Alongside the PRaQ modelling itself, this chapter has described and applied a rule-of-thumb method to estimate the costs of processes, taking into account economies of scale, even for conversion process which do not yet exist.
+This chapter has demonstrated how to apply the PRaQ model to the SPC site using its seasonally and spatially disaggregated demands to design highly integrated urban resource management systems. The analysis of the results uses the principles of Chapter \ref{sec:metrics} to quantify the ways in which a mix of resource-management processes affects the site's metabolism. Alongside the PRaQ modelling itself, this chapter has described and applied a rule-of-thumb method to estimate the costs of processes, taking into account economies of scale, even for conversion process which do not yet exist.
 
-The results show that the urban resource management systems affect the aggregate metabolic flows into and out of an area, and hence, are sensitive to planning objectives (such as minimising cost, or minimising emissions). Moreover, to achieve an objective, PRaQ will select a large number of processes if they are available (as in the Wildcard Cases). The ecological network analysis show that these larger networks result in the integration of the energy, water and waste sectors. This conclusions come with the fact that meeting certain objectives may sacrifice system effieciency (as measured by exergy).
+For the SPC site specifically, the PRaQ modelling justifies the planners' decision to integrate resource management systems. The modelling of the design-case scenarios show the SPC's proposals to use integrated energy management and a water-reuse project (Figure \ref{fig:shanngu-network}) are an improvement over direct imports of resources and exports of wastes of the baseline case. The wildcard scenarios challenge the planners to consider a more complicated network of processes which is less reliant on imports electricity and natural gas, and has a greater exergy efficiency and network mutualism.
 
-For the SPC site, the PRaQ modelling justifies the planners' decision to integrate resource management systems, by showing that costs can be minimised, while also keeping exergy efficiency high. The modelling of the design-case scenarios show the SPC's plans to use the energy island and water reuse project are an improvement over direct imports of resources and exports of wastes, and the Wildcard modelling also challenges the planners to consider a more complicated network of processes, but also that this will require the managers of each sector to work together, and to be aware of risks to system failure, should one system go down.
+More generally, this chapter contributes to fulfilling aim 3 of this thesis' research question (Section \ref{sec:research-qn}), by showing that an area's metabolic flows (at the top of a system) are indeed affected by the mix of processes (in the middle of the system), whether this process mix varies due to design objectives (as in the design cases), or process availability (as in the wildcard cases). The case study shows that the synergies which drive high exergy efficiency and network mutualism can be achieved through larger and more varied networks of processes (as in the wildcard cases). This demonstrates the power of PRaQ's, which can propose networks too complicated to design without such a model, and enables consideration of ever-increasing number of resource-management technologies.
 
-More generally, this case study helps to fulfill Aim 3 of this thesis' Research Question (Section \ref{sec:research-qn}), by showing that environmental objectives can be achieved by optimising an area's process mix, and moreover, by reducing the aggregate metabolic inflows, can also help towards an area's economic security (in relation to the work of @Bettencourt2013). In the language of the conceptual model of Chapter 2, the middle of the system ahas been optimised to achieve the desired effects at the top of the system (Section \ref{sec:procs-in-UM}). The case study shows that integrating sectors to take advantage of synergies can be achieved through a complicated mix of processes -- this demonstrates the power of PRaQ, being able to inform complicated integration strategies that meet an objective, by allowing decision makers to take into account the ever-increasing numbers of technologies which can manage various energy, water, and waste resources (with many more technologies still under development). 
+### Further work for the SPC case study {#sec:case-study-further-work}
 
-### Further work {#sec:case-study-further-work}
+Section \ref{sec:formulation-developments} suggested developments to the PRaQ formulation, all of which could have implications for the SPC study (for example, the inclusion of storage processes). However, even without making changes to the formulation, there are several areas of further work, which could provided further useful insights for the SPC site:
 
-There is further work which could make PRaQ even more useful to decision maker in the SPC project. The first improvements concern data. For example, regarding the choice of processes made available to the model. It may be possible to rule out some processes as not available or feasible for the SPC and/or to decide that the complex wildcard output as a whole is simply infeasible. On the other hand, the SPC decision makers may know of processes not currently in Chapter 4's database which could be included. This both produces more realistic outputs, and speeds up the modelling (in the case that the number of possibilities has been reduced). Other improvements to the data include refining costs, from their current rough estimates, for example, taking into account local prices, and exchanges rates. Thirdly, it would be useful to run PRaQ at finer temporal resolutions (as briefly discussed in Section \ref{sec:case-study-times}) -- this would require more detailed resource demand management data.
-
-The above suggestion of more finely resolved temporal modelling would enable the next suggested area of further work, namely to model the system at an operational level (rather than just the broad design). For the sake of exploratory early-stage planning, this case study has aggregated yearly demand to a single per-second value, however, in reality the process operation rates, inputs and outputs will vary throughout the day. As noted in Section \ref{sec:tat-results}, increasing temporal resolution increases computation time, so this sort of modelling might happen after a technology mix has been chosen, such that the technology choice variables can be fixed. The simplest way to consider operation is to split demand into two periods, average and peak (though finer resolutions could also be chosen). By taking into account demand variation within a day, it will be possible to more appropriately size the system's conversion processes. (Suggestions on how the PRaQ model might handle more time steps were given in Section \ref{sec:formulation-developments}.)
-
-A third type of further work is to alter the objective function used by PRaQ. Examples include incorporating revenue from the selling of exports (this would also increase exergy efficiency as waste exergies are re-defined as useful products, $Ex_p^{prod}$. Other alterations to the objective could be to include environmental taxes on carbon dioxide emissions.
-
-Finally, in parallel to the above three improvements, the SPC planners could apply further sensitivity analysis. This case study has shown how the middle of the system responds to different objectives and the available set of conversion processes. But more sophisticate could look at changing demands (for example, to investigate the effect of population growth, changing consumer behaviour, etc.), the cost of resources, and the cost of processes. In particular, it would be interesting to study a system's resiliance; i.e. how much change it can bear before it becomes over-reliant on importing resources, no longer achieving the metabolic efficiency objectives intended.
-
+- *Parameters.* Currently, the system costs are very rough -- these could be refined, for example, taking into account local prices, exchanges rates, and purchasing power parities.
+- *Processes.* It may be possible to rule out some processes as not available or feasible for the SPC. On the other hand, the SPC decision makers may know of processes not currently in Chapter 4's database which could be included. 
+- *Temporal resolution.* It is possible the networks designed in this chapter are incorrectly sizing processes. For the sake of exploratory early-stage planning, this case study has aggregated seasonal demands to a single per-second value, however, in reality demands will vary throughout the day, which means the process operation rates will also vary. It would therefore be useful to run PRaQ at finer temporal resolutions (as briefly discussed in Section \ref{sec:case-study-times}). The simplest way to consider operation is to split demand into two periods, average and peak (though finer resolutions could also be chosen). By taking into account demand variation within a day, it will be possible to more appropriately size the system's conversion processes, and thereby investigate networks which are plausible at an operational level (and not just for exploratory planning). This would require more detailed resource demand management data. Increasing temporal resolution would have a computational cost (Section \ref{sec:tat-results}), so this might happen after a technology mix has been chosen, so the technology choice variables can be fixed. 
+- *Objectives.* Another area of further work is to alter the objective function. Examples include incorporating revenue from the selling of exports (this would increase exergy efficiency as waste exergies are re-defined as useful products, $Ex_p^{prod}$). Other alterations to the objective could be to include environmental taxes on carbon dioxide emissions.
+- *Sensitivity analysis.* This case study has shown how a system's middle and its metabolic flows responds to different objectives and the available set of conversion processes. However, further sensitivity analysis could show how a system responds to changing demands (for example, to investigate the effect of population growth, changing consumer behaviour, etc.), the cost of resources, and the cost of processes. It would be particularly interesting to study a system's resiliance; i.e. how much change it can bear before it becomes over-reliant on importing resources, no longer achieving the metabolic efficiency objectives intended.
 
 <!--
 Note however that the model is nevertheless discerning: given 300 [TODO: accurate number] processes to choose from, it selects only [TODO: number] for the wildcard scenarios. Thus the PRaQ model successfully and intelligently optimizes the process mix.
