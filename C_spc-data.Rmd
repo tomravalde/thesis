@@ -314,3 +314,22 @@ The data described above is used in the three scenarios described in Section \re
 [^param-subset]: An example for the Design Case scenario is available at \url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/data/model-definition/designCase}.
 
 [^results]: The results are exported to \url{https://github.com/tomravalde/shann-gu-case-study/tree/develop/modelling/model/results/cluster-results}. These can then be interrogated (see for example the R-code embedded in Chapter 6).
+
+## Exergy analysis {#sec:spc-app-exergy}
+
+The exergy analysis of Section \ref{sec:spc-grey} follows a simplified version of the method in Section \ref{sec:app-grey-box-metrics}, because the PraQ model enables exergy to be calculated without using Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod}. In the original method, material- and energy-flow accounts for a city where matched with a city's processes so that every resource flow could be traced from its input to the city, through conversion processes and out the other side as a demand or a waste, i.e. exergy flows had to be derived from the bottom up, process-by-process. In the simplified method used here, there is no need to distribute the flows between the processes within the city, because PRaQ accounts any process products unused by other processes to become system outputs ($Ex^{waste}$). This means system exergy efficiency can be calculated at the whole-system level.
+
+The simplification of Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod} can be formalised as:
+
+\begin{align}
+\begin{split}
+\alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
+&= \sum_{i \in R^i} Ex_i 
+\label{eq:SPC-ex-in}
+\end{split}
+
+\alpha^{prod}_{ex}&= \sum_{j \in D^j} Ex_j
+\label{eq:SPC-ex-out}
+\end{align}
+
+where $D^j$ is the set of a site's resource demands, and $Ex_{*}$ represent the exergy value of a resource (for example the chemical exergy of a fossil fuel, or the exergy of heating).

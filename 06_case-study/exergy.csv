@@ -1,5 +1,5 @@
-Scenario,$\alpha^{prod}_{ex}$,$\alpha^{in}_{ex}$,$\eta_{ex}$ [per cent]
-"Grid case (min. cost)",47,3770,1.2
+"Scenario","$\alpha^{prod}_{ex}$","$\alpha^{in}_{ex}$","$\eta_{ex}$ [per cent]"
+"Baseline case",47,377,12
 "Design case (min. cost)",47,85,54.9
 "Design case (min. emissions)",47,5388,0.9
 "Design case (min. waste)",47,5388,0.9
