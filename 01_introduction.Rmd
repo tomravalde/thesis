@@ -65,7 +65,7 @@ The rapid urbanisation of the globe is presenting both challenges and opportunit
 TODO: complete Introduction, e.g. with how our development of UM theory fits in.
 -->
 
-## Urbanisation: the challenges
+## Urbanisation: the challenges {#sec:urban-challenges}
 
 Before considering the economic and environmental challenges of urban resource management, there are two important facts to note. The first is that urbanisation is not going to stop anytime soon -- it is inevitable.  At present, urban areas are home to just over half of the global population [@UN2014]. By 2030, this figure is expected to grow to 60 per cent, and to over 65 per cent by 2050 (Figure \ref{fig:pop_forecasts}). This growth has three components: cities absorbing population growth; migration from rural areas; and reclassification of rural areas as urban [@Cohen2006]. These predictions are not just the view of a small number, but widely accepted opinion. Thus even @Cohen2004 who takes a skeptical view of the projections (pointing out that historical forecasts can be overestimates by more than 75 per cent, and that there is no universally consistent definition of 'urban'[^urban-def]) concludes:
 
@@ -550,12 +550,12 @@ This end goal is made up of three aims, which combine to address the overall res
 
 ### Contributions
 
-This thesis makes five novel contributions to research:
+This thesis makes four novel contributions to research:
 
-- To advance the UM concept by considering how resource management processes affect an area's overall metabolic flows. The need for this contribution is discussed in Section \ref{sec:procs-in-UM}. This will help those interested in urban sustainability think about it in a new way, as well as providing the concepts behind the mathematical formulation of the systems optimisation model.
-- Following from the above item, this thesis contributes a new open-source database of resource management processes which records their various features, including the quantities of resources they consume and produce, their rates of operation, and other properties (Chapter 4).
-- To formulate a model which simultaneously optimises energy, water and waste management processes at the urban scale (Chapter 5). The development of this model will be described in some detail given its novelty to the field. Development will be done in the context of a 'benchmark study', which others can use to develop and improve the model presented here.
-- To comment on the appropriate set of metrics (Chapter 3) to quantify how well an area's metabolism is performing. These metrics could be used to assess an area's metabolism as well as the results of the modelling work. 
+1. To advance the UM concept by considering how resource management processes affect an area's overall metabolic flows. The need for this contribution is discussed in Section \ref{sec:procs-in-UM}. This will help those interested in urban sustainability think about it in a new way, as well as providing the concepts behind the mathematical formulation of the systems optimisation model.
+2. To comment on the appropriate set of metrics (Chapter 3) to quantify how well an area's metabolism is performing. These metrics could be used to assess an area's metabolism as well as the results of the modelling work. 
+3. Following from the first item, this thesis contributes a new open-source database of resource management processes which records their various features, including the quantities of resources they consume and produce, their rates of operation, and other properties (Chapter 4).
+4. To formulate a model which simultaneously optimises energy, water and waste management processes at the urban scale (Chapter 5). The development of this model will be described in some detail given its novelty to the field. Development will be done in the context of a 'benchmark study', which others can use to develop and improve the model presented here.
 - To provide a new tool which brings together systems optimisation and urban metabolism, to help planners and policy makers incorporate UM thinking into sustainable urban design and planning.
 
 ### Thesis structure
