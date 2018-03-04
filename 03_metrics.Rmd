@@ -1371,7 +1371,7 @@ colnames(exergy.summary.plotData) <- c("City", "Depletion", "Efficiency", "Deple
 
 colnames(exergy.summary) <- c("City", 
 			      "Depletion $\\alpha^{in}_{ex}$ [$\\times 10^{12}$ MJ]",
-			      "Efficiency $\\eta_{ex}$ [\\%]",
+			      "Efficiency $\\eta_{ex}$ [per cent]",
 			      "$\\alpha^{in}_{ex}/\\mbox{GDP}$ [MJ/USD]")
 exergy.summary.tex <- xtable(exergy.summary, caption="Results for exergy analysis for Beijing, London and Sao Paulo.\\label{tab:exergy-results}", align="lllll")
 

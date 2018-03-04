@@ -26,12 +26,9 @@ More specifically, this thesis will focus on the energy, water, and waste manage
 
 \begin{figure}
 	\centering
-%	\begin{spacing}{1.0}
 	\sffamily
 	\resizebox{\columnwidth}{!}{\input{01_introduction/power-network.pdf_tex}}
-%	\end{spacing}
-	\caption{Some components of an urban electricity. system. The combustion of coal results in heat energy, which heats water and thereby produces steam which rotates a turbine to generate electricity. The electricity is then delivered to the consumer by cable
-}
+	\caption{Some components of an urban electricity system. The combustion of coal results in heat energy, which heats water and thereby produces steam which rotates a turbine to generate electricity. The electricity is then delivered to the consumer via a cable.}
 	\label{fig:elec}
 \end{figure}
 
@@ -183,7 +180,7 @@ Even more interesting are the values which $\beta$ takes for different types of 
 
 \begin{table}[]
 \centering
-\caption{Example $\beta$ values taken from \citet{Bettencourt2007a, Table 1}.}
+\caption{Example $\beta$ values taken from Table 1 of \citet{Bettencourt2007a}.}
 \label{tab:beta}
 \begin{tabular}{@{}lll@{}}
 \toprule

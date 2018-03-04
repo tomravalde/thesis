@@ -552,7 +552,7 @@ The next three subsections specify three different model formulations built arou
 \item [Nonlinear (NL)] This formulation allows nonlinear relationships between the resource flows into or out of a process.
 \end{description}
 
-Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations (this is discussed further in Section \ref{sec:tad-discussion}). The differences between the formulations can be illustrated with reference to an example of the pipe, pump and dam system in Appendix \ref{sec:pipe-pump-damn}. The constraints for the three formulations are given in Sections \ref{sec:Null}, \ref{sec:PRaQ} and \ref{sec:NL}, respectively. Examples of objective functions are given separately in Section \ref{sec:model-objs}.
+Figure \ref{fig:evolution} shows how the three formulations are related both to the original urban energy systems model, and each other. Each formulation, in theory, increases its fidelity relative to the preceeding model: PRaQ increases in fidelity with respect to resources; and NL increases it with respect to processes too. However, this comes at a cost to generality because the PRaQ and NL formulations require more customisation of the data and equations (this is discussed further in Section \ref{sec:tat-discussion}). The differences between the formulations can be illustrated with reference to an example of the pipe, pump and dam system in Appendix \ref{sec:pipe-pump-dam}. The constraints for the three formulations are given in Sections \ref{sec:Null}, \ref{sec:PRaQ} and \ref{sec:NL}, respectively. Examples of objective functions are given separately in Section \ref{sec:model-objs}.
 
 \begin{figure}
 	\centering
@@ -1145,14 +1145,14 @@ In summary, the Nonlinear formulation has the highest fidelity, but as a consequ
 
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}{0.4\textwidth}
   \includegraphics[width=\textwidth]{05_model-development/curve-fidelity-generality.pdf}
   \caption{The trade-off between fidelity and generality.}
   \label{fig:curve-fid-gen}
   \end{subfigure}
 
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}{0.4\textwidth}
   \includegraphics[width=\textwidth]{05_model-development/curve-fidelity-usability.pdf}
   \caption{The trade-off between fidelity, tractability, and usability.}
   \label{fig:curve-fid-use}

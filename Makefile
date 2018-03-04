@@ -52,7 +52,7 @@ md:		update clean $(MDS)
 tex:		update clean $(MDS) $(TEXS)
 chapter:	update clean $(MDS) $(TEXS) chapter-xelatex
 count:		$(COUNTS)
-thesis:		update clean $(MDS) $(TEXS) count-thesis combo
+thesis:		update clean $(MDS) $(TEXS) count-thesis combo embed
 
 
 ###--------------------------------------------------
@@ -62,6 +62,10 @@ thesis:		update clean $(MDS) $(TEXS) count-thesis combo
 ## Build thesis
 combo: main.tex
 	latexmk -xelatex "-interaction=nonstopmode" main.tex
+
+## Embed fonts
+embed: 
+	pdffonts main.pdf
 
 ## Whenever running on Tom's machine, update to latest dependencies for paper and toolchain
 update:

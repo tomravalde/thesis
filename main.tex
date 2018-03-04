@@ -14,6 +14,13 @@
 %\setcounter{secnumdepth}{5}
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
+%\renewcommand\nomgroup[1]{%
+%  \item[\bfseries
+%  \ifstrequal{#1}{P}{Physics Constants}{%
+%  \ifstrequal{#1}{N}{Number Sets}{%
+%  \ifstrequal{#1}{O}{Other Symbols}{}}}%
+%]}
+
 \usepackage{etoolbox}
 \renewcommand\nomgroup[1]{%
   \item[\bfseries
@@ -27,7 +34,7 @@
   \ifstrequal{#1}{O}{Other}{%
   \ifstrequal{#1}{U}{Units of measurement}{%
   }}}}}}}}}%
-}
+]}
 
  
 \renewcommand{\nomname}{Abbreviations, acronyms, symbols, units of measurement, and other notation}
@@ -39,10 +46,10 @@
 
 \onecolumn
 
-\pagenumbering{gobble}
-\begin{scriptsize}
-\wordcount
-\end{scriptsize}
+%\pagenumbering{gobble}
+%\begin{scriptsize}
+%\wordcount
+%\end{scriptsize}
 
 \setromanfont[Mapping=tex-text]{Gentium Basic}
 %\setmathsfont[Mapping=tex-text]{Linux Libertine}
@@ -79,19 +86,24 @@
 \thispagestyle{empty}
 \mbox{}
 
- 
+%\pdfbookmark[0]{\contentsname}{toc}
+\addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
 
 \newpage
 \thispagestyle{empty}
 \mbox{}
 
+%\pdfbookmark[0]{\listfigurename}{lof}
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 
 \newpage
 \thispagestyle{empty}
 \mbox{}
 
+%\pdfbookmark[0]{\listtablename}{lot}
+\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 
 \newpage
