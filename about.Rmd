@@ -1,6 +1,6 @@
 # Resources arising from this work {.unnumbered}
 
-Where possible, I have made this work publicly available as opensource, in the spirit of helping others use, and build-upon the findings here. This thesis has provided two tools to the urban metabolism research community:
+Where possible, I have made this work publicly available as open-source, in the spirit of helping others use, and build-upon the findings here. This thesis has provided two tools to the urban metabolism research community:
 
 - The first is a database of processes which manage energy, water and waste in urban areas, recording the relative quantities of energy, water and waste resources these processes consume and produce. This is introduced in Chapter \ref{sec:database} and @Ravalde2016. The database is available at \url{https://github.com/tomravalde/urban-metabolism-process-database}.
 - The second tool is a 'benchmark problem', which was used to test various possible formulations of the model this thesis develops. This is introduced in Chapter \ref{sec:model-dev} and is available at \url{https://github.com/tomravalde/model-development-code}. This enables others to test their own developments of the model on the same test problem which was used to develop the model in this thesis.
