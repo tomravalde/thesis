@@ -279,7 +279,7 @@ lit_final_cut <- select(lit_final_cut,
 
 
 <!--
-{r metab-lit-review-plot, fig.height=8, fig.width=6, fig.cap="An overview of the UM modelling literature. Jitter (normally distributed random noise) has been applied to the points to prevent them overlapping one another. \\label{fig:UM-model-lit}"} 
+{r metab-lit-review-plot, fig.height=8, fig.width=6, fig.cap="An overview of the UM modelling literature. Jitter (normally distributed random noise) has been applied to the points to prevent them plotting over one another. \\label{fig:UM-model-lit}"} 
 
 ###--------------------------------------------------
 ### Select and order attributes for ordinal data
@@ -340,8 +340,7 @@ plot_cluster
 \centering
 \includegraphics{figures/metab-lit-review-plot-1.pdf}
 \caption{An overview of the UM modelling literature. Jitter (normally
-distributed random noise) has been applied to the points to prevent them
-overlapping one another. \label{fig:UM-model-lit}}
+distributed random noise) has been applied to the points to prevent them plotting over one another. \label{fig:UM-model-lit}}
 \end{figure}
 
 
@@ -574,7 +573,7 @@ cut_list_size <- dim(lit)[1]
 cut_list_size <- prettyNum(cut_list_size, big.mark=",") # Insert a 1,000s comma separator
 ```
 
-This step returned `r uncut_list_size` results which were filtered using R code to automatically remove titles not containing words related to 'optimization', and titles unrelated to resource management[^filter-words]; before other irrelevant titles were removed manually. This left `r cut_list_size` documents, which describe optimisation models at various scales, from optimising some component in a powerplant, to planning strategies at a regional level. The results include both concrete models (usually in the form of laboratory-based experiments which find the operating conditions which resulted in optimal resource production), and abstract models.
+This step returned `r uncut_list_size` results which were filtered using R code to automatically remove titles not containing words related to 'optimization', and titles unrelated to resource management[^filter-words]; before other irrelevant titles were removed manually. This left `r cut_list_size` documents, which describe optimisation models at various scales, from optimising some component in a power plant, to planning strategies at a regional level. The results include both concrete models (usually in the form of laboratory-based experiments which find the operating conditions which resulted in optimal resource production), and abstract models.
 
 [^filter-words]: This filtering began by removing common words (e.g. 'the') using the functionality of the text mining package `tm` in R, before identifying 11,967 unique words. Then, from this automatically generated list, words which did not refer to resources (e.g. 'network') were removed manually, leaving 366 unique words. Only titles containing words from this list remained in the review.
 
@@ -600,19 +599,19 @@ Some models are \textbf{non-integrated}. These models consider just one resource
 
 \begin{figure}
 	\centering
-  	\begin{subfigure}{0.54\textwidth}
+  	\begin{subfigure}{0.8\textwidth}
         \includegraphics{02_lit-review/none-integrated.pdf}
 	\caption{Non-integrated modelling only considers one system (represented by squares) and it's demands.}
 	\label{fig:interation-none}
 	\end{subfigure}
 
-  	\begin{subfigure}{0.54\textwidth}
+  	\begin{subfigure}{0.8\textwidth}
         \includegraphics{02_lit-review/integrated.pdf}
 	\caption{Integrated modelling considers multiple systems (represented squares and circles), but only considers meeting demands of one system.}
 	\label{fig:interation-medium}
 	\end{subfigure}
 
-  	\begin{subfigure}{0.54\textwidth}
+  	\begin{subfigure}{0.8\textwidth}
         \includegraphics{02_lit-review/highly-integrated.pdf}
 	\caption{Highly-integrated modelling considers multiple systems (represented squares and circles), and how to meet the demands of both systems.}
 	\label{fig:interation-high}
@@ -633,7 +632,18 @@ Some models are \textbf{non-integrated}. These models consider just one resource
 
 The resource management optimisation models in the filtered list have been plotted as points on Figure \ref{fig:model-integration}. The points are coloured according to the modelling type, while its scale, level of integration, and level are represented by its location. The models cited above are labelled on the plot. The figure shows that, in general, smaller-scale systems are more interested in just a single resource, and their systems are modelled in greater detail. These models are also more likely to be experimental. Larger systems are more likely to consider multiple resources in a integrated or highly integrated fashion, but none of these models go into design detail (all are either medium- or high-level). For these models, mathematical optimisation is the most commonly used method.
 
-```{r model-lit-review-categMatchPlot, fig.height=7, fig.cap="An overview of the resource management optimisation literature, with each point representing a reference. Jitter has been applied to the points to prevent them overlapping one another.\\label{fig:model-integration}"}
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/model-lit-review-categMatchPlot-1.pdf}
+\caption{An overview of the resource management optimisation literature,
+with each point representing a reference. Jitter has been applied to the
+points to prevent them overlapping one
+another.\label{fig:model-integration}}
+\end{figure}
+
+
+<!--
+{r model-lit-review-categMatchPlot, fig.height=7, fig.cap="An overview of the resource management optimisation literature, with each point representing a reference. Jitter has been applied to the points to prevent them overlapping one another.\\label{fig:model-integration}"}
 
 
 ###--------------------------------------------------
@@ -739,10 +749,11 @@ plot_lit_int.scale
 #plot_lit_focus.methods
 
 ```
+-->
 
-Highly integrated models (the focus of this thesis) are still the least common type, and especially so at the city scale where models tend to only consider one resource sector in isolation (e.g. an urban energy system), or the integration of energy or water systems into other systems. (The two highly integrated models captured by the search both consider how water and wastewater systems can work together to minimise freshwater consumption.) This lack of urban-scale highly-integrated models means there is little to help the decision maker to take advantage of the infrastructure co-location to realise intersectoral synergies. Thus current optimisation models use to help plan urban resource management systems impose a ceiling on potential material and energy savings, by not considering energy, water and waste systems in combination.
+Highly-integrated models (the focus of this thesis) are still the least common type, and especially so at the city scale where models tend to only consider one resource sector in isolation (e.g. an urban energy system), or the integration of energy or water systems into other systems. The two highly-integrated models at the city scale consider how water and wastewater systems can work together to minimise freshwater consumption [@Newman2014, @Lim2010]. This lack of urban-scale highly-integrated models means there is little to help the decision maker to take advantage of the infrastructure co-location to realise intersectoral synergies in the urban environment. Thus, current optimisation models used to help plan urban resource management systems impose a ceiling on potential material and energy savings.
 
-This thesis will begin to meet this gap by formulating a city-scale, highly integrated optimisation model. An additional insight this literature overview gives is that that the model should be high-level. This is intuitive when considering multiple resource system types: it is prudent to start with a simple representation of the various systems, before delving into the intricacies of the detail design and operation of the systems, which require specialist expertise regarding the systems being modelled.
+This thesis will begin to meet this gap by formulating a city-scale, highly-integrated optimisation model. An additional insight this literature overview gives is that that the model should be high-level. This is intuitive when considering multiple resource system types: it is prudent to start with a simple representation of the various systems, before delving into the intricacies of design detail and system operation, which require specialist expertise about the systems being modelled.
 <!--
 The highly integrated models closest to the ambitions of this thesis are formulated for eco-industrial parks (EIPs). These models try to realise maximum benefit from IE possibilities, and thereby identify the most beneficial energy and material exchanges between processes [TODO: cite an example?].
 -->
@@ -753,9 +764,9 @@ The highly integrated models closest to the ambitions of this thesis are formula
 
 ## Conclusion
 
-This chapter has given overviews of two research fields which motivate and inform the development of optimisation models to improve an area's metabolism. With regards to UM, the metaphorical framework is not currently sufficient to account for a city's overall metabolic flows in relation to the mix of resource management processes used within a city. The review also showed that while modelling is often used to aid understanding of urban metabolism, there is room to contribute a model which considers how multiple resources and various resource management processes can be optimally mixed. The review of resource optimisation modelling found no models which integrated the design of energy, water and waste management systems at the urban scale. Nevertheless, there were models which integrated the planning of more than one system at other scales, thus providing precedent for the type of modelling work, which this thesis will apply to a new area.
+This chapter has given overviews of two research fields which motivate and inform the development of optimisation models to improve an area's metabolism. With regards to UM, the metaphorical framework is not currently sufficient to account for a city's overall metabolic flows in relation to the mix of resource management processes used within a city. The review also showed that while modelling is often used to aid understanding of urban metabolism, there is room for a model which optimises the way an area uses energy, water and waste management processes to meet demand. Introducing the network representation of a city into the conceptual model of an area's UM (Figure \ref{fig:metab}), opens up the possibility of formulating a model which considers interactions and synergies between the energy, water and waste sectors to help plan urban resource management in more sustainable ways. The review of resource optimisation modelling found no such integrated models at the urban scale. Nevertheless, there were models which integrated the planning of more than one system at other scales, thus providing precedent for the type of modelling work which this thesis applies to a new area.
 
-In order to answer the research question, this rest of this thesis brings together the two fields reviewed in this chapter. Introducing the proposed network representation of a city into the conceptual model of an area's UM, opens up the possibility of formulating a model which can consider interactions and synergies between the energy, water and waste sectors to help plan urban resource management in more sustainable ways. Getting to the point of applying such a model must come after a number of intermediate steps. First, the conceptual model of Figure \ref{fig:metab} needs to be represented mathematically (Chapter 5). Second, the model will require data to define parameters, such as the resource consumption of processes (Chapter 4). Thirdly, it is not obvious how to measure the performance of a highly-integrated systems, because each system will have its own associated metrics (such as freshwater consumption for water management systems, or greenhouse gas emissions for an urban energy system) -- the next chapter attempts to find suitable metrics for highly integrated urban resource management systems.
+In order to answer the research question, this rest of this thesis brings together the two fields reviewed in this chapter. Getting to the point of applying such a model must come after a number of intermediate steps. First, the conceptual model of Figure \ref{fig:metab} needs to be represented mathematically (Chapter \ref{sec:model-dev}). Second, the model will require data to define parameters, such as the resource consumption of processes (Chapter \ref{sec:database}). Thirdly, it is not obvious how to measure the performance of a highly-integrated systems, because each system will have its own associated metrics (such as freshwater consumption for water management systems, or greenhouse gas emissions for an urban energy system) -- the next chapter attempts to find suitable metrics for highly integrated urban resource management systems.
 
 <!--
 

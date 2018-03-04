@@ -14,20 +14,28 @@
 %\setcounter{secnumdepth}{5}
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
+%\renewcommand\nomgroup[1]{%
+%  \item[\bfseries
+%  \ifstrequal{#1}{P}{Physics Constants}{%
+%  \ifstrequal{#1}{N}{Number Sets}{%
+%  \ifstrequal{#1}{O}{Other Symbols}{}}}%
+%]}
+
 \usepackage{etoolbox}
 \renewcommand\nomgroup[1]{%
   \item[\bfseries
   \ifstrequal{#1}{A}{Acronyms}{%
-  \ifstrequal{#1}{S}{Model sets}{%
-  \ifstrequal{#1}{B}{Symbols used in Bettencourt et. al's model of urban growth}{%
-  \ifstrequal{#1}{R}{Tat model abbreviations -- resources}{%
-  \ifstrequal{#1}{C}{Tat model abbreviations -- conversion processes}{%
-  \ifstrequal{#1}{T}{Tat model abbreviations -- transport processes}{%
-  \ifstrequal{#1}{M}{Model variables and parameters, defined over the sets}{%
-  \ifstrequal{#1}{O}{Other}{%
-  \ifstrequal{#1}{U}{Units of measurement}{%
-  }}}}}}}}}%
-}
+  \ifstrequal{#1}{B}{Units of measurement}{%
+  \ifstrequal{#1}{C}{Symbols used in Bettencourt et. al's model of urban growth}{%
+  \ifstrequal{#1}{D}{Symbols used to define black- and grey-box metrics}{%
+  \ifstrequal{#1}{E}{Model sets}{%
+  \ifstrequal{#1}{F}{Model variables and parameters, defined over the sets}{%
+  \ifstrequal{#1}{G}{Tat model abbreviations -- resources}{%
+  \ifstrequal{#1}{H}{Tat model abbreviations -- conversion processes}{%
+  \ifstrequal{#1}{I}{Tat model abbreviations -- transport processes}{%
+  \ifstrequal{#1}{J}{Other}{%
+  }}}}}}}}}}%
+]}
 
  
 \renewcommand{\nomname}{Abbreviations, acronyms, symbols, units of measurement, and other notation}
@@ -39,17 +47,17 @@
 
 \onecolumn
 
-\pagenumbering{gobble}
-\begin{scriptsize}
-\wordcount
-\end{scriptsize}
+%\pagenumbering{gobble}
+%\begin{scriptsize}
+%\wordcount
+%\end{scriptsize}
 
 \setromanfont[Mapping=tex-text]{Gentium Basic}
 %\setmathsfont[Mapping=tex-text]{Linux Libertine}
 
 \input{title.tex}
 
-\newpage
+\clearpage
 \thispagestyle{empty}
 \mbox{}
 
@@ -57,52 +65,40 @@
 \input{abstract.tex}
 \pagenumbering{roman}
 
-\newpage
-\thispagestyle{empty}
-\mbox{}
+%\clearpage
+%\thispagestyle{empty}
+%\mbox{}
 
 \input{publications.tex}
 
-\newpage
-\thispagestyle{empty}
-\mbox{}
-
+%\clearpage
 \input{about.tex}
 
-\newpage
-\thispagestyle{empty}
-\mbox{}
-
+%\clearpage
 \input{acknowledgements.tex}
 
+%\clearpage
 \newpage
-\thispagestyle{empty}
-\mbox{}
-
- 
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
 
+%\clearpage
 \newpage
-\thispagestyle{empty}
-\mbox{}
-
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 
+%\clearpage
 \newpage
-\thispagestyle{empty}
-\mbox{}
-
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 
-\newpage
-\thispagestyle{empty}
-\mbox{}
+%\clearpage
 \printnomenclature[0.8in]
 
-\newpage
-\thispagestyle{empty}
-\mbox{}
-
+%\clearpage
 \input{nomenclature.tex}
 
 \input{01_introduction.tex}
