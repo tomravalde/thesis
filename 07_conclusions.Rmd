@@ -1,4 +1,4 @@
-# Discussion and conclusions
+# Discussion and conclusions {#sec:conclusion}
 
 \epigraph{``...when you close your eyes and imagine an epidemic spreading, or any other social dynamic, you are running some model or other. It is just an implicit model that you haven't written down...\par At least I can write mine down so that it can, in principle, be calibrated to data...\par The choice, then, is not whether to build models; it's whether to build explicit ones. In explicit models, assumptions are laid out in detail, so we can study exactly what they entail. On these assumptions, this sort of thing happens. When you alter the assumptions that is what happens. By writing explicit models, you let others replicate your results.''}{\citet{Epstein2008}}
 
