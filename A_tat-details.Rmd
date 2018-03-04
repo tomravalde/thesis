@@ -194,7 +194,7 @@ CO2                              &        & 0                      & See appendi
 \end{table}
 -->
 
-## Explaining the difference between the models with reference to a pipe, pump and dam system {#sec:pipe-pump-damn}
+## Explaining the difference between the models with reference to a pipe, pump and dam system {#sec:pipe-pump-dam}
 
 Section \ref{sec:derivations} developed both linear and nonlinear models. This section uses the example of a pipe-pump-dam system (Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}) to explain the differences in how they might differently model some phenomena. The models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
 
