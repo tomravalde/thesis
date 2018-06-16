@@ -79,7 +79,11 @@ These predictions are not just the view of a small number, but widely accepted o
 -->
 
 
-```{r pop_data, fig.height=1.8, fig.width=5, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
+<!--
+{r pop_data, fig.height=1.8, fig.width=5, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
+-->
+
+```{r pop_data, fig.height=1.8, fig.width=5, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}.\\label{fig:pop_forecasts}", results="asis"}
 
 ## Raw data from https://esa.un.org/unpd/wup/CD-ROM/ (Files 3 and 5)
 pop_data <- read.csv("01_introduction/UN-population-forecasts.csv")
@@ -102,8 +106,9 @@ The inevitability of urbanisation derives from its desirability. Urbanisation is
 \begin{figure}[h]
 	\centering
 	\sffamily
-	\input{01_introduction/urbanCycle}
-	\caption{Virtuous circle of urban growth and economic prosperity.} \label{fig:urbanCycle}
+	\input{01_introduction/urbanCycle.tex}
+	\caption{Virtuous circle of urban growth and economic prosperity.}
+	\label{fig:urbanCycle}
 \end{figure}
 
 Urbanisation is a proven path to prosperity, so it is unsurprising that expert opinion reveals little appetite to oppose it, especially now that the urbanisation patterns seen historically in OEDC countries are being replicated in the developing world, where the majority of growth is happening -- Africa and Asia will together account for over 85 per cent of the increase in urban dwellers by 2050 [@York2011]. This is not to say that cities provide an immediate solution to all issues of poverty. Cities often have a widespread presence of slums, especially at the beginning of their development. The World Bank describes these as 'growing pains' and notes their historical precedence in cities like London, where slums are no longer to be found [@WorldBank2009, p.69]. All this is to say, that whatever mix of approaches is used to address the challenges of urban resource management (outlined in the following two sections) should assume that urbanisation will continue.

@@ -1222,9 +1222,11 @@ Note that these approaches only solve the issues of tractability, and the lack o
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
 	\includegraphics[width=0.4\textwidth]{05_model-development/512px-Piecewise_linear_approximation.png}
 %	\end{spacing}
-	\caption{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\footnote{Image available from Wikimedia Commons: \url{https://commons.wikimedia.org/wiki/File:Piecewise_linear_approximation.svg}.}.}
+	\caption[An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)]{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\protect\footnotemark.}
 	\label{fig:piecewise-linear}
 \end{figure}
+
+\footnotetext{Image available from Wikimedia Commons: \url{https://commons.wikimedia.org/wiki/File:Piecewise_linear_approximation.svg}.}
 <!--
 ## Why modelling? [TODO: could this introduce the model review section of the literature review?]
 
