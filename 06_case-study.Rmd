@@ -308,6 +308,7 @@ Transport processes are defined by the origin-to-destination resource input and 
 
 \end{description}
 
+
 \input{06_case-study/tab-transp-coeffs.tex}
 
 As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in the model, as their total cost would be the same, whatever the system designed by the model. The cost of cables and pipes are defined per kilometer, and the values and sources for these calculations are linked to in Appendix \ref{sec:app-spc-transp}.
