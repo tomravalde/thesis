@@ -79,27 +79,20 @@ $$
 
 Waste and wastewater generation rates are defined as negative demands.
 
-The waste generation figures from the SPC documentation are not provided in the same units (total solid waste is given as 8 m$^3$/day, organic waste is given as 360,000 kg/year), so the following calculations separate the documented values into quantities of `waste` and `waste_organic`, on the assumption that solid waste has a density $\rho=217.5~\mbox{kg/m^3}$[^waste-density]:
+The waste generation figures from the SPC documentation are not provided in the same units (total solid waste is given as 8 m$^3$/day, organic waste is given as 360,000 kg/year), so the following calculations separate the documented values into quantities of `waste` and `waste_organic`, on the assumption that solid waste has a density of 217.5 kg/m$^3$.\footnote{From \citet{Chandrappa2012}, Table 2.2 gives a density range of 87--348 kg/m3. This thesis uses the median value.}
 
-
-[^waste-density]: From @Chandrappa2012, Table 2.2 gives a density range of 87--348 kg/m3. This thesis uses the median value of 217.5 kg/m3.
-
-$$
 \begin{align*}
 \mbox{Total solid waste} &= 8 \mbox{m$^3$/day} \\
  		  &= 1,740~\mbox{kg/day} \\
  		  &= 635,100~\mbox{kg/year}
 \end{align*}
-$$
 
 Subtracting the organic waste fraction: 
 
-$$
 \begin{align*}
 \mbox{Non-organic waste} &= 635,100 - 360,000~\mbox{kg/year} \\
  		  &= 275,100~\mbox{kg/year}
 \end{align*}
-$$
 
 ## Resource parameters {#sec:app-spc-res-params}
 
@@ -202,9 +195,11 @@ Section \ref{sec:case-study-transport-processes} noted there were three types of
 
 ### Cables
 
-Electrical energy is lost as electricity travels along a cable, typically at a rate of about 3--7 per cent over 1,000 km[^elec-loss]. In the SPC case study, cable lengths are around 10 km, and thus losses will be assumed to be negligible, meaning that there is only a need to define parameters of -1 and 1 for $k^{\alpha}_{\tau rq}$ and $k^{\alpha'}_{\tau rq}$, respectively, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0$.
+Electrical energy is lost as electricity travels along a cable, typically at a rate of about 3--7 per cent over 1,000 km\footnote{According to The Energy Technology Systems Analysis Program (see \url{http://iea-etsap.org/}).}. In the SPC case study, cable lengths are around 10 km, and thus losses will be assumed to be negligible, meaning that there is only a need to define parameters of -1 and 1 for $k^{\alpha}_{\tau rq}$ and $k^{\alpha'}_{\tau rq}$, respectively, and $k^{\beta}_{\tau rq} = k^{\beta'}_{\tau rq} = 0$.
 
-[^elec-loss]: According to The Energy Technology Systems Analysis Program (see \url{http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf})
+<!--
+\footnote{According to The Energy Technology Systems Analysis Program (see \url{http://iea-etsap.org/web/Highlights%20PDF/E12_el-t&d_KV_Apr2014_GSOK%201.pdf})}
+-->
 
 ### Pipes {#sec:app-spc-pipes}
 <!--
@@ -290,9 +285,7 @@ k^{\beta}_{\tau rq} &= 0.737 \times 0.25 \\
 &= 0.18~\mbox{kg/km}
 \end{align*}
 
-In calculating emissions quantities, it is assumed that the specific $CO_2$ emissions for petrol (gasoline) is $3.3 \mbox{kg_{CO_2/kg_{fuel}}}$[^gasoline-emissions] . Therefore, per $km$ travelled by a vehicle, the emissions are given as:
-
-[^gasoline-emissions]:From \url{http://www.engineeringtoolbox.com/co2-emission-fuels-d_1085.html}
+In calculating emissions quantities, it is assumed that the specific $CO_2$ emissions for petrol (gasoline) is 3.3 kg of \COtwo per kg of fuel consumed \footnote{From \url{http://www.engineeringtoolbox.com}}. Therefore, per kilometer travelled by a vehicle, the emissions are given as:
 
 \begin{align*}
 0.18 \times 3.3 = 0.6~\mbox{kg/km}
@@ -326,7 +319,9 @@ The simplification of Equations \eqref{eq:ex-eff-in} and \eqref{eq:ex-eff-prod} 
 \alpha^{in}_{ex}&=\sum_{p \in P}  \sum_{i \in R^i}  Ex^{in}_{p,i} \\
 &= \sum_{i \in R^i} Ex_i 
 \label{eq:SPC-ex-in}
+\end{align*}
 
+\begin{align*}
 \alpha^{prod}_{ex}&= \sum_{j \in D^j} Ex_j
 \label{eq:SPC-ex-out}
 \end{align*}

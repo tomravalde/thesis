@@ -308,6 +308,7 @@ Transport processes are defined by the origin-to-destination resource input and 
 
 \end{description}
 
+
 \input{06_case-study/tab-transp-coeffs.tex}
 
 As with the conversion processes, transport processes each need to have an associated cost, $c^T_{\tau}$. As the roads already exist, these are not costed in the model, as their total cost would be the same, whatever the system designed by the model. The cost of cables and pipes are defined per kilometer, and the values and sources for these calculations are linked to in Appendix \ref{sec:app-spc-transp}.
@@ -970,7 +971,7 @@ plot_ENA <- ggplot(ena_matrices, aes(From, To)) +
 #plot_ENA
 ```
 
-### Summary and conclusions
+## Summary and conclusions
 
 This chapter has demonstrated how to apply the PRaQ model to the SPC site using its seasonally and spatially disaggregated demands to design highly integrated urban resource management systems. The analysis of the results uses the principles of Chapter \ref{sec:metrics} to quantify the ways in which a mix of resource-management processes affects the site's metabolism. Alongside the PRaQ modelling itself, this chapter has described and applied a rule-of-thumb method to estimate the costs of processes, taking into account economies of scale, even for conversion process which do not yet exist.
 
@@ -978,7 +979,7 @@ For the SPC site specifically, the PRaQ modelling justifies the planners' decisi
 
 More generally, this chapter contributes to fulfilling aim 3 of this thesis' research question (Section \ref{sec:research-qn}), by showing that an area's metabolic flows (at the top of a system) are indeed affected by the mix of processes (in the middle of the system), whether this process mix varies due to design objectives (as in the design cases), or process availability (as in the wildcard cases). The case study shows that the synergies which drive high exergy efficiency and network mutualism can be achieved through larger and more varied networks of processes (as in the wildcard cases). This demonstrates the power of PRaQ's, which can propose networks too complicated to design without such a model, and enables consideration of ever-increasing number of resource-management technologies.
 
-### Further work for the SPC case study {#sec:case-study-further-work}
+## Further work for the SPC case study {#sec:case-study-further-work}
 
 Section \ref{sec:formulation-developments} suggested developments to the PRaQ formulation, all of which could have implications for the SPC study (for example, the inclusion of storage processes). However, even without making changes to the formulation, there are several areas of further work, which could provided further useful insights for the SPC site:
 
