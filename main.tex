@@ -57,13 +57,15 @@
 
 \input{title.tex}
 
-\clearpage
-\thispagestyle{empty}
-\mbox{}
+%\clearpage
+%\thispagestyle{empty}
+%\mbox{}
 
+
+\input{copyright_declaration.tex}
 
 \input{abstract.tex}
-\pagenumbering{roman}
+%\pagenumbering{roman}
 
 %\clearpage
 %\thispagestyle{empty}
@@ -109,7 +111,11 @@
 \input{06_case-study.tex}
 \input{07_conclusions.tex}
 
-
+\clearpage
+%\nocite{*}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plainnat}
+\bibliography{my-refs}
 
 \clearpage
 \appendix
@@ -117,10 +123,4 @@
 \input{B_formulation.tex}
 %\input{app-C_data-thesisVersion.tex}
 \input{C_spc-data.tex}
-
-\clearpage
-%\nocite{*}
-\addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{plainnat}
-\bibliography{my-refs}
 \end{document}
