@@ -1,6 +1,7 @@
 # Introduction {#sec:intro}
-
+<!--
 \pagenumbering{arabic}
+-->
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)
