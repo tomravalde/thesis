@@ -1,0 +1,34 @@
+process: power-plant-coal
+flow:
+        coal:
+            value: -0.101
+            unit: kg
+            reference: http://www.sciencedirect.com/science/article/pii/S0301421508007301
+        electricity:
+            value: 1
+            unit: MJ
+            reference: http://www.sciencedirect.com/science/article/pii/S0301421508007301
+        heat:
+            value: 1.570
+            unit: MJ
+            reference: http://www.sciencedirect.com/science/article/pii/S0301421508007301
+        water:
+            value: -0.867
+            unit: kg
+            reference: http://iopscience.iop.org/1748-9326/7/4/045802/pdf/1748-9326_7_4_045802.pdf (a review of water consumption for electricity generating technolgoies)
+        CO2:
+            value: 0.234
+            unit: kg
+            reference: https://www.ipcc.ch/pdf/special-reports/sroc/Tables/t0305.pdf (International Energy Agency's values for carbon dioxide intensities of fuels)
+        ash:
+            value: 0.010
+            unit: kg
+            reference: http://www2.epa.gov/radiation
+capacity: 
+        value: 5400
+        reference: Maximum capacity plant from those listed at https://en.wikipedia.org/wiki/List_of_coal_power_stations
+trl: 
+        level: current
+        reference: https://en.wikipedia.org/wiki/List_of_coal_power_stations
+        justification: "Large list of coal power stations at Wikipedia list"
+main: electricity

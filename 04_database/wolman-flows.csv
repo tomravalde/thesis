@@ -1,0 +1,8 @@
+resource,type,Wolman,Optimised
+"coal (kg)",Input,3000000,0
+"oil (kg)",Input,2800000,0
+"natural gas (kg)",Input,2700000,3554107
+"water (tonnes)",Input,625000,625000
+"refuse (kg)",Output,-2000000,-1999382
+"sewage (tonnes)",Output,-500000,-474616.8
+"algae (kg)",Output,,-5392656

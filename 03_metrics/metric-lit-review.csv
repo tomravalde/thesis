@@ -1,0 +1,10 @@
+"Measure category",Measure,"Energy conversion","Chemical engineering",Manufacturing,Urban
+"Ratios (Efficiencies)",Energy,,,,\citet{Keirstead2013}
+,Water,,,,
+,"Waste (material)",,,,\citet{Browne2009}
+,Eco-efficinecy,,,,\citet{Zhang2007}
+Footprints,Carbon,,,,
+,Ecological,,,,
+,Water,,,,
+Exergy,,\citet{Kaushik2011},,\citet{Michaelis1998},\citet{Vargas-Parra2013}
+ENA,,,,,

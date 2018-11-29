@@ -1,0 +1,8 @@
+"Scenario","$\alpha^{prod}_{ex}$","$\alpha^{in}_{ex}$","$\eta_{ex}$ [per cent]"
+"Baseline case",47,377,12
+"Design case (min. cost)",47,85,54.9
+"Design case (min. emissions)",47,5388,0.9
+"Design case (min. waste)",47,5388,0.9
+"Wildcard case (current)",47,79,59.4
+"Wildcard case (long)",47,78,59.7
+"Wildcard case (medium)",47,78,60.5
