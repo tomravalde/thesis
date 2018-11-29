@@ -20,13 +20,13 @@ Section \ref{sec:tat-case-study} noted that for the purposes of the benchmarking
 
 \begin{itemize}
 \item Tat's total electricity use are split equally between domestic, agriculture, and water pumping purposes.
-\item Tat's total heat output  = 5375.6 GJ/year [TODO: check source]. Assume this is split between domestic heating, cooking, and domestic hot water
+\item Tat's total heat output  = 5375.6 GJ/year \citep{Heezen2003}. Assume this is split between domestic heating, cooking, and domestic hot water
 \end{itemize}
 
 \item [Additions] give the benchmarking study greater ability to test different types of formulation:
 
 \begin{itemize}
-\item A dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
+\item For the purpose of this study, a dam is added to the village. This generates electricity from the river water. As shown below, this will enable two types of linear formulation, and one type of nonlinear to be compared for their performance.
 \item Each household will include cooking, space heating, and hot water heating processes.
 \item The literature does not provide any spatial information regarding the point of demand and the location of processes. In order that the benchmarking can consider spatial disaggregation, Tat will be divided into four zones (each of which have equal demands for resources).
 \end{itemize}
@@ -227,7 +227,7 @@ First, consider the water flow from A (zone 1) to B (zone two) via the combinati
 
 \begin{align}
 %z_A  + \eta^{pump} \frac{\mbox{pump energy}}{\rho V g}  = z_B + F \frac{l}{D} \frac{v^2}{2g}
-\eta^{pump} \cdot (\mbox{pump energy})  = m \left( gz_B + F \frac{l}{D} \frac{v^2}{2} \right) 
+\eta^{pump} \cdot (\mbox{pump energy})  = m \left( gz_B + f_D \frac{l}{D} \frac{v^2}{2} \right) 
 \end{align}
 
 Second, consider the flow across the dam, between $B$ and $C$. Using the same assumptions as above, and defining the dam with an electrical generation efficiency, $\eta^{dam}$, and again multiplying through by $mg$, the relationship of water input attributes to the dam's electrical output is:

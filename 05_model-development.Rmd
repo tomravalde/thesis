@@ -154,7 +154,7 @@ Tat has 105 households of an average size of 4.4 people, covering 69 acres of fa
 	\label{fig:tat-overview}
 \end{figure}
 
-The small size of Tat serves to make the benchmark problem user-friendly because the problem can conceptualised in a diagram on a single page of A4. The village's features described above will be used to define the village's demands for goods and services, and the network of resources and processes which will meet this demand. The models will compute how Tat can meet demands for goods and services at the lowest cost, using the village's resource management processes. Goods and services include food, water and energy, and resource management processes include everything from small domestic stoves to agricultural activities.
+The small size of Tat serves to make the benchmark problem user-friendly because the problem can be conceptualised in a diagram on a single page of A4. The village's features described above will be used to define the village's demands for goods and services, and the network of resources and processes which will meet this demand. The models will compute how Tat can meet demands for goods and services at the lowest cost, using the village's resource management processes. Goods and services include food, water and energy, and resource management processes include everything from small domestic stoves to agricultural activities.
 
 To construct the problem, data from the literature will be used to derive resource demands, and to select and define the behaviour of the resource management processes. However, to define a benchmark problem that is both user-friendly, and at the same complicated enough to test the different formulations, various adjustments are made, in the form of simplifications, assumptions, and additions (outlined in Appendix \ref{sec:tat-changes}); these are justified on the basis that this the end-goal of the benchmarking is to identify the best formulation, rather than to improve Tat's metabolism. The adjustments achieve a both simplicity in understanding the model, and yet retain enough complexity in order to suitably test the formulations. This benchmarking also demonstrates how one can formulate a problem from real world data.
 <!--
@@ -186,7 +186,7 @@ and that if a resource can be imported, it can be imported to any zone, with the
 %	\sffamily
 	\includegraphics[width=\textwidth]{05_model-development/tat-zones.pdf}
 %	\end{spacing}
-	\caption{A representation of the four zones for the Tat Hamlet problem, and the transport connections that join them (indicated by arrows). More details regarding the transport processes are provided in Table \ref{tab:processes-and-resources}.}
+	\caption{A representation of the four zones for the Tat Hamlet problem, and the transport connections that join them (indicated by arrows). More details regarding the transport processes (such as roads, cables and pipes) are provided in Table \ref{tab:processes-and-resources}.}
 	\label{fig:tat-zones}
 \end{figure}
 
@@ -645,15 +645,15 @@ The calculation of $J$ is somewhat analogous to the calculation of $G$, in that 
 \centering
 \caption{Example parameter values to model transport processes represented by Figures \ref{fig:transp-elec} and \ref{fig:transp-biomass}.}
 \label{tab:transp-coeffs}
-\begin{tabular}{@{}lllllll@{}}
+\begin{tabular}{@{}llllllp{5cm}@{}}
 \toprule
 \multirow{2}{*}{$\tau$}  & \multirow{2}{*}{$r$} & \multicolumn{2}{l}{Source}               & \multicolumn{2}{l}{Destination}                  & \multirow{2}{*}{Comment}               \\ \cmidrule(lr){3-6}
                       &                      & $k^{\alpha}_{\tau r}$ & $k^{\beta}_{\tau r}$ & $k^{\alpha '}_{\tau r}$ & $k^{\beta '}_{\tau r}$ &                                        \\ 
 \midrule
 Cable                 & Electricity          & -1                 & 0                   & 1                   & \textless0          & Negligible electricity losses              \\ \cmidrule(lr){1-2}
 \multirow{3}{*}{Road} & Biomass              & -1                 & 0                   & 1                   & 0                   & No losses                              \\
-                      & Petrol               & 0                  & \textless0          & 0                   & 0                   & Petrol requirements depend on distance \\
-                      & CO2                  & 0                  & \textgreater0       & 0                   & \textgreater0       & Emissions depend on distance           \\
+                      & Petrol               & 0                  & \textless0          & 0                   & 0                   & Petrol is supplied in source zone with the amount depending on distance \\
+                      & CO2                  & 0                  & \textgreater0       & 0                   & \textgreater0       & Emissions depend on distance and are split between zones           \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -729,7 +729,7 @@ Like Keirstead's model, the resources are expressed in terms of quantities (such
 The modelling of conversion processes is similar to the black-box formulation of the null model, but again, two equations are used. The first defines the net resource quality, $G^{(qual)}_{prqz}$, generated by a conversion process in a zone at a particular time, for a process with variable operation rate $F^P_{pz}$, and parameters to define the relative ratio of resource inputs and outputs, $k^P_{prq}$:
 
 \begin{align}
-G^{(qual)}_{prqz} &= k^P_{prq} F^P_{pz}}
+G^{(qual)}_{prqz} &= k^P_{prq} F^P_{pz}
 \label{eq:praq_conv_qual}
 \end{align}
 
@@ -839,7 +839,7 @@ The change that the NL model makes is in the way conversion processes are modell
 \label{eq:nl_process}
 \end{align}
 
-In \eqref{eq:nl_process}, the $k^P_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These variables can then be defined in a bespoke way. For a linear process, $\kappa^{*}_{pr}$ is defined by a number, which essentially reduces Equation \eqref{eq:nl_process} to the null formulation Equation \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance \eqref{eq:nl_process_dam_energy} and a mass balance \eqref{eq:nl_process_dam_mass}, based on the formula for potential energy, $\mbox{energy}=\mbox{mass} \times \mbox{gravity} \times \mbox{height of elevation}$:
+In \eqref{eq:nl_process}, the $k^P_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These variables can then be defined in a bespoke way. For a linear process, $\kappa^{*}_{pr}$ is defined by a number, which essentially reduces Equation \eqref{eq:nl_process} to the null formulation Equation \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance \eqref{eq:nl_process_dam_energy} and a mass balance \eqref{eq:nl_process_dam_mass}, based on the formula for potential energy, $\mbox{energy}=\mbox{mass} \times \mbox{gravity} \times \mbox{height of elevation}$ (and assuming a dam of 100 per cent efficiency):
 
 \begin{align}
 \kappa^{I}_{p, r=\mbox{water}} g H_I &=  \kappa^{O}_{p, r=\mbox{water}} g H_O + \kappa^{O}_{p, r=\mbox{elec}} \label{eq:nl_process_dam_energy} \\
@@ -911,7 +911,7 @@ In addition, the boundaries on the imports and exports and the objective functio
 
 ### Model objectives {#sec:model-objs}
 
-The three models will minimise some objective. The are numerous possibilities. A common objective for these models it to minimise the cost of a system, cost resource costs, conversion process costs, and transport process costs, ($C^R$), ($C^R$), and ($C^{\tau}$), respectively:
+The three models will minimise some objective. The are numerous possibilities. A common objective for these models is to minimise the cost of a system, i.e. the summed costs of the resources, conversion processes, and transport processes, ($C^R$), ($C^R$), and ($C^{\tau}$), respectively:
 
 \begin{align}
 C^R &= \sum_{rz} c_r I_{rz} \\
@@ -952,7 +952,7 @@ The three formulations use continuous variables (e.g. resource quantities and pr
 
 ## Implementation {#sec:implementation}
 
-The models are encoded using the specialist GAMS language[^GAMS], and uses IBM's CPLEX[^CPLEX] solver to solve the nonlinear models, and the BARON solver to solve the nonlinear model. The model has two components, namely the *formulation*, which includes the mathematics (i.e the equations, abstracted from the data), and the *data*, i.e. the parameter values which will populate the equations (site layout, resource demands, process behaviour etc.).
+The models have been encoded using the specialist GAMS language[^GAMS], and uses IBM's CPLEX[^CPLEX] solver to solve the nonlinear models, and the BARON solver to solve the nonlinear model. The model has two components, namely the *formulation*, which includes the mathematics (i.e the equations, abstracted from the data), and the *data*, i.e. the parameter values which will populate the equations (site layout, resource demands, process behaviour etc.).
 
 [^GAMS]: General Algebraic Modelling System: \url{https://www.gams.com/}
 [^CPLEX]: \url{https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/}
@@ -1023,7 +1023,7 @@ No.        & Added                                    & Abbrev.      & No. & Add
 
 ### Results: comparison of formulations {#sec:tat-results}
 
-Figure \ref{fig:comparison-formulations} shows how the number of equations and variables, run-time, and objective function value changes with the number of processes in Tat's network. These plots show that as the number of conversion processes added to the network increases, then so do the number of equations and variables. However, when comparing between the formulations, these quantities all have the same order of magnitude. More interesting are two observations made by comparing objective function values and run times. First, unlike for the numbers of equations and variables, the objective function and the solution time do not monotonically increase with the number of processes (note in particular the spike in objective value for eight conversion processes, which does not find a solution within the 1,000 second limit imposed on the run-time). This unpredictability is because the speed at which nonlinear optimisation algorithms arrive at an optimal solution is sensitive to the way the model is formulated, even being affected by the order in which equations, variables, and components are defined. Second, a difference in the order of magnitude of solution time opens up from the point at which the network contains six or more conversion processes. Note that these solution times are to achieve objective function values that are very similar to those produced by the linear formulations (this can be more clearly seen in the plots where outliers have been removed). These behaviours give insight into how the formulations behave with respect to fidelity, generality, tractability, and usability, which are discussed in the following sections.
+Figure \ref{fig:comparison-formulations} shows how the number of equations and variables, run-time, and objective function value changes with the number of processes in Tat's network. These plots show that as the number of conversion processes added to the network increases, then so do the number of equations and variables. When comparing the formulations, the number of variables and equations have the same order of magnitude. More interesting however, is the comparison of objective function values and run times, which exhibit two phenomena. First, unlike for the numbers of equations and variables, the objective function and the solution time do not monotonically increase with the number of processes (note in particular the spike in objective value for eight conversion processes, which does not find a solution within the 1,000 second limit imposed on the run-time). This unpredictability is because the speed at which nonlinear optimisation algorithms arrive at an optimal solution is sensitive to the way the model is formulated, even being affected by the order in which equations, variables, and components are defined. Second, a difference in the order of magnitude of solution time opens up from the point at which the network contains six or more conversion processes. Note that these solution times are to achieve objective function values that are very similar to those produced by the linear formulations (this can be more clearly seen in the plots where outliers have been removed). These behaviours give insight into how the formulations behave with respect to fidelity, generality, tractability, and usability, which are discussed in the following sections.
 
 <!--
 [TODO: note the nonconvexity and the need to find a guaranteed global optimum, rather than stopping at any optimum, especially when there are integer variables in a network problem, using branch and bound methods [@Williams, Chapter 8].
@@ -1198,11 +1198,11 @@ The methods in this chapter can be made more sophisticated in a number of ways. 
 
 - *Enable the model to distinguish between domestic and non-domestic conversion processes and resources.*, level. For processes and resources belonging to the domestic set, constraints could ensure that (i) a household has a maximum of one type of domestic technology; (ii) households have a minimum of one technology that can provide each required domestic resource; (iii) domestic technologies do not provide more than a household requires; and (iv) domestic production must equal domestic demand. These four constraints are formulated in Equations 9 to 12 of @Samsatli.
 
-- *Introduce processes which store resources.* Such storage processes might hold biomass, heat and other resources over a period of time. These would need to be able to quantify the resources required to keep a resource in storage (for example heat required to keep biomass dry), and losses over time (for example, in the case of stored heat). Such constraints are formulated in Equations 9.3--9.10 of @Keirstead2013 (pp166--170).
+- *Introduce processes which store resources.* Such storage processes might hold biomass, water and other resources over a period of time. These would need to be able to quantify the resources required to keep a resource in storage (for example heat required to keep biomass dry), and losses over time (for example, in the case of stored heat). Such constraints are formulated in Equations 9.3--9.10 of @Keirstead2013 (pp166--170).
 
 - *Take greater advantage of PRaQ's geographical representation.*. Each zone, $z$, could have spatial area $A^Z_z$ defined for it. Processes $p$ could also be defined with a spatial area (i.e. its 'footprint'), $A^P_p$, and then a constraint could be defined which restrict a zone's process selection to those that fit inside it. This constraint is formulated in Equation 37 of @Samsatli.
 
-- *Model demand variation over hourly, daily¸ weekly, and seasonal periods, in a computationally efficient way.*. In practice, the computational cost of using small time steps may become prohibitive as it multiplies the number of variables. One way to address this is to use 'hierarchical non-uniform time discretization', as described in @Keirstead2013 (Section 9.2.1, p161). This method composes time into different levels (e.g. yearly, daily, hourly, etc.) Each level can have different intervals of varying times. The demand profile is then made up by combining these intervals in appropriate proportions. For example a week can be made up of two day types (weekday and weekend), which repeat five times and two times, respectively. These two day types are each assembled from types of hour (e.g. morning peak, evening peak and rest-of-day average). In this way, a 90 day season modelled at hourly granularity (for example) need only by represented by $3 \mbox{ hour types} \times 2 \mbox{ day types} = 6$ intervals, rather than by $90 \mbox{ days} \times 24 \mbox{ hours} = 8,760$ intervals.
+- *Model demand variation over hourly, daily¸ weekly, and seasonal periods, in a computationally efficient way.*. In practice, the computational cost of using small time steps may become prohibitive as it multiplies the number of variables. One way to address this is to use 'hierarchical non-uniform time discretization', as described in @Keirstead2013 (Section 9.2.1, p161). This method considers time at different levels (e.g. yearly, weekly, daily, hourly, etc.). By definition, each level is defined by the next level down (e.g. a week is seven days). This means a city's demand profile can be constructed by combining these units of time in appropriate proportions. For example a week can be made up of two day types (weekday and weekend), which repeat five times and two times, respectively. These two day types are each assembled from types of hour (e.g. morning peak, evening peak and rest-of-day average). In this way, a 90 day season could be modelled at hourly granularity (for example) with just $3 \mbox{ hour types} \times 2 \mbox{ day types} = 6$ intervals, rather than by $90 \mbox{ days} \times 24 \mbox{ hours} = 8,760$ intervals.
 
 One thing that the developments above cannot do is deal with nonlinear process behaviour. This is not to say that over the longterm, there is no hope for a nonlinear formulation (especially given that computations speeds are becoming quicker all the time). Two possibilities present themselves:
 
