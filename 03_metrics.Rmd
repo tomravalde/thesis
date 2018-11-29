@@ -95,6 +95,8 @@ $\eta_2$ metrics on the other hand take the ratio of two different resources typ
 library(xtable)
 
 tab.metrics.csv <- read.csv("03_metrics/efficiency-metrics.csv", check.names=FALSE)
+
+
 tab.metrics.tex <- xtable(tab.metrics.csv,
 			  caption="Black-box resource performance metric classes.\\label{tab:metrics-closed}",
 			  align="lllllll")

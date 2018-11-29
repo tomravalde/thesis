@@ -1,4 +1,4 @@
-# Shann Gu Power Company cast study: data, assumptions, and calculations {#sec:app-spc}
+# Shann Gu Power Company case study: data, assumptions, and calculations {#sec:app-spc}
 
 ```{r Setup, include=FALSE, results="markup", warning=FALSE}
 library(knitr)
@@ -13,7 +13,7 @@ library(ggplot2)
 
 This appendix provides further detail on the data used in the case study outlined in the Shann Gu Power Company (SPC) case study in Chapter 6, including, summaries of the data, links to the full data sets (recorded in CSV and YAML formats), and notes regarding data sources, along with assumptions and calculations (e.g. those used to convert the data into appropriate units of measurement). The following sections outline the data in the order in which it was presented it in Section \ref{sec:SPC-data}. Note that the documentation regarding the SPC redevelopment plans is confidential and thus certain information (such as the precise site location) cannot be given here.
 
-The data discussed in this appendix can all be found online at the GitHub repository for the cast study [^case-study-github]. Morever, because this thesis has been written using the R-markdown format, the R code used to summarise and manipulate the data is embedded in the source of this page[^appendix-source], which maybe useful for those who want to study the data for themselves.
+The data discussed in this appendix can all be found online at the GitHub repository for the case study [^case-study-github]. Morever, because this thesis has been written using the R-markdown format, the R code used to summarise and manipulate the data is embedded in the source of this page[^appendix-source], which maybe useful for those who want to study the data for themselves.
 
 [^case-study-github]: \url{https://github.com/tomravalde/shann-gu-case-study}
 
@@ -242,18 +242,18 @@ The linear black-box representation of a pipe requires expressing $h_f$ as a fun
 Q = AV
 \end{align*}
 
-Re-arranging yields:
+Rearranging yields:
 
 \begin{align*}
 V^2 &= Q^2/A^2 \\
-&= \frac{16Q^2}{\pi^4 D^4}
+&= \frac{16Q^2}{\pi^2 D^4}
 \end{align*}
 
 Thus:
 
 \begin{align*}
 h_f&=\frac{8 f_D}{g \pi^4 D^3} Q^2 L \\
-&= \frac{16Q^2}{\pi^4 D^4}
+&= \frac{16Q^2}{\pi^2 D^4}
 \end{align*}
 
 For the black-box representation, by definition, the volume flow rate is 1 m$^3$/s, such that $Q^2=Q$. It is also assumed that $D = 0.5$ m$^3$, and $f_D = 0.04$, thus the energy required for pumping is given as:
