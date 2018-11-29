@@ -16,3 +16,15 @@
 *.fls
 *.nls
 *.ilg
+*.bbl
+*.blg
+.RData
+.Rhistory
+!metab-hierarchy.pdf
+*.svg
+cache/
+*/cache/
+*.png
+*.ods
+*.nlo
+*.swp

@@ -1,0 +1,95 @@
+# PRaQ formulation for the SPC case study
+
+The formulation of PRaQ given in Chapter \ref{sec:model-dev} does not contain the temporal element (indexed by $t$, for example, resource demands which vary with time, $D_{rzt}$), whereas the case study in Chapter \ref{sec:case-study} does. For the sake of completeness, this appendix presents the formulation used in the SPC case study.
+
+Resource quantity and quality balances:
+
+\begin{align}
+I_{rzt} + \sum_{\tau}^{\mathcal{T}} J^{(qty)}_{\tau rzt} + \sum_{p}^{P}G^{(qty)}_{przt} &= D_{rzt} + E_{rzt}
+\label{eq:spc_balance_qty}
+\end{align}
+
+\begin{align}
+X_{rq} I_{rzt} + \sum_{\tau}^{\mathcal{T}}J^{(qual)}_{\tau rqzt} + \sum_p^P G^{(qual)}_{prqzt} &= D^{(qual)}_{rqzt} + X_{rq} E_{rzt}
+\label{eq:spc_balance_qual}
+\end{align}
+
+Limits on imports and exports:
+
+\begin{align}
+I_{rzt} &\geq \delta^I_{rz} I^{min}_{rt} \label{eq:spc_imp_min} \\
+I_{rzt} &\leq \delta^I_{rz} I^{max}_{rt} \label{eq:spc_imp_max} \\
+E_{rzt} &\geq \delta^E_{rz} E^{min}_{rt}  \label{eq:spc_exp_min} \\
+E_{rzt} &\leq \delta^E_{rz} E^{max}_{rt} \label{eq:spc_exp_max}
+\end{align}
+
+
+Conversion processes:
+
+\begin{align}
+G^{(qual)}_{prqzt} &= k^P_{prq} F^{_{pzt}}
+\label{eq:spc_conv_qual}
+\end{align}
+
+\begin{align}
+X_{rq}G^{(qty)}_{przt} &= k^P_{prq} F^P_{pzt} \delta^R_{rq}, \qquad \forall~\delta^P_{prq}=1
+\label{eq:spc_conv_qty}
+\end{align}
+
+\begin{align}
+	F^P_{pzt} \leq N^P_{pz} F^{P,max}_{pt} \qquad 
+\label{eq:spc_process_rate}
+\end{align}
+
+Transport processes:
+
+\begin{align}
+J^{(qual)}_{\tau rqzt} = &\sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{\mathcal{T}}_{\tau zz't} \\
++ &\sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{\mathcal{T}}_{\tau z'zt}
+\label{eq:spc_transp_qual}
+\end{align}
+
+\begin{align}
+X_{rq}V^{(qty)}_{\tau rz} &= \Big[ \sum_{z'} (k^{\alpha}_{\tau rq} + k^{\beta}_{\tau rq} l_{zz'}) F^{\mathcal{T}}_{\tau zz't} \\
+&+ \sum_{z'} (k^{\alpha'}_{\tau rq} + k^{\beta'}_{\tau rq} l_{z'z}) F^{\mathcal{T}}_{\tau z'zt} \Big] \delta^R_{rq} \qquad \forall~\delta^{\tau}_{\tau rq}=1
+\label{eq:spc_transp_qty}
+\end{align}
+
+\begin{align}
+F^{\mathcal{T}}_{\tau zz't} &\geq \delta^{\mathcal{T}}_{\tau zz'} F^{\mathcal{T},min}_{\tau t} \label{eq:spc_transp_min} \\
+F^{\mathcal{T}}_{\tau zz't} &\leq \delta^{\mathcal{T}}_{\tau zz'} F^{\mathcal{T},max}_{\tau t} \label{eq:spc_transp_max} \\
+\delta^{\mathcal{T}}_{\tau zz't} &= 0, \qquad \forall (z,z') \notin nb \label{eq:spc_neighbs} \\
+\delta^{\mathcal{T}}_{\tau zz'} &= \delta^{\mathcal{T}}_{\tau z'z} \label{eq:spc_direction}
+\end{align}
+
+Costs of system components:
+
+\begin{align}
+C^R &= \sum_{rzt} c_r I_{rzt} \\
+C^P &= \sum_{pz} c_p N_{pz} \\
+C^{\mathcal{T}} &= \sum_{\tau zz'} c_\tau \delta^{\mathcal{T}}_{\tau zz'} l_{zz'}
+\end{align}
+
+Objective function for minimum cost:
+
+\begin{align}
+\min\Big\{\gamma^R C^R + \gamma^P C^P + \gamma^{\tau} C^{\tau}\Big\}
+\label{eq:spc_objective_cost}
+\end{align}
+
+where $\gamma^P=\gamma^{\tau}=0.1$ to represent an annualised cost over an assumed ten-year life-span of the model, and $\gamma^R=1$.
+
+Objective function for minimum emissions:
+
+\begin{align}
+\min\Big\{\sum_{rz} \epsilon_r I_{rz}\Big\}
+\end{align}
+
+Objective function for minimum waste:
+
+\begin{align}
+\min\Big\{\sum_{rtz} I_{rzt}\ \qquad \forall r \in R^{\mbox{waste}}\Big\}
+\label{eq:spc_objective_waste}
+\end{align}
+
+where $R^{\mbox{waste}}$ is the subset of resources $R$ which are considered waste resources (i.e. MSW, organic waste, waste water, ash).

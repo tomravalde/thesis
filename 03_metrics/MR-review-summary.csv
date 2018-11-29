@@ -1,0 +1,132 @@
+citation,system,metric,keywords
+@Akinbola2009,urban water system,"cost, water reuse",
+@Amato2013,cement production,carbon emissions,overview of the industry
+@Amini2007,car recycling,exergy,
+@Ashok2007,hybrid energy,cost,
+@SanchezCifue,energy,exergy,power plant
+@Ayres1998,chlorine production,exergy,
+@Bai2007,water distribution,cost,
+@Balocco2004,urban area,exergy,buildings (materials)
+@Banos2011,energy,,
+@Batan2010,production,GHG,
+@BFF2002,urban area,EF,
+@Bhatt2010a,urban energy system,carbon emissions,
+@Bohringer2007,country,sustainability indices,
+@Boix2012,energy,"energy, water",heating
+@Bojic2010,energy,,district heating
+@Bovea2007,waste management,LCA,
+@Cao2011,urban area,carbon,
+@Chambers2014,,EF,introduction
+@Chansarn2014,country,DEA,
+@Chen2009a,water resources,exergy,
+@Chen2009,water resource allocation,exergy,
+@Chen2014,,,
+@Chen2012,urban area,ENA,carbon
+@Chen2012b,Vienna,ENA,carbon
+@Cheng2003,waste management,MCDA,site location
+@Clift2000,waste management,LCA,
+@Comakl20014,energy,exergy,district heating
+@Connelly2001,,exergy,introduction
+@Connelly2001a,,exergy,introduction
+@DAlisa2012,urban area,waste,new metrics
+@Diagger2009,urban water system,,reduce resource consumption
+@Dang2010,biomsass,cost,vietnam
+@Devuyst2001,,,
+@Eckelman2013,oil refinery,LCA,industrial symbiosis
+@Eriksson2002,waste management,"LCA, cost",
+@Fagan2010,urban water system,"cost, sustainability",very low level
+@Frosch1989,industrial ecology,,introduction
+@Gasparatos2009,,,
+@Gasparatos2009a,UK society,exergy,
+@Hintergerger1997a,,MIPS,introduction
+@HIremath2007,energy,"cost, local resources, ",multiobjective
+@Huang2007,water resources,exergy,
+@Iacovidou2012,energy,,Co-digestion
+@Ignatenko2007,car recycling,exergy,within multiobjective optimisation
+@Inostroza2014,urban area,technomass,
+@Jorgensen1995,Eco-system,emergy,
+@Kaushik2011,energy,exergy,power plant
+@Keirstead2013,urban area,energy,
+@Keirstead2012b,urban energy system,,multiobjective
+@Keirstead2012,biomass,cost,energy
+@Keirstead2012c,energy,multiobjective,CHP
+@Kestin1980,exergy,,introduction
+@Kharrazi2012,energy,ENA,waste
+@Khosravi2013,wastewater treatment,exergy,
+@Koroneous2005,cement production,exergy,
+@Koroneous2008,transport,exergy,
+@Koroneous2010,energy,exergy,power plant
+@Kumar2012,ethanol production,"LCA, GHG",comparison of approaches
+@Leduc2013,urban area,exergy,
+@Li2006,waste management,cost,
+@Lim2010,urban water system,imported resources,
+@Liu2011a,Urban area,ENA,exergy
+@Liu2011,water management,,
+@Lu2009,waste management,revenue,GHG control
+@Madlool2012,cement production,exergy,
+@Makropoulos2008,urban water system,water use,
+@Martinez2010,water management,exergy,
+@Mayer2008,,,
+@Mehdizadeh2011,food production,"Energy, cost",multiobjective
+@Michaelis1998,steel production,exergy,
+@Mills2014,energy,LCA,sewage sludge
+@Mora2006,wastewater treatment,exergy,
+@Mora2013,water,cost,groundwater
+@Mori2012,urban area,sustainability indices,review of indicators
+@Morrissey2004,waste management,LCA,models
+@Nourry2008,society,indicators,France
+@Okadera2014,energy,water footprint,
+@Ooka2009,energy,"CO2, PEC",building energy system
+@Ostergaard2009,energy,MCDA,renewable
+@Ozgener2005,energy,"exergy, energy",district heating
+@Patterson1998,,,theories of value
+@Pearce1993,,,weak sustainability
+@Pearson2009,urban water system,,
+@Ramaswami2011,urban area,GHG,Two approaches
+@Ravindranath2004,energy,,biomass power
+@Rees1992,,EF,introduction
+@Rees1999,,EF,introduction
+@Ren2010,energy,cost (inc. carbon tax),distributed
+@Reno2013,cement production,exergy,
+@Rosen2001,energy,exergy,"introduction, power plant illustration"
+@Rosen2009,energy,exergy,power
+@Rosen1999,,exergy,waste emissions
+@Rosen2008,energy,exergy,space heating
+@Rosen2005,energy,exergy,"cogeneration, district heating"
+@Sanders2012,water,energy 'footprint',evaluation
+@Schramski2011,,ENA,introduction
+@Schuster2009,,,
+@Sciubba2001,energy,exergy,thermal systems
+@Sciubba2005,biofuel,"emergy, exergy",comparison
+@Siche2008a,country,indicators,comparison
+@Sirikitputtisak2009a,energy,Cost and CO2 purchase credits,planning
+@Soroudi2011,energy,"cost, emissions","Pareto, distributed resources"
+@Chester2014,urban area,GHG,
+@Sugihara2004,urban energy system,cost,integrated service
+@Szargut1988,,exergy,introduction
+@TalensPeir2010,biodiesel,LCA and exergetic LCA,
+@Taylor2010,,MCDA,"introduction, e.g. waste management"
+@Tehrani2013,urban area,UCCLN,complicated district based analysis
+@Thorpe2012,sewage sludge,LCA,anaerobic digestion
+@Tu2006,water management,Minimise shortage,
+@Vanham2014,urban area,water footprint,Milan
+@Vargas-Parra2013,water management,exergy,rainwater harvesting
+@Vasan2010,,,
+@Voulovulis2012a,water management,maximise reuse,"and sanitation, for a low carbon socieity, notes energy savings"
+@Wackernagel2006,,EF,introduction
+@Wang2011,urban area,exergy,reclaimed water assessment
+@Wang1994,process industries,wastewater. Freshwater minimisation,e.g. petroleum refining
+@Webber2011a,,,Water-energy nexus
+@Weber2011,energy,cost,district
+@Xi2010a,waste management,MCDA,"cost, diversion rate, public satisfaction"
+@Xydis2012,energy,"Efficiency-to-cost ratio, exergy",recovery form waste
+@Yuquin2011,,,
+@Zaman2013,urban area,zero waste index,substitution of virgin materials
+@Zanganeh2010,water management,cost,
+@Zhang2010,country,exergy,
+@Zhang2009a,urban area,metabolic capacity,"emergy, socioeconomic"
+@Zhang2007,urban area,Eco-efficiency,"resource efficiency, environmental efficiency"
+@Zhang2009b,urban area,ENA,emergy
+@Zhang2009,urban area,emergy,"emergy flow breakdown, related to economic and area"
+@Zucaro2014,urban area,decomposition analysisemergy LCA approach,
+ ,,,

@@ -4,10 +4,11 @@
 \usepackage{parskip}
 %\usepackage[pdftex]{graphicx}
 \usepackage[]{graphicx}
-\usepackage{subfig}
+\usepackage{subcaption}
 \usepackage{array}
 \usepackage{amssymb, amsmath}
 \usepackage{fullpage}
+\usepackage{pdflscape}
 \usepackage{float}
 \usepackage{multirow}
 \usepackage{fixltx2e}
@@ -22,10 +23,10 @@
 %%\usepackage{helvetica}
 \usepackage{listings}
 \usepackage{gensymb}
-\usepackage{nomencl}
+\usepackage[intoc, english]{nomencl}
 \usepackage{rotating}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{colorlinks=true}
+%\hypersetup{colorlinks=true}
 \numberwithin{equation}{chapter}
 \pagestyle{headings}
 
@@ -38,7 +39,87 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \lhead{\fancyplain{}{\textit{\nouppercase\leftmark}}}
 \rhead{}
-\fancyfoot[LE,LO]{\footnotesize{\texttt{Revision \VCRevision \\on \VCDateISO~at~\VCTime}}}
+%\fancyfoot[LE,LO]{\footnotesize{\texttt{Revision \VCRevision \\on \VCDateISO~at~\VCTime}}}
 \renewcommand{\headrulewidth}{0.4pt}
 
 \lstset{breaklines=true}
+
+\graphicspath{{01_introduction/}{02_lit-review/}{03_metrics/}{04_database/}{05_model-development/}{06_case-study/}}
+
+
+% User-defined environment to define quotes at the start of a chapter (http://tex.stackexchange.com/a/53380)
+\makeatletter
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+% Quotes to open chapters
+\usepackage{epigraph}
+
+% Quotes for text
+\usepackage{attrib}
+
+% Insert the wordcount output from texcount
+\usepackage{verbatim}
+\newcommand\wordcount{\verbatiminput{\jobname.count}}
+
+% Set fonts (XeLaTeX)
+%\usepackage[scaled=.95]{gentium}
+%\usepackage{textcomp}
+%\usepackage[T1]{fontenc}
+%\usepackage[libertine,bigdelims,vvarbb]{newtxmath}
+%\usepackage[cal=boondoxo]{mathalfa}
+
+\usepackage{fontspec}
+%\setromanfont[Mapping=tex-text]{Gentium Basic}
+%\setmathsfont[Mapping=tex-text]{Linux Libertine}
+%\setsansfont[Mapping=tex-text]{Ubuntu}
+%\setmonofont[Mapping=tex-text]{Liberation Mono}
+
+% Box to note publication content
+\usepackage{tcolorbox}
+
+% START of defining yaml as a listing language, using slightly modified version of http://tex.stackexchange.com/a/152856
+\newcommand\YAMLcolonstyle{\color{red}\mdseries\ttfamily\footnotesize}
+\newcommand\YAMLkeystyle{\color{black}\bfseries\ttfamily\footnotesize}
+\newcommand\YAMLvaluestyle{\color{blue}\mdseries\ttfamily\footnotesize}
+
+\makeatletter
+
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray}\bfseries,
+  basicstyle=\YAMLkeystyle,                                 % assuming a key comes first
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\YAMLvaluestyle\ttfamily,
+%  moredelim=[l][\color{orange}]{\&}, % '&' is an escape character, but I don't want that here
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},   % switch to value style at :
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{red}\textgreater}}1     
+                {|}{{\textcolor{red}\textbar}}1 
+                {\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
+\makeatother
+
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
+% END of defining yaml as a listing language, using slightly modified version of http://tex.stackexchange.com/a/152856
+

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Supplementary information for the Shann Gu modelling paper</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="/home/tr608/.pandoc/marked/kultiad-serif.css">
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<header>
+<h3 class="date">February 2014</h3>
+
+<h1 class="title">Supplementary information for the Shann Gu modelling paper</h1>
+
+
+<h2 class="author">Tom Ravalde</h2>
+<p class="affilation"><em>Imperial College London</em></p>
+<h2 class="author">James Keirstead</h2>
+<p class="affilation"><em>Principle data scientist at Cambridge Assessments (formally of Imperial College London)</em></p>
+
+</header>
+
+
+<p class="small"><strong>Abstract: </strong><em>[TODO: remove?] Details of the data used in the urban metabolism optimisation model. Includes sources, assumptions, applied modifications, and other notes. Also includes R code which can be used to filter and summarise the data according to certain criteria.</em></p>
+
+
+
+<p></p>
+<h1 id="introduction">Introduction</h1>
+<p>This webpage gives further detail on the data used in the case study outlined in <span class="citation">(<span class="citeproc-not-found" data-reference-id="Ravalde2016b"><strong>???</strong></span>)</span>. Specifically we:</p>
+<ul>
+<li>present summaries of the data</li>
+<li>provide links to the data (in CSV and YAML formats)</li>
+<li>note data sources, along with assumptions and calculations used to convert the data into appropriates values and units</li>
+<li>[TODO: if time] Show how it can be converted to be used in GAMS modelling (using the R programming language)</li>
+</ul>
+<p>All of the above can be found from this webpage. Furthermore, since the source of this page was written in <a href="http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html">Rmarkdown</a> format before its conversion to HTML, by downloading the <a href="supInf.Rmd">supInf.Rmd</a> source of this page, you can get the R-code used on this page to manipulate the data, for your own interest.</p>
+<p>The next section outlines the data in the order in which we presented it in <span class="citation">(<span class="citeproc-not-found" data-reference-id="Ravalde2016b"><strong>???</strong></span>)</span> in the subsection titled 'Input data'.</p>
+<h2 id="a-note-on-sources">A note on sources</h2>
+<p>Some of our data and assumptions come from seven documents (Word documents and PowerPoint presentations) provided by the Shann Gu company and their collaborators. This documentation is not publicly available. We will list these references using a square-bracketed number between 1 and 7, e.g. [3].</p>
+<p>Other sources will be referenced by links.</p>
+<h1 id="input-data">Input data</h1>
+<h2 id="site-layout">Site layout</h2>
+<p>Any size used in the model needs to be defined as a number of zones. For the Shann Gu model we use the thirteen zones listed on slide 20 of [6]. Each zone belongs to a region.</p>
+<p>Region, Zone south, factory south, factory_assembly production, northDistrict production, multifunction production, factory_blades production, tech production, quality production, dormitories residential, residential residential, hospital residential, school energyIsland, energyIsland NA, reserved</p>
+<p>Next we define which of the above zones can be directly connected by transport links. This is done from a visual inspection to identify neighbouring zones from slide 20 of [6]. At the same time, we can define the distance between such neighbouring zones using a origin-destination matrix <a href="../modelling/data/zone-matrix.csv">zones.csv</a>. Any origin-destination pair which is are not neighbours are denoted with <code>NA</code> in its cell (e.g. <code>factory-northDistrict</code>). The other cells contain the distance between zones, in kilometers (e.g. <code>factory-factory_assembly</code> has a distance of [TODO: number]). This matrix is lower-triangular, so there is no need to define a distance in both directions (we assume these are equal).</p>
+<p>The distances have been assumed as being approximately [TODO: number] km, based on the overall site being 13 km^2.</p>
+<h2 id="times">Times</h2>
+<p>Our case study's time steps (along with their lengths in seconds) are defined in the <a href="../modelling/data/times.csv">times.csv</a> file.</p>
+<p>We have assumed a 360 day year, with the winter, summer and shoulder seasons taking lengths of 90 days, 90 days, and 180 days, respectively. So for example, the length of the <code>shoulder</code> season is calculated as <span class="math">\(180~\mbox{days} \times 24~\mbox{hours} \times 3,600~\mbox{seconds} = 1.5552 \times 10^7~\mbox{seconds}\)</span>.</p>
+<h2 id="resource-demands">Resource demands</h2>
+<p>The following demands zones are given in the Shann Gu documentation:</p>
+<ul>
+<li>Slide 20 of [6]: <code>heat</code> (winter), <code>cool</code> (summer) and <code>elec</code> (year-round).</li>
+<li>Slide 26 of [5]: <code>waterPotable</code>, and <code>water_reclaimed</code> as well as rates of <code>wastewater</code> generation</li>
+<li>Slide 28 of [5]: rates of <code>waste</code> generation (both organic and non-organic)</li>
+</ul>
+<p>Not that waste and wastewater generation rates are defined as negative demands, for use in our model.</p>
+<p>The waste generation figures from the Shann Gu Documentation are not provided in the same units (total solid waste = 8m3/day, organic waste = 360,000 kg/year), so we perform the following calculations to get separate values for <code>waste</code> and <code>waste_organic</code>:</p>
+<p>Assume solid waste has a density <span class="math">\(\rho=217.5~\mbox{kg/m3}\)</span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, thus:</p>
+<p><span class="math">\[
+\begin{align}
+\mbox{Total solid waste} &amp;= 8~\mbox{m3/day} \\
+          &amp;= 1,740~\mbox{kg/day} \\
+          &amp;= 635,100~\mbox{kg/year}
+\end{align}
+\]</span></p>
+<p>Subtracting the organic waste fraction:</p>
+<p><span class="math">\[
+\begin{align}
+\mbox{Non-organic waste} &amp;= 635,100 - 360,000~\mbox{tons/year} \\
+          &amp;= 275,100~\mbox{kg/year}
+\end{align}
+\]</span></p>
+<p>Having identified the site's resource management demands, we next make assumptions and calculations to appropriately redistribute some demands between multiple zones, before converting all demands to a consistent set of units (MW for energy, kg/s otherwise).</p>
+<p>In <a href="resource-demands.csv">resource-demands.csv</a>, we detail both the original data taken from the Shann Gu documentation, and any subsequent assumptions and calculations applied to that data. We now briefly outline this file's columns (denoted by <strong>bold</strong> text):</p>
+<ul>
+<li><strong>zone.region</strong> and <strong>zone</strong> are those regions and zones referred to in the Site Layout section above.</li>
+<li>The documented demand for a resource in any given season is denoted using the <strong>resource</strong>, <strong>season</strong>, and <strong>value.doc</strong> columns, with the units and reference given in <strong>units.doc</strong> and <strong>reference</strong>.</li>
+<li>When the Shann Gu documentation gives little detail about the spatial disaggregation of the demand (i.e. demand is only attributed to a region, rather than a zone), we make an assumption about how to divide this demand up between zones. Similarly, when the documentation has not provided a demand value for a particular season, we make assumptions (e.g. we have assumed that the shoulder heat demand is half the winter heat demand). This information is recorded in <strong>assump.redist</strong>, with the new values listed in <strong>value.redist</strong> (and units given in <strong>units.redist</strong>)</li>
+<li>Finally, <strong>notes.conv</strong> notes any necessary changes in units, such that <strong>value.conv</strong> and <strong>units.conv</strong> contain resource demands in a consistent set of units. <!--
+- More notes and calculations (for authors' use) in data-notes.ods.
+
+Example of how to convert documented electricity demand (kWh/year) to units required by the model (MW):
+$$
+\begin{align}
+111700000 \times 3.6/(365 \times 24 \times 3600) &= 12.75 \\
+6e7 \times 3.6/(365 \times 24 \times 3600) &= 6.85
+\end{align}
+--></li>
+</ul>
+<p>In summary, the reasoning for every demand value which appears in our case study can be justified by the chain of sources, assumptions, and calculations embedded in our CSV file.</p>
+<p>The data is recorded in CSV format in <a href="resource-demands.csv">resource-demands.csv</a>. Below are all rows from this dataset in which the <strong>value.conv</strong> column contains a non-zero value (i.e. all the resource demands to be in our case study), along with the R required to extract these rows.</p>
+<pre class="sourceCode r"><code class="sourceCode r">demands &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;resource-demands.csv&quot;</span>)
+
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">filter</span>(demands, value.conv!=<span class="dv">0</span>)</code></pre>
+<pre><code>##    zone.number  zone.region             zone        resource   season
+## 1            1        south          factory            heat     wint
+## 2            2        south factory_assembly            heat     wint
+## 3            9  residential      residential            heat     wint
+## 4           12 energyIsland     energyIsland            heat     wint
+## 5           13         &lt;NA&gt;         reserved            heat     wint
+## 6            1        south          factory            heat shoulder
+## 7            2        south factory_assembly            heat shoulder
+## 8           10  residential         hospital            heat shoulder
+## 9           12 energyIsland     energyIsland            heat shoulder
+## 10          13         &lt;NA&gt;         reserved            heat shoulder
+## 11           2        south factory_assembly            cool      sum
+## 12           4   production    multifunction            cool      sum
+## 13           5   production   factory_blades            cool      sum
+## 14           6   production             tech            cool      sum
+## 15           7   production          quality            cool      sum
+## 16           8   production      dormitories            cool      sum
+## 17           9  residential      residential            cool      sum
+## 18          10  residential         hospital            cool      sum
+## 19          11  residential           school            cool      sum
+## 20          12 energyIsland     energyIsland            cool      sum
+## 21           1        south          factory            elec     wint
+## 22           9  residential      residential            elec     wint
+## 23           1        south          factory            elec      sum
+## 24           9  residential      residential            elec      sum
+## 25           1        south          factory            elec shoulder
+## 26           9  residential      residential            elec shoulder
+## 27           1        south          factory    waterPotable     wint
+## 28           3   production    northDistrict    waterPotable     wint
+## 29           9  residential      residential    waterPotable     wint
+## 30           1        south          factory    waterPotable      sum
+## 31           3   production    northDistrict    waterPotable      sum
+## 32           9  residential      residential    waterPotable      sum
+## 33           1        south          factory    waterPotable shoulder
+## 34           3   production    northDistrict    waterPotable shoulder
+## 35           9  residential      residential    waterPotable shoulder
+## 36           1        south          factory      wastewater     wint
+## 37           3   production    northDistrict      wastewater     wint
+## 38           9  residential      residential      wastewater     wint
+## 39           1        south          factory      wastewater      sum
+## 40           3   production    northDistrict      wastewater      sum
+## 41           9  residential      residential      wastewater      sum
+## 42           1        south          factory      wastewater shoulder
+## 43           3   production    northDistrict      wastewater shoulder
+## 44           9  residential      residential      wastewater shoulder
+## 45           1        south          factory           waste     wint
+## 46           3   production    northDistrict           waste     wint
+## 47           9  residential      residential           waste     wint
+## 48           1        south          factory           waste      sum
+## 49           3   production    northDistrict           waste      sum
+## 50           9  residential      residential           waste      sum
+## 51           1        south          factory           waste shoulder
+## 52           3   production    northDistrict           waste shoulder
+## 53           9  residential      residential           waste shoulder
+## 54           1        south          factory   waste_organic     wint
+## 55           3   production    northDistrict   waste_organic     wint
+## 56           9  residential      residential   waste_organic     wint
+## 57           1        south          factory   waste_organic      sum
+## 58           3   production    northDistrict   waste_organic      sum
+## 59           9  residential      residential   waste_organic      sum
+## 60           1        south          factory   waste_organic shoulder
+## 61           3   production    northDistrict   waste_organic shoulder
+## 62           9  residential      residential   waste_organic shoulder
+## 63           1        south          factory water_reclaimed     wint
+## 64           3   production    northDistrict water_reclaimed     wint
+## 65           9  residential      residential water_reclaimed     wint
+## 66           1        south          factory water_reclaimed      sum
+## 67           3   production    northDistrict water_reclaimed      sum
+## 68           9  residential      residential water_reclaimed      sum
+## 69           1        south          factory water_reclaimed shoulder
+## 70           3   production    northDistrict water_reclaimed shoulder
+## 71           9  residential      residential water_reclaimed shoulder
+##    value.doc units.doc                                reference
+## 1       6000        kW                             [6] Slide 20
+## 2       5600        kW                             [6] Slide 20
+## 3      13220        kW                             [6] Slide 20
+## 4         50        kW                             [6] Slide 20
+## 5       2400        kW                             [6] Slide 20
+## 6          0        kW                             [6] Slide 20
+## 7          0        kW                             [6] Slide 20
+## 8          0        kW                             [6] Slide 20
+## 9          0        kW                             [6] Slide 20
+## 10         0        kW                             [6] Slide 20
+## 11      1985        kW                             [6] Slide 20
+## 12       304        kW                             [6] Slide 20
+## 13       400        kW                             [6] Slide 20
+## 14       400        kW                             [6] Slide 20
+## 15       288        kW                             [6] Slide 20
+## 16       940        kW                             [6] Slide 20
+## 17     17280        kW                             [6] Slide 20
+## 18       272        kW                             [6] Slide 20
+## 19       730        kW                             [6] Slide 20
+## 20       100        kW                             [6] Slide 20
+## 21      1117   1e5 kWh                             [6] Slide 20
+## 22       600   1e5 kWh                             [6] Slide 20
+## 23      1117   1e5 kWh                             [6] Slide 20
+## 24       600   1e5 kWh                             [6] Slide 20
+## 25      1117   1e5 kWh                             [6] Slide 20
+## 26       600   1e5 kWh                             [6] Slide 20
+## 27    140000 tons/year [5] Slide 26, assume this is the &#39;other&#39;
+## 28    160000 tons/year                             [5] Slide 26
+## 29    335000 tons/year                             [5] Slide 26
+## 30    140000 tons/year [5] Slide 26, assume this is the &#39;other&#39;
+## 31    160000 tons/year                             [5] Slide 26
+## 32    335000 tons/year                             [5] Slide 26
+## 33    140000 tons/year [5] Slide 26, assume this is the &#39;other&#39;
+## 34    160000 tons/year                             [5] Slide 26
+## 35    335000 tons/year                             [5] Slide 26
+## 36         0  tons/day                                     &lt;NA&gt;
+## 37         0  tons/day                                     &lt;NA&gt;
+## 38         0  tons/day                                     &lt;NA&gt;
+## 39         0  tons/day                                     &lt;NA&gt;
+## 40         0  tons/day                                     &lt;NA&gt;
+## 41         0  tons/day                                     &lt;NA&gt;
+## 42         0  tons/day                                     &lt;NA&gt;
+## 43         0  tons/day                                     &lt;NA&gt;
+## 44         0  tons/day                                     &lt;NA&gt;
+## 45         0   kg/year                                     &lt;NA&gt;
+## 46         0   kg/year                                     &lt;NA&gt;
+## 47         0   kg/year                                     &lt;NA&gt;
+## 48         0   kg/year                                     &lt;NA&gt;
+## 49         0   kg/year                                     &lt;NA&gt;
+## 50         0   kg/year                                     &lt;NA&gt;
+## 51         0   kg/year                                     &lt;NA&gt;
+## 52         0   kg/year                                     &lt;NA&gt;
+## 53         0   kg/year                                     &lt;NA&gt;
+## 54         0 tons/year                                     &lt;NA&gt;
+## 55         0 tons/year                                     &lt;NA&gt;
+## 56         0 tons/year                                     &lt;NA&gt;
+## 57         0 tons/year                                     &lt;NA&gt;
+## 58         0 tons/year                                     &lt;NA&gt;
+## 59         0 tons/year                                     &lt;NA&gt;
+## 60         0 tons/year                                     &lt;NA&gt;
+## 61         0 tons/year                                     &lt;NA&gt;
+## 62         0 tons/year                                     &lt;NA&gt;
+## 63         0  tons/day                                     &lt;NA&gt;
+## 64         0  tons/day                                     &lt;NA&gt;
+## 65         0  tons/day                                     &lt;NA&gt;
+## 66         0  tons/day                                     &lt;NA&gt;
+## 67         0  tons/day                                     &lt;NA&gt;
+## 68         0  tons/day                                     &lt;NA&gt;
+## 69         0  tons/day                                     &lt;NA&gt;
+## 70         0  tons/day                                     &lt;NA&gt;
+## 71         0  tons/day                                     &lt;NA&gt;
+##                                    assump.redist value.redist units.redist
+## 1                                           &lt;NA&gt;         6000           kW
+## 2                                           &lt;NA&gt;         5600           kW
+## 3                                           &lt;NA&gt;        13220           kW
+## 4                                           &lt;NA&gt;           50           kW
+## 5                                           &lt;NA&gt;         2400           kW
+## 6                           Half of winter value         3000           kW
+## 7                           Half of winter value         2800           kW
+## 8                                           &lt;NA&gt;            0           kW
+## 9                           Half of winter value           25           kW
+## 10                          Half of winter value         1200           kW
+## 11                                          none         1985           kW
+## 12                                          none          304           kW
+## 13                                          none          400           kW
+## 14                                          none          400           kW
+## 15                                          none          288           kW
+## 16                                          none          940           kW
+## 17                                          none        17280           kW
+## 18                                          none          272           kW
+## 19                                          none          730           kW
+## 20                                          none          100           kW
+## 21                                          none    112000000     kWh/year
+## 22                                          none     60000000     kWh/year
+## 23                                          none    112000000     kWh/year
+## 24                                          none     60000000     kWh/year
+## 25                                          none    112000000     kWh/year
+## 26                                          none     60000000     kWh/year
+## 27 assign demand to the region-defining zone (1)       140000    tons/year
+## 28 assign demand to the region-defining zone (3)       160000    tons/year
+## 29 assign demand to the region-defining zone (9)       335000    tons/year
+## 30 assign demand to the region-defining zone (1)       140000    tons/year
+## 31 assign demand to the region-defining zone (3)       160000    tons/year
+## 32 assign demand to the region-defining zone (9)       335000    tons/year
+## 33 assign demand to the region-defining zone (1)       140000    tons/year
+## 34 assign demand to the region-defining zone (3)       160000    tons/year
+## 35 assign demand to the region-defining zone (9)       335000    tons/year
+## 36                 Takes an equal share from (0)         -400     tons/day
+## 37                 Takes an equal share from (0)         -400     tons/day
+## 38                 Takes an equal share from (0)         -400     tons/day
+## 39                 Takes an equal share from (0)         -400     tons/day
+## 40                 Takes an equal share from (0)         -400     tons/day
+## 41                 Takes an equal share from (0)         -400     tons/day
+## 42                 Takes an equal share from (0)         -400     tons/day
+## 43                 Takes an equal share from (0)         -400     tons/day
+## 44                 Takes an equal share from (0)         -400     tons/day
+## 45                 Takes an equal share from (0)       -91700      kg/year
+## 46                 Takes an equal share from (0)       -91700      kg/year
+## 47                 Takes an equal share from (0)       -91700      kg/year
+## 48                 Takes an equal share from (0)       -91700      kg/year
+## 49                 Takes an equal share from (0)       -91700      kg/year
+## 50                 Takes an equal share from (0)       -91700      kg/year
+## 51                 Takes an equal share from (0)       -91700      kg/year
+## 52                 Takes an equal share from (0)       -91700      kg/year
+## 53                 Takes an equal share from (0)       -91700      kg/year
+## 54                 Takes an equal share from (0)         -120    tons/year
+## 55                 Takes an equal share from (0)         -120    tons/year
+## 56                 Takes an equal share from (0)         -120    tons/year
+## 57                 Takes an equal share from (0)         -120    tons/year
+## 58                 Takes an equal share from (0)         -120    tons/year
+## 59                 Takes an equal share from (0)         -120    tons/year
+## 60                 Takes an equal share from (0)         -120    tons/year
+## 61                 Takes an equal share from (0)         -120    tons/year
+## 62                 Takes an equal share from (0)         -120    tons/year
+## 63                 Takes an equal share from (0)          200     tons/day
+## 64                 Takes an equal share from (0)          200     tons/day
+## 65                 Takes an equal share from (0)          200     tons/day
+## 66                 Takes an equal share from (0)          200     tons/day
+## 67                 Takes an equal share from (0)          200     tons/day
+## 68                 Takes an equal share from (0)          200     tons/day
+## 69                 Takes an equal share from (0)          200     tons/day
+## 70                 Takes an equal share from (0)          200     tons/day
+## 71                 Takes an equal share from (0)          200     tons/day
+##                notes.conv value.conv units.conv
+## 1           from kW to MW      6.000         MW
+## 2           from kW to MW      5.600         MW
+## 3           from kW to MW     13.220         MW
+## 4           from kW to MW      0.050         MW
+## 5           from kW to MW      2.400         MW
+## 6           from kW to MW      3.000         MW
+## 7           from kW to MW      2.800         MW
+## 8           from kW to MW      6.610         MW
+## 9           from kW to MW      0.025         MW
+## 10          from kW to MW      1.200         MW
+## 11          from kW to MW      1.985         MW
+## 12          from kW to MW      0.304         MW
+## 13          from kW to MW      0.400         MW
+## 14          from kW to MW      0.400         MW
+## 15          from kW to MW      0.288         MW
+## 16          from kW to MW      0.940         MW
+## 17          from kW to MW     17.280         MW
+## 18          from kW to MW      0.272         MW
+## 19          from kW to MW      0.730         MW
+## 20          from kW to MW      0.100         MW
+## 21   from kWh/year to MW      12.750         MW
+## 22   from kWh/year to MW       6.850         MW
+## 23   from kWh/year to MW      12.750         MW
+## 24   from kWh/year to MW       6.850         MW
+## 25   from kWh/year to MW      12.750         MW
+## 26   from kWh/year to MW       6.850         MW
+## 27 from tons/year to kg/s      4.440       kg/s
+## 28 from tons/year to kg/s      5.070       kg/s
+## 29 from tons/year to kg/s     10.600       kg/s
+## 30 from tons/year to kg/s      4.440       kg/s
+## 31 from tons/year to kg/s      5.070       kg/s
+## 32 from tons/year to kg/s     10.600       kg/s
+## 33 from tons/year to kg/s      4.440       kg/s
+## 34 from tons/year to kg/s      5.070       kg/s
+## 35 from tons/year to kg/s     10.600       kg/s
+## 36  from tons/day to kg/s     -4.630       kg/s
+## 37  from tons/day to kg/s     -4.630       kg/s
+## 38  from tons/day to kg/s     -4.630       kg/s
+## 39  from tons/day to kg/s     -4.630       kg/s
+## 40  from tons/day to kg/s     -4.630       kg/s
+## 41  from tons/day to kg/s     -4.630       kg/s
+## 42  from tons/day to kg/s     -4.630       kg/s
+## 43  from tons/day to kg/s     -4.630       kg/s
+## 44  from tons/day to kg/s     -4.630       kg/s
+## 45   from kg/year to kg/s     -0.003       kg/s
+## 46   from kg/year to kg/s     -0.003       kg/s
+## 47   from kg/year to kg/s     -0.003       kg/s
+## 48   from kg/year to kg/s     -0.003       kg/s
+## 49   from kg/year to kg/s     -0.003       kg/s
+## 50   from kg/year to kg/s     -0.003       kg/s
+## 51   from kg/year to kg/s     -0.003       kg/s
+## 52   from kg/year to kg/s     -0.003       kg/s
+## 53   from kg/year to kg/s     -0.003       kg/s
+## 54 from tons/year to kg/s     -0.004       kg/s
+## 55 from tons/year to kg/s     -0.004       kg/s
+## 56 from tons/year to kg/s     -0.004       kg/s
+## 57 from tons/year to kg/s     -0.004       kg/s
+## 58 from tons/year to kg/s     -0.004       kg/s
+## 59 from tons/year to kg/s     -0.004       kg/s
+## 60 from tons/year to kg/s     -0.004       kg/s
+## 61 from tons/year to kg/s     -0.004       kg/s
+## 62 from tons/year to kg/s     -0.004       kg/s
+## 63     from tons/day kg/s      2.310       kg/s
+## 64     from tons/day kg/s      2.310       kg/s
+## 65     from tons/day kg/s      2.310       kg/s
+## 66     from tons/day kg/s      2.310       kg/s
+## 67     from tons/day kg/s      2.310       kg/s
+## 68     from tons/day kg/s      2.310       kg/s
+## 69     from tons/day kg/s      2.310       kg/s
+## 70     from tons/day kg/s      2.310       kg/s
+## 71     from tons/day kg/s      2.310       kg/s</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">## Arranged according to zone
+<span class="co">#demands_nonzero &lt;- demands %&gt;% arrange(zone.number) %&gt;% select(zone, resource, season, value.conv, units.conv) %&gt;% filter(value.conv!=0)</span>
+<span class="co">#</span>
+## Save for use in GAMS model
+<span class="co">#write.csv(demands_nonzero, &quot;../modelling/data/demands-nonzero.csv&quot;, row.names=FALSE)</span></code></pre>
+<h2 id="resource-options">Resource options</h2>
+<p>As well as the resource management demands specified above, our case study considers other resources which can play a part in the conversion chain of processes which meet demand (e.g. coal can be used in a power plant which also requires cooling water, and emits carbon dioxide).</p>
+<p>These resources are defined using the YAML format, by which which define a resource's name (e.g. <code>coal</code>), and also define quality attributes <span class="math">\(X_{rq}\)</span> (e.g. <code>mass</code>), for example:</p>
+<pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">resource:</span> coal
+<span class="fu">quality:</span>
+        <span class="fu">mass:</span> 1
+<span class="fu">notes:</span></code></pre>
+<p>The YAML files for all [TODO: number] resources for our model are available <a href="../modelling/data/resources-yaml">here</a>. [TODO: link to GitHub, or convert to zip?]</p>
+<p>For each resource, we also need to define parameters including its seasonal import and export limits, the number of zones allowed to import and export it, and its cost. We tabulate all this in CSV format: <a href="../modelling/data/resource-params.csv">resource-params.csv</a>. This data also includes sources, assumptions and calculation steps used to estimate resource costs. The top few rows of this data set are shown below.</p>
+<pre class="sourceCode r"><code class="sourceCode r">params &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;../modelling/data/resource-params.csv&quot;</span>)
+<span class="kw">head</span>(params)</code></pre>
+<pre><code>##             resource         cost winter_import_min winter_import_max
+## 1        heat_boiler 0.0006939493                 0                 0
+## 2               heat 0.0002191057                 0                 0
+## 3               cool 0.0006951543                 0                 0
+## 4   hot_primary_feed 0.0007898364                 0                 0
+## 5 hot_primary_return 0.0001629060                 0                 0
+## 6 hot_secondary_feed 0.0005705336                 0                 0
+##   winter_export_min winter_export_max summer_import_min summer_import_max
+## 1                 0              1000                 0                 0
+## 2                 0              1000                 0                 0
+## 3                 0              1000                 0                 0
+## 4                 0              1000                 0                 0
+## 5                 0              1000                 0                 0
+## 6                 0              1000                 0                 0
+##   summer_export_min summer_export_max shoulder_import_min
+## 1                 0              1000                   0
+## 2                 0              1000                   0
+## 3                 0              1000                   0
+## 4                 0              1000                   0
+## 5                 0              1000                   0
+## 6                 0              1000                   0
+##   shoulder_import_max shoulder_export_min shoulder_export_max emissions
+## 1                   0                   0                1000        NA
+## 2                   0                   0                1000        NA
+## 3                   0                   0                1000        NA
+## 4                   0                   0                1000        NA
+## 5                   0                   0                1000        NA
+## 6                   0                   0                1000        NA
+##   num_zones_imports num_zones_exports notes cost.1 currency notes.1
+## 1                 0                13    NA   &lt;NA&gt;                 
+## 2                 0                13    NA   &lt;NA&gt;                 
+## 3                 0                13    NA   &lt;NA&gt;                 
+## 4                 0                13    NA   &lt;NA&gt;                 
+## 5                 0                13    NA   &lt;NA&gt;                 
+## 6                 0                13    NA   &lt;NA&gt;                 
+##   converstion.notes cost.converted unit.flow exergy emissions.random
+## 1                               NA               NA        0.2149172
+## 2                               NA               NA        0.6077174
+## 3                               NA               NA        0.9222646
+## 4                               NA               NA        0.8911856
+## 5                               NA               NA        0.1109194
+## 6                               NA               NA        0.8011701
+##   emissions.scope.two.three
+## 1                         0
+## 2                         0
+## 3                         0
+## 4                         0
+## 5                         0
+## 6                         0</code></pre>
+<h2 id="process-options">Process options</h2>
+<p>We also use YAML files to define the characteristics of the processes which convert and transport resources, as outlined below.</p>
+<h3 id="conversion-processes">Conversion processes</h3>
+<p>For each conversion process, a YAML file defines the relative quantities of input and output <code>resources</code>, and the maximum capacity (or <code>rate</code>) at which a process can operate. For example, a coal-fuelled power plant is defined thus:</p>
+<pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">process:</span> elecplant-coal-l
+<span class="fu">resources:</span>
+     <span class="fu">coal:</span> -0.1012658
+     <span class="fu">elec:</span> 1
+     <span class="fu">heat:</span> 1.56962
+     <span class="fu">water:</span> -0.8670886
+     <span class="fu">CO2:</span> 0.2341772
+     <span class="fu">ash:</span> 0.01012658
+<span class="fu">rate:</span>
+        <span class="fu">wint:</span> 5400
+        <span class="fu">sum:</span> 5400
+        <span class="fu">shoulder:</span> 5400
+<span class="fu">notes:</span></code></pre>
+<p>The processes main output (<code>elec</code> in this case) is always set to a value of <code>1</code>, such that the <code>rate</code> multiplied by any resource flow will give the maximum input or output of any resource.</p>
+<p>The YAML files for all the processes used in our case study are available <a href="../modelling/data/processes-yaml">here</a>. [TODO: link to GitHub, or convert to zip?]. This data comes from two sources:</p>
+<ul>
+<li>a few processes have been defined using information from the Shann Gu literature</li>
+<li>the remaining majority of process definitions are adapted from the publicly available <a href="https://github.com/tomravalde/urban-metabolism-process-database">database of urban metabolism processes</a> which is introduced in <span class="citation">(<span class="citeproc-not-found" data-reference-id="Ravalde2016"><strong>???</strong></span>)</span>.</li>
+</ul>
+<p>We also define each process's cost in <a href="../modelling/data/process-costs.csv">process-costs.csv</a>. As discussed in the paper<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, various factors make estimating process costs tricky. However, to run the model, it is helpful to have plausible process costs.</p>
+<p>Our approach is to build a database of general processes (<span class="math">\(GP\)</span>) for which we can have a unit cost (USD/MW or USD/kg/s) for each process. We can then assign each model process (<span class="math">\(MP\)</span>) with a <span class="math">\(GP\)</span> (indicated by the [TODO: relevant column] column in process-costs.csv). For processes which do not yet exist [TODO: e.g. ], we use a GP which produces/consumes a similar main resource. Once each MP has an associated GP Unit Cost, we can estimate the an MP Total Cost (USD) by calculating:</p>
+<p><span class="math">\[
+\begin{align}
+\mbox{MP Total Cost} = \mbox{GP Unit Cost} \times \mbox{MP Flow Rate}
+\end{align}
+\]</span></p>
+<p>So that our modelling accounts for economies of scale, each GP has both lowerbound and upperbound unit costs, with the former being applied to larger instances of a process, and the latter applied to a smaller instance. To estimate <span class="math">\(\mbox{GP Unit Cost}\)</span>, we research the literature, and apply appropriate assumption, conversions and calculations, all of which can be traced in <a href="../modelling/data/process-cost-calcs-kgyr.ods">process-cost-calcs-kgyr.ods</a>. The terms in <strong>bold</strong> refer to column headers in the spreadsheet.</p>
+<ol style="list-style-type: decimal">
+<li>From our list of MPs, we assemble a list of suitable GPs (which can apply to more than one MP)</li>
+<li>For each GP, we list a lowerbound and upperbound versions, appending <code>_l</code> and <code>_u</code> to the process names, respectively (e.g. <code>CHP-biogas_l</code> and <code>CHP-biogas_u</code>). These GPs are listed in the <strong>process-type</strong> column.</li>
+<li>We find costs for each process type (indicating this using <strong>ref.cost</strong> and <strong>ref.currency</strong>, with the <strong>reference</strong> column providing a link to the source)</li>
+<li>If necessary we convert this value to USD in the <strong>ref.USD</strong> column.</li>
+<li>The referenced cost will correspond to a particular resource and its production (or consumption) rate. For example, a CHP cost may be per kW of electricity produced. The resource, its quantity, and its units, are recorded in <strong>ref.flow</strong>, <strong>ref.flow.value</strong> and <strong>ref.flow.units</strong>, respectively.</li>
+<li>We can then calculate a <strong>ref.flow.mult.factor</strong> which is the number by which the <strong>ref.flow.value</strong> should be multiplied, in order to convert the flow into a consistent set of units (MW for energy resources, kg/s otherwise). Any relevant notes (e.g. the density of a material) are recorded in <strong>mult.factor.notes</strong>.</li>
+<li>Finally we can calculate a <strong>ref.unit.cost</strong> each process-type (USD/MW or USD/kg/s) by calculating <strong>ref.USD</strong>/(<strong>ref.flow.value</strong> <span class="math">\(\times\)</span> <strong>ref.flow.mult.factor</strong>).</li>
+</ol>
+<h3 id="transport-processes">Transport processes</h3>
+<p>For each transport process, a YAML file defines the resource carried between an origin and destination using <code>inputs</code> and <code>outputs</code> respectively. In the example of coal transportation below, now coal is lost between the origin and the destination. The <code>rate</code> mapping defines the maximum transport rate (MW or kg/s). The YAML file also defines the quantity of any resource consumed/produced in that activity, in this case gasoline consumption and CO2 emissions. We split these values equally between the origin and destination zones.</p>
+<pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">process:</span> road_coal
+<span class="fu">inputs:</span>
+        <span class="fu">coal:</span> -1
+        <span class="fu">gasoline:</span> 0
+        <span class="fu">CO2:</span> 0
+<span class="fu">outputs:</span>
+        <span class="fu">coal:</span> 1
+        <span class="fu">gasoline:</span> 0
+        <span class="fu">CO2:</span> 0
+<span class="fu">dist_source:</span>
+        <span class="fu">coal:</span> 0
+        <span class="fu">gasoline:</span> -0.18
+        <span class="fu">CO2:</span> 0.3
+<span class="fu">dist_dest:</span>
+        <span class="fu">coal:</span> 0
+        <span class="fu">gasoline:</span> 0
+        <span class="fu">CO2:</span> 0.3
+<span class="fu">rate:</span> 100
+<span class="fu">notes:</span></code></pre>
+<p>The remaining transport processes can be found in <a href="../modelling/data/transport-yaml">transport-yaml</a>. We also provide <a href="transp-process-calcs.html">calculation details</a> for electricity, pipe flow (water), pipe flow (gas), and vehicle transport).</p>
+<p>The transport costs are defined per kilometer in <a href="../modelling/data/transport.csv">transport.csv</a>, which also gives references.</p>
+<h1 id="model-scenarios">Model scenarios</h1>
+<ul>
+<li>All the above data can be subsetted according to appropriate scenarios</li>
+<li>YAML configuration files define which subset of data to be used</li>
+<li>Our R script then turns this into a model instance</li>
+</ul>
+<h2 id="list-the-yaml-files-for-each-scenario-in-our-paper">List the YAML files for each scenario in our paper</h2>
+<h1 id="summary">Summary</h1>
+<p>Summary text.</p>
+<h1 id="acknowledgements" class="unnumbered">Acknowledgements</h1>
+<p>The data was obtained from documentation provided by Dr [TODO: Yingru's details], of the Xiamen University.</p>
+<div class="references">
+<h1>References</h1>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Table 2.2 from <a href="http://www.springer.com/cda/content/document/cda_downloaddocument/9783642286803-c2.pdf?SGWID=0-0-45-1336211-p174308664">Solid Waste Management by Chandrappa and Das</a> gives a density range of 87--348 kg/m3. We take the median value of 217.5 kg/m3.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Considerable effort is required to research the costs of each process, especially given that some technologies are still under research -- economic forecasting is beyond our scope. Even apart from these unknowns, there are other complicating factors, including variations in purchasing power parities and exchange rates, as well as the different environmental constraints/conditions into which a process is built.<a href="#fnref2">↩</a></p></li>
+</ol>
+</div>
+</body>
+</html>

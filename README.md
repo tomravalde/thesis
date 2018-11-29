@@ -10,6 +10,10 @@ This repository contains content for the PhD thesis:
 
 A [Makefile](Makefile) allows either the entire thesis to be built, or just a preview version of a single chapter.
 
+## Structure
+
+All the Rmd files which contain the thesis source (e.g. chapters, appendices, acknowledgements etc.) are stored in the top level of this directory, e.g. [03_metrics.Rmd](03_metrics.Rmd). Anything else called by these Rmd source files (e.g. images, tex files, etc.) are stored within their own subdirectory, e.g. [03_metrics/](03_metrics/).
+
 ## Dependencies
 
 - My user-defined package [mystyle](mystyle.sty) defines the packages, user-defined commands etc., and is called in main.tex

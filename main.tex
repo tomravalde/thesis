@@ -1,25 +1,107 @@
 \documentclass[a4paper, 11pt]{report}
 \usepackage{mystyle} % Load packages, user-defined commands, and other settings
+\usepackage{setspace}
+%\onehalfspacing
+\doublespacing
+
 
 \makenomenclature
 %linespread{1.3}
-%newcommand{\COtwo}{CO\textsubscript{2} }
+\newcommand{\COtwo}{CO\textsubscript{2} }
 %\DeclareMathOperator{\cov}{cov}
 %\DeclareMathOperator*{\argmin}{\arg\!\min}
+\DeclareMathOperator{\sign}{sign}
 %\setcounter{secnumdepth}{5}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+%\renewcommand\nomgroup[1]{%
+%  \item[\bfseries
+%  \ifstrequal{#1}{P}{Physics Constants}{%
+%  \ifstrequal{#1}{N}{Number Sets}{%
+%  \ifstrequal{#1}{O}{Other Symbols}{}}}%
+%]}
+
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Acronyms}{%
+  \ifstrequal{#1}{B}{Units of measurement}{%
+  \ifstrequal{#1}{C}{Symbols used in Bettencourt et. al's model of urban growth}{%
+  \ifstrequal{#1}{D}{Symbols used to define black- and grey-box metrics}{%
+  \ifstrequal{#1}{E}{Model sets}{%
+  \ifstrequal{#1}{F}{Model variables and parameters, defined over the sets}{%
+  \ifstrequal{#1}{G}{Tat model abbreviations -- resources}{%
+  \ifstrequal{#1}{H}{Tat model abbreviations -- conversion processes}{%
+  \ifstrequal{#1}{I}{Tat model abbreviations -- transport processes}{%
+  \ifstrequal{#1}{J}{Other}{%
+  }}}}}}}}}}%
+]}
+
+ 
+\renewcommand{\nomname}{Abbreviations, acronyms, symbols, units of measurement, and other notation}
+ 
+%\renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document}
+ 
 
 \begin{document}
+
 \onecolumn
 
+%\pagenumbering{gobble}
+%\begin{scriptsize}
+%\wordcount
+%\end{scriptsize}
+
+\setromanfont[Mapping=tex-text]{Gentium Basic}
+%\setmathsfont[Mapping=tex-text]{Linux Libertine}
+
 \input{title.tex}
-\pagenumbering{roman}
+
+%\clearpage
+%\thispagestyle{empty}
+%\mbox{}
+
+
+\input{copyright_declaration.tex}
+
 \input{abstract.tex}
+%\pagenumbering{roman}
+
+%\clearpage
+%\thispagestyle{empty}
+%\mbox{}
+
+\input{publications.tex}
+
+%\clearpage
+\input{about.tex}
+
+%\clearpage
 \input{acknowledgements.tex}
- 
+
+%\clearpage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
+
+%\clearpage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
+
+%\clearpage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
+
+%\clearpage
 \printnomenclature[0.8in]
+
+%\clearpage
+\input{nomenclature.tex}
 
 \input{01_introduction.tex}
 \input{02_lit-review.tex}
@@ -29,17 +111,16 @@
 \input{06_case-study.tex}
 \input{07_conclusions.tex}
 
-
+\clearpage
+%\nocite{*}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plainnat}
+\bibliography{my-refs}
 
 \clearpage
 \appendix
-\input{app-A_formulation.tex}
-\input{app-B_code.tex}
-\input{app-C_data.tex}
-
-%\clearpage
-%\nocite{*}
-%\addcontentsline{toc}{chapter}{Bibliography}
-%\bibliographystyle{plainnat}
-%\bibliography{./refs/finalRefs}
+\input{A_tat-details.tex}
+\input{B_formulation.tex}
+%\input{app-C_data-thesisVersion.tex}
+\input{C_spc-data.tex}
 \end{document}

@@ -1,0 +1,527 @@
+01_introduction.Rmd:# Introduction
+01_introduction.Rmd:## Urbanisation: the challenge
+01_introduction.Rmd:### Urbanisation: an unstoppable and desirable phenomenon
+01_introduction.Rmd:## Raw data from https://esa.un.org/unpd/wup/CD-ROM/ (Files 3 and 5)
+01_introduction.Rmd:### Environmental challenges
+01_introduction.Rmd:#### Sectoral strains
+01_introduction.Rmd:#### Intersectoral interactions
+01_introduction.Rmd:### Economic challenges
+01_introduction.Rmd:## Assume a city with a starting population of 100, a starting GDP of 1e6 USD, with beta=1.2
+01_introduction.Rmd:### Summary
+01_introduction.Rmd:## Urbanisation: the opportunity
+01_introduction.Rmd:### More efficient still?
+01_introduction.Rmd:#### Intersectoral synergies
+01_introduction.Rmd:#### Intersectoral synergies in practice -- industrial symbiosis
+01_introduction.Rmd:## Systems optimisation
+01_introduction.Rmd:## Urban metabolism -- the theoretical framework
+01_introduction.Rmd:## Aims and scope of the study
+01_introduction.Rmd:### Title definition
+01_introduction.Rmd:### Research question
+01_introduction.Rmd:### Contributions
+01_introduction.Rmd:### Thesis structure
+01_introduction.Rmd:#      tabular.environment='ctable',
+01_introduction.Rmd:#      floating.environment='sidewaystable',
+02_lit-review.Rmd:#library(extrafont)
+02_lit-review.Rmd:#font_import(pattern="LinBiolinum")
+02_lit-review.Rmd:# Urban metabolism and systems optimisation
+02_lit-review.Rmd:## The past, present and future of urban metabolism research
+02_lit-review.Rmd:### Methods
+02_lit-review.Rmd:### The place of processes in urban metabolism modelling
+02_lit-review.Rmd:#### "Top-down"
+02_lit-review.Rmd:#### "Bottom-up"
+02_lit-review.Rmd:#### Merits, limitations, and a complementary approach
+02_lit-review.Rmd:#### A comprehensive understanding of the 'middle'
+02_lit-review.Rmd:### Summary
+02_lit-review.Rmd:## The role of modelling in urban metabolism
+02_lit-review.Rmd:### An introduction to modelling
+02_lit-review.Rmd:#### Pros and cons of models
+02_lit-review.Rmd:#### Types of models
+02_lit-review.Rmd:### An overview of urban metabolism models
+02_lit-review.Rmd:#### Type
+02_lit-review.Rmd:#### Focus
+02_lit-review.Rmd:#### Level
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## PREPROCESSING
+02_lit-review.Rmd:### From lit-metab-modelling.csv, we used R to remove rows with states!="cut")
+02_lit-review.Rmd:### From lit-keep-maybe.csv, we summarised the attributes for each paper, and identified more papers to cut
+02_lit-review.Rmd:### We are left with lit-final-cut.csv, which is used below
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### Set up the database for cluster analysis
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:#setwd("02_lit-review")
+02_lit-review.Rmd:### Load in literature titles and attributes, removing the remaining papers marked 'CUT'
+02_lit-review.Rmd:## TODO: merge some of the model use groups together for clarity (e.g. include 'other' grouping)
+02_lit-review.Rmd:## Only keep variables relevant for our cluster analysis
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### Select and order attributes for ordinal data
+02_lit-review.Rmd:### E.g. for plotting, it is helpful for "Low-level", "Medium-level", and "High-level" to appear in this order
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## Select attributes to be plotted in the analysis
+02_lit-review.Rmd:## Order attributes for ordinal data (e.g. for plotting, it is helpful for "Low-level", "Medium-level", and "High-level" to appear in this order)
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### Plot results to identify clusters
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## Remove NA (row 46)
+02_lit-review.Rmd:## Add a column to distinguish resource and non-resource focus models
+02_lit-review.Rmd:## Review of resource managagement optimisation modelling
+02_lit-review.Rmd:### An introduction to the literature
+02_lit-review.Rmd:### An overview of the literature
+02_lit-review.Rmd:## Packages required by our analysis of the literature
+02_lit-review.Rmd:## Load in all titles
+02_lit-review.Rmd:## Save number of files in original list (for output into document)
+02_lit-review.Rmd:## Merge titles into single block of text
+02_lit-review.Rmd:## Edit the text for mining
+02_lit-review.Rmd:## Create the document-term matrix, and count word frequency
+02_lit-review.Rmd:## Create dataframe of word frequency
+02_lit-review.Rmd:## Save word-frequency list for manual editing
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### Manually reduce the list of words (removing those which don't refer to resources, e.g. 'network')
+02_lit-review.Rmd:##### Original list: words-pre-cut.csv (11,967 unique words)
+02_lit-review.Rmd:##### Reduced list: words-post-cut.csv (366 unique words)
+02_lit-review.Rmd:### Manually categorise remaining words (e.g. "electricity" --> "energy"), and store in word-cats.csv
+02_lit-review.Rmd:### Apply word-frequency analysis to identify:
+02_lit-review.Rmd:##### (A) the number of word matches for each title
+02_lit-review.Rmd:##### (B) the number of category matches for each title
+02_lit-review.Rmd:### Plot and save results
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## Load manually-reduced database of word frequencies
+02_lit-review.Rmd:## Load in categorisation of words
+02_lit-review.Rmd:## List of words to match
+02_lit-review.Rmd:## Set up vectors to store the results of the word-frequency analysis
+02_lit-review.Rmd:## Loop over all titles, to identify the number of matching words
+02_lit-review.Rmd:## Store results for each title in dataframe
+02_lit-review.Rmd:## Save titles and category matches (in original order)
+02_lit-review.Rmd:## As above, but just the titles containing 'optimization' and similar words
+02_lit-review.Rmd:## Save titles and category matches (sorted according to the frequency of category matches)
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### Make dot plot of category combinations in the literature
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## Get frequency of each combination of categories
+02_lit-review.Rmd:## Get frequency of 'optimization' within each category
+02_lit-review.Rmd:## Incorporate the number of categories for each combination (so plot can be faceted according to this)
+02_lit-review.Rmd:## Create a column of titles (to be printed as facet_wrap strip titles)
+02_lit-review.Rmd:## Sort so number of categories will be faceted in ascending order
+02_lit-review.Rmd:## Sort so combination frequencies will be plotted in ascending order
+02_lit-review.Rmd:## Reshape so that CatFreq and OptimFreq can both be plotted as points
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### POST-PROCESSING
+02_lit-review.Rmd:### Copy title-matches-optim-original-order.csv --> title-matches-optim-original-order-edit.csv,
+02_lit-review.Rmd:### (A) manually identify irrelevent papers with 'CUT'
+02_lit-review.Rmd:### (B) assign a scale (e.g. 'domestic', 'regional' etc.) to each model
+02_lit-review.Rmd:### (C) assign a level of integration ('none', 'integrated', or 'highly integrated') to each model
+02_lit-review.Rmd:### This is so we can analyse the content of the remaining papers
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## Only keep the relevant literature
+02_lit-review.Rmd:## Save number of files in reduced list (for output into document)
+02_lit-review.Rmd:#### Scale
+02_lit-review.Rmd:#### Level
+02_lit-review.Rmd:#### Integration
+02_lit-review.Rmd:#### Summary
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:### Plot overview of literature
+02_lit-review.Rmd:###--------------------------------------------------
+02_lit-review.Rmd:## Provide a more user-friendly name for levels on the facet strips
+02_lit-review.Rmd:## Remove the misc. model (just for clarity)
+02_lit-review.Rmd:## Sort so levels are plotted in ascending order
+02_lit-review.Rmd:## Add column to colour the points within the site and the city regions
+02_lit-review.Rmd:## Plot as dot plot: integration vs. scale
+02_lit-review.Rmd:#  geom_jitter(aes(colour=optimised.system.s.)) +
+02_lit-review.Rmd:#  geom_jitter(aes(colour=opt.systems.summary)) +
+02_lit-review.Rmd:#  geom_jitter(aes(colour=level)) +
+02_lit-review.Rmd:### Plot as dot plot: focus vs. methods
+02_lit-review.Rmd:#plot_lit_focus.methods <- ggplot(lit, aes(optimised.system.s., methods)) +
+02_lit-review.Rmd:#  geom_jitter(aes(colour=opt.systems.summary)) +
+02_lit-review.Rmd:#  xlab("Optimised systems") +
+02_lit-review.Rmd:#  ylab("Methods") +
+02_lit-review.Rmd:#  theme_bw() +
+02_lit-review.Rmd:#  theme(axis.text.x = element_text(hjust=1, angle=30),
+02_lit-review.Rmd:#	legend.position = "bottom",
+02_lit-review.Rmd:#	legend.direction = "vertical") +
+02_lit-review.Rmd:#  guides(col=guide_legend(ncol=2))
+02_lit-review.Rmd:#plot_lit_focus.methods
+02_lit-review.Rmd:## Conclusion
+03_metrics.Rmd:# Peformance metrics for urban metabolism
+03_metrics.Rmd:## Introduction
+03_metrics.Rmd:## This section on 'Urban metabolism and sustainability' has been reworked into the Literature Review
+03_metrics.Rmd:## Measuring the resource performance of MR systems
+03_metrics.Rmd:### 'Black-box' metrics
+03_metrics.Rmd:#### Absolute measures
+03_metrics.Rmd:#### Efficiency ratios
+03_metrics.Rmd:##      size='\\small',
+03_metrics.Rmd:### Grey-box metrics
+03_metrics.Rmd:#### Exergy analysis
+03_metrics.Rmd:#### Ecological network analysis
+03_metrics.Rmd:## Applying the methods
+03_metrics.Rmd:### Black-box metrics
+03_metrics.Rmd:#### Selecting metrics and cities
+03_metrics.Rmd:##      size='\\small',
+03_metrics.Rmd:#### Correlating the metrics
+03_metrics.Rmd:## Load metabolic flow data
+03_metrics.Rmd:### Initialise dataframe for results of metrics calculations
+03_metrics.Rmd:## Metabolic flows for each City-Year pair
+03_metrics.Rmd:## Load look-up table for metric calculations
+03_metrics.Rmd:## Combine flows and calculation coefficients
+03_metrics.Rmd:## Ensure numbers are of 'numeric' classs
+03_metrics.Rmd:## Energy efficiency (out.in)
+03_metrics.Rmd:## Energy efficiency (Energy consumption / GDP)
+03_metrics.Rmd:## Energy efficiency (Energy consumption / population)
+03_metrics.Rmd:## Water efficiency
+03_metrics.Rmd:## Browne et al 2009 disposal / consumption
+03_metrics.Rmd:### No unit conversions necessary as everything is recorded in kT
+03_metrics.Rmd:## Resource efficiency (GDP / resource consumption)
+03_metrics.Rmd:## Environmental efficiency (GDP / waste disposal)
+03_metrics.Rmd:## Carbon footprint for each flow
+03_metrics.Rmd:## Total CF: sum flow footprints over each city-year pair
+03_metrics.Rmd:## Carbon footprint for each flow (ignore cement)
+03_metrics.Rmd:## Total CF: sum flow footprints over each city-year pair
+03_metrics.Rmd:## Water footprint for each flow
+03_metrics.Rmd:## Total WF: sum flow footprints over each city-year pair
+03_metrics.Rmd:## Baseline efficiency: residential and commercial heating / solar radiation
+03_metrics.Rmd:### Use 2011 solar radiation values for other years
+03_metrics.Rmd:### Use 2011 land area values for other years
+03_metrics.Rmd:### Use energy / area for energy vs solar radiation calculation
+03_metrics.Rmd:## Save metric results
+03_metrics.Rmd:## Only keep metrics that don't have too many anomalies
+03_metrics.Rmd:### This also allows us to reorder the data, so when we come to plot the heat map, the labels fit
+03_metrics.Rmd:## Remove City-Year pairs with anomalies
+03_metrics.Rmd:## Convert NaN in Inf values to NA
+03_metrics.Rmd:## Reshape data: City, Year, metric, value
+03_metrics.Rmd:## Plot
+03_metrics.Rmd:## Rank results, with 1 for 'good' (hence reversing the rank for some metrics)
+03_metrics.Rmd:## Correlate (group according to year)
+03_metrics.Rmd:## Correlation test
+03_metrics.Rmd:## Define function to calculate p for all metrics (pairwise)
+03_metrics.Rmd:### Source: http://stackoverflow.com/a/13112337/2215287
+03_metrics.Rmd:### The function matches the result of the correlation test, so it's safe to use.
+03_metrics.Rmd:## Apply function
+03_metrics.Rmd:## 
+03_metrics.Rmd:## Redefine corr.all to include p.all
+03_metrics.Rmd:### Remove duplicated diagonal of data
+03_metrics.Rmd:## Make nicer labels for the heat map plot
+03_metrics.Rmd:## Show correlation on a heat map
+03_metrics.Rmd:## Create PowerPoint editable version of heatmap for 2011
+03_metrics.Rmd:### Just 2011 data
+03_metrics.Rmd:#  facet_wrap( ~ year, ncol=1) +
+03_metrics.Rmd:## Boxplot
+03_metrics.Rmd:#  geom_violin() +
+03_metrics.Rmd:## Correlate (combined years)
+03_metrics.Rmd:## Match metrics to their categories
+03_metrics.Rmd:## Make category order interchangable
+03_metrics.Rmd:### Remove duplicated diagonal of data
+03_metrics.Rmd:## Show correlation on a heat map
+03_metrics.Rmd:#  geom_text(data=corr.lower, aes(label=cat), size=2) +
+03_metrics.Rmd:#plot.corr
+03_metrics.Rmd:### Grey-box metrics
+03_metrics.Rmd:#### Exergy analysis
+03_metrics.Rmd:## Create placeholder value names
+03_metrics.Rmd:## These placeholders can be replaced during the analysis
+03_metrics.Rmd:## Load values from database which will be used 
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:### Analysis
+03_metrics.Rmd:### Add results to dataframe
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### No cement flows for London
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:### No cement flows for London
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### values from Fig 8.9, p.120 for Allwood2012
+03_metrics.Rmd:### No steel flows for London
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### values from Fig 8.9, p.120 for Allwood2012
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:### No steel flows for London
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### Apply Mgh/efficiency:
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### Apply Mgh/efficiency:
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:### No groundwater consumption values given for LDN.
+03_metrics.Rmd:### No groundwater consumption values given for GRU.
+03_metrics.Rmd:# Analysis
+03_metrics.Rmd:# Analysis
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### From knowing ex.wastewater is 87% of the input exergy, we can define the other exergies:
+03_metrics.Rmd:### LDN wastewater value not provided
+03_metrics.Rmd:### From knowing ex.wastewater is 87% of the input exergy, we can define the other exergies:
+03_metrics.Rmd:## Analysis
+03_metrics.Rmd:### From knowing ex.wastewater is 87% of the input exergy, we can define the other exergies:
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:#tab.solidWaste.tex <- xtable(tab.solidWaste.csv, caption="Global solid waste composition, taken from \\citet{Hoornweg2012}, Figure 7.\\label{tab:natGas}", align="llllll")
+03_metrics.Rmd:#
+03_metrics.Rmd:#print(tab.solidWaste.tex,
+03_metrics.Rmd:#      size='\\small',
+03_metrics.Rmd:#      include.rownames=FALSE,
+03_metrics.Rmd:#      sanitize.text.function=identity)
+03_metrics.Rmd:#
+03_metrics.Rmd:## Add results to dataframe
+03_metrics.Rmd:## calculate Beijing and London exergy efficiency
+03_metrics.Rmd:#write.csv(flows, "working.csv")
+03_metrics.Rmd:### Get GDP values from database
+03_metrics.Rmd:## Tabulate summary
+03_metrics.Rmd:#### Ecological network analysis
+03_metrics.Rmd:#flows.total <- filter(flows.total, flow!="fNANA")
+03_metrics.Rmd:#flows.total[15, ] <- c(5, 5, NA, NA, NA) ## Otherwise 5th column is ignored
+03_metrics.Rmd:### Transform into matrix
+03_metrics.Rmd:##F[3,5] <- 1000000000 # To simulate an EfW flow
+03_metrics.Rmd:## Calculate dimensionless integral utility matrix
+03_metrics.Rmd:## Calculate mutualism index M
+03_metrics.Rmd:## Perform ecological network analysis for Beijing
+03_metrics.Rmd:## Perform ecological network analysis for London
+03_metrics.Rmd:## Perform ecological network analysis for Sao Paulo
+03_metrics.Rmd:## Tabulate results
+03_metrics.Rmd:#print(ena.results.tex,
+03_metrics.Rmd:#      include.rownames=FALSE,
+03_metrics.Rmd:#      sanitize.text.function=identity,
+03_metrics.Rmd:#      comment = FALSE)
+03_metrics.Rmd:## Combine Beijing and London mutualism
+03_metrics.Rmd:## Refactor compartment names for more descriptive labels
+03_metrics.Rmd:## Refaactor compartments values to +,-,0
+03_metrics.Rmd:#  facet_grid(City~Type) +
+03_metrics.Rmd:#plot.network
+03_metrics.Rmd:### Summary
+03_metrics.Rmd:## Discussion
+03_metrics.Rmd:### Applications for grey-box metrics
+03_metrics.Rmd:### The limitations of grey-box metrics
+03_metrics.Rmd:## Conclusions
+04_database.Rmd:# A database of urban resource management processes
+04_database.Rmd:## Supporting fields of research
+04_database.Rmd:### Existing databases and technology scanning
+04_database.Rmd:### Open data
+04_database.Rmd:## Assembling a database of resource conversion processes
+04_database.Rmd:### Systematic literature search (the general search)
+04_database.Rmd:### Data collection and database assembly (process mapping)
+04_database.Rmd:## Database overview and possible applications
+04_database.Rmd:# Import and shape data so we can obtain summary statistics
+04_database.Rmd:## Specifiy whether flows are inputs or outputs
+04_database.Rmd:## Add 'mainOutput' column
+04_database.Rmd:### Build mainOutput lookup table
+04_database.Rmd:### Use keyFlows.lookup to add 'mainOutput' column to proc.keyFlows
+04_database.Rmd:### Process comparison
+04_database.Rmd:## Extract subset of processes which produce methane as a main output
+04_database.Rmd:## Add more reader-friendly process and resource names for the plot
+04_database.Rmd:## Add more descriptive TRL labels to the database
+04_database.Rmd:#  geom_text(aes(x=-23, y=1.5, label=TRL_name), size=3, hjust=0)
+04_database.Rmd:### Synergies in process networks
+04_database.Rmd:# Inter-sectoral plot for whole network stored separately, so it's easy to suppress from paper compilation (to save time)
+04_database.Rmd:## Network plot (using SNA package)
+04_database.Rmd:#library(sna) # Code to plot figure for saving (and subsequent manual editing)
+04_database.Rmd:#gplot(link_matrix,
+04_database.Rmd:#      mode=layout[1],
+04_database.Rmd:#      gmode="graph",
+04_database.Rmd:#      label = resources,
+04_database.Rmd:#      label.pos = 1,
+04_database.Rmd:#      jitter=FALSE,
+04_database.Rmd:##      arrowhead = FALSE,
+04_database.Rmd:#      thresh=0,
+04_database.Rmd:##      vertex.sides = 0,
+04_database.Rmd:#      vertex.col = node_vector,
+04_database.Rmd:#      edge.col = rgb(220, 217, 217, maxColorValue=255),
+04_database.Rmd:#      displaylabels = TRUE)
+04_database.Rmd:### Optimisation of networks
+04_database.Rmd:#  geom_bar(stat="identity") +
+04_database.Rmd:### Reflections: interacting with other datasets
+04_database.Rmd:## Summary and further work
+05_model-development.Rmd:# Model development
+05_model-development.Rmd:## Model performance and formulation
+05_model-development.Rmd:### Performance features of models
+05_model-development.Rmd:### Optimisation model formulation types and solution methods
+05_model-development.Rmd:### Summary
+05_model-development.Rmd:## Benchmark problems
+05_model-development.Rmd:## Tat Hamlet case study
+05_model-development.Rmd:### Problem definition
+05_model-development.Rmd:### Problem conceptualisation
+05_model-development.Rmd:#### Water
+05_model-development.Rmd:#### Electricity
+05_model-development.Rmd:#### Waste generation
+05_model-development.Rmd:#### Food
+05_model-development.Rmd:#### Demands and process performance derived from firewood
+05_model-development.Rmd:##### Cooking
+05_model-development.Rmd:##### Space heating
+05_model-development.Rmd:##### Domestic hot water
+05_model-development.Rmd:##### Other water demand
+05_model-development.Rmd:#### Agriculture
+05_model-development.Rmd:#### Agricultural machinary
+05_model-development.Rmd:#### Dam
+05_model-development.Rmd:#### Domestic appliances
+05_model-development.Rmd:#### Aquaculture
+05_model-development.Rmd:#### Livestock
+05_model-development.Rmd:#### Irrigation from source
+05_model-development.Rmd:#### Domestic heating
+05_model-development.Rmd:#### Domestic hot water
+05_model-development.Rmd:#### Stove heat production
+05_model-development.Rmd:#### Cooking
+05_model-development.Rmd:#### Pump
+05_model-development.Rmd:#### Water treatment (livestock)
+05_model-development.Rmd:#### Water treatment (domestic)
+05_model-development.Rmd:#### Biomass (wet) drying
+05_model-development.Rmd:#### Biomass (medium) drying
+05_model-development.Rmd:#### Domestic sector
+05_model-development.Rmd:#### Other processes
+05_model-development.Rmd:## Deriving three optimisation models
+05_model-development.Rmd:### Null (N) formulation
+05_model-development.Rmd:#### Conversion processes
+05_model-development.Rmd:#### Transport processes
+05_model-development.Rmd:#### Summary
+05_model-development.Rmd:### Processes, resources and qualitites (PRaQ) formulation
+05_model-development.Rmd:#### Conversion processes
+05_model-development.Rmd:#### Transport processes
+05_model-development.Rmd:#### Summary
+05_model-development.Rmd:### Nonlinear (NL) formulation
+05_model-development.Rmd:### Summary
+05_model-development.Rmd:#### Model objectives
+05_model-development.Rmd:## Implementation
+05_model-development.Rmd:## Applying formulations to Tat Hamlet
+05_model-development.Rmd:### Results and discussion
+05_model-development.Rmd:#### Fidelity and generality
+05_model-development.Rmd:#### Tractability and usability
+05_model-development.Rmd:## Conclusion
+05_model-development.Rmd:## Why modelling? [TODO: could this introduce the model review section of the literature review?]
+05_model-development.Rmd:# Model structure, formulation, and implementation
+05_model-development.Rmd:# Mathematical formulation
+05_model-development.Rmd:## Imports and exports
+05_model-development.Rmd:## Resource conversion technologies
+05_model-development.Rmd:### Domestic technologies
+05_model-development.Rmd:### Part-Load operation
+05_model-development.Rmd:### Further extensions
+05_model-development.Rmd:## Units of measurement
+05_model-development.Rmd:## Transport technologies
+05_model-development.Rmd:## Storage technologies
+05_model-development.Rmd:### Detailed storage constraints
+05_model-development.Rmd:### Aggregate storage constraints
+05_model-development.Rmd:## Footprint constraint
+05_model-development.Rmd:## Performance metrics and objective function
+05_model-development.Rmd:# Implementation
+05_model-development.Rmd:## Appendix
+06_case-study.Rmd:# Case study: a Chinese urban development
+06_case-study.Rmd:# Case study
+06_case-study.Rmd:## Resources and technologies
+06_case-study.Rmd:## Objective function
+06_case-study.Rmd:## Results
+06_case-study.Rmd:## The case study
+06_case-study.Rmd:## Model data
+06_case-study.Rmd:#library("dplyr")
+06_case-study.Rmd:#filter(demands, value.conv!=0)
+06_case-study.Rmd:#  geom_dotplot(aes(fill=season), binaxis="y", position=position_dodge(width=0.6)) +
+06_case-study.Rmd:### Site layout
+06_case-study.Rmd:### Times
+06_case-study.Rmd:### Resource demands
+06_case-study.Rmd:### Other resources
+06_case-study.Rmd:### Conversion processes
+06_case-study.Rmd:### Transport processes
+06_case-study.Rmd:### Summary
+06_case-study.Rmd:## Application to model scenarios
+06_case-study.Rmd:## Presentation scenario names
+06_case-study.Rmd:## Order the scenario names
+06_case-study.Rmd:### Metabolic flows and system designs
+06_case-study.Rmd:## Another arbitrary edit
+06_case-study.Rmd:## Reshape imports and exports into the same column
+06_case-study.Rmd:## Remove zero-valued entries
+06_case-study.Rmd:## Order the scenario names
+06_case-study.Rmd:## Rename the flows
+06_case-study.Rmd:## TODO: RENAME AND REORDER THE RESOURCES
+06_case-study.Rmd:### Give exports a negative value
+06_case-study.Rmd:#metabolic_flows[metabolic_flows$Flow=="exports", "value"] <- -1 * metabolic_flows[metabolic_flows$Flow=="exports", "value"]
+06_case-study.Rmd:#plot_metabolic_flows <- ggplot(metabolic_flows, aes(resource, value)) +
+06_case-study.Rmd:#  geom_point(aes(colour=season), position=position_dodge(width=0.6), stat="identity") +
+06_case-study.Rmd:#  facet_wrap(~scenario, ncol=1) +
+06_case-study.Rmd:#  theme_bw() +
+06_case-study.Rmd:#  theme(axis.text.x=element_text(hjust=1, angle=30),
+06_case-study.Rmd:#	axis.title=element_blank())
+06_case-study.Rmd:#plot_metabolic_flows
+06_case-study.Rmd:## Remove zero-valued entries
+06_case-study.Rmd:## Calculate total capacity (rate * number)
+06_case-study.Rmd:## Order the scenario names
+06_case-study.Rmd:#### Design case scenarios
+06_case-study.Rmd:#### Wildcard scenarios
+06_case-study.Rmd:### Other measures
+06_case-study.Rmd:#### System costs
+06_case-study.Rmd:## Presentation costs
+06_case-study.Rmd:#plot_system_costs <- ggplot(system_costs, aes(scenario, values)) +
+06_case-study.Rmd:#  geom_point() +
+06_case-study.Rmd:#  xlab("Scenario") +
+06_case-study.Rmd:#  ylab("Annualised cost [millions USD]") +
+06_case-study.Rmd:#  theme_bw() +
+06_case-study.Rmd:#  theme(axis.text.x = element_text(hjust=1, angle=30))
+06_case-study.Rmd:#plot_system_costs
+06_case-study.Rmd:## Presentation system component names
+06_case-study.Rmd:## Presentation scenario names
+06_case-study.Rmd:## Order the scenario names
+06_case-study.Rmd:#### Other headline results
+06_case-study.Rmd:## Just for the design case
+06_case-study.Rmd:### Grey-box metrics
+06_case-study.Rmd:#### Exergy analysis
+06_case-study.Rmd:## Arbitrary edit
+06_case-study.Rmd:## Presentation scenario names
+06_case-study.Rmd:##      size='\\small',
+06_case-study.Rmd:#### Ecological network analysis
+06_case-study.Rmd:## Presentation scenario names
+06_case-study.Rmd:##      size='\\small',
+06_case-study.Rmd:## Presentation scenario names
+06_case-study.Rmd:### Summary
+06_case-study.Rmd:## Discussion and conclusions
+06_case-study.Rmd:# Conclusions
+06_case-study.Rmd:### Further work
+07_conclusions.Rmd:# Discussion and conclusions
+07_conclusions.Rmd:## Summary
+07_conclusions.Rmd:## Implications for urban metabolism [or Contributions the field of urban metabolism]
+07_conclusions.Rmd:## Research implications
+07_conclusions.Rmd:## Shortcomings and further work
+07_conclusions.Rmd:### The concept
+07_conclusions.Rmd:### The model
+07_conclusions.Rmd:### The application
+07_conclusions.Rmd:### Locating the concept within a broader set of considerations
+07_conclusions.Rmd:### The UM modelling community and platform
+07_conclusions.Rmd:## Summary
+abstract.Rmd:# Abstract {.unnumbered}
+acknowledgements.Rmd:# Acknowledgements {.unnumbered}
+app-A_formulation.Rmd:# Model formulation
+app-B_code.Rmd:# Code
+app-C_data.Rmd:# Case study data
+app-C_data.Rmd:## A note on sources
+app-C_data.Rmd:## Input data
+app-C_data.Rmd:### Site layout
+app-C_data.Rmd:### Times
+app-C_data.Rmd:### Resource demands
+app-C_data.Rmd:## Arranged according to zone
+app-C_data.Rmd:#demands_nonzero <- demands %>% arrange(zone.number) %>% select(zone, resource, season, value.conv, units.conv) %>% filter(value.conv!=0)
+app-C_data.Rmd:#
+app-C_data.Rmd:## Save for use in GAMS model
+app-C_data.Rmd:#write.csv(demands_nonzero, "../modelling/data/demands-nonzero.csv", row.names=FALSE)
+app-C_data.Rmd:### Resource options
+app-C_data.Rmd:### Process options
+app-C_data.Rmd:#### Conversion processes
+app-C_data.Rmd:#### Transport processes
+app-C_data.Rmd:## Model scenarios
+app-C_data.Rmd:### List the YAML files for each scenario in our paper
+app-C_data.Rmd:## Summary
+NOTES_01_introduction.Rmd:# Introduction
+NOTES_01_introduction.Rmd:## Urban metabolism
+NOTES_01_introduction.Rmd:## Urban resource management: challenges
+NOTES_01_introduction.Rmd:### Environmental strain
+NOTES_01_introduction.Rmd:### Economic stability
+NOTES_01_introduction.Rmd:## Urban resource management: opportunities
+NOTES_01_introduction.Rmd:## Challenges/Research questions
+NOTES_01_introduction.Rmd:### Challenges dealt with here
+NOTES_01_introduction.Rmd:### Challenges not dealt with here
+NOTES_01_introduction.Rmd:## Introduction 
+NOTES_01_introduction.Rmd:## The world is urbanising
+NOTES_01_introduction.Rmd:## Urbanisation poses challenges
+NOTES_01_introduction.Rmd:### Environmental strain
+NOTES_01_introduction.Rmd:### Economic stability
+NOTES_01_introduction.Rmd:### Summary
+NOTES_01_introduction.Rmd:## Urban areas present opportunities
+NOTES_01_introduction.Rmd:### Summary
+NOTES_01_introduction.Rmd:## Urban metabolism -- the theoretical framework
+NOTES_01_introduction.Rmd:## Aims and scope of the study
+NOTES_01_introduction.Rmd:## Summary
+NOTES_01_introduction.Rmd:## Methods and thesis structure

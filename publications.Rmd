@@ -1,0 +1,7 @@
+# Publications arising from this work {.unnumbered}
+
+Research presented in this thesis has been published in the following papers:
+
+- Tom Ravalde, James Keirstead, Comparing performance metrics for multi-resource systems: the case of urban metabolism, \emph{Journal of Cleaner Production}, doi: \url{http://dx.doi.org/10.1016/j.jclepro.2015.10.118}
+- Tom Ravalde, James Keirstead, A database to facilitate a process-oriented approach to urban metabolism, \emph{Journal of Industrial Ecology}, doi: \url{http://dx.doi.org/10.1111/jiec.12429}.
+- Tom Ravalde, James Keirstead, Integrated Resource Planning for a Chinese Urban Development, \emph{International Symposium for Next Generation Infrastructure Conference Proceedings}, doi: \url{http://discovery.ucl.ac.uk/1469209/}.

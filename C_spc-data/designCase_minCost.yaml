@@ -1,0 +1,18 @@
+scenario: designCase_minCost
+resources: data/model-definition/designCase/resource-params.csv 
+demands: data/model-definition/designCase/demands-nonzero.csv 
+conversion: data/model-definition/designCase/process-costs.csv 
+transport: data/model-definition/designCase/transport.csv
+objective: "0.1 * cost_prod + 0.1 * cost_transp + cost_res"
+pareto:
+    condition: "sum(Z, exports('gasNatural',Z,'wint'))"
+    limit: "1e8"
+options: # These define options for GAMS
+    filename: "options-short.gms"
+    limrow: 0
+    limcol: 0
+    solprint: "off"
+    decimals: 8
+    optcr: 0.3
+    reslim: 1000
+notes: 

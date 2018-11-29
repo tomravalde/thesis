@@ -1,0 +1,7 @@
+"Component","$c_i$","exergy (MJ/kg)","Notes","References"
+"Organic",46,0,"Assume negligible (similar composition to Earth's crust)",
+"Paper",17,16.5,,"\citet{Junior2012}, Table 9.7"
+"Plastic",10,19.7,"Assume PVC","\citet{Junior2012}, Table 9.7"
+"Glass",5,0.935,,"\citet{Ayres1998a}, Figure 2.5"
+"Metal",4,6.3,"Assume steel","\citet{Ayres1998a}, Figure 2.2"
+"Other",18,0,"Assume negligible (similar composition to Earth's crust)",

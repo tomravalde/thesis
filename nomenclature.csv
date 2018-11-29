@@ -1,0 +1,22 @@
+Type,Symbol,Text
+acronym,GDP,Gross domestic product
+symbol,Y,"Generic symbol for some quantity associated with a city (e.g. GDP, number of crimes)"
+,Y_0,
+,t,Time
+,N,City population
+,\Beta,
+acronym,MSW,Municipal solid waste
+symbol,R,Resource quantity required to sustain a member of an urban population
+,E,Resource quantity required to sustain an extra member of an urban population
+,t_c,Critical time at which a N theoretically grows to infinity
+acronym,CHP,Combined heat and power
+,PV,Photovoltaic (e.g. solar-PV stands for solar-photovoltaic)
+,EIP,Eco-industrial park
+,UM,Urban metabolism
+,LiDAR,
+symbol,CO_2,Carbon dioxide
+acronym,HVAC,"Heating, ventilation and cooling "
+,ENA,Ecological network analysis
+,MARKAL,
+,MR,"Multi-resource, as in multi-resource system (Chapter 3)"
+,MRTP,Multi-resource trade-off problem

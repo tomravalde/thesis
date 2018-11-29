@@ -1,0 +1,6 @@
+city,year,variable,value,possible-source
+Manila,2011,carbon.footprint,2.85E+013,"Comparatively high cement import, production, consumption"
+Karachi,2011,carbon.footprint,742261147297,"Comparatively high cement import, production, consumption"
+Kolkata,2001,water.footprint,1.05E+001,Very low. No value for 2001 water consumption given
+Paris,2006,water.footprint,,
+Mexico City,2006,water.footprint,,
