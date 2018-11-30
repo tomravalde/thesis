@@ -582,6 +582,7 @@ tab.tex <- xtable(tab.csv, caption="The relationships between research objective
 
 print(tab.tex,
       size='\\small',
+      caption.placement="top",
 #      tabular.environment='ctable',
 #      floating.environment='sidewaystable',
       include.rownames=FALSE,

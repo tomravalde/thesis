@@ -104,6 +104,7 @@ tab.metrics.tex <- xtable(tab.metrics.csv,
 print(tab.metrics.tex,
 ##      size='\\small',
       table.placement='htbp!',
+      caption.placement='top',
       include.rownames=FALSE,
       sanitize.text.function=identity,
       comment = FALSE)
@@ -190,6 +191,7 @@ tab.metrics.calc.tex <- xtable(tab.metrics.calc.csv, caption="Summary of the bla
 print(tab.metrics.calc.tex,
 ##      size='\\small',
       table.placement='htbp!',
+      caption.placement='top',
       include.rownames=FALSE,
       sanitize.text.function=identity,
       comment = FALSE)
@@ -794,6 +796,7 @@ tab.exergy.tex <- xtable(tab.exergy.csv, caption="Summary of $Ex^*_p$ flows, inf
 print(tab.exergy.tex,
       size='\\footnotesize',
       table.placement='!htbp',
+      caption.placement='top',
       include.rownames=FALSE,
       sanitize.text.function=identity,
       comment = FALSE)
@@ -1385,6 +1388,7 @@ exergy.summary.tex <- xtable(exergy.summary, caption="Results for exergy analysi
 
 print(exergy.summary.tex,
       include.rownames=FALSE,
+      caption.placement='top',
       sanitize.text.function=identity,
       comment = FALSE)
 ```
