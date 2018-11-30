@@ -224,7 +224,7 @@ Some of the different types of models that exist are summarised in Figure \ref{f
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.5]{02_lit-review/nitrogen-cycle.jpg}
+\includegraphics[scale=0.25]{02_lit-review/nitrogen-cycle.jpg}
 \caption{The nitrogen cycle represented as a conceptual model \citep{AutomatedTeachingMachines2018}. \label{fig:N-cycle}}
 \end{figure}
 
@@ -608,19 +608,19 @@ Some models are \textbf{non-integrated}. These models optimise just one resource
 
 \begin{figure}
 	\centering
-  	\begin{subfigure}{0.8\textwidth}
+  	\begin{subfigure}[b]{0.25\textwidth}
         \includegraphics{02_lit-review/none-integrated.pdf}
 	\caption{Non-integrated modelling only optimises how to meet the demand of one system (represented by squares).}
 	\label{fig:interation-none}
 	\end{subfigure}
 
-  	\begin{subfigure}{0.8\textwidth}
+  	\begin{subfigure}[b]{0.25\textwidth}
         \includegraphics{02_lit-review/integrated.pdf}
 	\caption{Integrated modelling optimises how to meet the demand of one system (represented by the squares), but in doing so, describes more than one system (represented squares and circles).}
 	\label{fig:interation-medium}
 	\end{subfigure}
 
-  	\begin{subfigure}{0.8\textwidth}
+  	\begin{subfigure}[b]{0.25\textwidth}
         \includegraphics{02_lit-review/highly-integrated.pdf}
 	\caption{Highly-integrated modelling optimises how to meet the demand of more than one system (represented squares and circles).}
 	\label{fig:interation-high}
