@@ -1,4 +1,4 @@
-# PRaQ formulation for the SPC case study
+# PRaQ formulation for the SPC case study {sec:formulation}
 
 The formulation of PRaQ given in Chapter \ref{sec:model-dev} does not contain the temporal element (indexed by $t$, for example, resource demands which vary with time, $D_{rzt}$), whereas the case study in Chapter \ref{sec:case-study} does. For the sake of completeness, this appendix presents the formulation used in the SPC case study.
 
