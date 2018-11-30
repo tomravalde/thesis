@@ -566,7 +566,7 @@ Figure \ref{fig:evolution} shows how the three formulations are related both to 
 \end{figure}
 
 
-### Null (N) formulation {#sec:Null}
+### Null formulation {#sec:Null}
 
 The null model can be defined using similar base equations as for the @Keirstead2013a model, having as its main constraint, the balance for each resource $r$, in each zone $z$:
 
