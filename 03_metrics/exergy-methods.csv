@@ -4,7 +4,7 @@
 "Wind power","Wind","Electricity",,"\citet{Koroneos2003}"
 "Heating","Fuel, electricity","Heat",,"\citet{Ozgener2005}"
 "Cement production","Fuel","Cement","Heat, effluents","\citet{Madlool2012}"
-"Steel production","Fuel","Cement","Heat, effluents","\citet{Allwood2012}"
+"Steel production","Fuel","Steel","Heat, effluents","\citet{Allwood2012}"
 "Groundwater abstraction","Electricity","Water",,"\citet{Rosen2009}. Adapting hydropower exergy methods to ground water abstraction."
 "Water treatments","Water, contaminants","Treated water","Effluent","\citet{Wang2011}"
 "Wastewater treatment","Wastewater, electricity, chemicals","Treated wastewater","Effluent","\citet{Wang2011} gives thermodynamics of BOD calculations;  \citet{Khosravi2013} provides quantities of process input and output flows."
