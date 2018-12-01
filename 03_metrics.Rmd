@@ -1395,18 +1395,8 @@ exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
 
 \begin{figure}
 \centering
-  \begin{subfigure}[b]{\textwidth}
-  \centering
-  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-beijing.pdf}
-  \caption{Beijing.}
-  \label{fig:sankey-beijing}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{\textwidth}
-  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-saopaulo.pdf}
-  \caption{Sao Paolo.}
-  \label{fig:sankey-saopaulo}
-  \end{subfigure}
+  \subfigure[Beijing]{\includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-beijing.pdf}\label{fig:sankey-beijing}}\\
+  \subfigure[Sao Paulo]{\includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-saopaulo.pdf}\label{fig:sankey-saopaulo}}
 
   \caption{Exergy flows represented as a Sankey diagram, drawn using the tool built by \citet{Counsell2014}. \textbf{Key:} `\textsf{Elec.}' = electricity used in other processes, `\textsf{D/C/I}' = Domestic, commercial and industrial water use, `\textsf{WH}' = waste heat, `\textsf{Irrev.}' = irreversibilities. Note: `\textsf{Fuel (other)}' includes natural gas, and other fuels accounted for but not identified by name in the UM dataset of \citet{Kennedy2014}.}
   \label{fig:sankey-results}
@@ -1566,24 +1556,10 @@ plot.network <- ggplot(filter(mutualism, City=="Beijing"), aes(Input, Output)) +
 
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
-  \input{03_metrics/img/figure-ena-beijing.tex}
-  \caption{Beijing.}
-  \label{fig:ena-beijing}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{0.4\textwidth}
-  \input{03_metrics/img/figure-ena-london.tex}
-  \caption{London.}
-  \label{fig:ena-london}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{0.4\textwidth}
-  \input{03_metrics/img/figure-ena-saopaulo.tex}
-  \caption{Sao Paulo.}
-  \label{fig:ena-saopaulo}
-  \end{subfigure}
-
+  \subfigure[Beijing]{\input{03_metrics/img/figure-ena-beijing.tex}\label{fig:ena-beijing}}\\
+  \subfigure[London]{\input{03_metrics/img/figure-ena-london.tex}\label{fig:ena-london}}\\
+  \subfigure[Sao Paulo]{\input{03_metrics/img/figure-ena-saopaulo.tex}\label{fig:ena-saopaulo}}
+  
 \caption{Exergetic dependencies for the three cities. The sum total of direct and indirect exergy flows are quantified between four resource management sectors as well as the city's internal and exeternal environments (note that the \citet{Kennedy2014} dataset does not record material flows for London). Arrow directions indicate mutualism and exploitation as per Figure \ref{fig:ena-example}; arrow thickness is proportional to the element value in the integral utility matrix.}
 \label{fig:ena}
 \end{figure}

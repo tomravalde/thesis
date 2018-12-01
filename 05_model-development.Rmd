@@ -1145,18 +1145,8 @@ In summary, the nonlinear formulation has the highest fidelity, but as a consequ
 
 \begin{figure}
   \centering
-  \begin{subfigure}{0.4\textwidth}
-  \includegraphics[width=\textwidth]{05_model-development/curve-fidelity-generality.pdf}
-  \caption{The trade-off between fidelity and generality.}
-  \label{fig:curve-fid-gen}
-  \end{subfigure}
-
-  \centering
-  \begin{subfigure}{0.4\textwidth}
-  \includegraphics[width=\textwidth]{05_model-development/curve-fidelity-tractability.pdf}
-  \caption{The trade-off between fidelity, tractability, and usability.}
-  \label{fig:curve-fid-use}
-  \end{subfigure}
+  \subfigure[The trade-off between fidelity and generality.]{\includegraphics[width=0.4\textwidth]{05_model-development/curve-fidelity-generality.pdf}\label{fig:curve-fid-gen}}\\
+  \subfigure[The trade-off between fidelity, tractability, and usability.]{\includegraphics[width=0.4\textwidth]{05_model-development/curve-fidelity-tractability.pdf}\label{fig:curve-fid-use}}
 
 \caption{The trade-off between model formulations.}
 \label{fig:formulation-trade-offs}
