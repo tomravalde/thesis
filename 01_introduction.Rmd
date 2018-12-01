@@ -76,9 +76,6 @@ These predictions are not just the view of a small number, but widely accepted o
 -->
 
 
-<!--
-{r pop_data, fig.height=1.8, fig.width=5, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to \\citet{UN2014}\\footnote{The world's urban and total population forecasts can be found in Files 3 and 5, respectively}\\label{fig:pop_forecasts}", results="asis"}
--->
 
 ```{r pop_data, fig.height=1.8, fig.width=5, fig.cap="Global population between 1950 and 2014, and forecasts up to 2050, according to the \\citet{UN2014}.\\label{fig:pop_forecasts}", results="asis"}
 
@@ -576,6 +573,7 @@ In conclusion, there is strong case to pursue research into a model that optimis
 
 ```{r table-objectives, results="asis"}
 library(xtable)
+
 
 tab.csv <- read.csv("01_introduction/outline.csv", check.names=FALSE)
 tab.tex <- xtable(tab.csv, caption="The relationships between research objectives, thesis chapters and novel contributions.", label = "tab:outline", align="llp{6cm}p{6cm}p{6cm}")
