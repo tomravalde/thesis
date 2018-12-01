@@ -5,7 +5,7 @@
 \begin{tcolorbox}
 
 A version of this chapter was published as: 
-Tom Ravalde, James Keirstead, Comparing performance metrics for multi-resource systems: the case of urban metabolism, \emph{Journal of Cleaner Production}, doi: \url{http://dx.doi.org/10.1016/j.jclepro.2015.10.118} The `Urban metabolism and sustainability' section of the paper was reworked into Section \ref{sec:UM-review} of the literature review.
+Ravalde, T. and Keirstead, J. (2015b). Comparing performance metrics for multi-resource systems: The case of urban metabolism. \emph{Journal of Cleaner Production}, 163:S241–S253. The `Urban metabolism and sustainability' section of the paper was reworked into Section \ref{sec:UM-review} of the literature review.
 
 \end{tcolorbox}
 
@@ -43,19 +43,9 @@ This section considers MR systems, providing a formal definition of resource per
 \input{03_metrics/figure.tex}
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.5\textwidth}
-    \systemBlack[\bfseries]{solid}{black}{white}
-    \caption{`Black-box' representation, with no knowledge of internal system processes.}
-    \label{fig:MR-closed}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{0.5\textwidth}
-    \systemGrey{solid}{black!21}{black}
-    \caption{`Grey-box' representation, with internal processes $p \in P$, for $|P|=M$.
-    These could include energy conversion, water supply and waste managment.}
-    \label{fig:MR-open}
-  \end{subfigure}
-  \caption{Representations MR systems with resources $r_{i,j}$ for $i,j=1,2,3,\ldots,N$, where $i$ indexes input resources and $j$ indexes output resources.}
+  \subfigure[`Black-box' representation, with no knowledge of internal system processes.]{\systemBlack[\bfseries]{solid}{black}{white}\label{fig:MR-closed}}\\
+  \subfigure[`Grey-box' representation, with internal processes $p \in P$, for $|P|=M$. These could include energy conversion, water supply and waste managment.]{\systemGrey{solid}{black!21}{black}\label{fig:MR-open}}
+  \caption{Representations of MR systems with resources $r_{i} \in R$ and $r'_{j} \in R'$ for $i=1,2,3,\ldots,N'$ and $j=1,2,3,\ldots,N'$, where $R$ is the set of input resources, and $R'$ is the set of output resources.}
   \label{fig:MR-represent}
 \end{figure}
 
@@ -68,9 +58,9 @@ In this representation, there is no knowledge of the processes within the MR sys
 Absolute measures are simply a linearly weighted sum of inputs and outputs \eqref{eq:metrics-general-abs}:
 \begin{align}
 \label{eq:metrics-general-abs}
-\alpha = \sum_{i=1}^N w_i r_i + \sum_{j=1}^N w_j r_j + k
+\alpha = \sum_{i=1}^N w_i r_i + \sum_{j=1}^{N'} w'_j r'_j + k
 \end{align}
-where $N$ is the superset of both input and output resources (these subsets are denoted $R^i$ and $R^j$ respectively), $i$ are input indices, $j$ are output indices, $r$ is the resource flow, and $w$ denotes weights applied to resource quantities. For completeness, a constant $k$ may also be added, although the discussion below assumes that $k=0$. The simplest theoretical case is where $N=w=1$, such that just one resource is considered in a performance metric. However by applying weights, multiple resources can be resolved into a common measure of value, often corresponding to some environmental or other impact. Three such approaches include 'footprints', other sustainability measures and more subjectively weighted sums, considered below. (The categories are not definitive but have been selected here for convenience.)
+where $R$ and $R'$ are the set of input and output resources, respectively, and are populated by input resource quantities $r_i$, and output resource quantities $r'_j$, with $w_i$ and $w'_i$ denoting weights which can be applied to these resource flow quantities. For completeness, a constant $k$ may also be added, although the discussion below assumes that $k=0$. The simplest theoretical case is where $N=N'=w_i=w'_j=1$, such that just one resource is considered in a performance metric. However by applying weights, multiple resources can be resolved into a common measure of value, often corresponding to some environmental or other impact. Three such approaches include 'footprints', other sustainability measures and more subjectively weighted sums, considered below. (The categories are not definitive but have been selected here for convenience.)
 
 Footprint measures are usually associated with specific environmental impacts, and a common example is the carbon footprint (CF). CFs are often used to measure the contribution of a system to global warming and are calculated using weights which correspond to the carbon emissions produced in the production of system input resources $r_i$, thus quantifying the total emissions associated with a system as it meets demand for goods and services. The CF is widely used, with examples found in MR systems of all scales, from cement production [@Amato2013] and biodiesel production [@Batan2010], to urban energy systems [@Bhatt2010a], and to cities as a whole [@Ramaswami2011]. Alternatively, the water footprint (WF) of a system represents the total freshwater required to produce and supply goods and services to consumers [@WFN2015]. Examples include fuel production processes [@Okadera2014], or entire cities such as Vienna [@Vanham2014] and Macao [@Chen2015]. CF and WF evaluations differ in formulation, since the CF is calculated from resource inputs (such as fuels and materials) only, such that $w_i \neq 0$ for at least one $i$, but $w_j=0$ for all $j$; but the WF sums water embodied in non-water resource inputs together with the system's water outputs (e.g. domestic drinking water), so $w_i \neq 0$ and $w_j\neq 0$ for some cases of both $r_i$ and $r_j$.  A more complicated footprint measure is the 'ecological footprint' (EF) which converts resource consumption and waste outputs into the equivalent land area required to sustain a system (for example, by meeting food and fossil fuel demands and absorbing emissions [@Rees1992]), with example city EF evaluations including London [@BFF2002], Shenyang and Kawasaki [@Geng2014]. 
 
@@ -84,12 +74,12 @@ Often it is the efficiency, rather than absolute performance of an MR system whi
 
 \begin{align}
 \label{eq:metrics-general-eff}
-\eta = \frac{\sum_{j=1}^{N} w_j r_j + k_j}{\sum_{i=1}^{N} w_i r_i + k_i}
+\eta = \frac{\sum_{j=1}^{N'} w'_j r'_j + k'_j}{\sum_{i=1}^{N} w_i r_i + k_i}
 \end{align}
 
 The literature contains at least three specific configurations of system efficiency.  This thesis denotes the first class of efficiency metrics as $\eta_1$; these are where only one resource type is considered as both an input and an output. (A 'resource' and a 'resource type' are distinct: electricity and coal are different resources, but they are both 'types' of energy resource). For example, first law energy efficiency is given as $\eta_{1_{\mbox{energy}}}=\mbox{final energy}/\mbox{energy source inputs}$, and is used to evaluate the performance of electrical power systems [@Rosen2009], or urban energy systems as a whole [@Rosen2005]. Water efficiency can also be considered in this way, where the final demand for water from a system is measured with respect to the water entering the system; examples can be found in @Makropoulos2008 (who use this ratio for an urban water usage indicator), and @Lim2010 (whose urban water model has the objective of meeting demand whilst minimising freshwater consumption). The equivalent $\eta_1$ metric within the urban waste sector is the waste diversion rate: the ratio (by mass) of recycled waste to total waste [@Zaman2013].
 
-$\eta_2$ metrics on the other hand take the ratio of two different resources types: @Keirstead2013 calculates alternative urban energy efficiencies as the ratio of total final energy consumption relative to the area's economic output, population or geographical area. Similarly, @Zhang2007 interprets the ratio of an area's GDP or population to its material consumption as its 'resource efficiency'. @Browne2009 evaluate urban performance of an area from the ratio of waste disposal to product consumption. @Sanders2012 apply an efficiency metric of this type at the national level, quantifying the energy consumption that can be attributed to water use in the United States. The final type of efficiency metric ($\eta_3$) is where resource consumption is measured relative to a baseline, perhaps representing some environmental condition or constraint, such as urban energy consumption per unit of solar radiation [@Santamouris2001]. (Efficiency ratios can take other forms, but these are the main examples found in the literature.)
+$\eta_2$ metrics on the other hand take the ratio of two different resources types: @Keirstead2013 calculates alternative urban energy efficiencies as the ratio of total final energy consumption relative to the area's economic output, population or geographical area. Similarly, @Zhang2007 interprets the ratio of an area's GDP or population to its material consumption as its 'resource efficiency'. @Browne2009 evaluate urban performance of an area from the ratio of waste disposal to product consumption. @Sanders2012 apply an efficiency metric of this type at the national level, quantifying the energy consumption that can be attributed to water use in the United States. The final type of efficiency metric, $\eta_3$, is where resource consumption is measured relative to a baseline, perhaps representing some environmental condition or constraint, such as urban energy consumption per unit of solar radiation [@Santamouris2001]. (Efficiency ratios can take other forms, but these are the main examples found in the literature.)
 
 ```{r table-metrics, results="asis"}
 library(xtable)
@@ -1405,18 +1395,8 @@ exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
 
 \begin{figure}
 \centering
-  \begin{subfigure}[b]{\textwidth}
-  \centering
-  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-beijing.pdf}
-  \caption{Beijing.}
-  \label{fig:sankey-beijing}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{\textwidth}
-  \includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-saopaulo.pdf}
-  \caption{Sao Paolo.}
-  \label{fig:sankey-saopaulo}
-  \end{subfigure}
+  \subfigure[Beijing]{\includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-beijing.pdf}\label{fig:sankey-beijing}}\\
+  \subfigure[Sao Paulo]{\includegraphics[width=\textwidth]{03_metrics/img/figure-sankey-saopaulo.pdf}\label{fig:sankey-saopaulo}}
 
   \caption{Exergy flows represented as a Sankey diagram, drawn using the tool built by \citet{Counsell2014}. \textbf{Key:} `\textsf{Elec.}' = electricity used in other processes, `\textsf{D/C/I}' = Domestic, commercial and industrial water use, `\textsf{WH}' = waste heat, `\textsf{Irrev.}' = irreversibilities. Note: `\textsf{Fuel (other)}' includes natural gas, and other fuels accounted for but not identified by name in the UM dataset of \citet{Kennedy2014}.}
   \label{fig:sankey-results}
@@ -1576,24 +1556,10 @@ plot.network <- ggplot(filter(mutualism, City=="Beijing"), aes(Input, Output)) +
 
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
-  \input{03_metrics/img/figure-ena-beijing.tex}
-  \caption{Beijing.}
-  \label{fig:ena-beijing}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{0.4\textwidth}
-  \input{03_metrics/img/figure-ena-london.tex}
-  \caption{London.}
-  \label{fig:ena-london}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{0.4\textwidth}
-  \input{03_metrics/img/figure-ena-saopaulo.tex}
-  \caption{Sao Paulo.}
-  \label{fig:ena-saopaulo}
-  \end{subfigure}
-
+  \subfigure[Beijing]{\input{03_metrics/img/figure-ena-beijing.tex}\label{fig:ena-beijing}}\\
+  \subfigure[London]{\input{03_metrics/img/figure-ena-london.tex}\label{fig:ena-london}}\\
+  \subfigure[Sao Paulo]{\input{03_metrics/img/figure-ena-saopaulo.tex}\label{fig:ena-saopaulo}}
+  
 \caption{Exergetic dependencies for the three cities. The sum total of direct and indirect exergy flows are quantified between four resource management sectors as well as the city's internal and exeternal environments (note that the \citet{Kennedy2014} dataset does not record material flows for London). Arrow directions indicate mutualism and exploitation as per Figure \ref{fig:ena-example}; arrow thickness is proportional to the element value in the integral utility matrix.}
 \label{fig:ena}
 \end{figure}
