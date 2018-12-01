@@ -6,9 +6,7 @@
 \begin{tcolorbox}
 
 An early version of the work in this chapter was published as: 
-Tom Ravalde, James Keirstead, Integrated Resource Planning for a Chinese Urban Development, \emph{International Symposium for Next Generation Infrastructure Conference Proceedings}, doi: \url{http://discovery.ucl.ac.uk/1469209/}.
-
-\end{tcolorbox}
+Ravalde, T. and Keirstead, J. (2015b). Comparing performance metrics for multi-resource systems: The case of urban metabolism. \emph{Journal of Cleaner Production}, 163:S241–S253.\end{tcolorbox}
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
 library(knitr)

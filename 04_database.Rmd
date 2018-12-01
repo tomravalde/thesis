@@ -5,7 +5,7 @@
 \begin{tcolorbox}
 
 A version of this chapter was published as: 
-Tom Ravalde, James Keirstead, A database to facilitate a process-oriented approach to urban metabolism, \emph{Journal of Industrial Ecology}, doi: \url{http://dx.doi.org/10.1111/jiec.12429}. The `Approaches to urban metabolism' section of the paper was reworked into the literature review as Section \ref{sec:UM-review}).
+Ravalde, T. and Keirstead, J. (2015a). A database to facilitate a process-oriented approach to urban metabolism. \emph{Journal of Industrial Ecology}, 21(2):282–293. The `Approaches to urban metabolism' section of the paper was reworked into the literature review as Section \ref{sec:UM-review}).
 
 \end{tcolorbox}
 

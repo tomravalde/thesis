@@ -607,37 +607,13 @@ Some models are \textbf{non-integrated}. These models optimise just one resource
 \end{description}
 
 \begin{figure}
-	\centering
-  	\begin{subfigure}[b]{0.25\textwidth}
-        \includegraphics{02_lit-review/none-integrated.pdf}
-	\caption{Non-integrated modelling only optimises how to meet the demand of one system (represented by squares).}
-	\label{fig:interation-none}
-	\end{subfigure}
-
-  	\begin{subfigure}[b]{0.25\textwidth}
-        \includegraphics{02_lit-review/integrated.pdf}
-	\caption{Integrated modelling optimises how to meet the demand of one system (represented by the squares), but in doing so, describes more than one system (represented squares and circles).}
-	\label{fig:interation-medium}
-	\end{subfigure}
-
-  	\begin{subfigure}[b]{0.25\textwidth}
-        \includegraphics{02_lit-review/highly-integrated.pdf}
-	\caption{Highly-integrated modelling optimises how to meet the demand of more than one system (represented squares and circles).}
-	\label{fig:interation-high}
-	\end{subfigure}
-
+	\centering%
+	\subfigure[Non-integrated modelling only optimises how to meet the demand of one system (represented by squares).]{\includegraphics[scale=0.9]{02_lit-review/none-integrated.pdf}\label{fig:interation-none}}\qquad
+  	\subfigure[Integrated modelling optimises how to meet the demand of one system (represented by the squares), but in doing so, describes more than one system (represented squares and circles).]{\includegraphics[scale=0.9]{02_lit-review/integrated.pdf}\label{fig:interation-medium}}\\
+  	\subfigure[Highly-integrated modelling optimises how to meet the demand of more than one system (represented squares and circles).]{\includegraphics[scale=0.9]{02_lit-review/highly-integrated.pdf}\label{fig:interation-high}}%
 	\caption{Different levels of modelling integration of resource management systems. The dotted line represents the boundary of a system; the arrows represent demands for which the system is optimising.}
         \label{fig:integn-levels}
 \end{figure}
-
-<!--
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{02_lit-review/integration-levels}
-  \caption{Representation of low-, medium-, and high-levels of integration in resource optimisation modelling.}
-  \label{fig:integn-levels}
-\end{figure}
--->
 
 The resource management optimisation models in the filtered list have been plotted as points on Figure \ref{fig:model-integration}. The points are coloured according to the modelling type, while its scale, level of integration, and level are represented by its location. The models cited above are labelled on the plot. The figure shows that, in general, smaller-scale systems are more interested in just a single resource, and their systems are modelled in greater detail. These models are also more likely to be experimental. Larger systems are more likely to consider multiple resources in a integrated or highly integrated fashion, but none of these models go into design detail (all are either medium- or high-level). For these models, mathematical optimisation is the most commonly used method.
 
