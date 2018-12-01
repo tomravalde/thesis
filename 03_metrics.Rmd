@@ -5,7 +5,7 @@
 \begin{tcolorbox}
 
 A version of this chapter was published as: 
-Tom Ravalde, James Keirstead, Comparing performance metrics for multi-resource systems: the case of urban metabolism, \emph{Journal of Cleaner Production}, doi: \url{http://dx.doi.org/10.1016/j.jclepro.2015.10.118} The `Urban metabolism and sustainability' section of the paper was reworked into Section \ref{sec:UM-review} of the literature review.
+Ravalde, T. and Keirstead, J. (2015b). Comparing performance metrics for multi-resource systems: The case of urban metabolism. \emph{Journal of Cleaner Production}, 163:S241–S253. The `Urban metabolism and sustainability' section of the paper was reworked into Section \ref{sec:UM-review} of the literature review.
 
 \end{tcolorbox}
 
