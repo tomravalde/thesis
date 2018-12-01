@@ -43,18 +43,8 @@ This section considers MR systems, providing a formal definition of resource per
 \input{03_metrics/figure.tex}
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.5\textwidth}
-    \systemBlack[\bfseries]{solid}{black}{white}
-    \caption{`Black-box' representation, with no knowledge of internal system processes.}
-    \label{fig:MR-closed}
-  \end{subfigure}
-
-  \begin{subfigure}[b]{0.5\textwidth}
-    \systemGrey{solid}{black!21}{black}
-    \caption{`Grey-box' representation, with internal processes $p \in P$, for $|P|=M$.
-    These could include energy conversion, water supply and waste managment.}
-    \label{fig:MR-open}
-  \end{subfigure}
+  \subfigure[`Black-box' representation, with no knowledge of internal system processes.]{\systemBlack[\bfseries]{solid}{black}{white}\label{fig:MR-closed}}\\
+  \subfigure[`Grey-box' representation, with internal processes $p \in P$, for $|P|=M$. These could include energy conversion, water supply and waste managment.]{\systemGrey{solid}{black!21}{black}\label{fig:MR-open}}
   \caption{Representations MR systems with resources $r_{i,j}$ for $i,j=1,2,3,\ldots,N$, where $i$ indexes input resources and $j$ indexes output resources.}
   \label{fig:MR-represent}
 \end{figure}
