@@ -60,14 +60,14 @@
     \put(0.04179253,1.0752703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24509355\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{assemble-model.pdf}}%
     \put(0.04150557,0.891889){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Site (\texttt{CSV})}}}%
-    \put(0.04150556,0.88167678){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.26580498\unitlength}\raggedright \footnotesize{Data which defines the site's geography, demands and import/export constraints}\end{minipage}}}%
+    \put(0.04150556,0.88167678){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.26580498\unitlength}\raggedright \scriptsize{Data which defines the site's geography, demands and import/export constraints}\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{assemble-model.pdf}}%
     \put(0.32947191,0.32080314){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Null}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{assemble-model.pdf}}%
     \put(0.31756429,0.2151685){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{PRaQ}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{assemble-model.pdf}}%
     \put(0.28383849,0.10955207){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Nonlinear}}}%
-    \put(0.04179253,1.0752703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25530578\unitlength}\raggedright \footnotesize{Data which defines the resources and processes}\end{minipage}}}%
+    \put(0.04179253,1.0752703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25530578\unitlength}\raggedright \scriptsize{Data which defines the resources and processes}\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{assemble-model.pdf}}%
     \put(0.42168753,1.14879839){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{Formulation} (\texttt{GAMS})}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{assemble-model.pdf}}%

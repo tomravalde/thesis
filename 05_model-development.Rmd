@@ -970,7 +970,7 @@ This approach to implementation means its easy to build versions of a network fo
 \begin{figure}
 	\centering
 	\sffamily
-	\resizebox{0.5\columnwidth}{!}{\input{05_model-development/assemble-model.pdf_tex}}
+	\resizebox{0.8\columnwidth}{!}{\input{05_model-development/assemble-model.pdf_tex}}
 	\caption{Schematic for assembling the benchmark models for the Tat Hamlet case study.}
 	\label{fig:assemble-model}
 \end{figure}
