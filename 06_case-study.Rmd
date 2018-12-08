@@ -77,7 +77,6 @@ A stated ambition of the SPC site redevelopment is to integrate the energy, wate
 \end{figure}
 
 Previous work has looked at the energy management for the site's industrial and residential areas [@Zheng2017]. This modelled the thermal properties of the buildings to derive the site's energy requirements as they fluctuate over a time horizon, and used a MINLP modelling framework to choose the network of energy supply technologies with minimum system cost under different scenarios of energy prices and limits on emissions. This work is less detailed -- it does not attempt to model the demands or apply detailed sensitivity analysis. However it takes a higher-level view by incorporating water and waste systems alongside the energy system, and considers not just the current proposals for a system design, but also those made possible when the full database of Chapter \ref{sec:database} is considered. In other words, this case study is concerned less with the detailed design of the SPC's energy system, but more with optimising the site's metabolism. The site's demands are defined at a seasonal level, which means a time component, $t$, needs to be introduced into the PRaQ model -- the full formulation which includes $t$ is presented in Appendix \ref{sec:formulation}.
---->
 
 <!--
 - [SPC-4, slide 17: water, waste and energy jigsawed together]

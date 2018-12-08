@@ -28,3 +28,4 @@ cache/
 *.ods
 *.nlo
 *.swp
+!viva-comments.md
