@@ -3,8 +3,17 @@
 ## Near impossibility of validation
 
 - Intro: emphasise the impossibility of the modelling in intro 'systems' section
+- Ch2: "Review of resource management optimisation modelling..."; Conclusion
+- #### The trade-offs between the Null, PRaQ and Nonlinear formulations
+ 
 - In the Ch 5 intro and discussion, re-emphasise the impossibility of number of choices and implications for validation
-- In Ch 6 case study, re-emphasize the impossibility of the task without optimisation; and also the impossibility of validation
+- In Ch 6 case study, intro re-emphasize the impossibility of the task without optimisation;
+- Section 6.3
+- Summary and conclusions
+- Ch 7 intro
+- Ch 7.1
+
+and also the impossibility of validation
 - Ch 7, incorporate difficulty and impossibility into concluding remarks
 - Abstract, incorporate difficulty and impossibility into concluding remarks
 
@@ -27,7 +36,9 @@
 
 Dear Thomas,
 
- 
+Dear Dr Onof,
+
+Please find attached an updated copy of the thesis which I have updated to address the issues you have highlighted. Below is a summary as to how I have responded to each comment. Please let me know if you think there are any further issues to correct.
 
 > Aside from the issues of detail that were discussed at the viva (e.g. about equations), we have left our copies of your thesis with Ivan: they contain the typos we spotted.
 
@@ -38,7 +49,12 @@ I've addressed these matters of detail discussed in the viva and marked up on th
 
 > some background information about the Case Studies would be helpful, especially for the main Case Study (e.g. climate, rationale, work done by others, …);
 
+Many thanks,
+Tom
+
+
 I've added in some comments on climate [TODO:cross-ref], and extended Section 6.1 to include more about the rationale, work done by others and the Chinese context (citing [TODO: citations])
+and relevant comments on region's weather [@ChinaMeteorologicalAdministration2018]
 
 - Rationale -- see Section 6.1. where I think this was covered?
 - Work done by others
