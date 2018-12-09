@@ -32,9 +32,7 @@ and also the impossibility of validation
 - Code architecture loosely based on Samsatli (i.e. to separate the formulation and the data)
 - Complexity of the case study model with many parameters and equations and its implication for the near-impossibility of validation
 
-# Dr Onof's email
-
-Dear Thomas,
+# Email
 
 Dear Dr Onof,
 
