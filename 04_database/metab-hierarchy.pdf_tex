@@ -61,9 +61,9 @@
     \put(0,0){\includegraphics[width=\unitlength,page=4]{metab-hierarchy.pdf}}%
     \put(0.45084835,1.0249049){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32026466\unitlength}\raggedright water\end{minipage}}}%
     \put(0.69413658,1.91802058){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.55181735\unitlength}\raggedright \end{minipage}}}%
-    \put(0.05359203,0.38121546){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright refuse\\ sewage\end{minipage}}}%
+    \put(0.04517193,0.38121546){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright refuse\\ sewage\end{minipage}}}%
     \put(-0.55985727,2.20821339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.7321353\unitlength}\raggedright \end{minipage}}}%
-    \put(0.25664261,1.0255703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32026466\unitlength}\raggedright fossil fuels\end{minipage}}}%
+    \put(0.2482225,1.0255703){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32026466\unitlength}\raggedright fossil fuels\end{minipage}}}%
     \put(0.75728734,0.41657385){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0.33057382,0.35187075){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright heat\end{minipage}}}%
     \put(0.43551027,0.35114306){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.32627903\unitlength}\raggedright electricity\end{minipage}}}%

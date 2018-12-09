@@ -6,7 +6,11 @@
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
 library(extrafont)
-font_import(pattern="LinBiolinum")
+font_import(pattern="OpenSans")
+
+library(ggplot2)
+
+theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
 ```
 
 The systems of urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services. Upstream and downstream of these networks are the aggregate flows of inputs into and wastes out of a city. Understanding what drives these aggregate flows is a key component of UM research, but -- as Chapter \ref{sec:lit-review} argued -- the field has not yet produced a formal representation of how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies which present challenges to, and  opportunities for, efficient resource provision (Section \ref{sec:urbanOpps}). A model that seeks to optimise the management of resources at this systems-of-systems level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this idea from a concept to a formalised mathematical model.
@@ -907,6 +911,54 @@ Equations such as these allow us to formulate nonlinear problems. In the example
 In addition, the boundaries on the imports and exports and the objective function are defined as for the null and PRaQ models.
 -->
 
+### Explaining the difference between the models with reference to a pipe, pump and dam system {#sec:pipe-pump-dam}
+
+This chapter has developed both linear and nonlinear models to consider the integrated management of energy, water and waste systems. This section uses the example of a pipe-pump-dam system (Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}) to explain the differences in how they might differently model some phenomena. The models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{05_model-development/pipe-dam-example.pdf_tex}}
+	\end{spacing}
+	\caption{An example to illustrate the difference between model formulations. There are two zones. Zone 2 has an electricity demand which can be met by a dam (a conversion process), also in zone 1. However, the water must first be pumped (via the pump -- a conversion process in zone 1) and transported to zone 2 via a pipe (transport process).}
+	\label{fig:pump-dam-example}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{05_model-development/pipe-dam-network.pdf}
+	\caption{An RTN representation of Figure \ref{fig:pump-dam-example}. The electricity (E) required by the pump can be imported from outside the system; the amount required depends on the mass of water (W) to be pumped, and the elevation to which it needs pumping. The dashed arrow indicates that the electricity in Zone 2 is a demand.}
+	\label{fig:pump-dam-RTN}
+\end{figure}
+
+
+\begin{align}
+\frac{P}{\rho g} + z + \frac{v^2}{2g} = \mbox{constant}
+\end{align}
+
+where at a chosen point $P$ is the water's pressure, $z$ is its elevation with respect to a reference, and $v$ is its velocity ($g$ is the constant of acceleration due to gravity).
+
+First, consider the water flow from A (zone 1) to B (zone two) via the combination of a pump and a pipe. The pump provides the energy to raise the water's elevation and has an electrical efficiency of $\eta^{pump}$. This energy includes that which is required to overcome the energy loss due to friction. Typically this friction loss is defined as a function of the pipe's length $l$ and diameter $D$ as $\mbox{friction loss} = f_D(l/D)(v^2/2g)$ (where $f_D$ is the Darcy Friction Factor). It is also assumed that $P_1=P_2$ and that $v_1=v_2=v$, and that the datum is measured from A and C (which are at equal height), thus $z_A=z_B=0$. Finally, the models formulated later work with mass ($m$) and energy balances, thus it is convenient to multiply each term by $mg$. The resulting equation gives the water's energy at points A and B expressed in terms of mass:
+
+\begin{align}
+%z_A  + \eta^{pump} \frac{\mbox{pump energy}}{\rho V g}  = z_B + F \frac{l}{D} \frac{v^2}{2g}
+\eta^{pump} \cdot (\mbox{pump energy})  = m \left( gz_B + f_D \frac{l}{D} \frac{v^2}{2} \right) 
+\end{align}
+
+Second, consider the flow across the dam, between $B$ and $C$. Using the same assumptions as above, and defining the dam with an electrical generation efficiency, $\eta^{dam}$, and again multiplying through by $mg$, the relationship of water input attributes to the dam's electrical output is:
+
+\begin{align}
+mgz_B = \eta^{dam} \cdot (\mbox{electricity generated})
+\label{eq:damEnergy}
+\end{align}
+
+Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated ($e^{dam}$). The electricity is considered the dam's 'main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
+
+The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. Given that the quantity of water required to generate a given amount of electricity ($m$) is a variable, for a model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, and must be a fixed parameter. Therefore, a linear model requires a dam to be defined with fixed height. Thus, assuming a dam of height $z_B=11$ metres and efficiency $\eta^{dam}=$ 80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg. The dam example has two 'water' resources (one high-head as an input to the black-box model, the other low-head as an output from the black-box model). Other water resources could include water at different temperatures or contamination levels. 
+
+
 ### Model objectives {#sec:model-objs}
 
 The three models will minimise some objective. There are numerous possibilities. A common objective for these models is to minimise the cost of a system, i.e. the summed costs of the resources, conversion processes, and transport processes, ($C^R$), ($C^R$), and ($C^{\tau}$), respectively:
@@ -970,7 +1022,7 @@ This approach to implementation means its easy to build versions of a network fo
 \begin{figure}
 	\centering
 	\sffamily
-	\resizebox{0.5\columnwidth}{!}{\input{05_model-development/assemble-model.pdf_tex}}
+	\resizebox{0.8\columnwidth}{!}{\input{05_model-development/assemble-model.pdf_tex}}
 	\caption{Schematic for assembling the benchmark models for the Tat Hamlet case study.}
 	\label{fig:assemble-model}
 \end{figure}
@@ -1106,7 +1158,7 @@ data$value[data$stat_unordered=="obj_val"] <- data$value[data$stat_unordered=="o
 plot_conversion <- ggplot(data, aes(conversion, value)) +
   geom_line(aes(colour=Formulation)) +
   facet_wrap(~stat, scales="free_y", ncol=1) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.title.y=element_blank()) +
   xlab("Number of conversion processes")
 
@@ -1125,7 +1177,7 @@ These questions are discussed in the following two sub-sections.
 
 #### The trade-offs between the Null, PRaQ and Nonlinear formulations
 
-One way to assess a model's fidelity would be to verify its results against real data. One could measure resource demands of Tat and the resource flows within the system, and then run the models using the measured demands to see if the model chooses a similar system and schedule of resource management. However, this would be impractical (as pointed out in Section \ref{sec:modelling-intro}, practical limitations are one reason that models can be useful). Moreover, even if this were practical, this method would assume that the villagers of Tat are trying to optimise the same objective as the computer model -- given that a premise of this thesis is that urban resource management is generally sub-optimal, this approach would beg the question of why this thesis is even necessary. Furthermore, for the purposes of developing the model, Tat Hamlet has been re-imagined with simplifications, adjustments and assumptions, and hence there are some ways in which the modelled system and the real-world system are not comparable. The inability to validate the model with real data is not unique to this thesis; many other models which optimise the systems at the urban scale cannot be validated in this manner, including the earlier-cited model of @Keirstead2013a. This means that assessing the fidelity of the models must be achieved theoretically, with reference to the formulations themselves. As discussed in Section \ref{sec:model-maths}, on this view of fidelity, the nonlinear formulation is the most faithful to reality. The Nonlinear formulation can model phenomena that linear models cannot. In second place is the PRaQ model, because it can attribute multiple properties to a resource, which is the case in the real world. The lowest fidelity version is the Null formulation because it limits the representation of process behaviour to linear mathematics, and the representation of resources to single attributes (see Section \ref{sec:derivations}).
+One way to assess a model's fidelity would be to verify its results against real data. One could measure resource demands of Tat and the resource flows within the system, and then run the models using the measured demands to see if the model chooses a similar system and schedule of resource management. However, this would be impractical given the shear number of variables involved (the sixteen-process networks have at least 4,000 variables in their models). Each of these variables represents a decision (for example, on where processes should be located, how they should be linked, and at what rate they should operate, as well as what quantities of resources should flow between them). Furthermore, it should be borne in mind that this is just a small-scale example of a resource management system, and does not even contain a temporal component. Due to this, it would be impossible to validate the model by comparing its results to those of the real world (and as pointed out in Section \ref{sec:modelling-intro}, practical limitations are one reason that models can be useful). Moreover, even if this were practical, this method would assume that the villagers of Tat are trying to optimise the same objective as the computer model -- given that a premise of this thesis is that urban resource management is generally sub-optimal, this approach would beg the question of why this thesis is even necessary. Furthermore, for the purposes of developing the model, Tat Hamlet has been re-imagined with simplifications, adjustments and assumptions, and hence there are some ways in which the modelled system and the real-world system are not comparable. The inability to validate the model with real data is not unique to this thesis; many other models which optimise the systems at the urban scale cannot be validated in this manner, including the earlier-cited model of @Keirstead2013a. This means that assessing the fidelity of the models must be achieved theoretically, with reference to the formulations themselves. As discussed in Section \ref{sec:model-maths}, on this view of fidelity, the nonlinear formulation is the most faithful to reality. The Nonlinear formulation can model phenomena that linear models cannot. In second place is the PRaQ model, because it can attribute multiple properties to a resource, which is the case in the real world. The lowest fidelity version is the Null formulation because it limits the representation of process behaviour to linear mathematics, and the representation of resources to single attributes (see Section \ref{sec:derivations}).
 
 However, while the nonlinear formulation might have the greatest fidelity, it ranks lowest for generality, because nonlinear processes need Equation \ref{eq:nl_process} to be defined specially for any nonlinear process, so a single form of equation cannot be generally applied to all processes. In contrast, the linear models can apply the same equations for any process type (Equations \ref{eq:null_process} and \ref{eq:praq_conv_qual}--\ref{eq:praq_conv_qty} for the null and PRaQ models, respectively). The differences in resource definitions in the linear formulations arguably means PRaQ is slightly less general than Null -- the need to attribute qualities to PRaQ's resources could be seen to decrease generality because not every resource has the same number or combinations of qualities attributed to it (some may have just energy, some have mass, some may have both). However, the difference in generality between PRaQ and Null is small.
 

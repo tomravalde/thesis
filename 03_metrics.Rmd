@@ -15,9 +15,12 @@ library(knitr)
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
 library(extrafont)
-font_import(pattern="LinBiolinum")
+font_import(pattern="OpenSans")
 
 library(ggplot2)
+
+theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
+
 ```
 
 Chapter \ref{sec:intro} argued that there is untapped potential for cities to improve their metabolism by getting their energy, water, and waste management sectors to work together; Chapter \ref{sec:lit-review} showed that the UM and resource management optimisation fields lack the modelling capability to realise this possibility. However, before developing a model to support the integrated management of urban resource systems, it is important to consider how to measure the performance of such an integrated system -- i.e. which metrics could (or should) quantify the metabolic performance of a system which is made up of many different resources and processes? It is this question which is the concern of this chapter.
@@ -545,7 +548,7 @@ plot.metric.2011 <- ggplot(data.metrics.2011, aes(City, value)) +
   facet_wrap(~label) +
   ylab("Normalised city score") +
   scale_y_continuous(breaks=c(0, 0.5, 1)) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(angle=60, hjust=1, size=6),
   	axis.text.y = element_text(size=6),
 	axis.title.x=element_blank(),
@@ -653,14 +656,14 @@ corr.all.ids <- inner_join(corr.all.ids, heat.map.labels, by=c("y"="metric"))
 plot.corr.all <- ggplot(corr.all.lower, aes(x, y, fill=correlation)) +
   geom_tile() +
   facet_wrap( ~ year, ncol=1) +
-  geom_text(data=corr.all.ids, aes(label=label), size=2, hjust=0.1) +
+  geom_text(data=corr.all.ids, aes(label=label), size=2, hjust=0.1, family="Open Sans") +
   scale_fill_gradient2(low = "red",
 		      high = "steelblue",
 		      limits=c(-1,1),
 		      name = expression(paste(rho))) +
   scale_x_discrete(limits=meas.all[length(meas.all):1]) +
   scale_y_discrete(limits=meas.all) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
         axis.title = element_blank())
@@ -685,7 +688,7 @@ plot.corr.2011 <- ggplot(corr.all.lower.2011, aes(x, y, fill=correlation)) +
 		      name = expression(paste(rho))) +
   scale_x_discrete(limits=meas.all[length(meas.all):1]) +
   scale_y_discrete(limits=meas.all) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
         axis.title = element_blank())
@@ -701,7 +704,7 @@ correlation.box <- ggplot(corr.all.lower, aes(year, correlation)) +
   geom_hline(yintercept=0, linetype="dashed", color="red") +
   scale_y_continuous(limits = c(-1, 1)) +
   ylab(expression(paste(rho))) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.title.x = element_blank())
 correlation.box
 
@@ -752,7 +755,7 @@ plot.corr <- ggplot(corr.lower, aes(x, y, fill=correlation)) +
 		      name = expression(paste(rho))) +
   scale_x_discrete(limits=meas[length(meas):1]) +
   scale_y_discrete(limits=meas) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
         axis.title = element_blank())
@@ -1389,7 +1392,7 @@ exergy.summary.plotData <- melt(exergy.summary.plotData, c("City"))
 exergy.plot <- ggplot(exergy.summary.plotData, aes(City, value)) +
   geom_bar(stat="identity") +
   facet_wrap( ~ variable, ncol=3, scales="free") +
-  theme_bw()
+  theme_thesis
 
 ```
 
@@ -1548,7 +1551,7 @@ plot.network <- ggplot(filter(mutualism, City=="Beijing"), aes(Input, Output)) +
   geom_text(aes(label=value)) +
 #  facet_grid(City~Type) +
   facet_wrap(~Type) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(angle=30, hjust=1),
 	strip.text = element_text(face="bold.italic"))
 #plot.network

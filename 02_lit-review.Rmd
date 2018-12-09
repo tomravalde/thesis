@@ -333,7 +333,7 @@ plot_cluster <- ggplot(lit_main_cats, aes(x=techniques.broad, y=focus.broad)) +
   geom_jitter(aes(colour=factor(method)), width=0.1, height=0.1) +
   geom_text(aes(label=text.label, colour=factor(method)), size = 2) +
   facet_wrap(~focus_category, ncol=1, scales="free_y") +
-  theme_bw() +
+  theme_thesis +
   theme(legend.position="bottom",
 	legend.direction="vertical") +
   guides(col=guide_legend(ncol=2)) +
@@ -355,7 +355,7 @@ distributed random noise) has been applied to the points to prevent them plottin
 
 ## Review of resource managagement optimisation modelling {#sec:rev-um-opt-models}
 
-So far, this chapter has introduced UM as a research area that can support studies of urban sustainability, and has shown that modelling is one means by which this can happen. This thesis will add to UM modelling capabilities, a model which can optimise the simultaneous design of urban energy, water, and waste systems, so as to account for intersectoral interactions and synergies, and thus improve an area's metabolism. To assist that cause, this section reviews a number of 'resource management optimisation models'[^ROM]. This has two purposes: first, to confirm the need for a model which can simultaneously optimise multiple resource management systems at the urban scale (thus complementing the findings above that the UM modelling literature includes no such models); and second, to suggest possible methodologies which can be adapted for this thesis.
+So far, this chapter has introduced UM as a research area that can support studies of urban sustainability, and has shown that modelling is one means by which this can happen. This thesis will add to UM modelling capabilities, a model which can optimise the simultaneous design of urban energy, water, and waste systems, so as to account for intersectoral interactions and synergies, and thus improve an area's metabolism. As discussed in Section \ref{sec:synergies-in-practice}, there are so many choices to be made (i.e. variables whose values are to be chosen) when it comes to resource management networks (which processes should be used, where should they be located, and at what rates should they operate, to name just three), that optimisation modelling should be considered a suitable approach to support the design of highly integrated urban resource management systems. In view of this need, this section reviews a number of 'resource management optimisation models'[^ROM]. This has two purposes: first, to confirm the need for a model which can simultaneously optimise multiple resource management systems at the urban scale (thus complementing the findings above that the UM modelling literature includes no such models); and second, to suggest possible methodologies which can be adapted for this thesis.
 
 [^ROM]: Note that 'resource management optimisation modelling' is not a subject area which has a formal definition (unlike say, 'urban energy systems modelling' (which is formally defined in @Keirstead2012b), rather it is used here to refer generally to optimisation models which are used to assist planners and policy makers improve the management of an energy or material resource for which they are responsible. It can incorporate everything from the efficient production of a single resource in some component of a plant, up to global strategies to manage.
 
@@ -714,7 +714,7 @@ plot_lit_int.scale <- ggplot(lit, aes(scale, integration)) +
   facet_wrap(~level, ncol=1) +
   xlab("Scale") +
   ylab("System integration") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(hjust=1, angle=30),
 	legend.position = "bottom",
 	legend.direction = "vertical") +
@@ -726,7 +726,7 @@ plot_lit_int.scale
 #  geom_jitter(aes(colour=opt.systems.summary)) +
 #  xlab("Optimised systems") +
 #  ylab("Methods") +
-#  theme_bw() +
+#  theme_thesis +
 #  theme(axis.text.x = element_text(hjust=1, angle=30),
 #	legend.position = "bottom",
 #	legend.direction = "vertical") +
@@ -760,7 +760,7 @@ The highly integrated models closest to the ambitions of this thesis are formula
 	- measures of efficiency
 -->
 
-This chapter has revealed two gaps in the literature which motivate and inform the rest of this thesis. First, as a framework which examines how cities manage resources, the urban metabolism concept does not sufficiently account for how an area's network of processes affects its aggregate metabolic flows. Second, while modelling is often used to aid understanding of urban metabolism, there is space for a model which considers the integrated planning of energy, water and waste management processes at the urban scale, to optimise how an area meets resource management demand. The rest of this thesis brings these two research needs together. Representing a city's network of resource management processes in a conceptual model which described its metabolism (Figure \ref{fig:metab}) will become the foundation for building an optimisation model which can consider interactions and synergies between the energy, water and waste sectors.
+This chapter has revealed two gaps in the literature which motivate and inform the rest of this thesis. First, as a framework which examines how cities manage resources, the urban metabolism concept does not sufficiently account for how an area's network of processes affects its aggregate metabolic flows. Second, while modelling is often used to aid understanding of urban metabolism, there is space for a model which considers the integrated planning of energy, water and waste management processes at the urban scale, to optimise how an area meets resource management demand in view of the impossibility of evaluation all the possible choices which can be made to make up an urban resource management network. The rest of this thesis brings these two research needs together. Representing a city's network of resource management processes in a conceptual model which described its metabolism (Figure \ref{fig:metab}) will become the foundation for building an optimisation model which can consider interactions and synergies between the energy, water and waste sectors.
 
 <!--
 This chapter has given overviews of two research fields which motivate and inform the development of optimisation models to improve an area's metabolism. With regards to UM, the metaphorical framework is not currently sufficient to account for a city's overall metabolic flows in relation to the mix of resource management processes used within a city. The review also showed that while modelling is often used to aid understanding of urban metabolism, there is room for a model which optimises the way an area uses energy, water and waste management processes to meet demand. Introducing the network representation of a city into the conceptual model of an area's UM (Figure \ref{fig:metab}), opens up the possibility of formulating a model which considers interactions and synergies between the energy, water and waste sectors to help plan urban resource management in more sustainable ways. The review of resource optimisation modelling found no such integrated models at the urban scale. Nevertheless, there were models which integrated the planning of more than one system at other scales, thus providing precedent for the type of modelling work which this thesis applies to a new area.

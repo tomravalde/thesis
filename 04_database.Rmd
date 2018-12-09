@@ -13,7 +13,12 @@ Ravalde, T. and Keirstead, J. (2015a). A database to facilitate a process-orient
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=1.6, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
 library(extrafont)
-font_import(pattern="LinBiolinum")
+font_import(pattern="OpenSans")
+
+library(ggplot2)
+
+theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
+
 ```
 
 To date, little attention has been paid to how the mix of resource management processes in the middle of a UM system affects the aggregate exchanges of material and energy with the external environment (Section \ref{sec:procs-in-UM}). This thesis hopes to address this gap by contributing a model which can optimise the mix and operation schedule of resource management processes in cities such that they can work together to realise synergies which improve the metabolism of an area. However, to do this requires understanding the behaviour of the processes themselves, in order to define inputs to the model. This chapter identifies the resource conversion processes that can shape UM both now and in the future, and quantifies the resource consumption and production of each individual process, assembling this (and other) information into a database. The chapter then discusses applications of the database, including its main contribution to this thesis (which is to provide data for use in the optimisation model, thus forming part of Aim 1 of the research question), as well as other uses, all of which are facilitated by the model's public availability under an open-source licence.
@@ -51,7 +56,7 @@ open_data <- filter(open_data, Year>=1995)
 
 library(ggplot2)
 plot_open_data <- ggplot(open_data, aes(Year, Number)) +
-  theme_bw() +
+  theme_thesis +
   ylab('Number of publications') +
   theme(axis.title.x = element_blank()) +
   geom_point()
@@ -176,7 +181,7 @@ TRL_name_lookup <- data.frame(TRL, TRL_name)
 processes_CH4 <- inner_join(processes_CH4, TRL_name_lookup, by="TRL")
 
 en_dot <- ggplot(processes_CH4, aes(value, plot_name.y)) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.y = element_text(size=8),
 	axis.title.y = element_blank(),
 	strip.text = element_text(size=8)) +
@@ -185,7 +190,7 @@ en_dot <- ggplot(processes_CH4, aes(value, plot_name.y)) +
   geom_vline(xintercept=0) +
   facet_wrap(~ plot_name.x, ncol=2) +
 #  geom_text(aes(x=-23, y=1.5, label=TRL_name), size=3, hjust=0)
-  geom_text(aes(label=TRL_name), x=-23, y=1.5, size=3, hjust=0)
+  geom_text(aes(label=TRL_name), x=-23, y=1.5, size=3, hjust=0, family = "Open Sans")
 en_dot
 ```
 
@@ -252,7 +257,7 @@ wolman <- read.csv("04_database/wolman-flows.csv")
 wolman <- melt(wolman)
 
 plot_wolman <- ggplot(wolman, aes(resource, -value/1e6)) +
-  theme_bw() +
+  theme_thesis +
 #  geom_bar(stat="identity") +
   geom_point() +
   geom_hline(xintercept=0) +
