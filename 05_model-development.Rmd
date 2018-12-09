@@ -911,6 +911,54 @@ Equations such as these allow us to formulate nonlinear problems. In the example
 In addition, the boundaries on the imports and exports and the objective function are defined as for the null and PRaQ models.
 -->
 
+### Explaining the difference between the models with reference to a pipe, pump and dam system {#sec:pipe-pump-dam}
+
+This chapter has developed both linear and nonlinear models to consider the integrated management of energy, water and waste systems. This section uses the example of a pipe-pump-dam system (Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}) to explain the differences in how they might differently model some phenomena. The models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
+
+\begin{figure}
+	\centering
+	\begin{spacing}{1.0}
+	\sffamily
+	\resizebox{\columnwidth}{!}{\input{05_model-development/pipe-dam-example.pdf_tex}}
+	\end{spacing}
+	\caption{An example to illustrate the difference between model formulations. There are two zones. Zone 2 has an electricity demand which can be met by a dam (a conversion process), also in zone 1. However, the water must first be pumped (via the pump -- a conversion process in zone 1) and transported to zone 2 via a pipe (transport process).}
+	\label{fig:pump-dam-example}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{05_model-development/pipe-dam-network.pdf}
+	\caption{An RTN representation of Figure \ref{fig:pump-dam-example}. The electricity (E) required by the pump can be imported from outside the system; the amount required depends on the mass of water (W) to be pumped, and the elevation to which it needs pumping. The dashed arrow indicates that the electricity in Zone 2 is a demand.}
+	\label{fig:pump-dam-RTN}
+\end{figure}
+
+
+\begin{align}
+\frac{P}{\rho g} + z + \frac{v^2}{2g} = \mbox{constant}
+\end{align}
+
+where at a chosen point $P$ is the water's pressure, $z$ is its elevation with respect to a reference, and $v$ is its velocity ($g$ is the constant of acceleration due to gravity).
+
+First, consider the water flow from A (zone 1) to B (zone two) via the combination of a pump and a pipe. The pump provides the energy to raise the water's elevation and has an electrical efficiency of $\eta^{pump}$. This energy includes that which is required to overcome the energy loss due to friction. Typically this friction loss is defined as a function of the pipe's length $l$ and diameter $D$ as $\mbox{friction loss} = f_D(l/D)(v^2/2g)$ (where $f_D$ is the Darcy Friction Factor). It is also assumed that $P_1=P_2$ and that $v_1=v_2=v$, and that the datum is measured from A and C (which are at equal height), thus $z_A=z_B=0$. Finally, the models formulated later work with mass ($m$) and energy balances, thus it is convenient to multiply each term by $mg$. The resulting equation gives the water's energy at points A and B expressed in terms of mass:
+
+\begin{align}
+%z_A  + \eta^{pump} \frac{\mbox{pump energy}}{\rho V g}  = z_B + F \frac{l}{D} \frac{v^2}{2g}
+\eta^{pump} \cdot (\mbox{pump energy})  = m \left( gz_B + f_D \frac{l}{D} \frac{v^2}{2} \right) 
+\end{align}
+
+Second, consider the flow across the dam, between $B$ and $C$. Using the same assumptions as above, and defining the dam with an electrical generation efficiency, $\eta^{dam}$, and again multiplying through by $mg$, the relationship of water input attributes to the dam's electrical output is:
+
+\begin{align}
+mgz_B = \eta^{dam} \cdot (\mbox{electricity generated})
+\label{eq:damEnergy}
+\end{align}
+
+Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated ($e^{dam}$). The electricity is considered the dam's 'main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
+
+The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. Given that the quantity of water required to generate a given amount of electricity ($m$) is a variable, for a model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, and must be a fixed parameter. Therefore, a linear model requires a dam to be defined with fixed height. Thus, assuming a dam of height $z_B=11$ metres and efficiency $\eta^{dam}=$ 80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg. The dam example has two 'water' resources (one high-head as an input to the black-box model, the other low-head as an output from the black-box model). Other water resources could include water at different temperatures or contamination levels. 
+
+
 ### Model objectives {#sec:model-objs}
 
 The three models will minimise some objective. There are numerous possibilities. A common objective for these models is to minimise the cost of a system, i.e. the summed costs of the resources, conversion processes, and transport processes, ($C^R$), ($C^R$), and ($C^{\tau}$), respectively:

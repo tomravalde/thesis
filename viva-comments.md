@@ -47,6 +47,8 @@ I've addressed these matters of detail discussed in the viva and marked up on th
 
 > moving some of the material in the appendices into the main text would improve the clarity for the reader in particular for Chapter 5;
 
+Moved Appendix [TODO:] to Chapter 5, and made a few edits to the text so the content flows naturally.
+
 > some background information about the Case Studies would be helpful, especially for the main Case Study (e.g. climate, rationale, work done by others, …);
 
 Many thanks,
