@@ -8,9 +8,12 @@ library(knitr)
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
 library(extrafont)
-font_import(pattern="LinBiolinum")
+font_import(pattern="OpenSans")
 
 library(ggplot2)
+
+theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
+
 ```
 
 \epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{\citet{Bettencourt2010}, \emph{Nature}}
@@ -90,7 +93,7 @@ pop_data$Proportion <- factor(pop_data$Proportion, levels = rev(levels(pop_data$
 pop_data_plot <- ggplot(pop_data, aes(Year, value)) +
   geom_line(aes(linetype=Proportion)) +
   ylab("Population [billions]") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.title.x = element_blank())
 pop_data_plot
 ```
@@ -367,7 +370,7 @@ Between the **energy and water** sectors, synergies include hydroelectric power 
 
 Exploiting these (and other) intersectoral synergies (summarised in Figure \ref{fig:intersectoral-synergies}) creates opportunities for cities to reduce their consumption and waste. Calls for this type of approach are found in the literature, for example, by \citet{Leduc2010} who advocate an approach to urban planning they call 'urban harvest'; this takes advantage of infrastructural proximity and connectivity to maximise the reuse of water, waste and other materials within an urban system. This kind of reorganisation of resources flows within a city was also proposed by the Dutch Working Group on Sustainable Urban Development \citep{Meijer2011}.
 
-### Intersectoral synergies in practice -- industrial symbiosis
+### Intersectoral synergies in practice -- industrial symbiosis {#sec:synergies-in-practice}
 
 There is precedent for exploiting intersectoral synergies in this way, which comes from the field of 'industrial symbiosis' (IS). In IS, firms use each others' waste outputs as inputs in other processes [@WRAP2016]. Often, this is realised in 'eco-industrial parks' (EIPs) in which industries and businesses are co-located with the deliberate intention of practising IS [@PresidentsCouncil1996]. The classic EIP case study is the town of Kalundborg in Denmark. A key component of Kalundborg's economy are industrial production facilities and agriculture: these engage in a set of mutually beneficial material and energy exchanges with one another, and with the local energy system \citep{Lewis2000}. Exchanges include a power plant which provides its waste steam to an oil refinery (which in turn produces gas for the power station). The power plant also sends its waste heat to fish culture, and its waste ash to cement manufacturing. The fish culture provides sludge to local farmers, who also use sludge from a bioplant fed by steam from the power station. These and other exchanges are shown in Figure \ref{fig:kalundborg}.
 
@@ -377,7 +380,8 @@ There is precedent for exploiting intersectoral synergies in this way, which com
 	\caption{Kalundborg's resource exchanges as of 2000. Figure taken from \citet{Lewis2000}.} \label{fig:kalundborg}
 \end{figure}
 
-Researchers have been able to quantify some of the benefits of Kalundborg's IS. One finding suggests that Kalundborg has avoided extracting four million gallons per day of freshwater, by treating and reusing effluent from wastewater treatment [@Grimm2008]. What is interesting about Kalundborg is that these intersectoral synergies evolved over time through the initiative of private firms -- they were not centrally planned by planners and policy makers [@Desrochers2001]. In contrast, this thesis is concerned with actively helping planners and policy makers realise intersectoral synergies, and not just in a few specific industrial production facilities, but in urban resource management more generally. But just a little reflection reveals the practical challenge of this. If an area contains a large number of resource management processes, located in different places, then what is the best way to adopt resource-saving strategies without breaching any financial, practical or other constraints?
+Researchers have been able to quantify some of the benefits of Kalundborg's IS. One finding suggests that Kalundborg has avoided extracting four million gallons per day of freshwater, by treating and reusing effluent from wastewater treatment [@Grimm2008]. What is interesting about Kalundborg is that these intersectoral synergies evolved over time through the initiative of private firms -- they were not centrally planned by planners and policy makers [@Desrochers2001]. In contrast, this thesis is concerned with actively helping planners and policy makers realise intersectoral synergies, and not just in a few specific industrial production facilities, but in urban resource management more generally. But just a little reflection reveals the practical challenge of this. If an area contains a large number of resource management processes, located in different places, then what is the best way to adopt resource-saving strategies without breaching any financial, practical or other constraints? In a system as large as that at the urban scale, there are many different decisions to be made: Which management processes should be used? Where should they be located? At what rates of operation (e.g. power generation in the case of a power plant) should they run?  How should these rates of operation vary for different time periods (e.g. season, month, week, hour, minute, second). How should the processes be connected to one another? The number of possible choices which are technically feasible grows rapidly as the problem grows with the size of the area under consideration, the length of time the decisions are being made for, the granularity at which decisions are made, and the number of possible process types which could populate the network of resource-management infrastructure. Out of all the technically feasible options, though, which is to be preferred?
+
 <!--
 The challenges of planning intersectoral interactions are at least three-fold. First, there is the surface-level problem of knowing which processes to link; second, there are indirect resource savings to account for, which may not be immediately evident[^indirect-savings]; and third, the consumer resource-demand patterns will evolve over time, and also vary over time (according to the time of day, the day of the week, and season, and so on), thus processes will also vary their operation rates (and therefore the quantities of useful by-products they generate). Planning the optimal network of processes is far from a simple computation.
 
@@ -439,7 +443,7 @@ To help navigate the complexity of resource management that integrates energy, w
 	\label{fig:broader-system}
 \end{figure}
 
-From this node-link formalisation, one can formulate a mathematical representation of a system, in which the behaviour of processes (e.g. the quantities of resource they consume and produce), and other system properties are described by equations. In other words, it is possible to mathematically *model* urban resource management. By applying appropriate algorithms to the mathematical model, one can compute the optimal mix of processes and the schedule of resource transfers between them, using a technique known as *optimisation modelling*.
+From this node-link formalisation, one can formulate a mathematical representation of a system, in which the behaviour of processes (e.g. the quantities of resource they consume and produce), and other system properties are described by equations. In other words, it is possible to mathematically *model* urban resource management. By applying appropriate algorithms to the mathematical model, one can navigate through the choices which need to be made (for example, which processes should be used, where they should be located, their rates of operation, etc., as described above) and compute the optimal mix of processes and the schedule of resource transfers between them, using a technique known as *optimisation modelling*.
 
 This methodology is used extensively in urban resource management, though it tends to be applied to individual sectors such as energy systems, or water distribution. As the literature review in Chapter 2 will show, current models do not consider the different urban resource management systems together in such a way as to either account for intersectoral interactions, or take advantage of intersectoral synergies. Another way to express this existing models do note consider the multi-functionality of nodes: Figure \ref{fig:broader-system} shows that a power plant is not just part of the electricity network, but is also part of the water network (because of its need for cooling water). Nevertheless, existing models could provide a helpful starting point for the development of a model which plans the integrated management of energy, water, and waste in urban areas.
 
