@@ -52,7 +52,7 @@ The case study is an ongoing Chinese urban development in the city of Xi'an, led
 	\sffamily
 	\resizebox{0.5\columnwidth}{!}{\input{06_case-study/site.pdf_tex}}
 	\end{spacing}
-	\caption{A schematic of the SPC redevelopment site showing its twelve zones, adapted from figures in the SPC documentation. The outer dashed rectangle encloses the full 7 km$^2$ site; the solid rectangles with \textbf{bold} labels represent broad regions within the site (e.g. the \textbf{residential} region; the unbolded text labels denote specific zones (e.g. a hospital within the residential region).}
+	\caption{A schematic of the SPC redevelopment site showing its twelve zones, adapted from figures in the SPC documentation. The outer dashed rectangle encloses the full 7 km$^2$ site; the solid rectangles with \textbf{bold} labels represent broad regions within the site (e.g. the \textbf{residential} region); the unbolded text labels denote specific zones (e.g. a hospital within the residential region).}
 	\label{fig:site}
 \end{figure}
 
@@ -84,7 +84,7 @@ In terms of the approaches used to realise such integrated planning of urban sys
 
 [TODO: Return to this section to tidy up]
 
-Furthermore, Xi'an's weather exhibits fairly strong variation between seasons, with average summer high temperatures over 30 \textdegree C and winter low temperatures dropping below 0 \textdegree C [@ChinaMeteorologicalAdministration2018]. This means that demand for resources (particularly heating and cooling) will vary substantially between seasons, and may well require different management processes. This variation in processes which provide heating and cooling may also affect the optimal mix of processes from other sectors with which they interact
+Furthermore, Xi'an's weather exhibits fairly strong variation between seasons, with average summer high temperatures over 30\textdegree C and winter low temperatures dropping below 0\textdegree C [@ChinaMeteorologicalAdministration2018]. This means that demand for resources (particularly heating and cooling) will vary substantially between seasons, and may well require different management processes. This variation in processes which provide heating and cooling may also affect the optimal mix of processes from other sectors with which they interact
 
 <!--
 - [SPC-4, slide 17: water, waste and energy jigsawed together]

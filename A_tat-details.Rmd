@@ -1,8 +1,4 @@
-# Tat Hamlet details {#sec:tat-details}
-
-This Appendix contains further details about the Tat Hamlet benchmarking study which was used to develop the PRaQ formulation in Chapter \ref{sec:model-dev}. The code to run the benchmarking models is available at \url{https://github.com/tomravalde/model-development-code/tree/develop}, which contains instructions on how the run the benchmarking study with the Null, PRaQ and Nonlinear formulations.
-
-## Changes made to Tat Hamlet data for the benchmarking study {#sec:tat-changes}
+# Tat Hamlet -- details of the benchmarking study {#sec:tat-details}
 
 Section \ref{sec:tat-case-study} noted that for the purposes of the benchmarking study, some simplifications, assumptions and additions were made. These are listed below.
 
