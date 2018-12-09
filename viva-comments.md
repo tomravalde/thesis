@@ -2,20 +2,6 @@
 
 ## Near impossibility of validation
 
-- Intro: emphasise the impossibility of the modelling in intro 'systems' section
-- Ch2: "Review of resource management optimisation modelling..."; Conclusion
-- #### The trade-offs between the Null, PRaQ and Nonlinear formulations
- 
-- In the Ch 5 intro and discussion, re-emphasise the impossibility of number of choices and implications for validation
-- In Ch 6 case study, intro re-emphasize the impossibility of the task without optimisation;
-- Section 6.3
-- Summary and conclusions
-- Ch 7 intro
-- Ch 7.1
-
-and also the impossibility of validation
-- Ch 7, incorporate difficulty and impossibility into concluding remarks
-- Abstract, incorporate difficulty and impossibility into concluding remarks
 
 # Case study wider context
 
@@ -32,9 +18,7 @@ and also the impossibility of validation
 - Code architecture loosely based on Samsatli (i.e. to separate the formulation and the data)
 - Complexity of the case study model with many parameters and equations and its implication for the near-impossibility of validation
 
-# Dr Onof's email
-
-Dear Thomas,
+# Email
 
 Dear Dr Onof,
 
@@ -82,8 +66,24 @@ These problems are particularly prominent in developing countries, notably in Ch
 
 > the work done by the candidate could emphasised more effectively (e.g. the coding, contribution to the papers written, complexity of the case study model with many parameters and equations and its implication for the near-impossibility of validation...);
 
-- I've clarified the work done by noting the exceptions (Samsatli, Null, proof-reading, etc.)
-- I've emphasised the complexity of the case study by making additions to [TODO: N] sections of the thesis:
+To clarify the work I've done, I've added some comments under the heading 'Work done by the candidate' on page 1.
+
+I've emphasised the complexity of the case study by making additions to the following sections of the thesis (^ indicates that I've also emphasised the related issue regarding the difficulty of validation):
+
+- Section 1.2.2
+- Section 2.2.1
+- Section 2.3
+- Section 2.4
+- Section 5.2.2^
+- Introductory paragraph to Chapter 6
+- Section 6.3^
+- Section 6.4
+- Introductory paragraph to Chapter 7
+- Section 7.1, item 4
+
+and also the impossibility of validation
+- Ch 7, incorporate difficulty and impossibility into concluding remarks
+- Abstract, incorporate difficulty and impossibility into concluding remarks
  [TODO: list the sections]
 
 > it would be interesting to place the final Case Study in a wider context – e.g. how useful might it be in China?
