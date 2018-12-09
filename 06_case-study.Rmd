@@ -13,9 +13,11 @@ library(knitr)
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
 library(extrafont)
-font_import(pattern="LinBiolinum")
+font_import(pattern="OpenSans")
 
 library(ggplot2)
+
+theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
 ```
 <!--
 Sections in JK's MILP paper
@@ -36,11 +38,11 @@ Sections in JK's MILP paper
 
 This thesis has argued for the need for an optimisation model which can help plan urban energy, water and waste infrastructure, with a view to improving the urban metabolism of an area. To that end, the previous chapter introduced the PRaQ model -- a MILP formulation that is generic enough to incorporate multiple resource types, user-friendly to construct, and can be solved without excessive computational effort. This chapter now applies this model to a case study, using the library of resource management processes assembled in Chapter \ref{sec:database}, and using some of the principles of Chapter \ref{sec:metrics} to assess the systems designed by the model.
 
-This chapter first introduces the case study (Section \ref{sec:case-study-intro}), before outlining the site's spacial layout and resource demands, as well as processes available to manage its resources (Section \ref{sec:SPC-data}). Following this, Section \ref{sec:SPC-scenarios} introduces several scenarios to which PRaQ is applied. These scenarios will all use the same patterns of resource demand, but vary in their objectives and/or the set of available resource-management processes. This will allow investigation of both currently proposed system designs, as well as other more speculative ideas. This section will then present and discuss the results for each scenario. In summary, this chapter's aim is to use a case study to show how the PRaQ model can improve an area's metabolism, to fulfill Aim 3 of the research question (Section \ref{sec:research-qn}).
+This chapter first introduces the case study which uses the site of a Chinese urban development (Section \ref{sec:case-study-intro}), before outlining the site's spacial layout and resource demands, as well as processes available to manage its resources (Section \ref{sec:SPC-data}). Following this, Section \ref{sec:SPC-scenarios} introduces several scenarios to which PRaQ is applied. These scenarios will all use the same patterns of resource demand, but vary in their objectives and/or the set of available resource-management processes. This will allow investigation of both currently proposed system designs, as well as other more speculative ideas. This section will then present and discuss the results for each scenario. In summary, this chapter's aim is to use a case study to show how the PRaQ model can improve an area's metabolism, to fulfill Aim 3 of the research question (Section \ref{sec:research-qn}).
 
-## The case study {#sec:case-study-intro}
+## The case study and its Chinese context {#sec:case-study-intro}
 
-The case study is an ongoing Chinese urban development led by the Xi'an Shann Gu Power Company (hereafter, 'SPC'), who historically have provided turbo-machinery services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [@SPC2014]. The SPC are implementing plans to redevelop one of their industrial sites and its surrounding region. The site is in the Xi'an province of China with an area of 51.03 km$^2$; the focus of this case study, however is a region of 7 km$^2$. This area has residential, commercial, industrial and recreational functions (roughly represented by Figure \ref{fig:site})[^confidential] which each have their own energy, water and waste management needs.
+The case study is an ongoing Chinese urban development in the city of Xi'an, led by the Shann Gu Power Company (hereafter, 'SPC'). Historically, the SPC have provided turbo-machinery services (such as steam turbines, fans and energy recovery units) for the chemical industry, power generation, construction, and other sectors requiring heavy machinery [@SPC2014]. The SPC are implementing plans to redevelop one of their industrial sites and its surrounding region. The site is in the Xi'an province of China with an area of 51.03 km$^2$; the focus of this case study, however is a region of 7 km$^2$. This area has residential, commercial, industrial and recreational functions (roughly represented by Figure \ref{fig:site})[^confidential] which each have their own energy, water and waste management needs.
 
 [^confidential]:There are six documents which provide background and data to the SPC redevelopment plans. However, the documentation is confidential and thus certain information (such as the precise site location) cannot be given here.
 
@@ -54,7 +56,9 @@ The case study is an ongoing Chinese urban development led by the Xi'an Shann Gu
 	\label{fig:site}
 \end{figure}
 
-A stated ambition of the SPC site redevelopment is to integrate the energy, water and waste management services in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Proposals to that end include using heat stored within wastewater to feed a water source heat pump, and generating biogas from wastewater fermentation. The recreational area is to include an artificial lake, which the planners hope to source via a water reuse project [@SPC_water]. These, and other possible intersectoral synergies are summarised in Figure \ref{fig:shanngu-network}, which shows part of the resource management infrastructure proposed by the SPC for the site's redevelopment.
+In recent years, China has become the world's largest consumer of energy, resulting in nearly a seven-fold increase in carbon dioxide emissions due to energy consumption between 1977 and 2013. These facts mean that China is increasingly focussing efforts on reducing reliance on non-renewable energy sources and reducing the concentration of pollutants in the air [@Chen2016]. With this broader context in mind, more attention is being paid to integrated systems management with planners and policy makers attempting to overcome the "technical, socio-economic and institutional barriers" [@Chen2016, p.357].
+
+More specifically, particular issues include the inefficient provision of its heating due to aging coal-fuelled boilers and electric heaters. A stated ambition of the SPC site redevelopment is to address these issues of energy efficiency, and indeed go further, by considering the water and waste sectors, integrating the mangement of its energy, water and waste systems in order to maximise energy efficiency, minimise the discharge of waste, and minimise economic costs. Proposals to that end include using heat stored within wastewater to feed a water source heat pump, and generating biogas from wastewater fermentation. The recreational area is to include an artificial lake, which the planners hope to source via a water reuse project [@SPC_water]. These, and other possible intersectoral synergies are summarised in Figure \ref{fig:shanngu-network}, which shows part of the resource management infrastructure proposed by the SPC for the site's redevelopment.
 
 \begin{figure}
 	\centering
@@ -76,7 +80,7 @@ A stated ambition of the SPC site redevelopment is to integrate the energy, wate
 	\label{fig:site-connections}
 \end{figure}
 
-Previous work has looked at the energy management for the site's industrial and residential areas [@Zheng2017]. This modelled the thermal properties of the buildings to derive the site's energy requirements as they fluctuate over a time horizon, and used a MINLP modelling framework to choose the network of energy supply technologies with minimum system cost under different scenarios of energy prices and limits on emissions. This work is less detailed -- it does not attempt to model the demands or apply detailed sensitivity analysis. However it takes a higher-level view by incorporating water and waste systems alongside the energy system, and considers not just the current proposals for a system design, but also those made possible when the full database of Chapter \ref{sec:database} is considered. In other words, this case study is concerned less with the detailed design of the SPC's energy system, but more with optimising the site's metabolism. The site's demands are defined at a seasonal level, which means a time component, $t$, needs to be introduced into the PRaQ model -- the full formulation which includes $t$ is presented in Appendix \ref{sec:formulation}.
+In terms of the approaches used to realise such integrated planning of urban systems, @Zheng2017 notes that optimisation methods is a poorly-established field, and hence the SPC site has presented an opportunity to demonstrate such methods of planning. Zheng et al's previous works looked at the energy management for the site's industrial and residential areas. This modelled the thermal properties of the buildings to derive the site's energy requirements as they fluctuate over a time horizon, and used a MINLP modelling framework to choose the network of energy supply technologies with minimum system cost under different scenarios of energy prices and limits on emissions. The work of this chapter is less detailed -- it does not attempt to model the demands or apply detailed sensitivity analysis. However it takes a higher-level view by incorporating water and waste systems alongside the energy system, and considers not just the current proposals for a system design, but also those made possible when the full database of Chapter \ref{sec:database} is considered. In other words, this case study is concerned less with the detailed design of the SPC's energy system, but more with optimising the site's metabolism. The site's demands are defined at a seasonal level, which means a time component, $t$, needs to be introduced into the PRaQ model -- the full formulation which includes $t$ is presented in Appendix \ref{sec:formulation}.
 
 <!--
 - [SPC-4, slide 17: water, waste and energy jigsawed together]
@@ -179,7 +183,7 @@ plot_demand <- ggplot(demands, aes(zoneLabels, value.conv)) +
   geom_point(aes(colour=seasonLabels), binaxis="y", position=position_dodge(width=0.6)) +
   facet_wrap(~headings, scales="free_y", ncol=2) +
   labs(colour="Season") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(hjust=1,
 				   angle=30,
 				   size=6.5,
@@ -478,7 +482,7 @@ metabolic_flows <- filter(metabolic_flows, scenario!="Design case (min. water)")
 #  facet_wrap(~Flow, ncol=1) +
 #  labs(colour="Season") +
 #  labs(size="Flow rate value") +
-#  theme_bw() +
+#  theme_thesis +
 #  theme(axis.text.x=element_text(hjust=1, angle=30, size=6.5),
 #  	axis.text.y=element_text(hjust=1, angle=30, size=6.5),
 #	axis.title=element_blank(),
@@ -530,7 +534,7 @@ count_summary <- rbind(flows_summary, process_summary)
 plot_count_summary <- ggplot(count_summary, aes(Value, scenario)) +
   geom_point() +
   facet_wrap(~variable, ncol=1, scales="free") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.title=element_blank())
 plot_count_summary
 
@@ -733,7 +737,7 @@ system_costs <- mutate(system_costs, values=values/1e6)
 #  geom_point() +
 #  xlab("Scenario") +
 #  ylab("Annualised cost [millions USD]") +
-#  theme_bw() +
+#  theme_thesis +
 #  theme(axis.text.x = element_text(hjust=1, angle=30))
 #plot_system_costs
 ```
@@ -793,7 +797,7 @@ plot_component_costs <- ggplot(component_costs, aes(Scenario, value/1e6, fill=Co
   labs(fill = "System component") +
   xlab("Scenario") +
   ylab("Annualised cost [millions USD]") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(hjust=1, angle=30))
 plot_component_costs
 ```
@@ -963,7 +967,7 @@ plot_ENA <- ggplot(ena_matrices, aes(From, To)) +
   geom_tile(fill=NA, color="black", na.value=NA) +
   geom_text(aes(label=Sign), size=3) +
   facet_grid(Scenario~Matrix) +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(angle=30, hjust=1))
 #plot_ENA
 ```

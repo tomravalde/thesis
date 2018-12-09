@@ -8,9 +8,12 @@ library(knitr)
 opts_chunk$set(fig.path = "figures/", dev=c("cairo_pdf"), fig.pos='htbp', fig.width=5, fig.height=3.5, dpi=700, fig.show='hold', fig.lp="fig:", cache=FALSE, par=TRUE, echo=FALSE, results="hide", message=FALSE, warning=FALSE)
 
 library(extrafont)
-font_import(pattern="LinBiolinum")
+font_import(pattern="OpenSans")
 
 library(ggplot2)
+
+theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
+
 ```
 
 \epigraph{``Cities are the crucible of human civilization, the drivers towards potential disaster, and the source of the solution to humanity's problems.''}{\citet{Bettencourt2010}, \emph{Nature}}
@@ -90,7 +93,7 @@ pop_data$Proportion <- factor(pop_data$Proportion, levels = rev(levels(pop_data$
 pop_data_plot <- ggplot(pop_data, aes(Year, value)) +
   geom_line(aes(linetype=Proportion)) +
   ylab("Population [billions]") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.title.x = element_blank())
 pop_data_plot
 ```

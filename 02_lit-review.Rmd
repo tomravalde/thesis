@@ -333,7 +333,7 @@ plot_cluster <- ggplot(lit_main_cats, aes(x=techniques.broad, y=focus.broad)) +
   geom_jitter(aes(colour=factor(method)), width=0.1, height=0.1) +
   geom_text(aes(label=text.label, colour=factor(method)), size = 2) +
   facet_wrap(~focus_category, ncol=1, scales="free_y") +
-  theme_bw() +
+  theme_thesis +
   theme(legend.position="bottom",
 	legend.direction="vertical") +
   guides(col=guide_legend(ncol=2)) +
@@ -714,7 +714,7 @@ plot_lit_int.scale <- ggplot(lit, aes(scale, integration)) +
   facet_wrap(~level, ncol=1) +
   xlab("Scale") +
   ylab("System integration") +
-  theme_bw() +
+  theme_thesis +
   theme(axis.text.x = element_text(hjust=1, angle=30),
 	legend.position = "bottom",
 	legend.direction = "vertical") +
@@ -726,7 +726,7 @@ plot_lit_int.scale
 #  geom_jitter(aes(colour=opt.systems.summary)) +
 #  xlab("Optimised systems") +
 #  ylab("Methods") +
-#  theme_bw() +
+#  theme_thesis +
 #  theme(axis.text.x = element_text(hjust=1, angle=30),
 #	legend.position = "bottom",
 #	legend.direction = "vertical") +

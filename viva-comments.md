@@ -8,15 +8,6 @@
 - Ch 7, incorporate difficulty and impossibility into concluding remarks
 - Abstract, incorporate difficulty and impossibility into concluding remarks
 
-# Case study background and context
-
-- Weather and climate
-
-# Tat background
-
-- Known in the literature
-- But otherwise arbitary
-
 # Case study wider context
 
 - Political structures (state directed)
@@ -47,7 +38,8 @@ I've addressed these matters of detail discussed in the viva and marked up on th
 
 > some background information about the Case Studies would be helpful, especially for the main Case Study (e.g. climate, rationale, work done by others, …);
 
-- Climate
+I've added in some comments on climate [TODO:cross-ref], and extended Section 6.1 to include more about the rationale, work done by others and the Chinese context (citing [TODO: citations])
+
 - Rationale -- see Section 6.1. where I think this was covered?
 - Work done by others
 
