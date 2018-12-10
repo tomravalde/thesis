@@ -11,11 +11,13 @@ Tom
 
 > "Aside from the issues of detail that were discussed at the viva (e.g. about equations), we have left our copies of your thesis with Ivan: they contain the typos we spotted."
 
-I've addressed these matters of detail discussed in the viva and that were marked on the thesis copies (as well as some typos I noticed during my own read-through of the thesis).
+I've addressed these matters of detail discussed in the viva and that were marked on the thesis copies (as well as some typos I noticed during my own read-through of the thesis). Examples include:
+- The explanation of unsustainable growth of a city's population in Section 1.2.2
+- The notation in Figure 3.1. and Equations 3.1, 3.2.
 
 > "moving some of the material in the appendices into the main text would improve the clarity for the reader in particular for Chapter 5;"
 
-I have moved Appendix A.2 to into Chapter 5 (to form Section 5.3.4) so that the explanation of the difference between linear and nonlinear models is now in the main text. I have made some light edits to the text so the content flows naturally.
+I have moved Appendix A.2 to into Chapter 5 (to form Section 5.3.4, which I have titled 'Explaining the difference between the linear and nonlinear models') so that the explanation of the difference between linear and nonlinear models is now in the main text. I have made some edits and extensions to the text to clarify some parts of it and to help the content flow naturally.
 
 > "some background information about the Case Studies would be helpful, especially for the main Case Study (e.g. climate, rationale, work done by others, …);"
 
