@@ -1,9 +1,55 @@
-# Moving Chapter 5 material
+# Reply email
+
+Dear Dr Onof,
+
+Thank you again for your comments on the thesis corrections. Please find attached an updated copy of the thesis. I've also tried to summarise how I have responded to each suggestion (please see below). Please let me know if you think there are any further issues to correct.
+
+Many thanks in advance for your work on this!
+
+Best wishes,
+Tom 
+
+> "Aside from the issues of detail that were discussed at the viva (e.g. about equations), we have left our copies of your thesis with Ivan: they contain the typos we spotted."
+
+I've addressed these matters of detail discussed in the viva and that were marked on the thesis copies (as well as some typos I noticed during my own read-through of the thesis).
+
+> "moving some of the material in the appendices into the main text would improve the clarity for the reader in particular for Chapter 5;"
+
+I have moved Appendix A.2 to into Chapter 5 (to form Section 5.3.4) so that the explanation of the difference between linear and nonlinear models is now in the main text. I have made some light edits to the text so the content flows naturally.
+
+> "some background information about the Case Studies would be helpful, especially for the main Case Study (e.g. climate, rationale, work done by others, …);"
+
+> it would be interesting to place the final Case Study in a wider context – e.g. how useful might it be in China?
+
+I have incorporated more background information about the case study, and tried to place it in its wider context in the following sections:
+
+- Section 6.1. (which I have retitled to "The case study and its wider context"; this section also notes the implications of the region's climate)
+- Section 6.4
+
+> the work done by the candidate could emphasised more effectively (e.g. the coding, contribution to the papers written, complexity of the case study model with many parameters and equations and its implication for the near-impossibility of validation...);
+
+To clarify the work I've done, I've added some comments under the heading 'Work done by the candidate' on page 1.
+
+I've emphasised the complexity of the case study by making additions to the following sections of the thesis (^ indicates that I've also emphasised the related issue regarding the difficulty of validation):
+
+- Section 1.2.2
+- Section 2.2.1^
+- Section 2.3, opening paragraph
+- Section 2.4, opening paragraph
+- Section 5.2.2^
+- Chapter 6, introductory paragraph
+- Section 6.3^
+- Section 6.4
+- Chapter 7, introductory paragraph 
+- Section 7.1, item 4
+
+## Notes
+
+## Moving Chapter 5 material
 
 ## Near impossibility of validation
 
-
-# Case study wider context
+## Case study wider context
 
 - Political structures (state directed)
 - Environmental motivation, particularly with smog
@@ -17,27 +63,6 @@
 - But wrote code from scratch
 - Code architecture loosely based on Samsatli (i.e. to separate the formulation and the data)
 - Complexity of the case study model with many parameters and equations and its implication for the near-impossibility of validation
-
-# Email
-
-Dear Dr Onof,
-
-Please find attached an updated copy of the thesis which I have updated to address the issues you have highlighted. Below is a summary as to how I have responded to each comment. Please let me know if you think there are any further issues to correct.
-
-> Aside from the issues of detail that were discussed at the viva (e.g. about equations), we have left our copies of your thesis with Ivan: they contain the typos we spotted.
-
-I've addressed these matters of detail discussed in the viva and marked up on the thesis copies (as well as some typos I noticed during my own read-through of the thesis).
- 
-
-> moving some of the material in the appendices into the main text would improve the clarity for the reader in particular for Chapter 5;
-
-Moved Appendix [TODO:] to Chapter 5, and made a few edits to the text so the content flows naturally.
-
-> some background information about the Case Studies would be helpful, especially for the main Case Study (e.g. climate, rationale, work done by others, …);
-
-Many thanks,
-Tom
-
 
 I've added in some comments on climate [TODO:cross-ref], and extended Section 6.1 to include more about the rationale, work done by others and the Chinese context (citing [TODO: citations])
 and relevant comments on region's weather [@ChinaMeteorologicalAdministration2018]
@@ -63,34 +88,4 @@ A comprehensive and integrated model is built upon the practical energy requirem
 
 These problems are particularly prominent in developing countries, notably in China. For example, China has surpassed the United States as the world's largest energy consumer since 2010, whose energy consumption soared by about 7.3 times and carbon emissions related to energy activities rose by 6.9 times from 1977 to 2013. And fossil fuels accounted for about 85.0% of the anthropogenic CO2 emissions. Thereby, twofold challenges pertinent to energy sources allocation and air pollutants reduction have arisen in terms of China’s energy systems. In response to these challenges, development of new energy sources (NESs) or sustainable energy sources should be accomplished in the 21st century. Indeed, NESs with renewable and environmental friendly characteristic are commonly defined as generation from wind, solar, waste, wood, biomass and geo-thermal. The benefits of NESs seem to be widespread acceptance [19–27]. Apart from clean and safe, scholars also confirmed that the adoption of NESs would be a key level for coping with the challenges of climate mitigation and sustainable development [28, 29]. However, only a minor amount of NESs has been put into practical applications because of technical, socio-economic and institutional barriers. For example, in China, on average, around 8.8% of energy demand has be supplied by NESs in 2011. Therefore, integrated energy systems planning has received much attention to not only deal with the increasing amount of non-renewable energy but also mitigate air-pollutant emissions
 
-
-> the work done by the candidate could emphasised more effectively (e.g. the coding, contribution to the papers written, complexity of the case study model with many parameters and equations and its implication for the near-impossibility of validation...);
-
-To clarify the work I've done, I've added some comments under the heading 'Work done by the candidate' on page 1.
-
-I've emphasised the complexity of the case study by making additions to the following sections of the thesis (^ indicates that I've also emphasised the related issue regarding the difficulty of validation):
-
-- Section 1.2.2
-- Section 2.2.1
-- Section 2.3
-- Section 2.4
-- Section 5.2.2^
-- Introductory paragraph to Chapter 6
-- Section 6.3^
-- Section 6.4
-- Introductory paragraph to Chapter 7
-- Section 7.1, item 4
-
-and also the impossibility of validation
-- Ch 7, incorporate difficulty and impossibility into concluding remarks
-- Abstract, incorporate difficulty and impossibility into concluding remarks
- [TODO: list the sections]
-
-> it would be interesting to place the final Case Study in a wider context – e.g. how useful might it be in China?
-
 - Add to Section 6.4, appending to the paragraph of "For the SPC site specifically..."
-- but also noting caveat of 'more work needed'
-
-Best wishes,
-
-Tom Ravalde
