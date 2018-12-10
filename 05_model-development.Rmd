@@ -13,7 +13,7 @@ library(ggplot2)
 theme_thesis <- theme_bw() + theme(text = element_text(family = "Open Sans"))
 ```
 
-The systems of urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services. Upstream and downstream of these networks are the aggregate flows of inputs into and wastes out of a city. Understanding what drives these aggregate flows is a key component of UM research, but -- as Chapter \ref{sec:lit-review} argued -- the field has not yet produced a formal representation of how the network of processes relates to the overall flows. Understanding this is of particular interest to this thesis because of the intersectoral interactions and synergies which present challenges to, and  opportunities for, efficient resource provision (Section \ref{sec:urbanOpps}). A model that seeks to optimise the management of resources at this systems-of-systems level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this idea from a concept to a formalised mathematical model.
+The systems of urban resource management can be conceptualised as a network of processes which operate to meet consumer demand for goods and services. Upstream and downstream of these networks are the aggregate flows of inputs into and wastes out of a city. Understanding what drives these aggregate flows is a key component of UM research, but -- as Chapter \ref{sec:lit-review} argued -- the field has not yet produced a formal representation of how the network of processes relates to the overall flows. This is of particular interest to this thesis because of the intersectoral interactions and synergies which present challenges to, and  opportunities for, efficient resource provision (Section \ref{sec:urbanOpps}). A model that seeks to optimise the management of resources at this systems-of-systems level could be considered a *highly integrated urban energy, water, and waste systems* optimisation model. This chapter takes this idea from a concept to a formalised mathematical model.
 
 Since modelling is a simplification of the real-world (Section \ref{sec:modelling-intro}) , there will inevitably be compromises in the performance of a model. This chapter explores these through three formulations (given in Section \ref{sec:derivations}). The formulations are then applied to a case study which is followed by a discussion on their performance in view of the compromises in performance, to determine which formulation should be taken forward to Chapter \ref{sec:case-study}. Given the novelty of this work, the case study in this chapter is proposed as a 'benchmark' problem, i.e. a problem in which others can apply their own solution methods, so that the performance of difference approaches can be compared using a single problem (Section \ref{sec:benchmark}). To aid this, the formulations and data are made publicly available. The main contribution of this chapter is to propose a novel model (showing how it develops existing models), being explicit about what the model can and cannot do, and to justify its formulation in view of the aims of this thesis.
 
@@ -834,14 +834,14 @@ E_{rz} &\leq \delta^E_{rz} E^{max}_r \label{eq:null_exp_max}
 
 #### Conversion processes
 
-The change that the NL model makes is in the way conversion processes are modelled -- these have the choice of either being linear or nonlinear, by way of an adaptation to the conversion process equation \eqref{eq:null_process}:
+The change that the NL model makes is in the way conversion processes are modelled -- these can be characterised as having either linear or nonlinear behaviour, by way of an adaptation to the conversion process equation \eqref{eq:null_process}:
 
 \begin{align}
 	G_{prz}&=(\kappa^{O}_{pr}-\kappa^{I}_{pr}) F^P_{pz} \qquad 
 \label{eq:nl_process}
 \end{align}
 
-In \eqref{eq:nl_process}, the $k^P_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These variables can then be defined in a bespoke way. For a linear process, $\kappa^{*}_{pr}$ is defined by a number, which essentially reduces Equation \eqref{eq:nl_process} to the null formulation Equation \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance \eqref{eq:nl_process_dam_energy} and a mass balance \eqref{eq:nl_process_dam_mass}, based on the formula for potential energy, $\mbox{energy}=\mbox{mass} \times \mbox{gravity} \times \mbox{height of elevation}$ (and assuming a dam of 100 per cent efficiency):
+In Equation \eqref{eq:nl_process}, the $k^P_{pr}$ parameter has been replaced by an expression which calculates the net output of a resource from process $p$, in which $\kappa^{O}_{pr}$ and $\kappa^{I}_{pr}$ represent the output and input of quantities of resource $r$, respectively. These variables can then be defined in a bespoke way. For a linear process, $\kappa^{*}_{pr}$ is defined by a number, which essentially reduces Equation \eqref{eq:nl_process} to the null formulation Equation \eqref{eq:null_process}. However, for a nonlinear process, these values can be defined by equations. For example, for a dam's management of resources could be defined by two equations -- an energy balance \eqref{eq:nl_process_dam_energy} and a mass balance \eqref{eq:nl_process_dam_mass}, based on the formula for potential energy, '$\mbox{energy}=\mbox{mass} \times \mbox{gravity} \times \mbox{height of water elevation}$' (and assuming a dam of 100 per cent efficiency):
 
 \begin{align}
 \kappa^{I}_{p, r=\mbox{water}} g H_I &=  \kappa^{O}_{p, r=\mbox{water}} g H_O + \kappa^{O}_{p, r=\mbox{elec}} \label{eq:nl_process_dam_energy} \\
@@ -911,9 +911,17 @@ Equations such as these allow us to formulate nonlinear problems. In the example
 In addition, the boundaries on the imports and exports and the objective function are defined as for the null and PRaQ models.
 -->
 
-### Explaining the difference between the models with reference to a pipe, pump and dam system {#sec:pipe-pump-dam}
+### Explaining the difference between the linear and nonlinear models {#sec:pipe-pump-dam}
 
-This chapter has developed both linear and nonlinear models to consider the integrated management of energy, water and waste systems. This section uses the example of a pipe-pump-dam system (Figures \ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}) to explain the differences in how they might differently model some phenomena. The models need to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. This box expresses this problem using equations of fluid mechanics, before showing how it would be modelled by the three formulations. The starting point is to use the Bernoulli equation, which states that along a streamline of fluid of density $\rho$, energy is conserved:
+This chapter has developed both linear and nonlinear models to
+consider the integrated management of energy, water and waste
+systems. Section \ref{sec:NL} used the example of a dam to show
+the implications of nonlinearity on a model. This section further
+explains this, using the example pipe-pump-dam system of Figures
+\ref{fig:pump-dam-example} and \ref{fig:pump-dam-RTN}, to
+consider the definition of an optimisation programme which needs to calculate the pumping energy and water volumes required at point A to raise the water to a sufficient height at point B, that will allow the dam to generate enough electricity to meet demand at point C. The relevance of this example to the Tat Hamlet benchmarking problem is that there has been a dam incorporated into the model of the village in order to give an opportunity to test how linear and nonlinear formulations compare. The following description expresses this problem using equations of fluid mechanics, discussing how it would be modelled by the three formulations.
+
+The Bernoulli equation states that energy is conserved along a streamline of a fluid of density $\rho$:
 
 \begin{figure}
 	\centering
@@ -940,11 +948,12 @@ This chapter has developed both linear and nonlinear models to consider the inte
 
 where at a chosen point $P$ is the water's pressure, $z$ is its elevation with respect to a reference, and $v$ is its velocity ($g$ is the constant of acceleration due to gravity).
 
-First, consider the water flow from A (zone 1) to B (zone two) via the combination of a pump and a pipe. The pump provides the energy to raise the water's elevation and has an electrical efficiency of $\eta^{pump}$. This energy includes that which is required to overcome the energy loss due to friction. Typically this friction loss is defined as a function of the pipe's length $l$ and diameter $D$ as $\mbox{friction loss} = f_D(l/D)(v^2/2g)$ (where $f_D$ is the Darcy Friction Factor). It is also assumed that $P_1=P_2$ and that $v_1=v_2=v$, and that the datum is measured from A and C (which are at equal height), thus $z_A=z_B=0$. Finally, the models formulated later work with mass ($m$) and energy balances, thus it is convenient to multiply each term by $mg$. The resulting equation gives the water's energy at points A and B expressed in terms of mass:
+First, consider the water flow from A (zone 1) to B (zone two) via the combination of a pump and a pipe. The pump provides the energy to raise the water's elevation and has an electrical efficiency of $\eta^{pump}$. This energy includes that which is required to overcome the energy loss due to friction. Typically this friction loss is defined as a function of the pipe's length $l$ and diameter $D$, and the water's velocity $v$, with friction loss being given as $f_D(l/D)(v^2/2g)$, where $f_D$ is the Darcy Friction Factor. It is also assumed that $P_1=P_2$ and that $v_1=v_2=v$, and that the datum is measured from A and C (which are at equal height), thus $z_A=z_B=0$. Finally, given that the model equations are defined formulated in terms of mass and energy balances, it is helpful to multiply each term by $mg$. The resulting equation gives the water's energy at points A and B expressed in terms of its mass, velocity and elevation:
 
 \begin{align}
 %z_A  + \eta^{pump} \frac{\mbox{pump energy}}{\rho V g}  = z_B + F \frac{l}{D} \frac{v^2}{2g}
 \eta^{pump} \cdot (\mbox{pump energy})  = m \left( gz_B + f_D \frac{l}{D} \frac{v^2}{2} \right) 
+\label{eq:pumpEnergy}
 \end{align}
 
 Second, consider the flow across the dam, between $B$ and $C$. Using the same assumptions as above, and defining the dam with an electrical generation efficiency, $\eta^{dam}$, and again multiplying through by $mg$, the relationship of water input attributes to the dam's electrical output is:
@@ -954,14 +963,20 @@ mgz_B = \eta^{dam} \cdot (\mbox{electricity generated})
 \label{eq:damEnergy}
 \end{align}
 
-Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated ($e^{dam}$). The electricity is considered the dam's 'main' output, and hence its output coefficient is set to  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}
+In this problem, a model needs to calculate the value of variables which enable the system to meet demand for electricity from the dam, which in this example will be 1 megajoule. With the electrical output already defined, the required mass $m$ and dam height $z_B$ can be calculated using Equation \eqref{eq:damEnergy}. Given that the quantity of water required to generate a given amount of electricity ($m$) is always a variable, for a model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, and must be a fixed parameter. Therefore, both the null and the PRaQ models require a dam to be defined with fixed height. Thus, assuming a dam of height $z_B=11$ metres and efficiency $\eta^{dam}=$ 80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg. In contrast to this, however, the nonlinear model does not need to fix the height of the dam, and can achieve the required 1 megajoule of electricity through any suitable combination of $m$ and $z_B$\footnote{For example, if $z_B$ is doubles to 22 metres, then $m$ can be halved to 6,371 kg.}.
+<!--
+Considering the dam example, the variables that the null model calculate are the mass of water passing into and out of the dam $m$, and the electricity generated ($e^{dam}$). The electricity is considered the dam's 'main' output, and hence its output coefficient is fixed at  1 MJ\footnote{This means that the process's rate, $F_{pz}$ becomes a one-to-one mapping of the resource production, which in this case is the dam's power.}.
+-->
 
-The other process coefficients are then defined relative to this electricity output using Equation \ref{eq:damEnergy}. Given that the quantity of water required to generate a given amount of electricity ($m$) is a variable, for a model to remain linear, the water's elevation head (i.e. the dam height, $z_B$) cannot be considered a variable, and must be a fixed parameter. Therefore, a linear model requires a dam to be defined with fixed height. Thus, assuming a dam of height $z_B=11$ metres and efficiency $\eta^{dam}=$ 80 percent, the mass of water required to produce a megajoule of electricity is 12,742 kg. The dam example has two 'water' resources (one high-head as an input to the black-box model, the other low-head as an output from the black-box model). Other water resources could include water at different temperatures or contamination levels. 
+Similar principles apply to the pump and pipe, whereby a model needs to calculate how much pumping energy is required, based on Equation \eqref{eq:pumpEnergy}. In the Null and PRaQ models, only $m$ is a variable, and hence $l$, $D$ and $v$ must all be fixed. However, the nonlinear model would be able to consider these as variables.
 
+<!--
+The dam example has two 'water' resources (one high-head as an input to the black-box model, the other low-head as an output from the black-box model). Other water resources could include water at different temperatures or contamination levels. 
+-->
 
 ### Model objectives {#sec:model-objs}
 
-The three models will minimise some objective. There are numerous possibilities. A common objective for these models is to minimise the cost of a system, i.e. the summed costs of the resources, conversion processes, and transport processes, ($C^R$), ($C^R$), and ($C^{\tau}$), respectively:
+The three models derived in Sections \ref{sec:Null}--\ref{sec:NL} will minimise some objective. There are numerous possibilities. A common objective for these models is to minimise the cost of a system, i.e. the summed costs of the resources, conversion processes, and transport processes, ($C^R$), ($C^R$), and ($C^{\tau}$), respectively:
 
 \begin{align}
 C^R &= \sum_{rz} c_r I_{rz} \\
@@ -1264,7 +1279,7 @@ Note that these approaches only solve the issues of tractability, and the lack o
 %	\resizebox{\columnwidth}{!}{\input{05_model-development/tat-16.pdf_tex}}
 	\includegraphics[width=0.4\textwidth]{05_model-development/512px-Piecewise_linear_approximation.png}
 %	\end{spacing}
-	\caption[An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)]{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\protect\footnotemark.}
+	\caption[An example of a nonlinear function (red) which has been approximated using a piecewise linear approximation (green)]{An example of a nonlinear function (red) which has been given a piecewise linear approximation (green)\protect\footnotemark.}
 	\label{fig:piecewise-linear}
 \end{figure}
 
