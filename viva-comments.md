@@ -23,7 +23,7 @@ I have moved Appendix A.2 to into Chapter 5 (to form Section 5.3.4, which I have
 
 > it would be interesting to place the final Case Study in a wider context – e.g. how useful might it be in China?
 
-I have incorporated more background information about the case study, and tried to place it in its wider context in the following sections:
+I have incorporated more background information about the case study, and tried to place it in its wider context with reference to the work of Chen et al. (2016) and Zheng et al. (2017), in the following sections:
 
 - Section 6.1. (which I have retitled to "The case study and its wider context"; this section also notes the implications of the region's climate)
 - Section 6.4
