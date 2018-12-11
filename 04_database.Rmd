@@ -263,7 +263,7 @@ plot_wolman <- ggplot(wolman, aes(resource, -value/1e6)) +
   geom_hline(xintercept=0) +
   coord_flip() +
   xlab("Resource (units)") + 
-  ylab("Value [units x 10^6]") +
+  ylab(bquote('Value [Units x'*10^6*']')) +
   facet_wrap(~variable, ncol=1)
 plot_wolman
 ```
