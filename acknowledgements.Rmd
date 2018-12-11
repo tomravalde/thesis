@@ -1,15 +1,11 @@
 # Acknowledgements {.unnumbered}
 
-TODO: update
+The completion of this thesis was only possible with the support of many people.
 
-This thesis was only possible with the support of a number of people and organisations.
+In particular, I would like to thank my first supervisor, James Keirstead, whose insight and encouragement stimulated so much of the work here. I am indebted too to Ivan Stoianov who very kindly took over supervision part-way through the research. I am grateful too for Prof. Geoffrey Levermore and Dr Christian Onof for their helpful feedback during the viva voce.
 
-In particular, I would like to thank my first supervisor, James Keirstead, whose insight and encouragement stimulated so much of the work here. I am also very grateful to Ivan Stoianov who very kindly took over supervision part-way through the research.
+Imperial College have supported me by providing both funding (via the EPSRC Doctoral Training Partnership) and a superb set of friends and colleagues (both academic and administrative). I would like to thank those in the Environmental and Water Resources Engineering Section, particularly my fellow members of the Urban Energy Systems group, and especially Stefan Pfenninger. Others in the Department have provided both their technical expertise and their friendship, in particular, Craig Buchanan, Mark Bruggemann, Li Ma and Karl Smith.
 
-My thanks goes to Imperial College, who provided funding via the EPSRC Doctoral Training Partnership. Thanks also to my colleagues in the Environmental and Water Resources Engineering Section, who were a source of good humour and thoughtful insights. I would especially like to thank the fellow members of the Urban Energy Systems group, particularly Stefan Pfenninger. Other friends in the Civil Engineering Department have provided both their technical expertise and their friendship, in particular, Craig Buchanan, Mark Bruggeman, Li Ma and Karl Smith (whose puns and musical tastes I valued greatly).
+I owe much to the wider academic community, including Prof. Chris Kennedy (University of Victoria) who provided the urban metabolism dataset used in Chapter \ref{sec:metrics}, and Dr Yingru Zhao and her team (Xiamen University) who provided the case study for Chapter \ref{sec:case-study} and who generously hosted me for a week in China. The data for this case study was provided by the Shaan Gu Power Company Limited. I would also like to acknowledge Dr Nouri Samsatli for developing the urban energy systems formulation on which the model developed in Chapter \ref{sec:model-dev} was based, and to thank him for sharing that model's code. The online community more generally have also shaped this thesis, and I have enjoyed joining those who advocate for reproducible research and open source data and tools.
 
-I have benefited from the wider academic community, including Chris Kennedy (University of Victoria) who provided the urban metabolism dataset used in Chapter \ref{sec:metrics}, and Yingru Zhao and her team (Xiamen University) who provided the case study for Chapter \ref{sec:case-study} and who generously hosted me for a week in China. The data for this case study was provided by the ShaanGu Power Co., Ltd. I would also like to acknowledge Nouri Samsatli for developing the urban energy systems formulation on which the model developed in Chapter \ref{sec:model-dev} was based, and to thank him for providing the GAMS code, which I modified for the development of the Null model in Chapter \ref{sec:model-dev} of this thesis.
-
-The online community more generally have shaped this thesis profoundly, especially with regards to producing 'reproducible research' -- thank you to all those who have promoted open-source data and tools, and to the community of R-users and developers.
-
-Finally, thank you to my friends, and most of all, my parents, for their encouragement, without which this would not have been possible.
+Finally, thank you to my friends from Imperial College and Christ Church Kensington, and to all others who have supported me along the way, and most of all, my parents.
